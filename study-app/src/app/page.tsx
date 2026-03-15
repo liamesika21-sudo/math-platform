@@ -104,7 +104,7 @@ export default function HomePage() {
 
                 <Link
                   href={`/courses/${course.id}`}
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-medium !text-white transition hover:bg-slate-800"
                 >
                   כניסה לקורס
                   <ArrowRight className="h-4 w-4" />
