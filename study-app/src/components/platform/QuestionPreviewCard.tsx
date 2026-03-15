@@ -65,7 +65,7 @@ export default function QuestionPreviewCard({ courseId, question, state }: Quest
         </div>
         <Link
           href={`/courses/${courseId}/questions/${question.id}`}
-          className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
+          className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium !text-white transition hover:bg-slate-800"
         >
           פתח שאלה
           <ArrowUpRight className="h-4 w-4" />

@@ -141,7 +141,7 @@ export default function CourseDashboardPage() {
             </div>
             <Link
               href={`/courses/${courseId}/my-questions`}
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium !text-white transition hover:bg-slate-800"
             >
               פתח את השאלות שלי
               <ArrowRight className="h-4 w-4" />
