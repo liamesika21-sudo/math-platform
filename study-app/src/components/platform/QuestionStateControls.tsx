@@ -45,7 +45,7 @@ export default function QuestionStateControls({
               className={cn(
                 'rounded-full px-4 py-2 text-sm font-medium transition',
                 state.status === option.value
-                  ? 'bg-slate-950 text-white'
+                  ? 'bg-slate-950 text-white!'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               )}
             >
@@ -66,7 +66,7 @@ export default function QuestionStateControls({
               className={cn(
                 'rounded-full border px-4 py-2 text-sm font-medium transition',
                 button.active
-                  ? 'border-slate-950 bg-slate-950 text-white'
+                  ? 'border-slate-950 bg-slate-950 text-white!'
                   : 'border-slate-200 bg-white text-slate-700 hover:border-slate-400'
               )}
             >
