@@ -1,0 +1,372 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import {
+  LayoutDashboard,
+  BookOpen,
+  TrendingUp,
+  FileQuestion,
+  GraduationCap,
+  FileSearch,
+  Map,
+  GitBranch,
+  Grid3X3,
+  Hash,
+  Target,
+  FileText,
+  ClipboardCheck,
+  Bug,
+  Menu,
+  X,
+  Calendar,
+  Layers,
+  Crosshair,
+  ScrollText,
+  FileCheck,
+  Ruler,
+  Trophy,
+  Printer,
+  Link2,
+} from 'lucide-react';
+
+interface NavItem {
+  href: string;
+  label: string;
+  labelHe: string;
+  icon: React.ReactNode;
+}
+
+const navItems: NavItem[] = [
+  {
+    href: '/',
+    label: 'Dashboard',
+    labelHe: 'לוח בקרה',
+    icon: <LayoutDashboard className="w-5 h-5" />,
+  },
+  {
+    href: '/weeks',
+    label: 'Weekly Study',
+    labelHe: 'לימוד שבועי',
+    icon: <Layers className="w-5 h-5" />,
+  },
+  {
+    href: '/calendar',
+    label: 'Exam Calendar',
+    labelHe: 'לוח למבחן',
+    icon: <Calendar className="w-5 h-5" />,
+  },
+  {
+    href: '/knowledge',
+    label: 'Knowledge Base',
+    labelHe: 'בסיס ידע',
+    icon: <BookOpen className="w-5 h-5" />,
+  },
+  {
+    href: '/likelihood',
+    label: 'Exam Likelihood',
+    labelHe: 'סבירות למבחן',
+    icon: <TrendingUp className="w-5 h-5" />,
+  },
+  {
+    href: '/homework',
+    label: 'Homework',
+    labelHe: 'שיעורי בית',
+    icon: <FileQuestion className="w-5 h-5" />,
+  },
+  {
+    href: '/practice',
+    label: 'Practice Mode',
+    labelHe: 'תרגול',
+    icon: <GraduationCap className="w-5 h-5" />,
+  },
+  {
+    href: '/exams',
+    label: 'Past Exams',
+    labelHe: 'מבחנים קודמים',
+    icon: <FileSearch className="w-5 h-5" />,
+  },
+  {
+    href: '/flow',
+    label: 'Concept Flow',
+    labelHe: 'מפת מושגים',
+    icon: <GitBranch className="w-5 h-5" />,
+  },
+  {
+    href: '/matrices',
+    label: 'Matrices Summary',
+    labelHe: 'סיכום מטריצות',
+    icon: <Grid3X3 className="w-5 h-5" />,
+  },
+  {
+    href: '/determinants',
+    label: 'Determinants',
+    labelHe: 'דטרמיננטות',
+    icon: <Hash className="w-5 h-5" />,
+  },
+  {
+    href: '/dimensions',
+    label: 'Dimensions',
+    labelHe: 'ממדים — סיכום מלא',
+    icon: <Ruler className="w-5 h-5" />,
+  },
+  {
+    href: '/summary',
+    label: 'Full Summary',
+    labelHe: 'סיכום מלא',
+    icon: <ScrollText className="w-5 h-5" />,
+  },
+  {
+    href: '/print-dimensions',
+    label: 'Print Dimensions',
+    labelHe: 'ממדים להדפסה',
+    icon: <Printer className="w-5 h-5" />,
+  },
+  {
+    href: '/print-determinants',
+    label: 'Print Determinants',
+    labelHe: 'דטרמיננטות להדפסה',
+    icon: <Printer className="w-5 h-5" />,
+  },
+  {
+    href: '/exam2023a',
+    label: 'Exam 2023 Moed A',
+    labelHe: 'מבחן 2023 מועד א׳',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/exam2023b',
+    label: 'Exam 2023 Moed B',
+    labelHe: 'מבחן 2023 מועד ב׳',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/exam2024a',
+    label: 'Exam 2024 Moed A',
+    labelHe: 'מבחן 2024 מועד א׳',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/exam2024b',
+    label: 'Exam 2024 Moed B',
+    labelHe: 'מבחן 2024 מועד ב׳',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/exam2025a',
+    label: 'Exam 2025 Moed A',
+    labelHe: 'מבחן 2025 מועד א׳',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/exam2025b',
+    label: 'Exam 2025 Moed B',
+    labelHe: 'מבחן 2025 מועד ב׳',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/simulation',
+    label: 'Simulation 2026',
+    labelHe: 'סימולציה 2026',
+    icon: <FileCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/top5',
+    label: 'Top 5 Theorems',
+    labelHe: 'Top 5 משפטים למבחן',
+    icon: <Trophy className="w-5 h-5" />,
+  },
+  {
+    href: '/det-flow',
+    label: 'Det Flow',
+    labelHe: 'עץ דטרמיננטות',
+    icon: <GitBranch className="w-5 h-5" />,
+  },
+  {
+    href: '/steinitz',
+    label: 'Steinitz Deep Dive',
+    labelHe: 'שטייניץ + משפט המימדים',
+    icon: <Link2 className="w-5 h-5" />,
+  },
+  {
+    href: '/review',
+    label: 'Exam Review',
+    labelHe: 'חזרה למבחן',
+    icon: <Crosshair className="w-5 h-5" />,
+  },
+  {
+    href: '/golden-rules',
+    label: 'Golden Rules',
+    labelHe: 'כללי זהב',
+    icon: <Target className="w-5 h-5" />,
+  },
+  {
+    href: '/tirgul8',
+    label: 'Tirgul 8 Summary',
+    labelHe: 'סיכום תרגול 8',
+    icon: <FileText className="w-5 h-5" />,
+  },
+  {
+    href: '/quizzes',
+    label: 'Quiz Definitions',
+    labelHe: 'הגדרות בחנים',
+    icon: <ClipboardCheck className="w-5 h-5" />,
+  },
+  {
+    href: '/roadmap',
+    label: 'Study Roadmap',
+    labelHe: 'מפת לימוד',
+    icon: <Map className="w-5 h-5" />,
+  },
+  {
+    href: '/debug',
+    label: 'Debug',
+    labelHe: 'דיבאג',
+    icon: <Bug className="w-5 h-5" />,
+  },
+];
+
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [logoPopupOpen, setLogoPopupOpen] = useState(false);
+  const pathname = usePathname();
+
+  return (
+    <div className="min-h-screen bg-gray-50" dir="rtl">
+      {/* Mobile header */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 px-4 py-3">
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 rounded-lg hover:bg-gray-100"
+          >
+            {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setLogoPopupOpen(true)}>
+              <Image src="/logo.png" alt="L.M Logo" width={100} height={40} className="h-8 w-auto cursor-pointer" />
+            </button>
+          </div>
+          <div className="w-10" />
+        </div>
+      </header>
+
+      {/* Mobile sidebar overlay */}
+      {sidebarOpen && (
+        <div
+          className="lg:hidden fixed inset-0 z-40 bg-black/50"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`
+          fixed top-0 right-0 z-40 h-full w-64 bg-white border-l border-gray-200
+          transform transition-transform duration-200 ease-in-out
+          lg:translate-x-0
+          ${sidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
+        `}
+      >
+        <div className="flex flex-col h-full">
+          {/* Logo */}
+          <div className="p-4 border-b border-gray-200">
+            <div className="flex items-center justify-center">
+              <button onClick={() => setLogoPopupOpen(true)}>
+                <Image src="/logo.png" alt="L.M Logo" width={150} height={60} className="h-12 w-auto cursor-pointer" />
+              </button>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setSidebarOpen(false)}
+                  className={`
+                    flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+                    transition-colors duration-150
+                    ${
+                      isActive
+                        ? 'bg-indigo-50 text-indigo-700'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }
+                  `}
+                >
+                  <span className={isActive ? 'text-indigo-600' : 'text-gray-400'}>
+                    {item.icon}
+                  </span>
+                  <span>{item.labelHe}</span>
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Footer */}
+          <div className="p-4 border-t border-gray-200">
+            <div className="text-xs text-gray-500 text-center">
+              מבוסס על החומרים שלך בלבד
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      {/* Main content */}
+      <main className="lg:mr-64 pt-16 lg:pt-0 min-h-screen flex flex-col">
+        <div className="p-4 md:p-6 lg:p-8 flex-1">
+          {children}
+        </div>
+
+        {/* Footer */}
+        <footer className="p-4 border-t border-gray-200 bg-white">
+          <div className="text-center text-sm text-gray-500">
+            Built by{' '}
+            <a
+              href="https://liamesika.co.il"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+            >
+              Lia Mesika
+            </a>
+            . All rights reserved.
+          </div>
+        </footer>
+      </main>
+
+      {/* Logo Popup */}
+      {logoPopupOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          onClick={() => setLogoPopupOpen(false)}
+        >
+          <div className="relative">
+            <button
+              onClick={() => setLogoPopupOpen(false)}
+              className="absolute -top-10 right-0 text-white hover:text-gray-300"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <Image
+              src="/logo.png"
+              alt="L.M Logo"
+              width={400}
+              height={200}
+              className="max-w-[90vw] max-h-[80vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

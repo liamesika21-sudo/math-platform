@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Clear Init Flags</title></head>
+<body>
+<h1>Clearing initialization flags...</h1>
+<script>
+localStorage.removeItem('infi-init-complete');
+localStorage.removeItem('infi-auto-processed');
+document.body.innerHTML = '<h1>Flags cleared!</h1><p>Refresh your app to trigger reprocessing.</p><p>localStorage cleared: infi-init-complete, infi-auto-processed</p>';
+</script>
+</body>
+</html>
