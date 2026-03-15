@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, ChartColumnBig, FileQuestion, Files, FolderKanban, GraduationCap, House, Layers3, ListChecks, Menu, Sparkles, X } from 'lucide-react';
+import { BookOpen, Brain, ChartColumnBig, FileQuestion, Files, FolderKanban, GraduationCap, House, Layers3, ListChecks, Menu, Sparkles, X } from 'lucide-react';
 import { useState } from 'react';
 import type { Course } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
@@ -22,6 +22,7 @@ const navIconMap = {
   review: ChartColumnBig,
   myQuestions: FolderKanban,
   sources: Files,
+  mentor: Brain,
 };
 
 export default function CourseShell({ course, children }: CourseShellProps) {
@@ -38,6 +39,7 @@ export default function CourseShell({ course, children }: CourseShellProps) {
     { key: 'review', href: `/courses/${course.id}/review-center`, label: 'מרכז חזרה' },
     { key: 'myQuestions', href: `/courses/${course.id}/my-questions`, label: 'השאלות שלי' },
     { key: 'sources', href: `/courses/${course.id}/sources`, label: 'מקורות' },
+    { key: 'mentor', href: `/courses/${course.id}/mentor`, label: 'מנחה אישי' },
   ] as const;
 
   return (
@@ -94,7 +96,7 @@ export default function CourseShell({ course, children }: CourseShellProps) {
                   className={cn(
                     'inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition',
                     active
-                      ? 'bg-slate-950 text-white shadow-lg shadow-slate-950/10'
+                      ? 'bg-slate-950 text-white! shadow-lg shadow-slate-950/10'
                       : 'bg-white text-slate-600 ring-1 ring-slate-200 hover:text-slate-950'
                   )}
                 >
@@ -119,7 +121,7 @@ export default function CourseShell({ course, children }: CourseShellProps) {
                     onClick={() => setOpen(false)}
                     className={cn(
                       'inline-flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium',
-                      active ? 'bg-slate-950 text-white' : 'bg-slate-50 text-slate-700'
+                      active ? 'bg-slate-950 text-white!' : 'bg-slate-50 text-slate-700'
                     )}
                   >
                     <Icon className="h-4 w-4" />
