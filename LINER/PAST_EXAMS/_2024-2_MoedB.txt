@@ -1,0 +1,205 @@
+Linear Algebra 1, Moed B 2025
+Reichman university
+
+Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen.
+Duration: 3 hours.
+Auxiliary material: none.
+Instructions:
+The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits.
+Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim.
+You do not have a choice between different items of the same question. It is forbidden to rely on any material that was
+not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the
+papers!
+
+Good Luck!
+
+2
+
+1. (25 points)
+1.1. (17 points) Let V be a vector space over the field F and let U and W be two subspaces of V.
+1.1.1. (2 points) Define the term: U ⊕ W.
+Solution:
+
+1.1.2. (15 points) Suppose that V is finitely generated. Prove that
+dim (U + W) = dim (U) + dim (W) − dim (U ∩ W)
+Solution:
+
+3
+
+(The page is left blank to provide more space for answering question 1.1)
+
+4
+
+1.2. (8 points) Prove or disprove the following statement:
+There exists a linear transformation T : R9 → R4 for which dim KerT ≤ dim ImT .
+Solution:
+
+5
+
+2. (25 points)
+2.1. (17 points) Let V be a vector space over the field F and let W be a subset of V.
+2.1.1. (2 points) Define the following term: W is a subspace of V.
+Solution:
+
+2.1.2. (15 points) Suppose that V is finitely generated and that W is a subspace of V.
+2.1.2.1. (8 points) Prove that dim (W) ≤ dim (V).
+2.1.2.2. (7 points) Suppose that dim (W) = dim (V). Prove that W = V.
+Solution:
+
+6
+
+(The page is left blank to provide more space for answering question 2.1.2)
+
+7
+
+2.2. (8 points) Let A, B ∈ Mn (F). Suppose that A and B are skew symmetric.
+Prove that AB is symmetric if and only if AB = BA.
+Solution:
+
+8
+
+3. (25 points)
+3.1. (18 points) Note: you may solve all sub-items in this question together as a single item.
+Let α ∈ R and consider the following linear system in the variables x, y, z
+
+
+
+
+x
+
+
+
+
+
+3x
+
+
+
+
+
+
+
+ 2x
+
++
+
+y
+
++
+
+α·z
+
+=
+
+2
+
++
+
+4y
+
++
+
+2z
+
+=
+
+α
+
++
+
+3y
+
+-
+
+z
+
+=
+
+1
+
+3.1.1. (9 points) Find all values of α ∈ R for which the system has a unique solution, and express the unique solution
+in terms of α.
+3.1.2. (9 points) Find all values of α ∈ R for which the system has an infinite number of solutions, and find the
+general solution.
+Solution:
+
+9
+
+(The page is left blank to provide more space for answering question 3.1)
+
+10
+
+3.2. (7 points) Prove or disprove the following statement:
+The equation 3x2 = 4 has two different solutions in Z23 .
+Solution:
+
+11
+
+4. (25 points)
+   
+   
+ 3  1
+ 2  1
+   
+   
+4.1. (13 points) Let T : R2 → R2 be a linear transformation, and suppose that T   =   and T   =  .
+−2 1
+−3 2
+ 
+ 0 
+ 
+4.1.1. (4 points) Compute T  .
+−5
+4.1.2. (4 points) Prove that T is invertible.
+ 
+4
+4.1.3. (5 points) Compute T −1  
+6
+Solution:
+
+12
+
+(The page is left blank to provide more space for answering question 4.1)
+
+13
+
+4.2. (12 points) Let D ∈ Mn (R). We say that D is a diagonal matrix if for every 1 ≤ i, j ≤ n such that i , j it holds that
+[D]i j = 0. In this case we denote D = diag ([D]11 , . . . , [D]nn ).
+Let α1 . . . , αn ∈ R be n distinct numbers, that is, such that ∀1 ≤ i, j ≤ n for which i , j we have αi , α j .
+Let D = diag (α1 , . . . , αn ) and let K ∈ Mn (R). Prove that if K commutes with D, then K is diagonal.
+Solution:
+
+14
+
+5. (25 points)
+5.1. (15 points) Let A ∈ Mm×n (R).
+5.1.1. (5 points) Prove that Null (A) ⊆ Null(At A).
+ y1 
+ 
+
+5.1.2. (5 points) Let ⃗y =  ...  ∈ Rm . Suppose that ⃗y t · ⃗y = 0. Prove that ⃗y = ⃗0.
+ym
+
+5.1.3. (5 points) Conclude that Null At A = Null(A).
+Solution:
+
+15
+
+(The page is left blank to provide more space for answering question 5.1)
+
+16
+
+(Also this page is left blank to provide more space for answering question 5.1)
+
+17
+
+5.2. (10 points) Let V and W be two finitely generated vector spaces over the field F.
+Suppose that dim V > 1 and that dim Hom (V, W) = 8. Let T : V → W be an injective linear transformation.
+Compute dim ImT .
+Solution:
+
+18
+
+(The page is left blank to provide more space)
+
+

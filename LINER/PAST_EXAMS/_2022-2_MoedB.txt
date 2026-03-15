@@ -1,0 +1,133 @@
+Linear Algebra 1, Moed B
+2023, Reichman university
+
+Lecturers: Dr. Yossi Shamai and Dr Ran Cohen.
+Duration: 3 hours.
+Only a basic calculator is permitted in this exam.
+Instructions:
+The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits.
+You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim.
+Unexplained answers will not receive any credit. You do not have a choice between different items of the same question. It is
+forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas.
+Do not write at the back of the papers!
+
+2
+
+1. (25 points)
+(a) (15 points) Let F be a field and let V be a vector space over F. Let m, k ∈ N and let v1 , . . . , vk , w1 , . . . , wm ∈ V.
+Suppose that v1 , . . . , vk are linearly independent and that w1 , . . . , wm are spanning V. Prove that k ≤ m.
+
+3
+
+
+1
+
+
+(b) (10 points) Consider the matrix A ∈ M3×4 (Z5 ) that is given by A = 0
+
+0
+
+0
+
+2
+
+2
+
+3
+
+4
+
+2
+
+Find an invertible matrix P ∈ M3 (Z5 ) for which PA is a canonical matrix.
+
+
+4
+
+
+4.
+
+2
+
+4
+
+2. (25 points)
+(a) (18 points) Let a, b ∈ R and consider the following linear system in the variables x, y, z over R
+
+
+
+x + 2y − 3z
+
+
+
+
+
+
+
+3x − y + 5z
+
+
+
+
+
+
+
+
+ax + by + (a + b) · z
+
+=4
+= −2
+=b
+
+i. (6 points) Prove that the system has a solution.
+ii. (12 points) Suppose that b , 0. Prove that the system has a unique solution, and find the solution.
+
+5
+
+(b) (7 points) Let n ∈ N and let A ∈ Mn (R). Suppose that A3 + A2 − A + 5In = 0n×n .
+Prove or disprove the following statement: A is invertible.
+
+6
+
+3. (25 points) Let F be a field and let V and W be vector spaces over F.
+(a) (12 points) Let T : V → W be a linear transformation. Prove or disprove each of the following statements:
+i. (7 points) If T is injective, then for every v1 , . . . , vk ∈ V such that T (v1 ), . . . , T (vk ) are spanning W we have that v1 , . . . , vk
+are spanning V.
+ii. (5 points) If there exist v1 , . . . , vk ∈ V such that T (v1 ), . . . , T (vk ) are spanning W and v1 , . . . , vk are spanning V then T is
+injective.
+
+7
+
+(b) (13 points) Suppose that V and W are finitely generated. Let T : V → W and let S : W → V be two linear transformations.
+i. (6 points) Prove that dim ker (S ◦ T ) ≥ dim ker (T ).
+ii. (7 points) Suppose that dim (W) < dim (V). Prove that S ◦ T is not invertible.
+
+8
+
+4. (25 points)
+(a) (18 points) Let F be a field, let n ∈ N, and let A ∈ Mn (F) such that A2 = On×n .
+i. (6 points) Prove that In + A is invertible.
+ii. (6 points) Prove that Col(A) ⊆ Nul(A).
+iii. (6 points) Prove that rank(A) ≤ n2 .
+
+9
+
+(b) (7 points) Let A ∈ M2 (R). Suppose that for every anti-symmetric matrix B ∈ M2 (R) we have AB = BA.
+Prove or disprove the following statement: there exists an α ∈ R such that A = α · I2 .
+
+10
+
+5. (25 points) Let F be a field and let V be a vector space over F.
+(a) (13 points) Let k ∈ N and let v1 , . . . , vk ∈ V.
+Prove that v1 , . . . , vk are linearly independent if and only if for every v ∈ Span {v1 , . . . , vk } there exist unique α1 , . . . , αk ∈ F
+such that v = α1 v1 + · · · + αk vk .
+
+11
+
+(b) (12 points) Let U, W ⊆ V be subspaces of V. Let T : V → V be a linear transformation. Consider the sets that are defined by
+U1 = {T (u) : u ∈ U} and W1 = {T (w) : w ∈ W}.
+i. (4 points) Prove that U1 and W1 are vector spaces over F.
+ii. (4 points) Suppose that V = U + W. Prove that Im (T ) = U1 + W1 .
+iii. (4 points) Suppose that V = U ⊕ W. Suppose in addition that T is injective. Prove that Im (T ) = U1 ⊕ W1 .
+
+

@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ניתוח סבירות מעמיק - אינפי, לינארית, בדידה</title>
+  <style>
+    :root {
+      --bg: #f5f7fd;
+      --card: #fff;
+      --ink: #1f2534;
+      --muted: #616b82;
+      --line: #dfe5f3;
+      --infi: #2d63d6;
+      --linear: #1f8f52;
+      --discrete: #dd7a00;
+      --hot: #b42318;
+      --med: #b54708;
+      --low: #027a48;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Arial", "Noto Sans Hebrew", sans-serif;
+      background: radial-gradient(circle at 90% -5%, #e7eeff, var(--bg));
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 20px auto;
+      padding: 0 14px 24px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #243f93, #365fcf 58%, #70a0ff);
+      color: #fff;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(36, 63, 147, .24);
+    }
+    .hero h1 { margin: 0 0 8px; font-size: 30px; }
+    .hero p { margin: 5px 0; }
+    .sources {
+      margin-top: 14px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 14px;
+    }
+    .sources code {
+      background: #f3f6ff;
+      border: 1px solid #dce4ff;
+      border-radius: 6px;
+      padding: 2px 6px;
+      display: inline-block;
+      margin: 3px 0;
+      direction: ltr;
+      unicode-bidi: embed;
+      font-size: 12px;
+    }
+
+    .course {
+      margin-top: 14px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .course .head {
+      padding: 12px 14px;
+      font-weight: 800;
+      font-size: 21px;
+      color: #fff;
+    }
+    .course.infi .head { background: linear-gradient(90deg, var(--infi), #5f8ef5); }
+    .course.linear .head { background: linear-gradient(90deg, var(--linear), #44b874); }
+    .course.discrete .head { background: linear-gradient(90deg, var(--discrete), #ffad3d); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 12px;
+    }
+    .box {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: #fff;
+    }
+    .box h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 7px;
+      vertical-align: top;
+      text-align: right;
+    }
+    th { background: #f4f7ff; }
+
+    .pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .hot { background: var(--hot); }
+    .med { background: var(--med); }
+    .low { background: var(--low); }
+
+    ul {
+      margin: 0;
+      padding-right: 18px;
+      font-size: 14px;
+    }
+    li { margin: 6px 0; }
+
+    .note {
+      margin: 10px 12px 12px;
+      border-right: 4px solid #2d63d6;
+      background: #eef4ff;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .drill {
+      margin: 0 12px 12px;
+      border: 1px dashed #b8c8ef;
+      border-radius: 10px;
+      background: #fbfcff;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .drill h4 {
+      margin: 0 0 8px;
+      color: #2346b3;
+      font-size: 15px;
+    }
+
+    @media (max-width: 920px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>ניתוח סבירות מעמיק למבחנים (2026)</h1>
+      <p>כולל: שאלות הכי סבירות להופיע + משפטים הכי סבירים להוכחה, לפי מקצוע.</p>
+      <p>עודכן ליום <strong>12.03.2026</strong>, מותאם לסדר הבחינות: אינפי → לינארית → בדידה.</p>
+      <p><a href="תכנית_עבודה_24_ימים_פירוט_יומי.html" style="color:#fff;text-decoration:underline;">לעמוד פירוט המשימות היומי</a></p>
+    </header>
+
+    <section class="sources">
+      <strong>על מה מבוסס הניתוח:</strong><br>
+      <code>study-app/files/analysis_moed_b_2026.md</code>
+      <code>LINER/MOED_B_THEOREM_ANALYSIS_FINAL.md</code>
+      <code>LINER/LECTURE_BY_LECTURE_THEOREM_MAP.md</code>
+      <code>LINER/PAST_EXAMS/_2022-2_MoedB.txt</code>
+      <code>LINER/PAST_EXAMS/_2023-2_MoedB.txt</code>
+      <code>LINER/PAST_EXAMS/_2024-2_MoedB.txt</code>
+      <code>bdida/ניתוח_שאלות_פתוחות_למועד_ב.md</code>
+      <code>bdida/סיכום_נושאים_למבחן.md</code>
+      <div class="note">בלינארית, חלק מסעיפי "סבירות לשאלות" הם הערכת אינפרנס מסכמת מתוך מבחני מועד ב' 2023–2025, בנוסף לקבצי הניתוח שכבר קיימים.</div>
+    </section>
+
+    <section class="course infi">
+      <div class="head">אינפי 1</div>
+      <div class="grid">
+        <article class="box">
+          <h3>שאלות הכי סבירות להופיע</h3>
+          <table>
+            <thead><tr><th>נושא שאלה</th><th>תדירות</th><th>סבירות</th><th>מה לתרגל עכשיו</th></tr></thead>
+            <tbody>
+              <tr><td>הגדרות פורמליות (ε-δ, רציפות, דיפרנציאביליות)</td><td>10/10</td><td><span class="pill hot">גבוה מאוד</span></td><td><code>CALCULUS_1_THEOREMS_DEFINITIONS_LEMMAS.md</code></td></tr>
+              <tr><td>אי-רציונליות (ביטויים אלגבריים)</td><td>9/10</td><td><span class="pill hot">גבוה מאוד</span></td><td><code>study-app/files/hw/Exercise 1 solution.pdf</code> (Q5f,Q6)</td></tr>
+              <tr><td>צפיפות Q / R\Q</td><td>8/10</td><td><span class="pill hot">גבוה</span></td><td><code>analysis_moed_b_2026.md</code> סעיפי צפיפות</td></tr>
+              <tr><td>sup/inf + characterization</td><td>8/10</td><td><span class="pill hot">גבוה</span></td><td><code>study-app/files/hw/Exercise 2 solution.pdf</code>, <code>study-app/files/hw/Exercise 3 solution.pdf</code></td></tr>
+              <tr><td>רציפות + IVT/Bolzano (קיום פתרון)</td><td>7/10</td><td><span class="pill med">בינוני-גבוה</span></td><td><code>study-app/files/hw/Exercise 10 solution.pdf</code></td></tr>
+              <tr><td>שאלות נגזרות (Rolle/MVT/Cauchy)</td><td>7/10</td><td><span class="pill med">בינוני-גבוה</span></td><td><code>study-app/files/hw/Exercise 12 solution.pdf</code></td></tr>
+              <tr><td>Lipschitz מתוך חסם נגזרת</td><td>6/10</td><td><span class="pill med">בינוני</span></td><td><code>study-app/files/hw/Exercise 12 solution.pdf</code></td></tr>
+              <tr><td>חסם נגזרת שנייה (MVT פעמיים)</td><td>5/10</td><td><span class="pill med">בינוני</span></td><td><code>study-app/files/hw/Exercise 12 solution.pdf</code> Q4</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="box">
+          <h3>משפטים הכי סבירים להוכחה</h3>
+          <table>
+            <thead><tr><th>משפט/טענה</th><th>ראיות בקבצים</th><th>סבירות</th></tr></thead>
+            <tbody>
+              <tr><td>Rolle + שימוש נכון בתנאים</td><td>מופיע במספר מבחנים (2025A, 2025B, מועד א 2026)</td><td><span class="pill hot">גבוה</span></td></tr>
+              <tr><td>MVT / Cauchy-MVT</td><td>2023A + מועד א 2026 + דפוסי חסמים</td><td><span class="pill hot">גבוה</span></td></tr>
+              <tr><td>Q צפופה ב-R</td><td>מופיע ב-2024A, 2025A ועוד</td><td><span class="pill med">בינוני-גבוה</span></td></tr>
+              <tr><td>Characterization של inf/sup</td><td>מועד א 2026 + דפוס sup/inf 8/10</td><td><span class="pill med">בינוני-גבוה</span></td></tr>
+              <tr><td>דיפרנציאביליות גוררת רציפות</td><td>סימולציה 2026 + בסיס שאלות הוכחה</td><td><span class="pill med">בינוני</span></td></tr>
+              <tr><td>נגזרת פונקציה הפוכה</td><td>2022A, 2025B</td><td><span class="pill low">בינוני-נמוך</span></td></tr>
+            </tbody>
+          </table>
+          <div class="note">שורת תכל'ס: אם את שולטת ב־8 התבניות המובילות בטבלה הראשונה + ב־4 המשפטים העליונים כאן, את מכסה את רוב הליבה.</div>
+        </article>
+      </div>
+      <div class="drill">
+        <h4>דריל מומלץ ל־3 הימים הקרובים (אינפי)</h4>
+        <ul>
+          <li>יום א': <code>study-app/files/hw/Exercise 1 solution.pdf</code>, <code>study-app/files/hw/Exercise 2 solution.pdf</code>, <code>study-app/files/hw/Exercise 3 solution.pdf</code> + שינון הגדרות בעל פה.</li>
+          <li>יום ב': <code>study-app/files/hw/Exercise 10 solution.pdf</code>, <code>study-app/files/hw/Exercise 12 solution.pdf</code> + תרגולי IVT/MVT/Lipschitz.</li>
+          <li>יום ג': מבחן עבר אחד מלא (<code>study-app/files/exam/ExamA_calculus1_2024_sol.pdf</code>) בזמן.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="course linear">
+      <div class="head">לינארית 1</div>
+      <div class="grid">
+        <article class="box">
+          <h3>שאלות הכי סבירות להופיע</h3>
+          <table>
+            <thead><tr><th>סוג שאלה</th><th>תצפית מבחני מועד ב'</th><th>סבירות</th><th>תרגול ישיר</th></tr></thead>
+            <tbody>
+              <tr><td>תתי-מרחבים/ממד/סכום ישר + נוסחת ממדים</td><td>חוזר ב-2024B, 2025B וגם סביבו ב-2023B</td><td><span class="pill hot">גבוה מאוד</span></td><td><code>LINER/PAST_EXAMS/_2023-2_MoedB.txt</code>, <code>LINER/PAST_EXAMS/_2024-2_MoedB.txt</code></td></tr>
+              <tr><td>Kernel/Image/Rank ויחסי ממדים</td><td>חוזר בכל השנים בפורמטים שונים</td><td><span class="pill hot">גבוה מאוד</span></td><td><code>MOED_B_THEOREM_ANALYSIS_FINAL.md</code></td></tr>
+              <tr><td>Prove/Disprove על טענות מבניות</td><td>קבוע בכל מועד ב' שנבדק</td><td><span class="pill hot">גבוה</span></td><td><code>LINER/PAST_EXAMS/_2022-2_MoedB.txt</code> (דוגמאות)</td></tr>
+              <tr><td>מערכות לינאריות פרמטריות / צורה קנונית</td><td>חוזר ב-2023B, 2024B, 2025B</td><td><span class="pill hot">גבוה</span></td><td><code>LINER/PAST_EXAMS/LA1_2024-25_MoedB_Eng.pdf</code></td></tr>
+              <tr><td>שאלות מטריצות מיוחדות (sym/skew/commute/nilpotent)</td><td>מופיע תדיר ב-2024B, 2025B</td><td><span class="pill med">בינוני-גבוה</span></td><td><code>LINER/PAST_EXAMS/_2024-2_MoedB.txt</code></td></tr>
+              <tr><td>שאלות שדה סופי / Z_n</td><td>מופיע חלקית ב-2023B/2025B</td><td><span class="pill med">בינוני</span></td><td><code>LINER/PAST_EXAMS/_2023-2_MoedB.txt</code></td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="box">
+          <h3>משפטים הכי סבירים להוכחה (לפי ניתוח קיים)</h3>
+          <table>
+            <thead><tr><th>משפט</th><th>סבירות</th><th>מקור</th></tr></thead>
+            <tbody>
+              <tr><td>Rank-Nullity: <code>rank(A)+dim(NulA)=n</code></td><td><span class="pill hot">95%</span></td><td><code>MOED_B_THEOREM_ANALYSIS_FINAL.md</code></td></tr>
+              <tr><td>טבלת שקילויות להפיכות</td><td><span class="pill hot">90%</span></td><td><code>ANALYSIS_SUMMARY.txt</code></td></tr>
+              <tr><td>"שלושת המשפטים" בממד n</td><td><span class="pill hot">85%</span></td><td><code>LECTURE_BY_LECTURE_THEOREM_MAP.md</code></td></tr>
+              <tr><td><code>det(AB)=det(A)det(B)</code></td><td><span class="pill med">75%</span></td><td><code>MOED_B_THEOREM_ANALYSIS_FINAL.md</code></td></tr>
+              <tr><td><code>dim(ColA)=dim(RowA)=rank(A)</code></td><td><span class="pill med">70%</span></td><td><code>ANALYSIS_SUMMARY.txt</code></td></tr>
+              <tr><td>Steinitz + כל בסיסים באותו גודל</td><td><span class="pill med">70%</span></td><td><code>LECTURE_BY_LECTURE_THEOREM_MAP.md</code></td></tr>
+            </tbody>
+          </table>
+          <div class="note">פה אין ניחוש: האחוזים הם בדיוק מהניתוח הקיים אצלך בתיקיית LINER.</div>
+        </article>
+      </div>
+      <div class="drill">
+        <h4>דריל מומלץ ל־3 הימים הקרובים (לינארית)</h4>
+        <ul>
+          <li>יום א': כתיבה מלאה של 3 הוכחות עליונות (#1,#2,#3) מתוך <code>QUICK_REFERENCE_6_PROOFS.md</code>.</li>
+          <li>יום ב': פתרון Q1-Q2 ממבחן <code>LA1_2024-25_MoedB_Eng.pdf</code> בזמן.</li>
+          <li>יום ג': פתרון Q3/Q5 + בדיקה עם פתרון רשמי.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="course discrete">
+      <div class="head">בדידה</div>
+      <div class="grid">
+        <article class="box">
+          <h3>שאלות הכי סבירות להופיע</h3>
+          <table>
+            <thead><tr><th>סוג שאלה</th><th>תדירות</th><th>סבירות</th><th>תרגול ישיר</th></tr></thead>
+            <tbody>
+              <tr><td>שקילויות פסוקים / לא שקול / המרה ל¬∧∨</td><td>מתואר כ"כל שנה"</td><td><span class="pill hot">גבוה מאוד</span></td><td><code>bdida/סיכום_נושאים_למבחן.md</code></td></tr>
+              <tr><td>קומבינטוריקה: מקדמים, כוכבים ומחיצות</td><td>מתואר כ"כל שנה"</td><td><span class="pill hot">גבוה</span></td><td><code>bdida/סיכום_נושאים_למבחן.md</code> סעיף 5</td></tr>
+              <tr><td>הוכחה/הפרכה בקבוצות (counterexample)</td><td>"כמעט בכל מבחן"</td><td><span class="pill hot">גבוה</span></td><td><code>bdida/past-exams/2024_moed_a_en_solution.pdf</code></td></tr>
+              <tr><td>יחסי שקילות ומחלקות שקילות (שאלה פתוחה)</td><td>7/10 מבחנים</td><td><span class="pill hot">גבוה</span></td><td><code>bdida/ניתוח_שאלות_פתוחות_למועד_ב.md</code></td></tr>
+              <tr><td>אינדוקציה (שאלה פתוחה 16 נק')</td><td>4/10 מבחנים</td><td><span class="pill med">בינוני</span></td><td><code>bdida/past-exams/שאלות_פתוחות_בדידה.pdf</code> Q1-Q4</td></tr>
+              <tr><td>סדר חלקי + האסה</td><td>3/10 מבחנים</td><td><span class="pill med">בינוני</span></td><td><code>bdida/ניתוח_שאלות_פתוחות_למועד_ב.md</code></td></tr>
+              <tr><td>Hall / Stable Matching</td><td>3/10 מבחנים</td><td><span class="pill med">בינוני</span></td><td><code>bdida/past-exams/שאלות_פתוחות_בדידה.pdf</code> Q18</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="box">
+          <h3>משפטים/מבנים הכי סבירים להוכחה</h3>
+          <table>
+            <thead><tr><th>משפט / מבנה הוכחה</th><th>סבירות</th><th>למה</th></tr></thead>
+            <tbody>
+              <tr><td>יחס שקילות (רפלקסיבי+סימטרי+טרנזיטיבי)</td><td><span class="pill hot">גבוה</span></td><td>מופיע הכי הרבה בשאלות פתוחות</td></tr>
+              <tr><td>אינדוקציה רגילה/חזקה (בסיס+צעד)</td><td><span class="pill med">בינוני-גבוה</span></td><td>דפוס פתוחה קלאסי של 16 נק'</td></tr>
+              <tr><td>הוכחת הכלה/שוויון קבוצות</td><td><span class="pill med">בינוני-גבוה</span></td><td>חוזר כמעט בכל מחזור</td></tr>
+              <tr><td>פונקציה חח"ע/על + הרכבה</td><td><span class="pill med">בינוני</span></td><td>מופיע בפתוחות ובסגורות</td></tr>
+              <tr><td>Hall (תנאי שכנויות)</td><td><span class="pill low">בינוני</span></td><td>מופיע כל שנה-שנתיים</td></tr>
+            </tbody>
+          </table>
+          <div class="note">מאחר שאת כבר חזקה בבדידה, זה מקצוע של תחזוקה: 45-90 דק ליום מספיק, אבל בלי להזניח פתוחות.</div>
+        </article>
+      </div>
+      <div class="drill">
+        <h4>דריל מומלץ ל־3 הימים הקרובים (בדידה)</h4>
+        <ul>
+          <li>יום א': פתוחות Q12-Q15 (יחסים/שקילות) מתוך <code>שאלות_פתוחות_בדידה.pdf</code>.</li>
+          <li>יום ב': פתוחות Q1-Q2 (אינדוקציה) + בדיקה עצמית.</li>
+          <li>יום ג': Q18 (Hall) + שאלה קומבינטורית אחת ממבחן עבר 2024/2025.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sources" style="margin-top:14px;">
+      <strong>סיכום ביצועי:</strong>
+      תעבדי לפי הסדר: אינפי (כבד) → לינארית (כבד) → בדידה (תחזוקה). כל יום לסגור לפחות:
+      1 תבנית שאלה אינפי + 1 תבנית הוכחה לינארית + 1 פתוחה קצרה בבדידה.
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+# מעבר עומק קובץ-קובץ על כל החומרים (12.03.2026)
+
+הדוח נבנה מקריאה ישירה של כל הקבצים בתיקיות:
+- `infi`: `/Users/liamesika/Desktop/infi/study-app/files`
+- `linear`: `/Users/liamesika/Desktop/infi/LINER`
+- `discrete`: `/Users/liamesika/Desktop/infi/bdida`
+
+## סיכום כולל
+- סך קבצים שנסרקו: **286**
+- infi: files=77, with_text=64, pdf=65, text=8, images=0, ocr_used=0
+- linear: files=161, with_text=103, pdf=107, text=39, images=12, ocr_used=0
+- discrete: files=48, with_text=45, pdf=41, text=4, images=1, ocr_used=0
+
+## סיכום לפי תיקיות משנה
+- discrete::(root): files=3, with_text=2
+- discrete::12+13: files=2, with_text=2
+- discrete::LOG: files=1, with_text=0
+- discrete::hw: files=12, with_text=12
+- discrete::lecture: files=12, with_text=12
+- discrete::past-exams: files=17, with_text=16
+- discrete::question-per-topic: files=1, with_text=1
+- infi::(root): files=10, with_text=9
+- infi::exam: files=9, with_text=8
+- infi::hw: files=17, with_text=16
+- infi::lecture: files=26, with_text=17
+- infi::moeda: files=2, with_text=1
+- infi::recitation: files=12, with_text=12
+- infi::simulation: files=1, with_text=1
+- linear::(root): files=22, with_text=21
+- linear::LECTURES+PRACTICE: files=73, with_text=18
+- linear::LOGO: files=1, with_text=0
+- linear::PAST_EXAMS: files=47, with_text=47
+- linear::hw: files=12, with_text=12
+- linear::quiz: files=6, with_text=5
+
+## INFI - פירוט כל קובץ
+- `.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `CALCULUS_1_LECTURE_BY_LECTURE.md` | ext=.md | pages=- | words=5082 | tokens=2381 | has_text=True | ocr_used=False | topics=רציפות(65), נגזרות(58), גבולות(30), אינטגרלים(25), sup_inf(18) | top=lecture, lim, key, theorem, all, continuous
+- `CALCULUS_1_QUICK_REFERENCE.md` | ext=.md | pages=- | words=1402 | tokens=567 | has_text=True | ocr_used=False | topics=נגזרות(18), אינטגרלים(16), רציפות(15), גבולות(10), sup_inf(3) | top=theorem, lim, cos, rule, sin, lectures
+- `CALCULUS_1_THEOREMS_DEFINITIONS_LEMMAS.md` | ext=.md | pages=- | words=3742 | tokens=1688 | has_text=True | ocr_used=False | topics=רציפות(49), נגזרות(39), אינטגרלים(31), גבולות(27), sup_inf(14) | top=lecture, lim, group, theorem, continuous, rule
+- `README_analysis.txt` | ext=.txt | pages=- | words=315 | tokens=234 | has_text=True | ocr_used=False | topics=רציפות(2), sup_inf(2), גבולות(1) | top=בחינות, analysis, moed, pdf, דפוסים, html
+- `analysis_moed_b_2026.html` | ext=.html | pages=- | words=4049 | tokens=3314 | has_text=True | ocr_used=False | topics=sup_inf(72), נגזרות(41), גבולות(29), רציפות(23) | top=strong, div, class, שאלה, בחינה, box
+- `analysis_moed_b_2026.md` | ext=.md | pages=- | words=3169 | tokens=1803 | has_text=True | ocr_used=False | topics=sup_inf(68), נגזרות(39), גבולות(27), רציפות(22) | top=שאלה, בחינה, sup, אי, inf, בבחינות
+- `cheatsheet_moed_b.pdf` | ext=.pdf | pages=1 | words=564 | tokens=279 | has_text=True | ocr_used=False | topics=נגזרות(9), sup_inf(9), רציפות(6), גבולות(3), אינטגרלים(1) | top=exams, lec, pattern, lim, exists, identical
+- `cheatsheet_moed_b_heb.pdf` | ext=.pdf | pages=1 | words=427 | tokens=254 | has_text=True | ocr_used=False | topics=רציפות(9), נגזרות(9), sup_inf(8), גבולות(4) | top=שאלה, מבחנים, תבנית, הרצאה, אי, רציפות
+- `critical_theorems_moed_b.html` | ext=.html | pages=- | words=2642 | tokens=2287 | has_text=True | ocr_used=False | topics=גבולות(34), נגזרות(11), sup_inf(11), רציפות(9) | top=div, class, span, source, strong, item
+- `exam/.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `exam/ExamA2022_solutions.pdf` | ext=.pdf | pages=4 | words=2426 | tokens=946 | has_text=True | ocr_used=False | topics=sup_inf(22), רציפות(15), גבולות(2) | top=such, every, let, exists, there, solution
+- `exam/ExamA_calculus1_2024_sol.pdf` | ext=.pdf | pages=4 | words=1429 | tokens=546 | has_text=True | ocr_used=False | topics=sup_inf(24), רציפות(3) | top=lim, let, points, prove, such, suppose
+- `exam/ExamA_calculus1_2025_solution.pdf` | ext=.pdf | pages=5 | words=1523 | tokens=570 | has_text=True | ocr_used=False | topics=sup_inf(27), רציפות(6) | top=points, exists, there, every, sup, solution
+- `exam/ExamB2022_solutions.pdf` | ext=.pdf | pages=4 | words=2335 | tokens=933 | has_text=True | ocr_used=False | topics=sup_inf(21), רציפות(10), נגזרות(1) | top=such, exists, there, lim, let, solution
+- `exam/ExamB_calculus1_2024_sol.pdf` | ext=.pdf | pages=4 | words=1646 | tokens=604 | has_text=True | ocr_used=False | topics=sup_inf(21), רציפות(6) | top=lim, points, every, such, let, solution
+- `exam/ExamB_calculus1_2025_Solution.pdf` | ext=.pdf | pages=4 | words=1608 | tokens=563 | has_text=True | ocr_used=False | topics=sup_inf(13), רציפות(9) | top=points, exists, there, such, every, solution
+- `exam/MoedA_2023_eng_sol.pdf` | ext=.pdf | pages=4 | words=1771 | tokens=592 | has_text=True | ocr_used=False | topics=sup_inf(14), רציפות(12), נגזרות(1) | top=such, points, there, exists, every, solution
+- `exam/MoedB_2023_eng_sol.pdf` | ext=.pdf | pages=4 | words=1683 | tokens=653 | has_text=True | ocr_used=False | topics=sup_inf(16), רציפות(6) | top=lim, points, every, let, solution, exists
+- `hw/.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `hw/Exercise 1 solution.pdf` | ext=.pdf | pages=5 | words=1750 | tokens=553 | has_text=True | ocr_used=False | topics=sup_inf(6) | top=points, solution, such, let, there, every
+- `hw/Exercise 10 solution.pdf` | ext=.pdf | pages=5 | words=2071 | tokens=592 | has_text=True | ocr_used=False | topics=רציפות(24), sup_inf(15) | top=every, there, exists, such, continuous, lim
+- `hw/Exercise 11 solution.pdf` | ext=.pdf | pages=7 | words=2096 | tokens=567 | has_text=True | ocr_used=False | topics=sup_inf(7), רציפות(6), נגזרות(2) | top=lim, differentiable, every, points, solution, let
+- `hw/Exercise 12 solution.pdf` | ext=.pdf | pages=5 | words=1985 | tokens=558 | has_text=True | ocr_used=False | topics=רציפות(8), sup_inf(7) | top=every, there, such, solution, arctan, differentiable
+- `hw/Exercise 2 solution.pdf` | ext=.pdf | pages=6 | words=2232 | tokens=919 | has_text=True | ocr_used=False | topics=sup_inf(83) | top=sup, inf, points, bound, there, solution
+- `hw/Exercise 3 solution.pdf` | ext=.pdf | pages=8 | words=2095 | tokens=708 | has_text=True | ocr_used=False | topics=sup_inf(55), גבולות(1) | top=such, inf, sup, let, points, there
+- `hw/Exercise 4 solution.pdf` | ext=.pdf | pages=5 | words=1667 | tokens=564 | has_text=True | ocr_used=False | topics=sup_inf(2) | top=every, solution, points, let, student, such
+- `hw/Exercise 5 solution.pdf` | ext=.pdf | pages=8 | words=2393 | tokens=553 | has_text=True | ocr_used=False | topics=sup_inf(5), גבולות(3) | top=lim, let, points, such, exists, solution
+- `hw/Exercise 6 solution.pdf` | ext=.pdf | pages=7 | words=2315 | tokens=668 | has_text=True | ocr_used=False | topics=sup_inf(9), גבולות(5) | top=lim, every, points, solution, let, aol
+- `hw/Exercise 7 solution.pdf` | ext=.pdf | pages=7 | words=2095 | tokens=698 | has_text=True | ocr_used=False | topics=גבולות(4), sup_inf(3) | top=lim, exists, there, such, every, points
+- `hw/Exercise 8 solution.pdf` | ext=.pdf | pages=8 | words=2470 | tokens=696 | has_text=True | ocr_used=False | topics=sup_inf(28), גבולות(1) | top=lim, increasing, strictly, such, let, points
+- `hw/Exercise 9 solution.pdf` | ext=.pdf | pages=8 | words=2310 | tokens=670 | has_text=True | ocr_used=False | topics=רציפות(39), sup_inf(9) | top=continuous, such, there, exists, every, points
+- `hw/שאלות_מטלות_1-3.md` | ext=.md | pages=- | words=1655 | tokens=731 | has_text=True | ocr_used=False | topics=sup_inf(37) | top=נקודות, sup, הוכיחו, שאלה, אז, נניח
+- `hw/שאלות_מטלות_10-12.pdf` | ext=.pdf | pages=5 | words=1021 | tokens=394 | has_text=True | ocr_used=False | topics=sup_inf(3), גבולות(1), רציפות(1) | top=נקודות, הוכיחו, נניח, שאלה, לכל, גזירה
+- `hw/שאלות_מטלות_4-6.pdf` | ext=.pdf | pages=6 | words=1696 | tokens=766 | has_text=True | ocr_used=False | topics=גבולות(9), sup_inf(1) | top=lim, נקודות, קיים, לכל, שאלה, מתקיים
+- `hw/שאלות_מטלות_7-9.pdf` | ext=.pdf | pages=6 | words=1612 | tokens=705 | has_text=True | ocr_used=False | topics=גבולות(6), רציפות(2), sup_inf(1) | top=נקודות, lim, אז, עולה, שאלה, נניח
+- `lecture/Lecture 10 group 2 calculus 1 2026.pdf` | ext=.pdf | pages=8 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `lecture/Lecture 11 group 1 calculus 1 2026 (2).pdf` | ext=.pdf | pages=18 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `lecture/Lecture 12 group 1 calculus 1 2026.pdf` | ext=.pdf | pages=14 | words=574 | tokens=179 | has_text=True | ocr_used=False | topics=sup_inf(1) | top=fix, pip, pin, ftp, iii, lim
+- `lecture/Lecture 14 group 2 calculus 1 2026.pdf` | ext=.pdf | pages=12 | words=390 | tokens=147 | has_text=True | ocr_used=False | topics=sup_inf(5) | top=lingly, pin, lko, gly, fix, ocly
+- `lecture/Lecture 15 group 1 calculus 1 2026.pdf` | ext=.pdf | pages=19 | words=693 | tokens=196 | has_text=True | ocr_used=False | topics=none | top=him, lim, pin, limp, plc, arcsin
+- `lecture/Lecture 16 group 2 calculus 1 2026.pdf` | ext=.pdf | pages=9 | words=619 | tokens=194 | has_text=True | ocr_used=False | topics=sup_inf(1) | top=xer, fix, plc, jan, aib, slc
+- `lecture/Lecture 18 group 2 calculus 2026-2.pdf` | ext=.pdf | pages=17 | words=673 | tokens=214 | has_text=True | ocr_used=False | topics=sup_inf(3) | top=aib, slc, fla, fix, faib, flat
+- `lecture/Lecture 19 group 1 calculus 1 2026.pdf` | ext=.pdf | pages=16 | words=745 | tokens=216 | has_text=True | ocr_used=False | topics=none | top=xer, aib, plc, fix, pip, him
+- `lecture/Lecture 2 group 2 calculus 1 2026.pdf` | ext=.pdf | pages=9 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `lecture/Lecture 20 calculus 1 group 2 2026-3.pdf` | ext=.pdf | pages=15 | words=760 | tokens=228 | has_text=True | ocr_used=False | topics=none | top=xer, him, lim, slc, pyn, nnselcn
+- `lecture/Lecture 21 group 1 calculus 1 2026.pdf` | ext=.pdf | pages=16 | words=921 | tokens=262 | has_text=True | ocr_used=False | topics=none | top=xer, man, fix, aib, slc, foal
+- `lecture/Lecture 22 group 1 calculus 1 2026.pdf` | ext=.pdf | pages=9 | words=565 | tokens=157 | has_text=True | ocr_used=False | topics=none | top=aib, plc, aid, sic, fix, xer
+- `lecture/Lecture 23 group 1 calculus 1 2026.pdf` | ext=.pdf | pages=11 | words=665 | tokens=209 | has_text=True | ocr_used=False | topics=sup_inf(2) | top=fix, xer, pie, pin, snip, aib
+- `lecture/Lecture 4 group 1  calculus 1 2026.pdf` | ext=.pdf | pages=9 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `lecture/Lecture 6 group 2 calculus 1 2026.pdf` | ext=.pdf | pages=14 | words=3 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `lecture/Lecture 7 group 1 calculus 1 2026.pdf` | ext=.pdf | pages=17 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `lecture/Lecture 8 group 2 calculus 1 2026 2.pdf` | ext=.pdf | pages=8 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `lecture/Lecture 9 group 1 calculus 1 2026.pdf` | ext=.pdf | pages=12 | words=5 | tokens=3 | has_text=True | ocr_used=False | topics=none | top=lsd, wed, eden
+- `lecture/הרצאה - 17.pdf` | ext=.pdf | pages=13 | words=824 | tokens=266 | has_text=True | ocr_used=False | topics=sup_inf(1) | top=fix, xer, japan, plc, jan, aib
+- `lecture/הרצאה 1.pdf` | ext=.pdf | pages=11 | words=77 | tokens=18 | has_text=True | ocr_used=False | topics=none | top=pom, sins, need, rise, ate, even
+- `lecture/הרצאה 11- אינפי.pdf` | ext=.pdf | pages=18 | words=4 | tokens=1 | has_text=True | ocr_used=False | topics=none | top=anion
+- `lecture/הרצאה 13 אינפי 2.pdf` | ext=.pdf | pages=14 | words=644 | tokens=246 | has_text=True | ocr_used=False | topics=sup_inf(1) | top=cost, pin, sinx, limflx, him, sin
+- `lecture/הרצאה 13 אינפי.pdf` | ext=.pdf | pages=13 | words=596 | tokens=228 | has_text=True | ocr_used=False | topics=sup_inf(1) | top=cost, pin, sinx, limflx, him, lim
+- `lecture/הרצאה 3.pdf` | ext=.pdf | pages=14 | words=19 | tokens=5 | has_text=True | ocr_used=False | topics=none | top=por, pas, eon, pit, plan
+- `lecture/הרצאה 5 - אינפי - 11.11.pdf` | ext=.pdf | pages=15 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `lecture/הרצאה 6 - אינפי - 13.11.pdf` | ext=.pdf | pages=17 | words=5 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `moeda/.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `moeda/Calculus_1 (23).pdf` | ext=.pdf | pages=5 | words=1682 | tokens=583 | has_text=True | ocr_used=False | topics=sup_inf(13), רציפות(4) | top=points, every, there, such, exists, let
+- `recitation/Recitation 10-Hebrew.pdf` | ext=.pdf | pages=6 | words=966 | tokens=36 | has_text=True | ocr_used=False | topics=none | top=lim, cos, tan, sin, cosxx
+- `recitation/Recitation 11-Hebrew.pdf` | ext=.pdf | pages=6 | words=795 | tokens=33 | has_text=True | ocr_used=False | topics=none | top=lim, xxx, xxxx
+- `recitation/Recitation 13-Hebrew.pdf` | ext=.pdf | pages=3 | words=470 | tokens=12 | has_text=True | ocr_used=False | topics=none | top=sin, cos, sinx, max
+- `recitation/Recitation 4-Hebrew.pdf` | ext=.pdf | pages=9 | words=803 | tokens=34 | has_text=True | ocr_used=False | topics=none | top=max, min, lim
+- `recitation/Recitation 5-Hebrew.pdf` | ext=.pdf | pages=17 | words=874 | tokens=58 | has_text=True | ocr_used=False | topics=none | top=lim, min, iii, time, antefe, instated
+- `recitation/Recitation 6-Hebrew.pdf` | ext=.pdf | pages=10 | words=872 | tokens=58 | has_text=True | ocr_used=False | topics=sup_inf(2) | top=lim, jak, max, sup, bed, pies
+- `recitation/Recitation 7-Hebrew.pdf` | ext=.pdf | pages=8 | words=1013 | tokens=139 | has_text=True | ocr_used=False | topics=none | top=lim, sin, cos, bsin, max, cosxx
+- `recitation/Recitation 8-Hebrew.pdf` | ext=.pdf | pages=5 | words=646 | tokens=14 | has_text=True | ocr_used=False | topics=sup_inf(1) | top=lim, min, sup
+- `recitation/Recitation 9-Hebrew.pdf` | ext=.pdf | pages=6 | words=657 | tokens=19 | has_text=True | ocr_used=False | topics=sup_inf(3) | top=lim, inf, min
+- `recitation/תרגול 1 מקס.pdf` | ext=.pdf | pages=6 | words=701 | tokens=52 | has_text=True | ocr_used=False | topics=none | top=him, else, xen, yeq, pig, yso
+- `recitation/תרגול 3.pdf` | ext=.pdf | pages=6 | words=594 | tokens=48 | has_text=True | ocr_used=False | topics=sup_inf(39) | top=sup, inf, max, min, god, maxaltno
+- `recitation/תרגול2.pdf` | ext=.pdf | pages=12 | words=1111 | tokens=219 | has_text=True | ocr_used=False | topics=sup_inf(71) | top=inf, sup, supa, min, eso, her
+- `simulation/Simulation_calculus1_2026_solution.pdf` | ext=.pdf | pages=4 | words=1670 | tokens=543 | has_text=True | ocr_used=False | topics=sup_inf(15), רציפות(7), גבולות(1) | top=points, every, let, such, solution, there
+
+## LINEAR - פירוט כל קובץ
+- `.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `ANALYSIS_SUMMARY.txt` | ext=.txt | pages=- | words=1952 | tokens=1312 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(36), בסיס_וממד(23), דטרמיננטות(20), גרעין_ותמונה(19), מרחבים_לינאריים(8), הפיכות(6) | top=study, time, proof, theorems, minutes, exam
+- `LECTURES+PRACTICE/.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 01 2026.pdf` | ext=.pdf | pages=11 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 02 2026.pdf` | ext=.pdf | pages=10 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 03 2026.pdf` | ext=.pdf | pages=13 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 04 2026.pdf` | ext=.pdf | pages=15 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 05 2026.pdf` | ext=.pdf | pages=16 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 06 2026.pdf` | ext=.pdf | pages=16 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 07 2026.pdf` | ext=.pdf | pages=15 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 08 2026.pdf` | ext=.pdf | pages=14 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 09 2026.pdf` | ext=.pdf | pages=13 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 10 2026.pdf` | ext=.pdf | pages=13 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 11 2026_251202_115331.pdf` | ext=.pdf | pages=14 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 12 2026.pdf` | ext=.pdf | pages=7 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 13 2026.pdf` | ext=.pdf | pages=12 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 14 2026.pdf` | ext=.pdf | pages=12 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 15 2026.pdf` | ext=.pdf | pages=14 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 16 2026.pdf` | ext=.pdf | pages=12 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 17 2026.pdf` | ext=.pdf | pages=16 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 18 2026.pdf` | ext=.pdf | pages=8 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 19 2026.pdf` | ext=.pdf | pages=13 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 20 2026.pdf` | ext=.pdf | pages=15 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 21 2026.pdf` | ext=.pdf | pages=23 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 22 2026.pdf` | ext=.pdf | pages=11 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 23 2026.pdf` | ext=.pdf | pages=16 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 24 2026.pdf` | ext=.pdf | pages=8 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 25 2026.pdf` | ext=.pdf | pages=15 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA01 lecture 26 2026.pdf` | ext=.pdf | pages=8 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/LA02 lecture 26 2026.pdf` | ext=.pdf | pages=13 | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_01.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_02.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_03.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_04.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_05.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_06.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_07.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_08.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_09.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_10.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_11.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_12.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_13.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_14.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_15.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/lecture_16.txt` | ext=.txt | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec10_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec11_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec2_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec3_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec4_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec5_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec6_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec7_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec8_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lec9_p1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/out_lecture1_page1-01.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_10_Omer.pdf` | ext=.pdf | pages=8 | words=3449 | tokens=1677 | has_text=True | ocr_used=False | topics=none | top=מטריצה, מטריצות, ה־, הפיכה, אלמנטרית, הראשונה
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_11_Omer.pdf` | ext=.pdf | pages=8 | words=3676 | tokens=1367 | has_text=True | ocr_used=False | topics=דטרמיננטות(55), מרחבים_לינאריים(5) | top=det, פתרון, מטריצה, למערכת, ש־, לכל
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_12_Omer.pdf` | ext=.pdf | pages=9 | words=4027 | tokens=1337 | has_text=True | ocr_used=False | topics=דטרמיננטות(142), מערכות_לינאריות(9), גרעין_ותמונה(8) | top=det, הדטרמיננטה, הפיכה, מטריצה, המטריצה, ולכן
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_13_Omer.pdf` | ext=.pdf | pages=6 | words=2529 | tokens=1218 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(59), גרעין_ותמונה(27), מרחבים_לינאריים(21) | top=dim, cola, rank, מרחב, העמודות, rowa
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_1_Omer.pdf` | ext=.pdf | pages=3 | words=1444 | tokens=737 | has_text=True | ocr_used=False | topics=הפיכות(4) | top=איבר, ש־, שדה, איברים, לכל, לחיבור
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_1_Omer.pdf.txt` | ext=.txt | pages=- | words=1444 | tokens=737 | has_text=True | ocr_used=False | topics=הפיכות(4) | top=איבר, ש־, שדה, איברים, לכל, לחיבור
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_2_Omer.pdf` | ext=.pdf | pages=6 | words=2790 | tokens=1145 | has_text=True | ocr_used=False | topics=none | top=mod, מודולו, ש־, קיים, יהא, ב־
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_3_Omer.pdf` | ext=.pdf | pages=11 | words=4048 | tokens=2111 | has_text=True | ocr_used=False | topics=none | top=מערכת, פתרון, משוואות, המקדמים, שורה, מטריצת
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_4_Omer.pdf` | ext=.pdf | pages=9 | words=4241 | tokens=2038 | has_text=True | ocr_used=False | topics=none | top=לכל, מרחב־וקטורי, לחיבור, וקטור, תת, מתקיים
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_5_Omer.pdf` | ext=.pdf | pages=7 | words=3786 | tokens=1302 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(77) | top=span, וקטורים, ש־, צירוף־ליניארי, מרחב־וקטורי, אזי
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_6_Omer.pdf` | ext=.pdf | pages=7 | words=3310 | tokens=1193 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(16) | top=הווקטורים, בת, ולכן, בלתי, תלויים־ליניארית, תלויה־ליניארית
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_7_Omer.pdf` | ext=.pdf | pages=6 | words=3217 | tokens=1660 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(25) | top=span, בת, בסיס, ולכן, וקטור, ש־
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_8_Omer.pdf` | ext=.pdf | pages=7 | words=3978 | tokens=1333 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(33) | top=dim, span, ולכן, לכן, ש־, יהא
+- `LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_9_Omer.pdf` | ext=.pdf | pages=8 | words=4024 | tokens=1397 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(5) | top=מטריצה, הפיכה, המטריצה, מטריצות, ה־, ולכן
+- `LECTURES+PRACTICE/tirgul/t2.txt` | ext=.txt | pages=- | words=2790 | tokens=1145 | has_text=True | ocr_used=False | topics=none | top=mod, מודולו, ש־, קיים, יהא, ב־
+- `LECTURES+PRACTICE/tirgul/t3.txt` | ext=.txt | pages=- | words=4050 | tokens=2111 | has_text=True | ocr_used=False | topics=none | top=מערכת, פתרון, משוואות, המקדמים, שורה, מטריצת
+- `LECTURES+PRACTICE/tirgul/t4.txt` | ext=.txt | pages=- | words=4243 | tokens=2038 | has_text=True | ocr_used=False | topics=none | top=לכל, מרחב־וקטורי, לחיבור, וקטור, תת, מתקיים
+- `LECTURES+PRACTICE/tirgul/t5.txt` | ext=.txt | pages=- | words=3791 | tokens=1302 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(77) | top=span, וקטורים, ש־, צירוף־ליניארי, מרחב־וקטורי, אזי
+- `LECTURE_BY_LECTURE_THEOREM_MAP.md` | ext=.md | pages=- | words=1774 | tokens=862 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(40), מערכות_לינאריות(36), דטרמיננטות(35), בסיס_וממד(30), גרעין_ותמונה(17), הפיכות(8) | top=tested, theorem, moed, det, medium, rank
+- `LOGO/Lia Mesika.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `MOED_B_THEOREM_ANALYSIS_FINAL.md` | ext=.md | pages=- | words=2105 | tokens=1302 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(61), דטרמיננטות(55), בסיס_וממד(45), מרחבים_לינאריים(44), גרעין_ותמונה(39), הפיכות(17) | top=det, rank, moed, proof, dim, row
+- `PAST_EXAMS/LA1_2022-23_MoedA_Eng.pdf` | ext=.pdf | pages=13 | words=885 | tokens=359 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(28), מערכות_לינאריות(3), בסיס_וממד(2), דטרמיננטות(2) | top=let, points, prove, suppose, field, dim
+- `PAST_EXAMS/LA1_2022-23_MoedA_Eng_solution.pdf` | ext=.pdf | pages=5 | words=2757 | tokens=793 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(56), מערכות_לינאריות(9), בסיס_וממד(6), דטרמיננטות(2), הפיכות(1) | top=dim, let, points, solution, prove, span
+- `PAST_EXAMS/LA1_2022-23_MoedA_Heb.pdf` | ext=.pdf | pages=13 | words=762 | tokens=332 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(7) | top=נקודות, ש־, יהי, הוכיחו, נניח, dim
+- `PAST_EXAMS/LA1_2022-23_MoedB_Eng.pdf` | ext=.pdf | pages=11 | words=880 | tokens=357 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(16), מערכות_לינאריות(4), הפיכות(4), בסיס_וממד(2), דטרמיננטות(1) | top=points, let, prove, suppose, linear, following
+- `PAST_EXAMS/LA1_2022-23_MoedB_Eng_solution.pdf` | ext=.pdf | pages=5 | words=2688 | tokens=760 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(29), מערכות_לינאריות(17), הפיכות(7), בסיס_וממד(3), גרעין_ותמונה(3), דטרמיננטות(1) | top=let, points, dim, prove, solution, such
+- `PAST_EXAMS/LA1_2022-23_MoedB_Eng_solution_ocr.txt` | ext=.txt | pages=- | words=2683 | tokens=760 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(29), מערכות_לינאריות(17), הפיכות(7), בסיס_וממד(3), גרעין_ותמונה(3), דטרמיננטות(1) | top=let, points, dim, prove, solution, such
+- `PAST_EXAMS/LA1_2022-23_MoedB_Heb.pdf` | ext=.pdf | pages=11 | words=767 | tokens=329 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(1), מרחבים_לינאריים(1) | top=נקודות, ש־, הוכיחו, נניח, שאלה, יהי
+- `PAST_EXAMS/LA1_2023-24_MoedA_Eng.pdf` | ext=.pdf | pages=14 | words=917 | tokens=395 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(23), בסיס_וממד(7), מערכות_לינאריות(6), הפיכות(4), דטרמיננטות(3) | top=let, points, suppose, space, prove, you
+- `PAST_EXAMS/LA1_2023-24_MoedA_Heb.pdf` | ext=.pdf | pages=14 | words=756 | tokens=343 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(3) | top=נקודות, יהא, שאלה, הוכיחו, מעל, ש־
+- `PAST_EXAMS/LA1_2023-24_MoedA_Solutions.pdf` | ext=.pdf | pages=6 | words=3002 | tokens=815 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(49), בסיס_וממד(22), הפיכות(12), מערכות_לינאריות(10), גרעין_ותמונה(5), דטרמיננטות(3) | top=let, dim, points, solution, therefore, since
+- `PAST_EXAMS/LA1_2023-24_MoedB_Eng.pdf` | ext=.pdf | pages=13 | words=828 | tokens=353 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(21), הפיכות(5), מערכות_לינאריות(1), גרעין_ותמונה(1), דטרמיננטות(1) | top=let, points, prove, dim, space, field
+- `PAST_EXAMS/LA1_2023-24_MoedB_Eng_solutions.pdf` | ext=.pdf | pages=6 | words=2839 | tokens=731 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(29), הפיכות(11), מערכות_לינאריות(4), גרעין_ותמונה(3), בסיס_וממד(2), דטרמיננטות(1) | top=dim, let, points, since, holds, prove
+- `PAST_EXAMS/LA1_2023-24_MoedB_Eng_solutions_ocr.txt` | ext=.txt | pages=- | words=2831 | tokens=731 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(29), הפיכות(11), מערכות_לינאריות(4), גרעין_ותמונה(3), בסיס_וממד(2), דטרמיננטות(1) | top=dim, let, points, since, holds, prove
+- `PAST_EXAMS/LA1_2023-24_MoedB_Heb.pdf` | ext=.pdf | pages=13 | words=714 | tokens=326 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(1) | top=נקודות, הוכיחו, יהא, dim, שאלה, מרחב־וקטורי
+- `PAST_EXAMS/LA1_2024-25_MoedA_Eng.pdf` | ext=.pdf | pages=18 | words=912 | tokens=410 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(19), מערכות_לינאריות(11), בסיס_וממד(3), גרעין_ותמונה(2), דטרמיננטות(2), הפיכות(1) | top=points, let, solution, question, space, prove
+- `PAST_EXAMS/LA1_2024-25_MoedA_Eng_Solutions.pdf` | ext=.pdf | pages=5 | words=2547 | tokens=645 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(52), מרחבים_לינאריים(30), גרעין_ותמונה(15), הפיכות(8), בסיס_וממד(5), דטרמיננטות(2) | top=rank, points, dim, solution, let, span
+- `PAST_EXAMS/LA1_2024-25_MoedA_Heb.pdf` | ext=.pdf | pages=18 | words=751 | tokens=367 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(7), מרחבים_לינאריים(2) | top=נקודות, שאלה, פתרון, הוכיחו, הדף, יהי
+- `PAST_EXAMS/LA1_2024-25_MoedB_Eng.pdf` | ext=.pdf | pages=18 | words=893 | tokens=425 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(19), מערכות_לינאריות(4), גרעין_ותמונה(4), הפיכות(1) | top=points, let, solution, dim, prove, question
+- `PAST_EXAMS/LA1_2024-25_MoedB_Eng_Solutions.pdf` | ext=.pdf | pages=5 | words=2361 | tokens=692 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(21), גרעין_ותמונה(13), מערכות_לינאריות(8), בסיס_וממד(7), הפיכות(2) | top=dim, points, let, solution, imt, prove
+- `PAST_EXAMS/LA1_2024-25_MoedB_Eng_Solutions_ocr.txt` | ext=.txt | pages=- | words=2356 | tokens=692 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(21), גרעין_ותמונה(13), מערכות_לינאריות(8), בסיס_וממד(7), הפיכות(2) | top=dim, points, let, solution, imt, prove
+- `PAST_EXAMS/LA1_2024-25_MoedB_Heb.pdf` | ext=.pdf | pages=18 | words=756 | tokens=390 | has_text=True | ocr_used=False | topics=גרעין_ותמונה(4) | top=נקודות, שאלה, פתרון, dim, הוכיחו, הדף
+- `PAST_EXAMS/LA1_2025-26_Simulation_Eng.pdf` | ext=.pdf | pages=16 | words=732 | tokens=321 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(18), מערכות_לינאריות(10), דטרמיננטות(5), גרעין_ותמונה(3), בסיס_וממד(2), הפיכות(2) | top=points, let, solution, prove, dim, back
+- `PAST_EXAMS/LA1_2025-26_Simulation_Eng_Solution.pdf` | ext=.pdf | pages=7 | words=2521 | tokens=751 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(67), מרחבים_לינאריים(48), גרעין_ותמונה(31), דטרמיננטות(12), בסיס_וממד(9), הפיכות(4) | top=dim, span, row, rank, points, solution
+- `PAST_EXAMS/LA1_2025-26_Simulation_Heb.pdf` | ext=.pdf | pages=18 | words=703 | tokens=380 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(8), מרחבים_לינאריים(7), דטרמיננטות(4), גרעין_ותמונה(3) | top=נקודות, צידו, האחורי, דף, נסרק, פתרון
+- `PAST_EXAMS/LA_Quiz1_group1_2026_eng.pdf` | ext=.pdf | pages=2 | words=142 | tokens=97 | has_text=True | ocr_used=False | topics=none | top=any, you, must, write, points, denoted
+- `PAST_EXAMS/LA_Quiz1_group1_2026_heb.pdf` | ext=.pdf | pages=4 | words=141 | tokens=111 | has_text=True | ocr_used=False | topics=none | top=הבחינה, קבוצה, חומר, שתי, עליכן, יש
+- `PAST_EXAMS/LA_Quiz1_group1_2026_solution.pdf` | ext=.pdf | pages=1 | words=223 | tokens=121 | has_text=True | ocr_used=False | topics=none | top=mod, solution, any, you, must, write
+- `PAST_EXAMS/LA_Quiz1_group2_2026_eng.pdf` | ext=.pdf | pages=2 | words=142 | tokens=96 | has_text=True | ocr_used=False | topics=none | top=any, you, must, write, points, denoted
+- `PAST_EXAMS/LA_Quiz1_group2_2026_heb.pdf` | ext=.pdf | pages=4 | words=141 | tokens=111 | has_text=True | ocr_used=False | topics=none | top=הבחינה, קבוצה, חומר, שתי, עליכן, לרשום
+- `PAST_EXAMS/LA_Quiz1_group2_2026_solution.pdf` | ext=.pdf | pages=1 | words=323 | tokens=140 | has_text=True | ocr_used=False | topics=none | top=mod, solution, write, thus, any, you
+- `PAST_EXAMS/LA_Quiz1_group3_2026_eng.pdf` | ext=.pdf | pages=3 | words=149 | tokens=100 | has_text=True | ocr_used=False | topics=none | top=any, you, must, write, only, points
+- `PAST_EXAMS/LA_Quiz1_group3_2026_solution.pdf` | ext=.pdf | pages=1 | words=299 | tokens=136 | has_text=True | ocr_used=False | topics=none | top=mod, solution, any, addition, you, must
+- `PAST_EXAMS/LA_Quiz1_simulation_2026_eng.pdf` | ext=.pdf | pages=2 | words=134 | tokens=94 | has_text=True | ocr_used=False | topics=none | top=any, you, must, write, points, solution
+- `PAST_EXAMS/LA_Quiz1_simulation_2026_heb.pdf` | ext=.pdf | pages=4 | words=135 | tokens=109 | has_text=True | ocr_used=False | topics=none | top=הבחינה, חומר, שתי, עליכן, לרשום, פתרונות
+- `PAST_EXAMS/LA_Quiz1_simulation_2026_solution.pdf` | ext=.pdf | pages=1 | words=294 | tokens=128 | has_text=True | ocr_used=False | topics=none | top=mod, solution, any, you, must, every
+- `PAST_EXAMS/LA_Quiz2_group1_2026_eng.pdf` | ext=.pdf | pages=4 | words=284 | tokens=130 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(3), בסיס_וממד(1) | top=page, scanned, back, any, let, you
+- `PAST_EXAMS/LA_Quiz2_group1_2026_heb.pdf` | ext=.pdf | pages=4 | words=251 | tokens=149 | has_text=True | ocr_used=False | topics=none | top=עמוד, נסרק, הבחינה, הצד, האחורי, חומר
+- `PAST_EXAMS/LA_Quiz2_group1_2026_solution.pdf` | ext=.pdf | pages=2 | words=744 | tokens=197 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(6), מרחבים_לינאריים(5), בסיס_וממד(3), גרעין_ותמונה(1) | top=solution, linearly, let, only, such, any
+- `PAST_EXAMS/LA_Quiz2_group2_2026_eng.pdf` | ext=.pdf | pages=4 | words=272 | tokens=136 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(3) | top=page, scanned, any, back, let, you
+- `PAST_EXAMS/LA_Quiz2_group3_2026_eng.pdf` | ext=.pdf | pages=4 | words=307 | tokens=140 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(4) | top=page, scanned, back, any, let, you
+- `PAST_EXAMS/LA_Quiz2_group3_2026_solution.pdf` | ext=.pdf | pages=2 | words=709 | tokens=169 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(8), מערכות_לינאריות(4) | top=solution, let, any, every, span, vectors
+- `PAST_EXAMS/LA_Quiz2_simulation_2026_eng.pdf` | ext=.pdf | pages=3 | words=230 | tokens=90 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(5) | top=any, you, must, all, write, points
+- `PAST_EXAMS/LA_Quiz2_simulation_2026_heb.pdf` | ext=.pdf | pages=4 | words=175 | tokens=105 | has_text=True | ocr_used=False | topics=none | top=הבחינה, חומר, עליכן, לרשום, פתרונות, שאלה
+- `PAST_EXAMS/_2022-2_MoedB.txt` | ext=.txt | pages=- | words=880 | tokens=357 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(16), מערכות_לינאריות(4), הפיכות(4), בסיס_וממד(2), דטרמיננטות(1) | top=points, let, prove, suppose, linear, following
+- `PAST_EXAMS/_2023-2_MoedB.txt` | ext=.txt | pages=- | words=828 | tokens=353 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(21), הפיכות(5), מערכות_לינאריות(1), גרעין_ותמונה(1), דטרמיננטות(1) | top=let, points, prove, dim, space, field
+- `PAST_EXAMS/_2024-2_MoedB.txt` | ext=.txt | pages=- | words=891 | tokens=425 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(19), מערכות_לינאריות(4), גרעין_ותמונה(4), הפיכות(1) | top=points, let, solution, dim, prove, question
+- `PAST_EXAMS/הערה שאלות לא למבחן.txt` | ext=.txt | pages=- | words=39 | tokens=20 | has_text=True | ocr_used=False | topics=none | top=moed, note, following, questions, about, linear
+- `QUICK_REFERENCE_6_PROOFS.md` | ext=.md | pages=- | words=1351 | tokens=749 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(69), גרעין_ותמונה(48), דטרמיננטות(41), מרחבים_לינאריים(37), בסיס_וממד(29), הפיכות(21) | top=rank, det, dim, basis, row, theorem
+- `README_ANALYSIS.txt` | ext=.txt | pages=- | words=1408 | tokens=1006 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(17), דטרמיננטות(11), בסיס_וממד(7), מרחבים_לינאריים(6), גרעין_ותמונה(6), הפיכות(3) | top=proof, moed, lecture, theorems, theorem, proofs
+- `START_HERE.txt` | ext=.txt | pages=- | words=998 | tokens=742 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(12), דטרמיננטות(7), גרעין_ותמונה(4), בסיס_וממד(3), הפיכות(3), מרחבים_לינאריים(2) | top=analysis, theorems, study, theorem, proof, you
+- `cheatsheet.py` | ext=.py | pages=- | words=2207 | tokens=1807 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(36), גרעין_ותמונה(30), מרחבים_לינאריים(19), דטרמיננטות(9), בסיס_וממד(1) | top=self, line, block, gap, labeled, size
+- `cheatsheet_v2.py` | ext=.py | pages=- | words=2013 | tokens=1504 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(34), גרעין_ותמונה(30), מרחבים_לינאריים(11), דטרמיננטות(7), בסיס_וממד(1) | top=self, title, line, dim, gap, color
+- `hw/Ex1_Lin_Alg_1_2025-2026_sol.pdf` | ext=.pdf | pages=4 | words=2274 | tokens=717 | has_text=True | ocr_used=False | topics=הפיכות(15) | top=points, solution, there, inverse, let, hint
+- `hw/LA1_2024-25_Homework_6_Solution.pdf` | ext=.pdf | pages=5 | words=2980 | tokens=611 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(44), בסיס_וממד(26), מערכות_לינאריות(15), גרעין_ותמונה(9), הפיכות(2) | top=linearly, independent, let, span, solution, such
+- `hw/LA1_2025-26_Homework_10_Solutions.pdf` | ext=.pdf | pages=4 | words=1798 | tokens=542 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(20), הפיכות(20), גרעין_ותמונה(10), בסיס_וממד(2) | top=solution, points, invertible, let, aat, prove
+- `hw/LA1_2025-26_Homework_11_Solutions.pdf` | ext=.pdf | pages=5 | words=2250 | tokens=468 | has_text=True | ocr_used=False | topics=דטרמיננטות(53), מערכות_לינאריות(18), גרעין_ותמונה(18), הפיכות(6), מרחבים_לינאריים(4) | top=det, row, let, points, solution, determinant
+- `hw/LA1_2025-26_Homework_12_Solutions.pdf` | ext=.pdf | pages=9 | words=3290 | tokens=602 | has_text=True | ocr_used=False | topics=דטרמיננטות(107), גרעין_ותמונה(20), מערכות_לינאריות(8) | top=det, matrix, determinant, points, solution, column
+- `hw/LA1_2025-26_Homework_8_Solutions.pdf` | ext=.pdf | pages=5 | words=2747 | tokens=507 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(34), בסיס_וממד(11), גרעין_ותמונה(10), מערכות_לינאריות(8) | top=dim, let, points, solution, span, first
+- `hw/LA1_2025-26_Homework_9_Solutions.pdf` | ext=.pdf | pages=7 | words=3813 | tokens=867 | has_text=True | ocr_used=False | topics=הפיכות(53), מערכות_לינאריות(18), גרעין_ותמונה(13), מרחבים_לינאריים(8) | top=invertible, points, solution, matrix, left, let
+- `hw/Lin_Alg_I_2025-2026_Homework_2_Solutions.pdf` | ext=.pdf | pages=5 | words=2148 | tokens=569 | has_text=True | ocr_used=False | topics=הפיכות(7), מערכות_לינאריות(1) | top=points, solution, mod, first, there, defined
+- `hw/Lin_Alg_I_2025-2026_Homework_3_Solutions.pdf` | ext=.pdf | pages=7 | words=3898 | tokens=860 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(55), גרעין_ותמונה(6), הפיכות(3), דטרמיננטות(3) | top=system, solution, mod, points, which, solutions
+- `hw/Lin_Alg_I_2025-2026_Homework_4_Solutions.pdf` | ext=.pdf | pages=5 | words=2989 | tokens=759 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(63), הפיכות(3), מערכות_לינאריות(1) | top=let, points, vector, def, solution, prove
+- `hw/Lin_Alg_I_2025-2026_Homework_5_Solutions.pdf` | ext=.pdf | pages=4 | words=2125 | tokens=392 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(91), הפיכות(2), מערכות_לינאריות(1), גרעין_ותמונה(1) | top=span, points, vector, solution, let, set
+- `hw/Linear_Algebra_1 (1).pdf` | ext=.pdf | pages=6 | words=4412 | tokens=1030 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(99), בסיס_וממד(45), מערכות_לינאריות(6), גרעין_ותמונה(4) | top=dim, span, linearly, independent, let, solution
+- `implication_trees.pdf` | ext=.pdf | pages=5 | words=652 | tokens=409 | has_text=True | ocr_used=False | topics=דטרמיננטות(17), מערכות_לינאריות(13), מרחבים_לינאריים(5), גרעין_ותמונה(3) | top=dim, det, rank, בסיס, מרחב, ker
+- `liner-summary.pdf` | ext=.pdf | pages=3 | words=889 | tokens=549 | has_text=True | ocr_used=False | topics=דטרמיננטות(44), מערכות_לינאריות(19), גרעין_ותמונה(12), מרחבים_לינאריים(4) | top=det, dim, rank, הגדרה, משפט, בת
+- `moed_b_analysis.pdf` | ext=.pdf | pages=2 | words=511 | tokens=286 | has_text=True | ocr_used=False | topics=דטרמיננטות(8), מערכות_לינאריות(3), גרעין_ותמונה(1) | top=שאלה, det, הפיכה, אלכסונית, הוכחה, מועד
+- `proofs.py` | ext=.py | pages=- | words=2401 | tokens=1675 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(112), הפיכות(3), מערכות_לינאריות(1) | top=line, proof, self, spacer, math, title
+- `quiz/.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `quiz/LA_Quiz2_group3_2026_solution.pdf` | ext=.pdf | pages=2 | words=709 | tokens=169 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(8), מערכות_לינאריות(4) | top=solution, let, any, every, span, vectors
+- `quiz/LA_Quiz3_group1_2026_eng.pdf` | ext=.pdf | pages=1 | words=446 | tokens=160 | has_text=True | ocr_used=False | topics=בסיס_וממד(6), מרחבים_לינאריים(5) | top=dim, let, independent, solution, matrix, linearly
+- `quiz/LA_Quiz3_group1_2026_solution.pdf` | ext=.pdf | pages=1 | words=443 | tokens=158 | has_text=True | ocr_used=False | topics=בסיס_וממד(6), מרחבים_לינאריים(4) | top=dim, let, independent, solution, every, matrix
+- `quiz/LA_Quiz3_group2_2026_solution.pdf` | ext=.pdf | pages=1 | words=380 | tokens=194 | has_text=True | ocr_used=False | topics=גרעין_ותמונה(8), מערכות_לינאריות(7), הפיכות(6), מרחבים_לינאריים(2) | top=row, invertible, must, there, such, solution
+- `quiz/LA_Quiz3_group3_2026_solution.pdf` | ext=.pdf | pages=1 | words=327 | tokens=154 | has_text=True | ocr_used=False | topics=הפיכות(12), מרחבים_לינאריים(4) | top=invertible, solution, let, any, you, must
+- `solution_templates_book.pdf` | ext=.pdf | pages=14 | words=6698 | tokens=4097 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(161), מערכות_לינאריות(126), גרעין_ותמונה(110), דטרמיננטות(93), בסיס_וממד(77), הפיכות(16) | top=step, alpha, det, dim, lambda, contradiction
+- `solution_templates_book_HEB.pdf` | ext=.pdf | pages=12 | words=5668 | tokens=3968 | has_text=True | ocr_used=False | topics=דטרמיננטות(65), מרחבים_לינאריים(34), מערכות_לינאריות(32), גרעין_ותמונה(15) | top=שלב, det, dim, alpha, lambda, span
+- `summary_no_det.py` | ext=.py | pages=- | words=4702 | tokens=3593 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(42), מערכות_לינאריות(29), גרעין_ותמונה(20), בסיס_וממד(15), הפיכות(7), דטרמיננטות(5) | top=draw, margin, right, text, rtl, size
+- `דף משפטים - לינארית .pdf` | ext=.pdf | pages=24 | words=3563 | tokens=1268 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(34), גרעין_ותמונה(28), מרחבים_לינאריים(24), דטרמיננטות(21) | top=goes, row, aemn, etc, ask, span
+- `מיקוד_6_משפטים_מועד_ב.pdf` | ext=.pdf | pages=7 | words=1325 | tokens=999 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(48), דטרמיננטות(39), גרעין_ותמונה(22), מרחבים_לינאריים(10), בסיס_וממד(1), הפיכות(1) | top=det, בת, ranka, בסיס, הוכח, הפיכה
+- `סיכום לינארית 1.pdf` | ext=.pdf | pages=49 | words=5964 | tokens=2025 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(42), מרחבים_לינאריים(39), גרעין_ותמונה(19), דטרמיננטות(18), בסיס_וממד(4), הפיכות(3) | top=ins, vin, god, good, mulf, don
+- `סיכום_לינארית1_לפי_נושאים.md` | ext=.md | pages=- | words=3735 | tokens=2080 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(35), מערכות_לינאריות(33), דטרמיננטות(28), גרעין_ותמונה(11), בסיס_וממד(3), הפיכות(3) | top=מרחב, משפט, span, הפיכה, יש, תת
+- `סיכום_לינארית1_לפי_נושאים.pdf` | ext=.pdf | pages=18 | words=3596 | tokens=2082 | has_text=True | ocr_used=False | topics=מרחבים_לינאריים(35), מערכות_לינאריות(33), דטרמיננטות(28), גרעין_ותמונה(11), בסיס_וממד(3), הפיכות(3) | top=מרחב, משפט, span, הפיכה, יש, תת
+- `צ'קליסט_משפטים_לינארית1.pdf` | ext=.pdf | pages=11 | words=1719 | tokens=1120 | has_text=True | ocr_used=False | topics=מערכות_לינאריות(30), מרחבים_לינאריים(25), דטרמיננטות(23), גרעין_ותמונה(12), בסיס_וממד(4), הפיכות(3) | top=משפט, הגדרה, מסקנה, הפיכה, בת, משפטים
+
+## DISCRETE - פירוט כל קובץ
+- `.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `12+13/××¨×¦×× 12 - ×××¨× 2.pdf` | ext=.pdf | pages=14 | words=1931 | tokens=777 | has_text=True | ocr_used=False | topics=יחסים_וסדר(65), פונקציות(20), קבוצות(7) | top=שקילות, יחס, מהגדרת, יחסי, שרון, הרצאה
+- `12+13/××¨×¦×× 13 - ×××¨× 1-2.pdf` | ext=.pdf | pages=21 | words=2463 | tokens=1316 | has_text=True | ocr_used=False | topics=יחסים_וסדר(58), פונקציות(31) | top=סדר, יחס, יחסי, מינימום, הרצאה, שרון
+- `LOG/Screenshot 2026-01-31 at 17.12.58.png` | ext=.png | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `hw/2025_ex07_solution.pdf` | ext=.pdf | pages=4 | words=1773 | tokens=859 | has_text=True | ocr_used=False | topics=קבוצות(14), אינדוקציה(12), יחסים_וסדר(7), פונקציות(1) | top=ב־, יש, אפשרויות, ללא, שארית, מתחלק
+- `hw/2025_ex08_solution.pdf` | ext=.pdf | pages=3 | words=1594 | tokens=1041 | has_text=True | ocr_used=False | topics=פונקציות(12), יחסים_וסדר(10), קבוצות(4) | top=יש, כדורים, אפשרויות, אחד, ב־, ו־
+- `hw/2025_ex09_solution.pdf` | ext=.pdf | pages=3 | words=1393 | tokens=561 | has_text=True | ocr_used=False | topics=יחסים_וסדר(7), אינדוקציה(3), פונקציות(1) | top=נקבל, לפי, נבחר, ל־, יש, המקדם
+- `hw/2025_ex10_solution.pdf` | ext=.pdf | pages=3 | words=1248 | tokens=546 | has_text=True | ocr_used=False | topics=קבוצות(6), יחסים_וסדר(6), פונקציות(4) | top=נקבל, מרובה, לפי, תלמידים, בחירה, לכל
+- `hw/2025_ex11_solution.pdf` | ext=.pdf | pages=3 | words=1273 | tokens=733 | has_text=True | ocr_used=False | topics=פונקציות(16), יחסים_וסדר(5) | top=איברים, רפלקסיבי, אנטי, ולכן, יונים, מהגדרת
+- `hw/2025_ex13_solution.pdf` | ext=.pdf | pages=3 | words=1436 | tokens=625 | has_text=True | ocr_used=False | topics=יחסים_וסדר(22), קבוצות(11), פונקציות(11) | top=בגלל, לכן, אז, יחס, קבוצות, סדר
+- `hw/2025_ex1_full_solutions.pdf` | ext=.pdf | pages=6 | words=1003 | tokens=461 | has_text=True | ocr_used=False | topics=יחסים_וסדר(4), פונקציות(3), לוגיקה_וכמתים(1) | top=לפי, שלם, כלומר, טענה, שקר, נניח
+- `hw/2025_ex2_full_solutions.pdf` | ext=.pdf | pages=5 | words=1119 | tokens=466 | has_text=True | ocr_used=False | topics=פונקציות(3), לוגיקה_וכמתים(1) | top=זוגי, הוכחה, אי, הדיון, שלמים, נבחר
+- `hw/2025_ex3_full_solutions.pdf` | ext=.pdf | pages=6 | words=1267 | tokens=314 | has_text=True | ocr_used=False | topics=קבוצות(7) | top=מהגדרת, לכן, נניח, אז, מתקיים, וגם
+- `hw/2025_ex4_full_solution.pdf` | ext=.pdf | pages=6 | words=1213 | tokens=363 | has_text=True | ocr_used=False | topics=קבוצות(8) | top=מהגדרת, נניח, קרטזית, מכפלה, קבוצות, נוכיח
+- `hw/2025_ex5_full_solutions.pdf` | ext=.pdf | pages=6 | words=1336 | tokens=459 | has_text=True | ocr_used=False | topics=פונקציות(53), קבוצות(2) | top=חח, לכן, מתקיים, הפונקציה, נניח, נבחר
+- `hw/2025_ex6_full_solution.pdf` | ext=.pdf | pages=5 | words=1426 | tokens=500 | has_text=True | ocr_used=False | topics=פונקציות(39), קבוצות(2), יחסים_וסדר(1) | top=חח, לכל, מתקיים, פונקציות, פונקציה, לכן
+- `lecture/ הרצאה 7.pdf` | ext=.pdf | pages=35 | words=3682 | tokens=2094 | has_text=True | ocr_used=False | topics=אינדוקציה(73), פונקציות(29), יחסים_וסדר(24), קבוצות(16) | top=אפשרויות, יש, הרצאה, שרון, גל, הטענה
+- `lecture/1.pdf` | ext=.pdf | pages=31 | words=3148 | tokens=1909 | has_text=True | ocr_used=False | topics=יחסים_וסדר(12), פונקציות(10), לוגיקה_וכמתים(5), קבוצות(1) | top=שרון, גל, הרצאה, לוגיקה, וגם, מתחלק
+- `lecture/10.pdf` | ext=.pdf | pages=28 | words=3072 | tokens=1212 | has_text=True | ocr_used=False | topics=יחסים_וסדר(27), קבוצות(18), פונקציות(15) | top=הרצאה, שרון, גל, קומבינטוריקה, נספר, במקומו
+- `lecture/8.pdf` | ext=.pdf | pages=19 | words=2406 | tokens=1353 | has_text=True | ocr_used=False | topics=יחסים_וסדר(12), פונקציות(9), קבוצות(6) | top=יש, חזרות, הרצאה, שרון, גל, מספר
+- `lecture/9.pdf` | ext=.pdf | pages=17 | words=1909 | tokens=867 | has_text=True | ocr_used=False | topics=קבוצות(3), פונקציות(3), אינדוקציה(2), יחסים_וסדר(1) | top=הרצאה, שרון, גל, קומבינטוריקה, לפי, נבחר
+- `lecture/הרצאה 1 - לפני.pdf` | ext=.pdf | pages=33 | words=2932 | tokens=1835 | has_text=True | ocr_used=False | topics=יחסים_וסדר(12), פונקציות(9), לוגיקה_וכמתים(5), קבוצות(1) | top=שרון, גל, הרצאה, לוגיקה, מתחלק, אמת
+- `lecture/הרצאה 11 - אחרי 1.pdf` | ext=.pdf | pages=20 | words=2456 | tokens=1260 | has_text=True | ocr_used=False | topics=פונקציות(27), קבוצות(15) | top=סימטרי, אנטי, הרצאה, שרון, גל, יש
+- `lecture/הרצאה 2 -.pdf` | ext=.pdf | pages=23 | words=2305 | tokens=1327 | has_text=True | ocr_used=False | topics=לוגיקה_וכמתים(14), יחסים_וסדר(8), פונקציות(4), קבוצות(1) | top=הרצאה, שרון, גל, לוגיקה, נוכיח, בעולם
+- `lecture/הרצאה 3 .pdf` | ext=.pdf | pages=31 | words=2670 | tokens=1143 | has_text=True | ocr_used=False | topics=קבוצות(69), פונקציות(11), יחסים_וסדר(2) | top=הקבוצות, הרצאה, תורת, שרון, גל, קבוצות
+- `lecture/הרצאה 4 - אחרי 2.pdf` | ext=.pdf | pages=20 | words=2470 | tokens=947 | has_text=True | ocr_used=False | topics=קבוצות(49), יחסים_וסדר(15), פונקציות(3) | top=הקבוצות, תורת, הרצאה, שרון, גל, קבוצות
+- `lecture/הרצאה 5 - אחרי 1.pdf` | ext=.pdf | pages=21 | words=2248 | tokens=978 | has_text=True | ocr_used=False | topics=פונקציות(61), קבוצות(10), יחסים_וסדר(7) | top=פונקציה, פונקציות, חח, הרצאה, שרון, גל
+- `lecture/הרצאה 6 - אחרי 2.pdf` | ext=.pdf | pages=25 | words=3496 | tokens=1300 | has_text=True | ocr_used=False | topics=פונקציות(65), קבוצות(18), יחסים_וסדר(2), אינדוקציה(1) | top=פונקציות, הפיכה, שרון, גל, חח, הרצאה
+- `past-exams/.DS_Store` | ext= | pages=- | words=0 | tokens=0 | has_text=False | ocr_used=False | topics=none | top=none
+- `past-exams/2019_moed_b_en_solution.pdf` | ext=.pdf | pages=6 | words=656 | tokens=228 | has_text=True | ocr_used=False | topics=קומבינטוריקה(4), אינדוקציה(3), פונקציות(2), יחסים_וסדר(2), קבוצות(1) | top=there, length, since, therefore, exists, anti
+- `past-exams/2020_moed_b_en_solution.pdf` | ext=.pdf | pages=9 | words=1925 | tokens=832 | has_text=True | ocr_used=False | topics=קבוצות(17), יחסים_וסדר(12), קומבינטוריקה(9), פונקציות(7), לוגיקה_וכמתים(5) | top=set, question, points, write, let, definition
+- `past-exams/2021_moed_a_en_solution.pdf` | ext=.pdf | pages=10 | words=2066 | tokens=746 | has_text=True | ocr_used=False | topics=פונקציות(27), יחסים_וסדר(23), קבוצות(14), קומבינטוריקה(9), לוגיקה_וכמתים(3), אינדוקציה(1) | top=question, points, your, invertible, let, elements
+- `past-exams/2021_moed_b_en_sol.pdf` | ext=.pdf | pages=10 | words=2134 | tokens=836 | has_text=True | ocr_used=False | topics=פונקציות(24), יחסים_וסדר(22), קומבינטוריקה(8), קבוצות(6), לוגיקה_וכמתים(3) | top=question, points, there, which, such, your
+- `past-exams/2022_moed_a_en_sol.pdf` | ext=.pdf | pages=11 | words=1832 | tokens=686 | has_text=True | ocr_used=False | topics=יחסים_וסדר(19), קבוצות(10), קומבינטוריקה(8), פונקציות(7), לוגיקה_וכמתים(2) | top=question, points, write, let, there, your
+- `past-exams/2022_moed_b_en_sol.pdf` | ext=.pdf | pages=10 | words=1749 | tokens=610 | has_text=True | ocr_used=False | topics=יחסים_וסדר(11), לוגיקה_וכמתים(8), קבוצות(7), קומבינטוריקה(7), פונקציות(5), אינדוקציה(1) | top=question, points, there, such, your, hence
+- `past-exams/2023_moed_b_he_solution.pdf` | ext=.pdf | pages=11 | words=1516 | tokens=663 | has_text=True | ocr_used=False | topics=פונקציות(22), יחסים_וסדר(7), קבוצות(4), אינדוקציה(3), לוגיקה_וכמתים(1) | top=נקודות, שאלה, לכל, יש, הטענה, תהי
+- `past-exams/2024_moed_a_en_solution.pdf` | ext=.pdf | pages=14 | words=1791 | tokens=667 | has_text=True | ocr_used=False | topics=יחסים_וסדר(12), קבוצות(10), פונקציות(5), אינדוקציה(4), קומבינטוריקה(3), לוגיקה_וכמתים(1) | top=points, question, number, let, get, questions
+- `past-exams/2024_moed_b_en-solution.pdf` | ext=.pdf | pages=13 | words=1806 | tokens=724 | has_text=True | ocr_used=False | topics=יחסים_וסדר(33), קבוצות(13), פונקציות(7), אינדוקציה(3), קומבינטוריקה(3), לוגיקה_וכמתים(1) | top=relation, question, points, since, number, write
+- `past-exams/2024_moed_b_he_solution.pdf` | ext=.pdf | pages=13 | words=1535 | tokens=644 | has_text=True | ocr_used=False | topics=יחסים_וסדר(16), פונקציות(15), אינדוקציה(5), קבוצות(3), לוגיקה_וכמתים(1) | top=יחס, נקודות, שאלה, בחולצה, סדר, יש
+- `past-exams/2025_ex1_full_solutions.pdf` | ext=.pdf | pages=6 | words=1003 | tokens=461 | has_text=True | ocr_used=False | topics=יחסים_וסדר(4), פונקציות(3), לוגיקה_וכמתים(1) | top=לפי, שלם, כלומר, טענה, שקר, נניח
+- `past-exams/2025_moed_b_en_sol.pdf` | ext=.pdf | pages=11 | words=1449 | tokens=570 | has_text=True | ocr_used=False | topics=קבוצות(13), יחסים_וסדר(11), קומבינטוריקה(7), פונקציות(5), לוגיקה_וכמתים(1) | top=points, question, write, set, all, let
+- `past-exams/INDEX.md` | ext=.md | pages=- | words=786 | tokens=492 | has_text=True | ocr_used=False | topics=יחסים_וסדר(15), פונקציות(12), קבוצות(9), קומבינטוריקה(8), אינדוקציה(4) | top=pdf, questions, pages, set, question, complete
+- `past-exams/README.md` | ext=.md | pages=- | words=444 | tokens=308 | has_text=True | ocr_used=False | topics=יחסים_וסדר(10), פונקציות(9), קבוצות(7), קומבינטוריקה(7), אינדוקציה(2) | top=questions, question, set, function, exam, pdf
+- `past-exams/סיכום_בדידה.pdf` | ext=.pdf | pages=9 | words=1407 | tokens=842 | has_text=True | ocr_used=False | topics=יחסים_וסדר(28), פונקציות(17), קבוצות(10), אינדוקציה(8), לוגיקה_וכמתים(3) | top=הרצאה, טיפים, זהב, סדר, שקילות, לכל
+- `past-exams/שאלות_פתוחות_בדידה.pdf` | ext=.pdf | pages=35 | words=3095 | tokens=1271 | has_text=True | ocr_used=False | topics=פונקציות(69), יחסים_וסדר(39), קבוצות(26), קומבינטוריקה(10), אינדוקציה(4), לוגיקה_וכמתים(1) | top=since, prove, injective, therefore, let, source
+- `question-per-topic/answers per topic.pdf` | ext=.pdf | pages=49 | words=213 | tokens=186 | has_text=True | ocr_used=False | topics=קבוצות(4), פונקציות(4), יחסים_וסדר(4), לוגיקה_וכמתים(2), אינדוקציה(2), קומבינטוריקה(2) | top=שבוע, מניה, תחשיבי, קבוצות, פונקציה, תכונות
+- `ניתוח_שאלות_פתוחות_למועד_ב.md` | ext=.md | pages=- | words=1220 | tokens=689 | has_text=True | ocr_used=False | topics=פונקציות(37), יחסים_וסדר(33), אינדוקציה(20), קומבינטוריקה(8), קבוצות(5) | top=שקילות, אינדוקציה, חח, סדר, האסה, מה
+- `סיכום_נושאים_למבחן.md` | ext=.md | pages=- | words=2375 | tokens=1198 | has_text=True | ocr_used=False | topics=פונקציות(49), יחסים_וסדר(36), קבוצות(10), לוגיקה_וכמתים(9), אינדוקציה(5), קומבינטוריקה(2) | top=חוזר, חח, סדר, סימטרי, דוגמה, הפיכה

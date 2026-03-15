@@ -1,0 +1,2862 @@
+[
+  {
+    "course": "infi",
+    "path": "study-app/files/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 6148,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/CALCULUS_1_LECTURE_BY_LECTURE.md",
+    "kind": "text",
+    "size_bytes": 30203,
+    "pages": "",
+    "topic_hits": "MVT|Rolle|inf|sup",
+    "sample": "# Calculus 1 - Complete Lecture-by-Lecture Reference ## All Theorems, Definitions, and Lemmas --- ## HEBREW LECTURES (GROUP 1) / הרצאות ### הרצאה 1 (Lecture 1) **File:** /sessions/eloquent-admiring-planck/mnt/files/lecture/הרצאה\\ 1.pdf **Main Topics:** - Number systems and properties - Sequences (סדרות) - Convergence of sequences - Limit definition **Key Definitions:** 1. **Sequence (סדרה):** An ordered collection of real numbers {aₙ} indexed by natural numbers 2. **Limit of a sequence:** A numb",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/CALCULUS_1_QUICK_REFERENCE.md",
+    "kind": "text",
+    "size_bytes": 8155,
+    "pages": "",
+    "topic_hits": "MVT|Rolle|inf",
+    "sample": "# Calculus 1 - Quick Reference Guide ## Essential Formulas and Theorems --- ## DERIVATIVE RULES | Function | Derivative | |----------|-----------| | xⁿ | n·xⁿ⁻¹ | | eˣ | eˣ | | aˣ | aˣ·ln(a) | | ln(x) | 1/x | | logₐ(x) | 1/(x·ln(a)) | | sin(x) | cos(x) | | cos(x) | -sin(x) | | tan(x) | sec²(x) | | cot(x) | -csc²(x) | | sec(x) | sec(x)·tan(x) | | csc(x) | -csc(x)·cot(x) | | arcsin(x) | 1/√(1-x²) | | arccos(x) | -1/√(1-x²) | | arctan(x) | 1/(1+x²) | --- ## DIFFERENTIATION RULES **Sum Rule:** (f + ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/CALCULUS_1_THEOREMS_DEFINITIONS_LEMMAS.md",
+    "kind": "text",
+    "size_bytes": 22158,
+    "pages": "",
+    "topic_hits": "MVT|Rolle|inf|sup",
+    "sample": "# Calculus 1 - Complete Theorems, Definitions, and Lemmas ## From 25 Lecture PDFs (2026 Course) --- ## HEBREW LECTURES (GROUP 1) - הרצאות ### הרצאה 1 (Lecture 1) **Main Topics:** Limits, sequences, convergence **Definitions:** - **Limit of a sequence:** A sequence {aₙ} converges to a limit L if for every ε > 0, there exists N such that for all n > N, |aₙ - L| < ε - **Bounded sequence:** A sequence {aₙ} is bounded if there exists M > 0 such that |aₙ| ≤ M for all n **Theorems:** - **Uniqueness of ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/README_analysis.txt",
+    "kind": "text",
+    "size_bytes": 4073,
+    "pages": "",
+    "topic_hits": "inf|sup|אי-רציונ|גבול|רציפות",
+    "sample": "================================================================================ מסמכי ניתוח מתמטיקה 1 - מועד ב 2026 ================================================================================ שנוצרו שני מסמכים מקיפים המכילים ניתוח מלא של דפוסים בבחינות: 1. analysis_moed_b_2026.html (56 KB) - קובץ HTML עם ממשק חזותי יפה - תמיכה RTL מלאה בעברית - כולל MathJax לנוסחאות מתמטיות - טבלאות עם צבעוני קידוד הסתברות - ניתן להדפיס ל-PDF ישירות מהדפדפן - ניתן לתצוגה בכל דפדפן מודרני 2. analysis_moed_b",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/analysis_moed_b_2026.html",
+    "kind": "text",
+    "size_bytes": 57213,
+    "pages": "",
+    "topic_hits": "Cauchy|Lipschitz|MVT|Rolle|inf|sup|אי-רציונ|גבול|דיפרנציאביל|נגזרת|צפופה|רציפות",
+    "sample": "<!DOCTYPE html> <html dir=\"rtl\" lang=\"he\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>ניתוח מתמטיקה 1 - מועד ב 2026</title> <!-- MathJax for mathematical formulas --> <script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script> <script id=\"MathJax-script\" async src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"></script> <style> * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: '",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/analysis_moed_b_2026.md",
+    "kind": "text",
+    "size_bytes": 26038,
+    "pages": "",
+    "topic_hits": "Cauchy|Lipschitz|MVT|Rolle|inf|sup|אי-רציונ|גבול|דיפרנציאביל|נגזרת|צפופה|רציפות",
+    "sample": "# 📊 ניתוח מתמטיקה 1 - מועד ב 2026 **סקירה כללית של דפוסים בבחינות וסיכויי הופעה** *תאריך עדכון: 2 במרץ 2026* --- ## 📑 תוכן העניינים 1. [סקירה כללית](#סקירה-כללית) 2. [תדירות הנושאים](#תדירות-הנושאים) 3. [דפוסים מובנים חוזרים](#דפוסים-מובנים-חוזרים) 4. [10 שאלות חיוניות מתרגילי הבית](#10-שאלות-חיוניות) 5. [משפטים קריטיים](#משפטים-קריטיים) 6. [טעויות נפוצות](#טעויות-נפוצות) 7. [נתונים מפורטים מכל בחינה](#נתונים-מפורטים) --- ## סקירה כללית ### על הניתוח ניתוח זה מבוסס על **10 בחינות** משנים 2022-20",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/cheatsheet_moed_b.pdf",
+    "kind": "pdf",
+    "size_bytes": 4641,
+    "pages": "1",
+    "topic_hits": "Cauchy|MVT|Rolle|delta|epsilon|inf|sup",
+    "sample": "Moed B Cheatsheet - Calculus 1 (2026) Top 10 HW Questions + Critical Theorems by Probability TOP 10 HW QUESTIONS (sorted by exam probability) 1. HW9 Q4 - f(1)=2 from continuity + limit conditions Exams: 2024A, 2025B, Sim2026 (3 times!) | Lec 5 | Pattern: limit conditions pin f(x0) 2. HW1 Q6 - y=(r1*x+r2)/(r3*x+r4), x irrational => y irrational Exams: 2022A, 2024B, 2026 MoedA | Lec 1 | Pattern: rational transform of irrationals 3. HW1 Q5f - sqrt(x+1)-sqrt(x) irrational for x irrational Exams: Sim",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/cheatsheet_moed_b_heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 54427,
+    "pages": "1",
+    "topic_hits": "Cauchy|MVT|Rolle|inf|sup|גבול|נגזרת|צפופה|רציפות",
+    "sample": "‫דף סיכום למועד ב׳ — חשבון אינפיניטסימלי ‪(2026) 1‬‬ ‫‪ 10‬שאלות מפתח מש\"ב ‪ +‬משפטים קריטיים לפי סבירות‬ ‫‪ 10‬שאלות מפתח משיעורי בית )לפי סבירות(‬ ‫‪ 1.‬ש\"ב ‪ 9‬שאלה ‪ f(1)=2 — 4‬מרציפות ‪ +‬תנאי גבול‬ ‫מבחנים‪2024 :‬א‪2025 ,‬ב‪ ,‬סימולציה )‪ 3‬פעמים!( | הרצאה ‪ | 5‬תבנית‪ :‬תנאי גבול קובעים ‪(f(x₀‬‬ ‫‪ 2.‬ש\"ב ‪ 1‬שאלה ‪ y=(r₁x+r₂)/(r₃x+r₄), x — 6‬אי‪-‬רציונלי ⇒ ‪ y‬אי‪-‬רציונלי‬ ‫מבחנים‪2022 :‬א‪2024 ,‬ב‪ ,‬מועד א׳ ‪ | 2026‬הרצאה ‪ | 1‬תבנית‪ :‬טרנספורמציה רציונלית של אי‪-‬רציונלי‬ ‫‪ 3.‬ש\"ב ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/critical_theorems_moed_b.html",
+    "kind": "text",
+    "size_bytes": 35556,
+    "pages": "",
+    "topic_hits": "Cauchy|MVT|Rolle|delta|epsilon|inf|sup|אי-רציונ|גבול|נגזרת|צפופה|רציפות",
+    "sample": "<!DOCTYPE html> <html dir=\"rtl\" lang=\"he\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>משפטים קריטיים למועד ב' - חשבון אינפיניטסימלי 1</title> <script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script> <script id=\"MathJax-script\" async src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"></script> <style> * { margin: 0; padding: 0; box-sizing: border-box; } :root { --red: #d32f2f; --orange: #f57c00; --y",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 6148,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/ExamA2022_solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 72334,
+    "pages": "4",
+    "topic_hits": "inf|sup",
+    "sample": "Infinitesimal Calculus 1, Moed A 2022, IDC Lecturer: Dr. Yossi Shamai 1. Duration: 3 hours. 2. Only a basic calculator and the attached formula sheets are permitted in the exam. Instructions: The following exam has 3 parts. In Part A, you must answer question number 1 and one question from questions 2 and 3, three questions from questions 4 − 7 in Part B and four questions from questions 8 − 13 in Part C. You must explain in full details all of your answers in all parts of the exam, and state al",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/ExamA_calculus1_2024_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 65510,
+    "pages": "4",
+    "topic_hits": "inf|sup",
+    "sample": "Infinitesimal Calculus 1, Moed A Solutions 2024, Reichman university. Do not write at the back of the papers!! Lecturer: Dr. Yossi Shamai Instructions: 1. Duration: 3 hours. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a cho",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/ExamA_calculus1_2025_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 74820,
+    "pages": "5",
+    "topic_hits": "inf|sup",
+    "sample": "Infinitesimal Calculus 1, Moed A 2025, Reichman university. Do not write at the back of the papers!! Lecturer: Dr. Yossi Shamai Instructions: 1. Duration: 3 hours. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice betwee",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/ExamB2022_solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 74795,
+    "pages": "4",
+    "topic_hits": "inf|sup",
+    "sample": "Infinitesimal Calculus 1, Moed B 2022, Reichman university Solutions Lecturer: Dr. Yossi Shamai 1. Duration: 3 hours. 2. Only a basic calculator and the attached formula sheets are permitted in the exam. Instructions: The following exam has 3 parts. In Part A, you must answer question number 1 and one question from questions 2 and 3, three questions from questions 4 − 7 in Part B and four questions from questions 8 − 13 in Part C. You must explain in full details all of your answers in all parts",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/ExamB_calculus1_2024_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 68473,
+    "pages": "4",
+    "topic_hits": "inf|sup",
+    "sample": "Infinitesimal Calculus 1, Moed B 2024, Reichman university. Do not write at the back of the papers!! Lecturer: Dr. Yossi Shamai Instructions: 1. Duration: 3 hours. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice betwee",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/ExamB_calculus1_2025_Solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 76109,
+    "pages": "4",
+    "topic_hits": "inf|sup",
+    "sample": "Infinitesimal Calculus 1, Exam B 2025, Reichman university. Do not write at the back of the papers!! Lecturer: Dr. Yossi Shamai Duration: 3 hours. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice between different items",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/MoedA_2023_eng_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 77304,
+    "pages": "4",
+    "topic_hits": "inf|sup",
+    "sample": "Infinitesimal Calculus 1, Moed A 2023, Reichman university Solutions Lecturer: Dr. Yossi Shamai Instructions: 1. Duration: 3 hours. 2. Only a basic calculator and the attached formula sheets are permitted in the exam. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answe",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/exam/MoedB_2023_eng_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 68044,
+    "pages": "4",
+    "topic_hits": "inf|sup",
+    "sample": "Infinitesimal Calculus 1, Moed B 2023, Reichman university. Do not write at the back of the papers!! Lecturer: Dr. Yossi Shamai Instructions: 1. Duration: 3 hours. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a choi",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 6148,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 1 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 71813,
+    "pages": "5",
+    "topic_hits": "sup",
+    "sample": "Calculus I – Fall 2025-26 Homework 1 Solution 1. (6 points) Give a precise mathematical definition for each term below. If your definition invokes a notion covered in the course, define that notion as well. Do not use any negation word or symbol, except possibly the symbol ,. (a) (2 points) Let 1 < p ∈ N. Define the term: p is composite. Solution: We say that p is composite if there exist a, b ∈ N such that 1 < a, b < p and such that a · b = p. This can be written as p,1 and ∃a, b ∈ N : 1 < a, b",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 10 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 74869,
+    "pages": "5",
+    "topic_hits": "inf|sup",
+    "sample": "Calculus I – Fall 2025-26 Homework 10 Solution 1. (15 points) (a) (5 points) Prove that there exists an 0 < x < 1 for which x2 + e x + √ 1 + x = 4. Solution: Consider the function defined by f (x) = x2 + e x + √ 1 + x − 4 for every 0 ≤ x ≤ 1. Note that f is continuous by √ AOC, and that f (0) = 2 − 4 = −2 < 0, and f (1) = 1 + e + 2 − 4 > 0. Thus, by the IVT, there exists an 0 < x < 1 √ for which f (x) = 0, that is x2 + e x + 1 + x = 4. (b) (10 points) Prove that there exist x1 , x2 ∈ R such that",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 11 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 83947,
+    "pages": "7",
+    "topic_hits": "sup",
+    "sample": "Calculus I – Fall 2025-26 Homework 11 Solution 1. (10 points) Give a precise mathematical definition for each term below. If your definition invokes a notion covered in the course, define that notion as well. Do not use any negation word or symbol, except possibly the symbol ,. You must use the symbols ϵ and δ. Let a, b ∈ R such that a < b. Let f : [a, b) → R, and let x0 ∈ (a, b). (a) (5 points) Define the term: f is not differentiable at x0 . Solution: We say that f is not differentiable at x0 ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 12 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 70818,
+    "pages": "5",
+    "topic_hits": "",
+    "sample": "Calculus I – Fall 2025-26 Homework 12 Solution 1. (8 points) Prove that for every x > 0 we have ! 1 π arctan(x) + arctan = x 2 Solution: \u0010 \u0011 Consider the function defined by f (x) = arctan(x) + arctan 1x for every x > 0. Note that f is differentiable by AOD and that f ′ (x) = ! 1 1 1 1 1 + · − = − =0 1 + x2 1 + x12 x2 1 + x2 x2 + 1 ∀x > 0 It follows that f is constant and therefore for every x > 0 we have f (x) = f (1) = π4 + π4 = π2 . 2. (22 points) (a) (7 points) Prove that for every x > 0, we",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 2 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 76310,
+    "pages": "6",
+    "topic_hits": "inf|sup",
+    "sample": "Calculus I – Fall 2025-26 Homework 2 Solution 1. (15 points) Let ∅ , A ⊆ R. (a) (5 points) (The greatest lower bound theorem) Suppose that A is bounded from below. Prove that there exists a unique greatest lower bound of A, s ∈ R. Solution: Consider the set defined by B = {m ∈ R : m is a lower bound of A}. Note that B ⊆ R. Also, as A is bounded from below, then B , ∅. Note also that by the definition of the set B we have m≤a ∀m ∈ B∀a ∈ A This implies that B ≤ A. As B ≤ A, and as ∅ , A, B ⊆ R, an",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 3 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 74742,
+    "pages": "8",
+    "topic_hits": "inf",
+    "sample": "Calculus I – Fall 2025-26 Homework 3 Solution 1. (6 points) Give a precise mathematical definition for each term below. If your definition invokes a notion covered in the course, define that notion as well. Do not use any negation word or symbol, except possibly the symbol ,. Let ∅ , A ⊆ R. (a) (2 points) A is not bounded from above. Solution: We say that A is not bounded from above, if for every M ∈ R there exists an a ∈ A such that a > M. (b) (2 points) A is not bounded. Solution: We say that ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 4 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 68872,
+    "pages": "5",
+    "topic_hits": "sup",
+    "sample": "Calculus I – Fall 2025-26 Homework 4 Solution 1. (10 points) Let f : R → R. (a) (2 points) Define the term: lim f (x) = 1. You must use the symbols ϵ, M. Do not use any negation word or x→∞ symbol. Solution: We say that lim f (x) = 1 if for every ϵ > 0 there exists an M > 0 such that for every x > M we have | f (x) − 1| < ϵ. x→∞ This can be written also with symbols ∀ϵ > 0∃M > 0 : ∀x > M we have | f (x) − L| < ϵ (b) (2 points) Student A wrote the following solution for Q1(a): Let ϵ > 0. Then the",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 5 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 83593,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "Calculus I – Fall 2025-26 Homework 5 Solution 1. (10 points) Prove each statement by using the definition of the limit: (a) (5 points) lim 1 + 1x = 23 . x→2 Solution: Let ϵ > 0. We choose δ = min {1, ϵ} . Let 0 < |x − 2| < δ. Then 1+ = 1 3 1 3 ∇ 1 3 1 1 2−x − = 1+ − ≤ 1+ − = − = x 2 x 2 x 2 x 2 2x |2 − x| (⋆) |x − 2| δ < ≤δ≤ϵ ≤ 2 2 |2x| where δ≤1 ∇ |2x| = 2 |2 − (2 − x)| ≥ 2 (|2| − |2 − x|) = 2 (2 − |x − 2|) ≥ 2 (2 − δ) ≥ 2 An alternative way to explain (⋆): 0 < |x − 2| < δ ⇒ −δ < x − 2 < δ ⇒ 2 ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 6 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 79998,
+    "pages": "7",
+    "topic_hits": "sup",
+    "sample": "Calculus I – Fall 2025-26 Homework 6 Solution 1. (10 points) Compute each of the following limits or prove that it doesn’t exist: (a) (5 points) lim x→∞ h√ x+ √ i √ x+1−2 x+2 . Solution: Consider the function defined by f (x) = √ x+ √ √ x + 1 − 2 x + 2 for every x ≥ 0. Note that for every x ≥ 0 we have √ √ x+1≥x x≤x+1 √ √ 2 x − 2 x + 2 ≤ f (x) ≤ 2 x + 1 − 2 x + 2 Note also that h √ i conjugate √ lim 2 x + 1 − 2 x + 2 = lim √ x→∞ x→∞ −2 x+1+ √ AOL x+2 = 0 and similarly, h √ i conjugate √ lim 2 x ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 7 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 79510,
+    "pages": "7",
+    "topic_hits": "",
+    "sample": "Calculus I – Fall 2025-26 Homework 7 Solution 1. (10 points) Give a precise mathematical definition for each term below. If your definition invokes a notion covered in the course, define that notion as well. Do not use any negation word or symbol, except possibly the symbol ,. Let f : R → R. (a) (2 points) Define the term: f is not bounded from above. Solution: We say that f is not bounded from above if for every K ∈ R there exists an x ∈ R such that f (x) > K. (b) (2 points) Define the term: f ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 8 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 81537,
+    "pages": "8",
+    "topic_hits": "inf|sup",
+    "sample": "Calculus I – Fall 2025-26 Homework 8 Solution 2x−α αx = e−2 . Find all values of α. 2x+3α x→∞ 1. (5 points) Let α ∈ R and suppose that lim \u0010 \u0011 Solution: We have 2x − α lim x→∞ 2x + 3α !αx leading =    α  α \"  #α α 2t α αx α t  2   1 − 2x   1 − 1 − e−α 2 2       t=2x t  t              lim   = lim   = lim    = 3α = e−2α x→∞ 1 + 3α  x→∞  1 + 3α  x→∞ 1 + 3α   e 2x t t 2 Equating, we obtain that e−2α = e−2 and therefore −2α2 = −2 ⇔ α = ±1. 2. (1",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/Exercise 9 solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 80497,
+    "pages": "8",
+    "topic_hits": "inf|sup",
+    "sample": "Calculus I – Fall 2025-26 Homework 9 Solution 1. (10 points) Give a precise mathematical definition for each term below. If your definition invokes a notion covered in the course, define that notion as well. Do not use any negation word or symbol, except possibly the symbol ,. You must use the ϵ − δ symbols but do not have to define the absolute value. Let f : [1, 2] → R. (a) (3 points) Define the term: f is not continuous on [1, 2). Solution: We say that f is not continuous on [1, 2), if there ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/שאלות_מטלות_1-3.md",
+    "kind": "text",
+    "size_bytes": 10833,
+    "pages": "",
+    "topic_hits": "inf|sup|אי-רציונ|צפופה",
+    "sample": "# שאלות שיעורי בית - חשבון אינפיניטסימלי 1 (סמסטר א׳ 2025-26) ## מטלות 1-3 (שאלות בלבד) --- # מטלה 1 ## שאלה 1 (6 נקודות) תנו הגדרה מתמטית מדויקת לכל אחד מהמושגים הבאים. אם ההגדרה שלכם משתמשת במושג שנלמד בקורס, הגדירו גם אותו. אין להשתמש במילת שלילה או סימן שלילה, למעט אולי הסימן ≠. **(א)** (2 נקודות) יהי 1 < p ∈ ℕ. הגדירו את המושג: p הוא מספר פריק (composite). **(ב)** (2 נקודות) יהי n ∈ ℤ. הגדירו את המושג: 2 ∤ (2n − 1). **(ג)** (2 נקודות) יהיו n, m ∈ ℤ. הגדירו את המושג: n ו-m אינם זרים (not cop",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/שאלות_מטלות_10-12.pdf",
+    "kind": "pdf",
+    "size_bytes": 47782,
+    "pages": "5",
+    "topic_hits": "inf|sup|גבול|רציפות",
+    "sample": "‫שאלות שיעורי בית ‪ -‬חשבון אינפיניטסימלי ‪1‬‬ ‫סמסטר א׳ ‪ | 2025-26‬מטלות ‪) 10-12‬שאלות בלבד(‬ ‫מטלה ‪10‬‬ ‫שאלה ‪ 15) 1‬נקודות(‬ ‫)א( )‪ 5‬נקודות( הוכיחו שקיים ‪ x < 1 > 0‬כך ש‪.x² + eˣ + √(1 + x) = 4-‬‬ ‫)ב( )‪ 10‬נקודות( הוכיחו שקיימים ‪ x₁, x₂ ∈ R‬כך ש‪ ,x₁ < 1 < x₂ > 0-‬שהם פתרונות של המשוואה‪:‬‬ ‫‪x² / ln(1+x) + 11 / (1+x²) = 7.5‬‬ ‫שאלה ‪ 30) 2‬נקודות(‬ ‫ש‪ a < b-‬ותהי ‪ f‬פונקציה המוגדרת על ]‪ .[a, b‬נניח ש‪ f-‬רציפה מימין על ]‪ .(a, b‬נניח גם ש‪ f(a) < 0-‬ו‪ .f(b) > 0-‬יהי‪:‬‬ ‫יהיו ‪",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/שאלות_מטלות_4-6.pdf",
+    "kind": "pdf",
+    "size_bytes": 54673,
+    "pages": "6",
+    "topic_hits": "inf|גבול",
+    "sample": "‫שאלות שיעורי בית ‪ -‬חשבון אינפיניטסימלי ‪1‬‬ ‫סמסטר א׳ ‪ | 2025-26‬מטלות ‪) 4-6‬שאלות בלבד(‬ ‫מטלה ‪4‬‬ ‫שאלה ‪ 10) 1‬נקודות(‬ ‫תהי ‪.f : ℝ → ℝ‬‬ ‫את המושג‪ .lim(x→∞) f(x) = 1 :‬עליכם להשתמש בסימנים ‪ .ε, M‬אין להשתמש במילת שלילה או סימן שלילה‪.‬‬ ‫)א( )‪ 2‬נקודות( הגדירו‬ ‫)ב( )‪ 2‬נקודות( סטודנט א׳ כתב את הפתרון הבא לשאלה ‪)1‬א(‪:‬‬ ‫יהי ‪ .ε > 0‬אז קיים ‪ M‬כך שלכל ‪ x > M‬מתקיים |‪.f(x) − 1| < ε‬‬ ‫הסבירו את הטעות של סטודנט א׳‪.‬‬ ‫)ג( )‪ 2‬נקודות( הגדירו את המושג‪ (lim(x→−∞) f(x :‬אינו קי",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/hw/שאלות_מטלות_7-9.pdf",
+    "kind": "pdf",
+    "size_bytes": 52874,
+    "pages": "6",
+    "topic_hits": "גבול",
+    "sample": "‫שאלות שיעורי בית ‪ -‬חשבון אינפיניטסימלי ‪1‬‬ ‫סמסטר א׳ ‪ | 2025-26‬מטלות ‪) 7-9‬שאלות בלבד(‬ ‫מטלה ‪7‬‬ ‫שאלה ‪ 10) 1‬נקודות(‬ ‫במושג שנלמד בקורס‪ ,‬הגדירו גם אותו‪ .‬אין להשתמש במילת שלילה או סימן שלילה‪ ,‬למעט אולי הסימן ≠‪.‬‬ ‫תנו הגדרה מתמטית מדויקת לכל אחד מהמושגים הבאים‪ .‬אם ההגדרה שלכם משתמשת‬ ‫תהי ‪.f : R → R‬‬ ‫)א( )‪ 2‬נקודות( הגדירו את המושג‪ f :‬אינה חסומה מלמעלה‪.‬‬ ‫)ב( )‪ 2‬נקודות( הגדירו את המושג‪ f :‬אינה חסומה‪.‬‬ ‫הערה‪ :‬אין חובה להגדיר את הערך המוחלט‪.‬‬ ‫)ג( )‪ 2‬נקודות(",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 10 group 2 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3739481,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 11 group 1 calculus 1 2026 (2).pdf",
+    "kind": "pdf",
+    "size_bytes": 4949111,
+    "pages": "18",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 12 group 1 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 4322381,
+    "pages": "14",
+    "topic_hits": "",
+    "sample": "121224,727 2377 fig Him he 18 7,9m s P ftp.flx P'p is pin LEIR lim FIX gl D pin added e win xot.fm h flx 0 11 94 ftp 18 blind a x5 pj.la x as In lim f X g L her pig so ps k7 glx fAD L 2,18 e 7,94 37k 88 mi Xot ftp.flx t pin in jhzaln.im n's p XoER in Kolb s o abato 7107877000 lcnhlca 1t to olden x can phppn.tk py p t a to pin cl i Pip pinics e to d 718 do o sin is pin to fund p p inkan pip iii io or 2771 and enters add point ill o Pip 73278 pr pin 7 i ima iii iii X no 14 pip Ya Jaclan s 8 0 Find",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 14 group 2 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3322649,
+    "pages": "12",
+    "topic_hits": "",
+    "sample": "191241147 XER JOHN men 72202 13am n'Jst Jem e 72000 Se Xo g in limf e L tapyn 72000 Na pp lingly yh got x isc.to Xo X0 x de japan 1 l.im gof x Xo f 7 an ms a LER na n's lim go f wadan in s 0377 am 3 do Na limgly yh 801 nap P L HER s i pin n't L n's sea lingly e y L limlgof to 01 5170 pin L lingly plan y L ETO L n lko.GS pynosly x p gly Lik DE 68 ps 82 0 limfix P L shin xoxo 701 82 041 PMN FIX L1 X.to isc.olx ps Kgof 8 82 71 pros 8in y fl L g fix an p'm ar L gly L ocly Lko 73 710377 4 FIX LIFE 77",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 15 group 1 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 4996016,
+    "pages": "19",
+    "topic_hits": "",
+    "sample": "24.12 24,151312 113800W log IN pin DICD17307 17 1K 1137110 8 limaratyx II i a E him arctgx ii a ph ms I i ETO and Leform EE Sk larctgx EI PNN DO 7M s I E arctgxgE arctgmarctgx arctg.hr M E E arctym E arctym E M ma.EE 18 larctyx E m E E tg e n't AM I arctgo E E arctgx El 70 E i E 8 am pca ii",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 16 group 2 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2737822,
+    "pages": "9",
+    "topic_hits": "inf",
+    "sample": "31.72.24 XER 88 17 7 0377 E fix 13pm 7237 Ece e ppl 7 min xo d 1h ns.ETO lnleto e.hn etie xognmp81x xos85k 1X Xok8xsXo 8fXotln etc Xo Inlette Esette else e in'pl ex et E e pe e policy else let Else alla E et 30 8170 p T pond i is a's or nolan de relax told pimn.lt Gse let etc slc.lx xols.fm 8 8 8in var 1381 let do to eke id Xo a a plc.to a infino dead 11732N 72700 sk.to folia p'm e XER aim in 112 fig one 51237 fig is n'd 11237 fog 1 f g 7237 molj.at pa d7ha slc g l to 0",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 18 group 2 calculus 2026-2.pdf",
+    "kind": "pdf",
+    "size_bytes": 6417867,
+    "pages": "17",
+    "topic_hits": "sup",
+    "sample": "241187 0 0327 a.be Rpinn aib o 7037 snip s f Pla f cexcc.to C 88 a ps aib f b 40 s Polla a a'd ascab mare is men a'sod ya N'd ep nys e CER in C dobal a f 0 flc 4 ftp.acb 7lb Jaan s pijianpr7 f 7237 o ng f 870 p p sk FIX O P'IN i c so dorsal 3 c C 8 exec a 88 diner 870 ps f 7037 p p ii ng o 0 sk.fm fLX770p'MN ii.fi Atd did is canal AER A e o anion og fix fxefaib A pa i apes s pies agA flat Pp Coenn p8l 1187 point is a sup A 5 pies 5e ab psi o 0 b r JER p 5 b as por s t 5 D N'Jin 5 Sad 1 AEA post ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 19 group 1 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 4822713,
+    "pages": "16",
+    "topic_hits": "",
+    "sample": "25,197 5371 07.01 73pA f unsen 181 m 3,5 03 a 72'37 plc Xo3 2 43 8 31 10 5 ice 7837 pip to 870 te ni f 73110 iplc 7237 73110 on o Nh 2 880 p E Eso pin e p ice f o 870 pip ETO 881 3 0 IFA 8 ps 0 IFA 55 880 ps IFA 8 man Nlc 5 IX Yoko p'mn 5 84 te Ni on 35 43 8680 ma f fix f 3 7237 a 1112 88 i 88 p 88 ii FAKE pip f 3 KE To 0 Eto pip FLIKE pinyn 8s iii pinyn 111am 7237 73110 iplc f on 870 pin ETO 881 P'IN IX IFA FAKE in if jadlan pies 20 a 1081 limf a 7311100 6.2 88 f o XE 0 0lb m.Xhf ap8lXn a a a e",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 2 group 2 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3707301,
+    "pages": "9",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 20 calculus 1 group 2 2026-3.pdf",
+    "kind": "pdf",
+    "size_bytes": 6191944,
+    "pages": "15",
+    "topic_hits": "",
+    "sample": "CER XER 88 pyn Id for 000 5752 X if jigan fX play XER 88 8011 nnselcn.fi X Cijjizan 1XEIR88f X pyn XER 88 8011 i ii play nnselcn.fi X7 OXEIR88f sinXijjizan x pyn iii ploy XER 88 8011 nnselcn.fi X COSXXEIR88f COSXijjizan X pyn 70 88 pyn play XER 88 8011 fix lnX if 70 88 jigan nnselcn.fi sinx X plan Total nnselcn.fi I X is v sexer ficx lim.EE h lim no XER 881 1 Eg 7752 y h o o limb in f ch 7137112 f 128 x 1 slc.XER.in Eg him fix ho lim no XER 881 1 7752 0 0 7137112 ch f 128 f x O slc.XER.in f x h ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 21 group 1 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 7394020,
+    "pages": "16",
+    "topic_hits": "",
+    "sample": "141.25121717 f is F X Total Xo 2 ingen 88 msa 20 70 88 fix 2 18 7752 f l.ms no fh f 0 70 in no t.mn EEe2N37h0 limIIF no i 70 Slc x plan 0 88 7 28 limFfI 0 f 0 e limm.jo limskf o n's not hot a him 0 0 a 77 s la f 28 F E f f n o XER n'd.to m do plan salek 75202 MRN Na s 801 NJ Xo a 77 s fixo 0 an f e foal f e pa n't 7752 f IN sic.yo f Xo re naga Total Yo",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 22 group 1 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3300384,
+    "pages": "9",
+    "topic_hits": "",
+    "sample": "21125,23710377 1 Rin p a.be o mNEaibf man a ma ab n 17J s aib 0 f x a e 7237 i 7752 f ii iii a pima xe aib 88 f sic p Xi XzE ab e P'e Xn X2 X X2 a f f aib 17818 X sX2 7037 o in a Ga 7037 f aib 7752 f X X2 o a 7752 aib o p Xn catz dip 507 5171 Xz fix f X2 Xs sines f a Coend ps f c 20 daplxz xs.io f X do O Rin p a.be o a hNEaibf man ma ab n 17J s aib a aib f f 20 0 0 f 7 0 ii f sic 88 Plc 31C 88 Plc f 7818 88 Plc f 31C e aib pm CNN f xe aib pimp 0 7752 xelaib pim 78177 f x i xe aib pm 1.371 f x f ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 23 group 1 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 7948180,
+    "pages": "11",
+    "topic_hits": "",
+    "sample": "ex Polsal sicea anise a f sale 0 88 f x apler 7 537 a pm Db 8 1 pod 86T XER pipan 888 e again y f e a i 88 P'es 0,0 a x f agio f 1240 OWN 77227 1171017 x fix foldal ps XER 88 1081 Jjice 7137100 XER pie 088 a ex 1 salad Id x 7752 ex 1 ps 20 88 f 20 a x 0 88 5371 f 181 f X O 0,0 a f se plan is an 70 0 ps 1181 XER f X f 07 0 88 108 E i x ps fix ex e 20 be ze.tt pipic x e f 110 So 75 88 f x Enx salad 77 88 X 1 71 1 a 7137100 G as copies e file pin jan 8 in'm foldal far i I era a plan e xze 88 51 720",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 4 group 1  calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 4412996,
+    "pages": "9",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 6 group 2 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2632190,
+    "pages": "14",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 7 group 1 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3773922,
+    "pages": "17",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 8 group 2 calculus 1 2026 2.pdf",
+    "kind": "pdf",
+    "size_bytes": 2420711,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/Lecture 9 group 1 calculus 1 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 27878601,
+    "pages": "12",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/הרצאה - 17.pdf",
+    "kind": "pdf",
+    "size_bytes": 7288600,
+    "pages": "13",
+    "topic_hits": "inf",
+    "sample": "31.72.24 XER 88 17 7 0377 E fix 13pm 7237 Ece e ppl 7 min xo d 1h ns.ETO lnleto e.hn etie xognmp81x xos85k 1X Xok8xsXo 8fXotln etc Xo Inlette Esette else e in'pl ex et E e pe e policy else let Else alla pond E et 30 8170 p T i is a's or nolan de relax told pimn.lt Gse let etc slc.lx xols.fm 8 8 8in var 1381 let do to eke id Xo a a plc.to a infino dead 11732N 72700 sk.to folia p'm e XER aim in 112 fig one 51237 fig is n'd 11237 fog 1 f g 7237 molj.at pa d7ha slc g l to 0",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/הרצאה 1.pdf",
+    "kind": "pdf",
+    "size_bytes": 2740555,
+    "pages": "11",
+    "topic_hits": "",
+    "sample": "511 1100 1123 2,713,1 3,13 7 P 511 3 1 1 7110 pr pom 7308 sins need µ e 1 et V 110 rise",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/הרצאה 11- אינפי.pdf",
+    "kind": "pdf",
+    "size_bytes": 4969497,
+    "pages": "18",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/הרצאה 13 אינפי 2.pdf",
+    "kind": "pdf",
+    "size_bytes": 5297857,
+    "pages": "14",
+    "topic_hits": "",
+    "sample": "17 man limflX Xo 241137 2317 in sink XER int nnlcs.to o lineaan Man f de 72000 naps and plc inc in plus P IN N limflx IT i Xo limflx ii T limf xsinx b iii Xo Xo com sic mad limflx a 81s any pics ie limflx a star limf X h xo x sin edk ie Pin 1 111 1081 17 1 7777 pin him 0 1081 0 17N 11 7777 17N 2 fig poi Ot 1am am a x pin 18 XER 7m77 pm 7103772 pin 8 him DX Gaena no 3 o 111 an 7 i man Xo 1 not Xo ok Xolon 888 Ifl him DX pin 18 limDA Than is a Xo s 18 sep in's p 8170 pit 71705 18 PM DET COSX SIDEX",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/הרצאה 13 אינפי.pdf",
+    "kind": "pdf",
+    "size_bytes": 4588115,
+    "pages": "13",
+    "topic_hits": "",
+    "sample": "17 man limflX Xo 241137 2317 in sink XER int nnlcs.to o lineaan Man f de 72000 naps and plc inc in plus P IN N limflx IT i Xo limflx ii limf x iii Xo Xo com sic mad limflx a 81s any pics ie limflx a star limf X h xo x 1 Pin 111 1081 17 1 7777 pin him 0 1081 0 17N 11 7777 17N 2 fig poi Ot 1am am a x pin 18 XER 7m77 pm 7103772 3 pin 8 him DX Gaena no o 111 an 7 i man Xo 1 not Xo ok Xolon 888 Ifl him DX pin 18 limDA Than is a Xo s 18 sep in's p 8170 pit 18 PM DET limcosx 1 slc.at x Xok81d d ma dja ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/הרצאה 3.pdf",
+    "kind": "pdf",
+    "size_bytes": 3178053,
+    "pages": "14",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/הרצאה 5 - אינפי - 11.11.pdf",
+    "kind": "pdf",
+    "size_bytes": 3678055,
+    "pages": "15",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/lecture/הרצאה 6 - אינפי - 13.11.pdf",
+    "kind": "pdf",
+    "size_bytes": 5043824,
+    "pages": "17",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/moeda/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 6148,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/moeda/Calculus_1 (23).pdf",
+    "kind": "pdf",
+    "size_bytes": 81384,
+    "pages": "5",
+    "topic_hits": "inf|sup",
+    "sample": "Calculus 1, Moed A 2026 Reichman university Solutions Lecturer: Dr. Yossi Shamai. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will receive no credit. You must clearly justify every claim and state all required conditions for each theorem you use. You may not choose between different items wi",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 10-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 646066,
+    "pages": "6",
+    "topic_hits": "",
+    "sample": "10 : . • . • : : .[a, b] f .a < b a, b 2 R .f (a) · f (b) < 0 .[a, b] f .f (c) = 0 a<c<b : f a<b a, b 2 R .r 2 R .[a, b] f f (a)  r  f (b) ,f (b) f (a) r .f (c) = r acb .f (b)  r  f (a) .[a, b] : . .2f (x) = 1 + x .x 2 [0, 1] f : [0, 1] ! [0, 1] x 2 [0, 1] g (x) = 2f (x) 1 . \" g g (0) = 2f (0) 0 1 = 2f (0) 1 g (1) = 2f (1) 1 1 = 2f (1) 2  0 (0  f (1)  1) 0 (0  f (0)  1) g (1)  0  g (0) ,g (c) = 0 0c1 g (c) = 2f (c) c 1 = 0 ) 2f (c) = c + 1 1 : x .1",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 11-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 387222,
+    "pages": "6",
+    "topic_hits": "",
+    "sample": "11 : . • . .x0 : x0 2 R f f x0 lim x!x0 f (x) x • f (x0 ) x0 .f 0 (x0 ) : .x 2 R f (x) = x · x . f :R!R f : f (x) = x · x = x ( x2R x · x = x2 x · ( x) = f (x) = x2 x 2 x0 .\" x f (x) = x 0 x<0 x2 x0 .x0 2 R x0 > 0 f x0 .\" x0 < 0 f x0 ,x0 = 0 lim x!0 f (x) x x· x 0· 0 f (0) = lim = lim x = 0 x!0 x!0 0 x .f 0 (0) = 0 x0 = 0 1 f .1 .x 2 R f (x) =| x2 f :R!R f 2x | .x0 = 2 : f (2) | x2 = lim x!2 2 f (x) x!2 x lim | x2 x!2 x lim 2x | | 22 x 2 2·2| = 2x | | x (x 2) | = lim = x!2 2 x 2 xX (xXX 2) X lim",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 13-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 185636,
+    "pages": "3",
+    "topic_hits": "",
+    "sample": "13 : . • : . 0c1 .0  x  1 ,g (c) = 0 1 : 2x2 + 1 . \" g g (x) = f (x) g (0) = f (0) 2 · 02 + 1 = f (0) + 1 g (1) = f (1) 2 · 12 + 1 = f (1) 0 10 0c1 f (c) 2c2 + 1 = 0 ) f (c) = 2c2 1 .1 f : [0, 1] ! [0, 1] .f (c) = 2c2 1 f :R!R f 0 (x)  3 . x1  x2 x 1 , x2 2 R .x 2 R .2 f (x2 ) + 3x1  f (x1 ) + 3x2 : x 1 , x2 2 R .x1  x2 .f (x2 ) + 3x1  f (x1 ) + 3x2 (x1 , x2 ) ,x1 = x2 .x1 < x2 , f R x1 < c < x2 [x1 , x2 ] f (x2 ) x2 f (x1 ) = f 0 (c)  3 x1 f (x2 ) f (x1 )  3 (x2 f x1 ) f (x2 ) + 3",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 4-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 854010,
+    "pages": "9",
+    "topic_hits": "",
+    "sample": "4 : . • . • : p x2 =| x |= ( x x 0 x<0 x x, y 2 R : | x + y || x | + | y | x, y 2 R .| x : |x y| |x| |y| 3| 2 |5 x| x2R : .x 2 R |x 4 3|+|5 x| |x |x 2 3| 3+5 |5 1 x| x |= 2 .| x2 + 3x | 130 x2R | x | 10 .| x | 10 : x2R | x2 + 3x |=| x (x + 3) |=| x | · | x + 3 | 10 | x + 3 | : .1 | x + 3 || x | + | 3 | 10 + 3 = 13 | x2 + 3x | 10 · 13 = 130 .2 | x | 10 10  x  10 / + 3 7  x + 3  13 | x + 3 | 13 (⇤) 10· | x + 3 | 10 · 13 = 130 a, b, x 2 R a  x  b )| x | max {| a |, | b |} 2 (⇤)",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 5-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 2066169,
+    "pages": "17",
+    "topic_hits": "",
+    "sample": "5 : . .( \" .L 2 R • ) • .x0 f >0 ✏>0 x0 |< 0 <| x | f (x) x0 , x0 f x 6= x0 < x < x0 + L |< ✏ , L : x0 2 R L ✏ < f (x) < L + ✏ . lim f (x) = L x!x0 . : , M : . lim (3 x!7 .0 <| x |3 x ( 4) |=| 7 7 |< . =✏ x |=| x 7 |< =✏ 1 x) = .✏ > 0 4 .1 m em iii if",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 6-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 1541056,
+    "pages": "10",
+    "topic_hits": "",
+    "sample": "6 : .' • . • . • : :' .x0 x0 2 R .L 2 R f, g, h : . x h (x)  f (x)  g (x) .1 . lim h (x) = lim g (x) = L .2 x!x0 . lim f (x) = L x!x0 . , lim x x!0 a x 1 jak x x!x0 lim f (x) x!x0 : .a 2 R ⌅a⇧ x : x 6= 0  a x x>0 a x=x lim (a x!0+ ⇣a x ⌘ jak 1 x a x x) = a 1 lim a = a x!0+ X 1 X 4 1 rips a x E a x e x a a a 1 a pies jed 9 m ph Xo Go xE a x soit 10 xio or 4 is Xco bed to pms got a a",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 7-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 839608,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "7 : . • . • : : lim 3p1x = 1 .1 x!0+ : .0 < x < 0 + . 1 = 3 K .K > 0 1 1 p > p =K 3 x x< 3 2 +x 1 lim 2x3x+4 = 1 .2 x!1 .x > M . M = max {2K, 4} 2x2 + x 1 2x2 + x x 2x2 x M = = > 3x + 4 3x + x 4x 2 x>M 2 x>4 1 : .K > 0 K .x0 :(1c ,c > 0 \" ) 0 < c 2 R ,x0 2 R , lim f (x) = 1 f c . lim [f (x)] = 1 x!x0 x!x0 : .K > 0 ,0 <| x x0 |< , lim f (x) = 1 1 >0 1 x!x0 1 f (x) > K c x (⇤) (⇤) .0 <| x x0 |< ✓ ◆c 1 c c [f (x)] > K =K .x0 , lim f (x) = 1 x x!x0 . = 1 :( ) f, g x0 2 R f (x)  g (x) . lim g (x) = ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 8-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 678685,
+    "pages": "5",
+    "topic_hits": "",
+    "sample": "8 : . • . . lim x!±1 .f (x1 )  f (x2 ) .f (x1 ) f (x2 ) • 1 + xr x = er .f : D ! R x 1 , x2 2 D x 1 , x2 2 D x 1 < x2 x 1 < x2 : r2R 6= D ✓ R f f : . , .a, b 2 R . lim 1 + xr x!1 x (x + a) lim x = lim x!1 (x + b) x!1 lim ✓ x+a x+b 1 + xa 1 x!1 : = er ◆x = lim = ea = ea eb x x x!1 1 + b x x x lim (x+a) (x+b)x x!1 x(1 + xa ) x(1 + xb ) b .a, b 2 R !x = : , 12 , 2 0, 32 f : (0, 2) ! R .(0, 2) f .1 f : f (x) = ( . x 2 (0, 2) x 1 2 0 < x < 12 1 2 x<2 . f : . 0, 32 .x1 < x2 f x1 , x2 2 0, 32 ,0 < x1",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/Recitation 9-Hebrew.pdf",
+    "kind": "pdf",
+    "size_bytes": 408589,
+    "pages": "6",
+    "topic_hits": "inf",
+    "sample": "9 : . .x0 f , lim f (x) = f (x0 ) x0 |x >0 x!x0 .| f (x) f (x0 ) |< ✏ x0 |< .x0 : x0 2 R f ✏>0 f . • x0 : : x0 2 R : >0 ✏>0 L2R , 0 <| x | f (x) x0 x0 |< L |< ✏ .x0 1 f f (x0 ) 6= L .0 : .f : [0, 1) ! R .(0, 1) f .[0, 1) f f : .f (0)  f (x1 ) x1 > 0 ,(0, 1) 0 < x < x1 .x1 > 0 f f (x)  f (x1 ) ,0 f lim f (x) = f (0) x!0+ f (0) = lim f (x)  lim f (x1 ) = f (x1 ) x!0+ x!0+ : .f (0)  f (x1 ) x1 > 0 ,(0, 1) .x1 > 0 f lim f (x) = inf {f (x) : x > 0} x!0+ ,0 f lim f (x) = f (0) x!0+ f (0) = inf {f ",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/תרגול 1 מקס.pdf",
+    "kind": "pdf",
+    "size_bytes": 828256,
+    "pages": "6",
+    "topic_hits": "",
+    "sample": "1 : . • . • . • : : (N .Z = {... ) .N = {1, 2, 3, ...} , • ) • 2, 1, 0, 1, 2...} ,(Z ,(Q Q= nn m ) : m, n 2 Z m 6= 0 • o .1.123123123 ,1.3 = 13 ,5 : 10 6 ,(R ) • R = {a0 .a1 a2 ... : a0 2 Z, 8n 2 N an 2 {0, 1, ..., 9}} ...1, 6, 4.32, 55, ⇡, e : . , ,(R\\Q ) ( ) 1 p . 2 : • : : . 8 9 . \" \" \" ( ) .( \" \" ) ( ) .( ) : . , 5 41 pH , .6= Go .5x = 15 XEN x2N .1 : . x x2N .5x 6= 15 : .(x + 4)2 = x2 + 8x + 16 .2 : . x .y + 2 < ⇡ P YEQ 9 225 . .y + 2 2 do ⇡ y2Q pig : y y2Q : .3",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/תרגול 3.pdf",
+    "kind": "pdf",
+    "size_bytes": 448013,
+    "pages": "6",
+    "topic_hits": "inf|sup",
+    "sample": "3 : .sup ,inf , , • . .s 2 R .A • : 6= A ✓ R s : : a<s a2A A .m  a a2A m>s m2R sup (A) , inf (A) , min (A) , max (A) , s : . A= ⇢ x·y : x, y > 0 x2 + y 2 : x, y > 0 (x y) 2 0 ) x2 x2 + y 2 A re God or maxaltno In t s A to in a 1 2 2xy + y 2 0) 2xy /x, y > 0 xy x2 + y 2 . 12 A x=y=1 1·1 12 + 12 1 = 1 2 ep 190 as gofor 4 OE A Hod Md 2",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/recitation/תרגול2.pdf",
+    "kind": "pdf",
+    "size_bytes": 2254413,
+    "pages": "12",
+    "topic_hits": "inf|sup",
+    "sample": "2 : . • . • . • . .a  a .a a a2A a2A : : 6= A ✓ R a a .a 2 A A A : , 6= A ✓ R ) ) A :A .a  M .a m : .a  s .s  M M 2R m2R A a2A a2A . A A ( ( ( : . 6= A ✓ R s .s2R ) a2A ,A M M 2R • s .1 , : .A s s2R 1 . . 6= A ✓ R A s .2 : . .A .a > s ✏ a2A s 6= A ✓ R s2R s = sup (A) s 6= A ✓ R s2R s = inf (A) A ✏>0 : . .A .a < s + ✏ A a2A ✏>0 : N . n2N .n > M a an ad food won Ae am 187 on a A re rods g I n .sup (A) < 1 : 6= A ✓ R q<1 . .a  q a2A : coed sic a areaare sic an E on M 2R g .A q A .sup (A) 2 R a",
+    "error": ""
+  },
+  {
+    "course": "infi",
+    "path": "study-app/files/simulation/Simulation_calculus1_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 82188,
+    "pages": "4",
+    "topic_hits": "inf|sup",
+    "sample": "(The back of this page is not scanned.) Calculus 1, Simulation 2026 Reichman university Solutions Lecturer: Dr. Yossi Shamai. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will receive no credit. You must clearly justify every claim and state all required conditions for each theorem you use. Y",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 10244,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/ANALYSIS_SUMMARY.txt",
+    "kind": "text",
+    "size_bytes": 20906,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|basis|column|det|dimension|invertible|rank|row|span|subspace",
+    "sample": "╔══════════════════════════════════════════════════════════════════════════════╗ ║ LINEAR ALGEBRA 1 - MOED B ANALYSIS SUMMARY ║ ║ Reichman University 2025-26 ║ ║ ║ ║ Comprehensive Analysis of Theorem Proofs Most Likely to Appear ║ ║ (50% of Exam Points!) ║ ╚══════════════════════════════════════════════════════════════════════════════╝ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ┃ TOP 6 THEOREMS RANKED BY LIKELIHOOD (What to Study!) ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 10244,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 01 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2685939,
+    "pages": "11",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 02 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2305005,
+    "pages": "10",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 03 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3093997,
+    "pages": "13",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 04 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3452989,
+    "pages": "15",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 05 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 4252105,
+    "pages": "16",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 06 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3247539,
+    "pages": "16",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 07 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 4233167,
+    "pages": "15",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 08 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2864167,
+    "pages": "14",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 09 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3329712,
+    "pages": "13",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 10 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2858447,
+    "pages": "13",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 11 2026_251202_115331.pdf",
+    "kind": "pdf",
+    "size_bytes": 3139669,
+    "pages": "14",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 12 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 1816404,
+    "pages": "7",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 13 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3381252,
+    "pages": "12",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 14 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2987295,
+    "pages": "12",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 15 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3444835,
+    "pages": "14",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 16 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3206729,
+    "pages": "12",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 17 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3870799,
+    "pages": "16",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 18 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 1820293,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 19 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2907077,
+    "pages": "13",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 20 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3804828,
+    "pages": "15",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 21 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 5223024,
+    "pages": "23",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 22 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3258335,
+    "pages": "11",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 23 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 3269888,
+    "pages": "16",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 24 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 1744460,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 25 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2853755,
+    "pages": "15",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA01 lecture 26 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 1424791,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/LA02 lecture 26 2026.pdf",
+    "kind": "pdf",
+    "size_bytes": 2419306,
+    "pages": "13",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_01.txt",
+    "kind": "text",
+    "size_bytes": 11,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_02.txt",
+    "kind": "text",
+    "size_bytes": 10,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_03.txt",
+    "kind": "text",
+    "size_bytes": 13,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_04.txt",
+    "kind": "text",
+    "size_bytes": 15,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_05.txt",
+    "kind": "text",
+    "size_bytes": 16,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_06.txt",
+    "kind": "text",
+    "size_bytes": 16,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_07.txt",
+    "kind": "text",
+    "size_bytes": 15,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_08.txt",
+    "kind": "text",
+    "size_bytes": 14,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_09.txt",
+    "kind": "text",
+    "size_bytes": 13,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_10.txt",
+    "kind": "text",
+    "size_bytes": 13,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_11.txt",
+    "kind": "text",
+    "size_bytes": 14,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_12.txt",
+    "kind": "text",
+    "size_bytes": 7,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_13.txt",
+    "kind": "text",
+    "size_bytes": 12,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_14.txt",
+    "kind": "text",
+    "size_bytes": 12,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_15.txt",
+    "kind": "text",
+    "size_bytes": 14,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/lecture_16.txt",
+    "kind": "text",
+    "size_bytes": 12,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec10_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 220249,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec11_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 173929,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec2_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 211266,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec3_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 206410,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec4_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 148333,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec5_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 228744,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec6_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 204750,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec7_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 279716,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec8_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 159991,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lec9_p1-01.png",
+    "kind": "binary",
+    "size_bytes": 239220,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/out_lecture1_page1-01.png",
+    "kind": "binary",
+    "size_bytes": 107838,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_10_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 216226,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 10‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫מטריצות הפיכות‬ ‫‪1.1‬‬ ‫מטריצות אלמנטריות‬ ‫בשבועות הראשונים הגדרנו פעולות שורה אלמנטריות להיות פעולות על מטריצות אשר משמשות אותנו למציאת פתרון‪.‬‬ ‫כעת משהגדרנו כפל מטריצות‪ ,‬עולה השאלה‪ :‬האם ניתן לייצג את פעולות השורה על מטריצה נתונה באמצעות כפל‬ ‫של מטריצה בה?‬ ‫תזכורת‪ :‬דירוג של מטריצה ‪ A‬מסדר ‪ n × m‬מתבצע ע\"י הפעלה חוזרת של פעולות שורה אלמנטריות על ‪ .A‬כלומר‪,‬‬ ‫אחת מהפעולות‪:‬‬ ‫‪ .1‬הוספת כפולה של שורה בסקלר לשורה",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_11_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 290356,
+    "pages": "8",
+    "topic_hits": "Nul|span",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 11‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫‪A⃗x = ⃗b‬‬ ‫‪1.1‬‬ ‫מערכת משוואות ליניארית וכפל מטריצות‬ ‫‪‬‬ ‫‪a1n‬‬ ‫‪.. ‬‬ ‫‪‬‬ ‫הגדרה‪ :‬יהיו ‪ F‬שדה‪.  ∈ Mm×n (F) ,‬‬ ‫‪. . . amn‬‬ ‫המערכת הליניארית ‪ A⃗x = ⃗b‬עם המשתנים ) ‪ (x1 , . . . , xn‬להיות‬ ‫‪b1‬‬ ‫‪..‬‬ ‫‪.‬‬ ‫‪...‬‬ ‫‪..‬‬ ‫‪.‬‬ ‫‪‬‬ ‫‪ ‬‬ ‫‪‬‬ ‫‪a11‬‬ ‫‪b1‬‬ ‫‪x1‬‬ ‫‪ .‬‬ ‫‪ . ‬‬ ‫‪ . ‬‬ ‫‪m‬‬ ‫‪n‬‬ ‫⃗‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪ b =  ..  ∈ F ,A =  ..‬ו־ ‪ .⃗x =  ..  ∈ F‬נגדיר את‬ ‫‪am",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_12_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 232122,
+    "pages": "9",
+    "topic_hits": "column|det|row",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 12‬קבוצת עומר — טיוטה‬ ‫דטרמיננטה‬ ‫‪1‬‬ ‫נוסחה‪:‬‬ ‫‪1‬‬ ‫בהינתן מטריצה )‪ A = (aij ) ∈ Mn (F‬מסדר ‪ ,n × n‬הדטרמיננטה היא פונקציה ‪det : Mn (F) → F‬‬ ‫המקבלת מטריצה ומחזירה סקלר‪ ,‬ומוגדרת כך שדטרמיננטה של ‪ A‬היא‬ ‫!‬ ‫‪n‬‬ ‫‪X‬‬ ‫‪Y‬‬ ‫= )‪det (A‬‬ ‫)‪sgn (σ‬‬ ‫)‪ai,σ(i‬‬ ‫‪i=1‬‬ ‫‪σ∈Sn‬‬ ‫כאשר ‪ Sn‬היא קבוצת כל התמורות‪ ,‬ו־)‪ sgn (σ‬הוא הסימן של התמורה ‪.σ‬‬ ‫‪1.1‬‬ ‫פיתוח לפי מינורים‬ ‫הגדרה‪ :‬המינור ה־‪ ij‬של מטריצה )‪ A ∈ Mn (F‬הוא הדטרמיננטה של המ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_13_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 167506,
+    "pages": "6",
+    "topic_hits": "row|span",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 13‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫מרחב שורות ומרחב עמודות‬ ‫‪1.1‬‬ ‫מרחב שורות‬ ‫הגדרה‪ :‬יהא ‪ F‬שדה ותהא )‪ .A ∈ Mm×n (F‬מרחב השורות של ‪ A‬המסומן ‪ RowA‬הוא קבוצת כל הצירופים־הליניארים‬ ‫של שורות ‪ .A‬נסמן את שורות ‪ A‬בתור ‪) ⃗r1 , . . . , ⃗rm‬כאיברים של ‪ ,(Fn‬אזי } ‪ .RowA = Span {⃗r1 , . . . , ⃗rm‬מרחב‬ ‫השורות הוא תת מרחב־וקטורי של ‪.Fn‬‬ ‫‪   ‬‬ ‫!‬ ‫‪0 ‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪ 1‬‬ ‫‪1 0 1‬‬ ‫‪   ‬‬ ‫‪3‬‬ ‫דוגמה‪ :‬תהא‬ ‫= ‪ .A‬אזי ‪.RowA = Span 0",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_1_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 175915,
+    "pages": "3",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 1‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫שדות‬ ‫‪1.1‬‬ ‫הגדרה — תזכורת‬ ‫הגדרה )אקסיומות השדה(‪ :‬שדה הוא קבוצה ‪=) 1‬אוסף של איברים(‪ ,‬המסומנת ב־‪ ,F‬עם שתי פעולות בין האיברים‪,‬‬ ‫הקרויות חיבור )המסומן ‪ (+‬וכפל )המסומן ·(‪ ,‬המקיימות את ‪ 12‬האקסיומות הבאות‪:‬‬ ‫ח‪ .1‬סגירות לחיבור‪ :‬לכל ‪ a + b , a, b ∈ F‬מוגדר היטב ו־‪.a + b ∈ F‬‬ ‫ח‪ .2‬חילופיות )קומוטטיביות( בחיבור‪ :‬לכל ‪ a, b ∈ F‬מתקיים כי ‪.a + b = b + a‬‬ ‫ח‪ .3‬קיבוציות )אסוציאטיביות( בחיבור‪ :‬לכל ‪ a, b",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_1_Omer.pdf.txt",
+    "kind": "text",
+    "size_bytes": 18091,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 1‬קבוצת עומר — טיוטה‬ ‫שדות‬ ‫‪1‬‬ ‫הגדרה — תזכורת‬ ‫‪1.1‬‬ ‫הגדרה )אקסיומות השדה(‪ :‬שדה הוא קבוצה ‪=) 1‬אוסף של איברים(‪ ,‬המסומנת ב־‪ ,F‬עם שתי פעולות בין האיברים‪,‬‬ ‫הקרויות חיבור )המסומן ‪ (+‬וכפל )המסומן ·(‪ ,‬המקיימות את ‪ 12‬האקסיומות הבאות‪:‬‬ ‫ח‪ .1‬סגירות לחיבור‪ :‬לכל ‪ a + b , a, b ∈ F‬מוגדר היטב ו־‪.a + b ∈ F‬‬ ‫ח‪ .2‬חילופיות )קומוטטיביות( בחיבור‪ :‬לכל ‪ a, b ∈ F‬מתקיים כי ‪.a + b = b + a‬‬ ‫ח‪ .3‬קיבוציות )אסוציאטיביות( בחיבור‪ :‬לכל ‪ a, b",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_2_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 183517,
+    "pages": "6",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 2‬קבוצת עומר‬ ‫‪1‬‬ ‫מספרים מרוכבים‬ ‫‪1.1‬‬ ‫זוג ממשיים עם פעולות רגילות‬ ‫בהרצאה ראינו )ללא הוכחה( שהמספרים הממשיים‪ ,‬יחד עם החיבור והכפל הרגילים‪ ,‬מהווים שדה‪ .‬נבדוק האם זה‬ ‫המצב גם בחיבור וכפל של שני ממשיים במקביל‪.‬‬ ‫)‬ ‫! (‬ ‫‪x‬‬ ‫‪2‬‬ ‫‪2‬‬ ‫שאלה‪ :‬תהא הקבוצה ‪x, y ∈ R‬‬ ‫= ‪ ,R‬ולכל ‪∈ R‬‬ ‫‪y‬‬ ‫!‬ ‫‪x1 · x2‬‬ ‫‪y1 · y2‬‬ ‫!‬ ‫=‬ ‫‪x2‬‬ ‫‪y2‬‬ ‫!‬ ‫·‬ ‫!‬ ‫‪x1‬‬ ‫‪,‬‬ ‫‪y1‬‬ ‫!‬ ‫‪x2‬‬ ‫‪y2‬‬ ‫!‬ ‫‪x1‬‬ ‫‪,‬‬ ‫נגדיר חיבור וכפל כדלקמן‪:‬‬ ‫‪y1",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_3_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 203282,
+    "pages": "11",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 3‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫משוואות ליניאריות‬ ‫‪1.1‬‬ ‫הגדרות‬ ‫הגדרה‪ :‬יהי ‪ F‬שדה ויהיו ‪ .m, n ∈ N‬מערכת משוואות ליניאריות )או מערכת ליניארית( עם ‪ n‬משתנים ‪x1 , . . . , xn‬‬ ‫ו־‪ m‬משוואות מעל ‪ F‬היא מערכת משוואות מהצורה‪:‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪a x + · · · + a1n xn = b1‬‬ ‫‪‬‬ ‫‪ 11 1‬‬ ‫‪..‬‬ ‫‪..‬‬ ‫‪..‬‬ ‫‪.‬‬ ‫‪.‬‬ ‫‪.‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪am1 x1 + · · · + amn xn = bm‬‬ ‫כאשר לכל }‪ i ∈ {1, . . . , m‬ולכל }‪ j ∈ {1, . . . , n‬מתקיים ‪.aij ∈ F ,bi ∈",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_4_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 203685,
+    "pages": "9",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 4‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫מרחבים־וקטורים‬ ‫‪1.1‬‬ ‫מבוא‪ Fn :‬וגיאומטריה‬ ‫בחטיבה ובתיכון תיארנו מישורים דו־ממדיים ומרחבים תלת־ממדיים )שאז היו ללא הגדרה‪ ,‬אך אנחנו נגדיר אותם‬ ‫בהמשך הקורס( ועסקנו בנקודות וקווים בהם‪.‬‬ ‫דוגמה‪ :‬הסימון )‪ (1, 2‬סימן נקודה במישור שמרחקה ‪ 1‬ימינה מראשית־הצירים ו־‪ 2‬למעלה‪.‬‬ ‫דוגמה‪ :‬הסימון )‪ (3, 4, 5‬סימן נקודה במרחב התלת־ממדי שמרחקה ‪ 3‬ימינה‪ 4 ,‬קדימה ו־‪ 5‬למעלה מראשית־הצירים‪.‬‬ ‫הערה‪ :‬הנקודות )‪ (1, 2‬ו־)‪ (2",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_5_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 246759,
+    "pages": "7",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 5‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫צירוף־ליניארי של וקטורים‬ ‫הגדרה‪ :‬יהא ‪ V‬מרחב־וקטורי מעל שדה ‪ .F‬יהיו ‪ v1 , . . . , vn ∈ V‬וקטורים ו־‪ α1 , . . . , αn ∈ F‬סקלרים‪ .‬אזי הווקטור‬ ‫‪ α1 v1 + · · · + αn vn‬נקרא צירוף־ליניארי של ‪ v1 , . . . , vn‬עם מקדמים ‪.α1 , . . . , αn‬‬ ‫הערה‪ :‬מהמשפט השקול להגדרת תת מרחב־וקטורי‪ ,‬ראינו שאם ‪ W ⊆ V‬תת מרחב־וקטורי של ‪ ,V‬אזי לכל‬ ‫‪ w1 , . . . , wn ∈ W‬ולכל ‪ α1 , . . . , αn ∈ F‬מתקיים שגם ‪.w = α1 w1 + . . . + αn wn ∈",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_6_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 176682,
+    "pages": "7",
+    "topic_hits": "span",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 6‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫תלות־ליניארית‬ ‫‪1.1‬‬ ‫הגדרה‬ ‫בשבועות הקודמים הגדרנו את המבנה מרחב־וקטורי‪ ,‬וישר לאחר מכן הגדרנו תת מרחב־וקטורי להיות מרחב־וקטורי‬ ‫המוכל בתוך מרחב־וקטורי‪ .‬ראינו שהמאפיין העיקרי של תת מרחב־וקטורי הוא סגירות לצירופים־ליניאריים‪ .‬לאחר‬ ‫מכן‪ ,‬הגדרנו את הפרוש של ‪ v1 , . . . , vn‬להיות קבוצת כל הצירופים־הליניאריים ‪ ,v1 , . . . , vn‬וראינו שהיא תת מרחב־‬ ‫וקטורי‪ .‬ראינו שלעתים פרוש של קבוצת וקטורים ופרוש של תת־קבוצה שלה שווי",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_7_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 280928,
+    "pages": "6",
+    "topic_hits": "span",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 7‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫בסיס‬ ‫‪1.1‬‬ ‫הגדרה — תזכורת‬ ‫ראינו שכאשר קבוצה פורשת } ‪ {v1 , . . . , vm‬של מרחב־וקטורי ‪ V‬היא תלויה־ליניארית‪ ,‬ניתן להחסיר ממנה וקטור‬ ‫שהוא צירוף־ליניארי של האחרים ולקבל קבוצה פורשת קטנה יותר של ‪ .V‬לכן‪ ,‬נרצה לחקור את התכונות של קבוצות‬ ‫פורשות שהן בלתי תלויות־ליניארית‪.‬‬ ‫הגדרה‪ V :‬מרחב־וקטורי מעל שדה ‪ .F‬קבוצת וקטורים } ‪ B = {v1 , . . . , vn‬ב־ ‪ V‬היא בסיס של ‪ V‬אם היא בלתי‬ ‫תלויה־ליניארית ופורשת את ‪) V‬קרי‪.",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_8_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 254149,
+    "pages": "7",
+    "topic_hits": "span",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 8‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫השלמה לבסיס‬ ‫משפט‪ :‬יהא ‪ V‬מרחב־וקטורי נוצר־סופית מעל שדה ‪ F‬עם ‪ .dim V = n ∈ N‬אם ‪ v1 , . . . , vk ∈ V‬בת\"ל עבור‬ ‫‪ ,k < n‬אזי קיימים ‪ vk+1 , . . . , vn ∈ V‬כך ש־ ‪ v1 , . . . , vk , . . . , vn‬בסיס ל־ ‪.V‬‬ ‫הערה‪ :‬בדרך־כלל‪ ,‬השלמה לבסיס אינה יחידה‪.‬‬ ‫‪‬‬ ‫‪ ‬‬ ‫‪ ‬‬ ‫‪‬‬ ‫‪0 ‬‬ ‫‪1‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪ ‬‬ ‫‪‬‬ ‫‪ ‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪1‬‬ ‫‪0‬‬ ‫‪4‬‬ ‫‪‬‬ ‫‪‬‬ ‫תרגיל‪ :‬תהא ‪",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_9_Omer.pdf",
+    "kind": "pdf",
+    "size_bytes": 224344,
+    "pages": "8",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 9‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫מטריצות‬ ‫‪1.1‬‬ ‫כפל מטריצות‬ ‫הגדרה‪ :‬קבוצת המטריצות הריבועיות מסדר ‪ n × n‬מסומנת )‪.Mn (F‬‬ ‫הגדרה‪ :‬עבור מטריצה )‪ A ∈ Mm×p (F‬ומטריצה )‪ B ∈ Mp×n (F‬המכפלה של המטריצות‪ ,‬המסומנת ‪ ,AB‬היא‬ ‫מטריצה מסדר ‪ m × n‬שהאיבר בשורה ה־‪ i‬ובעמודה ה־‪ j‬שלה הוא כפל של השורה ה־‪ i‬של ‪ A‬בעמודה ה־‪ j‬של ‪:B‬‬ ‫‪[AB]ij = ai1 b1j + · · · + aip bpj‬‬ ‫דוגמה‪:‬‬ ‫‪‬‬ ‫)‪1 · (−4) + 2 · (−8‬‬ ‫‪‬‬ ‫= ‪0 · (−4) + (−4) · (−8) ‬‬ ‫‪1 · (−",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/t2.txt",
+    "kind": "text",
+    "size_bytes": 22156,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 2‬קבוצת עומר‬ ‫‪1‬‬ ‫מספרים מרוכבים‬ ‫‪1.1‬‬ ‫זוג ממשיים עם פעולות רגילות‬ ‫בהרצאה ראינו )ללא הוכחה( שהמספרים הממשיים‪ ,‬יחד עם החיבור והכפל הרגילים‪ ,‬מהווים שדה‪ .‬נבדוק האם זה‬ ‫המצב גם בחיבור וכפל של שני ממשיים במקביל‪.‬‬ ‫)‬ ‫! (‬ ‫‪x‬‬ ‫‪2‬‬ ‫‪2‬‬ ‫שאלה‪ :‬תהא הקבוצה ‪x, y ∈ R‬‬ ‫= ‪ ,R‬ולכל ‪∈ R‬‬ ‫‪y‬‬ ‫!‬ ‫‪x1 · x2‬‬ ‫‪y1 · y2‬‬ ‫!‬ ‫=‬ ‫‪x2‬‬ ‫‪y2‬‬ ‫!‬ ‫·‬ ‫!‬ ‫‪x1‬‬ ‫‪,‬‬ ‫‪y1‬‬ ‫!‬ ‫‪x2‬‬ ‫‪y2‬‬ ‫!‬ ‫‪x1‬‬ ‫‪,‬‬ ‫נגדיר חיבור וכפל כדלקמן‪:‬‬ ‫‪y1",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/t3.txt",
+    "kind": "text",
+    "size_bytes": 43586,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 3‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫משוואות ליניאריות‬ ‫‪1.1‬‬ ‫הגדרות‬ ‫הגדרה‪ :‬יהי ‪ F‬שדה ויהיו ‪ .m, n ∈ N‬מערכת משוואות ליניאריות )או מערכת ליניארית( עם ‪ n‬משתנים ‪x1 , . . . , xn‬‬ ‫ו־‪ m‬משוואות מעל ‪ F‬היא מערכת משוואות מהצורה‪:‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪a x + · · · + a1n xn = b1‬‬ ‫‪‬‬ ‫‪ 11 1‬‬ ‫‪..‬‬ ‫‪..‬‬ ‫‪..‬‬ ‫‪.‬‬ ‫‪.‬‬ ‫‪.‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪‬‬ ‫‪am1 x1 + · · · + amn xn = bm‬‬ ‫כאשר לכל }‪ i ∈ {1, . . . , m‬ולכל }‪ j ∈ {1, . . . , n‬מתקיים ‪.aij ∈ F ,bi ∈",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/t4.txt",
+    "kind": "text",
+    "size_bytes": 41035,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 4‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫מרחבים־וקטורים‬ ‫‪1.1‬‬ ‫מבוא‪ Fn :‬וגיאומטריה‬ ‫בחטיבה ובתיכון תיארנו מישורים דו־ממדיים ומרחבים תלת־ממדיים )שאז היו ללא הגדרה‪ ,‬אך אנחנו נגדיר אותם‬ ‫בהמשך הקורס( ועסקנו בנקודות וקווים בהם‪.‬‬ ‫דוגמה‪ :‬הסימון )‪ (1, 2‬סימן נקודה במישור שמרחקה ‪ 1‬ימינה מראשית־הצירים ו־‪ 2‬למעלה‪.‬‬ ‫דוגמה‪ :‬הסימון )‪ (3, 4, 5‬סימן נקודה במרחב התלת־ממדי שמרחקה ‪ 3‬ימינה‪ 4 ,‬קדימה ו־‪ 5‬למעלה מראשית־הצירים‪.‬‬ ‫הערה‪ :‬הנקודות )‪ (1, 2‬ו־)‪ (2",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURES+PRACTICE/tirgul/t5.txt",
+    "kind": "text",
+    "size_bytes": 35532,
+    "pages": "",
+    "topic_hits": "span",
+    "sample": "‫אלגברה ליניארית א׳ — סיכום תרגול ‪ — 5‬קבוצת עומר — טיוטה‬ ‫‪1‬‬ ‫צירוף־ליניארי של וקטורים‬ ‫הגדרה‪ :‬יהא ‪ V‬מרחב־וקטורי מעל שדה ‪ .F‬יהיו ‪ v1 , . . . , vn ∈ V‬וקטורים ו־‪ α1 , . . . , αn ∈ F‬סקלרים‪ .‬אזי הווקטור‬ ‫‪ α1 v1 + · · · + αn vn‬נקרא צירוף־ליניארי של ‪ v1 , . . . , vn‬עם מקדמים ‪.α1 , . . . , αn‬‬ ‫הערה‪ :‬מהמשפט השקול להגדרת תת מרחב־וקטורי‪ ,‬ראינו שאם ‪ W ⊆ V‬תת מרחב־וקטורי של ‪ ,V‬אזי לכל‬ ‫‪ w1 , . . . , wn ∈ W‬ולכל ‪ α1 , . . . , αn ∈ F‬מתקיים שגם ‪.w = α1 w1 + . . . + αn wn ∈",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LECTURE_BY_LECTURE_THEOREM_MAP.md",
+    "kind": "text",
+    "size_bytes": 10120,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|basis|column|det|dimension|invertible|rank|row|span|subspace",
+    "sample": "# Theorem Proofs by Lecture: Which to Focus on for Moed B ## Mapping Lectures 1-16 to Exam Likelihood --- ## LECTURES 1-5: FIELDS & LINEAR SYSTEMS **Moed B Likelihood: VERY LOW** These lectures cover foundational material already tested in earlier exams. | Theorem | Lecture | Status | Why Not Likely | |---------|---------|--------|----------------| | Field axioms | 1-2 | Tested | Covered in Moed A, elementary | | Zₙ is field iff n prime | 3 | Tested | Arithmetic, not linear algebra | | Linear sy",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/LOGO/Lia Mesika.png",
+    "kind": "binary",
+    "size_bytes": 169626,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/MOED_B_THEOREM_ANALYSIS_FINAL.md",
+    "kind": "text",
+    "size_bytes": 12856,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|basis|column|det|dimension|invertible|linearly independent|rank|row|span|subspace",
+    "sample": "# Comprehensive Analysis: Theorem Proofs Most Likely for Linear Algebra 1 Moed B Exam ## Reichman University 2025-26 --- ## EXECUTIVE SUMMARY Based on systematic analysis of: - All lectures 1-16 (from structured theorem checklist) - Historical examination patterns (2022-2025 Moed B exams) - Moed A 2025-26 coverage (what was already tested) - Expert analysis document (מיקוד_6_משפטים_מועד_ב.pdf) **The top 6 theorem proofs with highest probability of appearing in Moed B are:** --- ## TIER 1: CRITIC",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2022-23_MoedA_Eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 74934,
+    "pages": "13",
+    "topic_hits": "det|span",
+    "sample": "Linear Algebra 1, Moed A 2023, Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. Only a basic calculator is permitted in this exam. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a c",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2022-23_MoedA_Eng_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 83539,
+    "pages": "5",
+    "topic_hits": "det|span",
+    "sample": "Linear Algebra 1, Moed A 2023, Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. Only a basic calculator is permitted in this exam. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a c",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2022-23_MoedA_Heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 114883,
+    "pages": "13",
+    "topic_hits": "span",
+    "sample": "‫החוג למדעי המחשב‬ ‫אוניברסיטת רייכמן‬ ‫מבחן באלגברה לינארית ‪(54) 1‬‬ ‫מועד א' – ‪15/02/2023‬‬ ‫אין לרשום פתרונות מאחורי הדף!!!‬ ‫מרצים‪ :‬ד”ר יוסי שמאי וד”ר רן כהן‬ ‫משך הבחינה‪ 3 :‬שעות‬ ‫ניתן להשתמש רק במחשבון פשוט במהלך המבחן‪.‬‬ ‫הוראות‪:‬‬ ‫לבחינה חמש שאלות‪ .‬עליכן לענות בדיוק על ארבע מתוכן‪ .‬משקל כל שאלה הוא ‪ 25‬נקודות‪ .‬אין בחירה בין סעיפים של אותה‬ ‫שאלה‪ .‬תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכן לצטט את כל התנאים לכל משפט או טענה‪ .‬חל איסור מוחלט להסתמך על חומר‬ ‫שלא נלמד בקורס",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2022-23_MoedB_Eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 72063,
+    "pages": "11",
+    "topic_hits": "det|linearly independent|span",
+    "sample": "Linear Algebra 1, Moed B 2023, Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. Only a basic calculator is permitted in this exam. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a c",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2022-23_MoedB_Eng_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 78686,
+    "pages": "5",
+    "topic_hits": "det|invertible|linearly independent|row|span",
+    "sample": "Linear Algebra 1, Moed B 2023, Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. Only a basic calculator is permitted in this exam. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a c",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2022-23_MoedB_Eng_solution_ocr.txt",
+    "kind": "text",
+    "size_bytes": 31250,
+    "pages": "",
+    "topic_hits": "Nul|Rank|det|dimension|invertible|linearly independent|rank|row|span|subspace",
+    "sample": "Linear Algebra 1, Moed B 2023, Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. Only a basic calculator is permitted in this exam. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a c",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2022-23_MoedB_Heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 120516,
+    "pages": "11",
+    "topic_hits": "",
+    "sample": "‫החוג למדעי המחשב‬ ‫אוניברסיטת רייכמן‬ ‫מבחן באלגברה לינארית ‪(54) 1‬‬ ‫מועד ב' – ‪22/03/2023‬‬ ‫אין לרשום פתרונות מאחורי הדף!!!‬ ‫מרצים‪ :‬ד”ר יוסי שמאי וד”ר רן כהן‬ ‫משך הבחינה‪ 3 :‬שעות‬ ‫ניתן להשתמש רק במחשבון פשוט במהלך המבחן‪.‬‬ ‫הוראות‪:‬‬ ‫לבחינה חמש שאלות‪ .‬עליכן לענות בדיוק על ארבע מתוכן‪ .‬משקל כל שאלה הוא ‪ 25‬נקודות‪ .‬אין בחירה בין סעיפים של אותה‬ ‫שאלה‪ .‬תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכן לצטט את כל התנאים לכל משפט או טענה‪ .‬חל איסור מוחלט להסתמך על חומר‬ ‫שלא נלמד בקורס",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2023-24_MoedA_Eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 70966,
+    "pages": "14",
+    "topic_hits": "linearly independent|span",
+    "sample": "Linear Algebra 1, Moed A 2024 Reichman University Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. No formula sheets or calculators are allowed Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice between d",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2023-24_MoedA_Heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 136829,
+    "pages": "14",
+    "topic_hits": "span",
+    "sample": "‫אלגברה ליניארית א' – מבחן מועד א' ‪2024‬‬ ‫אוניברסיטת רייכמן‬ ‫מרצים‪ :‬ד''ר רן כהן וד''ר יוסי שמאי‪.‬‬ ‫משך הבחינה‪ 3 :‬שעות‪.‬‬ ‫אין להשתמש בדפי נוסחאות או במחשבון‪.‬‬ ‫הנחיות‪:‬‬ ‫לבחינה חמש שאלות‪ .‬עליכם לענות בדיוק על ארבע מתוכן‪ .‬משקל כל שאלה הוא ‪ 25‬נקודות‪ .‬אין בחירה בין סעיפים של‬ ‫אותה שאלה‪.‬‬ ‫תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכם לצטט את כל התנאים לכל משפט או טענה‪ .‬חל איסור מוחלט להסתמך‬ ‫על חומר שלא נלמד בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אסור להפריד דפי",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2023-24_MoedA_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 82527,
+    "pages": "6",
+    "topic_hits": "basis|linearly independent|span",
+    "sample": "Linear Algebra 1, Moed A 2024 (with Solutions) Reichman University Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. No formula sheets or calculators are allowed Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2023-24_MoedB_Eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 71160,
+    "pages": "13",
+    "topic_hits": "det|span",
+    "sample": "Linear Algebra 1, Moed B 2024 Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. No formula sheets or calculators are allowed Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a choice b",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2023-24_MoedB_Eng_solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 82700,
+    "pages": "6",
+    "topic_hits": "det|span|subspace",
+    "sample": "Linear Algebra 1, Moed B 2024 Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. No formula sheets or calculators are allowed Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a choice b",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2023-24_MoedB_Eng_solutions_ocr.txt",
+    "kind": "text",
+    "size_bytes": 30342,
+    "pages": "",
+    "topic_hits": "det|dimension|invertible|row|span|subspace",
+    "sample": "Linear Algebra 1, Moed B 2024 Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. No formula sheets or calculators are allowed Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a choice b",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2023-24_MoedB_Heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 138472,
+    "pages": "13",
+    "topic_hits": "span",
+    "sample": "‫אלגברה ליניארית א' – מבחן‬ ‫מרצים‪ :‬ד`ר רן כהן וד`ר יוסי שמאי‪.‬‬ ‫משך הבחינה‪ 3 :‬שעות‪.‬‬ ‫אין להשתמש בדפי נוסחאות או במחשבון‪.‬‬ ‫הנחיות‪:‬‬ ‫לבחינה חמש שאלות‪ .‬עליכם לענות בדיוק על ארבע מתוכן‪ .‬משקל כל שאלה הוא ‪ 25‬נקודות‪ .‬אין בחירה בין סעיפים של‬ ‫אותה שאלה‪ .‬תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכם לצטט את כל התנאים לכל משפט או טענה‪ .‬חל איסור מוחלט‬ ‫להסתמך על חומר שלא נלמד בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אסור להפריד דפים מהשאלון! אין‬ ‫לרשום פתרונות במקומות ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2024-25_MoedA_Eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 69417,
+    "pages": "18",
+    "topic_hits": "linearly independent",
+    "sample": "Linear Algebra 1, Moed A 2025 Reichman university Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice between different items of t",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2024-25_MoedA_Eng_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 76044,
+    "pages": "5",
+    "topic_hits": "kernel|linearly independent|span",
+    "sample": "Linear Algebra 1, Moed A 2025 Reichman university Solutions Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice between different ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2024-25_MoedA_Heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 125144,
+    "pages": "18",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א' – מועד א' ‪2005‬‬ ‫אוניברסיטת רייכמן‬ ‫מרצים‪ :‬ד`ר רן כהן וד`ר יוסי שמאי‪.‬‬ ‫משך הבחינה‪ 3 :‬שעות‪.‬‬ ‫חומר עזר‪ :‬אין‬ ‫הנחיות‪:‬‬ ‫לבחינה חמש שאלות‪ .‬עליכם לענות בדיוק על ארבע מתוכן‪ .‬משקל כל שאלה הוא ‪ 25‬נקודות‪ .‬אין בחירה בין סעיפים של אותה שאלה‪.‬‬ ‫תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכם לצטט את כל התנאים לכל משפט או טענה‪ .‬חל איסור מוחלט להסתמך על חומר שלא נלמד‬ ‫בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אסור להפריד דפים מהשאלון! אין לרשום פתרונות במ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2024-25_MoedB_Eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 73081,
+    "pages": "18",
+    "topic_hits": "subspace",
+    "sample": "Linear Algebra 1, Moed B 2025 Reichman university Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice between different items of the same question. It is forbidden to rely on any material that wa",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2024-25_MoedB_Eng_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 79576,
+    "pages": "5",
+    "topic_hits": "dimension|subspace",
+    "sample": "Linear Algebra 1, Moed B 2025: Solutions Reichman university Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice between different items of the same question. It is forbidden to rely on any mater",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2024-25_MoedB_Eng_Solutions_ocr.txt",
+    "kind": "text",
+    "size_bytes": 27240,
+    "pages": "",
+    "topic_hits": "Nul|Rank|basis|dimension|invertible|linearly independent|rank|row|subspace",
+    "sample": "Linear Algebra 1, Moed B 2025: Solutions Reichman university Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice between different items of the same question. It is forbidden to rely on any mater",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2024-25_MoedB_Heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 127699,
+    "pages": "18",
+    "topic_hits": "",
+    "sample": "‫אלגברה ליניארית א' – מועד ב' ‪2005‬‬ ‫אוניברסיטת רייכמן‬ ‫מרצים‪ :‬ד`ר רן כהן וד`ר יוסי שמאי‪.‬‬ ‫משך הבחינה‪ 3 :‬שעות‪.‬‬ ‫חומר עזר‪ :‬אין‬ ‫הנחיות‪:‬‬ ‫לבחינה חמש שאלות‪ .‬עליכם לענות בדיוק על ארבע מתוכן‪ .‬משקל כל שאלה הוא ‪ 25‬נקודות‪ .‬אין בחירה בין סעיפים של אותה שאלה‪.‬‬ ‫תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכם לצטט את כל התנאים לכל משפט או טענה‪ .‬חל איסור מוחלט להסתמך על חומר שלא נלמד‬ ‫בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אסור להפריד דפים מהשאלון! אין לרשום פתרונות במ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2025-26_Simulation_Eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 72599,
+    "pages": "16",
+    "topic_hits": "",
+    "sample": "1 (The back of this page is not scanned.) Linear Algebra 1, Simulation 2026 Reichman university Lecturer: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will receive no credit. You must clearly justify every claim and state all required conditions for each th",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2025-26_Simulation_Eng_Solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 82135,
+    "pages": "7",
+    "topic_hits": "column|det|invertible",
+    "sample": "1 Linear Algebra 1, Simulation 2026 Reichman university Solutions Lecturer: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. There is no choice between different items of the same question. Unexplained answers will receive no credit. You must clearly justify every claim and state all required conditions for each theorem you use. You may not cho",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA1_2025-26_Simulation_Heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 134503,
+    "pages": "18",
+    "topic_hits": "",
+    "sample": "‫)צידו האחורי של דף זה לא נסרק‪(.‬‬ ‫אלגברה ליניארית א׳ — סימולציה ‪2026‬‬ ‫אוניברסיטת רייכמן‬ ‫מרצים‪ :‬ד\"ר רן כהן וד\"ר יוסי שמאי‪.‬‬ ‫משך הבחינה‪ 3 :‬שעות‪.‬‬ ‫חומר עזר‪ :‬אין‪.‬‬ ‫הנחיות‪:‬‬ ‫לבחינה חמש שאלות‪ .‬עליכם לענות בדיוק על ארבע מתוכן‪ .‬משקל כל שאלה הוא ‪ 25‬נקודות‪ .‬אין בחירה בין סעיפים של אותה שאלה‪.‬‬ ‫תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכם לצטט את כל התנאים לכל משפט או טענה‪ .‬חל איסור מוחלט להסתמך על חומר שלא נלמד‬ ‫בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אסור ל",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_group1_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 37495,
+    "pages": "2",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 1 Group 1 2026, Reichman university. Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) Let F be",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_group1_2026_heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 72211,
+    "pages": "4",
+    "topic_hits": "",
+    "sample": "‫החוג למדעי המחשב‬ ‫אוניברסיטת רייכמן‬ ‫אלגברה לינארית ‪ ,1‬בוחן ‪ ,1‬קבוצה ‪1‬‬ ‫‪26‬־‪2025‬‬ ‫מרצים‪ :‬ד\"ר יוסי שמאי וד\"ר רן כהן‬ ‫משך הבחינה‪ 36 :‬דקות‬ ‫חומר עזר‪ :‬הקבוצה הריקה‪.‬‬ ‫הוראות‪:‬‬ ‫לבוחן שתי שאלות‪ .‬עליכן לענות על כולן‪ .‬תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכן לצטט את כל התנאים לכל משפט או‬ ‫טענה‪ .‬חל איסור מוחלט להסתמך על חומר שלא נלמד בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אין להפריד דפים‬ ‫משאלון הבחינה! אין לרשום פתרונות במקומות שאינם מיועדים לכך! אין לרשו",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_group1_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 48875,
+    "pages": "1",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 1 Group 1 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points)",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_group2_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 37907,
+    "pages": "2",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 1 Group 2 2026, Reichman university. Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) Let F be",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_group2_2026_heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 72731,
+    "pages": "4",
+    "topic_hits": "",
+    "sample": "‫החוג למדעי המחשב‬ ‫אוניברסיטת רייכמן‬ ‫אלגברה לינארית ‪ ,1‬בוחן ‪ ,1‬קבוצה ‪2‬‬ ‫‪26‬־‪2025‬‬ ‫מרצים‪ :‬ד\"ר יוסי שמאי וד\"ר רן כהן‬ ‫משך הבחינה‪ 36 :‬דקות‬ ‫חומר עזר‪ :‬הקבוצה הריקה‪.‬‬ ‫הוראות‪:‬‬ ‫לבוחן שתי שאלות‪ .‬עליכן לענות על כולן‪ .‬תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכן לצטט את כל התנאים לכל משפט או‬ ‫טענה‪ .‬חל איסור מוחלט להסתמך על חומר שלא נלמד בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אין להפריד דפים‬ ‫משאלון הבחינה! אין לרשום פתרונות במקומות שאינם מיועדים לכך! אין לרשו",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_group2_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 50731,
+    "pages": "1",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 1 Group 2 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points)",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_group3_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 40424,
+    "pages": "3",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 1 Group 3 2026, Reichman university. Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) Let F be",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_group3_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 51106,
+    "pages": "1",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 1 Group 3 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points)",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_simulation_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 37915,
+    "pages": "2",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 1 Simulation 2026, Reichman university. Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) Let F",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_simulation_2026_heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 68280,
+    "pages": "4",
+    "topic_hits": "",
+    "sample": "‫החוג למדעי המחשב‬ ‫אוניברסיטת רייכמן‬ ‫אלגברה לינארית ‪ ,1‬בוחן ‪ ,1‬סימלוציה‬ ‫‪26‬־‪2025‬‬ ‫מרצים‪ :‬ד\"ר יוסי שמאי וד\"ר רן כהן‬ ‫משך הבחינה‪ 36 :‬דקות‬ ‫חומר עזר‪ :‬הקבוצה הריקה‪.‬‬ ‫הוראות‪:‬‬ ‫לבוחן שתי שאלות‪ .‬עליכן לענות על כולן‪ .‬תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכן לצטט את כל התנאים לכל משפט או‬ ‫טענה‪ .‬חל איסור מוחלט להסתמך על חומר שלא נלמד בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אין להפריד דפים‬ ‫משאלון הבחינה! אין לרשום פתרונות במקומות שאינם מיועדים לכך! אין לרשום",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz1_simulation_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 50207,
+    "pages": "1",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 1 Simulation 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 poin",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz2_group1_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 53396,
+    "pages": "4",
+    "topic_hits": "linearly independent",
+    "sample": "Linear Algebra 1, Quiz 2 Group 1 2026, Reichman university. Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) Let V be",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz2_group1_2026_heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 109323,
+    "pages": "4",
+    "topic_hits": "",
+    "sample": "‫החוג למדעי המחשב‬ ‫אוניברסיטת רייכמן‬ ‫אלגברה לינארית ‪ ,1‬בוחן ‪ ,2‬קבוצה ‪1‬‬ ‫‪26‬־‪2025‬‬ ‫מרצים‪ :‬ד\"ר יוסי שמאי וד\"ר רן כהן‬ ‫משך הבחינה‪ 36 :‬דקות‬ ‫חומר עזר‪ :‬הקבוצה הריקה‪.‬‬ ‫הוראות‪:‬‬ ‫לבוחן שתי שאלות‪ .‬עליכן לענות על כולן‪ .‬תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכן לצטט את כל התנאים לכל משפט או‬ ‫טענה‪ .‬חל איסור מוחלט להסתמך על חומר שלא נלמד בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אין להפריד דפים‬ ‫משאלון הבחינה! אין לרשום פתרונות במקומות שאינם מיועדים לכך! אין לרשו",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz2_group1_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 59443,
+    "pages": "2",
+    "topic_hits": "Rank|linearly independent|rank|row",
+    "sample": "Linear Algebra 1, Quiz 2 Group 1 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points)",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz2_group2_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 53333,
+    "pages": "4",
+    "topic_hits": "",
+    "sample": "Linear Algebra 1, Quiz 2 Group 2 2026, Reichman university. Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) Let V be",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz2_group3_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 56327,
+    "pages": "4",
+    "topic_hits": "span",
+    "sample": "Linear Algebra 1, Quiz 2 Group 3 2026, Reichman university. Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instructions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) Let V be ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz2_group3_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 59880,
+    "pages": "2",
+    "topic_hits": "Rank|rank|span",
+    "sample": "Linear Algebra 1, Quiz 2 Group 3 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instructions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz2_simulation_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 48217,
+    "pages": "3",
+    "topic_hits": "subspace",
+    "sample": "Linear Algebra 1, Quiz 2 Simulation 2026, Reichman university. Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) Let V",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/LA_Quiz2_simulation_2026_heb.pdf",
+    "kind": "pdf",
+    "size_bytes": 84886,
+    "pages": "4",
+    "topic_hits": "",
+    "sample": "‫החוג למדעי המחשב‬ ‫אוניברסיטת רייכמן‬ ‫אלגברה לינארית ‪ ,1‬בוחן ‪ ,2‬סימלוציה‬ ‫‪26‬־‪2025‬‬ ‫מרצים‪ :‬ד\"ר יוסי שמאי וד\"ר רן כהן‬ ‫משך הבחינה‪ 36 :‬דקות‬ ‫חומר עזר‪ :‬הקבוצה הריקה‪.‬‬ ‫הוראות‪:‬‬ ‫לבוחן שתי שאלות‪ .‬עליכן לענות על כולן‪ .‬תשובות לא מנומקות לא יקבלו ניקוד‪ .‬עליכן לצטט את כל התנאים לכל משפט או‬ ‫טענה‪ .‬חל איסור מוחלט להסתמך על חומר שלא נלמד בקורס‪ .‬בסוף הבחינה יש להגיש את כל שאלון הבחינה‪ .‬אין להפריד דפים‬ ‫משאלון הבחינה! אין לרשום פתרונות במקומות שאינם מיועדים לכך! אין לרשום",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/_2022-2_MoedB.txt",
+    "kind": "text",
+    "size_bytes": 3885,
+    "pages": "",
+    "topic_hits": "Nul|Rank|det|invertible|linearly independent|rank|span|subspace",
+    "sample": "Linear Algebra 1, Moed B 2023, Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. Only a basic calculator is permitted in this exam. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a c",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/_2023-2_MoedB.txt",
+    "kind": "text",
+    "size_bytes": 3762,
+    "pages": "",
+    "topic_hits": "det|invertible|row|span|subspace",
+    "sample": "Linear Algebra 1, Moed B 2024 Reichman university Lecturers: Dr. Yossi Shamai and Dr Ran Cohen. Duration: 3 hours. No formula sheets or calculators are allowed Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. You must explain in full details all of your answers in all parts of the exam, and state all of the conditions for every theorem and/or claim. Unexplained answers will not receive any credit. You do not have a choice b",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/_2024-2_MoedB.txt",
+    "kind": "text",
+    "size_bytes": 4612,
+    "pages": "",
+    "topic_hits": "Nul|invertible|subspace",
+    "sample": "Linear Algebra 1, Moed B 2025 Reichman university Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 3 hours. Auxiliary material: none. Instructions: The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits. Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. You do not have a choice between different items of the same question. It is forbidden to rely on any material that wa",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/PAST_EXAMS/הערה שאלות לא למבחן.txt",
+    "kind": "text",
+    "size_bytes": 237,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "Note: the following questions are about linear transformaiton are are not part of the material this year: 2022-23 moed A: 2b, 3a, 5b 2022-23 moed B: 3, 5b 2024-25 moed A: 2, 3.1 2024-25 moed B: 1.2, 4.1, 5.2",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/QUICK_REFERENCE_6_PROOFS.md",
+    "kind": "text",
+    "size_bytes": 7977,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|basis|column|det|dimension|invertible|linearly independent|rank|row|span",
+    "sample": "# Quick Reference: 6 Most Likely Theorem Proofs for Moed B ## One-Page Summary for Fast Review --- ## THEOREM #1: RANK-NULLITY THEOREM ⭐⭐⭐ **Statement:** `rank(A) + dim(Nul A) = n` (n = # columns) **3-Minute Proof:** 1. Reduce A to canonical form C (rank k, n-k free variables) 2. Build basis for Nul(A): Set each free variable to 1 once, rest to 0 3. Get n-k linearly independent vectors (each has 1 in different spot) 4. These span Nul(A) → dim(Nul A) = n-k 5. Therefore: k + (n-k) = n ✓ **Key Insi",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/README_ANALYSIS.txt",
+    "kind": "text",
+    "size_bytes": 13260,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|basis|column|det|dimension|invertible|rank|row|span|subspace",
+    "sample": "================================================================================ MOED B THEOREM PROOFS ANALYSIS Linear Algebra 1 | Reichman 2025-26 ================================================================================ ANALYSIS COMPLETE: March 2, 2026 This folder now contains a comprehensive analysis of which theorem proofs are MOST LIKELY to appear in your Moed B exam (50% of points). ================================================================================ FILES CREATED ======",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/START_HERE.txt",
+    "kind": "text",
+    "size_bytes": 12490,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|basis|column|det|invertible|rank|row|span",
+    "sample": "╔══════════════════════════════════════════════════════════════════════════════╗ ║ ║ ║ START HERE - YOUR GUIDE ║ ║ ║ ║ Linear Algebra 1 Moed B Theorem Proofs Analysis ║ ║ Reichman University 2025-26 ║ ║ ║ ╚══════════════════════════════════════════════════════════════════════════════╝ You have received a COMPLETE ANALYSIS of theorem proofs most likely to appear in your Moed B exam (50% of points = ~50 points). This analysis covers: • Which 6 theorems have 70-95% probability of appearing • What w",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/cheatsheet.py",
+    "kind": "text",
+    "size_bytes": 25661,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|column|det|rank|row|span",
+    "sample": "#!/usr/bin/env python3 \"\"\" Linear Algebra 1 Cheatsheet — compact exam-style, matching the example PDF exactly. Each page = one topic. No determinants. No proofs. No examples beyond minimal. \"\"\" from reportlab.lib.pagesizes import A4 from reportlab.lib.units import mm from reportlab.lib.colors import HexColor, white, black from reportlab.pdfgen import canvas from reportlab.pdfbase import pdfmetrics from reportlab.pdfbase.ttfonts import TTFont import arabic_reshaper from bidi.algorithm import get_",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/cheatsheet_v2.py",
+    "kind": "text",
+    "size_bytes": 21431,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|column|det|rank|row|span",
+    "sample": "#!/usr/bin/env python3 \"\"\" Linear Algebra 1 Cheatsheet v2 — pixel-perfect match to example PDF design. Dense, colored bands, multiple topics per page, tables, two-column golden rules. \"\"\" from reportlab.lib.pagesizes import A4 from reportlab.lib.units import mm from reportlab.lib.colors import HexColor, white, black, Color from reportlab.pdfgen import canvas from reportlab.pdfbase import pdfmetrics from reportlab.pdfbase.ttfonts import TTFont import arabic_reshaper from bidi.algorithm import get",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/Ex1_Lin_Alg_1_2025-2026_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 71128,
+    "pages": "4",
+    "topic_hits": "",
+    "sample": "Linear Algebra I – Fall 2025-26 Homework 1 solutions 1. (5 points) Let F be a set equipped with two binary operations, addition and multiplication, denoted by “+” and “·”, respectively. For each term below, give a precise, complete mathematical definition. If your definition invokes a notion defined earlier in the course, define that notion as well. Do not use any negation word or symbol, except possibly ,. (a) (2 points) Define: the multiplication in F is not associative. Hint. Write the defini",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/LA1_2024-25_Homework_6_Solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 64780,
+    "pages": "5",
+    "topic_hits": "Rank|column|linearly independent|rank|row",
+    "sample": "Linear Algebra I – Fall 2025-26 Homework 6 solutions 1. (30 points) Prove each of the following statements (a) (5 points) The vectors    3    ~u3 = −4   3    2    ~u2 = −1 ,   1    1    ~u1 = −3 ,   2 are linearly dependent in R3 . Solution: Note that ~u1 + ~u2 = ~u3 , so ~u1 + ~u2 − ~u3 = ~0. (b) (5 points) The vectors   1   ~ w1 = 0 ,   i    i    ~ w2 = 1 ,   1   1   ~ w3 =  i ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/LA1_2025-26_Homework_10_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 58474,
+    "pages": "4",
+    "topic_hits": "Rank|basis|column|invertible|linearly independent|rank|row",
+    "sample": "Linear Algebra I – Fall 2025-26 Homework 10 : Solutions 1. (10 points) Let P ∈ Mm (F) be an invertible matrix and let A ∈ Mm×n (F). Prove or disprove each of the following statements: (a) (5 points) The homogeneous systems A~x = ~0 and (PA) ~x = ~0 are equivalent. \u0001 Solution: True. Let ~x ∈ Fn be a solution for the system A~x = ~0. Then (PA)~x = P A~x = P~0 = ~0 and therefore ~x is a solution for the homogeneous system (PA)~x = ~0. Let ~x ∈ Fn be a solution for the system (PA)~x = ~0. Then \u0001 A~x",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/LA1_2025-26_Homework_11_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 66272,
+    "pages": "5",
+    "topic_hits": "det|row",
+    "sample": "Linear Algebra II – Spring 2025-26 Homework 11 Solution With Hints 1. (20 points) Let α ∈ Z5 and consider the matrix A ∈ M5 (Z5 ) given by  2   1  A = 1  1   1 1 0 2 1 0 1 1 2 2 1 0 2 2 2 2  α   2    0   1   1 Compute det A and prove that there exists a unique value α ∈ Z5 for which A is singular. Hint. Reduce A to a REF. Solution: We reduce A to a REF by applying basic row operations as follows; note that 3−1 = 2 in Z5 .  1 ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/LA1_2025-26_Homework_12_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 64364,
+    "pages": "9",
+    "topic_hits": "column|det|row",
+    "sample": "Linear Algebra II – Spring 2025-26 Homework 12 Solution With Hints 1. (20) Compute the determinant of each of the following matrices (a) (5 points)   2   −1 A =   4   6  3   0 2 2   0 1 9  0 4 2 1 4 Hint. Develop the determinant according the the second column. Solution: We develop the determinant according to the second column   2   −1 det A = det   4   6 direct formula =   3 −1    0 2 2 second column",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/LA1_2025-26_Homework_8_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 68503,
+    "pages": "5",
+    "topic_hits": "column|span",
+    "sample": "Linear Algebra I – Fall 2025-26 Homework 8 solutions 1. (12 points) (a) (2 points) Let A1 ∈ Mn×k (F) and let A2 , A3 ∈ Mm×n (F). State the property of distributivity with respect to the matrices A1 , A2 , A3 . Solution: The property of distributivity with respect to the matrices A1 , A2 , A3 is (A2 + A3 ) · A1 = A2 A1 + A3 A1 (b) (2 points) Let A ∈ Mn×k (F) (F) , B ∈ Mk×r (F) and C ∈ Mm×n (F). State the property of associativity with respect to the matrices A, B, C. Solution: The property of ass",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/LA1_2025-26_Homework_9_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 72585,
+    "pages": "7",
+    "topic_hits": "Rank|invertible|rank",
+    "sample": "Linear Algebra I – Fall 2038-39 Homework 9 solutions 1. (10 points) For each of the following matrices, compute its inverse or prove that it is not invertible: (a) (4 points)   2   A =  1  −2 −1 4 1  3   0  5 Solution: We apply the inversion algorithm: \u0012 A   2 \u0013   I3 =  1   −2 −1 4 1    2 0   R →R +R   3 3 1  0 0 1 0  −−−−−−−−1−→  0  R2 →R2 − 2 R1   0 5 0 0 1  3 1 0   2  R2 → 92 R2   −−−−−−→  0 1 R3",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/Lin_Alg_I_2025-2026_Homework_2_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 62398,
+    "pages": "5",
+    "topic_hits": "",
+    "sample": "Linear Algebra I – Fall 2025-26 Homework 2 solutions 1. (12 points) For each of the following cases, find a, b ∈ R for which z = a + bi. (a) (3 points) z = (1 − 3i) · (2 + 3i) Solution: z = (1 − 3i) · (2 + 3i) = (2 − (−3) · 3) + (1 · 3 + (−3) · 2)i = 11 − 3i Thus, a = 11 and b = −3. (b) (3 points) z = (6 + i)3 Solution: We have (6 + i)3 = (6 + i)2 (6 + i) = (36 + 12i − 1)(6 + i) = (35 + 12i)(6 + i) = 210 − 12 + (35 + 72)i = 198 + 107i Thus, a = 198 and b = 107. 1+i (c) (3 points) z = 3−2i Soluti",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/Lin_Alg_I_2025-2026_Homework_3_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 74686,
+    "pages": "7",
+    "topic_hits": "det|row",
+    "sample": "Linear Algebra I – Fall 2025-26 Homework 3 solutions 1. (10 points) (a) (5 points) Consider the following system in the variables x1 , x2 , x3     x2 + 3x3      6x1 − 3x3         −2x1 + 2x2 = 0 = 4 = 1 Find the general solution for the system. Hint. apply elementary row operations on A+ to bring it to an Echelon form. Solution: We apply elementary row operations on A+ as follows   0 1   A+ =  6 0   −2 2    −2 0   R ↔R   1 3  −3 4  −−−−−→ ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/Lin_Alg_I_2025-2026_Homework_4_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 67064,
+    "pages": "5",
+    "topic_hits": "subspace",
+    "sample": "Linear Algebra I – Fall 2025-26 Homework 4 solutions 1. (12 points) Prove that each of the following sets is not a vector space over R. Hint. To each of the items, search for an axiom that is not satisfied, or a theorem that does not hold. (a) (2 points) V = ∅. Solution: Every vector space must contain an additive neutral element, so the empty set can never be a vector space.       x        2   . ∈ R : x ⩾ 0 (b) (2 points) V =            y       1",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/Lin_Alg_I_2025-2026_Homework_5_Solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 58357,
+    "pages": "4",
+    "topic_hits": "invertible|span",
+    "sample": "Linear Algebra I – Fall 2024-25 Homework 5 solutions 1. (20 points) Let V be a vector space over a field F. Let v1 , v2 , v3 , v ∈ V. Prove or disprove each of the following statements: (a) (5 points) If Span {v1 } ⊆ Span {v2 , v3 }, then v1 ∈ Span{v2 } or v1 ∈ Span{v3 }.       0 1 1       Solution: False. Choose ~v1 =   , ~v2 =   and ~v3 =  . 1 0 1 Note that ~v1 ∈ Span{~v2 , ~v3 } as ~v1 = ~v2 + ~v3 , but ~v1 < Span{~v2 } and ~v1 < Spa",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/hw/Linear_Algebra_1 (1).pdf",
+    "kind": "pdf",
+    "size_bytes": 80995,
+    "pages": "6",
+    "topic_hits": "basis|dimension|linearly independent|span",
+    "sample": "Linear Algebra I – Fall 2025-26 Homework 7 solutions 1. (15 points) Prove that each of the following sets is a vector space, find a basis for it and compute its dimension.       x                    . : 2x + y − z = 0 (a) (4 points) W =    y                        z Solution: We write                 x   x  x                                           ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/implication_trees.pdf",
+    "kind": "pdf",
+    "size_bytes": 70662,
+    "pages": "5",
+    "topic_hits": "Rank|det|rank|span",
+    "sample": "‫עץ גרירות — שדות‪ ,‬מרחבים וקטוריים‪ ,‬תתי‪-‬מרחב‬ ‫עמוד ‪ 1‬מתוך ‪5‬‬ ‫שדות‬ ‫שדה )‪(* ,+ ,F‬‬ ‫ראשוני ‪ <=> n‬שדה ‪Zn‬‬ ‫)פרמה‪(a^(p-1)=1 mod p :‬‬ ‫אין מחלקי אפס‬ ‫‪ b=0‬או ‪a*b=0 => a=0‬‬ ‫‪ 8‬אקסיומות ‪ +‬פילוג‬ ‫‪(-1)*a = -a‬‬ ‫חוק הצמצום‬ ‫‪0*a = 0‬‬ ‫מרחבים וקטוריים ותתי‪-‬מרחב‬ ‫‪ F‬מרחב וקטורי מעל ‪V‬‬ ‫סכום ‪V = U + W‬‬ ‫תתי‪-‬מרחבים ‪U, W‬‬ ‫נוסחת הממד‪:‬‬ ‫}‪U ∩ W = {0‬‬ ‫)‪dim(U+W)=dim(U)+dim(W)-dim(U∩W‬‬ ‫‪ V‬תת‪-‬מרחב של ‪W‬‬ ‫תמיד ת\"מ ‪U ∩ W‬‬ ‫‪ W⊆U‬או ‪ <=> U⊆W‬ת\"מ ‪U ∪ W‬‬ ‫",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/liner-summary.pdf",
+    "kind": "pdf",
+    "size_bytes": 580697,
+    "pages": "3",
+    "topic_hits": "Nul|Rank|det|rank|row",
+    "sample": "‫סיכום אלגברה לינארית ‪1‬‬ ‫הרצאות ‪ • 1-26‬תרגולים • שיעורי בית • מותאם למבחני ‪2024‬‬ ‫◆ דטרמיננטות — סיכום מפורט‬ ‫דטרמיננטה (‪)Leibniz‬‬ ‫הגדרה‬ ‫)‪ — det(A) = Σσ∈Sn sgn(σ) · a1,σ(1) · a2,σ(2) · … · an,σ(n‬סכום על כל ‪ !n‬תמורות‪( sgn(σ) = +1 .‬זוגית) או ‪( 1−‬אי‪-‬זוגית)‪.‬‬ ‫שלושת התנאים המאפיינים (אקסיומטית)‬ ‫הגדרה‬ ‫‪ Δ: Mn(F) → F‬היא הדטרמיננטה אם ורק אם‪ )1( :‬מולטילינארית — לינארית בכל שורה בנפרד (‪ )2‬אלטרנטיבית —‬ ‫שורות זהות ⇒‬ ‫)‪ Δ=0 (3‬נרמול — ‪ . Δ(In) = 1‬הפונקציה היחידה שמקי",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/moed_b_analysis.pdf",
+    "kind": "pdf",
+    "size_bytes": 81398,
+    "pages": "2",
+    "topic_hits": "Nul|Rank|det|rank",
+    "sample": "‫‪ 6‬שאלות שהכי סביר שיופיעו במועד ב' ‪2025-26‬‬ ‫‪1‬‬ ‫‪ 6‬שאלות שהכי סביר שיופיעו במועד ב'‬ ‫מסונן‪ :‬כל מה שהיה בסימולציה או במועד א' הוצא‪ .‬רק שאלות טריות‪.‬‬ ‫‪88%‬‬ ‫‪ .1‬אפיון הדטרמיננטה‬ ‫ש\"ב ‪ 11‬שאלה ‪4‬‬ ‫כל פונקציונל מולטילינארי ומתחלף הוא ‪ a*det‬עבור ‪ a‬כלשהו‬ ‫לא נבחן כלל השנה — לא בסימולציה ולא במועד א'‬ ‫• הוכחה אקסיומטית עמוקה — שאלת ‪ 13-15‬נקודות‬ ‫• דטרמיננטות מופיעות ב‪ 79%-‬מהמבחנים‬ ‫‪ .2‬ריבועית‪ :‬שמאלית >=< ימנית >=< הפיכה‬ ‫‪85%‬‬ ‫ש\"ב ‪ 9‬שאלה ‪6‬‬ ‫עבור ‪ A‬ריבועי",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/proofs.py",
+    "kind": "text",
+    "size_bytes": 24860,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "#!/usr/bin/env python3 \"\"\"Generate PDF with all matrix operation proofs for Linear Algebra 1.\"\"\" import subprocess, sys for pkg in [\"reportlab\", \"arabic-reshaper\", \"python-bidi\"]: subprocess.check_call([sys.executable, \"-m\", \"pip\", \"install\", pkg, \"-q\", \"--break-system-packages\"]) from reportlab.pdfgen import canvas from reportlab.lib.pagesizes import A4 from reportlab.lib.colors import HexColor from reportlab.pdfbase import pdfmetrics from reportlab.pdfbase.ttfonts import TTFont import arabic_r",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/quiz/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 6148,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/quiz/LA_Quiz2_group3_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 59880,
+    "pages": "2",
+    "topic_hits": "Rank|rank|span",
+    "sample": "Linear Algebra 1, Quiz 2 Group 3 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instructions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/quiz/LA_Quiz3_group1_2026_eng.pdf",
+    "kind": "pdf",
+    "size_bytes": 52280,
+    "pages": "1",
+    "topic_hits": "basis|dimension|linearly independent|subspace",
+    "sample": "Linear Algebra 1, Quiz 3 Group 1 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instructions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points) ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/quiz/LA_Quiz3_group1_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 52256,
+    "pages": "1",
+    "topic_hits": "basis|dimension|linearly independent|subspace",
+    "sample": "Linear Algebra 1, Quiz 3 Group 1 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points)",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/quiz/LA_Quiz3_group2_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 51548,
+    "pages": "1",
+    "topic_hits": "column|invertible|row",
+    "sample": "Linear Algebra 1, Quiz 3 Group 2 2026, Reichman University. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points)",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/quiz/LA_Quiz3_group3_2026_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 51748,
+    "pages": "1",
+    "topic_hits": "invertible|subspace",
+    "sample": "Linear Algebra 1, Quiz 3 Group 3 2026, Reichman university. Solution Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen. Duration: 36 minutes. Instrudctions: Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim. It is forbidden to rely on any material that was not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the papers! Do not separate pages from the booklet! 1. (5 points)",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/solution_templates_book.pdf",
+    "kind": "pdf",
+    "size_bytes": 96165,
+    "pages": "14",
+    "topic_hits": "invertible",
+    "sample": "‫ספר תבניות פתרון‬ ‫‪Linear Algebra 1 — Solution Templates Book‬‬ ‫אלגוריתם עבודה לכל הקורס‬ ‫מבוסס על‪ :‬הרצאות‪ ,‬תרגולים‪ ,‬שיעורי בית‪ ,‬ומבחני עבר‬ ‫‪2025-2026‬‬ ‫‪Legend‬‬ ‫מתי להשתמש‬ ‫‪Step N: Solution step‬‬ ‫‪✔ Shortcut/Tip‬‬ ‫‪⚠ Common mistake‬‬ Fields .1 • ‫שדות‬ ‫ מציאת מחלקי אפס‬/ ‫ חשבון מודולרי‬/ ‫ בניית שדה‬/ ‫ הוכחת תכונות שדה‬:‫סוגי תרגילים‬ ‫כשצריך להוכיח זהות אלגברית בשדה‬ Prove a property using field axioms Step 1: Write the claim explicitly. Step 2: Start from one side of ",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/solution_templates_book_HEB.pdf",
+    "kind": "pdf",
+    "size_bytes": 99773,
+    "pages": "12",
+    "topic_hits": "",
+    "sample": "‫ספר תבניות פתרון‬ ‫לינארית ‪ — 1‬אלגוריתם עבודה לכל הקורס‬ ‫מבוסס על‪ :‬הרצאות‪ ,‬תרגולים‪ ,‬שיעורי בית‪ ,‬ומבחני עבר‬ ‫‪2025-2026‬‬ ‫מקרא‬ ‫שלב בפתרון ‪ N:‬שלב‬ ‫טעות נפוצה ⚠‬ ‫קיצור ‪ /‬טיפ ✔‬ ‫שדות ‪1.‬‬ ‫סוגי תרגילים‪ :‬הוכחת תכונות שדה ‪ /‬בניית שדה ‪ /‬חשבון מודולרי ‪ /‬מחלקי אפס‬ ‫הוכחת זהות אלגברית בשדה‬ ‫כשצריך להוכיח זהות כמו ‪ a*0 = 0‬או )‪a = -a*(1-‬‬ ‫כתוב את הטענה במפורש ‪ 1:‬שלב‬ ‫התחל מצד אחד של השוויון ‪ 2:‬שלב‬ ‫הפעל אקסיומות אחת אחת‪ :‬קיבוציות‪ ,‬חילופיות‪ ,‬פילוג‪ ,‬איבר ני",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/summary_no_det.py",
+    "kind": "text",
+    "size_bytes": 40893,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|basis|det|dimension|rank|row|span|subspace",
+    "sample": "#!/usr/bin/env python3 \"\"\" Create a Linear Algebra 1 summary PDF in the style of the example, covering all topics EXCEPT determinants. Hebrew RTL support via arabic_reshaper + bidi. \"\"\" import subprocess, sys def install(pkg): subprocess.check_call([sys.executable, \"-m\", \"pip\", \"install\", pkg, \"--break-system-packages\", \"-q\"]) for pkg in [\"reportlab\", \"arabic-reshaper\", \"python-bidi\"]: try: __import__(pkg.replace(\"-\", \"_\").split(\"_\")[0] if pkg != \"python-bidi\" else \"bidi\") except ImportError: in",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/דף משפטים - לינארית .pdf",
+    "kind": "pdf",
+    "size_bytes": 13174284,
+    "pages": "24",
+    "topic_hits": "row",
+    "sample": "eroends 1 71377 738ED 8031man885110731007groan to a e f1377 738Q row 730en dat nomdemoistoonfood to IR etennis 730IR Goen 2 147 7280Talk elvy 7707 OFFIF 738 an inanegroan eoIF Ripp 730 F God 173080mn OF X puppy EF dose p of EF eye my 730 F t of 7 jan int ow OFOF St x y.sk 2 4 2 bing.by ZEF 171 738 YX sk X y OF 8 my Fit D yef 104 730 F D XOF OF Isk XEF g OF 1k X OF him coldeBu3Dpm Grew 1711 730 F Y OF Png Xiger 1171 738 F D 5k X 1207131171 Gw XOFOF ON D look IN 4 Cow 271377 IF IF ask X F X empN X",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/מיקוד_6_משפטים_מועד_ב.pdf",
+    "kind": "pdf",
+    "size_bytes": 33996,
+    "pages": "7",
+    "topic_hits": "Nul|Rank|det|invertible|rank|row",
+    "sample": "‫‪ 6‬משפטים למיקוד — מועד ב'‬ ‫לינארית ‪ | 1‬רייכמן ‪ | 2026‬מבוסס על ניתוח מועד א' ‪ +‬דפוסי מבחנים‬ ‫ניתוח מועד א'‪ :‬המבחן בדק — אסוציאטיביות כפל‪ det ,‬עם סימטרית‪/‬אנטי‪-‬סימטרית‪ ,‬יחידות ייצוג‪ ,‬הופכית‬ ‫ב‪ ,Z5-‬דיון לפי פרמטר‪ ,‬בת\"ל מודולו תת‪-‬מרחב‪ ,‬הפיכה משמאל ‪ +‬מערכות שקולות‪ ,‬משפט המימדים‪ ,‬חישוב‬ ‫‪ ,det‬תת‪-‬מרחב של ‪ C‬מעל ‪.R‬‬ ‫מה צפוי במועד ב'‪ :‬משפטים שלא נבדקו במועד א' ‪ +‬וריאציות על נושאים מרכזיים‪ .‬להלן ‪ 6‬המשפטים עם‬ ‫ההסתברות הגבוהה ביותר‪.‬‬ ‫‪1‬‬ ‫משפט הדרגה",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/סיכום לינארית 1.pdf",
+    "kind": "pdf",
+    "size_bytes": 13677891,
+    "pages": "49",
+    "topic_hits": "det",
+    "sample": "( don 11324) dis3tn + Il3n) (1-4 · \"God\" a +b b = silijo victo · siloe sijlost a + 9140 \"110\" + adin 2211 bEF-i a+ Fields \"451 a, ou F 13164 Ifield) sikpsN al a+ b , a, po , ki bef do : 110 -1 11. 20 , bef det : 1x 16(513 · , De pom , F-d La' &\"p : a + (b + G = 11688 21s - a + Of = a o - a Mom F-a nots pop of a . befi edin main ab b ba = & open \"4SN a, , + 201 aeF 4s dobicladding wat a+ 1 a 11 ned ( a + b) + c Jose : 4324 Cliny) sivida b get defined/siadicBiois) +Bid4 open a · also - a) = 07 - 0",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/סיכום_לינארית1_לפי_נושאים.md",
+    "kind": "text",
+    "size_bytes": 29049,
+    "pages": "",
+    "topic_hits": "Nul|Rank|Steinitz|basis|det|dimension|invertible|rank|row|span|subspace",
+    "sample": "# סיכום לינארית 1 - מאורגן לפי נושאים --- ## 1. שדות (Fields) — הרצאות 1-4 ### מה זה שדה? שדה זה בעצם קבוצה F עם שתי פעולות — חיבור (+) וכפל (·) — שמתנהגות \"יפה\". תחשבו על זה ככה: המספרים הרגילים שאנחנו מכירים (Q, R) הם שדות, כי אפשר לחבר, לכפול, לחלק (חוץ מב-0), והכל עובד כמו שצריך. ### האקסיומות (הכללים) של שדה: **חיבור:** - **סגירות לחיבור**: אם a,b בשדה, אז גם a+b בשדה - **חילופיות**: a+b = b+a (לא משנה הסדר) - **קיבוציות**: (a+b)+c = a+(b+c) (לא משנה איפה שמים סוגריים) - **איבר אדיש (אפס)**",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/סיכום_לינארית1_לפי_נושאים.pdf",
+    "kind": "pdf",
+    "size_bytes": 65176,
+    "pages": "18",
+    "topic_hits": "",
+    "sample": "‫סיכום לינארית ‪ - 1‬מאורגן לפי נושאים‬ ‫‪ .1‬שדות (‪ — )Fields‬הרצאות ‪1-4‬‬ ‫מה זה שדה?‬ ‫שדה זה בעצם קבוצה ‪ F‬עם שתי פעולות — חיבור (‪ )+‬וכפל (·) — שמתנהגות \"יפה\"‪ .‬תחשבו על זה‬ ‫ככה‪ :‬המספרים הרגילים שאנחנו מכירים (‪ )Q, R‬הם שדות‪ ,‬כי אפשר לחבר‪ ,‬לכפול‪ ,‬לחלק (חוץ‬ ‫מב‪ ,)0-‬והכל עובד כמו שצריך‪.‬‬ ‫האקסיומות (הכללים) של שדה‪:‬‬ ‫חיבור‪ - :‬סגירות לחיבור‪ :‬אם ‪ a,b‬בשדה‪ ,‬אז גם ‪ a+b‬בשדה ‪ -‬חילופיות‪( a+b = b+a :‬לא משנה‬ ‫הסדר) ‪ -‬קיבוציות‪( c = a+)b+c(+)a+b( :‬לא משנה איפה שמי",
+    "error": ""
+  },
+  {
+    "course": "linear",
+    "path": "LINER/צ'קליסט_משפטים_לינארית1.pdf",
+    "kind": "pdf",
+    "size_bytes": 89086,
+    "pages": "11",
+    "topic_hits": "Rank|rank",
+    "sample": "‫צ'קליסט משפטים — לינארית ‪1‬‬ ‫סמנ‪/‬י ‪ V‬ליד כל משפט שלמדת‬ ‫משפט‬ ‫הגדרה‬ ‫מסקנה‬ ‫סה\"כ התקדמות‪120 / ______ :‬‬ ‫הערה‬ ‫|‬ ‫למה‪/‬טענה‬ ‫תאריך‪___________ :‬‬ ‫‪ .1‬שדות (‪ — )Fields‬הרצאות ‪1-4‬‬ ‫הגדרות‬ ‫הגדרה‬ ‫שדה — קבוצה ‪ F‬עם פעולות חיבור וכפל המקיימת את כל האקסיומות‬ ‫הגדרה‬ ‫חלוקה עם שארית (‪)a = q·b + r‬‬ ‫הגדרה‬ ‫מחלק (‪)a|b‬‬ ‫הגדרה‬ ‫שקילות מודולו (‪n )a ≡ b mod n‬‬ ‫הגדרה‬ ‫‪ Z_n‬וההפעולות עליו (חיבור וכפל ‪)mod n‬‬ ‫הגדרה‬ ‫מספר ראשוני (‪)prime‬‬ ‫הגדרה‬ ‫מספרים זרים (‪)copr",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 6148,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/12+13/××¨×¦×× 12 - ×××¨× 2.pdf",
+    "kind": "pdf",
+    "size_bytes": 819694,
+    "pages": "14",
+    "topic_hits": "יחס|שקילות",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪12‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 12‬יחסי שקילות‬ ‫יחס שקילות ‪ -‬הגדרה‬ ‫יהי 𝑅 יחס על 𝐴‪ .‬נאמר ש‪ 𝑹 -‬יחס שקילות על 𝑨 אם‪:‬‬ ‫‪ 𝑅 .1‬רפלקסיבי‪.‬‬ ‫‪ 𝑅 .2‬סימטרי‪.‬‬ ‫‪ 𝑅 .3‬טרנזיטיבי‪.‬‬ ‫כיצד נוכיח שיחס הוא יחס שקילות‪ :‬נוכיח את כל ‪ 3‬התכונות‪.‬‬ ‫כיצד נוכיח שיחס אינו יחס שקילות‪ :‬נפריך את אחת התכונות‪.‬‬ ‫תזכורת לתבניות ההוכחה‪:‬‬ ‫הוכחה‬ ‫© שרון גל‬ ‫רפלקסיבי‬ ‫סימטרי‬ ‫טרנזיטיבי‬ ‫יהי 𝐴 ∈ 𝑎‬ ‫יהיו 𝐴 ∈ 𝑏‪ .𝑎,‬המקיימים‬ ‫יהיו 𝐴 ∈ 𝑐‪ 𝑎,𝑏,‬המקיי",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/12+13/××¨×¦×× 13 - ×××¨× 1-2.pdf",
+    "kind": "pdf",
+    "size_bytes": 941299,
+    "pages": "21",
+    "topic_hits": "יחס|קבוצה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪13‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 13‬יחסי סדר‬ ‫יחסי סדר ‪ -‬הגדרות‬ ‫המילה \"חלקי\" מבלבלת‬ ‫וחסרת חשיבות מבחינתכם‪.‬‬ ‫ניתן להתעלם ממנה‪.‬‬ ‫תהי 𝐴 קבוצה ויהי 𝑅 יחס על 𝐴‪.‬‬ ‫• נאמר ש‪ 𝑹-‬יחס סדר חלקי חלש על 𝑨 אם‪:‬‬ ‫‪ 𝑹 .1‬רפלקסיבי‪∀𝑎∈𝐴 (𝑎𝑅𝑎) :‬‬ ‫‪ 𝑹 .2‬אנטי‪-‬סימטרי‪:‬‬ ‫‪ 𝑹 .3‬טרנזיטיבי‪:‬‬ ‫𝑏 = 𝑎 → 𝑎𝑅𝑏 ∧ 𝑏𝑅𝑎 𝐴∈𝑏‪∀𝑎,‬‬ ‫למשל‪:‬‬ ‫⊆‪≤ ,≥ ,‬‬ ‫𝑐𝑅𝑎 → 𝑐𝑅𝑏 ∧ 𝑏𝑅𝑎 𝐴∈𝑐‪∀𝑎,𝑏,‬‬ ‫• נאמר ש‪ 𝑹-‬יחס סדר חלקי חזק על 𝑨 אם‪:‬‬ ‫‪ 𝑹 .1‬אנטי‪-‬רפלקסיבי‪∀𝑎∈𝐴 (𝑎𝑅𝑎) ",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/LOG/Screenshot 2026-01-31 at 17.12.58.png",
+    "kind": "binary",
+    "size_bytes": 28994,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex07_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 148262,
+    "pages": "4",
+    "topic_hits": "אינדוקציה",
+    "sample": "‫תרגיל ‪ – 7‬פתרון‬ ‫מתמטיקה בדידה ‪2025/2026‬‬ ‫‪.1‬‬ ‫\u0001‬ ‫‪1‬‬ ‫\u0001‬ ‫‪1‬‬ ‫\u0001‬ ‫‪1‬‬ ‫)א( הוכיחו באינדוקציה שלכל ‪ n ≥ 2‬טבעי מתקיים ‪. 1 − 2 · 1 − 3 · · · · · 1 − n = n1‬‬ ‫)ב( הוכיחו באינדוקציה שלכל ‪ n‬טבעי ‪ 102n+1 + 32n+1‬מתחלק ב־‪ 13‬ללא שארית‪.‬‬ ‫\u0001‬ ‫)ג( הוכיחו באינדוקציה שלכל ‪ n ≥ 1‬טבעי ‪ (9n − 1) n3 + 3n2 + 2n + 6‬מתחלק ב־‪ 48‬ללא שארית‪ .‬רמז‪:‬‬ ‫אולי במקום להוכיח את כל הטענה באינדוקציה‪ ,‬אפשר להוכיח שתי טענות קטנות יותר‪ ,‬באינדוקציה כל‬ ‫אחת‪.‬‬ ‫פתרון‪:‬‬ ‫)א(‬ ‫ואגף ימין הוא ‪",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex08_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 122248,
+    "pages": "3",
+    "topic_hits": "יחס|כמת|קבוצה",
+    "sample": "‫תרגיל ‪ – 8‬פתרון‬ ‫מתמטיקה בדידה ‪2025/2026‬‬ ‫‪ .1‬בקבוצת כדורסל מפורסמת מליגת ה־‪ NBA‬משחקים ‪ 10‬שחקנים‪ .‬במשחק כדורסל משחקים בכל רגע ‪ 5‬שחקנים‬ ‫מהקבוצה‪ .‬מאמן הקבוצה החליט שבכל חמישיית שחקנים שנמצאת על המגרש ישחקו ‪ 2‬בתפקיד הקלעי ו־‪3‬‬ ‫בתפקיד שחקן קדמי‪ .‬אם יש שחקן שיכול לשחק בשני התפקידים‪ ,‬הוא יכול להחשב כקלעי או כשחקן קדמי‪,‬‬ ‫אבל לא כשניהם במקביל )הערה זו רלוונטית לסעיף האחרון(‪ .‬אם יש שתי חמישיות שחקנים זהות עם חלוקת‬ ‫תפקידים שונה בין השחקנים‪ ,‬התייחסו אליהן כאותה חמישיה‪",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex09_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 140795,
+    "pages": "3",
+    "topic_hits": "אינדוקציה|קבוצה",
+    "sample": "‫תרגיל ‪ – 9‬פתרון‬ ‫מתמטיקה בדידה ‪2025/2026‬‬ ‫‪.1‬‬ ‫‪n‬‬ ‫)א( מצא ערך של ‪ n‬כך שהמקדם של ‪ x6‬בביטוי האלגברי )‪ (3x + 1‬הוא ‪ .20412‬הסבירו את תשובתכם‪.‬‬ ‫‪\u000125‬‬ ‫)ב( מצאו את המקדם החופשי ) ‪ (x0‬בביטוי האלגברי‬ ‫‪ . x12 + 2x‬הסבירו את תשובתכם‪.‬‬ ‫\u0001‬ ‫‪Pn‬‬ ‫)ג( הוכיחו בדרך אלגברית‪. k=0 nk 2k = 3n :‬‬ ‫\u0001‬ ‫‪Pn‬‬ ‫)ד( הוכיחו בדרך קומבינטורית‪. k=0 nk 2n−k = 3n :‬‬ ‫פתרון‪:‬‬ ‫)א( לפי נוסחת הבינום‪:‬‬ ‫\u0013 \u0012 ‪n‬‬ ‫‪X‬‬ ‫‪n k k‬‬ ‫‪3 x‬‬ ‫‪k‬‬ ‫‪k‬‬ ‫= ‪(3x) 1n−k‬‬ ‫‪k=0‬‬ ‫\u0013 \u0012 ‪n‬‬ ‫‪X‬‬ ‫‪n",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex10_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 39927,
+    "pages": "3",
+    "topic_hits": "",
+    "sample": "‫תרגיל ‪ – 10‬פתרון‬ ‫מתמטיקה בדידה ‪2025/2026‬‬ ‫‪.1‬‬ ‫)א( מהו המקדם של ‪ x3 y 4 z‬בביטוי האלגברי‬ ‫‪15‬‬ ‫)‪ ?(1 + x + y + z‬הסבירו את תשובתכם‪.‬‬ ‫‪5‬‬ ‫‪5‬‬ ‫)ב( מהו המקדם של ‪ x3 y 4 z‬בביטוי האלגברי )‪ ?(x + y + z) (1 + x + y + z‬הסבירו את תשובתכם‪.‬‬ ‫)ג( הוכיחו בדרך קומבינטורית שלכל ‪ k1 + k2 + k3 = n‬טבעיים חיוביים מתקיים‬ ‫(‬ ‫( )‬ ‫( )‬ ‫)‬ ‫‪n−1‬‬ ‫‪n−1‬‬ ‫‪n−1‬‬ ‫=‬ ‫‪+‬‬ ‫‪+‬‬ ‫‪k1 − 1, k2 , k3‬‬ ‫‪k1 , k2 − 1, k3‬‬ ‫‪k1 , k 2 , k 3 − 1‬‬ ‫)‬ ‫‪n‬‬ ‫‪k1 , k 2 , k 3‬‬ ‫פתרון‪:‬‬ ‫)",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex11_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 35709,
+    "pages": "3",
+    "topic_hits": "יחס|כמת|קבוצה|שובך",
+    "sample": "‫תרגיל ‪ – 11‬פתרון‬ ‫מתמטיקה בדידה ‪2025/2026‬‬ ‫‪ .1‬צלף יורה לעבר מטרה בצורת משולש שווה צלעות‪ .‬אורך כל צלע של המשולש הוא מטר אחד‪ .‬הצלף פגע חמש‬ ‫פעמים בתוך המטרה‪ .‬הוכיחו‪ :‬קיימות שתי פגיעות במטרה שהמרחק ביניהן אינו עולה על ‪ 50‬ס\"מ‪) .‬הדרכה‪:‬‬ ‫ההוכחה צריכה להיות תקפה על פי הכללים שלמדתם‪ .‬אל תכניסו להוכחה טיעונים מוטלים בספק כגון‪\" :‬במקרה‬ ‫הכי גרוע הוא פגע בפינות ולכן‪(\"....‬‬ ‫פתרון‪ :‬נחלק את המשולש ל‪ 4-‬איזורים ע“י חיבור אמצעי שלוש הצלעות‪:‬‬ ‫נחלק את האיזורים האדומים שיהיו ש",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex13_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 38756,
+    "pages": "3",
+    "topic_hits": "יחס|קבוצה|שקילות",
+    "sample": "‫תרגיל ‪ – 13‬פתרון‬ ‫מתמטיקה בדידה ‪2025/2026‬‬ ‫‪ .1‬עבור כל אחד מיחסי הסדר הבאים‪ ,‬מצאו איברים מינימלים‪ ,‬איברים מקסימלים‪ ,‬מינימום ומקסימום‪ .‬הוכיחו‬ ‫את תשובתכם‪.‬‬ ‫)א( תהי }‪ .A = {x ∈ Z|4 ≤ x ≤ 6‬נגדיר יחס סדר חלקי ‪ R‬על ∅ \\ )‪ P (A‬באופן הבא‪:‬‬ ‫)‪BRD ←→ (B ⊆ D ∩ {4, 5}) ∨ (B = D‬‬ ‫)ב( תהי }‪ .A = {−12, −10, −8, . . . , 8, 10, 12} ∪ {100, −100‬נגדיר יחס סדר חלקי ‪ R‬על ‪ A‬באופן הבא‪:‬‬ ‫))‪aRb ←→ (a ≤ b) ∧ (len (a) ≤ len (b‬‬ ‫כאשר )‪ len (x‬הוא מספר הספרות במספר ‪ x‬בייצוג עשרו",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex1_full_solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 289139,
+    "pages": "6",
+    "topic_hits": "שקילות",
+    "sample": "‫תרגיל ‪ - 1‬פתרון‬ ‫מתמטיקה בדידה ‪2025-2026‬‬ ‫תאריך אחרון להגשה‪ 9.11.25 :‬בשעה ‪23:59‬‬ ‫‪ .1‬הוכיחו בעזרת השקילויות שנלמדו בכיתה (כלומר על ידי פישוט)‪:‬‬ ‫א‪𝑝 → (𝑞 → 𝑞) ≡ 𝑇 .‬‬ ‫ב‪.(𝑝 ∨ 𝑞) → 𝑟 ≡ (𝑝 → 𝑟) ∧ (𝑞 → 𝑟) .‬‬ ‫בנוסף‪ ,‬הסבירו כיצד שקילות זו קשורה להוכחת טענות עם \"או\" בנתון‪.‬‬ ‫פתרון‪:‬‬ ‫א‪ .‬נפשט עד לקבלת התוצאה‪:‬‬ ‫⏟ 𝑇 ∨ 𝑝¬‬ ‫𝑻 ≡‬ ‫משמעות‬ ‫או‬ ‫⏟ )𝒒 → 𝒒( → 𝒑‬ ‫⏟ )𝑞 ∨ 𝑞¬( → 𝑝 ≡‬ ‫)𝑞 ∨ 𝑞¬( ∨ 𝑝¬ ≡‬ ‫≡‬ ‫⏟‬ ‫פירוק‬ ‫גרירה‬ ‫טאוטולוגיה‬ ‫פירוק‬ ‫גרירה‬ ‫ב‪ .‬נפשט עד לקבלת התוצאה‪:‬‬",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex2_full_solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 322450,
+    "pages": "5",
+    "topic_hits": "",
+    "sample": "‫תרגיל ‪ - 2‬פתרון‬ ‫מתמטיקה בדידה ‪2025-2026‬‬ ‫תאריך אחרון להגשה‪ 16.11.25 :‬בשעה ‪23:59‬‬ ‫‪ .1‬הוכיחו או הפריכו את הטענות הבאות‪ .‬העזרו בהגדרת החלוקה משבוע שעבר‪.‬‬ ‫שימו לב‪ :‬לפחות אחת מההוכחות צריכה להיות בשלילה‪.‬‬ ‫א‪ .‬לכל 𝑐 ‪ 𝑎, 𝑏,‬שלמים‪ :‬אם 𝑐𝑏|𝑐𝑎 אז 𝑏|𝑎‪.‬‬ ‫ב‪ .‬לכל 𝑦 ‪ 𝑥,‬שלמים‪ :‬אם 𝑥 ‪ 𝑥𝑦 + 𝑦 2 −‬זוגי אז ( 𝑥 זוגי או 𝑦 זוגי)‪.‬‬ ‫ג‪ .‬לכל 𝑐 ‪ 𝑎, 𝑏,‬שלמים‪ :‬אם 𝑐𝑎 = 𝑏𝑎 אז 𝑐 = 𝑏 או ‪𝑎 = 0‬‬ ‫פתרון‪:‬‬ ‫א‪ .‬הפרכה‪:‬‬ ‫•‬ ‫נבחר ‪ 𝑎 = 2, 𝑏 = 3, 𝑐 = 0‬שהינם שלמים‪.‬‬ ‫•‬ ‫מתקיים ‪ 𝑎",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex3_full_solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 347455,
+    "pages": "6",
+    "topic_hits": "",
+    "sample": "‫תרגיל ‪ - 3‬פתרון‬ ‫מתמטיקה בדידה ‪2025-2026‬‬ ‫תאריך אחרון להגשה‪ 23.11.25 :‬בשעה ‪23:59‬‬ ‫‪ .1‬הוכיחו או הפריכו לכל ‪ 3‬קבוצות 𝐶 ‪:𝐴, 𝐵,‬‬ ‫א‪(𝐴 \\ 𝐵) ∪ (𝐵 \\ 𝐶) = 𝐴 \\ 𝐶 .‬‬ ‫ב‪(𝐴 \\ 𝐵) \\ 𝐶 = 𝐴 \\ (𝐵 ∪ 𝐶) .‬‬ ‫ג‪ .‬אם 𝐴 ⊈ )𝐴 ∖ 𝐶( ∖ )𝐵 ∪ 𝐴( אז 𝐶 ⊈ 𝐵‬ ‫פתרון‪:‬‬ ‫א‪ .‬הפרכה‪:‬‬ ‫נבחר }‪.𝐴 = {1}, 𝐵 = {2}, 𝐶 = {3‬‬ ‫מתקיים‪:‬‬ ‫}‪(𝐴 ∖ 𝐵) ∪ (𝐵 ∖ 𝐶) = {1} ∪ {2} = {1,2‬‬ ‫}‪𝐴 ∖ 𝐶 = {1‬‬ ‫ברור ש‪(𝐴 \\ 𝐵) ∪ (𝐵 \\ 𝐶) ≠ 𝐴 \\ 𝐶 -‬‬ ‫ב‪ .‬הוכחה‪:‬‬ ‫בעזרת טבלה‪ :‬ניתן לראות ששתי העמודות הימניות ביותר בטבלה זהות",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex4_full_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 311232,
+    "pages": "6",
+    "topic_hits": "",
+    "sample": "‫תרגיל ‪ - 4‬פתרון‬ ‫מתמטיקה בדידה ‪2025-2026‬‬ ‫תאריך אחרון להגשה‪ 11.25.30 :‬בשעה ‪23:59‬‬ ‫‪ .1‬הוכיחו שלכל ‪ 2 ≤ 𝑛 ∈ ℕ‬ולכל שתי קבוצות לא ריקות 𝐵 ‪ ,𝐴,‬מתקיים‪:‬‬ ‫אם 𝐴 × 𝑛 𝐵 = 𝐵 × 𝑛𝐴 אז 𝐵 = 𝐴‪.‬‬ ‫פתרון‪:‬‬ ‫תהיינה 𝐵 ‪ 𝐴,‬קבוצות לא ריקות ויהי ‪.2 ≤ 𝑛 ∈ ℕ‬‬ ‫נניח‪.𝐴𝑛 × 𝐵 = 𝐵 𝑛 × 𝐴 :‬‬ ‫נוכיח‪.𝐴 = 𝐵 :‬‬ ‫נוכיח הכלה דו‪-‬כיוונית‪:‬‬ ‫•‬ ‫יהי 𝑥‪ .‬נניח 𝐴 ∈ 𝑥‪.‬‬ ‫‪ o‬מהיות 𝐵 לא ריקה‪ ,‬קיים 𝐵 ∈ 𝑦‪.‬‬ ‫‪.(𝑥,‬‬ ‫‪ o‬לפי הגדרת מכפלה קרטזית‪ ,‬מתקיים‪⏟ … 𝑥 , 𝑦) ∈ 𝐴𝑛 × 𝐵 :‬‬ ‫𝑠𝑒𝑚𝑖𝑡 𝑛‬ ‫‪.(𝑥,‬‬ ‫‪ o‬",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex5_full_solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 412959,
+    "pages": "6",
+    "topic_hits": "פונקציה",
+    "sample": "‫תרגיל ‪ - 5‬פתרון‬ ‫מתמטיקה בדידה ‪2025-2026‬‬ ‫תאריך אחרון להגשה‪ 7.12.25 :‬בשעה ‪23:59‬‬ ‫‪ .1‬עבור כל אחת מהפונקציות הבאות קבעו האם היא חח\"ע והאם היא על‪ .‬הוכיחו את כל‬ ‫קביעותיכם‪:‬‬ ‫א‪𝑓(𝐴, 𝐵 ) = (𝐴 ∖ 𝐵, 𝐴 ∩ 𝐵 ) .‬‬ ‫ב‪𝑓(𝑛) = 𝑘 .‬‬ ‫‪,‬‬ ‫‪,‬‬ ‫)‪𝑓: 𝑃(ℕ) × 𝑃 (ℕ) → 𝑃 (ℕ) × 𝑃 (ℕ‬‬ ‫‪ 𝑓: ℕ → ℕ‬כאשר 𝑘 הוא הטבעי הגדול ביותר כך ש‪.𝑛 ≥ 𝑘 2 -‬‬ ‫ג‪, 𝑓(𝐴) = 𝐴 ∆ {1,2} .‬‬ ‫)‪𝑓: 𝑃(ℕ) → 𝑃(ℕ‬‬ ‫פתרון‪:‬‬ ‫א‪ .‬הפונקציה לא חח\"ע‪:‬‬ ‫•‬ ‫נבחר )‪.({1}, {2}), ({1}, {3}) ∈ 𝑃(ℕ) × 𝑃(ℕ‬‬ ‫•‬ ‫ברור ש‪.({1}, {",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/hw/2025_ex6_full_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 377311,
+    "pages": "5",
+    "topic_hits": "פונקציה|קבוצה",
+    "sample": "‫תרגיל ‪ - 6‬פתרון‬ ‫מתמטיקה בדידה ‪2025-2026‬‬ ‫תאריך אחרון להגשה‪ 14.12.25 :‬בשעה ‪23:59‬‬ ‫‪ .1‬ענו על הסעיפים הבאים‪ .‬הוכיחו את כל תשובותיכם‪:‬‬ ‫א‪ .‬תהי פונקציה ‪ 𝑓: ℕ → ℕ‬המוגדרת באופן הבא‪ 𝑓(𝑛) = |𝑛 − 1| :‬לכל ‪.𝑛 ∈ ℕ‬‬ ‫כתבו במפורש שתי פונקציות ‪ 𝑔, ℎ: ℕ → ℕ‬שונות‪ ,‬אשר שתיהן הופכיות מימין של 𝑓‪.‬‬ ‫ב‪ .‬תהי 𝐴 קבוצת המילים באורך זוגי המורכבות מאותיות הקבוצה }𝑧 ‪{𝑎, 𝑏, 𝑐, … ,‬‬ ‫תהי 𝐴 → 𝐴 ‪ 𝑓:‬המוגדרת כך‪ 𝑓(𝑐1 𝑐2 … 𝑐𝑛 ) = 𝑐1 𝑐2 … 𝑐𝑛 𝑐𝑛 … 𝑐2 𝑐1 :‬לכל מילה ב‪.𝐴-‬‬ ‫כלומר‪ :‬התמונה של מיל",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/ הרצאה 7.pdf",
+    "kind": "pdf",
+    "size_bytes": 2275577,
+    "pages": "35",
+    "topic_hits": "אינדוקציה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪7‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 7‬אינדוקציה‬ ‫אינדוקציה‬ ‫אינדוקציה היא שיטת הוכחה מתמטית המשמשת להוכחה שתכונה מסוימת נכונה עבור כל המספרים הטבעיים‪.‬‬ ‫אינטואיציה‪:‬‬ ‫… 𝟖‬ ‫𝟕‬ ‫𝟔‬ ‫𝟓‬ ‫𝟒‬ ‫𝟑‬ ‫𝟐‬ ‫𝟏‬ ‫שלב ‪:2‬‬ ‫נוכיח שאם הטענה נכונה עבור טבעי‬ ‫כלשהו‪ ,‬אז היא נכונה גם עבור העוקב שלו‪.‬‬ ‫𝟎‬ ‫שלב ‪:1‬‬ ‫נוכיח בהצבה שהטענה‬ ‫נכונה עבור ‪.0‬‬ ‫הערה‪ :‬אי אפשר להפריך באינדוקציה!‬ ‫אם הוכחה באינדוקציה לא מצליחה זה לא אומר שהטענה שגויה‪.‬‬ ‫© שרון גל‬",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/1.pdf",
+    "kind": "pdf",
+    "size_bytes": 1030047,
+    "pages": "31",
+    "topic_hits": "",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪1‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 1‬הקדמה‬ ‫קורס מתמטיקה בדידה ‪Discrete Mathematics -‬‬ ‫מרצה‪:‬‬ ‫מתרגל‪:‬‬ ‫שרון גל‬ ‫אורי כהן‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫‪ori.cohen01@post.runi.ac.il‬‬ ‫שעת קבלה* ‪ -‬יום שני אחרי ההרצאה‪.‬‬ ‫שעת קבלה* ‪ -‬יום שישי אחרי התרגולים (בזום)‪.‬‬ ‫הרכב הציון‪ 90% • :‬ציון המבחן ‪ -‬יש חובת מעבר בציון ‪ 60‬לפחות‪.‬‬ ‫• ‪ 10%‬ציון התרגילים ‪ -‬ה‪ 9-‬הטובים מתוך ‪.12‬‬ ‫פיאצה‪:‬‬ ‫• לקורס יש פורום פיאצה‪ ,‬בו יתנהלו כל ה",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/10.pdf",
+    "kind": "pdf",
+    "size_bytes": 2177262,
+    "pages": "28",
+    "topic_hits": "קומבינטוריקה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪10‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 10‬קומבינטוריקה‬ ‫מקרים בקומבינטוריקה‬ ‫סידור‬ ‫בחירה‬ ‫(יש חשיבות לסדר)‬ ‫(אין חשיבות לסדר)‬ ‫עם חזרות‬ ‫בלי חזרות‬ ‫עם חזרות‬ ‫בלי חזרות‬ ‫(מותר לחזור על איברים)‬ ‫(אסור לחזור על איברים)‬ ‫(מותר לחזור על איברים)‬ ‫(אסור לחזור על איברים)‬ ‫𝒌𝒏‬ ‫© שרון גל‬ ‫!𝒏‬ ‫! 𝒌‪𝒏−‬‬ ‫שורה‬ ‫!𝒏‬ ‫מעגל‬ ‫!)𝟏 ‪(𝒏 −‬‬ ‫)𝟏 ‪𝒌 + (𝒏 −‬‬ ‫𝒌‬ ‫!𝒏‬ ‫𝒏‬ ‫=‬ ‫! 𝒌 ‪𝒌 𝒌! ⋅ 𝒏 −‬‬ ‫‪2‬‬",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/8.pdf",
+    "kind": "pdf",
+    "size_bytes": 1428583,
+    "pages": "19",
+    "topic_hits": "קומבינטוריקה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪8‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 8‬קומבינטוריקה‬ ‫מקרים בקומבינטוריקה‬ ‫סידור‬ ‫בחירה‬ ‫(יש חשיבות לסדר)‬ ‫(אין חשיבות לסדר)‬ ‫עם חזרות‬ ‫בלי חזרות‬ ‫עם חזרות‬ ‫בלי חזרות‬ ‫(מותר לחזור על איברים)‬ ‫(אסור לחזור על איברים)‬ ‫(מותר לחזור על איברים)‬ ‫(אסור לחזור על איברים)‬ ‫𝒌𝒏‬ ‫© שרון גל‬ ‫!𝒏‬ ‫! 𝒌‪𝒏−‬‬ ‫שורה‬ ‫!𝒏‬ ‫מעגל‬ ‫!)𝟏 ‪(𝒏 −‬‬ ‫)𝟏 ‪𝒌 + (𝒏 −‬‬ ‫𝒌‬ ‫!𝒏‬ ‫𝒏‬ ‫=‬ ‫! 𝒌 ‪𝒌 𝒌! ⋅ 𝒏 −‬‬ ‫‪2‬‬",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/9.pdf",
+    "kind": "pdf",
+    "size_bytes": 1238039,
+    "pages": "17",
+    "topic_hits": "קומבינטוריקה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪9‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 9‬קומבינטוריקה‬ ‫‪son, indoor, posing‬‬ ‫‪nerated‬‬ ‫בינום ניוטון‬ ‫בינום ניוטון הוא הנוסחה לפתיחת ביטויים מהצורה 𝑛 𝑦 ‪𝑥 +‬‬ ‫)‪(𝑛 ∈ ℕ‬‬ ‫• נבחן שני מקרים פרטיים‪.‬‬ ‫• במקום לפתח אלגברית‪ ,‬נסתכל בעיניים קומבינטוריות‪:‬‬ ‫‪𝟐 2‬‬ ‫‪𝟐 2‬‬ ‫𝟐‬ ‫‪𝒙 + 𝒚 𝟐 = (𝑥 + 𝑦)(𝑥 + 𝑦) = 𝟐 𝑥 + 𝟏 𝑥𝑦 + 𝟎 𝑦 = 𝟏𝑥 2 + 𝟐𝑥𝑦 + 𝟏𝑦 2‬‬ ‫= )𝑦 ‪𝒙 + 𝒚 𝟓 = (𝑥 + 𝑦)(𝑥 + 𝑦)(𝑥 + 𝑦)(𝑥 + 𝑦)(𝑥 +‬‬ ‫𝟎 ‪𝟓 5‬‬ ‫‪𝟓 3 2‬‬ ‫‪𝟓 4 1‬‬ ‫‪𝟓 2 3‬‬ ‫‪𝟓 1 4 𝟓 𝟎 5‬‬ ‫‪𝑥",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/הרצאה 1 - לפני.pdf",
+    "kind": "pdf",
+    "size_bytes": 1979075,
+    "pages": "33",
+    "topic_hits": "",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪1‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 1‬הקדמה‬ ‫קורס מתמטיקה בדידה ‪Discrete Mathematics -‬‬ ‫מרצה‪:‬‬ ‫מתרגל‪:‬‬ ‫שרון גל‬ ‫אורי כהן‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫‪ori.cohen01@post.runi.ac.il‬‬ ‫שעת קבלה* ‪ -‬יום שני אחרי ההרצאה‪.‬‬ ‫שעת קבלה* ‪ -‬יום שישי אחרי התרגולים (בזום)‪.‬‬ ‫הרכב הציון‪ 90% • :‬ציון המבחן ‪ -‬יש חובת מעבר בציון ‪ 60‬לפחות‪.‬‬ ‫• ‪ 10%‬ציון התרגילים ‪ -‬ה‪ 9-‬הטובים מתוך ‪.12‬‬ ‫פיאצה‪:‬‬ ‫• לקורס יש פורום פיאצה‪ ,‬בו יתנהלו כל ה",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/הרצאה 11 - אחרי 1.pdf",
+    "kind": "pdf",
+    "size_bytes": 1477556,
+    "pages": "20",
+    "topic_hits": "קבוצה|שובך",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪11‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 11‬עש\" ה‬ ‫עקרון שובך היונים (עקרון דיריכלה)‬ ‫משפט‪:‬‬ ‫אם נכניס ‪ 2 ≤ 𝑛 ∈ ℕ‬עצמים (יונים) לתוך ‪ 𝑛 − 1‬תאים‬ ‫(ׁשֹובָ כִ ים)‪ ,‬הרי שלפחות בתא אחד יהיו לפחות שני עצמים‪.‬‬ ‫הוכחה‪ • :‬נניח בשלילה שבכל תא יש לכל היותר עצם אחד‪.‬‬ ‫• יש ‪ 𝑛 − 1‬תאים לכן יש לכל היותר ‪ 𝑛 − 1‬עצמים‬ ‫• בסתירה לכך שיש 𝑛 עצמים‪.‬‬ ‫תרגיל‪ :‬הוכיחו שבקבוצה של ‪ 366‬אנשים יש שני אנשים שיש להם אותו תאריך יום הולדת‪.‬‬ ‫היונים ‪ 366 -‬האנשים",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/הרצאה 2 -.pdf",
+    "kind": "pdf",
+    "size_bytes": 2258515,
+    "pages": "23",
+    "topic_hits": "שקילות",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪2‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 2‬לוגיקה‬ ‫‪l‬‬ ‫הוכחה בשלילה (‪ )Proof by Contradiction‬של טענת גרירה‬ ‫הסבר‪:‬‬ ‫• כשאנחנו מוכיחים טענת גרירה‪ ,‬אנחנו רוצים להוכיח ש‪.𝑝 → 𝑞 ≡ 𝑇-‬‬ ‫• נפעיל שלילה על שני האגפים‪ .‬נוכל באופן שקול להוכיח ש‪-‬‬ ‫• נשתמש בשקילות שהוכחנו בשבוע שעבר‪Pmg F:‬‬ ‫𝒒¬ ∧ 𝒑 ≡ 𝒒 → 𝒑 ¬‬ ‫• כלומר נוכיח ש‪ 𝑝-‬וגם 𝑞¬ זו סתירה‪.‬‬ ‫‪P ske.mn‬‬ ‫‪it‬‬ ‫הערה‪:‬‬ ‫‪q‬‬ ‫נניח‪P :‬‬ ‫וגם נניח‪:‬‬ ‫נוכיח‪:‬‬ ‫‪F‬‬ ‫‪g‬‬ ‫‪77170‬‬ ‫‪pÉ‬‬ ‫• ",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/הרצאה 3 .pdf",
+    "kind": "pdf",
+    "size_bytes": 1834122,
+    "pages": "31",
+    "topic_hits": "פונקציה|קבוצה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪3‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 3‬תורת הקבוצות‬ ‫תורת הקבוצות‬ ‫קבוצה ‪ -‬הגדרה (לא פורמלית)‪:‬‬ ‫קבוצה היא אוסף של אובייקטים (שנקראים איברי הקבוצה) ללא חשיבות לסדר שלהם או למספר החזרות‪.‬‬ ‫איברי הקבוצה יכולים להיות כל דבר‪ ,‬מספרים‪ ,‬אנשים‪ ,‬אותיות‪ ,‬קבוצות אחרות ועוד‪.‬‬ ‫כיצד מסמנים קבוצה?‬ ‫• בד\"כ איברים מופרדים ע\"י פסיקים בתוך סוגריים מסולסלים‪.‬‬ ‫• נהוג לקרוא לקבוצות בשם‪ ,‬בד\"כ אות גדולה באנגלית‪.‬‬ ‫• ניתן לכתוב בעזרת פסוק לוגי או פונקצ",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/הרצאה 4 - אחרי 2.pdf",
+    "kind": "pdf",
+    "size_bytes": 1853718,
+    "pages": "20",
+    "topic_hits": "קבוצה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪4‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 4‬תורת הקבוצות‬ ‫קבוצת חזקה ‪Power Set -‬‬ ‫הגדרה‪:‬‬ ‫תהי 𝐴 קבוצה‪ .‬קבוצת החזקה של 𝑨‪ ,‬אשר תסומן )𝑨(𝑷‪ ,‬היא הקבוצה }𝑨 ⊆ 𝑺|𝑺{ = 𝑨 𝑷‬ ‫מילולית‪ :‬קבוצת החזקה היא קבוצת כל הקבוצות שמוכלות ב‪ .𝐴-‬קבוצת כל תתי הקבוצות של 𝐴‪.‬‬ ‫תרגיל‪ :‬נתונה הקבוצה }‪ .𝐴 = {5,7‬כתבו את )𝐴(𝑃‪.‬‬ ‫} }‪∅ , {5} , {7} , {5,7‬‬ ‫משפט‪:‬‬ ‫© שרון גל‬ ‫{ = )𝑨(𝑷‬ ‫}𝟕 ‪? ⊆ {𝟓,‬‬ ‫תהי 𝐴 קבוצה‪ .‬אזי מתקיים‪∅ ∈ 𝑃(𝐴) .1 :‬‬ ‫כי 𝐴 ⊆ ∅‬ ‫ולפי הגדרת ",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/הרצאה 5 - אחרי 1.pdf",
+    "kind": "pdf",
+    "size_bytes": 1835368,
+    "pages": "21",
+    "topic_hits": "פונקציה|קבוצה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪5‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 5‬פונקציות‬ ‫פונקציה ‪ -‬הגדרות‬ ‫תהיינה 𝐵‪ 𝐴,‬קבוצות לא ריקות ותהי 𝐵 × 𝐴 ⊆ 𝑓‪ .‬נקרא ל‪ 𝑓-‬התאמה‪.‬‬ ‫𝒇 היא קבוצת זוגות‬ ‫סדורים )𝒃‪ (𝒂,‬מ‪.𝑨 × 𝑩-‬‬ ‫הגדרה‪:‬‬ ‫𝑓 תקרא התאמה חד‪-‬ערכית (ח\"ע) אם‬ ‫‪𝑎, 𝑏1 ∈ 𝑓 ∧ 𝑎, 𝑏2 ∈ 𝑓 → 𝑏1 = 𝑏2‬‬ ‫𝐵∈ ‪∀𝑎∈𝐴 ∀𝑏1 ,𝑏2‬‬ ‫מילולית‪ :‬התאמה היא ח\"ע אם לכל איבר מ‪ 𝐴-‬יש לכל היותר איבר אחד ב‪ 𝐵-‬שמתאים לו‪.‬‬ ‫(אסור שיהיה 𝐴 ∈ 𝑎 כך שיש שני 𝐵 ∈ 𝑏 או יותר שמתאימים לו)‪.‬‬ ‫𝐵‬ ‫‪𝑏1‬‬ ‫‪𝑏2‬‬ ‫𝐴‬ ",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/lecture/הרצאה 6 - אחרי 2.pdf",
+    "kind": "pdf",
+    "size_bytes": 1908919,
+    "pages": "25",
+    "topic_hits": "פונקציה",
+    "sample": "‫מתמטיקה בדידה‬ ‫הרצאה ‪6‬‬ ‫שרון גל‬ ‫‪sharon.gal.math@gmail.com‬‬ ‫הרצאה ‪ - 6‬פונקציות‬ ‫הרכבת פונקציות‬ ‫תהיינה 𝐶‪ 𝐴,𝐵,‬קבוצות לא ריקות ותהיינה 𝐶 → 𝐵 ‪ 𝑓: 𝐴 → 𝐵 , 𝑔:‬פונקציות‪.‬‬ ‫הגדרה‪:‬‬ ‫ההרכבה של 𝑔 על 𝑓‪ ,‬אשר תסומן 𝑓 ∘ 𝑔 היא פונקציה מ‪ 𝐴-‬ל‪ 𝐶 -‬המוגדת כך‪:‬‬ ‫𝑥 𝑓 𝑔= 𝑥 𝑓∘𝑔‬ ‫𝐶‬ ‫𝒙 𝒇 𝒈‬ ‫דוגמה‪:‬‬ ‫𝒈‬ ‫𝐶 → 𝐴 ‪𝑔 ∘ 𝑓:‬‬ ‫𝐵‬ ‫𝒇‬ ‫𝐴‬ ‫𝒙‬ ‫)𝒙(𝒇‬ ‫‪F G omg‬‬ ‫‪an‬‬ ‫פונקציית ההרכבה 𝒇 ∘ 𝒈‬ ‫מוגדרת עבור 𝑨 ∈ 𝒙 אם‬ ‫𝒇 מוגדרת עבור 𝒙 וגם 𝒈‬ ‫מוגדרת עבור )𝒙(𝒇‪.‬‬ ‫𝒇∘𝒈‬ ‫תהיינה ‪ 𝑓,𝑔: ℝ → ℝ‬המוגדרות ",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/.DS_Store",
+    "kind": "meta",
+    "size_bytes": 8196,
+    "pages": "",
+    "topic_hits": "",
+    "sample": "",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2019_moed_b_en_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 579361,
+    "pages": "6",
+    "topic_hits": "",
+    "sample": "2019 Term B solutions 𝐴 = {∅} , 𝐵 = {{∅}} 1,4 𝑓(𝐴) = { 10 ∙ 9 ∙ 8 − 4 ∙ 3 ∙ 2 − 6 ∙ 5 ∙ 4 = 576 𝐴 {1,7} 𝐴≠∅ 𝐴=∅ 𝑒0 = ( 15 + 6 − 1 6 9+6−1 6 3+6−1 ) −( )( ) + ( )( ) 5 5 1 2 5 6 ∙ 5 ∙ 4 ∙ 23",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2020_moed_b_en_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 171312,
+    "pages": "9",
+    "topic_hits": "",
+    "sample": "Discrete Math – Exam 2020 Instructions for students: 1. In the exam there are 12 short questions and 2 open questions. You must answer all of them (No multiple choice). 2. Write your solutions in the attached papers only (Notebooks are used for drafts and will not be graded under any circumstances!). 3. Do not write on the back of the exam (It will not be scanned). 4. When asked to write explicitly a “set/function/relation”, you must specify all the elements of the set. 5. Use of aiding material",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2021_moed_a_en_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 548625,
+    "pages": "10",
+    "topic_hits": "",
+    "sample": "Discrete Mathematics – Final Exam 2021 – Moed A Instructions for students: 1. In the exam there are 10 short questions and 3 open questions. You must answer all of them (No choice). 2. Write your solutions in the attached papers only. 3. When asked to write explicitly a “set/function/relation”, you must specify all the elements of the set. 4. Use of any external aiding material is forbidden. For your convenience, a formula sheet is attached. 5. The duration of the exam is three hours. Good luck!",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2021_moed_b_en_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 465362,
+    "pages": "10",
+    "topic_hits": "",
+    "sample": "Discrete Mathematics – Final Exam 2021 – Moed B Instructions for students: 1. In the exam there are 10 short questions and 3 open questions. You must answer all of them (No choice). 2. Write your solutions in the attached papers only. 3. When asked to write explicitly a “set/function/relation”, you must specify all the elements of the set/function/relation. 4. Use of any external aiding material is forbidden. For your convenience, a formula sheet is attached. 5. The duration of the exam is three",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2022_moed_a_en_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 422038,
+    "pages": "11",
+    "topic_hits": "",
+    "sample": "Discrete Mathematics – Final Exam 2022 – Moed A Instructions for students: 1. In the exam there are 12 short questions and 2 open questions. You must answer all of them (No choice). 2. Write your solutions in the attached papers only. 3. When asked to write explicitly a “set/function/relation”, you must specify all the elements of the set/function/relation. 4. Use of any external aiding material is forbidden. For your convenience, a formula sheet is attached. 5. The duration of the exam is three",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2022_moed_b_en_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 395622,
+    "pages": "10",
+    "topic_hits": "tautolog",
+    "sample": "Discrete Mathematics – Final Exam 2022 – Moed B Instructions for students: 1. In the exam there are 12 short questions and 2 open questions. You must answer all of them (No choice). 2. Write your solutions in the attached papers only. 3. When asked to write explicitly a “set/function/relation”, you must specify all the elements of the set/function/relation. 4. Use of any external aiding material is forbidden. For your convenience, a formula sheet is attached. 5. The duration of the exam is three",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2023_moed_b_he_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 302397,
+    "pages": "11",
+    "topic_hits": "יחס|פונקציה|קבוצה",
+    "sample": "‫מבחן במתמטיקה בדידה‬ ‫‪ - 2023‬מועד ב'‬ ‫הוראות לנבחנים‪:‬‬ ‫‪ .1‬בבחינה ‪ 12‬שאלות קצרות ועוד ‪ 2‬פתוחות‪ .‬עליכם לענות על כולן (ללא בחירה)‪.‬‬ ‫‪ .2‬יש לכתוב את הפתרון בדפים המצורפים‪.‬‬ ‫‪ .3‬כאשר מצוין \"כתבו במפורש את הקבוצה‪/‬יחס‪/‬פונקציה\"‪ ,‬עליכם לפרט את כל איברי הקבוצה‪.‬‬ ‫‪ .4‬אין להשתמש בחומר עזר בזמן הבחינה‪ .‬לנוחיותכם‪ ,‬מצורף דף נוסחאות בסוף המסמך‪.‬‬ ‫‪ .5‬הזמן העומד לרשותכם ‪ -‬שלוש שעות‪.‬‬ ‫בהצלחה!‬ ‫‪-1-‬‬ ‫חלק א' ‪ -‬שאלות קצרות‬ ‫•‬ ‫כתבו את תשובותיכם בבירור במקום המסומן‪",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2024_moed_a_en_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 323642,
+    "pages": "14",
+    "topic_hits": "",
+    "sample": "Discrete Mathematics – Final Exam 2024 – Term A Instructions for students: 1. In the exam there are 8 short questions and 3 open questions. 2. You must answer all questions (No choice). 3. The questions are not ordered according to difficulty! 4. Answers should be written on the exam form. 5. The notebooks can be used as drafts but will not be graded. 6. When asked to write explicitly a “set/function/relation,” you must specify all the elements of the set/function/relation. 7. Use of any externa",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2024_moed_b_en-solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 465599,
+    "pages": "13",
+    "topic_hits": "",
+    "sample": "Discrete Mathematics – Final Exam 2024 – Term B Instructions for students: 1. In the exam there are 8 short questions and 3 open questions. 2. You must answer all questions (No choice). 3. The questions are not ordered according to difficulty! 4. Answers should be written on the exam form. 5. The notebooks can be used as drafts but will not be graded. 6. When asked to write explicitly a “set/function/relation,” you must specify all the elements of the set/function/relation. 7. Use of any externa",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2024_moed_b_he_solution.pdf",
+    "kind": "pdf",
+    "size_bytes": 304613,
+    "pages": "13",
+    "topic_hits": "יחס|פונקציה|קבוצה",
+    "sample": "‫מבחן במתמטיקה בדידה‬ ‫‪ - 2024‬מועד ב'‬ ‫הוראות לנבחנים‪:‬‬ ‫‪ .1‬בבחינה ‪ 8‬שאלות קצרות ועוד ‪ 3‬פתוחות‪ .‬עליכם לענות על כולן (ללא בחירה)‪.‬‬ ‫‪ .2‬יש לכתוב את הפתרון בתוך טופס הבחינה‪.‬‬ ‫‪ .3‬כאשר מצוין \"כתבו במפורש את הקבוצה‪/‬יחס‪/‬פונקציה\"‪ ,‬עליכם לפרט את כל איברי הקבוצה‪.‬‬ ‫‪ .4‬אין להשתמש בחומר עזר בזמן הבחינה‪ .‬לנוחיותכם‪ ,‬מצורף דף נוסחאות בסוף המסמך‪.‬‬ ‫‪ .5‬הזמן העומד לרשותכם ‪ -‬שלוש שעות‪.‬‬ ‫‪ .6‬השאלות אינן מסודרות לפי קושי עולה‪.‬‬ ‫בהצלחה!‬ ‫‪-1-‬‬ ‫חלק א' ‪ -‬שאלות קצרות",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2025_ex1_full_solutions.pdf",
+    "kind": "pdf",
+    "size_bytes": 289139,
+    "pages": "6",
+    "topic_hits": "שקילות",
+    "sample": "‫תרגיל ‪ - 1‬פתרון‬ ‫מתמטיקה בדידה ‪2025-2026‬‬ ‫תאריך אחרון להגשה‪ 9.11.25 :‬בשעה ‪23:59‬‬ ‫‪ .1‬הוכיחו בעזרת השקילויות שנלמדו בכיתה (כלומר על ידי פישוט)‪:‬‬ ‫א‪𝑝 → (𝑞 → 𝑞) ≡ 𝑇 .‬‬ ‫ב‪.(𝑝 ∨ 𝑞) → 𝑟 ≡ (𝑝 → 𝑟) ∧ (𝑞 → 𝑟) .‬‬ ‫בנוסף‪ ,‬הסבירו כיצד שקילות זו קשורה להוכחת טענות עם \"או\" בנתון‪.‬‬ ‫פתרון‪:‬‬ ‫א‪ .‬נפשט עד לקבלת התוצאה‪:‬‬ ‫⏟ 𝑇 ∨ 𝑝¬‬ ‫𝑻 ≡‬ ‫משמעות‬ ‫או‬ ‫⏟ )𝒒 → 𝒒( → 𝒑‬ ‫⏟ )𝑞 ∨ 𝑞¬( → 𝑝 ≡‬ ‫)𝑞 ∨ 𝑞¬( ∨ 𝑝¬ ≡‬ ‫≡‬ ‫⏟‬ ‫פירוק‬ ‫גרירה‬ ‫טאוטולוגיה‬ ‫פירוק‬ ‫גרירה‬ ‫ב‪ .‬נפשט עד לקבלת התוצאה‪:‬‬",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/2025_moed_b_en_sol.pdf",
+    "kind": "pdf",
+    "size_bytes": 474028,
+    "pages": "11",
+    "topic_hits": "",
+    "sample": "Discrete Mathematics Exam 2025 - Moed B Instructions to Candidates: The exam consists of 10 short questions and 2 open-ended questions. You must answer all of them (no choice). 1. Write your solution on the exam sheet. 2. When asked to \"explicitly write the set/relation/function,\" you must list all elements of the set. 3. No reference materials may be used during the exam. A formulas sheet is provided at the end of the document. 4. The time allocated for the exam is three hours. 5. The questions",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/INDEX.md",
+    "kind": "text",
+    "size_bytes": 5368,
+    "pages": "",
+    "topic_hits": "Hall",
+    "sample": "# Discrete Mathematics Exam Materials - Complete Index ## Primary Document Created ### שאלות_פתוחות_בדידה.pdf (Open Exam Questions - Discrete Mathematics) **File Details:** - **Location**: `/sessions/sharp-beautiful-gauss/mnt/past-exams/שאלות_פתוחות_בדידה.pdf` - **Size**: 58.3 KB - **Pages**: 35 - **Format**: PDF 1.7 - **Created**: March 1, 2026 **Contents:** - 1 Title page - 19 Questions with complete solutions - 5 Topic categories - 35 total pages --- ## Document Contents ### Questions by Cate",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/README.md",
+    "kind": "text",
+    "size_bytes": 3219,
+    "pages": "",
+    "topic_hits": "Hall",
+    "sample": "# Open Exam Questions - Discrete Mathematics (2019-2025) ## Overview This PDF contains a comprehensive collection of 19 open-ended exam questions covering all major topics in Discrete Mathematics, based on past exams from 2019-2025. Each question includes: - Complete question statement - Source lecture reference - Full step-by-step solution ## File Information - **Filename**: `שאלות_פתוחות_בדידה.pdf` (Open Exam Questions - Discrete Mathematics) - **Total Pages**: 35 - **Questions**: 19 - **Forma",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/סיכום_בדידה.pdf",
+    "kind": "pdf",
+    "size_bytes": 44104,
+    "pages": "9",
+    "topic_hits": "כמת|פונקציה|שקילות",
+    "sample": "‫סיכום בדידה ‪Discrete Mathematics -‬‬ ‫הרצאה ‪ - 1‬תחשיב הפסוקים‬ ‫‪:‬אופרטורים בסיסיים‬ ‫)‪ (p↔q), XOR (p⊕q‬גרירה כפולה ‪ (p→q),‬גרירה ‪ (p∨q),‬או ‪ (p∧q),‬גם ‪ (¬p),‬שלילה‬ ‫‪:‬שקילות וטאוטולוגיות‬ ‫אם לכל השמה יש אותו ערך אמת ‪• α ≡ β‬‬ ‫‪: ¬(p∧q) ≡ ¬p∨¬q, ¬(p∨q) ≡ ¬p∧¬q‬חוקי דה‪-‬מורגן •‬ ‫‪: p→q ≡ ¬q→¬p‬קונטרה‪-‬פוזיטיב •‬ ‫‪: ¬(p→q) ≡ p∧¬q‬שלילת גרירה •‬ ‫חוקי קיבוץ‪ ,‬חילוף‪ ,‬פילוג •‬ ‫‪:‬טיפים זהב‬ ‫‪-T→F‬בטבלת אמת ‪ -‬גרירה שקרית רק כש ‪1.‬‬ ‫!מופיע הרבה במבחנים ‪: ¬(p→q) ≡ p∧¬q -‬שלי",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/past-exams/שאלות_פתוחות_בדידה.pdf",
+    "kind": "pdf",
+    "size_bytes": 59738,
+    "pages": "35",
+    "topic_hits": "",
+    "sample": "Open Exam Questions Discrete Mathematics Summary of Questions from Past Exams 2019-2025 Q1: Bernoulli's Inequality Prove by induction: For every n∈ℕ, n≥1: (1+p)^n ≥ 1+np where p > -1 is a real number. Source: Lecture 8 Solution: Base case (n=1): (1+p)^1 = 1+p ≥ 1+1·p. Both sides are equal, so the inequality holds. Inductive assumption: Assume (1+p)^n ≥ 1+np holds for some n ≥ 1. Inductive step: We need to prove (1+p)^(n+1) ≥ 1+(n+1)p. (1+p)^(n+1) = (1+p)^n · (1+p) ≥ (1+np) (1+p) [by inductive as",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/question-per-topic/answers per topic.pdf",
+    "kind": "pdf",
+    "size_bytes": 2939486,
+    "pages": "49",
+    "topic_hits": "Hall|אינדוקציה|יחס|פונקציה|שובך|שקילות",
+    "sample": "‫אוסף השאלות ממבחני עבר שנים ‪ ,2018 – 2012‬עם פתרונות גלויים‬ ‫תוכן עניינים‪:‬‬ ‫שבוע ‪ :1‬תחשיבי פסוקים‪ ,‬שקילויות‬ ‫שבוע ‪ :2‬תחשיבי פרדיקטים‬ ‫שבוע ‪ :3‬פעולות בין קבוצות‪ ,‬שקלויות בין קבוצות‪ ,‬מכפלה קרטזית‬ ‫שבוע ‪ :4‬פונקציה‪ ,‬תכונות של פונקציה (חח\"ע‪ ,‬על)‬ ‫שבוע ‪ :5‬הרכבת פונקציות‪ ,‬פונקציית הזהות‪ ,‬הפיכות‬ ‫שבוע ‪ :6‬מניה ‪ :1‬עקרון חיבור וכפל‪ ,‬שובך היונים‪ ,‬אפשרויות לסידור‬ ‫שבוע ‪ :7‬מניה ‪ :2‬אפשרויות לבחירה‪ ,‬סידור אותיות‪ ,‬חלוקת שלל‪ ,‬כמה פתרונות‬ ‫שבוע ‪ :8‬משולש פסקל",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/ניתוח_שאלות_פתוחות_למועד_ב.md",
+    "kind": "text",
+    "size_bytes": 9853,
+    "pages": "",
+    "topic_hits": "Hall|אינדוקציה|האסה|יחס|קבוצה|שובך|שקילות",
+    "sample": "# ניתוח שאלות פתוחות - מתמטיקה בדידה (2019-2025) ## מה חוזר? על מה לחזור למועד ב? --- ## טבלת השאלות הפתוחות (2 אחרונות בכל מבחן) | שנה | שאלה לפני אחרונה (16 נק') | שאלה אחרונה (20 נק') | |-----|---------------------------|----------------------| | **2024A** | **אינדוקציה** - ייצוג בינארי (כל n ∈ ℕ ניתן לכתוב כ-Σaᵢ·2ⁱ) | **קבוצות** - הוכחת הכלה עם מכפלה קרטזית (A×A)∪(B×B)=(C×C) | | **2024B** | **אינדוקציה** - לכל n≥12 קיימים k,l כך ש-n=4k+5l | **פונקציות** - f(n)=2g(n)-1: הוכח f לא על + אם f חח",
+    "error": ""
+  },
+  {
+    "course": "discrete",
+    "path": "bdida/סיכום_נושאים_למבחן.md",
+    "kind": "text",
+    "size_bytes": 18213,
+    "pages": "",
+    "topic_hits": "CNF|DNF|אינדוקציה|האסה|יחס|כמת|פונקציה|קבוצה|קומבינטוריקה|שובך|שקילות",
+    "sample": "# סיכום מתמטיקה בדידה - לפי נושאים ## כללי זהב, טיפים, ודפוסים חוזרים ממבחני עבר --- ## 1. תחשיבי פסוקים (Propositional Logic) ### כללי זהב **שקילויות קריטיות לשינון:** - `p -> q ≡ ¬p ∨ q` (זה הכלל הכי חשוב! מופיע כמעט בכל מבחן) - `¬(p -> q) ≡ p ∧ ¬q` (שלילת גרירה - חוזר הרבה) - דה-מורגן: `¬(α ∧ β) ≡ ¬α ∨ ¬β` ו-`¬(α ∧ β) ≡ ¬α ∨ ¬β` - דיסטריביוטיביות: `α ∧ (β ∨ γ) ≡ (α ∧ β) ∨ (α ∧ γ)` - Contrapositive: `p -> q ≡ ¬q -> ¬p` **טאוטולוגיה:** פסוק שבטבלת האמת שלו מופיעים ערכי T בלבד. - T בלבד = טאוטול",
+    "error": ""
+  }
+]

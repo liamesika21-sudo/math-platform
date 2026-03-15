@@ -1,0 +1,365 @@
+                            Linear Algebra 1, Moed B 2025: Solutions
+                                             Reichman university
+
+
+
+
+Lecturers: Dr. Yossi Shamai and Dr. Ran Cohen.
+
+Duration: 3 hours.
+
+Auxiliary material: none.
+
+Instructions:
+
+The following exam has 5 questions. You must answer exactly 4 questions. Each question is worth 25 credits.
+
+Unexplained answers will not receive any credit. You must state all of the conditions for every theorem and/or claim.
+You do not have a choice between different items of the same question. It is forbidden to rely on any material that was
+not learned in the course. You must write your solutions only in the designated areas. Do not write at the back of the
+papers!
+
+
+
+                                                        Good Luck!
+
+   1. (25 points)
+
+      1.1. (17 points) Let V be a vector space over the field F and let U and W be two subspaces of V.
+
+          1.1.1. (2 points) Define the term: U ⊕ W.
+                 Solution: We define the sum of U and W as
+
+
+                                                       U + W = {u + w : u ∈ U, w ∈ W}
+
+
+                 If U ∩ W = {0V } then we denote U ⊕ W = U + W and call it a direct sum.
+          1.1.2. (15 points) Suppose that V is finitely generated. Prove that
+
+
+                                              dim (U + W) = dim (U) + dim (W) − dim (U ∩ W)
+
+
+                 Solution: See lectures.
+
+      1.2. (8 points) Prove or disprove the following statement:
+            There exists a linear transformation T : R9 → R4 for which dim KerT ≤ dim ImT .
+                                                                                                                         2
+
+
+        Solution:
+        False. ATC that there exists a linear transformation T : R9 → R4 such that dim KerT ≤ dim ImT . Since ImT is a
+        subspace of R4 and dim R4 = 4 it holds that dim ImT ≤ 4. By the second theorem of dimensions we have
+
+
+                              9 = dim R9 = dim KerT + dim ImT ≤ dim ImT + dim ImT ≤ 4 + 4 = 8
+
+
+        Contradiction.
+
+2. (25 points)
+
+   2.1. (17 points) Let V be a vector space over the field F and let W be a subset of V.
+
+      2.1.1. (2 points) Define the following term: W is a subspace of V.
+             Solution: W is a subspace of V if W is a vector space over F with respect to the same addition and scalar
+             multiplication operations that are defined on V.
+      2.1.2. (15 points) Suppose that V is finitely generated and that W is a subspace of V.
+        2.1.2.1. (8 points) Prove that dim (W) ≤ dim (V).
+        2.1.2.2. (7 points) Suppose that dim (W) = dim (V). Prove that W = V.
+
+             Solution: See lectures.
+
+   2.2. (8 points) Let A, B ∈ Mn (F). Suppose that A and B are skew symmetric.
+
+        Prove that AB is symmetric if and only if AB = BA.
+        Solution:
+        Since A and B are skew symmetric it holds that At = −A and that Bt = −B.
+        ⇒: Suppose that AB is symmetric, that is, (AB)t = AB. Then BA = −Bt −At = Bt At = (AB)t = AB.
+                                                                                
+
+        ⇐: Suppose that AB = BA. Then (AB)t = Bt At = (−B)(−A) = BA = AB which implies that AB is symmetric.
+
+3. (25 points)
+
+   3.1. (18 points) Note: you may solve all sub-items in this question together as a single item.
+        Let α ∈ R and consider the following linear system in the variables x, y, z
+                                            
+                                            
+                                            
+                                            
+                                            
+                                              x     +      y   +       α·z     =     2
+                                            
+                                            
+                                                     +          +               =     α
+                                            
+                                            
+                                            
+                                             3x          4y               2z
+                                            
+                                                     +                          =
+                                            
+                                            
+                                             2x
+                                                         3y    -           z         1
+
+      3.1.1. (9 points) Find all values of α ∈ R for which the system has a unique solution, and express the unique solution
+             in terms of α.
+      3.1.2. (9 points) Find all values of α ∈ R for which the system has an infinite number of solutions, and find the
+             general solution.
+
+        Solution:
+                                                                                                                                                                                        3
+
+
+        We reduce the augmented coefficient matrix by applying basic row operations
+
+                                                                                                                                                                        
+                         1         1      α     2                     1 1            α              2                         1 1        α               2    
+                                                     R →R −2R                                           
+                                                                                                                       R3 →R3 −R2 
+                                                                                                                                                                              
+               A+ =  3                                3 3 1 
+                                                   α  −−−−−−−−−→  0 1                             α − 6  −−−−−−−−→  0 1                               α − 6 
+                                                                                                                                                                                 
+                                      4      2                                            2 − 3α                                                     2 − 3α
+                                                        R2 →R2 −3R1                                                                                                
+                                2    3     −1     1                         0 1       −1 − 2α           −3                                0 0   α−3            3−α 
+
+        We consider two cases. First, suppose that α , 3. In this case it holds that rank(A+ ) = 3; therefore, the system has
+        a unique solution. We continue reducing the matrix as follows
+
+                                                                                                                                      
+                                           1 1                   α             2                 1 1           α          2 
+                                                                                     R3 → 1 R3                                 
+                                                                                                α−3
+                                                 0 1 2 − 3α α − 6  −−−−−−−−→  0 1 2 − 3α α − 6 
+                                              
+                                                                                                                                    
+                                                     0 0 α − 3 3 − α                                    0 0          1         −1 
+                                                                                                                                               
+                                                                       1 1 0
+                                                                                            α + 2                    1 0 0 3α + 6 
+                                                                                                                                                 
+                                                        R1 →R1 −αR3
+                                                                                                              R →R −R 
+                                                                                                                1 1  2                          
+                                                    −−−−−−−−−−−−−→  0 1 0 −2α − 4  −−−−−−−−→  0 1 0 −2α − 4 
+                                                                                                               
+                                                                                                                            
+                                                     R2 →R2 −(2−3α)R3                                                                     
+                                                                                0 0 1           −1                             0 0 1         −1     
+
+                                                                
+                                                    3α + 6 
+                                                             
+                                                                   
+        It follows that the unique solution is −2α − 4.
+                                                                
+                                                           −1 
+        Second, suppose that α = 3. Then
+
+                                                                                                                                                       
+                                      1 1          α            2       1       1      3       2                 1        0     10      5 
+                                                                                                     R →R −R                               
+                                                                α − 6  =  0
+                                                                                                         1 1 2 
+                                            0 1 2 − 3α                                1     −7      −3  −−−−−−−−→  0          1     −7     −3 
+                                                                                                                                                              
+                                                                                                                                               
+                                                0 0 α−3        3−α   0                0      0       0                       0      0      0      0 
+
+        We conclude that the set of solutions is                                                             
+                                                                                 
+                                                                                 
+                                                                                   5 − 10t               
+                                                                                                                
+                                                                                                                
+                                                                                 
+                                                                                 
+                                                                                                        
+                                                                                                                
+                                                                                                                
+                                                                                                               
+                                                                                              +
+                                                                                                     
+                                                                                                         : t ∈
+                                                                                                             
+                                                                                           −3   7t
+                                                                                                    
+                                                                                                     
+                                                                                                              R
+                                                                                 
+                                                                                 
+                                                                                                         
+                                                                                                                
+                                                                                                                
+                                                                                 
+                                                                                 
+                                                                                         
+                                                                                                      
+                                                                                                               
+                                                                                                                
+                                                                                                                
+                                                                                  t 
+                                                                                                               
+                                                                                                                
+
+   3.2. (7 points) Prove or disprove the following statement:
+        The equation 3x2 = 4 has two different solutions in Z23 .
+        Solution:
+        True. Note that 3·8 = 24 ≡ 1 mod 23, hence 3−1 = 8 in Z23 . Therefore 3x2 = 4 if and only if x2 = 3−1 ·4 = 8·4 = 9.
+        It follows that x = 3 and x = 20 are solutions for the equation (note that −3 ≡ 20 mod 23).
+
+4. (25 points)
+                                                                                                                 
+                                                                                       2  1            3  1
+   4.1. (13 points) Let T : R2 → R2 be a linear transformation, and suppose that T   =   and T   =  .
+                                                                                                                   
+                                                                                        −3 2                    −2 1
+                                      
+                                      0 
+      4.1.1. (4 points) Compute T  .
+                                        
+                                       −5
+                                                                                                                                                                 4
+
+
+      4.1.2. (4 points) Prove that T is invertible.
+                                         
+                                        4
+      4.1.3. (5 points) Compute T −1  
+                                           6
+
+        Solution:
+
+      4.1.1. We have
+                                                                                                                                 
+                                   0        2         3             2          3        1         1 1
+                                                                                 linearity
+                             T   = T 3   − 2   = 3 · T   − 2 · T   = 3 ·   − 2 ·   =  
+                                                                                                                                   
+                                    −5           −3              −2                  −3             −2            2             1 4
+
+                               
+                            1 1
+      4.1.2. The vectors   ,   are 2 linearly independent vectors in R2 (indeed, neither one of them is a scalar multipli-
+                                 
+                              2 1
+                                                                                                        
+                                                                                                      2   3 
+             cation of the other) and therefore are a basis of R2 . Similarly, the vectors   ,   are also a basis of R2 . It
+                                                                                                          
+                                                                                                       −3 −2
+             follows that T maps a basis to a basis, and as T is a linear transformation, then by a theorem proven in class
+             T is invertible.
+      4.1.3. Note that
+                                                                                                                                    
+                             4             1     1       2      3 
+                                                                                           linearity   2 
+                                                                                                                             3   10 
+                                   = 2 ·   + 2   = 2T   + 2T   = T 2 ·   + 2 ·   = T 
+                                                                                                                 
+                                                                                                                                                       
+                                    6                 2           1            −3           −2                        −3            −2           −10
+
+                                                
+                                   4 −10
+             Consequently, T −1   =       .
+                                                
+                                     6  10 
+
+   4.2. (12 points) Let D ∈ Mn (R). We say that D is a diagonal matrix if for every 1 ≤ i, j ≤ n such that i , j it holds that
+        [D]i j = 0. In this case we denote D = diag ([D]11 , . . . , [D]nn ).
+        Let α1 . . . , αn ∈ R be n distinct numbers, that is, such that ∀1 ≤ i, j ≤ n for which i , j we have αi , α j .
+        Let D = diag (α1 , . . . , αn ) and let K ∈ Mn (R). Prove that if K commutes with D, then K is diagonal.
+
+        Solution:
+        Suppose that K commutes with D, i.e., KD = DK. Let 1 ≤ i, j ≤ n such that i , j. We need to prove that [K]i j = 0.
+        Note that since D is diagonal,
+
+                                                                     n
+                                                                     X
+                                                   [K · D]i j =            [K]ik [D]k j = [K]i j [D] j j = [K]i j α j
+                                                                     k=1
+
+
+        Also,
+                                                             n
+                                                             X
+                                            [D · K]i j =            [D]ik [K]k j = [D]ii [K]i j = αi [K]i j = [K]i j αi
+                                                              k=1
+                                                                                                                                  
+        As K and D commute, it holds that [K · D]i j = [D · K]i j . That is, [K]i j α j = [K]i j αi , and therefore [K]i j α j − αi = 0.
+        Finally, since αi , α j it holds that [K]i j = 0.
+
+5. (25 points)
+                                                                                                                             5
+
+
+5.1. (15 points) Let A ∈ Mm×n (R).
+
+  5.1.1. (5 points) Prove that Null (A) ⊆ Null(At A).
+                                 y1 
+  5.1.2. (5 points) Let ⃗y =  ...  ∈ Rm . Suppose that ⃗y t · ⃗y = 0. Prove that ⃗y = ⃗0.
+                                                             
+                                  ym
+  5.1.3. (5 points) Conclude that Null At A = Null(A).
+                                                     
+
+     Solution:
+
+  5.1.1. Let ⃗x ∈ Null(A). Then A⃗x = ⃗0. Thus,
+
+
+                                                          At A · ⃗x = At · A · ⃗x = At · ⃗0 = ⃗0
+                                                                               
+
+
+          and therefore ⃗x ∈ Null At A .
+                                      
+
+  5.1.2. We have
+                                                                            m
+                                                                            X
+                                                                  ⃗y t ⃗y =   y2i = 0
+                                                                    
+                                                                           i=1
+
+         Since yi ∈ R for every 1 ≤ i ≤ n, it holds that y2i ≥ 0; therefore, y1 = · · · = ym = 0 which means that ⃗y = ⃗0.
+
+  5.1.3. By item (a), Null(A) ⊆ Null At A , so it remains to prove that Null At A ⊆ NullA.
+                                                                                      
+
+         Let ⃗x ∈ Null At A . Then At A ⃗x = ⃗0. We will prove that ⃗x ∈ Null(A), i.e., A⃗x = ⃗0. Denote ⃗y = A⃗x, then
+                                       
+
+
+                                     ⃗y t ⃗y = A⃗x t · A⃗x = ⃗x t At · A⃗x = ⃗x t · At A⃗x = ⃗x t · ⃗0 = ⃗0
+                                                                                      
+
+
+          Hence, by item (b), ⃗y = ⃗0, i.e., A⃗x = ⃗0.
+
+5.2. (10 points) Let V and W be two finitely generated vector spaces over the field F.
+     Suppose that dim V ≥ 1 and that dim Hom (V, W) = 8. Let T : V → W be an injective linear transformation.
+     Compute dim ImT .
+
+     Solution:
+     As T is an injective linear transformation from V to W, it holds that dim ker T = 0 and that dim W ≥ dim V ≥ 1.
+     By the second theorem of dimensions it holds that
+
+
+                                      dim V = dim ker T + dim ImT = 0 + dim ImT = dim ImT
+
+
+     By a theorem from the lecture, it holds that dim V · dim W = dim Hom (V, W). Since dim Hom (V, W) = 8 we
+     obtain that dim V · dim W = 8, and we consider two cases:
+
+       • Case 1: dim V = 2 and dim W = 4. In this case dim ImT = dim V = 2.
+       • Case 2: dim V = 1 and dim W = 8. In this case dim ImT = dim V = 1.
+
+     (If dim V > 1 the second case does not hold and dim ImT = 2.)
+

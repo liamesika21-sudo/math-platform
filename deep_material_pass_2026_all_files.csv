@@ -1,0 +1,287 @@
+course,section,relative_path,ext,size_bytes,pdf_pages,ocr_used,text_words,token_count,has_text,top_tokens,topics
+infi,(root),.DS_Store,,6148,,False,0,0,False,,
+infi,(root),CALCULUS_1_LECTURE_BY_LECTURE.md,.md,30203,,False,5082,2381,True,lecture;lim;key;theorem;all;continuous;group;function;rule;point,רציפות;נגזרות;גבולות;אינטגרלים;sup_inf
+infi,(root),CALCULUS_1_QUICK_REFERENCE.md,.md,8155,,False,1402,567,True,theorem;lim;cos;rule;sin;lectures;sec;integration;csc;value,נגזרות;אינטגרלים;רציפות;גבולות;sup_inf
+infi,(root),CALCULUS_1_THEOREMS_DEFINITIONS_LEMMAS.md,.md,22158,,False,3742,1688,True,lecture;lim;group;theorem;continuous;rule;theorems;main;topics;pdf,רציפות;נגזרות;אינטגרלים;גבולות;sup_inf
+infi,(root),README_analysis.txt,.txt,4073,,False,315,234,True,בחינות;analysis;moed;pdf;דפוסים;html;ניתוח;בבחינות;ניתן;ישירות,רציפות;sup_inf;גבולות
+infi,(root),analysis_moed_b_2026.html,.html,57213,,False,4049,3314,True,strong;div;class;שאלה;בחינה;box;color;margin;אי;sup,sup_inf;נגזרות;גבולות;רציפות
+infi,(root),analysis_moed_b_2026.md,.md,26038,,False,3169,1803,True,שאלה;בחינה;sup;אי;inf;בבחינות;דיפרנציאביל;רציונלי;lim;הוכח,sup_inf;נגזרות;גבולות;רציפות
+infi,(root),cheatsheet_moed_b.pdf,.pdf,4641,1,False,564,279,True,exams;lec;pattern;lim;exists;identical;cont;diff;proof;eps,נגזרות;sup_inf;רציפות;גבולות;אינטגרלים
+infi,(root),cheatsheet_moed_b_heb.pdf,.pdf,54427,1,False,427,254,True,שאלה;מבחנים;תבנית;הרצאה;אי;רציפות;זהה;משפט;רציונלי;סבירות,רציפות;נגזרות;sup_inf;גבולות
+infi,(root),critical_theorems_moed_b.html,.html,35556,,False,2642,2287,True,div;class;span;source;strong;item;label;border;font;padding,גבולות;נגזרות;sup_inf;רציפות
+infi,exam,exam/.DS_Store,,6148,,False,0,0,False,,
+infi,exam,exam/ExamA2022_solutions.pdf,.pdf,72334,4,False,2426,946,True,such;every;let;exists;there;solution;points;suppose;contradiction;continuous,sup_inf;רציפות;גבולות
+infi,exam,exam/ExamA_calculus1_2024_sol.pdf,.pdf,65510,4,False,1429,546,True,lim;let;points;prove;such;suppose;solution;every;deleted;neighborhood,sup_inf;רציפות
+infi,exam,exam/ExamA_calculus1_2025_solution.pdf,.pdf,74820,5,False,1523,570,True,points;exists;there;every;sup;solution;let;which;such;prove,sup_inf;רציפות
+infi,exam,exam/ExamB2022_solutions.pdf,.pdf,74795,4,False,2335,933,True,such;exists;there;lim;let;solution;points;every;differentiable;you,sup_inf;רציפות;נגזרות
+infi,exam,exam/ExamB_calculus1_2024_sol.pdf,.pdf,68473,4,False,1646,604,True,lim;points;every;such;let;solution;prove;bounded;exists;there,sup_inf;רציפות
+infi,exam,exam/ExamB_calculus1_2025_Solution.pdf,.pdf,76109,4,False,1608,563,True,points;exists;there;such;every;solution;let;prove;lim;suppose,sup_inf;רציפות
+infi,exam,exam/MoedA_2023_eng_sol.pdf,.pdf,77304,4,False,1771,592,True,such;points;there;exists;every;solution;let;suppose;prove;continuous,sup_inf;רציפות;נגזרות
+infi,exam,exam/MoedB_2023_eng_sol.pdf,.pdf,68044,4,False,1683,653,True,lim;points;every;let;solution;exists;exist;function;such;does,sup_inf;רציפות
+infi,hw,hw/.DS_Store,,6148,,False,0,0,False,,
+infi,hw,hw/Exercise 1 solution.pdf,.pdf,71813,5,False,1750,553,True,points;solution;such;let;there;every;coprime;exists;prove;suppose,sup_inf
+infi,hw,hw/Exercise 10 solution.pdf,.pdf,74869,5,False,2071,592,True,every;there;exists;such;continuous;lim;points;solution;prove;let,רציפות;sup_inf
+infi,hw,hw/Exercise 11 solution.pdf,.pdf,83947,7,False,2096,567,True,lim;differentiable;every;points;solution;let;exists;there;such;therefore,sup_inf;רציפות;נגזרות
+infi,hw,hw/Exercise 12 solution.pdf,.pdf,70818,5,False,1985,558,True,every;there;such;solution;arctan;differentiable;exists;points;therefore;lim,רציפות;sup_inf
+infi,hw,hw/Exercise 2 solution.pdf,.pdf,76310,6,False,2232,919,True,sup;inf;points;bound;there;solution;lower;bounded;exists;prove,sup_inf
+infi,hw,hw/Exercise 3 solution.pdf,.pdf,74742,8,False,2095,708,True,such;inf;sup;let;points;there;solution;prove;exists;every,sup_inf;גבולות
+infi,hw,hw/Exercise 4 solution.pdf,.pdf,68872,5,False,1667,564,True,every;solution;points;let;student;such;lim;there;exists;defined,sup_inf
+infi,hw,hw/Exercise 5 solution.pdf,.pdf,83593,8,False,2393,553,True,lim;let;points;such;exists;solution;every;there;prove;choose,sup_inf;גבולות
+infi,hw,hw/Exercise 6 solution.pdf,.pdf,79998,7,False,2315,668,True,lim;every;points;solution;let;aol;max;there;exists;deleted,sup_inf;גבולות
+infi,hw,hw/Exercise 7 solution.pdf,.pdf,79510,7,False,2095,698,True,lim;exists;there;such;every;points;solution;cos;sin;let,גבולות;sup_inf
+infi,hw,hw/Exercise 8 solution.pdf,.pdf,81537,8,False,2470,696,True,lim;increasing;strictly;such;let;points;solution;there;exists;every,sup_inf;גבולות
+infi,hw,hw/Exercise 9 solution.pdf,.pdf,80497,8,False,2310,670,True,continuous;such;there;exists;every;points;lim;therefore;solution;let,רציפות;sup_inf
+infi,hw,hw/שאלות_מטלות_1-3.md,.md,10833,,False,1655,731,True,נקודות;sup;הוכיחו;שאלה;אז;נניח;לכל;frac;inf;חסומה,sup_inf
+infi,hw,hw/שאלות_מטלות_10-12.pdf,.pdf,47782,5,False,1021,394,True,נקודות;הוכיחו;נניח;שאלה;לכל;גזירה;פונקציה;אז;תהי;lim,sup_inf;גבולות;רציפות
+infi,hw,hw/שאלות_מטלות_4-6.pdf,.pdf,54673,6,False,1696,766,True,lim;נקודות;קיים;לכל;שאלה;מתקיים;אז;הוכיחו;א׳;סטודנט,גבולות;sup_inf
+infi,hw,hw/שאלות_מטלות_7-9.pdf,.pdf,52874,6,False,1612,705,True,נקודות;lim;אז;עולה;שאלה;נניח;קיים;הוכיחו;רציפה;לכל,גבולות;רציפות;sup_inf
+infi,lecture,lecture/Lecture 10 group 2 calculus 1 2026.pdf,.pdf,3739481,8,False,0,0,False,,
+infi,lecture,lecture/Lecture 11 group 1 calculus 1 2026 (2).pdf,.pdf,4949111,18,False,0,0,False,,
+infi,lecture,lecture/Lecture 12 group 1 calculus 1 2026.pdf,.pdf,4322381,14,False,574,179,True,fix;pip;pin;ftp;iii;lim;xer;flx;nlc;pain,sup_inf
+infi,lecture,lecture/Lecture 14 group 2 calculus 1 2026.pdf,.pdf,3322649,12,False,390,147,True,lingly;pin;lko;gly;fix;ocly;limf;lim;plan;glt,sup_inf
+infi,lecture,lecture/Lecture 15 group 1 calculus 1 2026.pdf,.pdf,4996016,19,False,693,196,True,him;lim;pin;limp;plc;arcsin;xer;cost;sin;slc,
+infi,lecture,lecture/Lecture 16 group 2 calculus 1 2026.pdf,.pdf,2737822,9,False,619,194,True,xer;fix;plc;jan;aib;slc;lim;japan;pin;else,sup_inf
+infi,lecture,lecture/Lecture 18 group 2 calculus 2026-2.pdf,.pdf,6417867,17,False,673,214,True,aib;slc;fla;fix;faib;flat;post;asceb;flc;psi,sup_inf
+infi,lecture,lecture/Lecture 19 group 1 calculus 1 2026.pdf,.pdf,4822713,16,False,745,216,True,xer;aib;plc;fix;pip;him;pyn;eto;ifa;iii,
+infi,lecture,lecture/Lecture 2 group 2 calculus 1 2026.pdf,.pdf,3707301,9,False,0,0,False,,
+infi,lecture,lecture/Lecture 20 calculus 1 group 2 2026-3.pdf,.pdf,6191944,15,False,760,228,True,xer;him;lim;slc;pyn;nnselcn;iii;fix;sinx;play,
+infi,lecture,lecture/Lecture 21 group 1 calculus 1 2026.pdf,.pdf,7394020,16,False,921,262,True,xer;man;fix;aib;slc;foal;yer;sin;gof;ftp,
+infi,lecture,lecture/Lecture 22 group 1 calculus 1 2026.pdf,.pdf,3300384,9,False,565,157,True,aib;plc;aid;sic;fix;xer;japan;genn;day;rin,
+infi,lecture,lecture/Lecture 23 group 1 calculus 1 2026.pdf,.pdf,7948180,11,False,665,209,True,fix;xer;pie;pin;snip;aib;slc;plc;fig;ascab,sup_inf
+infi,lecture,lecture/Lecture 4 group 1  calculus 1 2026.pdf,.pdf,4412996,9,False,0,0,False,,
+infi,lecture,lecture/Lecture 6 group 2 calculus 1 2026.pdf,.pdf,2632190,14,False,3,0,False,,
+infi,lecture,lecture/Lecture 7 group 1 calculus 1 2026.pdf,.pdf,3773922,17,False,0,0,False,,
+infi,lecture,lecture/Lecture 8 group 2 calculus 1 2026 2.pdf,.pdf,2420711,8,False,0,0,False,,
+infi,lecture,lecture/Lecture 9 group 1 calculus 1 2026.pdf,.pdf,27878601,12,False,5,3,True,lsd;wed;eden,
+infi,lecture,lecture/הרצאה - 17.pdf,.pdf,7288600,13,False,824,266,True,fix;xer;japan;plc;jan;aib;gas;slc;lim;pin,sup_inf
+infi,lecture,lecture/הרצאה 1.pdf,.pdf,2740555,11,False,77,18,True,pom;sins;need;rise;ate;even;odd;kaila;hell;sina,
+infi,lecture,lecture/הרצאה 11- אינפי.pdf,.pdf,4969497,18,False,4,1,True,anion,
+infi,lecture,lecture/הרצאה 13 אינפי 2.pdf,.pdf,5297857,14,False,644,246,True,cost;pin;sinx;limflx;him;sin;lim;man;sink;cos,sup_inf
+infi,lecture,lecture/הרצאה 13 אינפי.pdf,.pdf,4588115,13,False,596,228,True,cost;pin;sinx;limflx;him;lim;man;sink;cos;tot,sup_inf
+infi,lecture,lecture/הרצאה 3.pdf,.pdf,3178053,14,False,19,5,True,por;pas;eon;pit;plan,
+infi,lecture,lecture/הרצאה 5 - אינפי - 11.11.pdf,.pdf,3678055,15,False,0,0,False,,
+infi,lecture,lecture/הרצאה 6 - אינפי - 13.11.pdf,.pdf,5043824,17,False,5,0,False,,
+infi,moeda,moeda/.DS_Store,,6148,,False,0,0,False,,
+infi,moeda,moeda/Calculus_1 (23).pdf,.pdf,81384,5,False,1682,583,True,points;every;there;such;exists;let;solution;prove;lim;suppose,sup_inf;רציפות
+infi,recitation,recitation/Recitation 10-Hebrew.pdf,.pdf,646066,6,False,966,36,True,lim;cos;tan;sin;cosxx,
+infi,recitation,recitation/Recitation 11-Hebrew.pdf,.pdf,387222,6,False,795,33,True,lim;xxx;xxxx,
+infi,recitation,recitation/Recitation 13-Hebrew.pdf,.pdf,185636,3,False,470,12,True,sin;cos;sinx;max,
+infi,recitation,recitation/Recitation 4-Hebrew.pdf,.pdf,854010,9,False,803,34,True,max;min;lim,
+infi,recitation,recitation/Recitation 5-Hebrew.pdf,.pdf,2066169,17,False,874,58,True,lim;min;iii;time;antefe;instated;iim;fifa;poje;etc,
+infi,recitation,recitation/Recitation 6-Hebrew.pdf,.pdf,1541056,10,False,872,58,True,lim;jak;max;sup;bed;pies;pms;jed;rips;xco,sup_inf
+infi,recitation,recitation/Recitation 7-Hebrew.pdf,.pdf,839608,8,False,1013,139,True,lim;sin;cos;bsin;max;cosxx;sinx;cosx,
+infi,recitation,recitation/Recitation 8-Hebrew.pdf,.pdf,678685,5,False,646,14,True,lim;min;sup,sup_inf
+infi,recitation,recitation/Recitation 9-Hebrew.pdf,.pdf,408589,6,False,657,19,True,lim;inf;min,sup_inf
+infi,recitation,recitation/תרגול 1 מקס.pdf,.pdf,828256,6,False,701,52,True,him;else;xen;yeq;pig;yso;yen;new;here;rer,
+infi,recitation,recitation/תרגול 3.pdf,.pdf,448013,6,False,594,48,True,sup;inf;max;min;god;maxaltno;gofor;hod;supca;epcot,sup_inf
+infi,recitation,recitation/תרגול2.pdf,.pdf,2254413,12,False,1111,219,True,inf;sup;supa;min;eso;her;food;sic;rods;suela,sup_inf
+infi,simulation,simulation/Simulation_calculus1_2026_solution.pdf,.pdf,82188,4,False,1670,543,True,points;every;let;such;solution;there;prove;suppose;exists;differentiable,sup_inf;רציפות;גבולות
+linear,(root),.DS_Store,,10244,,False,0,0,False,,
+linear,(root),ANALYSIS_SUMMARY.txt,.txt,20906,,False,1952,1312,True,study;time;proof;theorems;minutes;exam;rank;lecture;theorem;analysis,מערכות_לינאריות;בסיס_וממד;דטרמיננטות;גרעין_ותמונה;מרחבים_לינאריים;הפיכות
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/.DS_Store,,10244,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 01 2026.pdf,.pdf,2685939,11,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 02 2026.pdf,.pdf,2305005,10,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 03 2026.pdf,.pdf,3093997,13,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 04 2026.pdf,.pdf,3452989,15,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 05 2026.pdf,.pdf,4252105,16,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 06 2026.pdf,.pdf,3247539,16,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 07 2026.pdf,.pdf,4233167,15,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 08 2026.pdf,.pdf,2864167,14,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 09 2026.pdf,.pdf,3329712,13,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 10 2026.pdf,.pdf,2858447,13,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 11 2026_251202_115331.pdf,.pdf,3139669,14,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 12 2026.pdf,.pdf,1816404,7,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 13 2026.pdf,.pdf,3381252,12,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 14 2026.pdf,.pdf,2987295,12,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 15 2026.pdf,.pdf,3444835,14,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 16 2026.pdf,.pdf,3206729,12,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 17 2026.pdf,.pdf,3870799,16,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 18 2026.pdf,.pdf,1820293,8,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 19 2026.pdf,.pdf,2907077,13,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 20 2026.pdf,.pdf,3804828,15,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 21 2026.pdf,.pdf,5223024,23,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 22 2026.pdf,.pdf,3258335,11,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 23 2026.pdf,.pdf,3269888,16,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 24 2026.pdf,.pdf,1744460,8,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 25 2026.pdf,.pdf,2853755,15,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA01 lecture 26 2026.pdf,.pdf,1424791,8,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/LA02 lecture 26 2026.pdf,.pdf,2419306,13,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_01.txt,.txt,11,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_02.txt,.txt,10,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_03.txt,.txt,13,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_04.txt,.txt,15,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_05.txt,.txt,16,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_06.txt,.txt,16,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_07.txt,.txt,15,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_08.txt,.txt,14,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_09.txt,.txt,13,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_10.txt,.txt,13,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_11.txt,.txt,14,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_12.txt,.txt,7,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_13.txt,.txt,12,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_14.txt,.txt,12,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_15.txt,.txt,14,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/lecture_16.txt,.txt,12,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec10_p1-01.png,.png,220249,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec11_p1-01.png,.png,173929,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec2_p1-01.png,.png,211266,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec3_p1-01.png,.png,206410,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec4_p1-01.png,.png,148333,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec5_p1-01.png,.png,228744,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec6_p1-01.png,.png,204750,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec7_p1-01.png,.png,279716,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec8_p1-01.png,.png,159991,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lec9_p1-01.png,.png,239220,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/out_lecture1_page1-01.png,.png,107838,,False,0,0,False,,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_10_Omer.pdf,.pdf,216226,8,False,3449,1677,True,מטריצה;מטריצות;ה־;הפיכה;אלמנטרית;הראשונה;אלמנטריות;שורה;השורה;המטריצה,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_11_Omer.pdf,.pdf,290356,8,False,3676,1367,True,det;פתרון;מטריצה;למערכת;ש־;לכל;אזי;מתחלפת;ב־;תהא,דטרמיננטות;מרחבים_לינאריים
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_12_Omer.pdf,.pdf,232122,9,False,4027,1337,True,det;הדטרמיננטה;הפיכה;מטריצה;המטריצה;ולכן;מטריצת;מתקיים;פתרון;ש־,דטרמיננטות;מערכות_לינאריות;גרעין_ותמונה
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_13_Omer.pdf,.pdf,167506,6,False,2529,1218,True,dim;cola;rank;מרחב;העמודות;rowa;span;בסיס;col;השורות,מערכות_לינאריות;גרעין_ותמונה;מרחבים_לינאריים
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_1_Omer.pdf,.pdf,175915,3,False,1444,737,True,איבר;ש־;שדה;איברים;לכל;לחיבור;מתקיים;ו־;לכפל;multiplicative,הפיכות
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_1_Omer.pdf.txt,.txt,18091,,False,1444,737,True,איבר;ש־;שדה;איברים;לכל;לחיבור;מתקיים;ו־;לכפל;multiplicative,הפיכות
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_2_Omer.pdf,.pdf,183517,6,False,2790,1145,True,mod;מודולו;ש־;קיים;יהא;ב־;פעולות;כלומר;ולכן;מספר,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_3_Omer.pdf,.pdf,203282,11,False,4048,2111,True,מערכת;פתרון;משוואות;המקדמים;שורה;מטריצת;ב־;הגדרה;המשוואות;מדורגת,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_4_Omer.pdf,.pdf,203685,9,False,4241,2038,True,לכל;מרחב־וקטורי;לחיבור;וקטור;תת;מתקיים;מעל;בסקלר;ש־;הגדרה,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_5_Omer.pdf,.pdf,246759,7,False,3786,1302,True,span;וקטורים;ש־;צירוף־ליניארי;מרחב־וקטורי;אזי;ולכן;הווקטור;הווקטורים;לכן,מרחבים_לינאריים
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_6_Omer.pdf,.pdf,176682,7,False,3310,1193,True,הווקטורים;בת;ולכן;בלתי;תלויים־ליניארית;תלויה־ליניארית;span;וקטור;ש־;מרחב־וקטורי,מרחבים_לינאריים
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_7_Omer.pdf,.pdf,280928,6,False,3217,1660,True,span;בת;בסיס;ולכן;וקטור;ש־;פורשת;ב־;מרחב־וקטורי;לכן,מרחבים_לינאריים
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_8_Omer.pdf,.pdf,254149,7,False,3978,1333,True,dim;span;ולכן;לכן;ש־;יהא;תת;ב־;סכום;מרחב־וקטורי,מרחבים_לינאריים
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/Lin_Alg_I_2025-2026_Tirgul_9_Omer.pdf,.pdf,224344,8,False,4024,1397,True,מטריצה;הפיכה;המטריצה;מטריצות;ה־;ולכן;היחידה;כפל;פתרון;ש־,מרחבים_לינאריים
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/t2.txt,.txt,22156,,False,2790,1145,True,mod;מודולו;ש־;קיים;יהא;ב־;פעולות;כלומר;ולכן;מספר,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/t3.txt,.txt,43586,,False,4050,2111,True,מערכת;פתרון;משוואות;המקדמים;שורה;מטריצת;ב־;הגדרה;המשוואות;מדורגת,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/t4.txt,.txt,41035,,False,4243,2038,True,לכל;מרחב־וקטורי;לחיבור;וקטור;תת;מתקיים;מעל;בסקלר;ש־;הגדרה,
+linear,LECTURES+PRACTICE,LECTURES+PRACTICE/tirgul/t5.txt,.txt,35532,,False,3791,1302,True,span;וקטורים;ש־;צירוף־ליניארי;מרחב־וקטורי;אזי;ולכן;הווקטור;הווקטורים;לכן,מרחבים_לינאריים
+linear,(root),LECTURE_BY_LECTURE_THEOREM_MAP.md,.md,10120,,False,1774,862,True,tested;theorem;moed;det;medium;rank;proved;lecture;high;lectures,מרחבים_לינאריים;מערכות_לינאריות;דטרמיננטות;בסיס_וממד;גרעין_ותמונה;הפיכות
+linear,LOGO,LOGO/Lia Mesika.png,.png,169626,,False,0,0,False,,
+linear,(root),MOED_B_THEOREM_ANALYSIS_FINAL.md,.md,12856,,False,2105,1302,True,det;rank;moed;proof;dim;row;basis;theorems;dimension;theorem,מערכות_לינאריות;דטרמיננטות;בסיס_וממד;מרחבים_לינאריים;גרעין_ותמונה;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2022-23_MoedA_Eng.pdf,.pdf,74934,13,False,885,359,True,let;points;prove;suppose;field;dim;span;linear;every;you,מרחבים_לינאריים;מערכות_לינאריות;בסיס_וממד;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2022-23_MoedA_Eng_solution.pdf,.pdf,83539,5,False,2757,793,True,dim;let;points;solution;prove;span;ker;there;suppose;holds,מרחבים_לינאריים;מערכות_לינאריות;בסיס_וממד;דטרמיננטות;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2022-23_MoedA_Heb.pdf,.pdf,114883,13,False,762,332,True,נקודות;ש־;יהי;הוכיחו;נניח;dim;שאלה;span;שדה;מעל,מרחבים_לינאריים
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2022-23_MoedB_Eng.pdf,.pdf,72063,11,False,880,357,True,points;let;prove;suppose;linear;following;spanning;such;you;every,מרחבים_לינאריים;מערכות_לינאריות;הפיכות;בסיס_וממד;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2022-23_MoedB_Eng_solution.pdf,.pdf,78686,5,False,2688,760,True,let;points;dim;prove;solution;such;ker;since;there;holds,מרחבים_לינאריים;מערכות_לינאריות;הפיכות;בסיס_וממד;גרעין_ותמונה;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2022-23_MoedB_Eng_solution_ocr.txt,.txt,31250,,False,2683,760,True,let;points;dim;prove;solution;such;ker;since;there;holds,מרחבים_לינאריים;מערכות_לינאריות;הפיכות;בסיס_וממד;גרעין_ותמונה;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2022-23_MoedB_Heb.pdf,.pdf,120516,11,False,767,329,True,נקודות;ש־;הוכיחו;נניח;שאלה;יהי;מעל;פורשים;ו־;שדה,מערכות_לינאריות;מרחבים_לינאריים
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2023-24_MoedA_Eng.pdf,.pdf,70966,14,False,917,395,True,let;points;suppose;space;prove;you;question;vector;system;dim,מרחבים_לינאריים;בסיס_וממד;מערכות_לינאריות;הפיכות;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2023-24_MoedA_Heb.pdf,.pdf,136829,14,False,756,343,True,נקודות;יהא;שאלה;הוכיחו;מעל;ש־;dim;נניח;למערכת;הדף,מרחבים_לינאריים
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2023-24_MoedA_Solutions.pdf,.pdf,82527,6,False,3002,815,True,let;dim;points;solution;therefore;since;span;linearly;suppose;invertible,מרחבים_לינאריים;בסיס_וממד;הפיכות;מערכות_לינאריות;גרעין_ותמונה;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2023-24_MoedB_Eng.pdf,.pdf,71160,13,False,828,353,True,let;points;prove;dim;space;field;vector;suppose;you;question,מרחבים_לינאריים;הפיכות;מערכות_לינאריות;גרעין_ותמונה;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2023-24_MoedB_Eng_solutions.pdf,.pdf,82700,6,False,2839,731,True,dim;let;points;since;holds;prove;solution;such;consider;every,מרחבים_לינאריים;הפיכות;מערכות_לינאריות;גרעין_ותמונה;בסיס_וממד;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2023-24_MoedB_Eng_solutions_ocr.txt,.txt,30342,,False,2831,731,True,dim;let;points;since;holds;prove;solution;such;consider;every,מרחבים_לינאריים;הפיכות;מערכות_לינאריות;גרעין_ותמונה;בסיס_וממד;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2023-24_MoedB_Heb.pdf,.pdf,138472,13,False,714,326,True,נקודות;הוכיחו;יהא;dim;שאלה;מרחב־וקטורי;ש־;תהא;נניח;שדה,מרחבים_לינאריים
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2024-25_MoedA_Eng.pdf,.pdf,69417,18,False,912,410,True,points;let;solution;question;space;prove;page;left;blank;provide,מרחבים_לינאריים;מערכות_לינאריות;בסיס_וממד;גרעין_ותמונה;דטרמיננטות;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2024-25_MoedA_Eng_Solutions.pdf,.pdf,76044,5,False,2547,645,True,rank;points;dim;solution;let;span;prove;row;there;such,מערכות_לינאריות;מרחבים_לינאריים;גרעין_ותמונה;הפיכות;בסיס_וממד;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2024-25_MoedA_Heb.pdf,.pdf,125144,18,False,751,367,True,נקודות;שאלה;פתרון;הוכיחו;הדף;יהי;ש־;מושאר;ריק;כדי,מערכות_לינאריות;מרחבים_לינאריים
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2024-25_MoedB_Eng.pdf,.pdf,73081,18,False,893,425,True,points;let;solution;dim;prove;question;space;suppose;page;left,מרחבים_לינאריים;מערכות_לינאריות;גרעין_ותמונה;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2024-25_MoedB_Eng_Solutions.pdf,.pdf,79576,5,False,2361,692,True,dim;points;let;solution;imt;prove;suppose;null;holds;linear,מרחבים_לינאריים;גרעין_ותמונה;מערכות_לינאריות;בסיס_וממד;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2024-25_MoedB_Eng_Solutions_ocr.txt,.txt,27240,,False,2356,692,True,dim;points;let;solution;imt;prove;suppose;null;holds;linear,מרחבים_לינאריים;גרעין_ותמונה;מערכות_לינאריות;בסיס_וממד;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2024-25_MoedB_Heb.pdf,.pdf,127699,18,False,756,390,True,נקודות;שאלה;פתרון;dim;הוכיחו;הדף;מושאר;ריק;כדי;לאפשר,גרעין_ותמונה
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2025-26_Simulation_Eng.pdf,.pdf,72599,16,False,732,321,True,points;let;solution;prove;dim;back;span;page;scanned;rank,מרחבים_לינאריים;מערכות_לינאריות;דטרמיננטות;גרעין_ותמונה;בסיס_וממד;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2025-26_Simulation_Eng_Solution.pdf,.pdf,82135,7,False,2521,751,True,dim;span;row;rank;points;solution;let;matrix;prove;det,מערכות_לינאריות;מרחבים_לינאריים;גרעין_ותמונה;דטרמיננטות;בסיס_וממד;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/LA1_2025-26_Simulation_Heb.pdf,.pdf,134503,18,False,703,380,True,נקודות;צידו;האחורי;דף;נסרק;פתרון;הוכיחו;dim;שאלה;span,מערכות_לינאריות;מרחבים_לינאריים;דטרמיננטות;גרעין_ותמונה
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_group1_2026_eng.pdf,.pdf,37495,2,False,142,97,True,any;you;must;write;points;denoted;solution;linear;algebra;quiz,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_group1_2026_heb.pdf,.pdf,72211,4,False,141,111,True,הבחינה;קבוצה;חומר;שתי;עליכן;יש;לרשום;פתרונות;שאלה;נקודות,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_group1_2026_solution.pdf,.pdf,48875,1,False,223,121,True,mod;solution;any;you;must;write;points;denoted;there;zero,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_group2_2026_eng.pdf,.pdf,37907,2,False,142,96,True,any;you;must;write;points;denoted;solution;linear;algebra;quiz,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_group2_2026_heb.pdf,.pdf,72731,4,False,141,111,True,הבחינה;קבוצה;חומר;שתי;עליכן;לרשום;פתרונות;שאלה;נקודות;שנסמנה,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_group2_2026_solution.pdf,.pdf,50731,1,False,323,140,True,mod;solution;write;thus;any;you;must;every;points;denoted,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_group3_2026_eng.pdf,.pdf,40424,3,False,149,100,True,any;you;must;write;only;points;addition;symbol;solution;linear,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_group3_2026_solution.pdf,.pdf,51106,1,False,299,136,True,mod;solution;any;addition;you;must;write;only;points;associative,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_simulation_2026_eng.pdf,.pdf,37915,2,False,134,94,True,any;you;must;write;points;solution;linear;algebra;quiz;simulation,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_simulation_2026_heb.pdf,.pdf,68280,4,False,135,109,True,הבחינה;חומר;שתי;עליכן;לרשום;פתרונות;שאלה;נקודות;שנסמנה;פתרון,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz1_simulation_2026_solution.pdf,.pdf,50207,1,False,294,128,True,mod;solution;any;you;must;every;write;back;points;axiom,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz2_group1_2026_eng.pdf,.pdf,53396,4,False,284,130,True,page;scanned;back;any;let;you;must;all;write;points,מרחבים_לינאריים;בסיס_וממד
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz2_group1_2026_heb.pdf,.pdf,109323,4,False,251,149,True,עמוד;נסרק;הבחינה;הצד;האחורי;חומר;עליכן;לרשום;פתרונות;שאלה,
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz2_group1_2026_solution.pdf,.pdf,59443,2,False,744,197,True,solution;linearly;let;only;such;any;independent;vectors;dependent;system,מערכות_לינאריות;מרחבים_לינאריים;בסיס_וממד;גרעין_ותמונה
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz2_group2_2026_eng.pdf,.pdf,53333,4,False,272,136,True,page;scanned;any;back;let;you;must;all;write;points,מרחבים_לינאריים
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz2_group3_2026_eng.pdf,.pdf,56327,4,False,307,140,True,page;scanned;back;any;let;you;must;all;every;write,מרחבים_לינאריים
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz2_group3_2026_solution.pdf,.pdf,59880,2,False,709,169,True,solution;let;any;every;span;vectors;linearly;dependent;such;system,מרחבים_לינאריים;מערכות_לינאריות
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz2_simulation_2026_eng.pdf,.pdf,48217,3,False,230,90,True,any;you;must;all;write;points;let;solution;linear;algebra,מרחבים_לינאריים
+linear,PAST_EXAMS,PAST_EXAMS/LA_Quiz2_simulation_2026_heb.pdf,.pdf,84886,4,False,175,105,True,הבחינה;חומר;עליכן;לרשום;פתרונות;שאלה;נקודות;מרחב;פתרון;החוג,
+linear,PAST_EXAMS,PAST_EXAMS/_2022-2_MoedB.txt,.txt,3885,,False,880,357,True,points;let;prove;suppose;linear;following;spanning;such;you;every,מרחבים_לינאריים;מערכות_לינאריות;הפיכות;בסיס_וממד;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/_2023-2_MoedB.txt,.txt,3762,,False,828,353,True,let;points;prove;dim;space;field;vector;suppose;you;question,מרחבים_לינאריים;הפיכות;מערכות_לינאריות;גרעין_ותמונה;דטרמיננטות
+linear,PAST_EXAMS,PAST_EXAMS/_2024-2_MoedB.txt,.txt,4612,,False,891,425,True,points;let;solution;dim;prove;question;space;suppose;page;left,מרחבים_לינאריים;מערכות_לינאריות;גרעין_ותמונה;הפיכות
+linear,PAST_EXAMS,PAST_EXAMS/הערה שאלות לא למבחן.txt,.txt,237,,False,39,20,True,moed;note;following;questions;about;linear;transformaiton;part;material;year,
+linear,(root),QUICK_REFERENCE_6_PROOFS.md,.md,7977,,False,1351,749,True,rank;det;dim;basis;row;theorem;prove;invertible;proof;columns,מערכות_לינאריות;גרעין_ותמונה;דטרמיננטות;מרחבים_לינאריים;בסיס_וממד;הפיכות
+linear,(root),README_ANALYSIS.txt,.txt,13260,,False,1408,1006,True,proof;moed;lecture;theorems;theorem;proofs;analysis;exam;each;you,מערכות_לינאריות;דטרמיננטות;בסיס_וממד;מרחבים_לינאריים;גרעין_ותמונה;הפיכות
+linear,(root),START_HERE.txt,.txt,12490,,False,998,742,True,analysis;theorems;study;theorem;proof;you;day;time;moed;exam,מערכות_לינאריות;דטרמיננטות;גרעין_ותמונה;בסיס_וממד;הפיכות;מרחבים_לינאריים
+linear,(root),cheatsheet.py,.py,25661,,False,2207,1807,True,self;line;block;gap;labeled;size;dim;color;bullet;text,מערכות_לינאריות;גרעין_ותמונה;מרחבים_לינאריים;דטרמיננטות;בסיס_וממד
+linear,(root),cheatsheet_v2.py,.py,21431,,False,2013,1504,True,self;title;line;dim;gap;color;section;הגדרה;text;rank,מערכות_לינאריות;גרעין_ותמונה;מרחבים_לינאריים;דטרמיננטות;בסיס_וממד
+linear,hw,hw/Ex1_Lin_Alg_1_2025-2026_sol.pdf,.pdf,71128,4,False,2274,717,True,points;solution;there;inverse;let;hint;prove;field;you;multiplication,הפיכות
+linear,hw,hw/LA1_2024-25_Homework_6_Solution.pdf,.pdf,64780,5,False,2980,611,True,linearly;independent;let;span;solution;such;points;vectors;suppose;thus,מרחבים_לינאריים;בסיס_וממד;מערכות_לינאריות;גרעין_ותמונה;הפיכות
+linear,hw,hw/LA1_2025-26_Homework_10_Solutions.pdf,.pdf,58474,4,False,1798,542,True,solution;points;invertible;let;aat;prove;there;atr;suppose;system,מערכות_לינאריות;הפיכות;גרעין_ותמונה;בסיס_וממד
+linear,hw,hw/LA1_2025-26_Homework_11_Solutions.pdf,.pdf,66272,5,False,2250,468,True,det;row;let;points;solution;determinant;multilinear;prove;alternating;matrix,דטרמיננטות;מערכות_לינאריות;גרעין_ותמונה;הפיכות;מרחבים_לינאריים
+linear,hw,hw/LA1_2025-26_Homework_12_Solutions.pdf,.pdf,64364,9,False,3290,602,True,det;matrix;determinant;points;solution;column;case;induction;let;compute,דטרמיננטות;גרעין_ותמונה;מערכות_לינאריות
+linear,hw,hw/LA1_2025-26_Homework_8_Solutions.pdf,.pdf,68503,5,False,2747,507,True,dim;let;points;solution;span;first;matrices;prove;every;compute,מרחבים_לינאריים;בסיס_וממד;גרעין_ותמונה;מערכות_לינאריות
+linear,hw,hw/LA1_2025-26_Homework_9_Solutions.pdf,.pdf,72585,7,False,3813,867,True,invertible;points;solution;matrix;left;let;there;exists;prove;every,הפיכות;מערכות_לינאריות;גרעין_ותמונה;מרחבים_לינאריים
+linear,hw,hw/Lin_Alg_I_2025-2026_Homework_2_Solutions.pdf,.pdf,62398,5,False,2148,569,True,points;solution;mod;first;there;defined;field;zero;divisors;which,הפיכות;מערכות_לינאריות
+linear,hw,hw/Lin_Alg_I_2025-2026_Homework_3_Solutions.pdf,.pdf,74686,7,False,3898,860,True,system;solution;mod;points;which;solutions;linear;variables;number;consider,מערכות_לינאריות;גרעין_ותמונה;הפיכות;דטרמיננטות
+linear,hw,hw/Lin_Alg_I_2025-2026_Homework_4_Solutions.pdf,.pdf,67064,5,False,2989,759,True,let;points;vector;def;solution;prove;space;closed;note;such,מרחבים_לינאריים;הפיכות;מערכות_לינאריות
+linear,hw,hw/Lin_Alg_I_2025-2026_Homework_5_Solutions.pdf,.pdf,58357,4,False,2125,392,True,span;points;vector;solution;let;set;space;prove;thus;suppose,מרחבים_לינאריים;הפיכות;מערכות_לינאריות;גרעין_ותמונה
+linear,hw,hw/Linear_Algebra_1 (1).pdf,.pdf,80995,6,False,4412,1030,True,dim;span;linearly;independent;let;solution;points;therefore;such;vector,מרחבים_לינאריים;בסיס_וממד;מערכות_לינאריות;גרעין_ותמונה
+linear,(root),implication_trees.pdf,.pdf,70662,5,False,652,409,True,dim;det;rank;בסיס;מרחב;ker;בת;וקטורים;ממד;lambda,דטרמיננטות;מערכות_לינאריות;מרחבים_לינאריים;גרעין_ותמונה
+linear,(root),liner-summary.pdf,.pdf,580697,3,False,889,549,True,det;dim;rank;הגדרה;משפט;בת;שורה;הפיכה;מרחב;בסיס,דטרמיננטות;מערכות_לינאריות;גרעין_ותמונה;מרחבים_לינאריים
+linear,(root),moed_b_analysis.pdf,.pdf,81398,2,False,511,286,True,שאלה;det;הפיכה;אלכסונית;הוכחה;מועד;תת;מרחבים;סביר;במועד,דטרמיננטות;מערכות_לינאריות;גרעין_ותמונה
+linear,(root),proofs.py,.py,24860,,False,2401,1675,True,line;proof;self;spacer;math;title;box;theorem;page;qed,מרחבים_לינאריים;הפיכות;מערכות_לינאריות
+linear,quiz,quiz/.DS_Store,,6148,,False,0,0,False,,
+linear,quiz,quiz/LA_Quiz2_group3_2026_solution.pdf,.pdf,59880,2,False,709,169,True,solution;let;any;every;span;vectors;linearly;dependent;such;system,מרחבים_לינאריים;מערכות_לינאריות
+linear,quiz,quiz/LA_Quiz3_group1_2026_eng.pdf,.pdf,52280,1,False,446,160,True,dim;let;independent;solution;matrix;linearly;any;you;must;every,בסיס_וממד;מרחבים_לינאריים
+linear,quiz,quiz/LA_Quiz3_group1_2026_solution.pdf,.pdf,52256,1,False,443,158,True,dim;let;independent;solution;every;matrix;linearly;any;you;must,בסיס_וממד;מרחבים_לינאריים
+linear,quiz,quiz/LA_Quiz3_group2_2026_solution.pdf,.pdf,51548,1,False,380,194,True,row;invertible;must;there;such;solution;any;you;every;let,גרעין_ותמונה;מערכות_לינאריות;הפיכות;מרחבים_לינאריים
+linear,quiz,quiz/LA_Quiz3_group3_2026_solution.pdf,.pdf,51748,1,False,327,154,True,invertible;solution;let;any;you;must;write;points;following;there,הפיכות;מרחבים_לינאריים
+linear,(root),solution_templates_book.pdf,.pdf,96165,14,False,6698,4097,True,step;alpha;det;dim;lambda;contradiction;rank;row;find;basis,מרחבים_לינאריים;מערכות_לינאריות;גרעין_ותמונה;דטרמיננטות;בסיס_וממד;הפיכות
+linear,(root),solution_templates_book_HEB.pdf,.pdf,99773,12,False,5668,3968,True,שלב;det;dim;alpha;lambda;span;בסיס;rank;כשצריך;מרחב,דטרמיננטות;מרחבים_לינאריים;מערכות_לינאריות;גרעין_ותמונה
+linear,(root),summary_no_det.py,.py,40893,,False,4702,3593,True,draw;margin;right;text;rtl;size;font;label;bold;green,מרחבים_לינאריים;מערכות_לינאריות;גרעין_ותמונה;בסיס_וממד;הפיכות;דטרמיננטות
+linear,(root),דף משפטים - לינארית .pdf,.pdf,13174284,24,False,3563,1268,True,goes;row;aemn;etc;ask;span;gow;ftp;rein;mnf,מערכות_לינאריות;גרעין_ותמונה;מרחבים_לינאריים;דטרמיננטות
+linear,(root),מיקוד_6_משפטים_מועד_ב.pdf,.pdf,33996,7,False,1325,999,True,det;בת;ranka;בסיס;הוכח;הפיכה;אחד;פורשים;הוכחה;במועד,מערכות_לינאריות;דטרמיננטות;גרעין_ותמונה;מרחבים_לינאריים;בסיס_וממד;הפיכות
+linear,(root),סיכום לינארית 1.pdf,.pdf,13677891,49,False,5964,2025,True,ins;vin;god;good;mulf;don;bon;dis;fin;doe,מערכות_לינאריות;מרחבים_לינאריים;גרעין_ותמונה;דטרמיננטות;בסיס_וממד;הפיכות
+linear,(root),סיכום_לינארית1_לפי_נושאים.md,.md,29049,,False,3735,2080,True,מרחב;משפט;span;הפיכה;יש;תת;dim;אז;בת;לכל,מרחבים_לינאריים;מערכות_לינאריות;דטרמיננטות;גרעין_ותמונה;בסיס_וממד;הפיכות
+linear,(root),סיכום_לינארית1_לפי_נושאים.pdf,.pdf,65176,18,False,3596,2082,True,מרחב;משפט;span;הפיכה;יש;תת;dim;אז;בת;לכל,מרחבים_לינאריים;מערכות_לינאריות;דטרמיננטות;גרעין_ותמונה;בסיס_וממד;הפיכות
+linear,(root),צ'קליסט_משפטים_לינארית1.pdf,.pdf,89086,11,False,1719,1120,True,משפט;הגדרה;מסקנה;הפיכה;בת;משפטים;ranka;delta;הגדרות;span,מערכות_לינאריות;מרחבים_לינאריים;דטרמיננטות;גרעין_ותמונה;בסיס_וממד;הפיכות
+discrete,(root),.DS_Store,,6148,,False,0,0,False,,
+discrete,12+13,12+13/××¨×¦×× 12 - ×××¨× 2.pdf,.pdf,819694,14,False,1931,777,True,שקילות;יחס;מהגדרת;יחסי;שרון;הרצאה;גל;יהי;מחלקות;השקילות,יחסים_וסדר;פונקציות;קבוצות
+discrete,12+13,12+13/××¨×¦×× 13 - ×××¨× 1-2.pdf,.pdf,941299,21,False,2463,1316,True,סדר;יחס;יחסי;מינימום;הרצאה;שרון;גל;שרשרת;אנטי;קבוצה,יחסים_וסדר;פונקציות
+discrete,LOG,LOG/Screenshot 2026-01-31 at 17.12.58.png,.png,28994,,False,0,0,False,,
+discrete,hw,hw/2025_ex07_solution.pdf,.pdf,148262,4,False,1773,859,True,ב־;יש;אפשרויות;ללא;שארית;מתחלק;קבוצה;לכן;טבעי;מתקיים,קבוצות;אינדוקציה;יחסים_וסדר;פונקציות
+discrete,hw,hw/2025_ex08_solution.pdf,.pdf,122248,3,False,1594,1041,True,יש;כדורים;אפשרויות;אחד;ב־;ו־;לכן;נקבל;כלומר;תאים,פונקציות;יחסים_וסדר;קבוצות
+discrete,hw,hw/2025_ex09_solution.pdf,.pdf,140795,3,False,1393,561,True,נקבל;לפי;נבחר;ל־;יש;המקדם;הוכיחו;בדרך;מתקיים;עגבניות,יחסים_וסדר;אינדוקציה;פונקציות
+discrete,hw,hw/2025_ex10_solution.pdf,.pdf,39927,3,False,1248,546,True,נקבל;מרובה;לפי;תלמידים;בחירה;לכל;מתקיים;מנוסחת;נרצה;בכיתה,קבוצות;יחסים_וסדר;פונקציות
+discrete,hw,hw/2025_ex11_solution.pdf,.pdf,35709,3,False,1273,733,True,איברים;רפלקסיבי;אנטי;ולכן;יונים;מהגדרת;וגם;קיים;לכן;סימטרי,פונקציות;יחסים_וסדר
+discrete,hw,hw/2025_ex13_solution.pdf,.pdf,38756,3,False,1436,625,True,בגלל;לכן;אז;יחס;קבוצות;סדר;מהגדרת;שקילות;len;יהי,יחסים_וסדר;קבוצות;פונקציות
+discrete,hw,hw/2025_ex1_full_solutions.pdf,.pdf,289139,6,False,1003,461,True,לפי;שלם;כלומר;טענה;שקר;נניח;מתקיים;הוכחה;נבחר;קיים,יחסים_וסדר;פונקציות;לוגיקה_וכמתים
+discrete,hw,hw/2025_ex2_full_solutions.pdf,.pdf,322450,5,False,1119,466,True,זוגי;הוכחה;אי;הדיון;שלמים;נבחר;המספרים;שלילת;פתרון;אז,פונקציות;לוגיקה_וכמתים
+discrete,hw,hw/2025_ex3_full_solutions.pdf,.pdf,347455,6,False,1267,314,True,מהגדרת;לכן;נניח;אז;מתקיים;וגם;הפרש;נוכיח;קבוצות;הוכחה,קבוצות
+discrete,hw,hw/2025_ex4_full_solution.pdf,.pdf,311232,6,False,1213,363,True,מהגדרת;נניח;קרטזית;מכפלה;קבוצות;נוכיח;לכן;הוכחה;וגם;משלים,קבוצות
+discrete,hw,hw/2025_ex5_full_solutions.pdf,.pdf,412959,6,False,1336,459,True,חח;לכן;מתקיים;הפונקציה;נניח;נבחר;נוכיח;קיים;אינה;מהגדרת,פונקציות;קבוצות
+discrete,hw,hw/2025_ex6_full_solution.pdf,.pdf,377311,5,False,1426,500,True,חח;לכל;מתקיים;פונקציות;פונקציה;לכן;אז;תהי;שתי;נוכיח,פונקציות;קבוצות;יחסים_וסדר
+discrete,lecture,lecture/ הרצאה 7.pdf,.pdf,2275577,35,False,3682,2094,True,אפשרויות;יש;הרצאה;שרון;גל;הטענה;האינדוקציה;חזרות;אינדוקציה;נכונות,אינדוקציה;פונקציות;יחסים_וסדר;קבוצות
+discrete,lecture,lecture/1.pdf,.pdf,1030047,31,False,3148,1909,True,שרון;גל;הרצאה;לוגיקה;וגם;מתחלק;טענה;ניתן;דוגמה;אמת,יחסים_וסדר;פונקציות;לוגיקה_וכמתים;קבוצות
+discrete,lecture,lecture/10.pdf,.pdf,2177262,28,False,3072,1212,True,הרצאה;שרון;גל;קומבינטוריקה;נספר;במקומו;יש;כמה;אחת;מספרים,יחסים_וסדר;קבוצות;פונקציות
+discrete,lecture,lecture/8.pdf,.pdf,1428583,19,False,2406,1353,True,יש;חזרות;הרצאה;שרון;גל;מספר;קומבינטוריקה;בחירה;ניתן;ים,יחסים_וסדר;פונקציות;קבוצות
+discrete,lecture,lecture/9.pdf,.pdf,1238039,17,False,1909,867,True,הרצאה;שרון;גל;קומבינטוריקה;לפי;נבחר;נפריד;מתוך;יש;אחד,קבוצות;פונקציות;אינדוקציה;יחסים_וסדר
+discrete,lecture,lecture/הרצאה 1 - לפני.pdf,.pdf,1979075,33,False,2932,1835,True,שרון;גל;הרצאה;לוגיקה;מתחלק;אמת;נניח;טענה;נוכיח;יש,יחסים_וסדר;פונקציות;לוגיקה_וכמתים;קבוצות
+discrete,lecture,lecture/הרצאה 11 - אחרי 1.pdf,.pdf,1477556,20,False,2456,1260,True,סימטרי;אנטי;הרצאה;שרון;גל;יש;יחס;עש;רפלקסיבי;יחסים,פונקציות;קבוצות
+discrete,lecture,lecture/הרצאה 2 -.pdf,.pdf,2258515,23,False,2305,1327,True,הרצאה;שרון;גל;לוגיקה;נוכיח;בעולם;נניח;נאות;כלל;הדיון,לוגיקה_וכמתים;יחסים_וסדר;פונקציות;קבוצות
+discrete,lecture,lecture/הרצאה 3 .pdf,.pdf,1834122,31,False,2670,1143,True,הקבוצות;הרצאה;תורת;שרון;גל;קבוצות;קבוצה;הכלה;הקבוצה;הוכחה,קבוצות;פונקציות;יחסים_וסדר
+discrete,lecture,lecture/הרצאה 4 - אחרי 2.pdf,.pdf,1853718,20,False,2470,947,True,הקבוצות;תורת;הרצאה;שרון;גל;קבוצות;קבוצת;הגדרת;תרגיל;מתקיים,קבוצות;יחסים_וסדר;פונקציות
+discrete,lecture,lecture/הרצאה 5 - אחרי 1.pdf,.pdf,1835368,21,False,2248,978,True,פונקציה;פונקציות;חח;הרצאה;שרון;גל;מלאה;האם;איבר;הפונקציה,פונקציות;קבוצות;יחסים_וסדר
+discrete,lecture,lecture/הרצאה 6 - אחרי 2.pdf,.pdf,1908919,25,False,3496,1300,True,פונקציות;הפיכה;שרון;גל;חח;הרצאה;הופכית;תהיינה;משפט;מלאה,פונקציות;קבוצות;יחסים_וסדר;אינדוקציה
+discrete,past-exams,past-exams/.DS_Store,,8196,,False,0,0,False,,
+discrete,past-exams,past-exams/2019_moed_b_en_solution.pdf,.pdf,579361,6,False,656,228,True,there;length;since;therefore;exists;anti;symmetric;but;can;options,קומבינטוריקה;אינדוקציה;פונקציות;יחסים_וסדר;קבוצות
+discrete,past-exams,past-exams/2020_moed_b_en_solution.pdf,.pdf,171312,9,False,1925,832,True,set;question;points;write;let;definition;your;you;there;which,קבוצות;יחסים_וסדר;קומבינטוריקה;פונקציות;לוגיקה_וכמתים
+discrete,past-exams,past-exams/2021_moed_a_en_solution.pdf,.pdf,548625,10,False,2066,746,True,question;points;your;invertible;let;elements;prove;there;function;relation,פונקציות;יחסים_וסדר;קבוצות;קומבינטוריקה;לוגיקה_וכמתים;אינדוקציה
+discrete,past-exams,past-exams/2021_moed_b_en_sol.pdf,.pdf,465362,10,False,2134,836,True,question;points;there;which;such;your;different;class;all;use,פונקציות;יחסים_וסדר;קומבינטוריקה;קבוצות;לוגיקה_וכמתים
+discrete,past-exams,past-exams/2022_moed_a_en_sol.pdf,.pdf,422038,11,False,1832,686,True,question;points;write;let;there;your;set;relation;prove;questions,יחסים_וסדר;קבוצות;קומבינטוריקה;פונקציות;לוגיקה_וכמתים
+discrete,past-exams,past-exams/2022_moed_b_en_sol.pdf,.pdf,395622,10,False,1749,610,True,question;points;there;such;your;hence;let;questions;write;tautology,יחסים_וסדר;לוגיקה_וכמתים;קבוצות;קומבינטוריקה;פונקציות;אינדוקציה
+discrete,past-exams,past-exams/2023_moed_b_he_solution.pdf,.pdf,302397,11,False,1516,663,True,נקודות;שאלה;לכל;יש;הטענה;תהי;כתבו;כלומר;ין;אפרול,פונקציות;יחסים_וסדר;קבוצות;אינדוקציה;לוגיקה_וכמתים
+discrete,past-exams,past-exams/2024_moed_a_en_solution.pdf,.pdf,323642,14,False,1791,667,True,points;question;number;let;get;questions;write;can;your;right,יחסים_וסדר;קבוצות;פונקציות;אינדוקציה;קומבינטוריקה;לוגיקה_וכמתים
+discrete,past-exams,past-exams/2024_moed_b_en-solution.pdf,.pdf,465599,13,False,1806,724,True,relation;question;points;since;number;write;set;your;runner;shirt,יחסים_וסדר;קבוצות;פונקציות;אינדוקציה;קומבינטוריקה;לוגיקה_וכמתים
+discrete,past-exams,past-exams/2024_moed_b_he_solution.pdf,.pdf,304613,13,False,1535,644,True,יחס;נקודות;שאלה;בחולצה;סדר;יש;קיימים;כתבו;חח;ידוע,יחסים_וסדר;פונקציות;אינדוקציה;קבוצות;לוגיקה_וכמתים
+discrete,past-exams,past-exams/2025_ex1_full_solutions.pdf,.pdf,289139,6,False,1003,461,True,לפי;שלם;כלומר;טענה;שקר;נניח;מתקיים;הוכחה;נבחר;קיים,יחסים_וסדר;פונקציות;לוגיקה_וכמתים
+discrete,past-exams,past-exams/2025_moed_b_en_sol.pdf,.pdf,474028,11,False,1449,570,True,points;question;write;set;all;let;get;your;given;digits,קבוצות;יחסים_וסדר;קומבינטוריקה;פונקציות;לוגיקה_וכמתים
+discrete,past-exams,past-exams/INDEX.md,.md,5368,,False,786,492,True,pdf;questions;pages;set;question;complete;category;function;exam;index,יחסים_וסדר;פונקציות;קבוצות;קומבינטוריקה;אינדוקציה
+discrete,past-exams,past-exams/README.md,.md,3219,,False,444,308,True,questions;question;set;function;exam;pdf;step;solution;lectures;power,יחסים_וסדר;פונקציות;קבוצות;קומבינטוריקה;אינדוקציה
+discrete,past-exams,past-exams/סיכום_בדידה.pdf,.pdf,44104,9,False,1407,842,True,הרצאה;טיפים;זהב;סדר;שקילות;לכל;יחס;page;חח;קיים,יחסים_וסדר;פונקציות;קבוצות;אינדוקציה;לוגיקה_וכמתים
+discrete,past-exams,past-exams/שאלות_פתוחות_בדידה.pdf,.pdf,59738,35,False,3095,1271,True,since;prove;injective;therefore;let;source;lecture;solution;invertible;need,פונקציות;יחסים_וסדר;קבוצות;קומבינטוריקה;אינדוקציה;לוגיקה_וכמתים
+discrete,question-per-topic,question-per-topic/answers per topic.pdf,.pdf,2939486,49,False,213,186,True,שבוע;מניה;תחשיבי;קבוצות;פונקציה;תכונות;עקרון;אפשרויות;יחסים;מיוחדים,קבוצות;פונקציות;יחסים_וסדר;לוגיקה_וכמתים;אינדוקציה;קומבינטוריקה
+discrete,(root),ניתוח_שאלות_פתוחות_למועד_ב.md,.md,9853,,False,1220,689,True,שקילות;אינדוקציה;חח;סדר;האסה;מה;פונקציות;יחסים;matching;פעמים,פונקציות;יחסים_וסדר;אינדוקציה;קומבינטוריקה;קבוצות
+discrete,(root),סיכום_נושאים_למבחן.md,.md,18213,,False,2375,1198,True,חוזר;חח;סדר;סימטרי;דוגמה;הפיכה;רפלקסיבי;שקילות;כללי;טיפים,פונקציות;יחסים_וסדר;קבוצות;לוגיקה_וכמתים;אינדוקציה;קומבינטוריקה
