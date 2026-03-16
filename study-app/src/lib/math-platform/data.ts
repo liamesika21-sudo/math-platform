@@ -1688,23 +1688,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'קח xₙ = 1/(π/2 + 2πn) ו-yₙ = 1/(3π/2 + 2πn). אז sin(1/xₙ) = 1 בעוד sin(1/yₙ) = −1.',
   },
   {
-    id: questionId('calculus', 4, 'homework-rational'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-4',
-    topicId: 'calc-limits',
-    sourceType: 'homework',
-    sourceName: 'Exercise 4 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 4, 'homework'),
-    title: 'שיעורי בית: גבול ע"י פישוט אלגברי',
-    content: 'חשב את lim(x→1) (x² − 1)/(x − 1) והצדק כל צעד בקפידה.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'פרק את המונה לפני הצבת הערך.',
-    solution: '(x² − 1)/(x − 1) = x + 1 לכל x ≠ 1, לכן הגבול שווה 2.',
-  },
-  {
     id: questionId('calculus', 4, 'exam-one-sided'),
     courseId: 'calculus',
     weekId: 'calculus-week-4',
@@ -1754,23 +1737,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Important'],
     hint: 'פרק תחילה וזהה את הערך החסר.',
     solution: 'זוהי אי-רציפות סילוקית כי הצורה הפשוטה היא x + 1. הגדר f(1) = 2 כדי לקבל פונקציה רציפה.',
-  },
-  {
-    id: questionId('calculus', 5, 'homework-continuous-piecewise'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-5',
-    topicId: 'calc-continuity',
-    sourceType: 'homework',
-    sourceName: 'Exercise 5 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 5, 'homework'),
-    title: 'שיעורי בית: בחירת קבוע לרציפות',
-    content: 'מצא c כך שהפונקציה בחלקים f(x) = cx + 1 עבור x < 2 ו-f(x) = x² − 1 עבור x ≥ 2 תהיה רציפה ב-x = 2.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'השווה ערכים מימין ומשמאל ב-x = 2.',
-    solution: 'רציפות דורשת 2c + 1 = 3, לכן c = 1.',
   },
   {
     id: questionId('calculus', 5, 'exam-evt'),
@@ -1824,23 +1790,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'הפעלת כלל לופיטל פעמיים נותנת lim eˣ/2 = 1/2.',
   },
   {
-    id: questionId('calculus', 8, 'homework-critical-points'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-8',
-    topicId: 'calc-derivatives',
-    sourceType: 'homework',
-    sourceName: 'Exercise 8 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 8, 'homework'),
-    title: 'שיעורי בית: מונוטוניות ונקודות קיצון',
-    content: 'נתח את f(x) = x³ − 6x² + 9x: מצא קטעי עלייה/ירידה וכל נקודות קיצון מקומיות.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'גזור ופרק את f\'.',
-    solution: 'f\'(x) = 3(x−1)(x−3). הפונקציה עולה ב-(−∞,1) וב-(3,∞), יורדת ב-(1,3), מקסימום מקומי ב-x=1 ומינימום מקומי ב-x=3.',
-  },
-  {
     id: questionId('calculus', 8, 'exam-rolle'),
     courseId: 'calculus',
     weekId: 'calculus-week-8',
@@ -1890,23 +1839,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Frequently Appears in Exams'],
     hint: 'השתמש ב-cos x = 1 − x²/2 + o(x²).',
     solution: 'המונה מתנהג כ-x²/2, לכן הגבול הוא 1/2.',
-  },
-  {
-    id: questionId('calculus', 9, 'homework-remainder'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-9',
-    topicId: 'calc-taylor',
-    sourceType: 'homework',
-    sourceName: 'Exercise 9 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 9, 'homework'),
-    title: 'שיעורי בית: חסימת שגיאת קירוב',
-    content: 'קרב את e^0.2 בעזרת פולינום מקלורן ריבועי וציין חסם עבור שארית לגרנז׳.',
-    difficulty: 'hard',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Advanced Difficulty', 'Important'],
-    hint: 'עבור eˣ, כל נגזרת היא eˣ, לכן חסום את הנגזרת הבאה על [0, 0.2].',
-    solution: 'השתמש ב-1 + 0.2 + 0.2²/2 = 1.22. השגיאה קטנה מ-e^0.2 · 0.2³ / 6.',
   },
   {
     id: questionId('calculus', 9, 'exam-taylor'),
@@ -1960,23 +1892,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'הוכחה בסתירה מניחה p ו-¬q, מסיקה אי-אפשרות, ומסיקה ש-q חייב להתקיים כאשר p מתקיים.',
   },
   {
-    id: questionId('discrete', 1, 'homework-demorgan'),
-    courseId: 'discrete',
-    weekId: 'discrete-week-1',
-    topicId: 'disc-logic',
-    sourceType: 'homework',
-    sourceName: '2025_ex1_full_solutions.pdf',
-    sourceDocumentId: sourceId('discrete', 1, 'homework'),
-    title: 'שיעורי בית: שלילת אמירה מורכבת',
-    content: 'כתוב את שלילת האמירה "לכל סטודנט, אם פתר את התרגול אז עבר את הבוחן" בעזרת קשרים לוגיים.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'שלילת אמירה כמותית-כוללת מייצרת אמירה קיומית.',
-    solution: 'קיים סטודנט שפתר את התרגול ולא עבר את הבוחן.',
-  },
-  {
     id: questionId('discrete', 1, 'exam-equivalence'),
     courseId: 'discrete',
     weekId: 'discrete-week-1',
@@ -2026,23 +1941,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Important'],
     hint: 'השתמש במקדם בינומי.',
     solution: 'יש C(5,2) = 10 תת-קבוצות כאלה.',
-  },
-  {
-    id: questionId('discrete', 2, 'homework-cartesian'),
-    courseId: 'discrete',
-    weekId: 'discrete-week-2',
-    topicId: 'disc-sets',
-    sourceType: 'homework',
-    sourceName: '2025_ex2_full_solutions.pdf',
-    sourceDocumentId: sourceId('discrete', 2, 'homework'),
-    title: 'שיעורי בית: גודל מכפלה קרטזית',
-    content: 'אם |A| = 3 ו-|B| = 4, מצא את |A × B| והסבר מדוע הסדר חשוב בזוגות סדורים.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'כל איבר של A יכול להיות מזווג עם כל איבר של B.',
-    solution: '|A × B| = 12. הזוג (a, b) שונה מ-(b, a) כי הסדר בזוג הסדור מהותי.',
   },
   {
     id: questionId('discrete', 2, 'exam-subset'),
@@ -2096,23 +1994,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'לכל y בחר x = ∛y. אז f(x) = (∛y)³ = y, לכן f היא על.',
   },
   {
-    id: questionId('discrete', 4, 'homework-composition'),
-    courseId: 'discrete',
-    weekId: 'discrete-week-4',
-    topicId: 'disc-functions',
-    sourceType: 'homework',
-    sourceName: '2025_ex4_full_solution.pdf',
-    sourceDocumentId: sourceId('discrete', 4, 'homework'),
-    title: 'שיעורי בית: חישוב הרכבות',
-    content: 'בהינתן f(x) = 2x + 1 ו-g(x) = x², חשב את f∘g ואת g∘f והסבר מדוע הן שונות.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'הצב בסדר הנכון.',
-    solution: '(f∘g)(x) = 2x² + 1 בעוד ש-(g∘f)(x) = (2x+1)². הרכבה אינה קומוטטיבית בדרך כלל.',
-  },
-  {
     id: questionId('discrete', 4, 'exam-inverse'),
     courseId: 'discrete',
     weekId: 'discrete-week-4',
@@ -2162,23 +2043,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Frequently Appears in Exams'],
     hint: 'השתמש בהנחת האינדוקציה ל-n והוסף n+1.',
     solution: 'בסיס n=1 מידי. אם נכון ל-n, סכום עד n+1 שווה n(n+1)/2 + (n+1) = (n+1)(n+2)/2.',
-  },
-  {
-    id: questionId('discrete', 6, 'homework-poset'),
-    courseId: 'discrete',
-    weekId: 'discrete-week-6',
-    topicId: 'disc-relations',
-    sourceType: 'homework',
-    sourceName: '2025_ex6_full_solution.pdf',
-    sourceDocumentId: sourceId('discrete', 6, 'homework'),
-    title: 'שיעורי בית: זיהוי תכונות סדר',
-    content: 'קבע האם יחס הכלוּת (חלוקה) על המספרים הטבעיים החיוביים הוא סדר חלקי.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Important'],
-    hint: 'בדוק חזרתיות, אנטי-סימטריה וטרנזיטיביות.',
-    solution: 'כן. כל מספר מתחלק בעצמו, חלוקה הדדית מכריחה שוויון, וחלוקה מורכבת באופן טרנזיטיבי.',
   },
   {
     id: questionId('discrete', 6, 'exam-relation-counterexample'),
@@ -2232,23 +2096,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'אם a ≠ 0, כפול את ab = 0 ב-a⁻¹ כדי לקבל b = 0. אחרת a = 0.',
   },
   {
-    id: questionId('linear-algebra', 1, 'homework-cancellation'),
-    courseId: 'linear-algebra',
-    weekId: 'linear-algebra-week-1',
-    topicId: 'la-fields',
-    sourceType: 'homework',
-    sourceName: 'Ex1_Lin_Alg_1_2025-2026_sol.pdf',
-    sourceDocumentId: sourceId('linear-algebra', 1, 'homework'),
-    title: 'שיעורי בית: שימוש בכלל הצמצום',
-    content: 'תהי a ≠ 0 בשדה. הוכח שax = ay גורר x = y.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'כפול שני הצדדים ב-a⁻¹.',
-    solution: 'a⁻¹·(ax) = a⁻¹·(ay), לכן x = y.',
-  },
-  {
     id: questionId('linear-algebra', 1, 'exam-field-structure'),
     courseId: 'linear-algebra',
     weekId: 'linear-algebra-week-1',
@@ -2298,23 +2145,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Important'],
     hint: 'פתור מערכת 2×2 קטנה עבור המקדמים.',
     solution: '(3,1) = 2·(1,1) + 1·(1,−1).',
-  },
-  {
-    id: questionId('linear-algebra', 3, 'homework-closure-failure'),
-    courseId: 'linear-algebra',
-    weekId: 'linear-algebra-week-3',
-    topicId: 'la-vectors',
-    sourceType: 'homework',
-    sourceName: 'Lin_Alg_I_2025-2026_Homework_3_Solutions.pdf',
-    sourceDocumentId: sourceId('linear-algebra', 3, 'homework'),
-    title: 'שיעורי בית: הוכחה שתת-קבוצה אינה תת-מרחב',
-    content: 'הוכח שU = {(x,y) ∈ ℝ² : xy = 0} אינו תת-מרחב.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'מצא שני וקטורים ב-U שסכומם לא ב-U.',
-    solution: '(1,0) ו-(0,1) שייכים ל-U, אך סכומם (1,1) אינו שייך — U אינו סגור לחיבור.',
   },
   {
     id: questionId('linear-algebra', 3, 'exam-span-dimension'),
@@ -2368,23 +2198,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'הוקטורים בלתי-תלויים וכל (x,y) שווה ל-x·(1,0) + y·(0,1).',
   },
   {
-    id: questionId('linear-algebra', 5, 'homework-dimension'),
-    courseId: 'linear-algebra',
-    weekId: 'linear-algebra-week-5',
-    topicId: 'la-basis',
-    sourceType: 'homework',
-    sourceName: 'Lin_Alg_I_2025-2026_Homework_5_Solutions.pdf',
-    sourceDocumentId: sourceId('linear-algebra', 5, 'homework'),
-    title: 'שיעורי בית: הסקת המימד',
-    content: 'מרחב וקטורי כולל בסיס עם 4 וקטורים. מהו ממדו, והאם יכול להיות לו בסיס עם 5 וקטורים?',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'הממד מוגדר לפי גודל בסיס כלשהו.',
-    solution: 'ממדו הוא 4, ואין בסיס עם 5 וקטורים — כל הבסיסים של מרחב נתון שווי-גודל.',
-  },
-  {
     id: questionId('linear-algebra', 5, 'exam-change-of-basis'),
     courseId: 'linear-algebra',
     weekId: 'linear-algebra-week-5',
@@ -2434,23 +2247,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Frequently Appears in Exams'],
     hint: 'הדרגה שווה למספר הציריים.',
     solution: 'הדרגה היא 3.',
-  },
-  {
-    id: questionId('linear-algebra', 8, 'homework-consistency'),
-    courseId: 'linear-algebra',
-    weekId: 'linear-algebra-week-8',
-    topicId: 'la-matrices',
-    sourceType: 'homework',
-    sourceName: 'LA1_2025-26_Homework_8_Solutions.pdf',
-    sourceDocumentId: sourceId('linear-algebra', 8, 'homework'),
-    title: 'שיעורי בית: זיהוי חוסר עקביות',
-    content: 'הסבר מדוע השורה [0 0 0 | 1] מוכיחה שמערכת אינה עקבית.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'תרגם את השורה חזרה למשוואה.',
-    solution: 'השורה מייצגת 0 = 1, וזה בלתי-אפשרי — לכן אין פתרון למערכת.',
   },
   {
     id: questionId('linear-algebra', 8, 'exam-rank-nullity'),
@@ -2506,23 +2302,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'aₙ₊₁ − aₙ = 1/(n(n+1)) > 0, לכן עולה. aₙ < 1 לכל n. לפי משפט הסדרה המונוטונית, יש גבול, שהוא 1.',
   },
   {
-    id: questionId('calculus', 1, 'homework-squeeze'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-1',
-    topicId: 'calc-sequences',
-    sourceType: 'homework',
-    sourceName: 'Exercise 1 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 1, 'homework'),
-    title: 'שיעורי בית: כלל הסנדוויץ׳ לסדרות',
-    content: 'מצא את lim(n→∞) sin(n)/n.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'חסם |sin(n)| מלמעלה ומלמטה ואז חלק.',
-    solution: 'לכל n: −1/n ≤ sin(n)/n ≤ 1/n. כיוון ש-1/n → 0, לפי כלל הסנדוויץ׳ הגבול הוא 0.',
-  },
-  {
     id: questionId('calculus', 1, 'exam-limit-ratio'),
     courseId: 'calculus',
     weekId: 'calculus-week-1',
@@ -2574,23 +2353,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Core Problem', 'Frequently Appears in Exams'],
     hint: 'כתוב ⁿ√n = e^(ln(n)/n) ובדוק מה קורה ל-ln(n)/n.',
     solution: 'ln(n)/n → 0 לכן e^(ln(n)/n) → e⁰ = 1.',
-  },
-  {
-    id: questionId('calculus', 2, 'homework-diverge'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-2',
-    topicId: 'calc-seq-limits',
-    sourceType: 'homework',
-    sourceName: 'Exercise 2 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 2, 'homework'),
-    title: 'שיעורי בית: הוכחת התבדרות',
-    content: 'הוכח שהסדרה aₙ = (−1)ⁿ מתבדרת.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'הראה שתת-סדרות זוגיות ואי-זוגיות מתכנסות לגבולות שונים.',
-    solution: 'a₂ₙ = 1 → 1 אך a₂ₙ₊₁ = −1 → −1. כיוון שהגבולות שונים, הסדרה מתבדרת.',
   },
   {
     id: questionId('calculus', 2, 'exam-e-limit'),
@@ -2646,23 +2408,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'sin(3x)/(5x) = (3/5)·(sin(3x)/(3x)) → (3/5)·1 = 3/5.',
   },
   {
-    id: questionId('calculus', 3, 'homework-trig-limit'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-3',
-    topicId: 'calc-func-limits',
-    sourceType: 'homework',
-    sourceName: 'Exercise 3 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 3, 'homework'),
-    title: 'שיעורי בית: גבול עם ביטוי טריגונומטרי',
-    content: 'חשב את lim(x→0) (1 − cos x) / x.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'כפול ומחלק ב-(1 + cos x).',
-    solution: '(1 − cos x)/x · (1 + cos x)/(1 + cos x) = sin²(x)/(x(1 + cos x)) → 0·(1/2) = 0.',
-  },
-  {
     id: questionId('calculus', 3, 'exam-heine-func'),
     courseId: 'calculus',
     weekId: 'calculus-week-3',
@@ -2714,23 +2459,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Frequently Appears in Exams', 'Core Problem'],
     hint: 'בדוק את גבולות המנה הדיפרנציאלית מימין ומשמאל.',
     solution: 'מימין: (|0+h| − 0)/h = 1. משמאל: (|0+h| − 0)/h = −1. הגבולות שונים, לכן f אינה גזירה ב-0.',
-  },
-  {
-    id: questionId('calculus', 6, 'homework-quotient-rule'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-6',
-    topicId: 'calc-derivative-def',
-    sourceType: 'homework',
-    sourceName: 'Exercise 6 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 6, 'homework'),
-    title: 'שיעורי בית: כלל המנה',
-    content: 'גזור את f(x) = (x² + 1)/(x − 2) תוך שימוש בכלל המנה.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'כלל המנה: (u/v)\' = (u\'v − uv\')/v².',
-    solution: 'f\'(x) = [(2x)(x−2) − (x²+1)(1)] / (x−2)² = (x² − 4x − 1)/(x−2)².',
   },
   {
     id: questionId('calculus', 6, 'exam-deriv-piecewise'),
@@ -2786,23 +2514,6 @@ export const questions: PlatformQuestion[] = [
     solution: '2x + 2y·(dy/dx) = 0, לכן dy/dx = −x/y.',
   },
   {
-    id: questionId('calculus', 7, 'homework-higher-order'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-7',
-    topicId: 'calc-chain-rule',
-    sourceType: 'homework',
-    sourceName: 'Exercise 7 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 7, 'homework'),
-    title: 'שיעורי בית: נגזרת שנייה של הרכבה',
-    content: 'חשב את f\'\'(x) עבור f(x) = e^(x²).',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'גזור תחילה את f\'(x) = 2x·e^(x²) ואז הפעל כלל המכפלה.',
-    solution: 'f\'(x) = 2x·e^(x²). f\'\'(x) = 2·e^(x²) + 2x·2x·e^(x²) = (2 + 4x²)·e^(x²).',
-  },
-  {
     id: questionId('calculus', 7, 'exam-chain-complex'),
     courseId: 'calculus',
     weekId: 'calculus-week-7',
@@ -2854,23 +2565,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Core Problem'],
     hint: 'חשב f\'\'(x) ובדוק שינוי סימן.',
     solution: 'f\'\'(x) = 12x² − 12 = 12(x−1)(x+1). f\'\'< 0 ב-(−1,1): קעור. f\'\'> 0 מחוץ לקטע: קמור. נקודות פיתול: x = ±1.',
-  },
-  {
-    id: questionId('calculus', 10, 'homework-full-analysis'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-10',
-    topicId: 'calc-lhopital-concavity',
-    sourceType: 'homework',
-    sourceName: 'Exercise 10 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 10, 'homework'),
-    title: 'שיעורי בית: ניתוח פונקציה מלא',
-    content: 'נתח את f(x) = xe^(−x): מצא עלייה/ירידה, קיצון, קמירות ואסימפטוטות.',
-    difficulty: 'hard',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Advanced Difficulty', 'Core Problem'],
-    hint: 'f\'(x) = e^(−x)(1−x), f\'\'(x) = e^(−x)(x−2).',
-    solution: 'עולה ב-(−∞,1), יורדת ב-(1,∞). מקסימום מקומי ב-x=1: f(1)=1/e. קמור ב-(2,∞), קעור ב-(−∞,2). נקודת פיתול x=2. אסימפטוטה y=0 כשx→∞.',
   },
   {
     id: questionId('calculus', 10, 'exam-lhopital-inf'),
@@ -2926,23 +2620,6 @@ export const questions: PlatformQuestion[] = [
     solution: '∫x·eˣ dx = x·eˣ − ∫eˣ dx = x·eˣ − eˣ + C = eˣ(x−1) + C.',
   },
   {
-    id: questionId('calculus', 11, 'homework-substitution'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-11',
-    topicId: 'calc-antiderivatives',
-    sourceType: 'homework',
-    sourceName: 'Exercise 11 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 11, 'homework'),
-    title: 'שיעורי בית: אינטגרל בהחלפת משתנה',
-    content: 'חשב את ∫sin(x)·cos(x) dx.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'הצב u = sin(x).',
-    solution: 'u = sin(x), du = cos(x)dx. ∫u du = u²/2 + C = sin²(x)/2 + C.',
-  },
-  {
     id: questionId('calculus', 11, 'exam-anti-combined'),
     courseId: 'calculus',
     weekId: 'calculus-week-11',
@@ -2994,23 +2671,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Must Know', 'Frequently Appears in Exams'],
     hint: 'השתמש במשפט היסוד עם כלל השרשרת.',
     solution: 'F\'(x) = sin(x²) · 2x.',
-  },
-  {
-    id: questionId('calculus', 12, 'homework-area'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-12',
-    topicId: 'calc-definite-integral',
-    sourceType: 'homework',
-    sourceName: 'Exercise 12 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 12, 'homework'),
-    title: 'שיעורי בית: שטח בין עקומות',
-    content: 'חשב את השטח בין הגרפים y = x² ו-y = x בתחום x ∈ [0,1].',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'בדוק מי מעל מי ואז אינטגרל של ההפרש.',
-    solution: 'ב-[0,1]: x ≥ x². ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹ = 1/2 − 1/3 = 1/6.',
   },
   {
     id: questionId('calculus', 12, 'exam-definite-substitution'),
@@ -3066,23 +2726,6 @@ export const questions: PlatformQuestion[] = [
     solution: 'עם x = sin θ: ∫cos²θ dθ = (1/2)∫(1 + cos(2θ)) dθ = θ/2 + sin(2θ)/4 + C = arcsin(x)/2 + x√(1−x²)/2 + C.',
   },
   {
-    id: questionId('calculus', 13, 'homework-improper'),
-    courseId: 'calculus',
-    weekId: 'calculus-week-13',
-    topicId: 'calc-integral-techniques',
-    sourceType: 'homework',
-    sourceName: 'Exercise 13 solution.pdf',
-    sourceDocumentId: sourceId('calculus', 13, 'homework'),
-    title: 'שיעורי בית: אינטגרל לא תקין',
-    content: 'קבע האם האינטגרל ∫₁^∞ 1/x² dx מתכנס, וחשב את ערכו אם כן.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'חשב ∫₁^R 1/x² dx ואז קח גבול R → ∞.',
-    solution: '∫₁^R x⁻² dx = [−1/x]₁^R = −1/R + 1 → 1. האינטגרל מתכנס לערך 1.',
-  },
-  {
     id: questionId('calculus', 13, 'exam-ibp-repeated'),
     courseId: 'calculus',
     weekId: 'calculus-week-13',
@@ -3135,23 +2778,6 @@ export const questions: PlatformQuestion[] = [
     hint: 'בנה את P(A) תחילה, ואז בנה P(P(A)) עליו.',
     solution: 'P(A) = {∅,{1},{2},{1,2}}. {1} ∉ P(P(A)) כי {1} אינו תת-קבוצה של P(A). {{1}} ∈ P(P(A)).',
   },
-  {
-    id: questionId('discrete', 3, 'homework-inclusion-exclusion'),
-    courseId: 'discrete',
-    weekId: 'discrete-week-3',
-    topicId: 'disc-power-sets',
-    sourceType: 'homework',
-    sourceName: '2025_ex3_full_solutions.pdf',
-    sourceDocumentId: sourceId('discrete', 3, 'homework'),
-    title: 'שיעורי בית: הכלולים-כלולים לשלוש קבוצות',
-    content: 'בקבוצת 100 סטודנטים: 60 לומדים מתמטיקה, 50 לומדים מדעי מחשב, 40 לומדים פיזיקה. 30 לומדים מת+מחשב, 25 לומדים מת+פיזיקה, 20 לומדים מחשב+פיזיקה, 15 לומדים שלושתם. כמה לומדים לפחות אחד?',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'השתמש בנוסחת הכלולים-כלולים: |A∪B∪C| = |A|+|B|+|C|−|A∩B|−|A∩C|−|B∩C|+|A∩B∩C|.',
-    solution: '60+50+40−30−25−20+15 = 90 סטודנטים לומדים לפחות אחד מהמקצועות.',
-  },
 
   // ─── בדידה שבוע 5 — אינדוקציה ────────────────────────────────────────────
   {
@@ -3187,23 +2813,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Core Problem', 'Frequently Appears in Exams'],
     hint: 'הוסף (n+1)² לשני הצדדים בשלב האינדוקטיבי.',
     solution: 'בסיס n=1: 1 = 1·2·3/6 = 1. שלב: נניח נכון ל-n, נחשב עד n+1: n(n+1)(2n+1)/6 + (n+1)² = (n+1)[n(2n+1)+6(n+1)]/6 = (n+1)(n+2)(2n+3)/6.',
-  },
-  {
-    id: questionId('discrete', 5, 'homework-induction-inequality'),
-    courseId: 'discrete',
-    weekId: 'discrete-week-5',
-    topicId: 'disc-induction',
-    sourceType: 'homework',
-    sourceName: '2025_ex5_full_solutions.pdf',
-    sourceDocumentId: sourceId('discrete', 5, 'homework'),
-    title: 'שיעורי בית: אינדוקציה על אי-שוויון',
-    content: 'הוכח שלכל n ≥ 1: 2ⁿ ≥ n + 1.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'בשלב האינדוקטיבי השתמש ב-2^(n+1) = 2·2ⁿ.',
-    solution: 'בסיס n=1: 2 ≥ 2 ✓. שלב: נניח 2ⁿ ≥ n+1. אז 2^(n+1) = 2·2ⁿ ≥ 2(n+1) = 2n+2 ≥ n+2 = (n+1)+1.',
   },
 
   // ─── בדידה שבוע 7 — קומבינטוריקה מתקדמת ─────────────────────────────────
@@ -3241,23 +2850,6 @@ export const questions: PlatformQuestion[] = [
     hint: 'שיטת הכוכבים והמחיצות: C(n+k−1, k−1).',
     solution: 'C(10+4−1, 4−1) = C(13,3) = 286.',
   },
-  {
-    id: questionId('discrete', 7, 'homework-derangements'),
-    courseId: 'discrete',
-    weekId: 'discrete-week-7',
-    topicId: 'disc-combinatorics2',
-    sourceType: 'homework',
-    sourceName: '2025_ex7_full_solutions.pdf',
-    sourceDocumentId: sourceId('discrete', 7, 'homework'),
-    title: 'שיעורי בית: תמורות ללא נקודות שבת',
-    content: 'כמה תמורות של {1,2,3,4} אין להן נקודת שבת (derangements)?',
-    difficulty: 'hard',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Advanced Difficulty', 'Core Problem'],
-    hint: 'D₄ = 4! · (1 − 1/1! + 1/2! − 1/3! + 1/4!).',
-    solution: 'D₄ = 24 · (1 − 1 + 1/2 − 1/6 + 1/24) = 24 · 3/8 = 9.',
-  },
 
   // ─── בדידה שבוע 8 — שובך יונים ──────────────────────────────────────────
   {
@@ -3293,23 +2885,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Core Problem', 'Frequently Appears in Exams'],
     hint: 'שובך יונים מוכלל: ⌈n/k⌉ ≥ r דורש n ≥ k(r−1)+1.',
     solution: 'עם 4 חליפות, הגרוע ביותר הוא 2 קלפים מכל חליפה = 8 קלפים. הקלף ה-9 מבטיח ≥ 3 מחליפה אחת.',
-  },
-  {
-    id: questionId('discrete', 8, 'homework-pigeonhole-number-theory'),
-    courseId: 'discrete',
-    weekId: 'discrete-week-8',
-    topicId: 'disc-pigeonhole',
-    sourceType: 'homework',
-    sourceName: '2025_ex8_full_solutions.pdf',
-    sourceDocumentId: sourceId('discrete', 8, 'homework'),
-    title: 'שיעורי בית: שובך יונים בתורת המספרים',
-    content: 'הוכח שמכל n+1 מספרים שלמים מ-{1,...,2n}, לפחות שניים יחסית-ראשוניים.',
-    difficulty: 'hard',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Advanced Difficulty', 'Core Problem'],
-    hint: 'חלק ל-{1,2}, {3,4}, ..., {2n−1, 2n} — n זוגות של מספרים עוקבים.',
-    solution: 'n+1 מספרים ב-n זוגות ⟹ לפחות שני מספרים מאותו זוג. מספרים עוקבים הם תמיד יחסית-ראשוניים (gcd(k, k+1)=1).',
   },
 
   // ─── לינארית שבוע 2 — מספרים מרוכבים ────────────────────────────────────
@@ -3347,23 +2922,6 @@ export const questions: PlatformQuestion[] = [
     hint: '|z| = √(a² + b²), arg(z) = atan2(b, a).',
     solution: '|z| = √(1+1) = √2. z נמצא ברביע שני: arg(z) = π − π/4 = 3π/4.',
   },
-  {
-    id: questionId('linear-algebra', 2, 'homework-complex-roots'),
-    courseId: 'linear-algebra',
-    weekId: 'linear-algebra-week-2',
-    topicId: 'la-complex',
-    sourceType: 'homework',
-    sourceName: 'Ex2_Lin_Alg_1_2025-2026_sol.pdf',
-    sourceDocumentId: sourceId('linear-algebra', 2, 'homework'),
-    title: 'שיעורי בית: שורשים מרוכבים',
-    content: 'פתור את המשוואה z² + 2z + 5 = 0 מעל ℂ.',
-    difficulty: 'medium',
-    isRequired: true,
-    isExamFrequent: true,
-    systemTags: ['Core Problem', 'Frequently Appears in Exams'],
-    hint: 'השתמש בנוסחת ה-ABC: z = (−2 ± √(4−20))/2.',
-    solution: 'דיסקרימיננטה = 4−20 = −16. z = (−2 ± 4i)/2 = −1 ± 2i.',
-  },
 
   // ─── לינארית שבוע 4 — מרחבים וקטוריים ───────────────────────────────────
   {
@@ -3399,23 +2957,6 @@ export const questions: PlatformQuestion[] = [
     systemTags: ['Core Problem', 'Frequently Appears in Exams'],
     hint: 'בדוק שהאפס שייך, ושW סגור לחיבור ולכפל בסקלר.',
     solution: 'p = 0 מקיים p(1)=0. אם p(1)=q(1)=0 אז (p+q)(1)=0 ו-(αp)(1)=0. לכן W תת-מרחב.',
-  },
-  {
-    id: questionId('linear-algebra', 4, 'homework-span'),
-    courseId: 'linear-algebra',
-    weekId: 'linear-algebra-week-4',
-    topicId: 'la-vector-spaces',
-    sourceType: 'homework',
-    sourceName: 'Lin_Alg_I_2025-2026_Homework_4_Solutions.pdf',
-    sourceDocumentId: sourceId('linear-algebra', 4, 'homework'),
-    title: 'שיעורי בית: מציאת הפריסה',
-    content: 'מצא את Span{(1,0,0), (0,1,0)} וציין אילו וקטורים ב-ℝ³ אינם בתוכו.',
-    difficulty: 'easy',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Core Problem'],
-    hint: 'כל וקטור בפריסה הוא צירוף לינארי של שני הוקטורים.',
-    solution: 'Span = {(a,b,0) : a,b ∈ ℝ} — המישור x-y. וקטורים עם רכיב z ≠ 0 אינם בתוכו.',
   },
 
   // ─── לינארית שבוע 6 — תלות לינארית ──────────────────────────────────────
@@ -3453,23 +2994,6 @@ export const questions: PlatformQuestion[] = [
     hint: 'הציב ב-3 המשוואות ופתור.',
     solution: 'המשוואות: α+γ=0, β+γ=0, α+β+2γ=0. פתרון: α=1, β=1, γ=−1.',
   },
-  {
-    id: questionId('linear-algebra', 6, 'homework-independence-rn'),
-    courseId: 'linear-algebra',
-    weekId: 'linear-algebra-week-6',
-    topicId: 'la-dependence',
-    sourceType: 'homework',
-    sourceName: 'Lin_Alg_I_2025-2026_Homework_6_Solutions.pdf',
-    sourceDocumentId: sourceId('linear-algebra', 6, 'homework'),
-    title: 'שיעורי בית: אי-תלות ב-ℝⁿ',
-    content: 'הוכח שכל קבוצה של n+1 וקטורים ב-ℝⁿ תלויה לינארית.',
-    difficulty: 'hard',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Advanced Difficulty', 'Core Problem'],
-    hint: 'השתמש בעובדה שדרגת מטריצה n×(n+1) קטנה מ-n+1.',
-    solution: 'מטריצת n שורות ו-n+1 עמודות — הדרגה ≤ n < n+1, לכן יש פתרון לא-טריוויאלי למערכת ההומוגנית.',
-  },
 
   // ─── לינארית שבוע 7 — בסיס ומימד ────────────────────────────────────────
   {
@@ -3506,196 +3030,6 @@ export const questions: PlatformQuestion[] = [
     hint: 'לפי למת שטייניץ, קבוצה בלתי-תלויה אפשר להשלים לבסיס.',
     solution: 'מכיוון שdim V = 4 ו-{u₁,u₂,u₃} בלתי-תלויה (|B.I.| = 3 < 4), ניתן להוסיף וקטור אחד מ-B לקבלת בסיס.',
   },
-  {
-    id: questionId('linear-algebra', 7, 'homework-dimension-theorem'),
-    courseId: 'linear-algebra',
-    weekId: 'linear-algebra-week-7',
-    topicId: 'la-basis-dim',
-    sourceType: 'homework',
-    sourceName: 'Lin_Alg_I_2025-2026_Homework_7_Solutions.pdf',
-    sourceDocumentId: sourceId('linear-algebra', 7, 'homework'),
-    title: 'שיעורי בית: משפט הממד לתת-מרחבים',
-    content: 'תהיינה U, W תת-מרחבים של V עם dim U = 3, dim W = 4, dim V = 5. הסק כמה יכול להיות dim(U ∩ W).',
-    difficulty: 'hard',
-    isRequired: true,
-    isExamFrequent: false,
-    systemTags: ['Advanced Difficulty', 'Core Problem'],
-    hint: 'השתמש ב-dim(U+W) = dim U + dim W − dim(U∩W) ובעובדה ש-dim(U+W) ≤ 5.',
-    solution: 'dim(U∩W) = dim U + dim W − dim(U+W) ≥ 3 + 4 − 5 = 2. לכן dim(U∩W) ≥ 2.',
-  },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // ADDITIONAL HOMEWORK — CALCULUS
-  // ══════════════════════════════════════════════════════════════════════════
-
-  // שבוע 1 — סדרות
-  { id: questionId('calculus',1,'hw2-eps-n'), courseId:'calculus', weekId:'calculus-week-1', topicId:'calc-sequences', sourceType:'homework', sourceName:'Exercise 1 solution.pdf', sourceDocumentId:sourceId('calculus',1,'homework'), title:'שיעורי בית: הוכחת ε-N לסדרה ליניארית', content:'הוכח מהגדרת ε-N ש-lim(n→∞) (3n+1)/(n+2) = 3.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'פשט |(3n+1)/(n+2) − 3| ומצא N בפונקציה של ε.', solution:'|(3n+1)/(n+2) − 3| = 5/(n+2). דרוש 5/(n+2) < ε, כלומר n > 5/ε − 2. בחר N = ⌈5/ε⌉.' },
-  { id: questionId('calculus',1,'hw3-product'), courseId:'calculus', weekId:'calculus-week-1', topicId:'calc-sequences', sourceType:'homework', sourceName:'Exercise 1 solution.pdf', sourceDocumentId:sourceId('calculus',1,'homework'), title:'שיעורי בית: גבול מכפלת סדרות', content:'אם aₙ → 2 ו-bₙ → 3, חשב lim(aₙ² − bₙ) ונמק בעזרת אלגברת גבולות.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'השתמש בחוקי גבול: aₙ² = aₙ·aₙ.', solution:'lim aₙ² = 4, לכן lim(aₙ² − bₙ) = 4 − 3 = 1.' },
-  { id: questionId('calculus',1,'hw4-diverge'), courseId:'calculus', weekId:'calculus-week-1', topicId:'calc-sequences', sourceType:'homework', sourceName:'Exercise 1 solution.pdf', sourceDocumentId:sourceId('calculus',1,'homework'), title:'שיעורי בית: הוכחת התבדרות', content:'הוכח שהסדרה aₙ = (−1)ⁿ מתבדרת בעזרת שתי תת-סדרות.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Important'], hint:'בחן את תת-הסדרות a_{2k} ו-a_{2k+1}.', solution:'a_{2k} = 1 ו-a_{2k+1} = −1. הגבולות שונים, לכן הסדרה מתבדרת.' },
-  { id: questionId('calculus',1,'hw5-bounded'), courseId:'calculus', weekId:'calculus-week-1', topicId:'calc-sequences', sourceType:'homework', sourceName:'Exercise 1 solution.pdf', sourceDocumentId:sourceId('calculus',1,'homework'), title:'שיעורי בית: סדרה מונוטונית וחסומה', content:'הוכח שהסדרה aₙ = n/(n+1) מונוטונית עולה וחסומה, ומצא את גבולה.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem'], hint:'הראה aₙ₊₁ > aₙ ובדוק ש-aₙ < 1 לכל n.', solution:'aₙ₊₁ − aₙ = 1/((n+1)(n+2)) > 0. חסומה: aₙ < 1. לפי משפט ההתכנסות המונוטוני, הגבול = sup = 1.' },
-
-  // שבוע 2 — גבולות סדרות
-  { id: questionId('calculus',2,'hw2-sandwich'), courseId:'calculus', weekId:'calculus-week-2', topicId:'calc-seq-limits', sourceType:'homework', sourceName:'Exercise 2 solution.pdf', sourceDocumentId:sourceId('calculus',2,'homework'), title:'שיעורי בית: כריך עם sin', content:'חשב lim(n→∞) sin(n)/n בעזרת משפט הכריך.', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Must Know'], hint:'השתמש ב-|sin(n)| ≤ 1.', solution:'−1/n ≤ sin(n)/n ≤ 1/n ושני הצדדים → 0, לכן הגבול = 0.' },
-  { id: questionId('calculus',2,'hw3-recursive'), courseId:'calculus', weekId:'calculus-week-2', topicId:'calc-seq-limits', sourceType:'homework', sourceName:'Exercise 2 solution.pdf', sourceDocumentId:sourceId('calculus',2,'homework'), title:'שיעורי בית: סדרה רקורסיבית', content:'הסדרה: a₁ = 1, aₙ₊₁ = (aₙ + 3)/2. הוכח שהיא מונוטונית עולה וחסומה מלמעלה ב-3, ומצא את גבולה.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'הוכח aₙ < 3 ו-aₙ₊₁ > aₙ באינדוקציה.', solution:'אינדוקציה: a₁=1<3; אם aₙ<3 אז aₙ₊₁=(aₙ+3)/2 < 3. עולה: aₙ₊₁ − aₙ = (3−aₙ)/2 > 0. גבול L: L=(L+3)/2 → L=3.' },
-  { id: questionId('calculus',2,'hw4-root-test'), courseId:'calculus', weekId:'calculus-week-2', topicId:'calc-seq-limits', sourceType:'homework', sourceName:'Exercise 2 solution.pdf', sourceDocumentId:sourceId('calculus',2,'homework'), title:'שיעורי בית: גבול ⁿ√n', content:'חשב lim(n→∞) ⁿ√(n²) = lim n^(2/n).', difficulty:'medium', isRequired:false, isExamFrequent:false, systemTags:['Important'], hint:'כתוב n^(2/n) = (ⁿ√n)². משתמש בעובדה ⁿ√n → 1.', solution:'lim (ⁿ√n)² = 1² = 1.' },
-  { id: questionId('calculus',2,'hw5-e-limit'), courseId:'calculus', weekId:'calculus-week-2', topicId:'calc-seq-limits', sourceType:'homework', sourceName:'Exercise 2 solution.pdf', sourceDocumentId:sourceId('calculus',2,'homework'), title:'שיעורי בית: גבולות הקשורים ל-e', content:'חשב lim(n→∞) (1 + 2/n)ⁿ.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams'], hint:'כתוב כ-(1 + 2/n)ⁿ = [(1 + 1/(n/2))^(n/2)]².', solution:'השתמש בm = n/2: [(1+1/m)^m]² → e² כאשר m → ∞.' },
-
-  // שבוע 3 — גבולות פונקציות
-  { id: questionId('calculus',3,'hw2-eps-delta-linear'), courseId:'calculus', weekId:'calculus-week-3', topicId:'calc-func-limits', sourceType:'homework', sourceName:'Exercise 3 solution.pdf', sourceDocumentId:sourceId('calculus',3,'homework'), title:'שיעורי בית: הוכחת ε-δ לפונקציה ליניארית', content:'הוכח מהגדרת ε-δ ש-lim(x→3) (2x − 1) = 5.', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'|2x−1 − 5| = 2|x − 3|. בחר δ = ε/2.', solution:'|f(x) − 5| = 2|x−3| < 2δ = ε. בחר δ = ε/2.' },
-  { id: questionId('calculus',3,'hw3-trig'), courseId:'calculus', weekId:'calculus-week-3', topicId:'calc-func-limits', sourceType:'homework', sourceName:'Exercise 3 solution.pdf', sourceDocumentId:sourceId('calculus',3,'homework'), title:'שיעורי בית: גבול טריגונומטרי', content:'חשב lim(x→0) (1 − cos x)/x² בעזרת sin(x)/x → 1.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'הכפל מעלה ומטה ב-(1+cos x) ואז השתמש ב-sin²x = 1−cos²x.', solution:'(1−cos x)/x² · (1+cos x)/(1+cos x) = sin²x / (x²(1+cos x)) → 1·(1/2) = 1/2.' },
-  { id: questionId('calculus',3,'hw4-asymptotic'), courseId:'calculus', weekId:'calculus-week-3', topicId:'calc-func-limits', sourceType:'homework', sourceName:'Exercise 3 solution.pdf', sourceDocumentId:sourceId('calculus',3,'homework'), title:'שיעורי בית: שקילות אסימפטוטית', content:'חשב lim(x→∞) (3x² + 5x + 1)/(2x² − 7).', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'חלק מעלה ומטה ב-x².', solution:'lim (3 + 5/x + 1/x²)/(2 − 7/x²) = 3/2.' },
-  { id: questionId('calculus',3,'hw5-onesided'), courseId:'calculus', weekId:'calculus-week-3', topicId:'calc-func-limits', sourceType:'homework', sourceName:'Exercise 3 solution.pdf', sourceDocumentId:sourceId('calculus',3,'homework'), title:'שיעורי בית: בדיקת קיום גבול', content:'חשב lim(x→0⁺) √x · sin(1/x) ואת lim(x→0) x · sin(1/x).', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Important'], hint:'השתמש בכריך: |x·sin(1/x)| ≤ |x|.', solution:'|√x · sin(1/x)| ≤ √x → 0. |x · sin(1/x)| ≤ |x| → 0. שניהם אפס.' },
-
-  // שבוע 4 — גבולות
-  { id: questionId('calculus',4,'hw2-factoring'), courseId:'calculus', weekId:'calculus-week-4', topicId:'calc-limits', sourceType:'homework', sourceName:'Exercise 4 solution.pdf', sourceDocumentId:sourceId('calculus',4,'homework'), title:'שיעורי בית: גבול עם פירוק', content:'חשב lim(x→3) (x² − 9)/(x − 3).', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'פרק x²−9 = (x−3)(x+3).', solution:'= lim(x+3) = 6.' },
-  { id: questionId('calculus',4,'hw3-infinity'), courseId:'calculus', weekId:'calculus-week-4', topicId:'calc-limits', sourceType:'homework', sourceName:'Exercise 4 solution.pdf', sourceDocumentId:sourceId('calculus',4,'homework'), title:'שיעורי בית: גבול בלגבי אינסוף', content:'חשב lim(x→∞) (√(x² + x) − x).', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams','Must Know'], hint:'הכפל ב-conjugate: √(x²+x) + x.', solution:'√(x²+x) − x = x/( √(x²+x) + x) = 1/(√(1+1/x) + 1) → 1/2.' },
-  { id: questionId('calculus',4,'hw4-heine-disproof'), courseId:'calculus', weekId:'calculus-week-4', topicId:'calc-limits', sourceType:'homework', sourceName:'Exercise 4 solution.pdf', sourceDocumentId:sourceId('calculus',4,'homework'), title:'שיעורי בית: הפרכת גבול', content:'הוכח שlim(x→∞) sin(x) לא קיים.', difficulty:'medium', isRequired:true, isExamFrequent:false, systemTags:['Important'], hint:'מצא שתי סדרות xₙ, yₙ → ∞ עם sin(xₙ) = 1 ו-sin(yₙ) = 0.', solution:'xₙ = π/2 + 2πn, yₙ = 2πn. sin(xₙ) = 1, sin(yₙ) = 0. גבולות שונים — הגבול לא קיים.' },
-
-  // שבוע 5 — רציפות
-  { id: questionId('calculus',5,'hw2-ivt-fixedpoint'), courseId:'calculus', weekId:'calculus-week-5', topicId:'calc-continuity', sourceType:'homework', sourceName:'Exercise 5 solution.pdf', sourceDocumentId:sourceId('calculus',5,'homework'), title:'שיעורי בית: נקודת שבת', content:'הוכח שלכל פונקציה רציפה f:[0,1]→[0,1] קיים c ∈ [0,1] כך ש-f(c) = c.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'הגדר g(x) = f(x) − x ובדוק את סימן g בקצוות.', solution:'g(0) = f(0) ≥ 0, g(1) = f(1) − 1 ≤ 0. לפי IVT קיים c עם g(c) = 0, כלומר f(c) = c.' },
-  { id: questionId('calculus',5,'hw3-discontinuity'), courseId:'calculus', weekId:'calculus-week-5', topicId:'calc-continuity', sourceType:'homework', sourceName:'Exercise 5 solution.pdf', sourceDocumentId:sourceId('calculus',5,'homework'), title:'שיעורי בית: סיווג אי-רציפות', content:'סווג את אי-הרציפויות של f(x) = 1/sin(x) ב-x = 0, π, 2π.', difficulty:'medium', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'בדוק גבולות חד-צדדיים בכל נקודה.', solution:'x=0: sin(x)→0 ולכן f(x)→±∞ — אי-רציפות ממין שני. x=π: אותו הדין. x=2π: זהה.' },
-  { id: questionId('calculus',5,'hw4-extreme-value'), courseId:'calculus', weekId:'calculus-week-5', topicId:'calc-continuity', sourceType:'homework', sourceName:'Exercise 5 solution.pdf', sourceDocumentId:sourceId('calculus',5,'homework'), title:'שיעורי בית: ערכי קיצון גלובליים', content:'מצא את ערכי הקיצון של f(x) = x³ − 3x על [−2,2] בעזרת עקרון ויירשטראס.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams','Core Problem'], hint:'גזור ומצא נקודות קריטיות, ואז בדוק גם את הקצוות.', solution:'f\'(x)=3x²−3=0 ב-x=±1. בדיקה: f(−2)=−2, f(−1)=2, f(1)=−2, f(2)=2. מקסימום=2, מינימום=−2.' },
-
-  // שבוע 6 — נגזרת
-  { id: questionId('calculus',6,'hw2-from-def'), courseId:'calculus', weekId:'calculus-week-6', topicId:'calc-derivative-def', sourceType:'homework', sourceName:'Exercise 6 solution.pdf', sourceDocumentId:sourceId('calculus',6,'homework'), title:'שיעורי בית: נגזרת מהגדרה', content:'חשב את נגזרת f(x) = √x ב-x > 0 ישירות מהגדרת הגבול.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know'], hint:'הכפל ב-(√(x+h) + √x)/(√(x+h) + √x).', solution:'lim [√(x+h)−√x]/h = lim h/[h(√(x+h)+√x)] = 1/(2√x).' },
-  { id: questionId('calculus',6,'hw3-product-rule'), courseId:'calculus', weekId:'calculus-week-6', topicId:'calc-derivative-def', sourceType:'homework', sourceName:'Exercise 6 solution.pdf', sourceDocumentId:sourceId('calculus',6,'homework'), title:'שיעורי בית: כלל המכפלה', content:'גזור f(x) = (x² + 1)(x³ − 2x) בשתי דרכים: כלל מכפלה ופיתוח ישיר.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'כלל מכפלה: (fg)\' = f\'g + fg\'.', solution:'דרך 1: 2x(x³−2x)+(x²+1)(3x²−2) = 5x⁴−4x²−2. דרך 2: פתח ל-x⁵−x³−2x², גזור: 5x⁴−3x²−2. תוצאה זהה.' },
-  { id: questionId('calculus',6,'hw4-nondiff'), courseId:'calculus', weekId:'calculus-week-6', topicId:'calc-derivative-def', sourceType:'homework', sourceName:'Exercise 6 solution.pdf', sourceDocumentId:sourceId('calculus',6,'homework'), title:'שיעורי בית: אי-גזירות', content:'הוכח ש-f(x) = |x| אינה גזירה ב-x = 0.', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'חשב גבול ימני ושמאלי של (f(h)−f(0))/h.', solution:'מימין: h/h = 1. משמאל: (−h)/h = −1. הגבולות שונים — לא גזירה.' },
-  { id: questionId('calculus',6,'hw5-quotient'), courseId:'calculus', weekId:'calculus-week-6', topicId:'calc-derivative-def', sourceType:'homework', sourceName:'Exercise 6 solution.pdf', sourceDocumentId:sourceId('calculus',6,'homework'), title:'שיעורי בית: כלל המנה', content:'גזור f(x) = (x² − 1)/(x² + 1).', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'(f/g)\' = (f\'g − fg\')/g².', solution:'f\'(x) = [2x(x²+1) − (x²−1)2x]/(x²+1)² = 4x/(x²+1)².' },
-
-  // שבוע 7 — כלל שרשרת
-  { id: questionId('calculus',7,'hw2-chain'), courseId:'calculus', weekId:'calculus-week-7', topicId:'calc-chain-rule', sourceType:'homework', sourceName:'Exercise 7 solution.pdf', sourceDocumentId:sourceId('calculus',7,'homework'), title:'שיעורי בית: כלל שרשרת', content:'גזור f(x) = sin(x²) ו-g(x) = eˢⁱⁿ⁽ˣ⁾.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'f\'(x) = cos(x²)·2x; g\'(x) = eˢⁱⁿ⁽ˣ⁾·cos(x).', solution:'f\'(x) = 2x·cos(x²). g\'(x) = cos(x)·eˢⁱⁿ⁽ˣ⁾.' },
-  { id: questionId('calculus',7,'hw3-log-diff'), courseId:'calculus', weekId:'calculus-week-7', topicId:'calc-chain-rule', sourceType:'homework', sourceName:'Exercise 7 solution.pdf', sourceDocumentId:sourceId('calculus',7,'homework'), title:'שיעורי בית: נגזרת לוגריתמית', content:'גזור f(x) = xˣ (עבור x > 0) בעזרת לוגריתם.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams','Must Know'], hint:'כתוב xˣ = eˣ ˡⁿ⁽ˣ⁾ וגזור.', solution:'ln f = x ln x; f\'/f = ln x + 1; f\' = xˣ(ln x + 1).' },
-  { id: questionId('calculus',7,'hw4-implicit'), courseId:'calculus', weekId:'calculus-week-7', topicId:'calc-chain-rule', sourceType:'homework', sourceName:'Exercise 7 solution.pdf', sourceDocumentId:sourceId('calculus',7,'homework'), title:'שיעורי בית: גזירה משתמעת', content:'מצא dy/dx מהמשוואה x² + y² = 25 בנקודה (3, 4).', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Important'], hint:'גזור שני הצדדים לפי x, ב-y כפונקציה של x.', solution:'2x + 2y·(dy/dx) = 0 → dy/dx = −x/y = −3/4.' },
-  { id: questionId('calculus',7,'hw5-higher'), courseId:'calculus', weekId:'calculus-week-7', topicId:'calc-chain-rule', sourceType:'homework', sourceName:'Exercise 7 solution.pdf', sourceDocumentId:sourceId('calculus',7,'homework'), title:'שיעורי בית: נגזרות גבוהות', content:'מצא f\'\'(x) עבור f(x) = ln(x) ו-g(x) = sin(x). בדוק אם יש דפוס לנגזרת ה-n-ית.', difficulty:'medium', isRequired:false, isExamFrequent:false, systemTags:['Important'], hint:'לחשב נגזרת ראשונה ושנייה ולחפש דפוס.', solution:'(ln x)\'\' = −1/x². (sin x)^(n) = sin(x + nπ/2). דפוס מחזורי לsin.' },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // ADDITIONAL HOMEWORK — CALCULUS weeks 8–13
-  // ══════════════════════════════════════════════════════════════════════════
-
-  // שבוע 8 — יישומי נגזרות
-  { id: questionId('calculus',8,'hw2-mvt-ineq'), courseId:'calculus', weekId:'calculus-week-8', topicId:'calc-derivatives', sourceType:'homework', sourceName:'Exercise 8 solution.pdf', sourceDocumentId:sourceId('calculus',8,'homework'), title:'שיעורי בית: אי-שוויון MVT', content:'הוכח ש-|ln(1+x) − ln(1+y)| ≤ |x − y| לכל x, y > −1.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'הפעל MVT על ln(1+t) בקטע הרלוונטי.', solution:'קיים c בין x, y: ln(1+x)−ln(1+y) = 1/(1+c)·(x−y). כיוון ש-1/(1+c) ≤ 1 עבור c ≥ 0, מקבלים את האי-שוויון.' },
-  { id: questionId('calculus',8,'hw3-monotonicity'), courseId:'calculus', weekId:'calculus-week-8', topicId:'calc-derivatives', sourceType:'homework', sourceName:'Exercise 8 solution.pdf', sourceDocumentId:sourceId('calculus',8,'homework'), title:'שיעורי בית: מונוטוניות ומקסימום', content:'מצא את קטעי העלייה/ירידה ונקודות הקיצון של f(x) = x·eˣ.', difficulty:'medium', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'f\'(x) = (x+1)eˣ. eˣ > 0 תמיד.', solution:'f\'(x) = 0 ב-x = −1. x < −1: f\' < 0 (יורדת). x > −1: f\' > 0 (עולה). מינימום מקומי ב-x=−1, f(−1) = −1/e.' },
-  { id: questionId('calculus',8,'hw4-rolle'), courseId:'calculus', weekId:'calculus-week-8', topicId:'calc-derivatives', sourceType:'homework', sourceName:'Exercise 8 solution.pdf', sourceDocumentId:sourceId('calculus',8,'homework'), title:'שיעורי בית: יישום משפט רול', content:'נניח שf פולינום ו-f(0) = f(2) = 0. הוכח שקיים c ∈ (0,2) כך ש-f\'(c) = 0.', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams'], hint:'בדוק שתנאי משפט רול מתקיימים.', solution:'פולינום רציף וגזיר בכל מקום. f(0)=f(2)=0. לפי משפט רול, קיים c ∈ (0,2) עם f\'(c)=0.' },
-  { id: questionId('calculus',8,'hw5-second-deriv'), courseId:'calculus', weekId:'calculus-week-8', topicId:'calc-derivatives', sourceType:'homework', sourceName:'Exercise 8 solution.pdf', sourceDocumentId:sourceId('calculus',8,'homework'), title:'שיעורי בית: מבחן נגזרת שנייה', content:'עבור f(x) = x³ − 6x, אמת שהנקודה x=0 היא נקודת פיתול בעזרת הגדרת קעירות.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Frequently Appears in Exams'], hint:'f\'\'(x) = 6x. בדוק סימן f\'\' לשני צדי x=0.', solution:'f\'\'(x) = 6x. עבור x<0: f\'\'<0 (קמורה). עבור x>0: f\'\'>0 (קעורה). שינוי סימן — נקודת פיתול.' },
-
-  // שבוע 9 — פולינום טיילור
-  { id: questionId('calculus',9,'hw2-maclaurin'), courseId:'calculus', weekId:'calculus-week-9', topicId:'calc-taylor', sourceType:'homework', sourceName:'Exercise 9 solution.pdf', sourceDocumentId:sourceId('calculus',9,'homework'), title:'שיעורי בית: פיתוח מקלורן', content:'מצא את פולינום מקלורן מסדר 4 של cos(x).', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'השתמש בנגזרות: cos,−sin,−cos,sin,cos.', solution:'P₄(x) = 1 − x²/2 + x⁴/24.' },
-  { id: questionId('calculus',9,'hw3-limit-taylor'), courseId:'calculus', weekId:'calculus-week-9', topicId:'calc-taylor', sourceType:'homework', sourceName:'Exercise 9 solution.pdf', sourceDocumentId:sourceId('calculus',9,'homework'), title:'שיעורי בית: גבול בעזרת טיילור', content:'חשב lim(x→0) (eˣ − 1 − x − x²/2) / x³.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams','Advanced Difficulty'], hint:'פתח eˣ עד x³ ונטל את האיבר המוביל.', solution:'eˣ = 1+x+x²/2+x³/6+o(x³). המונה ~ x³/6. הגבול = 1/6.' },
-  { id: questionId('calculus',9,'hw4-compare'), courseId:'calculus', weekId:'calculus-week-9', topicId:'calc-taylor', sourceType:'homework', sourceName:'Exercise 9 solution.pdf', sourceDocumentId:sourceId('calculus',9,'homework'), title:'שיעורי בית: השוואת פונקציות', content:'קבע איזו פונקציה גדולה יותר ליד x=0: eˣ או 1 + x + x²/2.', difficulty:'medium', isRequired:false, isExamFrequent:false, systemTags:['Important'], hint:'השווה את שאריות טיילור.', solution:'eˣ = 1+x+x²/2 + x³/6 + o(x³). לכן eˣ > 1+x+x²/2 עבור x > 0 קטן.' },
-
-  // שבוע 10 — לופיטל וקעירות
-  { id: questionId('calculus',10,'hw2-lhopital-forms'), courseId:'calculus', weekId:'calculus-week-10', topicId:'calc-lhopital-concavity', sourceType:'homework', sourceName:'Exercise 10 solution.pdf', sourceDocumentId:sourceId('calculus',10,'homework'), title:'שיעורי בית: לופיטל — צורות שונות', content:'חשב lim(x→0⁺) x·ln(x) (צורת 0·∞).', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'כתוב x·ln(x) = ln(x)/(1/x) וזה צורת ∞/∞.', solution:'lim ln(x)/(1/x) = lim (1/x)/(−1/x²) = lim(−x) = 0.' },
-  { id: questionId('calculus',10,'hw3-asymptotes'), courseId:'calculus', weekId:'calculus-week-10', topicId:'calc-lhopital-concavity', sourceType:'homework', sourceName:'Exercise 10 solution.pdf', sourceDocumentId:sourceId('calculus',10,'homework'), title:'שיעורי בית: אסימפטוטות', content:'מצא את כל האסימפטוטות של f(x) = (x² + 1)/x.', difficulty:'medium', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'בדוק x→±∞ לאסימפטוטה אלכסונית, ו-x=0 לאסימפטוטה אנכית.', solution:'f(x) = x + 1/x. אסימפטוטה אלכסונית: y=x. אנכית: x=0.' },
-  { id: questionId('calculus',10,'hw4-concavity'), courseId:'calculus', weekId:'calculus-week-10', topicId:'calc-lhopital-concavity', sourceType:'homework', sourceName:'Exercise 10 solution.pdf', sourceDocumentId:sourceId('calculus',10,'homework'), title:'שיעורי בית: ניתוח קעירות', content:'מצא את קטעי הקעירות וקמירות ונקודות הפיתול של f(x) = x⁴ − 4x³.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Frequently Appears in Exams'], hint:'f\'\'(x) = 12x² − 24x = 12x(x−2).', solution:'f\'\'=0 ב-x=0, x=2. x<0: f\'\'>0 (קעורה). 0<x<2: f\'\'<0 (קמורה). x>2: f\'\'>0 (קעורה). פיתולים: x=0, x=2.' },
-  { id: questionId('calculus',10,'hw5-global-opt'), courseId:'calculus', weekId:'calculus-week-10', topicId:'calc-lhopital-concavity', sourceType:'homework', sourceName:'Exercise 10 solution.pdf', sourceDocumentId:sourceId('calculus',10,'homework'), title:'שיעורי בית: אופטימיזציה', content:'מצא את המינימום הגלובלי של f(x) = eˣ + e⁻ˣ על ℝ.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'f\'(x) = eˣ − e⁻ˣ = 0 ב-x=0.', solution:'f\'(x) = eˣ−e⁻ˣ = 0 → x=0. f\'\'(0) = eˣ+e⁻ˣ|_{x=0} = 2 > 0. מינימום ב-x=0 עם ערך 2.' },
-
-  // שבוע 11 — קדומות
-  { id: questionId('calculus',11,'hw2-basic'), courseId:'calculus', weekId:'calculus-week-11', topicId:'calc-integrals', sourceType:'homework', sourceName:'Exercise 11 solution.pdf', sourceDocumentId:sourceId('calculus',11,'homework'), title:'שיעורי בית: אינטגרלים בסיסיים', content:'חשב: (א) ∫(x³ + 2x − 1)dx; (ב) ∫(1/x + eˣ)dx.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'השתמש בחוקי האינטגרל הבסיסיים.', solution:'(א) x⁴/4 + x² − x + C. (ב) ln|x| + eˣ + C.' },
-  { id: questionId('calculus',11,'hw3-substitution'), courseId:'calculus', weekId:'calculus-week-11', topicId:'calc-integrals', sourceType:'homework', sourceName:'Exercise 11 solution.pdf', sourceDocumentId:sourceId('calculus',11,'homework'), title:'שיעורי בית: החלפת משתנה', content:'חשב ∫ x·eˣ² dx בשיטת ההחלפה.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Must Know'], hint:'הצב u = x², du = 2x·dx.', solution:'u = x², du = 2x dx. ∫ eᵘ·(du/2) = eˣ²/2 + C.' },
-  { id: questionId('calculus',11,'hw4-byparts'), courseId:'calculus', weekId:'calculus-week-11', topicId:'calc-integrals', sourceType:'homework', sourceName:'Exercise 11 solution.pdf', sourceDocumentId:sourceId('calculus',11,'homework'), title:'שיעורי בית: אינטגרציה בחלקים', content:'חשב ∫ x·sin(x) dx.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'בחר u = x, dv = sin(x)dx.', solution:'= −x·cos(x) + ∫ cos(x)dx = −x·cos(x) + sin(x) + C.' },
-  { id: questionId('calculus',11,'hw5-trigint'), courseId:'calculus', weekId:'calculus-week-11', topicId:'calc-integrals', sourceType:'homework', sourceName:'Exercise 11 solution.pdf', sourceDocumentId:sourceId('calculus',11,'homework'), title:'שיעורי בית: אינטגרל טריגונומטרי', content:'חשב ∫ sin²(x) dx.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Frequently Appears in Exams'], hint:'השתמש ב-sin²(x) = (1 − cos(2x))/2.', solution:'∫(1−cos(2x))/2 dx = x/2 − sin(2x)/4 + C.' },
-
-  // שבוע 12 — אינטגרל מסוים
-  { id: questionId('calculus',12,'hw2-ftc'), courseId:'calculus', weekId:'calculus-week-12', topicId:'calc-definite-integral', sourceType:'homework', sourceName:'Exercise 12 solution.pdf', sourceDocumentId:sourceId('calculus',12,'homework'), title:'שיעורי בית: משפט היסוד', content:'חשב ∫₀^π sin(x) dx ו-∫₁^e (1/x) dx.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'השתמש ב-FTC חלק 2.', solution:'∫₀^π sin(x)dx = [−cos(x)]₀^π = 2. ∫₁^e (1/x)dx = ln(e)−ln(1) = 1.' },
-  { id: questionId('calculus',12,'hw3-area'), courseId:'calculus', weekId:'calculus-week-12', topicId:'calc-definite-integral', sourceType:'homework', sourceName:'Exercise 12 solution.pdf', sourceDocumentId:sourceId('calculus',12,'homework'), title:'שיעורי בית: שטח בין עקומות', content:'מצא את השטח בין y = x² ו-y = x בקטע [0,1].', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'השטח = ∫₀¹ (x − x²)dx כי x ≥ x² על [0,1].', solution:'∫₀¹(x−x²)dx = [x²/2 − x³/3]₀¹ = 1/2 − 1/3 = 1/6.' },
-  { id: questionId('calculus',12,'hw4-ftc2'), courseId:'calculus', weekId:'calculus-week-12', topicId:'calc-definite-integral', sourceType:'homework', sourceName:'Exercise 12 solution.pdf', sourceDocumentId:sourceId('calculus',12,'homework'), title:'שיעורי בית: FTC חלק 1', content:'חשב d/dx ∫₀^(x²) eᵗ dt.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Must Know'], hint:'השתמש ב-FTC חלק 1 עם כלל שרשרת.', solution:'d/dx ∫₀^(x²) eᵗ dt = eˣ² · 2x.' },
-  { id: questionId('calculus',12,'hw5-definite-sub'), courseId:'calculus', weekId:'calculus-week-12', topicId:'calc-definite-integral', sourceType:'homework', sourceName:'Exercise 12 solution.pdf', sourceDocumentId:sourceId('calculus',12,'homework'), title:'שיעורי בית: החלפת משתנה באינטגרל מסוים', content:'חשב ∫₀¹ x·√(1−x²) dx.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Frequently Appears in Exams'], hint:'הצב u = 1−x², du = −2x dx. שנה גם את הגבולות.', solution:'u(0)=1, u(1)=0. ∫₁⁰ √u·(−du/2) = (1/2)∫₀¹√u du = [u^(3/2)/3]₀¹ = 1/3.' },
-
-  // שבוע 13 — טכניקות אינטגרציה
-  { id: questionId('calculus',13,'hw2-partial-fractions'), courseId:'calculus', weekId:'calculus-week-13', topicId:'calc-integration-techniques', sourceType:'homework', sourceName:'Exercise 13 solution.pdf', sourceDocumentId:sourceId('calculus',13,'homework'), title:'שיעורי בית: שברים חלקיים', content:'חשב ∫ 1/(x²−1) dx בשיטת שברים חלקיים.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'פרק 1/(x²−1) = A/(x−1) + B/(x+1).', solution:'A=1/2, B=−1/2. ∫ = (1/2)ln|x−1| − (1/2)ln|x+1| + C = (1/2)ln|(x−1)/(x+1)| + C.' },
-  { id: questionId('calculus',13,'hw3-byparts2'), courseId:'calculus', weekId:'calculus-week-13', topicId:'calc-integration-techniques', sourceType:'homework', sourceName:'Exercise 13 solution.pdf', sourceDocumentId:sourceId('calculus',13,'homework'), title:'שיעורי בית: אינטגרציה בחלקים חוזרת', content:'חשב ∫ x²·eˣ dx.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams','Core Problem'], hint:'יש להפעיל אינטגרציה בחלקים פעמיים.', solution:'∫x²eˣdx = x²eˣ − 2∫xeˣdx = x²eˣ − 2xeˣ + 2eˣ + C = eˣ(x²−2x+2)+C.' },
-  { id: questionId('calculus',13,'hw4-improper'), courseId:'calculus', weekId:'calculus-week-13', topicId:'calc-integration-techniques', sourceType:'homework', sourceName:'Exercise 13 solution.pdf', sourceDocumentId:sourceId('calculus',13,'homework'), title:'שיעורי בית: אינטגרל לא-אמיתי', content:'קבע האם ∫₁^∞ 1/x² dx מתכנס ואם כן מצא את ערכו.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'חשב ∫₁^R 1/x² dx ואז קח R→∞.', solution:'∫₁^R x⁻² dx = [−1/x]₁^R = 1 − 1/R → 1. האינטגרל מתכנס לערך 1.' },
-  { id: questionId('calculus',13,'hw5-trig-sub'), courseId:'calculus', weekId:'calculus-week-13', topicId:'calc-integration-techniques', sourceType:'homework', sourceName:'Exercise 13 solution.pdf', sourceDocumentId:sourceId('calculus',13,'homework'), title:'שיעורי בית: החלפה טריגונומטרית', content:'חשב ∫ √(1−x²) dx בשיטת ההחלפה הטריגונומטרית.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Advanced Difficulty','Core Problem'], hint:'הצב x = sin(θ), dx = cos(θ)dθ.', solution:'∫ cos²(θ)dθ = (θ + sin(2θ)/2)/2 + C = (arcsin(x) + x√(1−x²))/2 + C.' },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // ADDITIONAL HOMEWORK — DISCRETE
-  // ══════════════════════════════════════════════════════════════════════════
-
-  // שבוע 1 — לוגיקה
-  { id: questionId('discrete',1,'hw2-quantifiers'), courseId:'discrete', weekId:'discrete-week-1', topicId:'disc-logic', sourceType:'homework', sourceName:'2025_ex1_full_solutions.pdf', sourceDocumentId:sourceId('discrete',1,'homework'), title:'שיעורי בית: שלילת אמירה קיומית', content:'כתוב את שלילת האמירה: ∃x ∈ ℤ כך ש-x² < 0.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'שלילת ∃x P(x) היא ∀x ¬P(x).', solution:'∀x ∈ ℤ: x² ≥ 0. (אמירה זו נכונה — הוכחה שהשלילה נכונה, והמקורית שקרית.)' },
-  { id: questionId('discrete',1,'hw3-contrapositive'), courseId:'discrete', weekId:'discrete-week-1', topicId:'disc-logic', sourceType:'homework', sourceName:'2025_ex1_full_solutions.pdf', sourceDocumentId:sourceId('discrete',1,'homework'), title:'שיעורי בית: הוכחה בContrapositive', content:'הוכח: אם n² זוגי אז n זוגי (הוכחה בcontropositive).', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'הcontropositive: אם n אי-זוגי אז n² אי-זוגי.', solution:'נניח n אי-זוגי: n=2k+1. אז n²=4k²+4k+1=2(2k²+2k)+1 — אי-זוגי. ✓' },
-  { id: questionId('discrete',1,'hw4-tautology'), courseId:'discrete', weekId:'discrete-week-1', topicId:'disc-logic', sourceType:'homework', sourceName:'2025_ex1_full_solutions.pdf', sourceDocumentId:sourceId('discrete',1,'homework'), title:'שיעורי בית: טאוטולוגיה', content:'הוכח ש-(p → q) ↔ (¬q → ¬p) היא טאוטולוגיה בטבלת אמת.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'בנה טבלת אמת עם 4 שורות.', solution:'בכל 4 השורות שני צדי ↔ שווים — לכן הביטוי תמיד אמת.' },
-  { id: questionId('discrete',1,'hw5-set-demorgan'), courseId:'discrete', weekId:'discrete-week-1', topicId:'disc-logic', sourceType:'homework', sourceName:'2025_ex1_full_solutions.pdf', sourceDocumentId:sourceId('discrete',1,'homework'), title:'שיעורי בית: דה-מורגן לקבוצות', content:'הוכח ש-(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ בשיטת הכלולים-כלולים.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem'], hint:'קח x ∈ LHS ועבד לפי הגדרות.', solution:'x ∈ (A∪B)ᶜ ⟺ x ∉ A∪B ⟺ x ∉ A וx ∉ B ⟺ x ∈ Aᶜ∩Bᶜ.' },
-
-  // שבוע 2 — קבוצות
-  { id: questionId('discrete',2,'hw2-setdiff'), courseId:'discrete', weekId:'discrete-week-2', topicId:'disc-sets', sourceType:'homework', sourceName:'2025_ex2_full_solutions.pdf', sourceDocumentId:sourceId('discrete',2,'homework'), title:'שיעורי בית: הפרש קבוצות', content:'הוכח ש-A \\ B = A ∩ Bᶜ.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'השתמש בהגדרת הפרש וצרח.', solution:'x ∈ A\\B ⟺ x ∈ A וx ∉ B ⟺ x ∈ A וx ∈ Bᶜ ⟺ x ∈ A∩Bᶜ.' },
-  { id: questionId('discrete',2,'hw3-inclusion-exclusion'), courseId:'discrete', weekId:'discrete-week-2', topicId:'disc-sets', sourceType:'homework', sourceName:'2025_ex2_full_solutions.pdf', sourceDocumentId:sourceId('discrete',2,'homework'), title:'שיעורי בית: עיקרון ההכלה-הפרה', content:'בקבוצת 50 סטודנטים: 30 לומדים מתמטיקה, 25 לומדים מחשבים, 10 לומדים שניהם. כמה לומדים לפחות אחד?', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'|A∪B| = |A|+|B| − |A∩B|.', solution:'|M∪C| = 30+25−10 = 45.' },
-  { id: questionId('discrete',2,'hw4-powerset-op'), courseId:'discrete', weekId:'discrete-week-2', topicId:'disc-sets', sourceType:'homework', sourceName:'2025_ex2_full_solutions.pdf', sourceDocumentId:sourceId('discrete',2,'homework'), title:'שיעורי בית: פעולות על קבוצת חזקה', content:'עבור A = {1,2}, רשום את P(A) ואמת ש-|P(A)| = 2².', difficulty:'easy', isRequired:false, isExamFrequent:false, systemTags:['Important'], hint:'P(A) כולל ∅ ואת A עצמה.', solution:'P(A) = {∅, {1}, {2}, {1,2}}. |P(A)| = 4 = 2².' },
-
-  // שבוע 3 — קבוצת חזקה
-  { id: questionId('discrete',3,'hw2-powerset-size'), courseId:'discrete', weekId:'discrete-week-3', topicId:'disc-power-sets', sourceType:'homework', sourceName:'2025_ex3_full_solutions.pdf', sourceDocumentId:sourceId('discrete',3,'homework'), title:'שיעורי בית: גודל קבוצת חזקה', content:'הוכח באינדוקציה ש-|P(A)| = 2^|A| לכל קבוצה סופית A.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'בסיס: |A|=0 → P(A)={∅}, גודל 1=2⁰. צעד: הוסף איבר חדש a לA.', solution:'בסיס: ✓. צעד: אם |A|=n ו-|P(A)|=2ⁿ, אז P(A∪{a}) = P(A) ∪ {B∪{a}|B∈P(A)}, גודל 2·2ⁿ=2^(n+1).' },
-  { id: questionId('discrete',3,'hw3-ordered-pairs'), courseId:'discrete', weekId:'discrete-week-3', topicId:'disc-power-sets', sourceType:'homework', sourceName:'2025_ex3_full_solutions.pdf', sourceDocumentId:sourceId('discrete',3,'homework'), title:'שיעורי בית: זוגות סדורים', content:'הוכח ש-(a,b) = (c,d) אם ורק אם a=c ו-b=d (בעזרת הגדרת קוראטובסקי).', difficulty:'medium', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'הגדרת קוראטובסקי: (a,b) = {{a},{a,b}}.', solution:'{{a},{a,b}} = {{c},{c,d}} גורר {a}={c} (השוו קבוצות חד-איברים) לכן a=c, ואז {a,b}={c,d}={a,d} לכן b=d.' },
-  { id: questionId('discrete',3,'hw4-cartesian-size'), courseId:'discrete', weekId:'discrete-week-3', topicId:'disc-power-sets', sourceType:'homework', sourceName:'2025_ex3_full_solutions.pdf', sourceDocumentId:sourceId('discrete',3,'homework'), title:'שיעורי בית: גודל מכפלה קרטזית', content:'הוכח ש-|A × B| = |A| · |B| לכל A, B קבוצות סופיות.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem'], hint:'קבע ספירה: לכל a ∈ A יש |B| זוגות סדורים (a,b).', solution:'לכל a ∈ A יש בדיוק |B| זוגות (a,b). סה"כ: |A|·|B| זוגות.' },
-
-  // שבוע 4 — פונקציות
-  { id: questionId('discrete',4,'hw2-bijection'), courseId:'discrete', weekId:'discrete-week-4', topicId:'disc-functions', sourceType:'homework', sourceName:'2025_ex4_full_solutions.pdf', sourceDocumentId:sourceId('discrete',4,'homework'), title:'שיעורי בית: ביקציה בין קבוצות סופיות', content:'הוכח שf: {1,...,n} → {0,...,n−1} המוגדרת ע"י f(k) = k−1 היא ביקציה.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'הוכח חח"ע ועל בנפרד.', solution:'חח"ע: f(k)=f(m) → k−1=m−1 → k=m. על: לכל j∈{0,...,n-1} בחר k=j+1∈{1,...,n} עם f(k)=j.' },
-  { id: questionId('discrete',4,'hw3-composition'), courseId:'discrete', weekId:'discrete-week-4', topicId:'disc-functions', sourceType:'homework', sourceName:'2025_ex4_full_solutions.pdf', sourceDocumentId:sourceId('discrete',4,'homework'), title:'שיעורי בית: הרכבת פונקציות', content:'הוכח שאם f וg חח"ע אז g∘f חח"ע. האם ההפך נכון?', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Frequently Appears in Exams'], hint:'הנח (g∘f)(x)=(g∘f)(y) וגזור x=y.', solution:'(g∘f)(x)=(g∘f)(y) → g(f(x))=g(f(y)) →_{g חח"ע} f(x)=f(y) →_{f חח"ע} x=y. ההפך: אם g∘f חח"ע אז f חח"ע אבל לא בהכרח g.' },
-  { id: questionId('discrete',4,'hw4-inv-composition'), courseId:'discrete', weekId:'discrete-week-4', topicId:'disc-functions', sourceType:'homework', sourceName:'2025_ex4_full_solutions.pdf', sourceDocumentId:sourceId('discrete',4,'homework'), title:'שיעורי בית: הפכי של הרכבה', content:'הוכח ש-(g∘f)⁻¹ = f⁻¹∘g⁻¹ כאשר f,g ביקציות.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Advanced Difficulty','Must Know'], hint:'הראה ש-f⁻¹∘g⁻¹ היא הפכי של g∘f.', solution:'(g∘f)∘(f⁻¹∘g⁻¹) = g∘(f∘f⁻¹)∘g⁻¹ = g∘id∘g⁻¹ = id. באופן דומה בצד השני.' },
-
-  // שבוע 5 — אינדוקציה
-  { id: questionId('discrete',5,'hw2-sum-squares'), courseId:'discrete', weekId:'discrete-week-5', topicId:'disc-induction', sourceType:'homework', sourceName:'2025_ex5_full_solutions.pdf', sourceDocumentId:sourceId('discrete',5,'homework'), title:'שיעורי בית: סכום ריבועים', content:'הוכח באינדוקציה: 1² + 2² + ... + n² = n(n+1)(2n+1)/6.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'בסיס n=1: 1=1·2·3/6=1. ✓ צעד: הוסף (n+1)².', solution:'צעד: n(n+1)(2n+1)/6 + (n+1)² = (n+1)[n(2n+1)/6+(n+1)] = (n+1)(n+2)(2n+3)/6. ✓' },
-  { id: questionId('discrete',5,'hw3-divisibility'), courseId:'discrete', weekId:'discrete-week-5', topicId:'disc-induction', sourceType:'homework', sourceName:'2025_ex5_full_solutions.pdf', sourceDocumentId:sourceId('discrete',5,'homework'), title:'שיעורי בית: חלוקה באינדוקציה', content:'הוכח באינדוקציה ש-4 | (5ⁿ − 1) לכל n ≥ 1.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Frequently Appears in Exams'], hint:'בסיס n=1: 5−1=4. ✓ צעד: 5^(n+1)−1 = 5·5ⁿ−1 = 5(5ⁿ−1)+4.', solution:'בסיס: ✓. צעד: 5^(n+1)−1 = 5(5ⁿ−1)+4. לפי הנחה 4|(5ⁿ−1), וכמו כן 4|4. לכן 4|5^(n+1)−1.' },
-  { id: questionId('discrete',5,'hw4-strong-induction'), courseId:'discrete', weekId:'discrete-week-5', topicId:'disc-induction', sourceType:'homework', sourceName:'2025_ex5_full_solutions.pdf', sourceDocumentId:sourceId('discrete',5,'homework'), title:'שיעורי בית: אינדוקציה חזקה', content:'הוכח שכל n ≥ 2 ניתן לפירוק לגורמים ראשוניים.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Advanced Difficulty'], hint:'בסיס n=2 (ראשוני). צעד: אם n מורכב, n=ab עם a,b < n — השתמש בהנחה לa ו-b.', solution:'אינדוקציה חזקה. בסיס: 2 ראשוני. צעד: אם n ראשוני — סיימנו. אם n=ab, לפי הנחה a,b מתפרקים, לכן גם n.' },
-
-  // שבוע 6 — יחסים
-  { id: questionId('discrete',6,'hw2-equiv-classes'), courseId:'discrete', weekId:'discrete-week-6', topicId:'disc-relations', sourceType:'homework', sourceName:'2025_ex6_full_solutions.pdf', sourceDocumentId:sourceId('discrete',6,'homework'), title:'שיעורי בית: מחלקות שקילות', content:'הגדר יחס R על ℤ: aRb אם 3 | (a−b). הוכח שR יחס שקילות ומצא את מחלקות השקילות.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'בדוק רפלקסיביות, סימטריה, טרנזיטיביות.', solution:'רפלקסיבי: 3|(a−a)=0. ✓ סימטרי: 3|(a−b) → 3|(b−a). ✓ טרנזיטיבי: 3|(a−b) ו-3|(b−c) → 3|(a−c). ✓ מחלקות: [0]={...,-3,0,3,...}, [1]={...,-2,1,4,...}, [2]={...,-1,2,5,...}.' },
-  { id: questionId('discrete',6,'hw3-partial-order'), courseId:'discrete', weekId:'discrete-week-6', topicId:'disc-relations', sourceType:'homework', sourceName:'2025_ex6_full_solutions.pdf', sourceDocumentId:sourceId('discrete',6,'homework'), title:'שיעורי בית: אימות סדר חלקי', content:'הוכח שיחס המחלקות ∣ (a מחלק b) על ℕ⁺ הוא סדר חלקי.', difficulty:'medium', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'בדוק שלוש תכונות: רפלקסיבי, אנטי-סימטרי, טרנזיטיבי.', solution:'רפלקסיבי: a|a. ✓ אנטי-סימטרי: a|b וb|a → a=b (בℕ⁺). ✓ טרנזיטיבי: a|b וb|c → a|c. ✓' },
-  { id: questionId('discrete',6,'hw4-induction-ineq'), courseId:'discrete', weekId:'discrete-week-6', topicId:'disc-relations', sourceType:'homework', sourceName:'2025_ex6_full_solutions.pdf', sourceDocumentId:sourceId('discrete',6,'homework'), title:'שיעורי בית: אי-שוויון באינדוקציה', content:'הוכח ש-2ⁿ > n² לכל n ≥ 5.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams','Core Problem'], hint:'בסיס n=5: 32>25 ✓. בצעד השתמש ב-2^(n+1) = 2·2ⁿ > 2n² ובדוק 2n² > (n+1)².', solution:'בסיס: 2⁵=32>25=5². ✓ צעד: 2^(n+1)=2·2ⁿ >_{HI} 2n²=(n+1)²+(n²-2n-1). עבור n≥5: n²-2n-1>0, לכן 2n²>(n+1)².' },
-
-  // שבוע 7 — קומבינטוריקה
-  { id: questionId('discrete',7,'hw2-binomial'), courseId:'discrete', weekId:'discrete-week-7', topicId:'disc-combinatorics2', sourceType:'homework', sourceName:'2025_ex7_full_solutions.pdf', sourceDocumentId:sourceId('discrete',7,'homework'), title:'שיעורי בית: בינום ניוטון', content:'מצא את המקדם של x³ ב-(2+x)⁵.', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'המקדם = C(5,3)·2²·1³.', solution:'C(5,3)·4·1 = 10·4 = 40.' },
-  { id: questionId('discrete',7,'hw3-paths'), courseId:'discrete', weekId:'discrete-week-7', topicId:'disc-combinatorics2', sourceType:'homework', sourceName:'2025_ex7_full_solutions.pdf', sourceDocumentId:sourceId('discrete',7,'homework'), title:'שיעורי בית: ספירת מסלולים', content:'כמה מסלולים ישנם על רשת m×n ממפינה (0,0) ל-(m,n) בצעדים ימינה או למעלה?', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams','Core Problem'], hint:'כל מסלול מורכב מ-m+n צעדים, מתוכם m ימינה.', solution:'C(m+n, m) = (m+n)!/(m!·n!).' },
-  { id: questionId('discrete',7,'hw4-inclusion-exc'), courseId:'discrete', weekId:'discrete-week-7', topicId:'disc-combinatorics2', sourceType:'homework', sourceName:'2025_ex7_full_solutions.pdf', sourceDocumentId:sourceId('discrete',7,'homework'), title:'שיעורי בית: הכלה-הפרה לקומבינטוריקה', content:'כמה מספרים שלמים בין 1 ל-100 מתחלקים ב-2 או ב-3?', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem'], hint:'|A∪B| = |A|+|B|−|A∩B|. A= מתחלקים ב-2, B=מתחלקים ב-3.', solution:'|A|=50, |B|=33, |A∩B|=⌊100/6⌋=16. |A∪B|=50+33-16=67.' },
-
-  // שבוע 8 — שובך יונים
-  { id: questionId('discrete',8,'hw2-php-application'), courseId:'discrete', weekId:'discrete-week-8', topicId:'disc-pigeonhole', sourceType:'homework', sourceName:'2025_ex8_full_solutions.pdf', sourceDocumentId:sourceId('discrete',8,'homework'), title:'שיעורי בית: יישום עש"ה', content:'הוכח שמבין 13 אנשים יש לפחות שניים שנולדו באותו חודש.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'יונים=13, שובכים=12 (חודשים).', solution:'13 > 12. לפי עש"ה, לפחות שניים חולקים אותו חודש.' },
-  { id: questionId('discrete',8,'hw3-php-numbers'), courseId:'discrete', weekId:'discrete-week-8', topicId:'disc-pigeonhole', sourceType:'homework', sourceName:'2025_ex8_full_solutions.pdf', sourceDocumentId:sourceId('discrete',8,'homework'), title:'שיעורי בית: עש"ה עם מספרים', content:'הוכח שמ-n+1 מספרים שלמים בין 1 ל-2n יש שניים שאחד מחלק את השני.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Advanced Difficulty','Frequently Appears in Exams'], hint:'כתוב כל מספר כ-2ᵏ·m כאשר m אי-זוגי. יש n ערכים אפשריים ל-m.', solution:'לכל מספר x ∈{1,...,2n} כתוב x = 2ᵏ·m, m אי-זוגי. יש n ערכים אי-זוגיים ב-{1,...,2n}. עם n+1 מספרים ו-n "שובכים" (ערכי m), יש שניים x=2ⁱm וy=2ʲm — אחד מחלק את השני.' },
-  { id: questionId('discrete',8,'hw4-gen-php'), courseId:'discrete', weekId:'discrete-week-8', topicId:'disc-pigeonhole', sourceType:'homework', sourceName:'2025_ex8_full_solutions.pdf', sourceDocumentId:sourceId('discrete',8,'homework'), title:'שיעורי בית: עש"ה מוכלל', content:'בכיתה של 30 סטודנטים, כמה לפחות חייבים לשבת ב-7 שורות כך ששורה אחת תהיה עם לפחות 5?', difficulty:'medium', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'אם כל שורה עם ≤4 תלמידים: מקסימום 7·4=28 < 30.', solution:'29 תלמידים: מקסימום 7·4=28 < 29, לכן ב-29 תלמיד אחת השורות חייבת ≥ 5.' },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // ADDITIONAL HOMEWORK — LINEAR ALGEBRA
-  // ══════════════════════════════════════════════════════════════════════════
-
-  // שבוע 1 — שדות
-  { id: questionId('linear-algebra',1,'hw2-field-verify'), courseId:'linear-algebra', weekId:'linear-algebra-week-1', topicId:'la-fields', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_1_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',1,'homework'), title:'שיעורי בית: אימות אקסיומת שדה', content:'אמת שZ₅ = {0,1,2,3,4} עם חיבור וכפל מודולו 5 הוא שדה. מצא את ההפכי הכפלי של 3.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Must Know'], hint:'מצא x ∈ Z₅ כך ש-3·x ≡ 1 (mod 5).', solution:'3·2 = 6 ≡ 1 (mod 5). לכן 3⁻¹ = 2 ב-Z₅. 5 ראשוני — Z₅ שדה.' },
-  { id: questionId('linear-algebra',1,'hw3-char'), courseId:'linear-algebra', weekId:'linear-algebra-week-1', topicId:'la-fields', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_1_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',1,'homework'), title:'שיעורי בית: מאפיין שדה', content:'מצא את מאפיין (characteristic) השדה Z₂ וZ₃. מה מאפיין ℝ?', difficulty:'medium', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'מאפיין = המספר הראשוני הקטן ביותר n עם 1+1+...+1(n פעמים) = 0.', solution:'Z₂: char = 2 (1+1=0). Z₃: char = 3 (1+1+1=0). ℝ: char = 0 (אין n סופי).' },
-  { id: questionId('linear-algebra',1,'hw4-nonfield'), courseId:'linear-algebra', weekId:'linear-algebra-week-1', topicId:'la-fields', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_1_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',1,'homework'), title:'שיעורי בית: Z₄ אינו שדה', content:'הוכח ש-Z₄ = {0,1,2,3} עם פעולות מודולו 4 אינו שדה.', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Core Problem'], hint:'מצא מחלק אפס ב-Z₄.', solution:'2·2 = 4 ≡ 0 (mod 4) אך 2 ≠ 0. לכן 2 הוא מחלק אפס, ולכן Z₄ אינו שדה.' },
-  { id: questionId('linear-algebra',1,'hw5-arith'), courseId:'linear-algebra', weekId:'linear-algebra-week-1', topicId:'la-fields', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_1_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',1,'homework'), title:'שיעורי בית: חשבון ב-Z₇', content:'ב-Z₇: חשב (3+5), (3·5), ו-4⁻¹.', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'כל פעולה מודולו 7.', solution:'3+5 = 8 ≡ 1 (mod 7). 3·5 = 15 ≡ 1 (mod 7). 4·2 = 8 ≡ 1, לכן 4⁻¹ = 2.' },
-
-  // שבוע 2 — מרוכבים
-  { id: questionId('linear-algebra',2,'hw2-complex-div'), courseId:'linear-algebra', weekId:'linear-algebra-week-2', topicId:'la-complex', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_2_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',2,'homework'), title:'שיעורי בית: חלוקת מרוכבים', content:'חשב (2+3i)/(1−i) בצורה a+bi.', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Core Problem'], hint:'הכפל מעלה ומטה בצמוד של המכנה.', solution:'(2+3i)(1+i)/((1−i)(1+i)) = (2+2i+3i−3)/2 = (−1+5i)/2 = −1/2 + 5i/2.' },
-  { id: questionId('linear-algebra',2,'hw3-roots-unity'), courseId:'linear-algebra', weekId:'linear-algebra-week-2', topicId:'la-complex', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_2_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',2,'homework'), title:'שיעורי בית: שורשי היחידה', content:'מצא את כל שורשי המשוואה z⁴ = 1 ב-ℂ.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Frequently Appears in Exams'], hint:'z⁴ = 1 → z⁴ − 1 = (z²−1)(z²+1) = 0.', solution:'z = ±1, ±i. ארבעה שורשים.' },
-  { id: questionId('linear-algebra',2,'hw4-polar'), courseId:'linear-algebra', weekId:'linear-algebra-week-2', topicId:'la-complex', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_2_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',2,'homework'), title:'שיעורי בית: צורה טריגונומטרית', content:'כתוב z = 1 + i בצורה r·(cos θ + i·sin θ).', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'r = |z| = √(1²+1²).', solution:'r = √2, θ = π/4. z = √2·(cos(π/4) + i·sin(π/4)).' },
-
-  // שבוע 3 — מרחבים וקטוריים
-  { id: questionId('linear-algebra',3,'hw2-gauss'), courseId:'linear-algebra', weekId:'linear-algebra-week-3', topicId:'la-linear-equations', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_3_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',3,'homework'), title:'שיעורי בית: אלימינציית גאוס', content:'פתור את המערכת: x+2y+z=4, 2x+y−z=1, x−y+2z=3.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'בנה מטריצה מוגדלת ובצע RREF.', solution:'RREF נותן x=1, y=1, z=1. בדיקה: 1+2+1=4✓, 2+1−1=2✗ — שים לב לחישוב נכון. פתרון: x=1, y=1, z=1.' },
-  { id: questionId('linear-algebra',3,'hw3-subspace-check'), courseId:'linear-algebra', weekId:'linear-algebra-week-3', topicId:'la-linear-equations', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_3_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',3,'homework'), title:'שיעורי בית: בדיקת תת-מרחב', content:'קבע האם W = {(x,y,z) ∈ ℝ³ | x+y = 1} הוא תת-מרחב של ℝ³.', difficulty:'easy', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'בדוק אם 0 ∈ W.', solution:'(0,0,0): 0+0=0 ≠ 1. לכן 0 ∉ W, ולכן W אינו תת-מרחב.' },
-  { id: questionId('linear-algebra',3,'hw4-span'), courseId:'linear-algebra', weekId:'linear-algebra-week-3', topicId:'la-linear-equations', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_3_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',3,'homework'), title:'שיעורי בית: פריסה וייצוג', content:'האם (1,2,3) ∈ Span{(1,0,1),(0,1,1)}? הצג ייצוג אם כן.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Frequently Appears in Exams'], hint:'פתור α(1,0,1)+β(0,1,1) = (1,2,3).', solution:'α=1, β=2: (1,0,1)+2(0,1,1) = (1,2,3). ✓ כן, (1,2,3) = 1·(1,0,1) + 2·(0,1,1).' },
-
-  // שבוע 4 — אקסיומות מרחב וקטורי
-  { id: questionId('linear-algebra',4,'hw2-vs-axiom-check'), courseId:'linear-algebra', weekId:'linear-algebra-week-4', topicId:'la-vector-spaces', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_4_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',4,'homework'), title:'שיעורי בית: אימות מרחב וקטורי', content:'בדוק האם ℝ² עם פעולות: (a,b)+(c,d) = (a+c, b+d) ו-α·(a,b) = (αa, 0) הוא מרחב וקטורי.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Must Know'], hint:'בדוק אקסיומה (8): 1·v = v.', solution:'1·(a,b) = (1·a, 0) = (a,0) ≠ (a,b) בדרך כלל. אקסיומה (8) נכשלת — לא מרחב וקטורי.' },
-  { id: questionId('linear-algebra',4,'hw3-subspace-sum'), courseId:'linear-algebra', weekId:'linear-algebra-week-4', topicId:'la-vector-spaces', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_4_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',4,'homework'), title:'שיעורי בית: סכום של תת-מרחבים', content:'הוכח שאם U, W תת-מרחבים של V אז U+W = {u+w | u∈U, w∈W} הוא תת-מרחב.', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Advanced Difficulty'], hint:'בדוק שלושת תנאי מבחן תת-מרחב.', solution:'0=0+0∈U+W. סגירות לחיבור: (u₁+w₁)+(u₂+w₂)=(u₁+u₂)+(w₁+w₂)∈U+W. סגירות לכפל: α(u+w)=αu+αw∈U+W.' },
-  { id: questionId('linear-algebra',4,'hw4-intersection'), courseId:'linear-algebra', weekId:'linear-algebra-week-4', topicId:'la-vector-spaces', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_4_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',4,'homework'), title:'שיעורי בית: חיתוך של תת-מרחבים', content:'הוכח שאם U, W תת-מרחבים של V אז U ∩ W הוא תת-מרחב.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'כל וקטור ב-U∩W שייך גם לU וגם לW — השתמש בסגירות שניהם.', solution:'0∈U∩W. אם v,u∈U∩W אז v+u∈U (כי U תת-מרחב) וv+u∈W (כי W תת-מרחב), לכן v+u∈U∩W. דומה לכפל.' },
-
-  // שבוע 5 — בסיס ומימד
-  { id: questionId('linear-algebra',5,'hw2-find-basis'), courseId:'linear-algebra', weekId:'linear-algebra-week-5', topicId:'la-basis', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_5_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',5,'homework'), title:'שיעורי בית: מציאת בסיס', content:'מצא בסיס לתת-המרחב W = Span{(1,2,1),(2,4,2),(0,1,1)} של ℝ³.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'(2,4,2) = 2·(1,2,1) — וקטור תלוי. הסר אותו.', solution:'(2,4,2)=2(1,2,1) — תלוי. בסיס: {(1,2,1),(0,1,1)}, dim W = 2.' },
-  { id: questionId('linear-algebra',5,'hw3-coords'), courseId:'linear-algebra', weekId:'linear-algebra-week-5', topicId:'la-basis', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_5_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',5,'homework'), title:'שיעורי בית: וקטור קואורדינטות', content:'B = {(1,0),(1,1)} בסיס של ℝ². מצא את קואורדינטות (3,2) לפי B.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Frequently Appears in Exams'], hint:'פתור α(1,0)+β(1,1) = (3,2).', solution:'α+β=3, β=2 → β=2, α=1. [(3,2)]_B = (1,2).' },
-  { id: questionId('linear-algebra',5,'hw4-extend-basis'), courseId:'linear-algebra', weekId:'linear-algebra-week-5', topicId:'la-basis', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_5_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',5,'homework'), title:'שיעורי בית: השלמה לבסיס', content:'השלם את {(1,1,0),(0,1,1)} לבסיס של ℝ³.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem'], hint:'מצא וקטור שאינו בSpan של שתי הנתונות.', solution:'נסה (1,0,0): האם תלוי? פתור α(1,1,0)+β(0,1,1)=(1,0,0): α=1, β=−1 → (1,0,−1) ≠ (1,0,0). לכן {(1,1,0),(0,1,1),(1,0,0)} בסיס.' },
-
-  // שבוע 6 — תלות לינארית
-  { id: questionId('linear-algebra',6,'hw2-check-dep'), courseId:'linear-algebra', weekId:'linear-algebra-week-6', topicId:'la-dependence', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_6_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',6,'homework'), title:'שיעורי בית: בדיקת תלות בפולינומים', content:'קבע האם {1, x, x²−x} תלויים לינארית כפולינומים ב-P₂(ℝ).', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem'], hint:'פתור α·1 + β·x + γ·(x²−x) = 0 כמשוואה של פולינומים.', solution:'x²: γ=0. x: β−γ=0 → β=0. const: α=0. הפתרון טריוויאלי — בלתי-תלויים.' },
-  { id: questionId('linear-algebra',6,'hw3-det-dep'), courseId:'linear-algebra', weekId:'linear-algebra-week-6', topicId:'la-dependence', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_6_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',6,'homework'), title:'שיעורי בית: תלות לינארית ב-ℝ² ע"י דטרמיננטה', content:'קבע האם {(2,4),(1,2)} תלויים לינארית ב-ℝ².', difficulty:'easy', isRequired:true, isExamFrequent:false, systemTags:['Core Problem'], hint:'הדטרמיננטה |2 4; 1 2| = 2·2−4·1 = 0.', solution:'det = 0 — תלויים. אכן (2,4) = 2·(1,2).' },
-  { id: questionId('linear-algebra',6,'hw4-span-independence'), courseId:'linear-algebra', weekId:'linear-algebra-week-6', topicId:'la-dependence', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_6_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',6,'homework'), title:'שיעורי בית: פריסה ובלתי-תלות', content:'תהיה S = {v₁,v₂,v₃} קבוצה בלתי-תלויה לינארית. הוכח שS \\ {v₂} (ללא v₂) עדיין בלתי-תלויה.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Must Know'], hint:'כל תת-קבוצה של קבוצה בלתי-תלויה היא בלתי-תלויה.', solution:'נניח α₁v₁ + α₃v₃ = 0. אז גם α₁v₁ + 0·v₂ + α₃v₃ = 0, וכיוון ש-S בלתי-תלויה נובע α₁=α₃=0. לכן {v₁,v₃} בלתי-תלויה.' },
-
-  // שבוע 7 — בסיס ומימד II
-  { id: questionId('linear-algebra',7,'hw2-dim-subspace'), courseId:'linear-algebra', weekId:'linear-algebra-week-7', topicId:'la-basis-dim', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_7_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',7,'homework'), title:'שיעורי בית: מימד תת-מרחב', content:'מצא את מימד W = {(x,y,z,w) ∈ ℝ⁴ | x+y+z+w = 0}.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Core Problem','Must Know'], hint:'x = −y−z−w. המשתנים החופשיים: y,z,w.', solution:'3 משתנים חופשיים → בסיס: {(−1,1,0,0),(−1,0,1,0),(−1,0,0,1)}. dim W = 3.' },
-  { id: questionId('linear-algebra',7,'hw3-dim-formula'), courseId:'linear-algebra', weekId:'linear-algebra-week-7', topicId:'la-basis-dim', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_7_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',7,'homework'), title:'שיעורי בית: נוסחת הממד', content:'תהיינה U, W תת-מרחבים של V עם dim U = 2, dim W = 2, dim V = 3. מה ה-dim(U∩W) הכרחי להיות?', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Advanced Difficulty','Core Problem'], hint:'dim(U+W) ≤ dim V = 3. השתמש ב-dim(U+W) = dimU + dimW − dim(U∩W).', solution:'dim(U+W) ≤ 3. 2+2−dim(U∩W) ≤ 3 → dim(U∩W) ≥ 1. גם dim(U∩W) ≤ min(2,2)=2. לכן dim(U∩W) ∈ {1,2}.' },
-  { id: questionId('linear-algebra',7,'hw4-coordinate-vec'), courseId:'linear-algebra', weekId:'linear-algebra-week-7', topicId:'la-basis-dim', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_7_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',7,'homework'), title:'שיעורי בית: וקטור קואורדינטות', content:'תהיה B = {(1,1),(1,0)} בסיס ל-ℝ². מצא את וקטור הקואורדינטות של v=(3,5) ביחס ל-B.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'פתור α(1,1) + β(1,0) = (3,5).', solution:'α + β = 3, α = 5. לכן α=5, β=−2. [v]_B = (5,−2).' },
-
-  // שבוע 8 — מטריצות ודרגה
-  { id: questionId('linear-algebra',8,'hw2-rank'), courseId:'linear-algebra', weekId:'linear-algebra-week-8', topicId:'la-matrices', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_8_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',8,'homework'), title:'שיעורי בית: חישוב דרגה', content:'מצא את דרגת המטריצה A = [1 2 3; 2 4 6; 1 1 1].', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'בצע דירוג שורות. שים לב שR₂ = 2R₁.', solution:'R₂ → R₂−2R₁, R₃ → R₃−R₁: [1 2 3; 0 0 0; 0 −1 −2]. שתי שורות לא-אפס → rank A = 2.' },
-  { id: questionId('linear-algebra',8,'hw3-rank-nullity'), courseId:'linear-algebra', weekId:'linear-algebra-week-8', topicId:'la-matrices', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_8_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',8,'homework'), title:'שיעורי בית: דרגה-אפסייה', content:'עבור A = [1 0 1; 0 1 1] (מטריצה 2×3), מצא את rank A ואת dim Ker A.', difficulty:'medium', isRequired:true, isExamFrequent:true, systemTags:['Must Know','Core Problem'], hint:'rank A + dim Ker A = מספר העמודות = 3.', solution:'A כבר ב-RREF, rank A = 2. dim Ker A = 3−2 = 1. ה-Kernel: {α(−1,−1,1) | α ∈ ℝ}.' },
-  { id: questionId('linear-algebra',8,'hw4-consistency'), courseId:'linear-algebra', weekId:'linear-algebra-week-8', topicId:'la-matrices', sourceType:'homework', sourceName:'Lin_Alg_I_2025-2026_Homework_8_Solutions.pdf', sourceDocumentId:sourceId('linear-algebra',8,'homework'), title:'שיעורי בית: עקביות מערכת', content:'עבור אילו ערכי a המערכת x+y=1, x−y=2, 2x+ay=3 עקבית?', difficulty:'hard', isRequired:true, isExamFrequent:true, systemTags:['Frequently Appears in Exams','Core Problem'], hint:'מהשתי הראשונות: x=3/2, y=−1/2. הצב בשלישית.', solution:'מ-1+2: 2x=3 → x=3/2, y=−1/2. שלישית: 3 + a(−1/2) = 3 → a=0.' },
 ];
 
 export const weeks: CourseWeek[] = [

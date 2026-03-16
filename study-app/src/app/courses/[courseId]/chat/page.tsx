@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { Paperclip, Send, X, Bot, User, AlertCircle } from 'lucide-react';
 import { getCourseById } from '@/lib/math-platform/data';
 import CourseShell from '@/components/platform/CourseShell';
+import MathText from '@/components/MathText';
 import type { CourseId } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
 
@@ -13,23 +14,6 @@ interface Message {
   role: 'user' | 'assistant';
   content: string;
   imagePreview?: string;
-}
-
-function MarkdownText({ text }: { text: string }) {
-  // Very lightweight rendering: bold, inline code, newlines
-  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\n)/g);
-  return (
-    <>
-      {parts.map((part, i) => {
-        if (part.startsWith('**') && part.endsWith('**'))
-          return <strong key={i}>{part.slice(2, -2)}</strong>;
-        if (part.startsWith('`') && part.endsWith('`'))
-          return <code key={i} className="rounded bg-black/10 px-1 py-0.5 text-xs font-mono">{part.slice(1, -1)}</code>;
-        if (part === '\n') return <br key={i} />;
-        return <span key={i}>{part}</span>;
-      })}
-    </>
-  );
 }
 
 export default function ChatPage() {
@@ -213,7 +197,7 @@ export default function ChatPage() {
                       />
                     )}
                     {msg.content ? (
-                      <MarkdownText text={msg.content} />
+                      <MathText text={msg.content} />
                     ) : (
                       <span className="inline-flex gap-1">
                         <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:0ms]" />

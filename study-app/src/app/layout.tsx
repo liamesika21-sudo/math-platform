@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Rubik } from 'next/font/google';
 import './globals.css';
+import 'katex/dist/katex.min.css';
 
 const rubik = Rubik({
   subsets: ['latin', 'hebrew'],
