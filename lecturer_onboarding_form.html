@@ -291,24 +291,29 @@
   <div class="card">
     <div class="section-header">
       <div class="section-number">1</div>
-      <div class="section-title">מבנה הקורס שבוע-שבוע</div>
+      <div class="section-title">מבנה הקורס שבוע-שבוע + קבצי הרצאות</div>
     </div>
-    <p style="font-size:13px;color:#666;margin-bottom:16px">מלא את הנושאים שנלמדים בכל שבוע. המערכת תתאים את עצמה לפי ההתקדמות.</p>
+
+    <div style="background:#e8f0fe;border-right:4px solid #4361ee;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:18px;font-size:13.5px;color:#1a1a2e;line-height:1.8">
+      <strong>📎 מה צריך למלא כאן?</strong><br/>
+      לכל שבוע: כתוב את <strong>הנושאים שנלמדו</strong> באותו שבוע, ו<strong>צרף את קובץ ההרצאה</strong> הרלוונטי (PDF / מצגת).<br/>
+      <span style="color:#4361ee;font-weight:600">הקבצים שתבחר יצורפו אוטומטית למייל שיישלח אלינו.</span><br/>
+      <span style="color:#888">אם עוד אין קובץ לשבוע מסוים – השאר ריק, אפשר להשלים בהמשך.</span>
+    </div>
 
     <table class="week-table">
       <thead>
         <tr>
-          <th>שבוע</th>
-          <th>נושאים שנלמדו</th>
-          <th>הגדרות / משפטים מרכזיים</th>
-          <th style="width:100px">הערות</th>
+          <th style="width:50px">שבוע</th>
+          <th>נושאים שנלמדו באותו שבוע</th>
+          <th style="width:180px">📎 קובץ הרצאה לשבוע זה</th>
         </tr>
       </thead>
       <tbody id="weekTableBody"></tbody>
     </table>
 
     <div class="note" style="margin-top:16px">
-      המערכת לא תתייחס לחומר שעוד לא נלמד לפי הסדר הזה.
+      המערכת לא תתייחס לחומר שעוד לא נלמד לפי הסדר הזה. ככל שיהיו יותר קבצים – כך ההתאמה תהיה מדויקת יותר.
     </div>
   </div>
 
@@ -474,10 +479,19 @@
       </div>
       <label class="field-label">מספר הסטודנטים המשוער בקורס</label>
       <input type="text" name="student_count" placeholder="לדוגמה: 120" />
+
+      <label class="field-label" style="margin-top:16px">📎 העלה את קובץ ה-Excel כאן</label>
+      <div style="border:2px dashed #a5d6a7;border-radius:8px;padding:16px;text-align:center;background:#fff;cursor:pointer" onclick="document.getElementById('studentFile').click()">
+        <div style="font-size:28px;margin-bottom:6px">📊</div>
+        <div style="font-size:13px;color:#388e3c;font-weight:600">לחץ לבחירת קובץ Excel</div>
+        <div style="font-size:12px;color:#999;margin-top:4px">קבצי .xlsx בלבד</div>
+        <input type="file" id="studentFile" name="student_file" accept=".xlsx,.xls,.csv" style="display:none" onchange="showFileName(this,'studentFileName')" />
+        <div id="studentFileName" style="margin-top:8px;font-size:13px;color:#2e7d32;font-weight:600"></div>
+      </div>
     </div>
 
     <div class="note" style="margin-top:14px">
-      קובץ הסטודנטים יישלח בנפרד למייל שצוין. הנתונים מאובטחים ולא מועברים לגורמים חיצוניים.
+      הקובץ יצורף אוטומטית למייל שיישלח. הנתונים מאובטחים ולא מועברים לגורמים חיצוניים.
     </div>
   </div>
 
@@ -488,6 +502,28 @@
       <div class="section-title">הערות נוספות</div>
     </div>
     <textarea name="extra_notes" placeholder="כל מה שלא הוזכר למעלה ושחשוב שנדע..." style="min-height:100px"></textarea>
+  </div>
+
+  <!-- Attach reminder -->
+  <div class="card" style="background:#fff3e0;border-top:none">
+    <div style="display:flex;align-items:flex-start;gap:14px">
+      <div style="font-size:28px;line-height:1">📎</div>
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#e65100;margin-bottom:6px">לפני השליחה – ודא שצירפת את הקבצים</div>
+        <div style="font-size:13px;color:#555;line-height:1.8">
+          לאחר לחיצה על "שלח טופס" <strong>ייפתח אצלך תוכנת המייל</strong> עם כל התוכן מוכן.<br/>
+          <strong>בשלב זה חשוב לצרף ידנית:</strong>
+        </div>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;background:#fff;border:1px solid #ffcc80;border-radius:6px;padding:8px 12px">
+            <span>📊</span><span><strong>קובץ Excel</strong> עם רשימת הסטודנטים (שם + מייל + ת.ז)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;background:#fff;border:1px solid #ffcc80;border-radius:6px;padding:8px 12px">
+            <span>📁</span><span><strong>קבצי ההרצאות</strong> לפי שבועות – כל PDF / מצגת שציינת בטבלה</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Submit -->
@@ -505,11 +541,25 @@
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${i}</td>
-      <td><input type="text" name="week${i}_topics" placeholder="נושאים..." /></td>
-      <td><input type="text" name="week${i}_theorems" placeholder="הגדרות / משפטים..." /></td>
-      <td><input type="text" name="week${i}_notes" placeholder="הערה" /></td>
+      <td><input type="text" name="week${i}_topics" placeholder="לדוג': מחסנית, תור, רשימה מקושרת..." /></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px">
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;color:#4361ee;white-space:nowrap;border:1px dashed #4361ee;border-radius:5px;padding:4px 8px;background:#f0f4ff" onclick="document.getElementById('wf${i}').click()">
+            📎 בחר קובץ
+          </label>
+          <input type="file" id="wf${i}" name="week${i}_file" accept=".pdf,.ppt,.pptx,.docx" style="display:none" onchange="showFileName(this,'wfn${i}')" />
+          <span id="wfn${i}" style="font-size:11px;color:#388e3c;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:110px"></span>
+        </div>
+      </td>
     `;
     tbody.appendChild(tr);
+  }
+
+  function showFileName(input, labelId) {
+    const label = document.getElementById(labelId);
+    if (input.files && input.files[0]) {
+      label.textContent = '✓ ' + input.files[0].name;
+    }
   }
 
   function getVal(name) {
@@ -532,11 +582,16 @@
     let rows = '';
     for (let i = 1; i <= 13; i++) {
       const t = getVal(`week${i}_topics`);
-      const th = getVal(`week${i}_theorems`);
-      const n = getVal(`week${i}_notes`);
-      if (t || th || n) rows += `  שבוע ${i}: ${t} | ${th}${n ? ' | ' + n : ''}\n`;
+      const fileInput = document.getElementById(`wf${i}`);
+      const fname = (fileInput && fileInput.files && fileInput.files[0]) ? fileInput.files[0].name : '';
+      if (t || fname) rows += `  שבוע ${i}: ${t || '(ללא נושאים)'}${fname ? ' | קובץ: ' + fname : ' | ללא קובץ'}\n`;
     }
     return rows || '  (לא מולא)';
+  }
+
+  function getStudentFileName() {
+    const f = document.getElementById('studentFile');
+    return (f && f.files && f.files[0]) ? f.files[0].name : '(לא צורף)';
   }
 
   function sendForm() {
@@ -589,7 +644,7 @@ ${trackList || '(לא סומן)'}
 
 👥 סטודנטים:
 מספר משוער: ${getVal('student_count') || '-'}
-(קובץ Excel נשלח בנפרד)
+קובץ Excel: ${getStudentFileName()} ← מצורף למייל זה
 
 💬 הערות נוספות:
 ${getVal('extra_notes') || '-'}
