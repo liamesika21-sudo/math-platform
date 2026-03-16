@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, Brain, ChartColumnBig, FileQuestion, Files, FolderKanban, GraduationCap, House, Layers3, ListChecks, Menu, Sparkles, X } from 'lucide-react';
+import { BookOpen, Brain, ChartColumnBig, FileQuestion, Files, FolderKanban, GraduationCap, House, Layers3, ListChecks, Menu, MessageSquare, Sparkles, X } from 'lucide-react';
 import { useState } from 'react';
 import type { Course } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
@@ -23,6 +23,7 @@ const navIconMap = {
   myQuestions: FolderKanban,
   sources: Files,
   mentor: Brain,
+  chat: MessageSquare,
 };
 
 export default function CourseShell({ course, children }: CourseShellProps) {
@@ -40,6 +41,7 @@ export default function CourseShell({ course, children }: CourseShellProps) {
     { key: 'myQuestions', href: `/courses/${course.id}/my-questions`, label: 'השאלות שלי' },
     { key: 'sources', href: `/courses/${course.id}/sources`, label: 'מקורות' },
     { key: 'mentor', href: `/courses/${course.id}/mentor`, label: 'מנחה אישי' },
+    { key: 'chat', href: `/courses/${course.id}/chat`, label: 'צ\'אט AI' },
   ] as const;
 
   return (
