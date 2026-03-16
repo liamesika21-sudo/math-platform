@@ -3,9 +3,8 @@ export default function CoursesPage() {
     <main style={{ padding: 40 }}>
       <h1>Courses</h1>
       <ul>
-        <li><a href="/courses/calculus">Calculus</a></li>
-        <li><a href="/courses/discrete">Discrete</a></li>
-        <li><a href="/courses/linear-algebra">Linear Algebra</a></li>
+        <li><a href="/courses/logic">לוגיקה ותורת הקבוצות</a></li>
+        <li><a href="/courses/data-structures">מבני נתונים</a></li>
       </ul>
     </main>
   );

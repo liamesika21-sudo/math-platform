@@ -155,9 +155,9 @@ export default function ChatPage() {
                 </p>
               </div>
               <div className="mt-2 flex flex-wrap justify-center gap-2">
-                {['מה זה גבול לפי הגדרת אפסילון-דלתא?', 'תן לי רמז לשאלה שאני תקוע בה', 'איך מוכיחים בהפרכה?'].slice(
+                {['תן לי רמז לשאלה שאני תקוע בה', 'איך מוכיחים בהפרכה?', 'הסבר לי את המושג הזה'].slice(
                   0,
-                  courseId === 'calculus' ? 3 : 2
+                  3
                 ).map((suggestion) => (
                   <button
                     key={suggestion}

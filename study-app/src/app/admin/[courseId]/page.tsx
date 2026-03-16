@@ -10,9 +10,8 @@ import {
 import type { CourseId } from '@/lib/math-platform/types';
 
 const courseNames: Record<CourseId, string> = {
-  calculus: 'אינפי א׳',
-  discrete: 'מתמטיקה בדידה',
-  'linear-algebra': 'אלגברה לינארית א׳',
+  logic: 'לוגיקה ותורת הקבוצות',
+  'data-structures': 'מבני נתונים',
 };
 
 function StatCard({

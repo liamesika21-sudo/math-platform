@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import CourseShell from '@/components/platform/CourseShell';
-import { courseIds, getCourseById } from '@/lib/math-platform/data';
+import { courses, getCourseById } from '@/lib/math-platform/data';
+import type { CourseId } from '@/lib/math-platform/types';
 
 export function generateStaticParams() {
-  return courseIds.map((courseId) => ({ courseId }));
+  return courses.map((course) => ({ courseId: course.id }));
 }
 
 export default async function CourseLayout({
@@ -14,7 +15,7 @@ export default async function CourseLayout({
   params: Promise<{ courseId: string }>;
 }>) {
   const { courseId } = await params;
-  const course = getCourseById(courseId);
+  const course = getCourseById(courseId as CourseId);
 
   if (!course) {
     notFound();

@@ -1,4 +1,4 @@
-export type CourseId = 'calculus' | 'discrete' | 'linear-algebra';
+export type CourseId = 'logic' | 'data-structures';
 export type SourceType = 'lecture' | 'tutorial' | 'homework' | 'exam';
 export type Difficulty = 'easy' | 'medium' | 'hard';
 export type QuestionStatus = 'not_started' | 'in_progress' | 'solved';
