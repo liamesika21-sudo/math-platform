@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>טופס מרצה – מערכת עזר לימודי AI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Assistant', Arial, sans-serif;
+      background: #f5f6fa;
+      color: #1a1a2e;
+      direction: rtl;
+      font-size: 15px;
+      line-height: 1.7;
+      padding: 32px 16px 60px;
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+      border-radius: 12px 12px 0 0;
+    }
+    .header .tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 14px;
+      margin-bottom: 12px;
+    }
+    .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+    .header p { font-size: 14px; opacity: 0.75; margin-bottom: 20px; }
+    .courses { display: flex; gap: 10px; flex-wrap: wrap; }
+    .course-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 5px 16px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Card */
+    .card {
+      background: #fff;
+      border: 1px solid #e8eaf0;
+      border-radius: 0;
+      padding: 32px 44px;
+      border-top: none;
+    }
+    .card:last-of-type { border-radius: 0 0 12px 12px; }
+
+    /* Section header */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f0f2ff;
+    }
+    .section-number {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: #4361ee;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title { font-size: 17px; font-weight: 700; }
+
+    /* Form elements */
+    label.field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 6px;
+      margin-top: 18px;
+    }
+    label.field-label:first-of-type { margin-top: 0; }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #d0d4e8;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      color: #222;
+      background: #fafbff;
+      direction: rtl;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #4361ee;
+      background: #fff;
+    }
+    textarea { resize: vertical; min-height: 80px; }
+
+    /* Inline row */
+    .row-2 { display: flex; gap: 14px; }
+    .row-2 > div { flex: 1; }
+
+    /* Checkbox group */
+    .check-group { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 12px;
+      border: 1.5px solid #e8eaf0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      font-size: 14px;
+    }
+    .check-item:hover { border-color: #4361ee; background: #f0f4ff; }
+    .check-item input[type="checkbox"],
+    .check-item input[type="radio"] {
+      width: auto;
+      margin-top: 2px;
+      accent-color: #4361ee;
+      flex-shrink: 0;
+    }
+
+    /* Weekly table */
+    .week-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .week-table thead tr { background: #1a1a2e; color: #fff; }
+    .week-table th { padding: 9px 10px; text-align: right; font-weight: 600; }
+    .week-table tbody tr:nth-child(even) { background: #f8f9ff; }
+    .week-table td { padding: 5px 6px; border-bottom: 1px solid #eee; vertical-align: middle; }
+    .week-table td:first-child {
+      text-align: center;
+      font-weight: 600;
+      color: #4361ee;
+      width: 50px;
+    }
+    .week-table td input[type="text"] {
+      padding: 6px 10px;
+      font-size: 13px;
+      border-radius: 5px;
+    }
+
+    /* Excel section */
+    .excel-box {
+      background: #f1f8e9;
+      border: 1.5px solid #a5d6a7;
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+    .excel-box .ex-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #2e7d32;
+      margin-bottom: 8px;
+    }
+    .excel-box p { font-size: 13px; color: #444; margin-bottom: 10px; }
+    .col-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .chip {
+      background: #fff;
+      border: 1px solid #c8e6c9;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      color: #388e3c;
+      font-weight: 600;
+    }
+
+    /* Note */
+    .note {
+      background: #fff8e1;
+      border-right: 4px solid #ffca28;
+      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #666;
+      margin-top: 14px;
+    }
+
+    /* Divider */
+    hr { border: none; border-top: 1px solid #eef0f8; margin: 28px 0; }
+
+    /* Submit */
+    .submit-area {
+      background: #fff;
+      border: 1px solid #e8eaf0;
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      padding: 28px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .submit-note { font-size: 12px; color: #999; }
+    .btn-submit {
+      background: #4361ee;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-submit:hover { background: #2f4ddd; transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .btn-submit, .submit-area { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="tag">טופס מרצה · מרץ 2026</div>
+    <h1>התאמת מערכת העזר הלימודי לקורס שלך</h1>
+    <p>אנא מלא את הטופס ושלח אותו בחזרה – נדאג לכל השאר.</p>
+    <div class="courses">
+      <div class="course-pill">מבני נתונים</div>
+      <div class="course-pill">לוגיקה ותורת הקבוצות</div>
+    </div>
+  </div>
+
+  <!-- Section 0: Details -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number" style="background:#6c757d">👤</div>
+      <div class="section-title">פרטי המרצה</div>
+    </div>
+
+    <div class="row-2">
+      <div>
+        <label class="field-label">שם מלא</label>
+        <input type="text" name="name" placeholder="ד״ר / פרופ׳ ..." />
+      </div>
+      <div>
+        <label class="field-label">כתובת מייל</label>
+        <input type="email" name="email" placeholder="lecturer@university.ac.il" />
+      </div>
+    </div>
+
+    <div class="row-2" style="margin-top:0">
+      <div>
+        <label class="field-label">שם הקורס</label>
+        <input type="text" name="course_name" placeholder="מבני נתונים / לוגיקה ותורת הקבוצות" />
+      </div>
+      <div>
+        <label class="field-label">סמסטר ושנה</label>
+        <input type="text" name="semester" placeholder="אביב 2026" />
+      </div>
+    </div>
+
+    <label class="field-label">מתרגל/ת ראשי/ת (אם רלוונטי)</label>
+    <div class="row-2">
+      <div><input type="text" name="ta_name" placeholder="שם המתרגל" /></div>
+      <div><input type="email" name="ta_email" placeholder="מייל המתרגל" /></div>
+    </div>
+  </div>
+
+  <!-- Section 1: Weekly -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title">מבנה הקורס שבוע-שבוע</div>
+    </div>
+    <p style="font-size:13px;color:#666;margin-bottom:16px">מלא את הנושאים שנלמדים בכל שבוע. המערכת תתאים את עצמה לפי ההתקדמות.</p>
+
+    <table class="week-table">
+      <thead>
+        <tr>
+          <th>שבוע</th>
+          <th>נושאים שנלמדו</th>
+          <th>הגדרות / משפטים מרכזיים</th>
+          <th style="width:100px">הערות</th>
+        </tr>
+      </thead>
+      <tbody id="weekTableBody"></tbody>
+    </table>
+
+    <div class="note" style="margin-top:16px">
+      המערכת לא תתייחס לחומר שעוד לא נלמד לפי הסדר הזה.
+    </div>
+  </div>
+
+  <!-- Section 2: Materials -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title">חומרים להעברה</div>
+    </div>
+    <p style="font-size:13px;color:#666;margin-bottom:14px">סמן מה תוכל להעביר:</p>
+
+    <div class="check-group">
+      <label class="check-item"><input type="checkbox" name="mat_slides" /> מצגות / סיכומי הרצאות (PDF)</label>
+      <label class="check-item"><input type="checkbox" name="mat_hw" /> גיליונות תרגול / שיעורי בית</label>
+      <label class="check-item"><input type="checkbox" name="mat_hw_sol" /> פתרונות שיעורי בית</label>
+      <label class="check-item"><input type="checkbox" name="mat_formula" /> נוסחאון / דפי עזר מורשים בבחינה</label>
+    </div>
+
+    <label class="field-label" style="margin-top:18px">הערות על החומרים (לדוג' מה חסר, מה בהכנה)</label>
+    <textarea name="materials_notes" placeholder="..."></textarea>
+  </div>
+
+  <!-- Section 3: Chat policy -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title">כיוון הצ'אט – מדיניות עזרה</div>
+    </div>
+
+    <label class="field-label">עד כמה הצ'אט יכול לתת תשובות?</label>
+    <div class="check-group">
+      <label class="check-item"><input type="radio" name="answer_policy" value="hint" /> לרמוז בלבד – שאלות הנחיה, לא לתת את הפתרון</label>
+      <label class="check-item"><input type="radio" name="answer_policy" value="partial" /> פתרון חלקי – הסטודנט מסיים לבד</label>
+      <label class="check-item"><input type="radio" name="answer_policy" value="full" /> פתרון מלא עם הסבר</label>
+      <label class="check-item"><input type="radio" name="answer_policy" value="depends" /> תלוי בסוג השאלה – פרט למטה</label>
+    </div>
+
+    <label class="field-label">פירוט לפי סוג שאלה (אם בחרת "תלוי")</label>
+    <textarea name="answer_policy_detail" placeholder="שאלות פתוחות / הוכחות: &#10;שאלות חישוביות: &#10;שיעורי בית: "></textarea>
+
+    <hr />
+
+    <label class="field-label">מה אסור לצ'אט לעשות?</label>
+    <div class="check-group">
+      <label class="check-item"><input type="checkbox" name="no_hw" /> לא לפתור שיעורי בית ישירות</label>
+      <label class="check-item"><input type="checkbox" name="no_exam_spoil" /> לא לתת פתרונות מבחנים עתידיים</label>
+      <label class="check-item"><input type="checkbox" name="no_shortcuts" /> לא לתת קיצורי דרך שעוקפים את הלמידה</label>
+    </div>
+    <label class="field-label">הגבלות נוספות</label>
+    <input type="text" name="restrictions_other" placeholder="..." />
+
+    <hr />
+
+    <label class="field-label">סימון וטרמינולוגיה ספציפיים לקורס</label>
+    <textarea name="terminology" placeholder="לדוגמה: שמות אלגוריתמים, סימני לוגיקה, מינוחים מיוחדים שהמערכת צריכה להכיר..." style="min-height:60px"></textarea>
+
+    <div class="row-2" style="margin-top:0">
+      <div>
+        <label class="field-label">רמת הסבר מועדפת</label>
+        <select name="explanation_level">
+          <option value="">בחר...</option>
+          <option value="basic">בסיסי</option>
+          <option value="mid">בינוני</option>
+          <option value="advanced">מתקדם</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">שפת התגובות</label>
+        <select name="language">
+          <option value="">בחר...</option>
+          <option value="he">עברית בלבד</option>
+          <option value="en">אנגלית בלבד</option>
+          <option value="both">שתיהן</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Difficulty -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title">נושאים קשים במיוחד לסטודנטים</div>
+    </div>
+    <p style="font-size:13px;color:#666;margin-bottom:12px">אילו נושאים בדרך כלל הכי קשים? המערכת תייחס להם תשומת לב מיוחדת.</p>
+    <textarea name="hard_topics" placeholder="לדוגמה: הוכחות באינדוקציה, ניתוח סיבוכיות, נושא X..."></textarea>
+
+    <label class="field-label" style="margin-top:18px">נושאים קלים יחסית (לצורך שאלות חימום)</label>
+    <textarea name="easy_topics" placeholder="לדוגמה: הגדרות בסיסיות, שאלות ישומיות פשוטות..." style="min-height:60px"></textarea>
+  </div>
+
+  <!-- Section 5: Analytics -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title">מה תרצה לקבל – ניתוח ומעקב</div>
+    </div>
+
+    <div class="check-group">
+      <label class="check-item"><input type="checkbox" name="track_topics" /> אילו נושאים הסטודנטים שואלים עליהם הכי הרבה</label>
+      <label class="check-item"><input type="checkbox" name="track_repeated" /> אילו שאלות גורמות לקושי חוזר</label>
+      <label class="check-item"><input type="checkbox" name="track_timing" /> עד כמה מוקדם לפני המבחן מתחיל השימוש</label>
+      <label class="check-item"><input type="checkbox" name="track_groups" /> פערים בין קבוצות תרגול שונות</label>
+      <label class="check-item"><input type="checkbox" name="track_weekly" /> דוח שבועי לפי נושא</label>
+    </div>
+
+    <label class="field-label" style="margin-top:18px">תדירות דיווח מועדפת</label>
+    <div class="check-group">
+      <label class="check-item"><input type="radio" name="report_freq" value="realtime" /> בזמן אמת (לינק לדשבורד)</label>
+      <label class="check-item"><input type="radio" name="report_freq" value="weekly" /> דוח שבועי במייל</label>
+      <label class="check-item"><input type="radio" name="report_freq" value="pre_exam" /> לפני כל מבחן</label>
+      <label class="check-item"><input type="radio" name="report_freq" value="on_demand" /> לפי בקשה בלבד</label>
+    </div>
+  </div>
+
+  <!-- Section 6: Timeline -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title">לוח זמנים מוצע</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="row-2">
+        <div>
+          <label class="field-label">העברת חומרים ראשוניים</label>
+          <input type="text" name="date_materials" placeholder="תאריך יעד" />
+        </div>
+        <div>
+          <label class="field-label">בדיקה ראשונית של הצ'אט</label>
+          <input type="text" name="date_review" placeholder="תאריך יעד" />
+        </div>
+      </div>
+      <div class="row-2">
+        <div>
+          <label class="field-label">השקה לסטודנטים</label>
+          <input type="text" name="date_launch" placeholder="תאריך יעד" />
+        </div>
+        <div>
+          <label class="field-label">סבב פידבק ראשון</label>
+          <input type="text" name="date_feedback" placeholder="לאחר שבועיים מההשקה" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 7: Excel -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div class="section-title">רשימת סטודנטים לרישום</div>
+    </div>
+
+    <div class="excel-box">
+      <div class="ex-title">📊 נדרש: קובץ Excel עם פרטי הסטודנטים</div>
+      <p>על מנת לרשום את הסטודנטים ולהפעיל את גישתם למערכת, יש להעביר קובץ Excel (.xlsx) הכולל את העמודות הבאות:</p>
+      <div class="col-chips">
+        <div class="chip">שם פרטי</div>
+        <div class="chip">שם משפחה</div>
+        <div class="chip">כתובת מייל</div>
+        <div class="chip">ת.ז / מספר סטודנט</div>
+        <div class="chip">קבוצת תרגול (אופציונלי)</div>
+      </div>
+      <label class="field-label">מספר הסטודנטים המשוער בקורס</label>
+      <input type="text" name="student_count" placeholder="לדוגמה: 120" />
+    </div>
+
+    <div class="note" style="margin-top:14px">
+      קובץ הסטודנטים יישלח בנפרד למייל שצוין. הנתונים מאובטחים ולא מועברים לגורמים חיצוניים.
+    </div>
+  </div>
+
+  <!-- Section: Notes -->
+  <div class="card">
+    <div class="section-header">
+      <div class="section-number" style="background:#6c757d">💬</div>
+      <div class="section-title">הערות נוספות</div>
+    </div>
+    <textarea name="extra_notes" placeholder="כל מה שלא הוזכר למעלה ושחשוב שנדע..." style="min-height:100px"></textarea>
+  </div>
+
+  <!-- Submit -->
+  <div class="submit-area">
+    <div class="submit-note">לאחר השליחה, ניצור קשר תוך 1-2 ימי עסקים לתיאום הטמעה.</div>
+    <button class="btn-submit" onclick="sendForm()">שלח טופס ✉️</button>
+  </div>
+
+</div>
+
+<script>
+  // Build weekly table
+  const tbody = document.getElementById('weekTableBody');
+  for (let i = 1; i <= 13; i++) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${i}</td>
+      <td><input type="text" name="week${i}_topics" placeholder="נושאים..." /></td>
+      <td><input type="text" name="week${i}_theorems" placeholder="הגדרות / משפטים..." /></td>
+      <td><input type="text" name="week${i}_notes" placeholder="הערה" /></td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  function getVal(name) {
+    const el = document.querySelector(`[name="${name}"]`);
+    if (!el) return '';
+    return el.value || '';
+  }
+
+  function getChecked(name) {
+    return [...document.querySelectorAll(`[name="${name}"]:checked`)].map(e => e.value || e.closest('.check-item')?.textContent?.trim()).join(', ');
+  }
+
+  function getCheckboxes(names) {
+    return names.filter(n => document.querySelector(`[name="${n}"]`)?.checked)
+      .map(n => document.querySelector(`[name="${n}"]`).closest('.check-item').textContent.trim())
+      .join('\n  - ');
+  }
+
+  function buildWeekTable() {
+    let rows = '';
+    for (let i = 1; i <= 13; i++) {
+      const t = getVal(`week${i}_topics`);
+      const th = getVal(`week${i}_theorems`);
+      const n = getVal(`week${i}_notes`);
+      if (t || th || n) rows += `  שבוע ${i}: ${t} | ${th}${n ? ' | ' + n : ''}\n`;
+    }
+    return rows || '  (לא מולא)';
+  }
+
+  function sendForm() {
+    const to = 'liamesika2121@com'; // ← שורה 543 – החליפי את הכתובת הזו במייל שלך
+    const subject = encodeURIComponent(`טופס מרצה – ${getVal('course_name') || 'קורס'} | ${getVal('name') || ''}`);
+
+    const mats = getCheckboxes(['mat_slides','mat_hw','mat_hw_sol','mat_formula']);
+    const noList = getCheckboxes(['no_hw','no_exam_spoil','no_shortcuts']);
+    const trackList = getCheckboxes(['track_topics','track_repeated','track_timing','track_groups','track_weekly']);
+
+    const body = encodeURIComponent(`
+=== טופס מרצה – מערכת עזר לימודי AI ===
+
+👤 פרטי המרצה
+שם: ${getVal('name')}
+מייל: ${getVal('email')}
+קורס: ${getVal('course_name')}
+סמסטר: ${getVal('semester')}
+מתרגל: ${getVal('ta_name')} (${getVal('ta_email')})
+
+📅 מבנה הקורס שבוע-שבוע:
+${buildWeekTable()}
+
+📄 חומרים להעברה:
+  - ${mats || '(לא סומן)'}
+הערות חומרים: ${getVal('materials_notes') || '-'}
+
+💬 מדיניות הצ'אט:
+מדיניות תשובות: ${getChecked('answer_policy')}
+פירוט: ${getVal('answer_policy_detail') || '-'}
+הגבלות: ${noList || '-'}
+הגבלות נוספות: ${getVal('restrictions_other') || '-'}
+טרמינולוגיה: ${getVal('terminology') || '-'}
+רמת הסבר: ${getVal('explanation_level')}
+שפה: ${getVal('language')}
+
+⭐ נושאים לפי קושי:
+קשים: ${getVal('hard_topics') || '-'}
+קלים: ${getVal('easy_topics') || '-'}
+
+📊 מעקב ודיווח:
+${trackList || '(לא סומן)'}
+תדירות: ${getChecked('report_freq')}
+
+📆 לוח זמנים:
+העברת חומרים: ${getVal('date_materials') || '-'}
+בדיקה ראשונית: ${getVal('date_review') || '-'}
+השקה: ${getVal('date_launch') || '-'}
+פידבק ראשון: ${getVal('date_feedback') || '-'}
+
+👥 סטודנטים:
+מספר משוער: ${getVal('student_count') || '-'}
+(קובץ Excel נשלח בנפרד)
+
+💬 הערות נוספות:
+${getVal('extra_notes') || '-'}
+
+---
+נשלח דרך טופס מרצה – infi AI Study System
+`);
+
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  }
+</script>
+</body>
+</html>
