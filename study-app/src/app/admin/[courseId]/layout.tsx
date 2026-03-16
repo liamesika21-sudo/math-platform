@@ -1,14 +1,15 @@
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import type { CourseId } from '@/lib/math-platform/types';
 
-export default function CourseAdminLayout({
+export default async function CourseAdminLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { courseId: string };
+  params: Promise<{ courseId: string }>;
 }) {
-  const courseId = params.courseId as CourseId;
+  const { courseId: courseIdRaw } = await params;
+  const courseId = courseIdRaw as CourseId;
 
   return (
     <div className="flex min-h-screen flex-row-reverse bg-slate-50">
