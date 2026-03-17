@@ -60,7 +60,10 @@ export function TheoryFeedbackProvider({
 
   // Real-time subscription to this user's feedback for the course
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      setLoading(false);
+      return;
+    }
 
     const q = query(
       collection(db, 'theoryFeedback'),
@@ -68,15 +71,22 @@ export function TheoryFeedbackProvider({
       where('userId', '==', user.uid),
     );
 
-    const unsub = onSnapshot(q, (snap) => {
-      const map: Record<string, FeedbackStatus> = {};
-      snap.forEach((d) => {
-        const data = d.data() as FeedbackDoc;
-        map[data.itemId] = data.status;
-      });
-      setFeedbackMap(map);
-      setLoading(false);
-    });
+    const unsub = onSnapshot(
+      q,
+      (snap) => {
+        const map: Record<string, FeedbackStatus> = {};
+        snap.forEach((d) => {
+          const data = d.data() as FeedbackDoc;
+          map[data.itemId] = data.status;
+        });
+        setFeedbackMap(map);
+        setLoading(false);
+      },
+      (err) => {
+        console.error('[TheoryFeedback] onSnapshot error:', err.code, err.message);
+        setLoading(false);
+      },
+    );
 
     return unsub;
   }, [user, courseId]);
@@ -88,17 +98,22 @@ export function TheoryFeedbackProvider({
       const docId = `${courseId}__${itemId}__${user.uid}`;
       const ref = doc(db, 'theoryFeedback', docId);
 
-      if (status === null) {
-        await deleteDoc(ref);
-      } else {
-        await setDoc(ref, {
-          courseId,
-          weekId,
-          itemId,
-          userId: user.uid,
-          status,
-          updatedAt: Timestamp.now(),
-        } satisfies FeedbackDoc);
+      try {
+        if (status === null) {
+          await deleteDoc(ref);
+        } else {
+          await setDoc(ref, {
+            courseId,
+            weekId,
+            itemId,
+            userId: user.uid,
+            status,
+            updatedAt: Timestamp.now(),
+          } satisfies FeedbackDoc);
+        }
+      } catch (err: unknown) {
+        const e = err as { code?: string; message?: string };
+        console.error('[TheoryFeedback] write error:', e.code, e.message);
       }
     },
     [user, courseId],
