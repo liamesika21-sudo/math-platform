@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import type { TheoryItem } from '@/lib/math-platform/types';
 import { getWeekById } from '@/lib/math-platform/data';
 import { cn } from '@/lib/math-platform/utils';
+import { BiDiContent } from '@/components/platform/BiDiContent';
 
 interface TheoryItemCardProps {
   item: TheoryItem;
@@ -101,7 +102,7 @@ function TheoryModal({ item, onClose }: { item: TheoryItem; onClose: () => void 
         <div className="space-y-5 p-6">
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">תוכן</p>
-            <p className="text-sm leading-7 text-slate-700">{item.content}</p>
+            <BiDiContent text={item.content} className="text-slate-700" />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -165,10 +166,17 @@ export default function TheoryItemCard({ item }: TheoryItemCardProps) {
             <Icon className="h-4 w-4" />
           </div>
         </div>
-        <p className="mt-4 line-clamp-3 text-sm leading-7 text-slate-600">{item.content}</p>
+        <BiDiContent text={item.content} lineClamp={3} className="mt-4 text-slate-600" />
         <div className="mt-4 flex items-center justify-between">
-          <div className="rounded-2xl bg-slate-50 px-3 py-2 text-xs text-slate-500">
-            {item.sourceName}
+          <div className="flex items-center gap-2">
+            <div className="rounded-2xl bg-slate-50 px-3 py-2 text-xs text-slate-500">
+              {item.sourceName}
+            </div>
+            {item.sourcePage !== undefined && (
+              <div className="rounded-2xl border border-slate-200 bg-white px-2.5 py-2 text-xs font-medium text-slate-400">
+                עמ׳ {item.sourcePage}
+              </div>
+            )}
           </div>
           <span className="text-xs text-slate-400">לחץ לפרטים ←</span>
         </div>

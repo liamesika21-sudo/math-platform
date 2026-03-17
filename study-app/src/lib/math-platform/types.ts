@@ -20,6 +20,8 @@ export interface TheoryItem {
   content: string;
   sourceName: string;
   sourceDocumentId: string;
+  /** Slide / page number inside the source document */
+  sourcePage?: number;
 }
 
 export interface PlatformQuestion {
@@ -30,6 +32,8 @@ export interface PlatformQuestion {
   sourceType: SourceType;
   sourceName: string;
   sourceDocumentId: string;
+  /** Slide / page number inside the source document */
+  sourcePage?: number;
   title: string;
   content: string;
   difficulty: Difficulty;
