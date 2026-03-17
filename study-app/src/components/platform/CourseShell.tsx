@@ -4,8 +4,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BookOpen, Brain, ChartColumnBig, FileQuestion, Files, FolderKanban, GraduationCap, House, Layers3, ListChecks, Menu, MessageSquare, Sparkles, X } from 'lucide-react';
 import { useState } from 'react';
-import type { Course } from '@/lib/math-platform/types';
+import { useRouter } from 'next/navigation';
+import type { Course, CourseId } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
+import { TheoryFeedbackProvider } from '@/contexts/TheoryFeedbackContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface CourseShellProps {
   course: Course;
@@ -28,7 +31,16 @@ const navIconMap = {
 
 export default function CourseShell({ course, children }: CourseShellProps) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, signOut } = useAuth();
   const [open, setOpen] = useState(false);
+
+  async function handleSignOut() {
+    await signOut();
+    router.push('/login');
+  }
+
+  const displayName = user?.displayName ?? user?.email?.split('@')[0] ?? 'סטודנט';
 
   const navItems = [
     { key: 'dashboard', href: `/courses/${course.id}`, label: 'לוח בקרה' },
@@ -67,7 +79,7 @@ export default function CourseShell({ course, children }: CourseShellProps) {
 
           <div className="hidden items-center gap-3 lg:flex">
             <div className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600">
-              ללא התחברות. המעקב שמור בדפדפן.
+              {displayName}
             </div>
             <Link
               href="/"
@@ -75,6 +87,13 @@ export default function CourseShell({ course, children }: CourseShellProps) {
             >
               החלף קורס
             </Link>
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-red-300 hover:text-red-600"
+            >
+              יציאה
+            </button>
           </div>
 
           <button
@@ -151,7 +170,9 @@ export default function CourseShell({ course, children }: CourseShellProps) {
           </div>
         </div>
 
-        {children}
+        <TheoryFeedbackProvider courseId={course.id as CourseId}>
+          {children}
+        </TheoryFeedbackProvider>
       </main>
     </div>
   );

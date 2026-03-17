@@ -144,7 +144,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'שייכות — x ∈ A',
     kind: 'definition',
     content:
-      'x ∈ A פירושו ש-x הוא איבר של A (x שייך ל-A, x נמצא ב-A).\n\nדוגמאות:\n• 5 ∈ {8,5,2}\n• 3 ∉ {8,5,2}\n\nשימו לב: "Include / contain / מכיל" הם מונחים דו-משמעיים — יש להיזהר.',
+      'x ∈ A פירושו שx הוא איבר של A (x שייך לA, x נמצא בA).\n\nדוגמאות:\n• 5 ∈ {8,5,2}\n• 3 ∉ {8,5,2}\n\nשימו לב: "Include / contain / מכיל" הם מונחים דו-משמעיים — יש להיזהר.',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -156,7 +156,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'תת-קבוצה — A ⊆ B',
     kind: 'definition',
     content:
-      'A ⊆ B פירושו ש-A היא תת-קבוצה של B — כל איבר של A הוא גם איבר של B.\n\nדוגמה: {5,7} ⊆ {5,3,7}',
+      'A ⊆ B פירושו שA היא תת-קבוצה של B — כל איבר של A הוא גם איבר של B.\n\nדוגמה: {5,7} ⊆ {5,3,7}',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -168,7 +168,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'שוויון קבוצות — A = B',
     kind: 'definition',
     content:
-      'A = B פירושו ש-A ו-B הן אותה הקבוצה — יש להן אותם האיברים בדיוק.\n\nדוגמאות:\n• {5,7,3,3} = {5,3,7}  — כפילויות לא מוסיפות איברים\n• {5,7,3,3} = {7,9,5}? לא, כי 3 ∈ A אך 3 ∉ B',
+      'A = B פירושו שA וB הן אותה הקבוצה — יש להן אותם האיברים בדיוק.\n\nדוגמאות:\n• {5,7,3,3} = {5,3,7}  — כפילויות לא מוסיפות איברים\n• {5,7,3,3} = {7,9,5}? לא, כי 3 ∈ A אך 3 ∉ B',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -180,7 +180,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'פרדוקס ראסל (1902)',
     kind: 'concept',
     content:
-      'תהא A קבוצה כלשהי. סביר ש-A ∉ A (קבוצת המספרים הטבעיים, למשל, אינה מספר טבעי).\n\nנגדיר: S = { A | A ∉ A }  — אוסף כל הקבוצות שאינן מכילות את עצמן.\n\nהשאלה: האם S ∈ S?\n• אם S ∈ S — אז לפי ההגדרה S ∉ S. סתירה!\n• אם S ∉ S — אז לפי ההגדרה S ∈ S. סתירה!\n\nמסקנה: תורת הקבוצות הנאיבית (שבה כל אוסף הוא קבוצה) מובילה לסתירה.',
+      'תהא A קבוצה כלשהי. סביר שA ∉ A (קבוצת המספרים הטבעיים, למשל, אינה מספר טבעי).\n\nנגדיר: S = { A | A ∉ A }  — אוסף כל הקבוצות שאינן מכילות את עצמן.\n\nהשאלה: האם S ∈ S?\n• אם S ∈ S — אז לפי ההגדרה S ∉ S. סתירה!\n• אם S ∉ S — אז לפי ההגדרה S ∈ S. סתירה!\n\nמסקנה: תורת הקבוצות הנאיבית (שבה כל אוסף הוא קבוצה) מובילה לסתירה.',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -218,7 +218,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'אקסיומת ההיקפיות (Extensionality)',
     kind: 'definition',
     content:
-      'שתי קבוצות A ו-B שוות (A = B) אם ורק אם יש להן אותם האיברים.\n\nהגדרה: A = B אמ"מ כל איבר של A הוא גם איבר של B ולהפך.\n\nמשפט: A = B אמ"מ A ⊆ B וגם B ⊆ A.\n\nדוגמאות:\n• {1,2,3} = {3,2,1} ✓\n• {5,9,9,5,7} = {7,9,5} ✓  (כפילויות לא משנות)\n• {7,2,4} ≠ {7,3,4}  (2 ∈ A אך 2 ∉ B)',
+      'שתי קבוצות A וB שוות (A = B) אם ורק אם יש להן אותם האיברים.\n\nהגדרה: A = B אמ"מ כל איבר של A הוא גם איבר של B ולהפך.\n\nמשפט: A = B אמ"מ A ⊆ B וגם B ⊆ A.\n\nדוגמאות:\n• {1,2,3} = {3,2,1} ✓\n• {5,9,9,5,7} = {7,9,5} ✓  (כפילויות לא משנות)\n• {7,2,4} ≠ {7,3,4}  (2 ∈ A אך 2 ∉ B)',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -242,7 +242,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'אקסיומת הזוג (Pairing)',
     kind: 'definition',
     content:
-      'לכל שתי קבוצות A ו-B קיימת קבוצה C = {A, B} שאיבריה הם (רק) A ו-B.\n\nדוגמה: עבור A = {1,5} ו-B = {7,5,9}, קיימת {{1,5},{7,5,9}}.\n\nיחידון (singleton): קבוצה עם איבר יחיד, כגון {5}, {∅}, {A}.',
+      'לכל שתי קבוצות A וB קיימת קבוצה C = {A, B} שאיבריה הם (רק) A וB.\n\nדוגמה: עבור A = {1,5} וB = {7,5,9}, קיימת {{1,5},{7,5,9}}.\n\nיחידון (singleton): קבוצה עם איבר יחיד, כגון {5}, {∅}, {A}.',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -266,7 +266,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'אקסיומת היסוד (Foundation / Regularity)',
     kind: 'definition',
     content:
-      'בכל קבוצה לא ריקה A יש איבר B כך ש-A ו-B הן קבוצות זרות (אין להן איברים משותפים).\n\nמשמעות: אקסיומה זו שוללת את האפשרות שקבוצה תהיה איבר של עצמה — כלומר A ∉ A לכל קבוצה A.',
+      'בכל קבוצה לא ריקה A יש איבר B כך שA וB הן קבוצות זרות (אין להן איברים משותפים).\n\nמשמעות: אקסיומה זו שוללת את האפשרות שקבוצה תהיה איבר של עצמה — כלומר A ∉ A לכל קבוצה A.',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -278,7 +278,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'אקסיומת האינסוף (Infinity)',
     kind: 'definition',
     content:
-      'קיימת קבוצה לא ריקה A כך שלכל איבר x של A, גם {x} הוא איבר של A.\n\nמשמעות: קיימת קבוצה אינסופית. ניח ש-x∈A, אז {x}∈A, ולכן {{x}}∈A, וכן הלאה — תמיד קיים עוד איבר.',
+      'קיימת קבוצה לא ריקה A כך שלכל איבר x של A, גם {x} הוא איבר של A.\n\nמשמעות: קיימת קבוצה אינסופית. ניח שx∈A, אז {x}∈A, ולכן {{x}}∈A, וכן הלאה — תמיד קיים עוד איבר.',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -302,7 +302,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'אקסיומת ההחלפה (Replacement)',
     kind: 'definition',
     content:
-      'לכל קבוצה A ומיפוי m, הקבוצה B הנוצרת מ-A ע"י החלפת כל איבר x ב-A באיבר m(x) היא קבוצה.\n\nדוגמה: A = {3,1,7}, m(i) = i+1  →  B = {4,2,8}.\n\nהערה: זו סכימה של אקסיומה — יש מופע של האקסיומה לכל מיפוי m.',
+      'לכל קבוצה A ומיפוי m, הקבוצה B הנוצרת מA ע"י החלפת כל איבר x בA באיבר m(x) היא קבוצה.\n\nדוגמה: A = {3,1,7}, m(i) = i+1  →  B = {4,2,8}.\n\nהערה: זו סכימה של אקסיומה — יש מופע של האקסיומה לכל מיפוי m.',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -376,7 +376,7 @@ export const theoryItems: TheoryItem[] = [
     title: 'משפט: תקינות ייצוג הזוג הסדור',
     kind: 'theorem',
     content:
-      '⟨a,b⟩ = ⟨x,y⟩  אמ"מ  a = x ו-b = y.\n\nמשמעות: ייצוג הזוג הסדור תקין — הוא שומר על הסדר.\n\nהוכחה (סקיצה):\n(⟸) טריוויאלי — אם a=x ו-b=y אז הקבוצות זהות.\n(⟹) נניח {{a},{a,b}} = {{x},{x,y}}. נפריד לשני מקרים:\n• מקרה I (a=b): מהשוויון נקבל {a} = {x,y}, ולכן a=x=y, ולבסוף a=x ו-b=y. ✓\n• מקרה II (a≠b): {a} חייב להיות אחד האיברים של D = {{x},{x,y}}. נובע a=x, ומכאן b=y. ✓',
+      '⟨a,b⟩ = ⟨x,y⟩  אמ"מ  a = x וb = y.\n\nמשמעות: ייצוג הזוג הסדור תקין — הוא שומר על הסדר.\n\nהוכחה (סקיצה):\n(⟸) טריוויאלי — אם a=x וb=y אז הקבוצות זהות.\n(⟹) נניח {{a},{a,b}} = {{x},{x,y}}. נפריד לשני מקרים:\n• מקרה I (a=b): מהשוויון נקבל {a} = {x,y}, ולכן a=x=y, ולבסוף a=x וb=y. ✓\n• מקרה II (a≠b): {a} חייב להיות אחד האיברים של D = {{x},{x,y}}. נובע a=x, ומכאן b=y. ✓',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'logic-w1-lecture',
   },
@@ -497,7 +497,7 @@ theoryItems.push(
     title: 'בעיית המיון (Sorting Problem)',
     kind: 'definition',
     content:
-      'קלט: סדרה של n מספרים ⟨a₁, a₂, ..., aₙ⟩.\nפלט: תמורה (permutation) של הסדרה ⟨a\'₁, a\'₂, ..., a\'ₙ⟩ כך ש-a\'₁ ≤ a\'₂ ≤ ... ≤ a\'ₙ.\n\nדוגמה: קלט ⟨31, 41, 59, 26, 41, 58⟩ → פלט ⟨26, 31, 41, 41, 58, 59⟩.\n\nבעיית המיון היא הבסיס ללמידת אלגוריתמים — נדון בה לאורך הקורס.',
+      'קלט: סדרה של n מספרים ⟨a₁, a₂, ..., aₙ⟩.\nפלט: תמורה (permutation) של הסדרה ⟨a\'₁, a\'₂, ..., a\'ₙ⟩ כך שa\'₁ ≤ a\'₂ ≤ ... ≤ a\'ₙ.\n\nדוגמה: קלט ⟨31, 41, 59, 26, 41, 58⟩ → פלט ⟨26, 31, 41, 41, 58, 59⟩.\n\nבעיית המיון היא הבסיס ללמידת אלגוריתמים — נדון בה לאורך הקורס.',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'ds-w1-lecture',
   },
@@ -559,7 +559,7 @@ theoryItems.push(
     title: 'Sequence ADT',
     kind: 'definition',
     content:
-      'Sequence הוא ADT המייצג סדרה סדורה של איברים: S = ⟨a₀, a₁, ..., aₙ₋₁⟩.\n\nפעולות:\n• Build(x₁,...,xₙ) — בניית סדרה מ-n איברים\n• Length(S) — מספר האיברים\n• Retrieve(S, i) — קריאת האיבר במיקום i (0-based)\n• Store(S, i, b) — עדכון האיבר במיקום i לערך b\n• Insert(S, i, b) — הכנסת b במיקום i; האיברים מ-i ואילך מוזזים ימינה\n• Delete(S, i) — מחיקת האיבר במיקום i; האיברים שאחריו מוזזים שמאלה\n• Insert-Last(S, b) — הוספה לסוף; שקול ל-Insert(S, n, b)\n• Delete-Last(S) — מחיקה מהסוף',
+      'Sequence הוא ADT המייצג סדרה סדורה של איברים: S = ⟨a₀, a₁, ..., aₙ₋₁⟩.\n\nפעולות:\n• Build(x₁,...,xₙ) — בניית סדרה מn איברים\n• Length(S) — מספר האיברים\n• Retrieve(S, i) — קריאת האיבר במיקום i (0-based)\n• Store(S, i, b) — עדכון האיבר במיקום i לערך b\n• Insert(S, i, b) — הכנסת b במיקום i; האיברים מi ואילך מוזזים ימינה\n• Delete(S, i) — מחיקת האיבר במיקום i; האיברים שאחריו מוזזים שמאלה\n• Insert-Last(S, b) — הוספה לסוף; שקול לInsert(S, n, b)\n• Delete-Last(S) — מחיקה מהסוף',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'ds-w1-lecture',
   },
@@ -595,7 +595,7 @@ theoryItems.push(
     title: 'Deque ADT (תור דו-כיווני)',
     kind: 'definition',
     content:
-      'Deque (Double-Ended Queue) מאפשר הכנסה והוצאה משני קצות.\n\nפעולות:\n• Insert-First(D, b) — הכנסה לתחילה\n• Delete-First(D) — הוצאה מהתחילה\n• Insert-Last(D, b) — הכנסה לסוף\n• Delete-Last(D) — הוצאה מהסוף\n\nDeque מכליל גם Stack וגם Queue:\n• Stack = Deque עם גישה לקצה אחד בלבד\n• Queue = Deque עם Insert-Last ו-Delete-First',
+      'Deque (Double-Ended Queue) מאפשר הכנסה והוצאה משני קצות.\n\nפעולות:\n• Insert-First(D, b) — הכנסה לתחילה\n• Delete-First(D) — הוצאה מהתחילה\n• Insert-Last(D, b) — הכנסה לסוף\n• Delete-Last(D) — הוצאה מהסוף\n\nDeque מכליל גם Stack וגם Queue:\n• Stack = Deque עם גישה לקצה אחד בלבד\n• Queue = Deque עם Insert-Last וDelete-First',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'ds-w1-lecture',
   },
@@ -657,7 +657,7 @@ theoryItems.push(
     title: 'מימוש Sequence עם מערך מעגלי (Circular Array)',
     kind: 'concept',
     content:
-      'מוטיבציה: במערך רגיל, Insert-First ו-Delete-First הן O(n). המערך המעגלי מאפשר שני הקצות ב-O(1).\n\nמבנה: מוסיפים שדה start המצביע על תחילת הסדרה הלוגית.\n\nשדות: array, maxlen M, length n, start.\n\nהגישה הלוגית לאינדקס i ממופה לאינדקס פיזי: (start + i) mod maxlen\n\nFunction Retrieve(S, i):\n  if i < 0 or i ≥ S.length then error\n  return S.array[(S.start + i) mod S.maxlen]\n\nהאזור התפוס יכול לעבור את קצה המערך ולהמשיך מהתחילה (wrap around).\n\nתוצאה: Insert/Delete-First ו-Insert/Delete-Last כולם O(1).',
+      'מוטיבציה: במערך רגיל, Insert-First וDelete-First הן O(n). המערך המעגלי מאפשר שני הקצות בO(1).\n\nמבנה: מוסיפים שדה start המצביע על תחילת הסדרה הלוגית.\n\nשדות: array, maxlen M, length n, start.\n\nהגישה הלוגית לאינדקס i ממופה לאינדקס פיזי: (start + i) mod maxlen\n\nFunction Retrieve(S, i):\n  if i < 0 or i ≥ S.length then error\n  return S.array[(S.start + i) mod S.maxlen]\n\nהאזור התפוס יכול לעבור את קצה המערך ולהמשיך מהתחילה (wrap around).\n\nתוצאה: Insert/Delete-First ו-Insert/Delete-Last כולם O(1).',
     sourceName: 'הרצאה 1',
     sourceDocumentId: 'ds-w1-lecture',
   },

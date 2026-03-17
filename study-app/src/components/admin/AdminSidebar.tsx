@@ -16,6 +16,7 @@ import {
   LogOut,
   ChevronLeft,
   GraduationCap,
+  Lightbulb,
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { cn } from '@/lib/math-platform/utils';
@@ -48,6 +49,7 @@ const navSections = [
     items: [
       { key: 'gradebook', href: '/gradebook', label: 'ספר ציונים', icon: BookMarked },
       { key: 'analytics', href: '/analytics', label: 'ניתוח נתונים', icon: BarChart2 },
+      { key: 'insights', href: '/insights', label: 'תובנות הבנה', icon: Lightbulb },
       { key: 'mistakes', href: '/mistakes', label: 'ניתוח טעויות', icon: AlertTriangle },
       { key: 'adaptive', href: '/adaptive', label: 'אלגוריתם אדפטיבי', icon: BrainCircuit },
     ],

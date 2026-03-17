@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import CourseShell from '@/components/platform/CourseShell';
+import CourseGuard from '@/components/platform/CourseGuard';
 import { courses, getCourseById } from '@/lib/math-platform/data';
 import type { CourseId } from '@/lib/math-platform/types';
 
@@ -21,5 +22,9 @@ export default async function CourseLayout({
     notFound();
   }
 
-  return <CourseShell course={course}>{children}</CourseShell>;
+  return (
+    <CourseGuard>
+      <CourseShell course={course}>{children}</CourseShell>
+    </CourseGuard>
+  );
 }

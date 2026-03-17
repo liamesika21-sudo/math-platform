@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Rubik } from 'next/font/google';
 import './globals.css';
 import 'katex/dist/katex.min.css';
+import Providers from '@/components/Providers';
 
 const rubik = Rubik({
   subsets: ['latin', 'hebrew'],
@@ -22,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl" className={rubik.variable}>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

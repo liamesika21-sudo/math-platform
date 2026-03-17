@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 function AdminGuard({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -29,9 +29,5 @@ function AdminGuard({ children }: { children: React.ReactNode }) {
 }
 
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <AuthProvider>
-      <AdminGuard>{children}</AdminGuard>
-    </AuthProvider>
-  );
+  return <AdminGuard>{children}</AdminGuard>;
 }

@@ -1,11 +1,12 @@
 'use client';
 
-import { BookMarked, BrainCircuit, Sigma, ScrollText, X, Calendar, FileText, Lightbulb } from 'lucide-react';
+import { BookMarked, BrainCircuit, Sigma, ScrollText, X, Calendar, FileText, Lightbulb, CheckCircle2, RefreshCw, HelpCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import type { TheoryItem } from '@/lib/math-platform/types';
 import { getWeekById } from '@/lib/math-platform/data';
 import { cn } from '@/lib/math-platform/utils';
 import { BiDiContent } from '@/components/platform/BiDiContent';
+import { useTheoryFeedback, type FeedbackStatus } from '@/contexts/TheoryFeedbackContext';
 
 interface TheoryItemCardProps {
   item: TheoryItem;
@@ -49,6 +50,72 @@ const styleMap = {
     importance: 'הבנה אינטואיטיבית של מושגים מרכזיים מאפשרת לפתור שאלות גם כשאין זיכרון מדויק של נוסחה — ולנווט בין גישות פתרון שונות.',
   },
 };
+
+// ── Feedback row ─────────────────────────────────────────────────────────────
+
+const FEEDBACK_OPTIONS: {
+  status: FeedbackStatus;
+  label: string;
+  icon: React.ElementType;
+  active: string;
+  inactive: string;
+}[] = [
+  {
+    status: 'got_it',
+    label: 'הבנתי',
+    icon: CheckCircle2,
+    active: 'bg-emerald-100 text-emerald-700 border-emerald-300',
+    inactive: 'border-slate-200 text-slate-500 hover:border-emerald-200 hover:text-emerald-600',
+  },
+  {
+    status: 'needs_review',
+    label: 'צריך חידוד',
+    icon: RefreshCw,
+    active: 'bg-amber-100 text-amber-700 border-amber-300',
+    inactive: 'border-slate-200 text-slate-500 hover:border-amber-200 hover:text-amber-600',
+  },
+  {
+    status: 'lost',
+    label: 'לא הבנתי',
+    icon: HelpCircle,
+    active: 'bg-rose-100 text-rose-700 border-rose-300',
+    inactive: 'border-slate-200 text-slate-500 hover:border-rose-200 hover:text-rose-600',
+  },
+];
+
+function FeedbackRow({ item, size = 'sm' }: { item: TheoryItem; size?: 'sm' | 'md' }) {
+  const { feedback, setFeedback } = useTheoryFeedback();
+  const current = feedback[item.id] ?? null;
+
+  function handleClick(e: React.MouseEvent, status: FeedbackStatus) {
+    e.stopPropagation();
+    // Toggle off if already selected
+    setFeedback(item.id, item.weekId, current === status ? null : status);
+  }
+
+  return (
+    <div className={cn('flex items-center gap-1.5', size === 'md' && 'gap-2')}>
+      {FEEDBACK_OPTIONS.map(({ status, label, icon: Icon, active, inactive }) => (
+        <button
+          key={status}
+          onClick={(e) => handleClick(e, status)}
+          className={cn(
+            'flex items-center gap-1 rounded-full border font-medium transition',
+            size === 'sm'
+              ? 'px-2.5 py-1 text-[11px]'
+              : 'px-3 py-1.5 text-xs',
+            current === status ? active : inactive,
+          )}
+        >
+          <Icon className={size === 'sm' ? 'h-3 w-3' : 'h-3.5 w-3.5'} />
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// ── Modal ─────────────────────────────────────────────────────────────────────
 
 function TheoryModal({ item, onClose }: { item: TheoryItem; onClose: () => void }) {
   const style = styleMap[item.kind];
@@ -130,6 +197,11 @@ function TheoryModal({ item, onClose }: { item: TheoryItem; onClose: () => void 
               <p className="mt-1 text-xs leading-6 text-amber-800">{style.importance}</p>
             </div>
           </div>
+
+          <div className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+            <p className="mb-2.5 text-xs font-semibold text-slate-500">האם הבנת את החומר?</p>
+            <FeedbackRow item={item} size="md" />
+          </div>
         </div>
       </div>
     </div>
@@ -167,7 +239,10 @@ export default function TheoryItemCard({ item }: TheoryItemCardProps) {
           </div>
         </div>
         <BiDiContent text={item.content} lineClamp={3} className="mt-4 text-slate-600" />
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-3">
+          <FeedbackRow item={item} size="sm" />
+        </div>
+        <div className="mt-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="rounded-2xl bg-slate-50 px-3 py-2 text-xs text-slate-500">
               {item.sourceName}
