@@ -85,6 +85,7 @@ export default function MathText({ text, className }: MathTextProps) {
           return (
             <span
               key={i}
+              dir="ltr"
               className="my-2 block overflow-x-auto text-center"
               dangerouslySetInnerHTML={{ __html: renderMath(seg.content.trim(), true) }}
             />
@@ -94,6 +95,8 @@ export default function MathText({ text, className }: MathTextProps) {
           return (
             <span
               key={i}
+              dir="ltr"
+              className="inline-block"
               dangerouslySetInnerHTML={{ __html: renderMath(seg.content.trim(), false) }}
             />
           );
