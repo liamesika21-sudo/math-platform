@@ -1,0 +1,28 @@
+[debug] [2026-03-17T21:15:26.439Z] ----------------------------------------------------------------------
+[debug] [2026-03-17T21:15:26.446Z] Command:       /Users/liamesika/.nvm/versions/node/v22.19.0/bin/node /Users/liamesika/.npm-global/bin/firebase deploy --only firestore
+[debug] [2026-03-17T21:15:26.446Z] CLI Version:   14.16.0
+[debug] [2026-03-17T21:15:26.446Z] Platform:      darwin
+[debug] [2026-03-17T21:15:26.446Z] Node Version:  v22.19.0
+[debug] [2026-03-17T21:15:26.446Z] Time:          Tue Mar 17 2026 23:15:26 GMT+0200 (Israel Standard Time)
+[debug] [2026-03-17T21:15:26.446Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-17T21:15:26.543Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-17T21:15:26.544Z] > authorizing via signed-in user (liamesika2121@gmail.com)
+[debug] [2026-03-17T21:15:26.544Z] [iam] checking project reichman-math for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-03-17T21:15:26.544Z] Checked if tokens are valid: true, expires at: 1773785084152
+[debug] [2026-03-17T21:15:26.544Z] Checked if tokens are valid: true, expires at: 1773785084152
+[debug] [2026-03-17T21:15:26.545Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions [none]
+[debug] [2026-03-17T21:15:26.545Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions x-goog-quota-user=projects/reichman-math
+[debug] [2026-03-17T21:15:26.545Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-03-17T21:15:27.653Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions 200
+[debug] [2026-03-17T21:15:27.653Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'reichman-math'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-03-17T21:15:27.659Z] Checked if tokens are valid: true, expires at: 1773785084152
+[debug] [2026-03-17T21:15:27.659Z] Checked if tokens are valid: true, expires at: 1773785084152
+[debug] [2026-03-17T21:15:27.659Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/reichman-math:test [none]
+[debug] [2026-03-17T21:15:27.659Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/reichman-math:test [omitted]
