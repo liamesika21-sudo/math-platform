@@ -13,7 +13,7 @@ export default function TutorialsPage() {
   const typedCourseId = courseId as CourseId;
   const allQuestions = getCourseQuestions(typedCourseId);
   const tutorialQuestions = allQuestions.filter((q) => q.sourceType === 'tutorial');
-  const { filteredStates } = useCourseQuestionSession(typedCourseId, allQuestions);
+  const { getState } = useCourseQuestionSession(typedCourseId, allQuestions);
 
   // Group by sourceDocumentId, preserving order of first appearance
   const tutorialMap = new Map<string, { sourceName: string; count: number; solvedCount: number; weekId: string }>();
@@ -23,8 +23,8 @@ export default function TutorialsPage() {
     }
     const entry = tutorialMap.get(q.sourceDocumentId)!;
     entry.count++;
-    const state = filteredStates[q.id];
-    if (state?.status === 'solved' || state?.solvedIndependently) entry.solvedCount++;
+    const state = getState(q.id);
+    if (state.status === 'solved' || state.solvedIndependently) entry.solvedCount++;
   }
 
   const tutorials = Array.from(tutorialMap.entries()).sort((a, b) => a[0].localeCompare(b[0]));
