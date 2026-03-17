@@ -1,22 +1,22 @@
 import OpenAI from 'openai';
 import { NextRequest, NextResponse } from 'next/server';
-import {
-  getCourseById,
-  getCourseWeeks,
-  getTheoryItemsForWeek,
-} from '@/lib/math-platform/data';
+import { getCourseById } from '@/lib/math-platform/data';
+import { buildCourseKnowledge } from '@/lib/math-platform/build-course-knowledge';
 import type { CourseId } from '@/lib/math-platform/types';
 
 export const runtime = 'nodejs';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Fetch generated content from Firestore for all weeks of the course
-async function fetchFirestoreContent(courseId: string): Promise<Map<string, {
-  title?: string; summary?: string; topics?: string[]; reviewHighlights?: string[];
-  theoryItems?: Array<{ title: string; kind: string; content: string }>;
-}>> {
-  const map = new Map();
+async function buildSystemPrompt(courseId: CourseId): Promise<string> {
+  const course = getCourseById(courseId);
+  if (!course) return 'אתה מנחה אקדמי.';
+
+  // Build full course knowledge from static data
+  const knowledge = buildCourseKnowledge(courseId);
+
+  // Try to enrich with any Firestore-generated content (uploaded PDFs)
+  let firestoreExtra = '';
   try {
     const { adminDb } = await import('@/lib/firebase-admin');
     const snap = await adminDb
@@ -24,73 +24,78 @@ async function fetchFirestoreContent(courseId: string): Promise<Map<string, {
       .doc(courseId)
       .collection('generatedContent')
       .get();
-    for (const doc of snap.docs) {
-      map.set(doc.id, doc.data());
-    }
-  } catch {
-    // Firestore unavailable — fall back to static data only
-  }
-  return map;
-}
-
-async function buildSystemPrompt(courseId: CourseId): Promise<string> {
-  const course = getCourseById(courseId);
-  if (!course) return 'אתה מנחה אקדמי.';
-
-  const weeks = getCourseWeeks(courseId);
-  const firestoreContent = await fetchFirestoreContent(courseId);
-
-  const weekLines = weeks
-    .map((week) => {
-      // Static theory items from data.ts
-      const staticItems = getTheoryItemsForWeek(week.id);
-      // Enriched content from Firestore (uploaded + analyzed PDFs)
-      const weekId = `${courseId}-week-${week.number}`;
-      const fsData = firestoreContent.get(weekId);
-
-      const theoryTitles: string[] = staticItems.map((t) => t.title);
-
-      // Add extra theory items from Firestore-analyzed lectures
-      if (fsData?.theoryItems?.length) {
-        for (const item of fsData.theoryItems) {
-          if (item.title && !theoryTitles.includes(item.title)) {
-            theoryTitles.push(item.title);
+    if (!snap.empty) {
+      const extraLines: string[] = ['\n## חומר נוסף שהועלה על ידי המרצה'];
+      for (const doc of snap.docs) {
+        const d = doc.data();
+        if (d.summary) extraLines.push(`\n### ${d.title ?? doc.id}\n${d.summary}`);
+        if (d.theoryItems?.length) {
+          for (const item of d.theoryItems as { title: string; content: string }[]) {
+            extraLines.push(`#### ${item.title}\n${item.content}`);
           }
         }
       }
+      firestoreExtra = extraLines.join('\n');
+    }
+  } catch {
+    // Firestore unavailable — fine, static data is enough
+  }
 
-      const theoryPart = theoryTitles.length > 0
-        ? `\n  נושאי תיאוריה: ${theoryTitles.join(', ')}`
-        : '';
+  return `You are the student's academic AI mentor and private tutor.
 
-      const summaryFromFs = fsData?.summary ? `\n  תקציר מהרצאה: ${fsData.summary}` : '';
-      const highlightsPart = fsData?.reviewHighlights?.length
-        ? `\n  נקודות מפתח: ${fsData.reviewHighlights.join(' | ')}`
-        : '';
+The course is: ${course.title} (${course.shortTitle})
 
-      return `שבוע ${week.number}: ${week.title}\n  ${week.summary}${summaryFromFs}${theoryPart}${highlightsPart}`;
-    })
-    .join('\n\n');
+Determine the subject from the course context:
+- Logic / לוגיקה → act as a Logic tutor
+- Data Structures / מבני נתונים → act as a Data Structures tutor
+- Otherwise infer the correct academic subject from the course context
 
-  return `אתה מנחה אקדמי חכם ואמפתי של הקורס: ${course.title}.
+You must behave like a real private tutor, not like a generic assistant.
 
-**מידע על הקורס:**
-- שם: ${course.shortTitle}
-- תיאור: ${course.description}
+Mission:
+Teach, guide, and build the student's understanding and confidence — not just provide answers.
 
-**נושאים ושבועות הקורס:**
-${weekLines}
+Strict rules:
+- Do not reveal final answers immediately for homework, tutorial, practice, or graded academic questions.
+- Start by guiding the student through the thinking process.
+- Use hints, scaffolding, partial steps, clarifying explanations, and targeted questions.
+- Help the student discover the answer, not just receive it.
+- Build trust, confidence, and clarity.
+- Give high-value study advice, useful thought directions, problem-solving strategies, and professional academic guidance.
+- If the student is clearly stuck after a substantial guided process, and continued hinting is no longer useful, you may provide the final answer.
+- Even then, only provide it after explanation, reasoning, and educational structure.
+- Never encourage academic dishonesty.
+- Never rush to the answer when teaching would be more beneficial.
 
-**כללים מחייבים:**
-1. לעולם אל תגלה תשובות מוכנות, פתרונות מלאים, או הוכחות ישירות
-2. השתמש בשיטה סוקרטית — שאל שאלות מנחות שיעזרו לסטודנט לחשוב בעצמו
-3. ניתן לתת רמזים, לכוון, להסביר מושגים — אך לא לפתור
-4. ענה תמיד בעברית בלבד
-5. התייחס רק לחומר שנלמד בקורס זה
-6. אם מועלית תמונה של תרגיל — סייע להבנת הגישה, לא לפתרון
-7. היה ידידותי, מעודד, ותומך
+Teaching style:
+- clear
+- patient
+- structured
+- encouraging
+- non-judgmental
+- intellectually serious
+- adapted to the student's level
 
-זכור: מטרתך לעזור לסטודנט להגיע לתשובה בעצמו, לא לתת לו אותה.`;
+For Logic:
+Focus on formal precision, proof flow, set-theoretic reasoning, definitions, and validity of each step.
+
+For Data Structures:
+Focus on intuition, operations, runtime, tradeoffs, invariants, and correct reasoning about implementations.
+
+Always optimize for real understanding.
+
+**IMPORTANT — Language:**
+Always respond in Hebrew (עברית) only.
+Mathematical expressions may be written in standard notation (e.g. ∀x, A ⊆ B, O(n)) but all explanations must be in Hebrew.
+
+---
+
+## Course Knowledge Base
+
+The following is the complete content of the course — all definitions, theorems, concepts, and tutorial questions.
+Base your tutoring ONLY on this material. Do not bring in outside content.
+
+${knowledge}${firestoreExtra}`;
 }
 
 export async function POST(req: NextRequest) {

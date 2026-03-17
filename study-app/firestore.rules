@@ -42,10 +42,11 @@ service cloud.firestore {
 
     // Chat sessions — users own their sessions, admins read all
     match /chats/{docId} {
-      allow read, write: if isAuthed() && request.auth.uid != null
-        && (resource == null || resource.data.userId == request.auth.uid)
-        && (request.resource == null || request.resource.data.userId == request.auth.uid);
-      allow read: if isAdmin();
+      allow read: if isAuthed() && (resource == null || resource.data.userId == request.auth.uid);
+      allow create: if isAuthed() && request.resource.data.userId == request.auth.uid;
+      allow update: if isAuthed() && resource.data.userId == request.auth.uid;
+      allow delete: if isAuthed() && resource.data.userId == request.auth.uid;
+      allow read, write: if isAdmin();
     }
 
     // Chat alerts — written by anyone authenticated, read by admin

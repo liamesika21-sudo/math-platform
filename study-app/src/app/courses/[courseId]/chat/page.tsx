@@ -94,8 +94,14 @@ export default function ChatPage() {
     async (allMessages: Message[]) => {
       if (!user || !docId) return;
       try {
+        const cleanMessages = allMessages.map(({ id, role, content, imagePreview }) => ({
+          id,
+          role,
+          content,
+          ...(imagePreview ? { imagePreview } : {}),
+        }));
         await setDoc(doc(db, 'chats', docId), {
-          messages: allMessages,
+          messages: cleanMessages,
           lastMessageAt: new Date().toISOString(),
           courseId,
           userId: user.uid,
