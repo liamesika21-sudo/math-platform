@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BookOpen, Brain, ChartColumnBig, FileQuestion, Files, FolderKanban, GraduationCap, House, Layers3, ListChecks, Menu, MessageSquare, Sparkles, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Course, CourseId } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
 import { TheoryFeedbackProvider } from '@/contexts/TheoryFeedbackContext';
 import { useAuth } from '@/contexts/AuthContext';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 
 interface CourseShellProps {
   course: Course;
@@ -34,6 +36,26 @@ export default function CourseShell({ course, children }: CourseShellProps) {
   const router = useRouter();
   const { user, signOut } = useAuth();
   const [open, setOpen] = useState(false);
+
+  // Auto-register student in Firestore on first course visit
+  useEffect(() => {
+    if (!user) return;
+    const studentRef = doc(db, 'students', user.uid);
+    setDoc(
+      studentRef,
+      {
+        email: user.email ?? '',
+        name: user.displayName ?? user.email?.split('@')[0] ?? '',
+        courses: {
+          [course.id]: {
+            status: 'active',
+            enrolledAt: new Date().toISOString(),
+          },
+        },
+      },
+      { merge: true },
+    ).catch(() => {/* silently ignore — student doc write is best-effort */});
+  }, [user, course.id]);
 
   async function handleSignOut() {
     await signOut();

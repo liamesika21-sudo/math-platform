@@ -8,9 +8,9 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    // Students collection — admin SDK bypasses rules; client: own doc only
+    // Students collection — students can read/write own doc; admin full access
     match /students/{uid} {
-      allow read: if isAuthed() && request.auth.uid == uid;
+      allow read, write: if isAuthed() && request.auth.uid == uid;
       allow read, write: if isAdmin();
     }
 

@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import {
   getCourseById,
   getCourseWeeks,
-  getCourseTopics,
   getTheoryItemsForWeek,
 } from '@/lib/math-platform/data';
 import type { CourseId } from '@/lib/math-platform/types';
@@ -12,22 +11,64 @@ export const runtime = 'nodejs';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-function buildSystemPrompt(courseId: CourseId): string {
+// Fetch generated content from Firestore for all weeks of the course
+async function fetchFirestoreContent(courseId: string): Promise<Map<string, {
+  title?: string; summary?: string; topics?: string[]; reviewHighlights?: string[];
+  theoryItems?: Array<{ title: string; kind: string; content: string }>;
+}>> {
+  const map = new Map();
+  try {
+    const { adminDb } = await import('@/lib/firebase-admin');
+    const snap = await adminDb
+      .collection('courses')
+      .doc(courseId)
+      .collection('generatedContent')
+      .get();
+    for (const doc of snap.docs) {
+      map.set(doc.id, doc.data());
+    }
+  } catch {
+    // Firestore unavailable — fall back to static data only
+  }
+  return map;
+}
+
+async function buildSystemPrompt(courseId: CourseId): Promise<string> {
   const course = getCourseById(courseId);
   if (!course) return 'אתה מנחה אקדמי.';
 
   const weeks = getCourseWeeks(courseId);
-  // getCourseTopics is imported for potential future prompt enrichment
-  getCourseTopics(courseId);
+  const firestoreContent = await fetchFirestoreContent(courseId);
 
   const weekLines = weeks
     .map((week) => {
-      const theoryItems = getTheoryItemsForWeek(week.id);
-      const theoryPart =
-        theoryItems.length > 0
-          ? `\n  נושאי תיאוריה: ${theoryItems.map((t) => t.title).join(', ')}`
-          : '';
-      return `שבוע ${week.number}: ${week.title}\n  ${week.summary}${theoryPart}`;
+      // Static theory items from data.ts
+      const staticItems = getTheoryItemsForWeek(week.id);
+      // Enriched content from Firestore (uploaded + analyzed PDFs)
+      const weekId = `${courseId}-week-${week.number}`;
+      const fsData = firestoreContent.get(weekId);
+
+      const theoryTitles: string[] = staticItems.map((t) => t.title);
+
+      // Add extra theory items from Firestore-analyzed lectures
+      if (fsData?.theoryItems?.length) {
+        for (const item of fsData.theoryItems) {
+          if (item.title && !theoryTitles.includes(item.title)) {
+            theoryTitles.push(item.title);
+          }
+        }
+      }
+
+      const theoryPart = theoryTitles.length > 0
+        ? `\n  נושאי תיאוריה: ${theoryTitles.join(', ')}`
+        : '';
+
+      const summaryFromFs = fsData?.summary ? `\n  תקציר מהרצאה: ${fsData.summary}` : '';
+      const highlightsPart = fsData?.reviewHighlights?.length
+        ? `\n  נקודות מפתח: ${fsData.reviewHighlights.join(' | ')}`
+        : '';
+
+      return `שבוע ${week.number}: ${week.title}\n  ${week.summary}${summaryFromFs}${theoryPart}${highlightsPart}`;
     })
     .join('\n\n');
 
@@ -66,7 +107,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'חסרים שדות חובה' }, { status: 400 });
     }
 
-    const systemPrompt = buildSystemPrompt(courseId as CourseId);
+    const systemPrompt = await buildSystemPrompt(courseId as CourseId);
 
     const openaiMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
       { role: 'system', content: systemPrompt },
