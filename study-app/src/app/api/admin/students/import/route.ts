@@ -24,11 +24,13 @@ export async function POST(req: NextRequest) {
         try {
           const existing = await adminAuth.getUserByEmail(student.email);
           uid = existing.uid;
+          // Update display name in case it changed
+          await adminAuth.updateUser(uid, { displayName: student.name });
         } catch {
           const created = await adminAuth.createUser({
             email: student.email,
             displayName: student.name,
-            password: generateTempPassword(),
+            password: 'reichman123',
           });
           uid = created.uid;
         }
@@ -60,6 +62,3 @@ export async function POST(req: NextRequest) {
   }
 }
 
-function generateTempPassword(): string {
-  return Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 6).toUpperCase() + '!';
-}

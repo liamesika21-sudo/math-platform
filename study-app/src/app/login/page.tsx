@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 import { GraduationCap, Lock, Mail, AlertCircle } from 'lucide-react';
 
 export default function StudentLoginPage() {
@@ -19,7 +21,28 @@ export default function StudentLoginPage() {
     setLoading(true);
     try {
       await signIn(email, password);
-      router.push('/courses');
+
+      // Read student doc to find their course
+      let redirectTo = '/courses';
+      try {
+        // Get the current user UID from Firebase auth state
+        const { getAuth } = await import('firebase/auth');
+        const currentUser = getAuth().currentUser;
+        if (currentUser) {
+          const studentSnap = await getDoc(doc(db, 'students', currentUser.uid));
+          if (studentSnap.exists()) {
+            const courses = studentSnap.data().courses as Record<string, { status: string }> | undefined;
+            const activeCourseId = courses
+              ? Object.entries(courses).find(([, v]) => v.status === 'active')?.[0]
+              : undefined;
+            if (activeCourseId) redirectTo = `/courses/${activeCourseId}`;
+          }
+        }
+      } catch {
+        // fallback to /courses
+      }
+
+      router.push(redirectTo);
     } catch {
       setError('אימייל או סיסמה שגויים. פנה למרצה אם אין לך פרטי גישה.');
     } finally {
