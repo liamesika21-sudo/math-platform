@@ -1,11 +1,14 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import {
   Upload, BookOpen, HelpCircle, ClipboardList, FileText,
   CheckCircle2, Eye, Send, X, Plus, ChevronDown, Folder,
+  Brain, ExternalLink, ChevronUp,
 } from 'lucide-react';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 
 type ContentType = 'lecture' | 'tutorial' | 'homework' | 'exam';
 
@@ -15,6 +18,19 @@ interface PendingFile {
   type: ContentType | null;
   week: number | null;
   preview: boolean;
+}
+
+interface UploadedFile {
+  id: string;
+  filename: string;
+  type: 'lecture' | 'tutorial' | 'homework' | 'exam';
+  week: number;
+  size: number;
+  url: string;
+  uploadedAt: string;
+  status: 'uploaded' | 'analyzing' | 'analyzed' | 'error';
+  errorMessage?: string;
+  analyzedAt?: string;
 }
 
 const typeConfig: Record<ContentType, { label: string; color: string; bg: string; icon: React.ElementType }> = {
@@ -37,6 +53,71 @@ export default function CurriculumPage() {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const folderInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Uploaded files state
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
+  const [firestoreLoading, setFirestoreLoading] = useState(true);
+  const [openWeeks, setOpenWeeks] = useState<Set<number>>(new Set());
+  const [analyzingFiles, setAnalyzingFiles] = useState<Set<string>>(new Set());
+
+  // Firestore listener for uploaded content
+  useEffect(() => {
+    if (!courseId) return;
+    const q = query(collection(db, 'courses', courseId, 'content'));
+    const unsub = onSnapshot(
+      q,
+      (snapshot) => {
+        const files: UploadedFile[] = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as Omit<UploadedFile, 'id'>),
+        }));
+        files.sort((a, b) => {
+          if (a.week !== b.week) return a.week - b.week;
+          return a.uploadedAt.localeCompare(b.uploadedAt);
+        });
+        setUploadedFiles(files);
+        setFirestoreLoading(false);
+      },
+      () => {
+        setFirestoreLoading(false);
+      },
+    );
+    return unsub;
+  }, [courseId]);
+
+  function toggleWeek(week: number) {
+    setOpenWeeks((prev) => {
+      const next = new Set(prev);
+      if (next.has(week)) {
+        next.delete(week);
+      } else {
+        next.add(week);
+      }
+      return next;
+    });
+  }
+
+  async function handleAnalyze(file: UploadedFile) {
+    setAnalyzingFiles((prev) => new Set(prev).add(file.id));
+    try {
+      const res = await fetch('/api/admin/curriculum/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ courseId, fileId: file.id }),
+      });
+      if (!res.ok) {
+        console.error('Analyze failed', await res.text());
+      }
+    } catch (err) {
+      console.error('Analyze request error', err);
+    } finally {
+      setAnalyzingFiles((prev) => {
+        const next = new Set(prev);
+        next.delete(file.id);
+        return next;
+      });
+    }
+  }
 
   function addFiles(files: FileList | null) {
     if (!files) return;
@@ -96,6 +177,16 @@ export default function CurriculumPage() {
     }
     setSubmitting(false);
   }
+
+  // Group uploaded files by week
+  const filesByWeek = uploadedFiles.reduce<Record<number, UploadedFile[]>>((acc, f) => {
+    if (!acc[f.week]) acc[f.week] = [];
+    acc[f.week].push(f);
+    return acc;
+  }, {});
+  const weeksWithFiles = Object.keys(filesByWeek)
+    .map(Number)
+    .sort((a, b) => a - b);
 
   return (
     <div className="min-h-screen bg-slate-50 p-8">
@@ -283,6 +374,159 @@ export default function CurriculumPage() {
             );
           })}
         </div>
+      </div>
+
+      {/* Uploaded content section */}
+      <div className="mt-10">
+        <div className="mb-4 flex items-baseline gap-3">
+          <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-slate-500">תוכן שהועלה</h2>
+          {!firestoreLoading && uploadedFiles.length > 0 && (
+            <span className="text-xs text-slate-400">{uploadedFiles.length} קבצים סה״כ</span>
+          )}
+        </div>
+
+        {firestoreLoading ? (
+          <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-4">
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-indigo-500" />
+            <p className="text-sm text-slate-500">טוען קבצים...</p>
+          </div>
+        ) : weeksWithFiles.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-slate-200 bg-white px-5 py-8 text-center">
+            <p className="text-sm text-slate-400">עדיין לא הועלו קבצים לקורס זה</p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {weeksWithFiles.map((week) => {
+              const files = filesByWeek[week];
+              const isOpen = openWeeks.has(week);
+              const analyzedCount = files.filter((f) => f.status === 'analyzed').length;
+              const hasErrors = files.some((f) => f.status === 'error');
+              const allAnalyzed = analyzedCount === files.length;
+
+              return (
+                <div key={week} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                  {/* Week row header */}
+                  <button
+                    onClick={() => toggleWeek(week)}
+                    className="flex w-full items-center justify-between px-5 py-4 text-right transition hover:bg-slate-50"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-bold text-slate-900">שבוע {week}</span>
+                      <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">
+                        {files.length} קבצים
+                      </span>
+                      {allAnalyzed ? (
+                        <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
+                          הכל נותח
+                        </span>
+                      ) : hasErrors ? (
+                        <span className="rounded-full bg-rose-100 px-2.5 py-0.5 text-xs font-semibold text-rose-700">
+                          שגיאות
+                        </span>
+                      ) : analyzedCount > 0 ? (
+                        <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
+                          {analyzedCount}/{files.length} נותחו
+                        </span>
+                      ) : null}
+                    </div>
+                    {isOpen ? (
+                      <ChevronUp className="h-4 w-4 text-slate-400" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-slate-400" />
+                    )}
+                  </button>
+
+                  {/* Expanded file list */}
+                  {isOpen && (
+                    <div className="border-t border-slate-100">
+                      {files.map((file) => {
+                        const cfg = typeConfig[file.type];
+                        const TypeIcon = cfg.icon;
+                        const isLocallyAnalyzing = analyzingFiles.has(file.id);
+                        const isAnalyzing = isLocallyAnalyzing || file.status === 'analyzing';
+                        const canAnalyze = file.status === 'uploaded' || file.status === 'error';
+
+                        return (
+                          <div
+                            key={file.id}
+                            className="flex items-center gap-4 border-b border-slate-100 px-5 py-3 last:border-b-0"
+                          >
+                            {/* Filename */}
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-sm font-medium text-slate-800" title={file.filename}>
+                                {file.filename}
+                              </p>
+                              <p className="text-xs text-slate-400">{(file.size / 1024).toFixed(0)} KB</p>
+                            </div>
+
+                            {/* Type badge */}
+                            <span
+                              className={`inline-flex shrink-0 items-center gap-1 rounded-lg border px-2.5 py-1 text-xs font-semibold ${cfg.bg} ${cfg.color}`}
+                            >
+                              <TypeIcon className="h-3 w-3" />
+                              {cfg.label}
+                            </span>
+
+                            {/* Status badge */}
+                            {file.status === 'uploaded' && (
+                              <span className="shrink-0 rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-semibold text-slate-600">
+                                הועלה
+                              </span>
+                            )}
+                            {isAnalyzing && (
+                              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700">
+                                <div className="h-3 w-3 animate-spin rounded-full border-2 border-amber-300 border-t-amber-600" />
+                                מנתח...
+                              </span>
+                            )}
+                            {file.status === 'analyzed' && !isLocallyAnalyzing && (
+                              <span className="shrink-0 rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
+                                נותח ✓
+                                {file.analyzedAt && (
+                                  <span className="mr-1 text-emerald-500">
+                                    {new Date(file.analyzedAt).toLocaleDateString('he-IL')}
+                                  </span>
+                                )}
+                              </span>
+                            )}
+                            {file.status === 'error' && !isLocallyAnalyzing && (
+                              <span className="shrink-0 rounded-lg border border-rose-200 bg-rose-50 px-2.5 py-1 text-xs font-semibold text-rose-700" title={file.errorMessage}>
+                                שגיאה
+                              </span>
+                            )}
+
+                            {/* Analyze button */}
+                            {canAnalyze && (
+                              <button
+                                onClick={() => handleAnalyze(file)}
+                                disabled={isAnalyzing}
+                                className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-indigo-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-indigo-500 disabled:opacity-50"
+                              >
+                                <Brain className="h-3.5 w-3.5" />
+                                נתח עם AI
+                              </button>
+                            )}
+
+                            {/* View file link */}
+                            <a
+                              href={file.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="shrink-0 rounded-xl p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+                              title="פתח קובץ"
+                            >
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

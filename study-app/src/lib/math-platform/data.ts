@@ -76,6 +76,15 @@ export const sourceDocuments: SourceDocument[] = [
     topicIds: ['logic-w1-naive-set-theory', 'logic-w1-zfc'],
     processed: true,
   },
+  {
+    id: 'logic-w1-tutorial1',
+    courseId: 'logic',
+    weekId: 'logic-w1',
+    type: 'tutorial',
+    name: 'תרגול 1 — איחוד וחיתוך גדולים, ZFC, זוג סדור',
+    topicIds: ['logic-w1-naive-set-theory', 'logic-w1-zfc'],
+    processed: true,
+  },
 ];
 
 export const weeks: CourseWeek[] = [
@@ -110,7 +119,15 @@ export const weeks: CourseWeek[] = [
       'logic-w1-def-ordered-pair',
       'logic-w1-thm-ordered-pair',
     ],
-    tutorialQuestionIds: [],
+    tutorialQuestionIds: [
+      'logic-w1-t1-q1',
+      'logic-w1-t1-q2',
+      'logic-w1-t1-q3',
+      'logic-w1-t1-q4',
+      'logic-w1-t1-q5',
+      'logic-w1-t1-q6',
+      'logic-w1-t1-q7',
+    ],
     homeworkQuestionIds: [],
     examQuestionIds: [],
     reviewHighlights: [
@@ -401,17 +418,27 @@ topics.push(
     summary: 'הגדרת ADT, Sequence/Stack/Queue/Deque ADTs, מבני נתונים אלמנטריים, מימוש Sequence עם מערך ומערך מעגלי.',
     patterns: ['ADT', 'Sequence ADT', 'Stack / Queue / Deque', 'מימוש עם מערך'],
   },
+  {
+    id: 'ds-w1-linked-lists',
+    courseId: 'data-structures',
+    weekId: 'ds-w1',
+    title: 'רשימות מקושרות ומערכים דינמיים',
+    summary: 'מימוש Sequence עם רשימה מקושרת יחידה ועם רשימה מקושרת כפולה. השוואת סיבוכיות עם מערך מעגלי. מערכים דינמיים עם הכפלה וניתוח amortized.',
+    patterns: ['Singly Linked List', 'Doubly Linked List', 'Amortized Analysis', 'מערך דינמי'],
+  },
 );
 
-sourceDocuments.push({
-  id: 'ds-w1-lecture',
-  courseId: 'data-structures',
-  weekId: 'ds-w1',
-  type: 'lecture',
-  name: 'הרצאה 1 — מבוא: אלגוריתמים, מבני נתונים ו-ADT',
-  topicIds: ['ds-w1-intro', 'ds-w1-adt'],
-  processed: true,
-});
+sourceDocuments.push(
+  {
+    id: 'ds-w1-lecture',
+    courseId: 'data-structures',
+    weekId: 'ds-w1',
+    type: 'lecture',
+    name: 'הרצאה 1 — מבוא: אלגוריתמים, מבני נתונים ו-ADT',
+    topicIds: ['ds-w1-intro', 'ds-w1-adt', 'ds-w1-linked-lists'],
+    processed: true,
+  },
+);
 
 weeks.push({
   id: 'ds-w1',
@@ -419,8 +446,8 @@ weeks.push({
   number: 1,
   title: 'מבוא: אלגוריתמים, מבני נתונים ו-ADT',
   summary:
-    'מהו אלגוריתם ומהו מבנה נתונים. בעיית המיון ואלגוריתם Insertion Sort. מבני נתונים אלמנטריים (מערך, מחסנית, תור, רשימה מקושרת, עץ). הגדרת ADT ו-Sequence / Stack / Queue / Deque ADTs. מימוש Sequence ADT עם מערך ומערך מעגלי.',
-  topicIds: ['ds-w1-intro', 'ds-w1-adt'],
+    'מהו אלגוריתם ומהו מבנה נתונים. בעיית המיון ואלגוריתם Insertion Sort. מבני נתונים אלמנטריים (מערך, מחסנית, תור, רשימה מקושרת, עץ). הגדרת ADT ו-Sequence / Stack / Queue / Deque ADTs. מימוש Sequence ADT עם מערך, מערך מעגלי, רשימה מקושרת יחידה וכפולה. מערכים דינמיים עם הכפלה וניתוח amortized.',
+  topicIds: ['ds-w1-intro', 'ds-w1-adt', 'ds-w1-linked-lists'],
   lectureItemIds: [
     'ds-w1-def-algorithm',
     'ds-w1-def-data-structure',
@@ -439,6 +466,12 @@ weeks.push({
     'ds-w1-impl-retrieve-insert-last',
     'ds-w1-impl-insert-at',
     'ds-w1-impl-circular-array',
+    'ds-w1-impl-singly-linked-list',
+    'ds-w1-impl-sll-operations',
+    'ds-w1-impl-doubly-linked-list',
+    'ds-w1-concept-array-vs-list',
+    'ds-w1-concept-dynamic-array',
+    'ds-w1-concept-amortized',
   ],
   tutorialQuestionIds: [],
   homeworkQuestionIds: [],
@@ -446,8 +479,10 @@ weeks.push({
   reviewHighlights: [
     'מבנה נתונים = מבנה + אלגוריתמים; ADT = ממשק לוגי בלבד',
     'Insertion Sort: O(n²) גרוע ביותר, O(n) מקרה הטוב',
-    'Sequence עם מערך: Retrieve O(1), Insert/Delete-Last O(1), Insert(i)/Delete(i) O(n−i+1)',
-    'מערך מעגלי: Insert/Delete-First ו-Insert/Delete-Last כולם O(1)',
+    'מערך מעגלי: כל פעולות Insert/Delete-First/Last ב-O(1)',
+    'רשימה מקושרת יחידה: Insert-First/Last, Delete-First ב-O(1); Delete/Delete-Last ב-O(n)',
+    'רשימה מקושרת כפולה: Delete(A) ב-O(1) כי יש מצביע prev',
+    'מערך דינמי (הכפלה): עלות amortized O(1) לInsert-Last; worst-case O(n)',
   ],
 });
 
@@ -663,7 +698,210 @@ theoryItems.push(
   },
 );
 
-export const questions: PlatformQuestion[] = [];
+// ── DS Week 1: Linked Lists & Dynamic Arrays ────────────────────────────────
+theoryItems.push(
+  {
+    id: 'ds-w1-impl-singly-linked-list',
+    courseId: 'data-structures',
+    weekId: 'ds-w1',
+    topicId: 'ds-w1-linked-lists',
+    title: 'רשימה מקושרת יחידה (Singly Linked List) — מבנה ופעולות',
+    kind: 'definition',
+    content:
+      'מבנה: שני סוגי אובייקטים.\n\nList object (L):\n• L.first — מצביע לצומת הראשון\n• L.last — מצביע לצומת האחרון\n• L.length — מספר האיברים\n\nList-Node object:\n• node.item — הערך המאוחסן\n• node.next — מצביע לצומת הבא (null בסוף)\n\nיתרונות לעומת מערך:\n• גודל לא חסום (unbounded size)\n• אין צורך להקצות מראש\n• סריקה ב-O(n)\n• שרשור (concat) ב-O(1)\n\nחיסרון: אין גישה אקראית O(1) — לא ניתן binary search.',
+    sourceName: 'הרצאה 1',
+    sourceDocumentId: 'ds-w1-lecture',
+    sourcePage: 57,
+  },
+  {
+    id: 'ds-w1-impl-sll-operations',
+    courseId: 'data-structures',
+    weekId: 'ds-w1',
+    topicId: 'ds-w1-linked-lists',
+    title: 'רשימה מקושרת יחידה — פעולות ופסאודו-קוד',
+    kind: 'concept',
+    content:
+      'סיבוכיות פעולות:\n• Insert-First(L,b): O(1) — יוצרים צומת B, B.next←L.first, L.first←B\n• Insert-Last(L,b): O(1) — דומה, מעדכן L.last\n• Delete-First(L): O(1) — L.first ← L.first.next\n• Retrieve(L,i): O(i+1) — חצייה מL.first עד הצומת ה-i\n• Insert(L,i,b): O(i+1) — חצייה ואז Insert-After\n• Delete(L,i): O(i+1) — חצייה ל-i−1, אחר כך Delete-After\n• Delete-Last(L): O(n) — חייבים לחצות עד הלפני-אחרון\n\nInsert-After(A,B) — פעולת עזר O(1):\n  B.next ← A.next\n  A.next ← B\n\nDelete-After(A) — O(1):\n  A.next ← A.next.next\n\nConcat(L₁,L₂) — O(1):\n  L₁.last.next ← L₂.first\n  L₁.last ← L₂.last\n  L₁.length ← L₁.length + L₂.length\n\nשימו לב: Delete-First ו-Insert-Last ב-O(1) כי יש L.last ו-L.first.',
+    sourceName: 'הרצאה 1',
+    sourceDocumentId: 'ds-w1-lecture',
+    sourcePage: 61,
+  },
+  {
+    id: 'ds-w1-impl-doubly-linked-list',
+    courseId: 'data-structures',
+    weekId: 'ds-w1',
+    topicId: 'ds-w1-linked-lists',
+    title: 'רשימה מקושרת כפולה (Doubly Linked List)',
+    kind: 'definition',
+    content:
+      'כל צומת מכיל שדה prev בנוסף ל-next:\n• node.prev — מצביע לצומת הקודם (null בראשון)\n• node.next — מצביע לצומת הבא (null באחרון)\n\nיתרון מרכזי: מחיקת צומת נתון A ב-O(1) — אין צורך לחצות!\n\nDelete(A) — O(1):\n  A.prev.next ← A.next\n  A.next.prev ← A.prev\n  (שים לב: A עצמו לא משתנה; יש לעדכן L.length ולטפל ב-edge cases)\n\nInsert-After(A,B) — O(1):\n  B.prev ← A\n  B.next ← A.next\n  A.next ← B\n  B.next.prev ← B\n\nתוצאה: Insert/Delete-Last ב-O(1); Concat ב-O(1).\n\nחיסרון: כל צומת צורך זיכרון נוסף לשדה prev.',
+    sourceName: 'הרצאה 1',
+    sourceDocumentId: 'ds-w1-lecture',
+    sourcePage: 71,
+  },
+  {
+    id: 'ds-w1-concept-array-vs-list',
+    courseId: 'data-structures',
+    weekId: 'ds-w1',
+    topicId: 'ds-w1-linked-lists',
+    title: 'השוואה: מערך מעגלי לעומת רשימה מקושרת כפולה',
+    kind: 'concept',
+    content:
+      'השוואת סיבוכיות (Circular Array vs. Doubly Linked List):\n\n| פעולה               | מערך מעגלי          | רשימה כפולה         |\n|---------------------|---------------------|---------------------|\n| Insert/Delete-First | O(1)                | O(1)                |\n| Insert/Delete-Last  | O(1)                | O(1)                |\n| Insert/Delete(i)    | O(min{i+1, n−i+1}) | O(min{i+1, n−i+1}) |\n| Retrieve(i)         | O(1)                | O(min{i+1, n−i+1}) |\n| Concat              | O(min{n₁,n₂}+1)    | O(1)                |\n\nמסקנה:\n• מערך מעגלי עדיף ב-Retrieve (גישה אקראית).\n• רשימה כפולה עדיפה ב-Concat ובמחיקת צומת נתון (כשיש מצביע ישיר לצומת).',
+    sourceName: 'הרצאה 1',
+    sourceDocumentId: 'ds-w1-lecture',
+    sourcePage: 75,
+  },
+  {
+    id: 'ds-w1-concept-dynamic-array',
+    courseId: 'data-structures',
+    weekId: 'ds-w1',
+    topicId: 'ds-w1-linked-lists',
+    title: 'מערך דינמי — הכפלה בעת מילוי (Doubling)',
+    kind: 'concept',
+    content:
+      'בעיה: מערך מעגלי דורש ידיעת גודל מקסימלי M מראש. מה עושים כשהמערך מתמלא?\n\nפתרון: כשהמערך מלא (length = maxlen) — מקצים מערך חדש בגודל 2M ומעתיקים.\n\nניתוח עלות n פעולות Insert-Last (כש-n=2^k):\n  עלות הכנסות: n\n  עלות העתקות: 1+2+4+...+n/2 = n−1\n  סה"כ: n + (n−1) = O(n)\n\nבמקרה כללי n=2^k+r: עלות ≤ n + 2n−1 = 3n−1 = O(n).\n\nמסקנה: עלות amortized של כל Insert-Last היא O(1).\nעלות worst-case של Insert-Last בודד: O(n) (כשמתרחשת הכפלה).',
+    sourceName: 'הרצאה 1',
+    sourceDocumentId: 'ds-w1-lecture',
+    sourcePage: 78,
+  },
+  {
+    id: 'ds-w1-concept-amortized',
+    courseId: 'data-structures',
+    weekId: 'ds-w1',
+    topicId: 'ds-w1-linked-lists',
+    title: 'ניתוח Amortized (מופחת)',
+    kind: 'definition',
+    content:
+      'הגדרה: amort(op) הוא חסם amortized לפעולה op אמ"מ לכל n ולכל סדרה של n פעולות:\n  amort(op) ≥ Time(n × op) / n\n\nבמילים: amort(op) מגדיר חסם על העלות הממוצעת לפעולה על פני הסדרה הגרועה ביותר.\n\nשימושיות: כשמה שחשוב הוא זמן הסדרה כולה, לא כל פעולה בנפרד.\n\nהבדל מ-Average Case:\n• Amortized: ממוצע על סדרה גרועה ביותר.\n• Average Case: ממוצע על כל הקלטים האפשריים לפעולה בודדת.\n\nדוגמה — Insert-Last עם הכפלה:\n  worst(Insert-Last) = O(n)\n  amort(Insert-Last) = O(1)\n  Time(n × Insert-Last) ≤ n · amort(Insert-Last) = O(n)\n\nמתי להשתמש ב-worst-case? ביישומים real-time הדורשים כל פעולה בודדת מהירה.',
+    sourceName: 'הרצאה 1',
+    sourceDocumentId: 'ds-w1-lecture',
+    sourcePage: 82,
+  },
+);
+
+export const questions: PlatformQuestion[] = [
+  // ─── Logic Week 1 — Tutorial 1 ─────────────────────────────────────────────
+  {
+    id: 'logic-w1-t1-q1',
+    courseId: 'logic',
+    weekId: 'logic-w1',
+    topicId: 'logic-w1-naive-set-theory',
+    sourceType: 'tutorial',
+    sourceName: 'תרגול 1',
+    sourceDocumentId: 'logic-w1-tutorial1',
+    sourcePage: 2,
+    title: 'איחוד גדול וחיתוך גדול — מילוי טבלה',
+    content:
+      'יהיו A₁, A₂, A₃, A₄ קבוצות כלשהן. מלאו את הטבלה הבאה:\n\n| A (קבוצה של קבוצות) | ∪A | ∩A |\n|--------------------|-----|----|\n| {A₁, A₂}          |     |    |\n| {A₁}              |     |    |\n| ∅                  |     |    |\n\nסימונים: ∪A = {a | ∃Aᵢ ∈ A כך ש-a ∈ Aᵢ}, ∩A = {a | ∀Aᵢ ∈ A, a ∈ Aᵢ}.',
+    difficulty: 'easy',
+    isRequired: true,
+    isExamFrequent: false,
+    systemTags: ['Must Know'],
+  },
+  {
+    id: 'logic-w1-t1-q2',
+    courseId: 'logic',
+    weekId: 'logic-w1',
+    topicId: 'logic-w1-naive-set-theory',
+    sourceType: 'tutorial',
+    sourceName: 'תרגול 1',
+    sourceDocumentId: 'logic-w1-tutorial1',
+    sourcePage: 3,
+    title: 'הוכחה: ∩ₙ₌₁^∞ (−1/n, 1+1/n) = [0,1]',
+    content:
+      'הוכיחו: ∩ₙ₌₁^∞ (−1/n, 1+1/n) = [0,1]\n\nכלומר, החיתוך של כל הקטעים הפתוחים (−1/n, 1+1/n) עבור n=1,2,3,... שווה לקטע הסגור [0,1].\n\nרמז: הוכיחו שוויון ע"י הכלה דו-כיוונית: ⊆ ו-⊇.',
+    difficulty: 'medium',
+    isRequired: true,
+    isExamFrequent: true,
+    systemTags: ['Must Know', 'Frequently Appears in Exams'],
+  },
+  {
+    id: 'logic-w1-t1-q3',
+    courseId: 'logic',
+    weekId: 'logic-w1',
+    topicId: 'logic-w1-zfc',
+    sourceType: 'tutorial',
+    sourceName: 'תרגול 1',
+    sourceDocumentId: 'logic-w1-tutorial1',
+    sourcePage: 5,
+    title: 'בניית {1,3,8} מ-{1} ב-ZFC',
+    content:
+      'נתון: {1} קיים. השתמשו באקסיומות ZFC (ריקה, זוג, איחוד, החזקה, הפרדה, החלפה) כדי להסיק ש-{1,3,8} היא קבוצה.\n\nרמז: בנו קודם כל {3} ו-{8}, ולאחר מכן השתמשו באקסיומת הזוג ואיחוד.',
+    difficulty: 'medium',
+    isRequired: true,
+    isExamFrequent: true,
+    systemTags: ['Must Know', 'Important'],
+  },
+  {
+    id: 'logic-w1-t1-q4',
+    courseId: 'logic',
+    weekId: 'logic-w1',
+    topicId: 'logic-w1-zfc',
+    sourceType: 'tutorial',
+    sourceName: 'תרגול 1',
+    sourceDocumentId: 'logic-w1-tutorial1',
+    sourcePage: 6,
+    title: 'תת-קבוצות של {1,...,10} — הפרדה והחלפה',
+    content:
+      'תנו דוגמאות לתת-קבוצות של {1,...,10} הנוצרות ע"י:\n(א) אקסיומת ההפרדה — {x ∈ {1,...,10} | P(x)} עבור תכונה P כלשהי.\n(ב) אקסיומת ההחלפה — החלפת כל איבר x ב-{1,...,10} ע"י m(x) עבור מיפוי m כלשהו.\n\nהסבירו את ההבדל בין שתי האקסיומות.',
+    difficulty: 'medium',
+    isRequired: false,
+    isExamFrequent: false,
+    systemTags: ['Important'],
+  },
+  {
+    id: 'logic-w1-t1-q5',
+    courseId: 'logic',
+    weekId: 'logic-w1',
+    topicId: 'logic-w1-zfc',
+    sourceType: 'tutorial',
+    sourceName: 'תרגול 1',
+    sourceDocumentId: 'logic-w1-tutorial1',
+    sourcePage: 7,
+    title: 'עצמאות אקסיומת הזוג',
+    content:
+      'הוכיחו שאקסיומת הזוג (Pairing) אינה נובעת מיתר אקסיומות ZFC (ללא אקסיומת הזוג).\n\nרמז: מצאו מודל (קבוצה של קבוצות) שמקיים את כל שאר האקסיומות אך לא את אקסיומת הזוג.',
+    difficulty: 'hard',
+    isRequired: false,
+    isExamFrequent: false,
+    systemTags: ['Advanced Difficulty'],
+  },
+  {
+    id: 'logic-w1-t1-q6',
+    courseId: 'logic',
+    weekId: 'logic-w1',
+    topicId: 'logic-w1-zfc',
+    sourceType: 'tutorial',
+    sourceName: 'תרגול 1',
+    sourceDocumentId: 'logic-w1-tutorial1',
+    sourcePage: 8,
+    title: '{∅} ואקסיומת היסוד',
+    content:
+      '(א) הראו ש-{∅} מקיימת את אקסיומת היסוד (Foundation): בכל קבוצה לא ריקה A יש איבר B כך ש-A ∩ B = ∅.\n\n(ב) הוכיחו סתירה: נניח בשלילה שקיימת קבוצה A כך ש-A ∈ A. הסיקו סתירה עם אקסיומת היסוד.',
+    difficulty: 'medium',
+    isRequired: true,
+    isExamFrequent: true,
+    systemTags: ['Must Know', 'Frequently Appears in Exams'],
+  },
+  {
+    id: 'logic-w1-t1-q7',
+    courseId: 'logic',
+    weekId: 'logic-w1',
+    topicId: 'logic-w1-zfc',
+    sourceType: 'tutorial',
+    sourceName: 'תרגול 1',
+    sourceDocumentId: 'logic-w1-tutorial1',
+    sourcePage: 11,
+    title: 'זיהוי זוגות סדורים — ⟨x,y⟩ = {{x},{x,y}}',
+    content:
+      'עבור כל אחת מהקבוצות הבאות, קבעו: האם היא ייצוג חוקי של זוג סדור לפי ⟨x,y⟩ = {{x},{x,y}}? אם כן, מהם x ו-y?\n\n(א) {{x},{y}}\n(ב) {x,{y}}\n(ג) {{y},{x,y}}\n\nרמז: זכרו שמהגדרה ⟨x,y⟩ = {{x},{x,y}}. בדקו אם ניתן לזהות איזו מהקבוצות היא {x} ואיזו היא {x,y}.',
+    difficulty: 'medium',
+    isRequired: true,
+    isExamFrequent: true,
+    systemTags: ['Must Know', 'Frequently Appears in Exams'],
+  },
+];
 
 // ─── Helper functions ────────────────────────────────────────────────────────
 

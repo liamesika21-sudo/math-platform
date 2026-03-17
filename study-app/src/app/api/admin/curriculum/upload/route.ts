@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
           url: publicUrl,
           storagePath,
           uploadedAt: new Date().toISOString(),
+          status: 'uploaded',
         });
 
       results.push({ id: docRef.id, filename: file.name, type, week, url: publicUrl });

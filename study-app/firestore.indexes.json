@@ -5,14 +5,14 @@
       "queryScope": "COLLECTION",
       "fields": [
         { "fieldPath": "courseId", "order": "ASCENDING" },
-        { "fieldPath": "userId",   "order": "ASCENDING" }
+        { "fieldPath": "userId", "order": "ASCENDING" }
       ]
     },
     {
       "collectionGroup": "theoryFeedback",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "courseId",  "order": "ASCENDING" },
+        { "fieldPath": "courseId", "order": "ASCENDING" },
         { "fieldPath": "updatedAt", "order": "DESCENDING" }
       ]
     },
@@ -22,6 +22,22 @@
       "fields": [
         { "fieldPath": "week", "order": "ASCENDING" },
         { "fieldPath": "type", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "chats",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "courseId", "order": "ASCENDING" },
+        { "fieldPath": "lastMessageAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "chatAlerts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "courseId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
       ]
     }
   ],

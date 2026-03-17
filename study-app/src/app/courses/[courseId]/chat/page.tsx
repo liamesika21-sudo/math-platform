@@ -8,6 +8,9 @@ import CourseShell from '@/components/platform/CourseShell';
 import MathText from '@/components/MathText';
 import type { CourseId } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
+import { getDoc, setDoc, doc, addDoc, collection } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface Message {
   id: string;
@@ -16,10 +19,15 @@ interface Message {
   imagePreview?: string;
 }
 
+const CHAT_TTL_MS = 72 * 60 * 60 * 1000; // 72 hours
+
 export default function ChatPage() {
   const params = useParams();
   const courseId = params.courseId as CourseId;
   const course = getCourseById(courseId);
+  const { user } = useAuth();
+
+  const docId = user ? `${courseId}_${user.uid}` : null;
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -27,14 +35,110 @@ export default function ChatPage() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [streaming, setStreaming] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [chatLoading, setChatLoading] = useState(true);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  // Load chat history from Firestore on mount
+  useEffect(() => {
+    if (!user || !docId) {
+      setChatLoading(false);
+      return;
+    }
+
+    const loadChat = async () => {
+      try {
+        const ref = doc(db, 'chats', docId);
+        const snap = await getDoc(ref);
+
+        if (snap.exists()) {
+          const data = snap.data() as {
+            messages: Message[];
+            lastMessageAt: string;
+            courseId: string;
+            userId: string;
+          };
+
+          const lastAt = new Date(data.lastMessageAt).getTime();
+          const isExpired = Date.now() - lastAt > CHAT_TTL_MS;
+
+          if (isExpired) {
+            await setDoc(ref, {
+              messages: [],
+              lastMessageAt: new Date().toISOString(),
+              courseId,
+              userId: user.uid,
+            });
+            setMessages([]);
+          } else {
+            setMessages(data.messages ?? []);
+          }
+        }
+      } catch (e) {
+        console.error('[chat] failed to load Firestore chat:', e);
+      } finally {
+        setChatLoading(false);
+      }
+    };
+
+    loadChat();
+  }, [user, docId, courseId]);
+
+  // Scroll to bottom on new messages / streaming updates
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, streaming]);
+
+  const saveToFirestore = useCallback(
+    async (allMessages: Message[]) => {
+      if (!user || !docId) return;
+      try {
+        await setDoc(doc(db, 'chats', docId), {
+          messages: allMessages,
+          lastMessageAt: new Date().toISOString(),
+          courseId,
+          userId: user.uid,
+        });
+      } catch (e) {
+        console.error('[chat] failed to save to Firestore:', e);
+      }
+    },
+    [user, docId, courseId],
+  );
+
+  const checkFlaggedWords = useCallback(
+    async (text: string) => {
+      if (!user) return;
+      try {
+        const courseRef = doc(db, 'courses', courseId);
+        const courseSnap = await getDoc(courseRef);
+        if (!courseSnap.exists()) return;
+
+        const flags: string[] = courseSnap.data()?.chatFlags ?? [];
+        const lowerText = text.toLowerCase();
+
+        for (const word of flags) {
+          if (lowerText.includes(word.toLowerCase())) {
+            await addDoc(collection(db, 'chatAlerts'), {
+              courseId,
+              userId: user.uid,
+              userName: user.displayName ?? user.email,
+              flaggedWord: word,
+              messageText: text,
+              createdAt: new Date().toISOString(),
+              read: false,
+            });
+            break; // alert once per message
+          }
+        }
+      } catch (e) {
+        console.error('[chat] flagged words check failed:', e);
+      }
+    },
+    [user, courseId],
+  );
 
   const handleFile = useCallback((file: File) => {
     if (!file.type.startsWith('image/')) {
@@ -76,6 +180,9 @@ export default function ChatPage() {
     setStreaming(true);
     setError(null);
 
+    // Check for flagged words (fire and forget)
+    if (text) checkFlaggedWords(text);
+
     const assistantId = (Date.now() + 1).toString();
     setMessages((prev) => [...prev, { id: assistantId, role: 'assistant', content: '' }]);
 
@@ -102,16 +209,20 @@ export default function ChatPage() {
         accumulated += decoder.decode(value, { stream: true });
         const snapshot = accumulated;
         setMessages((prev) =>
-          prev.map((m) => (m.id === assistantId ? { ...m, content: snapshot } : m))
+          prev.map((m) => (m.id === assistantId ? { ...m, content: snapshot } : m)),
         );
       }
+
+      // Save full conversation to Firestore after streaming finishes
+      const finalMessages = [...updatedMessages, { id: assistantId, role: 'assistant' as const, content: accumulated }];
+      await saveToFirestore(finalMessages);
     } catch {
       setError('שגיאה בחיבור לשרת. נסה שוב.');
       setMessages((prev) => prev.filter((m) => m.id !== assistantId));
     } finally {
       setStreaming(false);
     }
-  }, [input, imageBase64, imagePreview, messages, streaming, courseId]);
+  }, [input, imageBase64, imagePreview, messages, streaming, courseId, checkFlaggedWords, saveToFirestore]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -143,7 +254,15 @@ export default function ChatPage() {
 
         {/* Messages */}
         <div className="flex-1 overflow-y-auto px-6 py-4">
-          {isEmpty ? (
+          {chatLoading ? (
+            <div className="flex h-full items-center justify-center">
+              <span className="inline-flex gap-1">
+                <span className="h-2 w-2 animate-bounce rounded-full bg-slate-300 [animation-delay:0ms]" />
+                <span className="h-2 w-2 animate-bounce rounded-full bg-slate-300 [animation-delay:150ms]" />
+                <span className="h-2 w-2 animate-bounce rounded-full bg-slate-300 [animation-delay:300ms]" />
+              </span>
+            </div>
+          ) : isEmpty ? (
             <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-slate-100 text-slate-400">
                 <Bot className="h-8 w-8" />
@@ -157,12 +276,15 @@ export default function ChatPage() {
               <div className="mt-2 flex flex-wrap justify-center gap-2">
                 {['תן לי רמז לשאלה שאני תקוע בה', 'איך מוכיחים בהפרכה?', 'הסבר לי את המושג הזה'].slice(
                   0,
-                  3
+                  3,
                 ).map((suggestion) => (
                   <button
                     key={suggestion}
                     type="button"
-                    onClick={() => { setInput(suggestion); textareaRef.current?.focus(); }}
+                    onClick={() => {
+                      setInput(suggestion);
+                      textareaRef.current?.focus();
+                    }}
                     className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-medium text-slate-600 transition hover:border-slate-400 hover:bg-white"
                   >
                     {suggestion}
@@ -177,18 +299,22 @@ export default function ChatPage() {
                   key={msg.id}
                   className={cn('flex items-end gap-2', msg.role === 'user' ? 'flex-row-reverse' : 'flex-row')}
                 >
-                  <div className={cn(
-                    'flex h-7 w-7 shrink-0 items-center justify-center rounded-xl',
-                    msg.role === 'user' ? 'bg-slate-950 text-white' : 'bg-slate-100 text-slate-600'
-                  )}>
+                  <div
+                    className={cn(
+                      'flex h-7 w-7 shrink-0 items-center justify-center rounded-xl',
+                      msg.role === 'user' ? 'bg-slate-950 text-white' : 'bg-slate-100 text-slate-600',
+                    )}
+                  >
                     {msg.role === 'user' ? <User className="h-3.5 w-3.5" /> : <Bot className="h-3.5 w-3.5" />}
                   </div>
-                  <div className={cn(
-                    'max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-7',
-                    msg.role === 'user'
-                      ? 'rounded-br-md bg-slate-950 text-white'
-                      : 'rounded-bl-md bg-slate-100 text-slate-800'
-                  )}>
+                  <div
+                    className={cn(
+                      'max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-7',
+                      msg.role === 'user'
+                        ? 'rounded-br-md bg-slate-950 text-white'
+                        : 'rounded-bl-md bg-slate-100 text-slate-800',
+                    )}
+                  >
                     {msg.imagePreview && (
                       <img
                         src={msg.imagePreview}
@@ -228,7 +354,10 @@ export default function ChatPage() {
             <p className="flex-1 text-xs text-slate-600">תמונה מוכנה לשליחה</p>
             <button
               type="button"
-              onClick={() => { setImagePreview(null); setImageBase64(null); }}
+              onClick={() => {
+                setImagePreview(null);
+                setImageBase64(null);
+              }}
               className="rounded-full p-1 text-slate-400 transition hover:bg-slate-200 hover:text-slate-700"
             >
               <X className="h-4 w-4" />
@@ -244,7 +373,11 @@ export default function ChatPage() {
               type="file"
               accept="image/*"
               className="hidden"
-              onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); e.target.value = ''; }}
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                if (f) handleFile(f);
+                e.target.value = '';
+              }}
             />
             <button
               type="button"
@@ -280,14 +413,14 @@ export default function ChatPage() {
                 'mb-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl transition',
                 streaming || (!input.trim() && !imageBase64)
                   ? 'bg-slate-100 text-slate-300'
-                  : 'bg-slate-950 text-white! hover:bg-slate-800'
+                  : 'bg-slate-950 text-white! hover:bg-slate-800',
               )}
             >
               <Send className="h-4 w-4" />
             </button>
           </div>
           <p className="mt-2 text-center text-[10px] text-slate-400">
-            Enter לשליחה · Shift+Enter לשורה חדשה · המנחה לא מגלה פתרונות
+            Enter לשליחה · Shift+Enter לשורה חדשה · המנחה לא מגלה פתרונות · שיחה נשמרת ל-72 שעות
           </p>
         </div>
       </div>
