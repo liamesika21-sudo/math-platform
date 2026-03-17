@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing courseId or files' }, { status: 400 });
     }
 
-    const { adminDb } = await import('@/lib/firebase-admin');
+    const { adminDb, adminStorage } = await import('@/lib/firebase-admin');
     const results = [];
 
     for (const file of files) {
@@ -19,23 +19,39 @@ export async function POST(req: NextRequest) {
 
       if (!type || !week) continue;
 
-      // Save metadata to Firestore (actual file storage → Firebase Storage or local)
-      const docRef = await adminDb.collection('content').add({
-        courseId,
-        filename: file.name,
-        type,
-        week,
-        size: file.size,
-        uploadedAt: new Date().toISOString(),
-        processed: false,
+      // Upload file to Firebase Storage
+      const arrayBuffer = await file.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      const storagePath = `courses/${courseId}/week${week}/${type}/${file.name}`;
+      const bucket = adminStorage.bucket();
+      const fileRef = bucket.file(storagePath);
+
+      await fileRef.save(buffer, {
+        metadata: { contentType: 'application/pdf' },
       });
 
-      results.push({ id: docRef.id, filename: file.name, type, week });
+      await fileRef.makePublic();
+      const publicUrl = `https://storage.googleapis.com/${bucket.name}/${storagePath}`;
+
+      // Save metadata + URL to Firestore
+      const docRef = await adminDb.collection('courses').doc(courseId)
+        .collection('content').add({
+          filename: file.name,
+          type,
+          week,
+          size: file.size,
+          url: publicUrl,
+          storagePath,
+          uploadedAt: new Date().toISOString(),
+        });
+
+      results.push({ id: docRef.id, filename: file.name, type, week, url: publicUrl });
     }
 
     return NextResponse.json({ uploaded: results.length, files: results });
   } catch (error) {
-    console.error('Upload error:', error);
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+    const message = error instanceof Error ? error.message : String(error);
+    console.error('Upload error:', message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

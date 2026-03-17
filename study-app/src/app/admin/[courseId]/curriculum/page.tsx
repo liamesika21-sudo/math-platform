@@ -34,6 +34,7 @@ export default function CurriculumPage() {
   const [dragOver, setDragOver] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [published, setPublished] = useState<string[]>([]);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const folderInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -73,6 +74,7 @@ export default function CurriculumPage() {
 
   async function handlePublish() {
     setSubmitting(true);
+    setUploadError(null);
     const formData = new FormData();
     formData.append('courseId', courseId);
     for (const pf of readyToPublish) {
@@ -80,9 +82,18 @@ export default function CurriculumPage() {
       formData.append(`type_${pf.file.name}`, pf.type!);
       formData.append(`week_${pf.file.name}`, String(pf.week!));
     }
-    await fetch('/api/admin/curriculum/upload', { method: 'POST', body: formData });
-    setPublished(readyToPublish.map((f) => f.id));
-    setPendingFiles([]);
+    try {
+      const res = await fetch('/api/admin/curriculum/upload', { method: 'POST', body: formData });
+      if (!res.ok) {
+        const data = await res.json();
+        setUploadError(data.error ?? 'שגיאה בהעלאה');
+      } else {
+        setPublished(readyToPublish.map((f) => f.id));
+        setPendingFiles([]);
+      }
+    } catch {
+      setUploadError('שגיאת רשת — נסה שוב');
+    }
     setSubmitting(false);
   }
 
@@ -108,6 +119,13 @@ export default function CurriculumPage() {
           </select>
         </div>
       </div>
+
+      {uploadError && (
+        <div className="mb-6 flex items-center gap-3 rounded-2xl border border-red-200 bg-red-50 px-5 py-4">
+          <X className="h-5 w-5 shrink-0 text-red-600" />
+          <p className="text-sm font-medium text-red-800">שגיאה בהעלאה: {uploadError}</p>
+        </div>
+      )}
 
       {published.length > 0 && (
         <div className="mb-6 flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4">
