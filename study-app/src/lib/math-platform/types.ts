@@ -42,6 +42,7 @@ export interface PlatformQuestion {
   systemTags: SystemTag[];
   hint?: string;
   solution?: string;
+  imageUrl?: string;
 }
 
 export interface CourseTopic {

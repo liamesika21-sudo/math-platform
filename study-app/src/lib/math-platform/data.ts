@@ -793,7 +793,8 @@ export const questions: PlatformQuestion[] = [
     sourcePage: 2,
     title: 'איחוד גדול וחיתוך גדול — מילוי טבלה',
     content:
-      'יהיו A₁, A₂, A₃, A₄ קבוצות כלשהן. מלאו את הטבלה הבאה:\n\n| A (קבוצה של קבוצות) | ∪A | ∩A |\n|--------------------|-----|----|\n| {A₁, A₂}          |     |    |\n| {A₁}              |     |    |\n| ∅                  |     |    |\n\nסימונים: ∪A = {a | ∃Aᵢ ∈ A כך ש-a ∈ Aᵢ}, ∩A = {a | ∀Aᵢ ∈ A, a ∈ Aᵢ}.',
+      'יהיו X, Y קבוצות כלשהן. עבור כל קבוצה A בעמודה השמאלית, מלאו את ערכי ∪A ו-∩A.\n\nסימונים:\n∪A = {a | ∃B ∈ A כך ש-a ∈ B}\n∩A = {a | ∀B ∈ A, a ∈ B}',
+    imageUrl: '/images/table-q1.png',
     difficulty: 'easy',
     isRequired: true,
     isExamFrequent: false,
@@ -808,9 +809,9 @@ export const questions: PlatformQuestion[] = [
     sourceName: 'תרגול 1',
     sourceDocumentId: 'logic-w1-tutorial1',
     sourcePage: 3,
-    title: 'הוכחה: ∩ₙ₌₁^∞ (−1/n, 1+1/n) = [0,1]',
+    title: 'הוכחה: חיתוך של קטעים פתוחים שווה לקטע סגור',
     content:
-      'הוכיחו: ∩ₙ₌₁^∞ (−1/n, 1+1/n) = [0,1]\n\nכלומר, החיתוך של כל הקטעים הפתוחים (−1/n, 1+1/n) עבור n=1,2,3,... שווה לקטע הסגור [0,1].\n\nרמז: הוכיחו שוויון ע"י הכלה דו-כיוונית: ⊆ ו-⊇.',
+      'הוכיחו את השוויון הבא:\n\n∩ₙ₌₁^∞ (−1/n, 1+1/n) = [0, 1]\n\nכלומר, החיתוך של כל הקטעים הפתוחים עבור n = 1, 2, 3, ... שווה לקטע הסגור.\n\nרמז: הוכיחו שוויון על ידי הכלה דו-כיוונית:\n⊆ ו-⊇',
     difficulty: 'medium',
     isRequired: true,
     isExamFrequent: true,

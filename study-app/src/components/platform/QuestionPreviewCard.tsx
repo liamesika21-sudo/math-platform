@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, CircleDot, Flag, Sparkles } from 'lucide-react';
 import type { PlatformQuestion, UserQuestionState } from '@/lib/math-platform/types';
 import { cn, getDifficultyLabel, getSourceTypeLabel } from '@/lib/math-platform/utils';
@@ -45,7 +46,18 @@ export default function QuestionPreviewCard({ courseId, question, state }: Quest
       <div className="mt-4 flex items-start justify-between gap-4">
         <div>
           <h3 className="text-lg font-semibold text-slate-950">{question.title}</h3>
-          <p className="mt-2 text-sm leading-7 text-slate-600">{question.content}</p>
+          <p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-600">{question.content}</p>
+          {question.imageUrl && (
+            <div className="mt-4">
+              <Image
+                src={question.imageUrl}
+                alt="טבלה לשאלה"
+                width={600}
+                height={300}
+                className="rounded-xl border border-slate-200 max-w-full"
+              />
+            </div>
+          )}
         </div>
         <div className="rounded-2xl bg-slate-100 p-3 text-slate-600">
           {state.reviewLater ? <Flag className="h-4 w-4" /> : <CircleDot className="h-4 w-4" />}
