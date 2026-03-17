@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { Paperclip, Send, X, Bot, User, AlertCircle } from 'lucide-react';
 import { getCourseById } from '@/lib/math-platform/data';
-import CourseShell from '@/components/platform/CourseShell';
 import MathText from '@/components/MathText';
 import type { CourseId } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
@@ -236,8 +235,7 @@ export default function ChatPage() {
   const isEmpty = messages.length === 0;
 
   return (
-    <CourseShell course={course}>
-      <div className="flex h-[calc(100vh-280px)] min-h-[480px] flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm shadow-slate-200/60">
+    <div className="flex h-[calc(100vh-280px)] min-h-[480px] flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm shadow-slate-200/60">
         {/* Header */}
         <div className="flex items-center gap-3 border-b border-slate-100 px-6 py-4">
           <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-950 text-white">
@@ -424,6 +422,5 @@ export default function ChatPage() {
           </p>
         </div>
       </div>
-    </CourseShell>
   );
 }
