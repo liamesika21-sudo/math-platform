@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { ArrowLeft, Lightbulb, NotebookPen, Sigma, Sparkles } from 'lucide-react';
 import QuestionStateControls from '@/components/platform/QuestionStateControls';
@@ -98,7 +99,18 @@ export default function QuestionPage() {
         <article className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">הצגת הבעיה</p>
           <div className="mt-5 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6">
-            <p className="text-base leading-8 text-slate-800">{question.content}</p>
+            <p className="whitespace-pre-line text-base leading-8 text-slate-800">{question.content}</p>
+            {question.imageUrl && (
+              <div className="mt-5">
+                <Image
+                  src={question.imageUrl}
+                  alt="טבלה לשאלה"
+                  width={700}
+                  height={350}
+                  className="rounded-xl border border-slate-200 max-w-full"
+                />
+              </div>
+            )}
           </div>
 
           {question.hint ? (
