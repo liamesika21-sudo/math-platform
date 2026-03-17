@@ -108,8 +108,8 @@ export default function AdminSidebar({ courseId }: AdminSidebarProps) {
                     className={cn(
                       'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition',
                       active
-                        ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20'
-                        : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                        ? 'bg-indigo-600 text-white! shadow-lg shadow-indigo-500/20'
+                        : 'text-slate-300! hover:bg-slate-800 hover:text-white!'
                     )}
                   >
                     <Icon className="h-4 w-4 flex-shrink-0" />

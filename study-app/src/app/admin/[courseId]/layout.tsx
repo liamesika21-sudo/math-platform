@@ -12,9 +12,9 @@ export default async function CourseAdminLayout({
   const courseId = courseIdRaw as CourseId;
 
   return (
-    <div className="flex min-h-screen flex-row bg-slate-50">
+    <div className="flex min-h-screen flex-row-reverse bg-slate-50" dir="rtl">
       <AdminSidebar courseId={courseId} />
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto" dir="rtl">
         {children}
       </main>
     </div>
