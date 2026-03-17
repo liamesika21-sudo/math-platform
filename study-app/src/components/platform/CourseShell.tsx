@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, Brain, ChartColumnBig, FileQuestion, Files, FolderKanban, GraduationCap, House, Layers3, ListChecks, Menu, MessageSquare, Sparkles, X } from 'lucide-react';
+import { BookOpen, Brain, ChartColumnBig, FileQuestion, Files, FolderKanban, GraduationCap, House, Layers3, ListChecks, Menu, MessageSquare, Sparkles, TrendingUp, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Course, CourseId } from '@/lib/math-platform/types';
@@ -23,6 +23,7 @@ const navIconMap = {
   topics: BookOpen,
   tutorials: FileQuestion,
   homework: ListChecks,
+  homeworkAnalysis: TrendingUp,
   exams: GraduationCap,
   review: ChartColumnBig,
   myQuestions: FolderKanban,
@@ -70,6 +71,7 @@ export default function CourseShell({ course, children }: CourseShellProps) {
     { key: 'topics', href: `/courses/${course.id}/topics`, label: 'נושאים' },
     { key: 'tutorials', href: `/courses/${course.id}/tutorials`, label: 'תרגולים' },
     { key: 'homework', href: `/courses/${course.id}/homework`, label: 'שיעורי בית' },
+    { key: 'homeworkAnalysis', href: `/courses/${course.id}/homework-analysis`, label: 'מעקב שב"ת' },
     { key: 'exams', href: `/courses/${course.id}/exams`, label: 'מבחנים' },
     { key: 'review', href: `/courses/${course.id}/review-center`, label: 'מרכז חזרה' },
     { key: 'myQuestions', href: `/courses/${course.id}/my-questions`, label: 'השאלות שלי' },
