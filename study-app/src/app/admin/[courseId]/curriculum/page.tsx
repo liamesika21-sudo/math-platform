@@ -7,8 +7,9 @@ import {
   CheckCircle2, Eye, Send, X, Plus, ChevronDown, Folder,
   Brain, ExternalLink, ChevronUp,
 } from 'lucide-react';
-import { collection, onSnapshot, query } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { collection, onSnapshot, query, addDoc } from 'firebase/firestore';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { db, storage } from '@/lib/firebase';
 
 type ContentType = 'lecture' | 'tutorial' | 'homework' | 'exam';
 
@@ -156,24 +157,38 @@ export default function CurriculumPage() {
   async function handlePublish() {
     setSubmitting(true);
     setUploadError(null);
-    const formData = new FormData();
-    formData.append('courseId', courseId);
-    for (const pf of readyToPublish) {
-      formData.append('files', pf.file);
-      formData.append(`type_${pf.file.name}`, pf.type!);
-      formData.append(`week_${pf.file.name}`, String(pf.week!));
-    }
     try {
-      const res = await fetch('/api/admin/curriculum/upload', { method: 'POST', body: formData });
-      if (!res.ok) {
-        const data = await res.json();
-        setUploadError(data.error ?? 'שגיאה בהעלאה');
-      } else {
-        setPublished(readyToPublish.map((f) => f.id));
-        setPendingFiles([]);
+      const uploadedIds: string[] = [];
+      for (const pf of readyToPublish) {
+        const storagePath = `courses/${courseId}/week${pf.week}/${pf.type}/${pf.file.name}`;
+        const storageRef = ref(storage, storagePath);
+
+        // Upload directly from browser — no Vercel body-size limit
+        await new Promise<void>((resolve, reject) => {
+          const task = uploadBytesResumable(storageRef, pf.file, { contentType: 'application/pdf' });
+          task.on('state_changed', null, reject, () => resolve());
+        });
+
+        const url = await getDownloadURL(storageRef);
+
+        // Save metadata to Firestore
+        await addDoc(collection(db, 'courses', courseId, 'content'), {
+          filename: pf.file.name,
+          type: pf.type,
+          week: pf.week,
+          size: pf.file.size,
+          url,
+          storagePath,
+          uploadedAt: new Date().toISOString(),
+          status: 'uploaded',
+        });
+
+        uploadedIds.push(pf.id);
       }
-    } catch {
-      setUploadError('שגיאת רשת — נסה שוב');
+      setPublished(uploadedIds);
+      setPendingFiles([]);
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : 'שגיאת רשת — נסה שוב');
     }
     setSubmitting(false);
   }

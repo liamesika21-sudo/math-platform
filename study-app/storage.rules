@@ -1,0 +1,14 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Admin can read and write everything
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // Authenticated users can read course content (for AI mentor access etc.)
+    match /courses/{courseId}/{allPaths=**} {
+      allow read: if request.auth != null;
+    }
+  }
+}
