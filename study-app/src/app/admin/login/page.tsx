@@ -6,7 +6,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { BookOpen, Lock, Mail, AlertCircle } from 'lucide-react';
 
 export default function AdminLoginPage() {
-  const { signIn } = useAuth();
+  const { signIn, signOut } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,9 +19,22 @@ export default function AdminLoginPage() {
     setLoading(true);
     try {
       await signIn(email, password);
+      // Verify admin claim before allowing entry
+      const { getAuth } = await import('firebase/auth');
+      const currentUser = getAuth().currentUser;
+      const tokenResult = await currentUser?.getIdTokenResult(true);
+      if (tokenResult?.claims.admin !== true) {
+        await signOut();
+        setError('אין לך הרשאות מנהל.');
+        return;
+      }
       router.push('/admin');
-    } catch {
-      setError('אימייל או סיסמה שגויים. נסה שוב.');
+    } catch (err) {
+      if ((err as { message?: string }).message?.includes('הרשאות')) {
+        // already set above
+      } else {
+        setError('אימייל או סיסמה שגויים. נסה שוב.');
+      }
     } finally {
       setLoading(false);
     }
