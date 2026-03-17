@@ -1,240 +1,315 @@
+'use client';
+
 import Link from 'next/link';
-import { ArrowRight, BookOpenCheck, BrainCircuit, Files, Layers3, MessageSquareDashed, Sparkles, Telescope } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import {
+  ArrowRight,
+  Bot,
+  BookOpen,
+  Eye,
+  Flag,
+  Lock,
+  LogIn,
+  LogOut,
+  MessageSquare,
+  Shield,
+  Sparkles,
+  TrendingUp,
+  User,
+  Zap,
+} from 'lucide-react';
 import { courses, questions, sourceDocuments, theoryItems, weeks } from '@/lib/math-platform/data';
+import { useAuth } from '@/contexts/AuthContext';
+import { cn } from '@/lib/math-platform/utils';
 
 export default function HomePage() {
+  const { user, loading, signOut } = useAuth();
+  const router = useRouter();
+
   const totalQuestions = questions.length;
   const totalSources = sourceDocuments.length;
   const totalWeeks = weeks.length;
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.16),_transparent_24%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.12),_transparent_28%),linear-gradient(180deg,_#f8fbfc_0%,_#f5f7f7_100%)]">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(14,165,233,0.10),transparent_24%),radial-gradient(circle_at_top_right,rgba(245,158,11,0.08),transparent_28%),linear-gradient(180deg,#f8fbfc_0%,#f5f7f7_100%)]">
+
+      {/* ─── Header ─── */}
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-slate-950 text-white">
+              <Sparkles className="h-4 w-4" />
+            </div>
+            <span className="text-sm font-semibold text-slate-950">פלטפורמת לימוד</span>
+          </div>
+
+          {loading ? (
+            <div className="h-9 w-24 animate-pulse rounded-full bg-slate-100" />
+          ) : user ? (
+            <div className="flex items-center gap-3">
+              <div className="hidden items-center gap-2 sm:flex">
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-100">
+                  <User className="h-3.5 w-3.5 text-slate-600" />
+                </div>
+                <span className="text-sm text-slate-600">{user.displayName ?? user.email?.split('@')[0]}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => signOut()}
+                className="flex items-center gap-1.5 rounded-full border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 transition hover:border-slate-400 hover:text-slate-950"
+              >
+                <LogOut className="h-3.5 w-3.5" />
+                התנתק
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-medium text-white! transition hover:bg-slate-800"
+            >
+              <LogIn className="h-4 w-4" />
+              התחברות לפלטפורמה
+            </Link>
+          )}
+        </div>
+      </header>
+
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
 
-        {/* Hero */}
-        <section className="rounded-[2rem] border border-white/70 bg-slate-950 px-6 py-8 text-white shadow-2xl shadow-slate-950/15 sm:px-8">
+        {/* ─── Hero ─── */}
+        <section className="rounded-[2rem] border border-white/70 bg-slate-950 px-6 py-10 text-white shadow-2xl shadow-slate-950/15 sm:px-10">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
+            <div className="max-w-2xl">
               <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white/80">
                 <Sparkles className="h-3.5 w-3.5" />
-                נקודת כניסה מאוחדת למתמטיקה
+                לימוד מונחה-קורס עם AI
               </p>
               <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                לימוד מונחה-קורס, לא גלישה בקבצים.
+                לומדים חכם יותר,<br />
+                <span className="bg-linear-to-r from-sky-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                  לא קשה יותר.
+                </span>
               </h1>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300">
-                בחר קורס, התקדם שבוע אחרי שבוע, למד תיאוריה בנפרד מתרגולים, שיעורי בית ומבחנים — ושמור סביבת חזרה אישית חיה ללא צורך בהתחברות.
+              <p className="mt-4 max-w-xl text-base leading-8 text-slate-300">
+                פלטפורמה מובנית לפי קורס ושבוע — עם מנחה AI שמכיר את כל ההרצאות, עוזר לך לחשוב, ולא מגלה תשובות.
+                כל הפעילות שלך שקופה למרצים כדי שיוכלו לעזור לך טוב יותר.
               </p>
+              {!user && !loading && (
+                <Link
+                  href="/login"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                >
+                  <LogIn className="h-4 w-4" />
+                  התחבר כדי להתחיל
+                </Link>
+              )}
             </div>
 
-            <div className="grid w-full max-w-xl grid-cols-2 gap-3 sm:grid-cols-4">
-              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-                <p className="text-sm text-slate-400">קורסים</p>
-                <p className="mt-2 text-3xl font-semibold">{courses.length}</p>
+            <div className="grid w-full max-w-sm grid-cols-2 gap-3">
+              {[
+                { label: 'קורסים', value: courses.length },
+                { label: 'שבועות', value: totalWeeks },
+                { label: 'שאלות', value: totalQuestions },
+                { label: 'מקורות', value: totalSources },
+              ].map(({ label, value }) => (
+                <div key={label} className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+                  <p className="text-sm text-slate-400">{label}</p>
+                  <p className="mt-2 text-3xl font-semibold">{value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── AI Mentor section ─── */}
+        <section className="mt-10">
+          <div className="relative overflow-hidden rounded-[2rem] border border-emerald-200 bg-linear-to-br from-emerald-50 via-teal-50 to-sky-50 p-8 sm:p-10">
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-emerald-400/10 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-sky-400/10 blur-3xl" />
+
+            <div className="relative">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-600 shadow-lg shadow-emerald-600/20">
+                  <Bot className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-600">פעיל עכשיו</p>
+                  <h2 className="text-2xl font-semibold text-slate-950">מנחה AI — איך הוא עובד</h2>
+                </div>
               </div>
-              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-                <p className="text-sm text-slate-400">שבועות</p>
-                <p className="mt-2 text-3xl font-semibold">{totalWeeks}</p>
-              </div>
-              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-                <p className="text-sm text-slate-400">שאלות</p>
-                <p className="mt-2 text-3xl font-semibold">{totalQuestions}</p>
-              </div>
-              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-                <p className="text-sm text-slate-400">מקורות</p>
-                <p className="mt-2 text-3xl font-semibold">{totalSources}</p>
+
+              <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="rounded-[1.5rem] border border-emerald-200 bg-white p-5 shadow-sm">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100">
+                    <BookOpen className="h-4.5 w-4.5 text-emerald-700" />
+                  </div>
+                  <h3 className="mt-4 font-semibold text-slate-950">מכיר את כל החומר</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    ה-AI מבוסס על ההרצאות, התרגולים ומבני הקורס שלך בדיוק. אפשר לשאול אותו ישירות על כל נושא שנלמד — הוא יודע בדיוק מה כוסה ומתי.
+                  </p>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-sky-200 bg-white p-5 shadow-sm">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-100">
+                    <MessageSquare className="h-4.5 w-4.5 text-sky-700" />
+                  </div>
+                  <h3 className="mt-4 font-semibold text-slate-950">שואל, לא מגלה</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    המנחה לא יתן לך את הפתרון — הוא ישאל שאלות שיעזרו לך להגיע אליו בעצמך. זה לא חיסרון, זו הדרך היחידה ללמוד באמת.
+                  </p>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-amber-200 bg-white p-5 shadow-sm">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-100">
+                    <Zap className="h-4.5 w-4.5 text-amber-700" />
+                  </div>
+                  <h3 className="mt-4 font-semibold text-slate-950">שאל על מה שנלמד</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    בלבול בהגדרה מההרצאה? תקוע בתרגיל? פשוט שאל את המנחה. הוא יסביר בהקשר של הקורס שלך — לא תשובות גנריות.
+                  </p>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-rose-200 bg-white p-5 shadow-sm">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-100">
+                    <Eye className="h-4.5 w-4.5 text-rose-700" />
+                  </div>
+                  <h3 className="mt-4 font-semibold text-slate-950">שקיפות מלאה</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    כל שיחה עם ה-AI נשמרת. אם יש תוכן חריג, המרצים יראו זאת ויתייחסו. זה מגן עליך ועל כולם.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Course cards */}
+        {/* ─── Transparency & monitoring ─── */}
+        <section className="mt-8">
+          <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60 sm:p-8">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-950">
+                <Shield className="h-5 w-5 text-white" />
+              </div>
+              <h2 className="text-xl font-semibold text-slate-950">שקיפות ומעקב — מה רואים המרצים</h2>
+            </div>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
+                <Flag className="h-5 w-5 text-amber-500" />
+                <h3 className="mt-3 font-semibold text-slate-950">סימונים בשאלות</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  כל שאלה שסימנת (קשה, לחזרה, לשאול בצ'אט) מועברת למרצים. אם שאלה רבים מסמנים כקשה — המרצה יראה ויתייחס בכיתה.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
+                <TrendingUp className="h-5 w-5 text-sky-500" />
+                <h3 className="mt-3 font-semibold text-slate-950">התקדמות אישית</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  המרצים רואים את ההתקדמות הכללית של הקורס — כמה שאלות נפתרו, אילו נושאים מאתגרים — כדי לדייק את ההוראה.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
+                <Eye className="h-5 w-5 text-rose-500" />
+                <h3 className="mt-3 font-semibold text-slate-950">שיחות AI</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  אם יש תוכן חריג בשיחה עם המנחה — מילות מפתח מסוימות — המרצה מקבל התראה ויוכל לפנות אליך ישירות.
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-4 text-xs text-slate-400">
+              * המטרה אינה פיקוח אלא סיוע — כדי שהמרצים יוכלו לעזור לסטודנטים שנתקעים לפני שהם מוותרים.
+            </p>
+          </div>
+        </section>
+
+        {/* ─── Course cards ─── */}
         <section className="mt-10">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">בחר קורס</p>
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">לוח בקרה אחד, שלושה מסלולי לימוד מובנים</h2>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">קורסים</p>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">בחר קורס כדי להתחיל</h2>
             </div>
-            <div className="hidden rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 lg:block">
-              הפרדת מקורות נאכפת בכל תצוגת קורס.
-            </div>
+            {!user && !loading && (
+              <div className="hidden items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-500 lg:flex">
+                <Lock className="h-3.5 w-3.5" />
+                דורש התחברות
+              </div>
+            )}
           </div>
 
           <div className="mt-6 grid gap-5 lg:grid-cols-3">
-            {courses.map((course) => (
-              <article
-                key={course.id}
-                className={`rounded-[2rem] border border-slate-200 bg-gradient-to-br ${course.surface} p-6 shadow-sm shadow-slate-200/60`}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-r ${course.accent} text-xl font-semibold text-white shadow-lg`}>
-                      {course.icon}
-                    </div>
-                    <h3 className="mt-4 text-2xl font-semibold text-slate-950">{course.title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-600">{course.subtitle}</p>
-                  </div>
-                  <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                    {weeks.filter((week) => week.courseId === course.id).length} שבועות
-                  </span>
-                </div>
+            {courses.map((course) => {
+              const courseWeeks = weeks.filter((w) => w.courseId === course.id).length;
+              const courseQuestions = questions.filter((q) => q.courseId === course.id).length;
+              const courseTheory = theoryItems.filter((t) => t.courseId === course.id).length;
+              const courseSources = sourceDocuments.filter((d) => d.courseId === course.id).length;
 
-                <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-2xl bg-white/80 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">תיאוריה</p>
-                    <p className="mt-2 text-2xl font-semibold text-slate-950">
-                      {theoryItems.filter((item) => item.courseId === course.id).length}
-                    </p>
-                  </div>
-                  <div className="rounded-2xl bg-white/80 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">שאלות</p>
-                    <p className="mt-2 text-2xl font-semibold text-slate-950">
-                      {questions.filter((question) => question.courseId === course.id).length}
-                    </p>
-                  </div>
-                  <div className="rounded-2xl bg-white/80 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">מקורות</p>
-                    <p className="mt-2 text-2xl font-semibold text-slate-950">
-                      {sourceDocuments.filter((document) => document.courseId === course.id).length}
-                    </p>
-                  </div>
-                </div>
-
-                <p className="mt-6 text-sm leading-7 text-slate-600">{course.description}</p>
-
-                <Link
-                  href={`/courses/${course.id}`}
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-medium !text-white transition hover:bg-slate-800"
+              return (
+                <article
+                  key={course.id}
+                  className={cn(
+                    'rounded-[2rem] border border-slate-200 bg-linear-to-br p-6 shadow-sm shadow-slate-200/60 transition',
+                    course.surface,
+                    !user && !loading && 'opacity-80',
+                  )}
                 >
-                  כניסה לקורס
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Platform model */}
-        <section className="mt-10">
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">תקן הפלטפורמה</p>
-            <h2 className="mt-2 text-2xl font-semibold text-slate-950">מודל הלימוד עוקב אחרי קורס &#8594; שבוע &#8594; נושא &#8594; שאלה</h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              <div className="rounded-[1.5rem] bg-slate-50 p-5">
-                <Layers3 className="h-5 w-5 text-sky-600" />
-                <h3 className="mt-3 font-semibold text-slate-950">לימוד שבועי כסביבת העבודה המרכזית</h3>
-                <p className="mt-2 text-sm leading-7 text-slate-600">כל שבוע מציג תיאוריה, תרגולים, שיעורי בית, חומר מבחן, התקדמות וסיגנלי חזרה בתצוגה ממוקדת אחת.</p>
-              </div>
-              <div className="rounded-[1.5rem] bg-slate-50 p-5">
-                <Files className="h-5 w-5 text-amber-600" />
-                <h3 className="mt-3 font-semibold text-slate-950">הפרדת מקורות קפדנית</h3>
-                <p className="mt-2 text-sm leading-7 text-slate-600">תרגולים מכילים חומר תרגול בלבד, שיעורי בית מכילים שיעורי בית בלבד, ומבחנים ישנים נשמרים מבודדים ועם מעקב מקור.</p>
-              </div>
-              <div className="rounded-[1.5rem] bg-slate-50 p-5">
-                <BookOpenCheck className="h-5 w-5 text-emerald-600" />
-                <h3 className="mt-3 font-semibold text-slate-950">מעקב ברמת שאלה</h3>
-                <p className="mt-2 text-sm leading-7 text-slate-600">אפשר לסמן פתרתי, פתרתי לבד, קשה, קל, לחזרה מאוחרת ולשאול בצ'אט — ישירות מדף השאלה.</p>
-              </div>
-              <div className="rounded-[1.5rem] bg-slate-50 p-5">
-                <BrainCircuit className="h-5 w-5 text-rose-600" />
-                <h3 className="mt-3 font-semibold text-slate-950">סביבת חזרה אישית</h3>
-                <p className="mt-2 text-sm leading-7 text-slate-600">השאלות שלי אוספת חומר שסימנת ושאלות בעדיפות מערכת לפני אחת נקיה לחזרה.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Coming Soon: AI Mentor */}
-        <section className="mt-10">
-          <div className="relative overflow-hidden rounded-[2rem] bg-slate-950 p-8 shadow-2xl shadow-slate-950/20 sm:p-10">
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-              <div className="absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent blur-3xl" />
-              <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-gradient-to-tr from-sky-500/15 via-cyan-500/10 to-transparent blur-3xl" />
-            </div>
-
-            <div className="relative">
-              <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-                <div className="max-w-2xl">
-                  <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
-                    <Telescope className="h-3.5 w-3.5" />
-                    בקרוב
-                  </div>
-                  <h2 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                    מנטור AI
-                    <span className="mr-3 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                      למתמטיקה
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-r ${course.accent} text-xl font-semibold text-white shadow-lg`}>
+                        {course.icon}
+                      </div>
+                      <h3 className="mt-4 text-2xl font-semibold text-slate-950">{course.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-600">{course.subtitle}</p>
+                    </div>
+                    <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      {courseWeeks} שבועות
                     </span>
-                  </h2>
-                  <p className="mt-4 max-w-xl text-base leading-8 text-slate-300">
-                    הפלטפורמה תתפתח לסביבת לימוד מונחית מלאה עם מורה AI בנוי ישירות לתוך מבנה הקורס — מבוסס על חומרי הקורס הרשמיים שלך ומאורגן לפי שבוע.
-                  </p>
-                </div>
-
-                <div className="hidden rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm lg:block lg:min-w-60">
-                  <MessageSquareDashed className="h-6 w-6 text-emerald-400" />
-                  <p className="mt-3 text-sm font-medium text-white">לא צ'אטבוט רגיל</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">
-                    ה-AI יתבסס אך ורק על חומרי ההרצאות, התרגולים, שיעורי הבית והמבחנים שנמצאים בפלטפורמה זו.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                <div className="rounded-[1.5rem] border border-white/8 bg-white/5 p-5 backdrop-blur-sm">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/20 text-sky-400">
-                    <span className="text-base font-bold">∫</span>
                   </div>
-                  <h3 className="mt-4 font-semibold text-white">הסבר חומר הרצאה</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">
-                    שאל על כל הגדרה או משפט מחומר ההרצאה השבועי. ה-AI מסביר בהקשר ומקשר בחזרה למקור.
-                  </p>
-                </div>
 
-                <div className="rounded-[1.5rem] border border-white/8 bg-white/5 p-5 backdrop-blur-sm">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/20 text-amber-400">
-                    <span className="text-base font-bold">?</span>
+                  <div className="mt-6 grid grid-cols-3 gap-3">
+                    {[
+                      { label: 'תיאוריה', value: courseTheory },
+                      { label: 'שאלות', value: courseQuestions },
+                      { label: 'מקורות', value: courseSources },
+                    ].map(({ label, value }) => (
+                      <div key={label} className="rounded-2xl bg-white/80 p-4">
+                        <p className="text-xs uppercase tracking-[0.18em] text-slate-500">{label}</p>
+                        <p className="mt-2 text-2xl font-semibold text-slate-950">{value}</p>
+                      </div>
+                    ))}
                   </div>
-                  <h3 className="mt-4 font-semibold text-white">הנחיה בפתרון תרגילים</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">
-                    קבל רמזים שלב-אחרי-שלב לתרגולים ושיעורי בית — בלי לקפוץ ישר לפתרון המלא.
-                  </p>
-                </div>
 
-                <div className="rounded-[1.5rem] border border-white/8 bg-white/5 p-5 backdrop-blur-sm">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
-                    <span className="text-base font-bold">★</span>
-                  </div>
-                  <h3 className="mt-4 font-semibold text-white">הכנה למבחן</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">
-                    חזור על שאלות מבחן עם ה-AI שמסביר תבניות, טעויות נפוצות והתיאוריה מאחורי כל פתרון.
-                  </p>
-                </div>
+                  <p className="mt-6 text-sm leading-7 text-slate-600">{course.description}</p>
 
-                <div className="rounded-[1.5rem] border border-white/8 bg-white/5 p-5 backdrop-blur-sm">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-500/20 text-rose-400">
-                    <span className="text-base font-bold">&#9873;</span>
-                  </div>
-                  <h3 className="mt-4 font-semibold text-white">חזרה על שאלות מסומנות</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">
-                    ה-AI יעבור על שאלות שסימנת כקשות או "לשאול בצ'אט" ויעבוד איתך עליהן אחת-אחת.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-8 flex flex-col gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-3">
-                  <Sparkles className="h-5 w-5 flex-shrink-0 text-emerald-400" />
-                  <p className="text-sm leading-6 text-slate-300">
-                    מנטור ה-AI יהיה מבוסס על מבנה הקורס של הפלטפורמה — אותה ארגון שבועי, אותם מסמכי מקור, ואותה מאגר השאלות שכבר לומדים איתו.
-                  </p>
-                </div>
-                <div className="flex-shrink-0 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  בפיתוח
-                </div>
-              </div>
-            </div>
+                  {user ? (
+                    <Link
+                      href={`/courses/${course.id}`}
+                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-medium text-white! transition hover:bg-slate-800"
+                    >
+                      כניסה לקורס
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/login"
+                      className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-medium text-slate-600 transition hover:border-slate-950 hover:text-slate-950"
+                    >
+                      <Lock className="h-4 w-4" />
+                      התחבר כדי להיכנס
+                    </Link>
+                  )}
+                </article>
+              );
+            })}
           </div>
         </section>
+
+        <footer className="mt-16 border-t border-slate-200 pt-8 text-center text-xs text-slate-400">
+          <p>© {new Date().getFullYear()} פלטפורמת לימוד · כל הפעילות נשמרת ונראית למרצים · שיחות AI נשמרות 72 שעות</p>
+        </footer>
       </div>
     </main>
   );
