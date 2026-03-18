@@ -5,10 +5,10 @@ import { useParams } from 'next/navigation';
 import {
   Upload, BookOpen, HelpCircle, ClipboardList, FileText,
   CheckCircle2, Eye, Send, X, Plus, ChevronDown, Folder,
-  Brain, ExternalLink, ChevronUp,
+  Brain, ExternalLink, ChevronUp, Trash2,
 } from 'lucide-react';
-import { collection, onSnapshot, query, addDoc } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { collection, onSnapshot, query, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '@/lib/firebase';
 
 type ContentType = 'lecture' | 'tutorial' | 'homework' | 'exam';
@@ -28,6 +28,7 @@ interface UploadedFile {
   week: number;
   size: number;
   url: string;
+  storagePath?: string;
   uploadedAt: string;
   status: 'uploaded' | 'analyzing' | 'analyzed' | 'error';
   errorMessage?: string;
@@ -60,6 +61,8 @@ export default function CurriculumPage() {
   const [firestoreLoading, setFirestoreLoading] = useState(true);
   const [openWeeks, setOpenWeeks] = useState<Set<number>>(new Set());
   const [analyzingFiles, setAnalyzingFiles] = useState<Set<string>>(new Set());
+  const [deletingFiles, setDeletingFiles] = useState<Set<string>>(new Set());
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
 
   // Firestore listener for uploaded content
   useEffect(() => {
@@ -96,6 +99,22 @@ export default function CurriculumPage() {
       }
       return next;
     });
+  }
+
+  async function handleDelete(file: UploadedFile) {
+    setDeletingFiles((prev) => new Set(prev).add(file.id));
+    try {
+      // Delete from Storage
+      const storageRef = ref(storage, file.storagePath ?? `courses/${courseId}/week${file.week}/${file.type}/${file.filename}`);
+      await deleteObject(storageRef).catch(() => {/* ignore if already gone */});
+      // Delete from Firestore
+      await deleteDoc(doc(db, 'courses', courseId, 'content', file.id));
+    } catch (err) {
+      console.error('Delete failed', err);
+    } finally {
+      setDeletingFiles((prev) => { const next = new Set(prev); next.delete(file.id); return next; });
+      setConfirmDelete(null);
+    }
   }
 
   async function handleAnalyze(file: UploadedFile) {
@@ -532,6 +551,33 @@ export default function CurriculumPage() {
                             >
                               <ExternalLink className="h-4 w-4" />
                             </a>
+
+                            {/* Delete button */}
+                            {confirmDelete === file.id ? (
+                              <div className="flex shrink-0 items-center gap-1">
+                                <button
+                                  onClick={() => handleDelete(file)}
+                                  disabled={deletingFiles.has(file.id)}
+                                  className="rounded-xl bg-rose-600 px-2.5 py-1.5 text-xs font-bold text-white transition hover:bg-rose-500 disabled:opacity-50"
+                                >
+                                  {deletingFiles.has(file.id) ? '...' : 'מחק'}
+                                </button>
+                                <button
+                                  onClick={() => setConfirmDelete(null)}
+                                  className="rounded-xl px-2 py-1.5 text-xs text-slate-500 hover:bg-slate-100"
+                                >
+                                  ביטול
+                                </button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() => setConfirmDelete(file.id)}
+                                className="shrink-0 rounded-xl p-2 text-slate-400 transition hover:bg-rose-50 hover:text-rose-500"
+                                title="מחק קובץ"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </button>
+                            )}
                           </div>
                         );
                       })}
