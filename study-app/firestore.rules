@@ -54,5 +54,11 @@ service cloud.firestore {
       allow create: if isAuthed();
       allow read, write: if isAdmin();
     }
+
+    // Lecturer onboarding submissions — public create (no auth required), admin read/write
+    match /lecturer_onboarding_submissions/{docId} {
+      allow create: if true;
+      allow read, write: if isAdmin();
+    }
   }
 }
