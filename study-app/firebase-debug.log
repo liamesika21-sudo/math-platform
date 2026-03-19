@@ -1,0 +1,42 @@
+[debug] [2026-03-19T10:27:19.681Z] ----------------------------------------------------------------------
+[debug] [2026-03-19T10:27:19.685Z] Command:       /Users/liamesika/.nvm/versions/node/v22.19.0/bin/node /Users/liamesika/.npm-global/bin/firebase deploy --only firestore
+[debug] [2026-03-19T10:27:19.685Z] CLI Version:   14.16.0
+[debug] [2026-03-19T10:27:19.685Z] Platform:      darwin
+[debug] [2026-03-19T10:27:19.685Z] Node Version:  v22.19.0
+[debug] [2026-03-19T10:27:19.686Z] Time:          Thu Mar 19 2026 12:27:19 GMT+0200 (Israel Standard Time)
+[debug] [2026-03-19T10:27:19.686Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-19T10:27:19.687Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-03-19T10:27:19.812Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-19T10:27:19.812Z] > authorizing via signed-in user (liamesika2121@gmail.com)
+[debug] [2026-03-19T10:27:19.812Z] [iam] checking project reichman-math for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-03-19T10:27:19.812Z] Checked if tokens are valid: false, expires at: 1773849790554
+[debug] [2026-03-19T10:27:19.812Z] Checked if tokens are valid: false, expires at: 1773849790554
+[debug] [2026-03-19T10:27:19.812Z] > refreshing access token with scopes: []
+[debug] [2026-03-19T10:27:19.813Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-19T10:27:19.813Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-19T10:27:20.101Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-19T10:27:20.102Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-19T10:27:20.112Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions [none]
+[debug] [2026-03-19T10:27:20.113Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions x-goog-quota-user=projects/reichman-math
+[debug] [2026-03-19T10:27:20.113Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-03-19T10:27:20.433Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-03-19T10:27:20.433Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2026-03-19T10:27:21.176Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions 200
+[debug] [2026-03-19T10:27:21.177Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/reichman-math:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'reichman-math'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-03-19T10:27:21.180Z] Checked if tokens are valid: true, expires at: 1773919639102
+[debug] [2026-03-19T10:27:21.180Z] Checked if tokens are valid: true, expires at: 1773919639102
+[debug] [2026-03-19T10:27:21.181Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/reichman-math:test [none]
+[debug] [2026-03-19T10:27:21.181Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/reichman-math:test [omitted]
+[debug] [2026-03-19T10:27:22.092Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/reichman-math:test 200
+[debug] [2026-03-19T10:27:22.093Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/reichman-math:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2026-03-19T10:27:22.095Z] Checked if tokens are valid: true, expires at: 1773919639102
+[debug] [2026-03-19T10:27:22.095Z] Checked if tokens are valid: true, expires at: 1773919639102
+[debug] [2026-03-19T10:27:22.096Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/reichman-math/databases/(default) [none]
