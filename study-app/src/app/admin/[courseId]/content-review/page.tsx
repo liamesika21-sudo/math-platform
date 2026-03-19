@@ -64,8 +64,8 @@ function addIds<T extends object>(arr: T[] | undefined, prefix: string): (T & { 
   }));
 }
 
-function stripIds(arr: Record<string, unknown>[]): Record<string, unknown>[] {
-  return arr.map(({ _id: _, ...rest }) => rest);
+function stripIds<T extends { _id?: string }>(arr: T[]): Omit<T, '_id'>[] {
+  return arr.map(({ _id: _, ...rest }) => rest as Omit<T, '_id'>);
 }
 
 const KIND_LABELS: Record<string, string> = {
