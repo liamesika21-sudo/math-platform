@@ -9,7 +9,7 @@ import type { Course, CourseId } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
 import { TheoryFeedbackProvider } from '@/contexts/TheoryFeedbackContext';
 import { useAuth } from '@/contexts/AuthContext';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, increment } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
 interface CourseShellProps {
@@ -47,6 +47,8 @@ export default function CourseShell({ course, children }: CourseShellProps) {
       {
         email: user.email ?? '',
         name: user.displayName ?? user.email?.split('@')[0] ?? '',
+        lastVisit: new Date().toISOString(),
+        visitCount: increment(1),
         courses: {
           [course.id]: {
             status: 'active',

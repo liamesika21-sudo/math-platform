@@ -104,13 +104,16 @@ export default function OverviewPage() {
 
         {/* ── Grid of counters ─────────────────────────────────── */}
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Counter
-            icon={Users}
-            accent="from-indigo-500 to-violet-500"
-            label="משתמשים רשומים"
-            value={stats.totalUsers}
-            loading={loading}
-          />
+          <Link href="/admin/overview/students">
+            <Counter
+              icon={Users}
+              accent="from-indigo-500 to-violet-500"
+              label="משתמשים רשומים"
+              value={stats.totalUsers}
+              loading={loading}
+              clickable
+            />
+          </Link>
           <Counter
             icon={MessageSquare}
             accent="from-sky-500 to-cyan-500"
@@ -175,15 +178,17 @@ function Counter({
   label,
   value,
   loading,
+  clickable,
 }: {
   icon: React.ElementType;
   accent: string;
   label: string;
   value: number;
   loading: boolean;
+  clickable?: boolean;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+    <div className={`rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl ${clickable ? 'cursor-pointer transition hover:border-indigo-500/40 hover:bg-white/10' : ''}`}>
       <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${accent}`}>
         <Icon className="h-5 w-5 text-white" />
       </div>
