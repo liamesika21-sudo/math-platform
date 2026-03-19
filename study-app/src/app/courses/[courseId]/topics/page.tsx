@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { BookMarked, BrainCircuit, Sigma, ScrollText } from 'lucide-react';
 import QuestionPreviewCard from '@/components/platform/QuestionPreviewCard';
 import TheoryItemCard from '@/components/platform/TheoryItemCard';
 import { useParams } from 'next/navigation';
 import { getCourseQuestions, getCourseTopics, getQuestionsForTopic, getTheoryItemsForTopic } from '@/lib/math-platform/data';
 import { useCourseQuestionSession } from '@/lib/math-platform/session';
+import { useFirestoreTheoryItems, applyOverrides } from '@/lib/math-platform/useFirestoreTheoryItems';
 import type { CourseId, TheoryKind } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
 
@@ -37,7 +38,13 @@ export default function TopicsPage() {
 
   const [activeKind, setActiveKind] = useState<FilterKind>('all');
 
-  const allTheory = topics.flatMap((t) => getTheoryItemsForTopic(courseId, t.id));
+  const overrideMap = useFirestoreTheoryItems(courseId);
+
+  const allTheory = useMemo(
+    () => topics.flatMap((t) => applyOverrides(getTheoryItemsForTopic(courseId, t.id), overrideMap)),
+    [topics, courseId, overrideMap],
+  );
+
   const counts: Record<FilterKind, number> = {
     all:        allTheory.length,
     definition: allTheory.filter((i) => i.kind === 'definition').length,
@@ -81,7 +88,7 @@ export default function TopicsPage() {
       </section>
 
       {topics.map((topic) => {
-        const theory = getTheoryItemsForTopic(courseId, topic.id);
+        const theory = applyOverrides(getTheoryItemsForTopic(courseId, topic.id), overrideMap);
         const filtered = activeKind === 'all' ? theory : theory.filter((i) => i.kind === activeKind);
         const topicQuestions = getQuestionsForTopic(courseId, topic.id);
 

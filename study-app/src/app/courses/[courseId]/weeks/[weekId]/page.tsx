@@ -1,9 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams } from 'next/navigation';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
 import { BookOpen, ClipboardList, GraduationCap, FileCheck2 } from 'lucide-react';
 import QuestionPreviewCard from '@/components/platform/QuestionPreviewCard';
 import TheoryItemCard from '@/components/platform/TheoryItemCard';
@@ -15,18 +13,9 @@ import {
   getWeekById,
 } from '@/lib/math-platform/data';
 import { useCourseQuestionSession } from '@/lib/math-platform/session';
-import type { CourseId, PlatformQuestion, TheoryItem, TheoryKind, UserQuestionState } from '@/lib/math-platform/types';
+import { useFirestoreTheoryItems, applyOverrides } from '@/lib/math-platform/useFirestoreTheoryItems';
+import type { CourseId, PlatformQuestion, TheoryKind, UserQuestionState } from '@/lib/math-platform/types';
 import { cn } from '@/lib/math-platform/utils';
-
-interface FirestoreTheoryItem {
-  kind: string;
-  title: string;
-  content: string;
-  sourcePage?: number;
-  hidden?: boolean;
-  important?: boolean;
-  lecturerNote?: string;
-}
 
 type LectureFilter = 'all' | TheoryKind;
 
@@ -44,43 +33,17 @@ export default function WeekPage() {
   const weekId   = params.weekId;
 
   const [lectureFilter, setLectureFilter] = useState<LectureFilter>('all');
-  const [lectureItems, setLectureItems] = useState<TheoryItem[]>([]);
 
   const week          = getWeekById(courseId, weekId);
   const allQuestions  = getCourseQuestions(courseId);
   const weekQuestions = getQuestionsForWeek(weekId);
   const { getState }  = useCourseQuestionSession(courseId, allQuestions);
 
-  useEffect(() => {
-    const staticItems = getTheoryItemsForWeek(weekId);
-    setLectureItems(staticItems);
-
-    getDoc(doc(db, 'courses', courseId, 'generatedContent', weekId))
-      .then(snap => {
-        if (!snap.exists()) return;
-        const data = snap.data() as { theoryItems?: FirestoreTheoryItem[] };
-        const firestoreItems = data.theoryItems ?? [];
-        if (!firestoreItems.length) return;
-
-        const merged = staticItems
-          .map((staticItem, i) => {
-            const fItem = firestoreItems[i];
-            if (!fItem) return staticItem;
-            if (fItem.hidden) return null;
-            return {
-              ...staticItem,
-              title: fItem.title ?? staticItem.title,
-              content: fItem.content ?? staticItem.content,
-              kind: (fItem.kind as TheoryKind) ?? staticItem.kind,
-              sourcePage: fItem.sourcePage ?? staticItem.sourcePage,
-            };
-          })
-          .filter((item): item is TheoryItem => item !== null);
-
-        setLectureItems(merged);
-      })
-      .catch(() => { /* fall back to static items already set */ });
-  }, [courseId, weekId]);
+  const overrideMap  = useFirestoreTheoryItems(courseId);
+  const lectureItems = useMemo(
+    () => applyOverrides(getTheoryItemsForWeek(weekId), overrideMap),
+    [weekId, overrideMap],
+  );
 
   if (!week) return null;
 
