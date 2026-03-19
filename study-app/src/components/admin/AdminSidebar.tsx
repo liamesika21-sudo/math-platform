@@ -18,6 +18,7 @@ import {
   ChevronLeft,
   GraduationCap,
   Lightbulb,
+  PenLine,
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { cn } from '@/lib/math-platform/utils';
@@ -41,6 +42,7 @@ const navSections = [
       { key: 'students', href: '/students', label: 'סטודנטים', icon: Users },
       { key: 'assignments', href: '/assignments', label: 'מטלות', icon: ClipboardList },
       { key: 'curriculum', href: '/curriculum', label: 'תכנית לימודים', icon: BookOpen },
+      { key: 'content-review', href: '/content-review', label: 'עריכת תוכן', icon: PenLine },
       { key: 'questions', href: '/questions', label: 'שאלות', icon: HelpCircle },
       { key: 'topics', href: '/topics', label: 'נושאים ושיעורים', icon: Layers },
     ],
