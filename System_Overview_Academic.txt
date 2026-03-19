@@ -1,0 +1,361 @@
+pdfAcademic Learning Platform — System Description
+March 2026
+Prepared by Lia Mesika
+
+
+1. Introduction
+
+This document presents the pedagogical design and system architecture of an academic learning platform developed to support the teaching and learning of theoretical computer science courses at the university level. The platform is a web-based learning and mentoring environment designed to support structured instruction in courses such as mathematical logic, discrete mathematics, and data structures. The system integrates course content management, student learning interfaces, AI-assisted mentoring, and instructor-facing monitoring tools. This document presents the system as an academic learning infrastructure for use in faculty review and course planning.
+
+
+2. Motivation
+
+The teaching of theoretical computer science subjects presents a distinct pedagogical challenge. These courses require students to develop precise formal reasoning skills — constructing proofs, applying definitions, and working through abstract structures — at a stage in their studies when such reasoning is entirely new. Students typically encounter difficulty not only in understanding the material but in knowing how to study it: which concepts to prioritize, how to approach problems systematically, and how to identify and correct their own misconceptions.
+
+A structural consequence of this challenge is that instructors have limited visibility into the students' actual learning process. Outside of submitted homework and examinations, most interaction between a student's understanding and the course material takes place invisibly. Instructors receive signals about learning outcomes but not about the difficulties that lead to those outcomes. By the time a conceptual gap becomes apparent — typically at an exam — the opportunity to address it has already passed.
+
+At the same time, the availability of general-purpose AI systems has changed the way students respond to difficulty. When a complete solution or explanation is available immediately upon request, students may bypass the reasoning process that is central to developing mathematical understanding. In theoretical computer science in particular, where the ability to construct independent arguments is a core learning objective, the unrestricted use of AI assistance can undermine the very skills the course is designed to build.
+
+The platform was developed to address this dual challenge. The system provides students with a structured learning environment in which they can access course content, practice on categorized problems, and receive immediate guidance that is directed at their reasoning process rather than at supplying correct answers. At the same time, the system provides academic staff with real-time visibility into how students engage with the material — which concepts are understood, which are unclear, and where patterns of difficulty emerge across the class.
+
+
+3. System Overview
+
+The system consists of a web application, a persistent academic data layer, a real-time database, and an AI-assisted mentoring service. It supports two principal roles: students and instructors.
+
+Students use the platform to:
+
+- access course content organized by week and topic
+- read theoretical material including definitions, theorems, lemmas, and proofs
+- practice on categorized exercise problems, homework assignments, and past examination questions
+- track their personal progress and comprehension status across topics
+- interact with an AI-based mentor for guided assistance during problem solving
+- review flagged material in preparation for examinations
+
+Instructors use the platform to:
+
+- build and manage complete course structures
+- upload and organize course content by week, topic, and source document
+- edit theoretical items and questions directly within the platform interface
+- monitor student engagement and comprehension in real time
+- review AI mentor interaction logs for pedagogical oversight
+- receive automatic alerts regarding anomalous or flagged communication patterns
+- manage student enrollment and course assignments
+
+
+4. Curriculum and Content Model
+
+The curriculum model is hierarchical:
+
+Course → Week → Topic → Content Item (Theory or Question)
+
+Within the platform, instructors can build a complete course structure. The system supports:
+
+- course creation and metadata management
+- definition of week-level structure within each course
+- topic organization within each week
+- theory item creation within each topic, including definitions, theorems, lemmas, proofs, corollaries, and remarks
+- question creation within each topic, categorized by source type and difficulty level
+- annotation of content items with instructor notes and importance flags
+
+This structure allows instructors to organize an entire theoretical course inside a single environment, from content sequencing to assessment design. Theory items and questions function as the fundamental learning units, while weeks and topics provide the organizational context within which students navigate the material.
+
+The platform distinguishes between two categories of content items:
+
+Theory items represent the conceptual and formal content of the course. These include formal definitions, theorems and their proofs, lemmas, corollaries, and illustrative remarks. Each theory item is associated with a course week, a topic, and a source document, enabling precise traceability from any content item back to its original academic source.
+
+Questions represent the exercise and assessment content of the course. Each question is associated with a source type — tutorial exercise, homework assignment, or past examination question — and with a difficulty level. Questions are connected to the theory items that are relevant to their solution, enabling the platform to present related conceptual material alongside practice problems.
+
+
+5. Student Learning Flow
+
+A student begins by selecting a course from their personal dashboard. The course dashboard presents the full week-by-week structure of the course, along with summary statistics reflecting the student's current progress in terms of problems attempted, theory reviewed, and comprehension status across topics.
+
+From the course dashboard, a student can navigate the course content through several organizational modes:
+
+Weekly navigation allows the student to work through the course in chronological sequence. For each week, the platform presents the full set of theory items and questions associated with that instructional unit. This mode is intended to support systematic coverage of the curriculum in the order in which it was originally taught.
+
+Topic-based navigation allows the student to browse the course material organized by subject rather than by week. This mode is particularly useful for review, targeted practice, or addressing specific areas of weakness prior to an examination.
+
+Collection-based navigation allows the student to access all questions of a given type across the entire course. The platform maintains separate collections for tutorial exercises, homework assignments, and past examination questions. Each collection supports filtering by week, topic, and difficulty level.
+
+Personal tracking navigation allows the student to return to material that has been flagged for review or marked as unclear. These personalized views are maintained automatically based on the student's interaction history with the platform.
+
+During work on any theory item, the student can record a comprehension status reflecting their current understanding. The available states are: understood, needs review, and not understood. These records are persisted and form the basis of both the student's personal review views and the instructor's real-time visibility into class-level comprehension patterns.
+
+During work on any question, the student can record a solution status and add a personal note. The available solution states are: solved independently, solved with assistance, not yet solved, and flagged as difficult. These records accumulate over time to form a personal learning history that the student can consult during examination preparation.
+
+
+6. Theory Feedback System
+
+The theory feedback system allows students to record and update their comprehension status for each theory item in the course. This mechanism serves two distinct academic functions.
+
+For the student, it provides a structured self-assessment layer that supports targeted review. By maintaining a personal record of which definitions, theorems, and proofs are understood, which require additional attention, and which remain unclear, the student can organize their preparation for examinations around identified gaps rather than reviewing all material uniformly.
+
+For the instructor, it provides a real-time aggregate view of conceptual comprehension across the entire enrolled class. The instructor dashboard displays, for each theory item, the distribution of comprehension states recorded by students. This allows the instructor to identify specific concepts that a significant proportion of students are struggling with, enabling targeted intervention through additional explanations, office hours, or supplementary material, at a stage when such intervention can still influence learning outcomes before the examination.
+
+The theory feedback data is stored persistently and synchronized in real time, ensuring that the instructor's view reflects the most current state of student understanding.
+
+
+7. Question Interaction Model
+
+The question interaction model is designed to support iterative engagement with problems over the course of the semester rather than single-attempt completion. For each question, the student can work on the problem independently, consult the AI mentor for structured guidance, record their solution status, add personal notes, and return to the question at a later stage.
+
+The platform does not evaluate the correctness of student solutions directly. Rather, it supports self-directed practice and records the student's self-reported progress. This design reflects the nature of theoretical computer science problems, in which correctness is demonstrated through formal arguments that require human evaluation and in which the process of working toward a solution carries independent educational value.
+
+The categorization of questions by source type — tutorial exercises, homework assignments, and past examination questions — allows students to organize their practice according to academic context. Homework questions are tracked separately to support the monitoring of assignment completion. Past examination questions are presented as a distinct practice resource to support examination preparation.
+
+
+8. Assignment Tracking
+
+The platform maintains a dedicated tracking layer for homework assignments. For each course week in which homework problems are defined, the platform presents a summary view of the student's progress across the assigned questions. This view supports both the student's personal workflow management and the instructor's monitoring of assignment completion patterns across the enrolled class.
+
+The assignment tracking model operates at the level of student self-reporting rather than formal submission. Students record their solution status for each homework problem individually, and the platform aggregates these records to produce week-level and course-level completion summaries. This approach is consistent with a pedagogical model in which students are expected to engage with problems independently prior to tutorial or recitation sessions in which solutions are discussed collectively.
+
+
+9. AI Mentor — Pedagogically Constrained Guidance
+
+The platform integrates an AI-based pedagogical mentor designed to support students during the problem-solving process without replacing their independent reasoning. Unlike general-purpose AI systems that typically provide complete solutions or direct answers, the AI Mentor operates under strict pedagogical constraints aligned with the course curriculum and the principles of Socratic instruction.
+
+The AI Mentor is powered by a large language model with access to the full content of the relevant course, including all theory items, problem statements, and associated conceptual context. This integration ensures that the mentor's responses are grounded in the specific material of the course rather than in generic or externally sourced content.
+
+The mentor interaction model is governed by the following principles:
+
+Responses are provided exclusively in the language of instruction. The platform is designed for Hebrew-language instruction, and all mentor responses are generated in Hebrew to ensure accessibility and reduce the cognitive overhead of language switching during problem solving.
+
+Direct answers to homework and examination problems are explicitly prohibited. The mentor is instructed to withhold final solutions and to avoid any formulation that could be used directly as a submitted answer. This constraint is implemented at the level of the model's instructional prompt and represents a non-negotiable feature of the mentor's behavior.
+
+Guidance is delivered through directed questioning. Rather than providing explanations in declarative form, the mentor is designed to engage the student through questions that direct their attention toward relevant definitions, relevant strategies, or specific aspects of the problem that the student may not have considered. This Socratic orientation reflects the view that the development of formal reasoning skills requires active construction by the student rather than passive reception of explanations.
+
+Feedback is contextual and adaptive. The mentor receives the student's question together with its formal statement and, where available, the student's description of their current approach or difficulty. The guidance provided is therefore specific to the student's current state rather than generic to the problem type.
+
+Mathematical notation is rendered formally. All responses involving mathematical content are formatted using standard notation, ensuring that the guidance is consistent with the formal register of the course material.
+
+Mentor interaction history is persisted to the platform's database. Each conversation session is stored and associated with the relevant student account and course. This persistence serves both the student, who can return to a prior conversation for reference, and the instructor, who can review mentor interactions as part of pedagogical oversight.
+
+Conversation sessions are retained for a defined period following the last interaction and are subsequently removed in accordance with the platform's data retention policy.
+
+
+10. Socratic Mentor — Static Guidance Layer
+
+In addition to the AI-powered conversational mentor, the platform provides a static Socratic guidance layer organized by topic. This component is designed to support students who prefer structured self-directed reflection over open-ended conversation, and to provide guidance in contexts where AI-assisted interaction may not be appropriate or accessible.
+
+For each topic within the course, the static Socratic layer provides:
+
+Guiding questions that direct the student's attention toward the key concepts, definitions, and logical relationships that are central to solving problems within that topic. These questions are designed to prompt reflection rather than to convey information.
+
+Common error notices that identify the specific misconceptions, confusions, and technical errors that students most frequently encounter when working with the relevant material. These notices are drawn from instructional experience and are intended to alert students to pitfalls before they encounter them in their own work.
+
+Strategy hints that outline the general approach or structure of solutions to problems within the topic without revealing specific solution steps. These hints describe how to begin, how to organize a formal argument, or which tools from the course are most likely to be relevant.
+
+The static Socratic layer operates without external AI services, ensuring availability and consistency across all access contexts.
+
+
+11. Content Management
+
+The platform provides instructors with a dedicated content management interface that supports the creation, editing, and organization of all course material. This interface is designed to allow instructors to maintain the course content without technical intermediation.
+
+Theory items and questions can be edited directly within the platform interface. Edits are synchronized to the persistent data layer in real time, ensuring that students always access the most current version of the course content.
+
+Each theory item and question can be annotated with instructor notes. These annotations are visible to students and are designed to convey supplementary context, common mistakes, or guidance that the instructor wishes to attach to a specific content item without altering the formal statement of the definition, theorem, or problem.
+
+Content items can be marked by the instructor to indicate relative importance. This mechanism allows the instructor to signal to students which items merit particular attention during review.
+
+Instructors can upload source documents in PDF format and extract content from them using an integrated document processing service. Extracted content is reviewed and edited by the instructor within the platform before being published to the student-facing course structure. This workflow supports a content pipeline that begins with existing course documents and produces structured, platform-native content items.
+
+
+12. Instructor Dashboard and Monitoring
+
+The platform provides instructors with a real-time monitoring interface for ongoing academic supervision. This dashboard is designed to make the student learning process visible to the instructor throughout the semester rather than only at formal assessment points.
+
+The monitoring layer allows instructors to observe:
+
+- comprehension status distributions for all theory items in the course
+- solution status distributions for all questions in the course
+- completion patterns for homework assignments by week and by student
+- aggregate engagement metrics across the enrolled class
+- individual student progress profiles for targeted follow-up
+
+Updates are reflected dynamically as students interact with the platform. This allows instructors to monitor class activity continuously during the active learning period.
+
+In addition to the progress monitoring interface, the platform provides instructors with a dedicated alert management system that tracks and surfaces anomalous or flagged content in AI mentor interactions. When a student's message to the AI mentor contains content that matches a defined set of monitored terms, the system automatically generates an alert record and surfaces it in the instructor's alert view. The instructor can review the flagged message in context, assess the nature of the interaction, and mark the alert as reviewed.
+
+This alert mechanism supports academic integrity oversight alongside pedagogical monitoring, providing instructors with a structured means of reviewing AI mentor usage across the enrolled class.
+
+
+13. Chat Monitoring and Academic Integrity
+
+The AI mentor interaction log is accessible to instructors in its entirety. Each conversation session is associated with a student account and a course, and the instructor can review any session to assess the nature of the student's questions, the guidance provided by the system, and the overall pattern of AI-assisted interaction.
+
+This transparency model serves two functions. First, it supports pedagogical oversight by allowing instructors to identify patterns of difficulty that are not captured by problem-level tracking — for example, conceptual confusions that students articulate in conversation but do not explicitly flag in their self-reported comprehension states. Second, it supports academic integrity by providing instructors with visibility into how students use the AI mentor, including whether interactions are aligned with the platform's pedagogical constraints.
+
+The mentor system is designed so that the guidelines governing its behavior are enforced at the level of the system instruction rather than through post-hoc moderation. The combination of behavioral constraints and transparent access log therefore represents a two-layer approach to maintaining the integrity of AI-assisted instruction.
+
+
+14. Instructor Content Review
+
+The content review interface provides instructors with a unified view of all theory items and questions within the course, organized by week and topic, with inline editing capabilities for each item. This interface is the primary tool through which instructors maintain and refine the course content over the duration of the course.
+
+From the content review interface, an instructor can:
+
+- read and edit the formal statement of any theory item or question
+- add, modify, or remove instructor notes attached to any content item
+- adjust the importance flag of any content item
+- review the current comprehension and solution status distributions for each item, providing immediate context for editorial decisions
+
+Changes made in this interface are persisted to the course data layer in real time and are immediately visible to enrolled students. This design supports a course content model that is continuously maintained rather than fixed at the start of the term.
+
+
+15. Data Collected by the System
+
+The platform records a structured set of educational data generated through student interaction. This includes:
+
+- theory item comprehension states and their update history
+- question solution states and associated personal notes
+- AI mentor conversation sessions including all messages and their timestamps
+- chat alert records generated by monitored content patterns
+- course and content navigation events
+
+These records provide an academic trace of student engagement over time. Because the system stores both conceptual self-assessment data and AI interaction records, instructors can analyze not only reported outcomes but also the process by which students engaged with the material.
+
+At the instructional level, the collected data supports analysis of:
+
+- comprehension patterns by topic and by week
+- difficulty distributions across problem sets
+- engagement patterns over the duration of the course
+- class-wide trends in self-reported understanding
+- AI mentor interaction patterns and content
+
+
+16. Authentication and Access Control
+
+The platform implements a two-tier access control model. Student access is governed by standard account-based authentication using email credentials. Instructor access requires a separate authorization mechanism based on administrative identity claims issued through the platform's authentication infrastructure. This ensures that instructor-facing interfaces, including monitoring dashboards, content management tools, and alert systems, are accessible only to authorized academic staff regardless of the credentials used for login.
+
+A dedicated instructor onboarding workflow allows new members of academic staff to register their interest in using the platform. Submitted onboarding information is reviewed by the system administrator prior to access being granted.
+
+
+17. Security and Data Integrity
+
+Student data, including comprehension records, solution notes, and mentor interaction logs, is stored in a cloud-based database governed by per-user and per-role access rules. These rules ensure that each student can access only their own records, while authorized instructors have read access to student records within the courses they manage. Write access to course content is restricted to authorized instructors.
+
+The rules governing database access are defined at the infrastructure level and are enforced independently of the application layer, ensuring that access controls remain effective regardless of application behavior.
+
+
+18. System Architecture
+
+The platform is built on a modern web application stack. The frontend is implemented using Next.js with React, providing server-rendered and client-rendered interfaces for both student and instructor roles. The application is written in TypeScript throughout.
+
+The persistent data layer is implemented using a cloud-based document database that supports real-time synchronization. This enables the instructor monitoring interfaces to reflect current student activity without explicit refresh or polling.
+
+Authentication is managed through a cloud-based identity service supporting email-based credentials and administrative identity claims.
+
+AI mentor functionality is implemented through a server-side API route that mediates communication between the student interface and the underlying language model. The system instruction governing the mentor's behavior is applied at this layer, ensuring that behavioral constraints are enforced centrally and cannot be bypassed at the client level.
+
+Mathematical notation in both course content and mentor responses is rendered using a standard mathematical typesetting library, ensuring that all formal material is displayed with typographic accuracy.
+
+PDF document processing uses a document parsing service that extracts structured text from uploaded source documents for review and editing by the instructor prior to publication.
+
+
+19. Current Scope and Limitations
+
+The current academic scope of the platform is centered on theoretical computer science instruction at the introductory university level. The system is designed around a content model based on formal definitions, theorems, and structured problem sets, and assumes a pedagogical model in which students are expected to develop formal reasoning skills through guided independent practice.
+
+The platform does not include automated evaluation of submitted solutions. Assessment of student work on theoretical problems — including the correctness and completeness of proofs, formal arguments, and written responses — requires human judgment and is not currently within the scope of the automated system. The platform's role in the assessment process is limited to tracking self-reported progress and providing instructors with engagement data that supports, rather than replaces, human evaluation.
+
+The platform is currently implemented in Hebrew and is optimized for Hebrew-language instruction. The underlying architecture does not prevent adaptation to other languages, but the current deployment assumes a Hebrew-speaking student and instructor population.
+
+
+20. Work in Progress
+
+The platform is designed as an evolving academic system. Ongoing development is directed toward several areas:
+
+Analytics infrastructure is being extended to provide instructors with richer aggregate views of class performance, including statistical summaries of comprehension and solution distributions over time.
+
+The grading and gradebook component is being developed to support the recording and management of formal assessment results alongside the engagement data already collected by the system.
+
+The student import workflow is being refined to support bulk enrollment from structured data files, reducing the administrative overhead of course setup.
+
+Adaptive learning features are under design, with the objective of enabling the platform to surface prioritized review recommendations to individual students based on their accumulated comprehension and solution history.
+
+These developments are intended to strengthen the platform's role not only as a content delivery and mentoring environment but as a data-informed instructional system capable of supporting the full academic lifecycle of a theoretical computer science course.
+
+
+21. Appendix A — Student-Facing Page Structure
+
+The student-facing interface of the platform is organized around the following principal areas:
+
+Authentication pages support account login and session management.
+
+The course dashboard provides an overview of the enrolled course, including week-by-week progress indicators and summary statistics.
+
+The weekly study interface presents the theory items and questions associated with each course week in a structured, navigable format.
+
+Topic navigation pages allow students to browse the course material organized by subject area.
+
+Question collection pages provide filtered access to tutorial exercises, homework problems, and past examination questions across the full course.
+
+Individual question pages present the problem statement, solution status controls, personal note management, and access to the AI mentor.
+
+The personal question list maintains a student-defined collection of flagged problems for targeted review.
+
+The homework analysis view presents week-by-week summaries of homework completion status.
+
+The review center provides a filtered view of all theory items organized by the student's recorded comprehension state, supporting targeted examination preparation.
+
+The AI mentor interface provides the conversational interaction environment for AI-assisted guidance.
+
+The Socratic mentor interface provides topic-organized access to static guiding questions, common error notices, and strategy hints.
+
+The sources reference page presents the full list of source documents associated with the course, with traceability links to the content items derived from each source.
+
+
+22. Appendix B — Instructor-Facing Page Structure
+
+The instructor-facing interface of the platform is organized around the following principal areas:
+
+The course selection dashboard provides access to all courses managed by the instructor.
+
+The course overview page presents aggregate metrics and provides navigation to all administrative tools for the selected course.
+
+The student management interface supports the review of enrolled students and the management of course enrollment.
+
+The question bank interface provides tools for creating, reviewing, and organizing the question content of the course.
+
+The assignment management interface supports the creation and tracking of homework assignments.
+
+The curriculum management interface supports the organization of the course into weeks and topics, and provides access to the PDF upload and content extraction workflow.
+
+The content review interface provides inline editing capabilities for all theory items and questions within the course.
+
+The topic management interface supports the definition and organization of topics within the course structure.
+
+The analytics dashboard presents aggregate engagement and comprehension statistics for the enrolled class.
+
+The insights interface provides pattern-level analysis of class-wide difficulty and engagement trends.
+
+The adaptive learning settings interface provides controls for the configuration of prioritized review recommendations.
+
+The mistake tracking interface presents aggregated records of common error patterns observed across the class.
+
+The chat monitoring and alert interface provides access to the AI mentor interaction log and to the alert management system.
+
+The gradebook interface supports the recording and management of formal assessment results.
+
+
+23. Appendix C — Core Data Model
+
+The platform's persistent data layer is organized around the following principal record categories:
+
+Student records capture account-level information and course enrollment.
+
+Theory feedback records capture the comprehension states recorded by individual students for individual theory items, with timestamps supporting temporal analysis of understanding development.
+
+Course content records capture the structured content of each course, organized by week and content type, including both theory items and questions.
+
+Mentor interaction records capture the full message history of each student's AI mentor sessions, associated with the relevant course and student account.
+
+Alert records capture instances in which monitored content patterns were detected in mentor interactions, along with the contextual information required for instructor review.
+
+Course metadata records capture the configuration of each course, including the defined set of monitored content terms used by the alert system.
+
+Instructor onboarding records capture the information submitted by prospective academic users during the access request process.

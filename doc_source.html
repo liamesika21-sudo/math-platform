@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --navy:   #1a2b5e;
+  --blue:   #2e4aaa;
+  --light:  #e8edf9;
+  --mid:    #c5d0ee;
+  --soft:   #f4f6fc;
+  --text:   #1c1c2e;
+  --muted:  #4a4a6a;
+  --dim:    #6b6b8a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Heebo', Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.75;
+  color: var(--text);
+  background: #fff;
+  width: 170mm;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ─── COVER ─── */
+.cover {
+  padding: 28mm 0 20mm;
+  border-bottom: 3px solid var(--navy);
+  margin-bottom: 10mm;
+}
+.cover-tag {
+  font-size: 7.5pt;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+.cover h1 {
+  font-size: 24pt;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.cover-sub {
+  font-size: 11.5pt;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.cover-meta {
+  font-size: 9.5pt;
+  color: var(--muted);
+  line-height: 2;
+}
+.cover-meta span { color: var(--text); font-weight: 500; }
+
+/* ─── TOC ─── */
+.toc {
+  background: var(--soft);
+  border: 1px solid var(--mid);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 10mm;
+  page-break-after: always;
+}
+.toc-label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+.toc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 9pt;
+  padding: 3.5px 0;
+  border-bottom: 1px dotted var(--mid);
+  color: var(--muted);
+  gap: 8px;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-num { color: var(--blue); font-weight: 600; min-width: 18px; }
+
+/* ─── SECTION ─── */
+.section {
+  padding-top: 8mm;
+  page-break-inside: avoid;
+}
+.section-rule {
+  height: 2px;
+  background: linear-gradient(to right, var(--navy), var(--mid) 70%, transparent);
+  margin-bottom: 8px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.section-num {
+  background: var(--navy);
+  color: #fff;
+  font-size: 8pt;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.section h2 {
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* ─── APP SECTION ─── */
+.app-section {
+  padding-top: 8mm;
+  page-break-inside: avoid;
+}
+.app-rule {
+  height: 1px;
+  background: linear-gradient(to right, var(--blue), var(--mid) 60%, transparent);
+  margin-bottom: 8px;
+}
+.app-section h2 {
+  font-size: 12pt;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+/* ─── PARAGRAPHS ─── */
+p {
+  font-size: 10.5pt;
+  line-height: 1.78;
+  color: var(--muted);
+  margin-bottom: 10px;
+  text-align: justify;
+}
+p:last-child { margin-bottom: 0; }
+em { color: var(--text); font-style: italic; }
+
+/* ─── LISTS ─── */
+ul, ol { margin: 6px 0 10px 0; padding: 0; list-style: none; }
+li {
+  font-size: 10pt;
+  color: var(--muted);
+  padding: 3px 0 3px 16px;
+  border-bottom: 1px solid #f0f0f8;
+  position: relative;
+}
+li:last-child { border-bottom: none; }
+li::before { content: '—'; position: absolute; left: 0; color: var(--blue); font-weight: 500; }
+
+/* ─── HIERARCHY BOX ─── */
+.hierarchy {
+  background: var(--light);
+  border-right: 3px solid var(--navy);
+  padding: 9px 14px;
+  margin: 10px 0;
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: var(--navy);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ─── PRINCIPLE BLOCKS ─── */
+.principle {
+  border-left: 2px solid var(--mid);
+  padding: 6px 0 6px 12px;
+  margin: 8px 0;
+}
+.p-title {
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.principle p { margin: 0; font-size: 10pt; }
+
+/* ─── NAMED PARA ─── */
+.np-title { font-weight: 700; font-size: 10.5pt; color: var(--text); }
+
+/* ─── PAGE BREAK ─── */
+.page-break { page-break-after: always; }
+
+/* ─── HR ─── */
+.divider {
+  height: 1px;
+  background: var(--mid);
+  margin: 8mm 0;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  margin-top: 8mm;
+  padding-top: 8px;
+  border-top: 1px solid var(--mid);
+  display: flex;
+  justify-content: space-between;
+  font-size: 8pt;
+  color: var(--dim);
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">System Description · 2026</div>
+  <h1>Academic Learning<br/>Platform</h1>
+  <div class="cover-sub">Pedagogical Design and System Architecture</div>
+  <div class="cover-meta">
+    Prepared by &nbsp;<span>Lia Mesika</span><br/>
+    Date &nbsp;<span>March 2026</span><br/>
+    Status &nbsp;<span>Draft — For Faculty Review</span><br/>
+    Version &nbsp;<span>1.0</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-label">Table of Contents</div>
+  <div class="toc-item"><span><span class="toc-num">1.</span> Introduction</span></div>
+  <div class="toc-item"><span><span class="toc-num">2.</span> Motivation</span></div>
+  <div class="toc-item"><span><span class="toc-num">3.</span> System Overview</span></div>
+  <div class="toc-item"><span><span class="toc-num">4.</span> Curriculum and Content Model</span></div>
+  <div class="toc-item"><span><span class="toc-num">5.</span> Student Learning Flow</span></div>
+  <div class="toc-item"><span><span class="toc-num">6.</span> Theory Feedback System</span></div>
+  <div class="toc-item"><span><span class="toc-num">7.</span> Question Interaction Model</span></div>
+  <div class="toc-item"><span><span class="toc-num">8.</span> Assignment Tracking</span></div>
+  <div class="toc-item"><span><span class="toc-num">9.</span> AI Mentor — Pedagogically Constrained Guidance</span></div>
+  <div class="toc-item"><span><span class="toc-num">10.</span> Socratic Mentor — Static Guidance Layer</span></div>
+  <div class="toc-item"><span><span class="toc-num">11.</span> Content Management</span></div>
+  <div class="toc-item"><span><span class="toc-num">12.</span> Instructor Dashboard and Monitoring</span></div>
+  <div class="toc-item"><span><span class="toc-num">13.</span> Chat Monitoring and Academic Integrity</span></div>
+  <div class="toc-item"><span><span class="toc-num">14.</span> Instructor Content Review</span></div>
+  <div class="toc-item"><span><span class="toc-num">15.</span> Data Collected by the System</span></div>
+  <div class="toc-item"><span><span class="toc-num">16.</span> Authentication and Access Control</span></div>
+  <div class="toc-item"><span><span class="toc-num">17.</span> Security and Data Integrity</span></div>
+  <div class="toc-item"><span><span class="toc-num">18.</span> System Architecture</span></div>
+  <div class="toc-item"><span><span class="toc-num">19.</span> Current Scope and Limitations</span></div>
+  <div class="toc-item"><span><span class="toc-num">20.</span> Work in Progress</span></div>
+  <div class="toc-item"><span><span class="toc-num">A.</span> Appendix A — Student-Facing Page Structure</span></div>
+  <div class="toc-item"><span><span class="toc-num">B.</span> Appendix B — Instructor-Facing Page Structure</span></div>
+  <div class="toc-item"><span><span class="toc-num">C.</span> Appendix C — Core Data Model</span></div>
+</div>
+
+<!-- 1 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 1</span><h2>Introduction</h2></div>
+  <p>This document presents the pedagogical design and system architecture of an academic learning platform developed to support the teaching and learning of theoretical computer science courses at the university level. The platform is a web-based learning and mentoring environment designed to support structured instruction in courses such as mathematical logic, discrete mathematics, and data structures. The system integrates course content management, student learning interfaces, AI-assisted mentoring, and instructor-facing monitoring tools. This document presents the system as an academic learning infrastructure for use in faculty review and course planning.</p>
+</div>
+
+<!-- 2 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 2</span><h2>Motivation</h2></div>
+  <p>The teaching of theoretical computer science subjects presents a distinct pedagogical challenge. These courses require students to develop precise formal reasoning skills — constructing proofs, applying definitions, and working through abstract structures — at a stage in their studies when such reasoning is entirely new. Students typically encounter difficulty not only in understanding the material but in knowing how to study it: which concepts to prioritize, how to approach problems systematically, and how to identify and correct their own misconceptions.</p>
+  <p>A structural consequence of this challenge is that instructors have limited visibility into the students' actual learning process. Outside of submitted homework and examinations, most interaction between a student's understanding and the course material takes place invisibly. Instructors receive signals about learning outcomes but not about the difficulties that lead to those outcomes. By the time a conceptual gap becomes apparent — typically at an exam — the opportunity to address it has already passed.</p>
+  <p>At the same time, the availability of general-purpose AI systems has changed the way students respond to difficulty. When a complete solution or explanation is available immediately upon request, students may bypass the reasoning process that is central to developing mathematical understanding. In theoretical computer science in particular, where the ability to construct independent arguments is a core learning objective, the unrestricted use of AI assistance can undermine the very skills the course is designed to build.</p>
+  <p>The platform was developed to address this dual challenge. The system provides students with a structured learning environment in which they can access course content, practice on categorized problems, and receive immediate guidance that is directed at their reasoning process rather than at supplying correct answers. At the same time, the system provides academic staff with real-time visibility into how students engage with the material — which concepts are understood, which are unclear, and where patterns of difficulty emerge across the class.</p>
+</div>
+
+<!-- 3 -->
+<div class="section page-break">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 3</span><h2>System Overview</h2></div>
+  <p>The system consists of a web application, a persistent academic data layer, a real-time database, and an AI-assisted mentoring service. It supports two principal roles: students and instructors.</p>
+  <p>Students use the platform to:</p>
+  <ul>
+    <li>access course content organized by week and topic</li>
+    <li>read theoretical material including definitions, theorems, lemmas, and proofs</li>
+    <li>practice on categorized exercise problems, homework assignments, and past examination questions</li>
+    <li>track their personal progress and comprehension status across topics</li>
+    <li>interact with an AI-based mentor for guided assistance during problem solving</li>
+    <li>review flagged material in preparation for examinations</li>
+  </ul>
+  <p>Instructors use the platform to:</p>
+  <ul>
+    <li>build and manage complete course structures</li>
+    <li>upload and organize course content by week, topic, and source document</li>
+    <li>edit theoretical items and questions directly within the platform interface</li>
+    <li>monitor student engagement and comprehension in real time</li>
+    <li>review AI mentor interaction logs for pedagogical oversight</li>
+    <li>receive automatic alerts regarding anomalous or flagged communication patterns</li>
+    <li>manage student enrollment and course assignments</li>
+  </ul>
+</div>
+
+<!-- 4 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 4</span><h2>Curriculum and Content Model</h2></div>
+  <p>The curriculum model is hierarchical:</p>
+  <div class="hierarchy">Course &nbsp;→&nbsp; Week &nbsp;→&nbsp; Topic &nbsp;→&nbsp; Content Item (Theory or Question)</div>
+  <p>Within the platform, instructors can build a complete course structure. The system supports:</p>
+  <ul>
+    <li>course creation and metadata management</li>
+    <li>definition of week-level structure within each course</li>
+    <li>topic organization within each week</li>
+    <li>theory item creation within each topic, including definitions, theorems, lemmas, proofs, corollaries, and remarks</li>
+    <li>question creation within each topic, categorized by source type and difficulty level</li>
+    <li>annotation of content items with instructor notes and importance flags</li>
+  </ul>
+  <p>This structure allows instructors to organize an entire theoretical course inside a single environment, from content sequencing to assessment design. Theory items and questions function as the fundamental learning units, while weeks and topics provide the organizational context within which students navigate the material.</p>
+  <p>The platform distinguishes between two categories of content items. <em>Theory items</em> represent the conceptual and formal content of the course, including formal definitions, theorems and their proofs, lemmas, corollaries, and illustrative remarks. Each theory item is associated with a course week, a topic, and a source document, enabling precise traceability from any content item back to its original academic source. <em>Questions</em> represent the exercise and assessment content of the course, categorized by source type and difficulty level, and connected to the theory items relevant to their solution.</p>
+</div>
+
+<!-- 5 -->
+<div class="section page-break">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 5</span><h2>Student Learning Flow</h2></div>
+  <p>A student begins by selecting a course from their personal dashboard. The course dashboard presents the full week-by-week structure of the course, along with summary statistics reflecting the student's current progress in terms of problems attempted, theory reviewed, and comprehension status across topics.</p>
+  <p>From the course dashboard, a student can navigate the course content through several organizational modes. <em>Weekly navigation</em> allows the student to work through the course in chronological sequence. <em>Topic-based navigation</em> allows the student to browse the course material organized by subject rather than by week, which is particularly useful for targeted review prior to an examination. <em>Collection-based navigation</em> provides access to all questions of a given type — tutorial exercises, homework assignments, or past examination questions — across the entire course, with filtering by week, topic, and difficulty level. <em>Personal tracking navigation</em> allows the student to return to material that has been flagged for review or marked as unclear.</p>
+  <p>During work on any theory item, the student can record a comprehension status: <em>understood</em>, <em>needs review</em>, or <em>not understood</em>. During work on any question, the student can record a solution status — <em>solved independently</em>, <em>solved with assistance</em>, <em>not yet solved</em>, or <em>flagged as difficult</em> — and add a personal note. These records accumulate to form a learning history that the student can consult during examination preparation.</p>
+</div>
+
+<!-- 6 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 6</span><h2>Theory Feedback System</h2></div>
+  <p>The theory feedback system allows students to record and update their comprehension status for each theory item in the course. This mechanism serves two distinct academic functions.</p>
+  <p>For the student, it provides a structured self-assessment layer that supports targeted review. By maintaining a personal record of which definitions, theorems, and proofs are understood, which require additional attention, and which remain unclear, the student can organize their preparation for examinations around identified gaps rather than reviewing all material uniformly.</p>
+  <p>For the instructor, it provides a real-time aggregate view of conceptual comprehension across the entire enrolled class. The instructor dashboard displays, for each theory item, the distribution of comprehension states recorded by students, enabling targeted intervention through additional explanations or supplementary material at a stage when such intervention can still influence learning outcomes before the examination. The theory feedback data is stored persistently and synchronized in real time.</p>
+</div>
+
+<!-- 7 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 7</span><h2>Question Interaction Model</h2></div>
+  <p>The question interaction model is designed to support iterative engagement with problems over the course of the semester rather than single-attempt completion. For each question, the student can work on the problem independently, consult the AI mentor for structured guidance, record their solution status, add personal notes, and return to the question at a later stage.</p>
+  <p>The platform does not evaluate the correctness of student solutions directly. Rather, it supports self-directed practice and records the student's self-reported progress. This design reflects the nature of theoretical computer science problems, in which correctness is demonstrated through formal arguments that require human evaluation and in which the process of working toward a solution carries independent educational value.</p>
+  <p>The categorization of questions by source type allows students to organize their practice according to academic context. Homework questions are tracked separately to support the monitoring of assignment completion. Past examination questions are presented as a distinct practice resource to support examination preparation.</p>
+</div>
+
+<!-- 8 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 8</span><h2>Assignment Tracking</h2></div>
+  <p>The platform maintains a dedicated tracking layer for homework assignments. For each course week in which homework problems are defined, the platform presents a summary view of the student's progress across the assigned questions. This view supports both the student's personal workflow management and the instructor's monitoring of assignment completion patterns across the enrolled class.</p>
+  <p>The assignment tracking model operates at the level of student self-reporting rather than formal submission. Students record their solution status for each homework problem individually, and the platform aggregates these records to produce week-level and course-level completion summaries. This approach is consistent with a pedagogical model in which students are expected to engage with problems independently prior to tutorial or recitation sessions in which solutions are discussed collectively.</p>
+</div>
+
+<!-- 9 -->
+<div class="section page-break">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 9</span><h2>AI Mentor — Pedagogically Constrained Guidance</h2></div>
+  <p>The platform integrates an AI-based pedagogical mentor designed to support students during the problem-solving process without replacing their independent reasoning. Unlike general-purpose AI systems that typically provide complete solutions or direct answers, the AI Mentor operates under strict pedagogical constraints aligned with the course curriculum and the principles of Socratic instruction. The AI Mentor is powered by a large language model with access to the full content of the relevant course, including all theory items, problem statements, and associated conceptual context.</p>
+  <p>The mentor interaction model is governed by the following principles.</p>
+
+  <div class="principle">
+    <div class="p-title">Language of instruction.</div>
+    <p>The platform is designed for Hebrew-language instruction, and all mentor responses are generated in Hebrew to ensure accessibility and reduce cognitive overhead during problem solving.</p>
+  </div>
+  <div class="principle">
+    <div class="p-title">Prohibition on direct answers.</div>
+    <p>Direct answers to homework and examination problems are explicitly prohibited. The mentor is instructed to withhold final solutions and to avoid any formulation that could be used directly as a submitted answer. This constraint is implemented at the level of the model's instructional prompt and represents a non-negotiable feature of the mentor's behavior.</p>
+  </div>
+  <div class="principle">
+    <div class="p-title">Guidance through directed questioning.</div>
+    <p>Rather than providing explanations in declarative form, the mentor engages the student through questions that direct their attention toward relevant definitions, strategies, or aspects of the problem not yet considered. This Socratic orientation reflects the view that formal reasoning skills require active construction by the student.</p>
+  </div>
+  <div class="principle">
+    <div class="p-title">Contextual and adaptive feedback.</div>
+    <p>The mentor receives the student's question together with its formal statement and, where available, the student's description of their current approach. Guidance is therefore specific to the student's current state rather than generic to the problem type.</p>
+  </div>
+  <div class="principle">
+    <div class="p-title">Formal mathematical notation.</div>
+    <p>All responses involving mathematical content are formatted using standard notation, ensuring consistency with the formal register of the course material.</p>
+  </div>
+
+  <p>Mentor interaction history is persisted to the platform's database and associated with the relevant student account and course. Conversation sessions are retained for a defined period following the last interaction and are subsequently removed in accordance with the platform's data retention policy.</p>
+</div>
+
+<!-- 10 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 10</span><h2>Socratic Mentor — Static Guidance Layer</h2></div>
+  <p>In addition to the AI-powered conversational mentor, the platform provides a static Socratic guidance layer organized by topic. This component supports students who prefer structured self-directed reflection and provides guidance in contexts where AI-assisted interaction may not be appropriate or accessible.</p>
+  <p>For each topic, the static Socratic layer provides <em>guiding questions</em> that direct the student's attention toward key concepts and logical relationships; <em>common error notices</em> that identify the specific misconceptions and technical errors students most frequently encounter; and <em>strategy hints</em> that outline the general approach or structure of solutions within the topic without revealing specific solution steps. The static Socratic layer operates without external AI services, ensuring availability and consistency across all access contexts.</p>
+</div>
+
+<!-- 11 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 11</span><h2>Content Management</h2></div>
+  <p>The platform provides instructors with a dedicated content management interface that supports the creation, editing, and organization of all course material without technical intermediation. Theory items and questions can be edited directly within the platform interface, with edits synchronized to the persistent data layer in real time.</p>
+  <p>Each content item can be annotated with instructor notes visible to students, and can be marked to indicate relative importance. Instructors can upload source documents in PDF format and extract content using an integrated document processing service. Extracted content is reviewed and edited by the instructor before being published to the student-facing course structure.</p>
+</div>
+
+<!-- 12 -->
+<div class="section page-break">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 12</span><h2>Instructor Dashboard and Monitoring</h2></div>
+  <p>The platform provides instructors with a real-time monitoring interface for ongoing academic supervision. This dashboard makes the student learning process visible to the instructor throughout the semester rather than only at formal assessment points.</p>
+  <p>The monitoring layer allows instructors to observe:</p>
+  <ul>
+    <li>comprehension status distributions for all theory items in the course</li>
+    <li>solution status distributions for all questions in the course</li>
+    <li>completion patterns for homework assignments by week and by student</li>
+    <li>aggregate engagement metrics across the enrolled class</li>
+    <li>individual student progress profiles for targeted follow-up</li>
+  </ul>
+  <p>Updates are reflected dynamically as students interact with the platform. In addition, the platform provides a dedicated alert management system that automatically generates alert records when a student's message to the AI mentor matches a defined set of monitored terms. The instructor can review the flagged message in context and mark the alert as reviewed.</p>
+</div>
+
+<!-- 13 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 13</span><h2>Chat Monitoring and Academic Integrity</h2></div>
+  <p>The AI mentor interaction log is accessible to instructors in its entirety. Each conversation session is associated with a student account and a course, and the instructor can review any session to assess the nature of the student's questions, the guidance provided by the system, and the overall pattern of AI-assisted interaction.</p>
+  <p>This transparency model serves two functions. First, it supports pedagogical oversight by allowing instructors to identify patterns of difficulty not captured by problem-level tracking. Second, it supports academic integrity by providing visibility into how students use the AI mentor, including whether interactions are aligned with the platform's pedagogical constraints. The combination of behavioral constraints enforced at the system instruction level and a transparent access log represents a two-layer approach to maintaining the integrity of AI-assisted instruction.</p>
+</div>
+
+<!-- 14 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 14</span><h2>Instructor Content Review</h2></div>
+  <p>The content review interface provides instructors with a unified view of all theory items and questions within the course, organized by week and topic, with inline editing capabilities for each item. From this interface, an instructor can:</p>
+  <ul>
+    <li>read and edit the formal statement of any theory item or question</li>
+    <li>add, modify, or remove instructor notes attached to any content item</li>
+    <li>adjust the importance flag of any content item</li>
+    <li>review comprehension and solution status distributions for each item</li>
+  </ul>
+  <p>Changes are persisted to the course data layer in real time and are immediately visible to enrolled students, supporting a course content model that is continuously maintained rather than fixed at the start of the term.</p>
+</div>
+
+<!-- 15 -->
+<div class="section page-break">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 15</span><h2>Data Collected by the System</h2></div>
+  <p>The platform records a structured set of educational data generated through student interaction. This includes:</p>
+  <ul>
+    <li>theory item comprehension states and their update history</li>
+    <li>question solution states and associated personal notes</li>
+    <li>AI mentor conversation sessions including all messages and their timestamps</li>
+    <li>chat alert records generated by monitored content patterns</li>
+    <li>course and content navigation events</li>
+  </ul>
+  <p>These records provide an academic trace of student engagement over time. At the instructional level, the collected data supports analysis of comprehension patterns by topic and week, difficulty distributions across problem sets, engagement patterns over the duration of the course, class-wide trends in self-reported understanding, and AI mentor interaction patterns.</p>
+</div>
+
+<!-- 16 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 16</span><h2>Authentication and Access Control</h2></div>
+  <p>The platform implements a two-tier access control model. Student access is governed by standard account-based authentication using email credentials. Instructor access requires a separate authorization mechanism based on administrative identity claims issued through the platform's authentication infrastructure. This ensures that instructor-facing interfaces are accessible only to authorized academic staff regardless of the credentials used for login.</p>
+  <p>A dedicated instructor onboarding workflow allows new members of academic staff to register their interest in using the platform. Submitted onboarding information is reviewed by the system administrator prior to access being granted.</p>
+</div>
+
+<!-- 17 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 17</span><h2>Security and Data Integrity</h2></div>
+  <p>Student data, including comprehension records, solution notes, and mentor interaction logs, is stored in a cloud-based database governed by per-user and per-role access rules. These rules ensure that each student can access only their own records, while authorized instructors have read access to student records within the courses they manage. Write access to course content is restricted to authorized instructors. The rules governing database access are defined at the infrastructure level and are enforced independently of the application layer.</p>
+</div>
+
+<!-- 18 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 18</span><h2>System Architecture</h2></div>
+  <p>The platform is built on a modern web application stack. The frontend is implemented using Next.js with React, providing server-rendered and client-rendered interfaces for both student and instructor roles. The application is written in TypeScript throughout. The persistent data layer uses a cloud-based document database supporting real-time synchronization, enabling instructor monitoring interfaces to reflect current student activity without polling.</p>
+  <p>Authentication is managed through a cloud-based identity service supporting email-based credentials and administrative identity claims. AI mentor functionality is implemented through a server-side API route mediating communication between the student interface and the underlying language model, ensuring that behavioral constraints are enforced centrally and cannot be bypassed at the client level. Mathematical notation is rendered using a standard typesetting library, and PDF document processing uses a document parsing service that extracts structured text for instructor review prior to publication.</p>
+</div>
+
+<!-- 19 -->
+<div class="section page-break">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 19</span><h2>Current Scope and Limitations</h2></div>
+  <p>The current academic scope of the platform is centered on theoretical computer science instruction at the introductory university level. The system is designed around a content model based on formal definitions, theorems, and structured problem sets, and assumes a pedagogical model in which students develop formal reasoning skills through guided independent practice.</p>
+  <p>The platform does not include automated evaluation of submitted solutions. Assessment of student work on theoretical problems requires human judgment and is not within the scope of the automated system. The platform's role in the assessment process is limited to tracking self-reported progress and providing engagement data that supports, rather than replaces, human evaluation. The platform is currently optimized for Hebrew-language instruction, though the underlying architecture does not prevent adaptation to other languages.</p>
+</div>
+
+<!-- 20 -->
+<div class="section">
+  <div class="section-rule"></div>
+  <div class="section-header"><span class="section-num">§ 20</span><h2>Work in Progress</h2></div>
+  <p><em>Analytics infrastructure</em> is being extended to provide richer aggregate views of class performance, including statistical summaries of comprehension and solution distributions over time. <em>The grading and gradebook component</em> is being developed to support the recording and management of formal assessment results alongside existing engagement data. <em>The student import workflow</em> is being refined to support bulk enrollment from structured data files. <em>Adaptive learning features</em> are under design, with the objective of surfacing prioritized review recommendations to individual students based on their accumulated comprehension and solution history.</p>
+  <p>These developments are intended to strengthen the platform's role as a data-informed instructional system capable of supporting the full academic lifecycle of a theoretical computer science course.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- Appendix A -->
+<div class="app-section page-break">
+  <div class="app-rule"></div>
+  <h2>Appendix A — Student-Facing Page Structure</h2>
+  <p>The student-facing interface of the platform is organized around the following principal areas.</p>
+  <p><span class="np-title">Authentication pages</span> support account login and session management.</p>
+  <p><span class="np-title">The course dashboard</span> provides an overview of the enrolled course, including week-by-week progress indicators and summary statistics.</p>
+  <p><span class="np-title">The weekly study interface</span> presents the theory items and questions associated with each course week in a structured, navigable format.</p>
+  <p><span class="np-title">Topic navigation pages</span> allow students to browse the course material organized by subject area.</p>
+  <p><span class="np-title">Question collection pages</span> provide filtered access to tutorial exercises, homework problems, and past examination questions across the full course.</p>
+  <p><span class="np-title">Individual question pages</span> present the problem statement, solution status controls, personal note management, and access to the AI mentor.</p>
+  <p><span class="np-title">The personal question list</span> maintains a student-defined collection of flagged problems for targeted review.</p>
+  <p><span class="np-title">The homework analysis view</span> presents week-by-week summaries of homework completion status.</p>
+  <p><span class="np-title">The review center</span> provides a filtered view of all theory items organized by the student's recorded comprehension state, supporting targeted examination preparation.</p>
+  <p><span class="np-title">The AI mentor interface</span> provides the conversational interaction environment for AI-assisted guidance.</p>
+  <p><span class="np-title">The Socratic mentor interface</span> provides topic-organized access to static guiding questions, common error notices, and strategy hints.</p>
+  <p><span class="np-title">The sources reference page</span> presents the full list of source documents associated with the course, with traceability links to derived content items.</p>
+</div>
+
+<!-- Appendix B -->
+<div class="app-section">
+  <div class="app-rule"></div>
+  <h2>Appendix B — Instructor-Facing Page Structure</h2>
+  <p>The instructor-facing interface of the platform is organized around the following principal areas.</p>
+  <p><span class="np-title">The course selection dashboard</span> provides access to all courses managed by the instructor.</p>
+  <p><span class="np-title">The course overview page</span> presents aggregate metrics and navigation to all administrative tools for the selected course.</p>
+  <p><span class="np-title">The student management interface</span> supports the review of enrolled students and the management of course enrollment.</p>
+  <p><span class="np-title">The question bank interface</span> provides tools for creating, reviewing, and organizing the question content of the course.</p>
+  <p><span class="np-title">The assignment management interface</span> supports the creation and tracking of homework assignments.</p>
+  <p><span class="np-title">The curriculum management interface</span> supports the organization of the course into weeks and topics, and provides access to the PDF upload and content extraction workflow.</p>
+  <p><span class="np-title">The content review interface</span> provides inline editing capabilities for all theory items and questions within the course.</p>
+  <p><span class="np-title">The topic management interface</span> supports the definition and organization of topics within the course structure.</p>
+  <p><span class="np-title">The analytics dashboard</span> presents aggregate engagement and comprehension statistics for the enrolled class.</p>
+  <p><span class="np-title">The insights interface</span> provides pattern-level analysis of class-wide difficulty and engagement trends.</p>
+  <p><span class="np-title">The adaptive learning settings interface</span> provides controls for the configuration of prioritized review recommendations.</p>
+  <p><span class="np-title">The mistake tracking interface</span> presents aggregated records of common error patterns observed across the class.</p>
+  <p><span class="np-title">The chat monitoring and alert interface</span> provides access to the AI mentor interaction log and to the alert management system.</p>
+  <p><span class="np-title">The gradebook interface</span> supports the recording and management of formal assessment results.</p>
+</div>
+
+<!-- Appendix C -->
+<div class="app-section">
+  <div class="app-rule"></div>
+  <h2>Appendix C — Core Data Model</h2>
+  <p>The platform's persistent data layer is organized around the following principal record categories.</p>
+  <p><span class="np-title">Student records</span> capture account-level information and course enrollment.</p>
+  <p><span class="np-title">Theory feedback records</span> capture the comprehension states recorded by individual students for individual theory items, with timestamps supporting temporal analysis of understanding development.</p>
+  <p><span class="np-title">Course content records</span> capture the structured content of each course, organized by week and content type, including both theory items and questions.</p>
+  <p><span class="np-title">Mentor interaction records</span> capture the full message history of each student's AI mentor sessions, associated with the relevant course and student account.</p>
+  <p><span class="np-title">Alert records</span> capture instances in which monitored content patterns were detected in mentor interactions, along with the contextual information required for instructor review.</p>
+  <p><span class="np-title">Course metadata records</span> capture the configuration of each course, including the defined set of monitored content terms used by the alert system.</p>
+  <p><span class="np-title">Instructor onboarding records</span> capture the information submitted by prospective academic users during the access request process.</p>
+</div>
+
+<div class="footer">
+  <span>Academic Learning Platform — System Description</span>
+  <span>Lia Mesika · March 2026 · v1.0</span>
+</div>
+
+</body>
+</html>
