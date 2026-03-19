@@ -14,3 +14,4 @@
 | [04_chat_system.md](./04_chat_system.md) | מערכת הצ'אט – AI Mentor, System Prompt, Streaming, Alerts |
 | [05_firebase_collections.md](./05_firebase_collections.md) | כל ה-Collections, Security Rules, Storage, Indexes |
 | [06_file_structure.md](./06_file_structure.md) | מפת כל הקבצים בפרויקט עם הסברים |
+| [07_student_content_pages.md](./07_student_content_pages.md) | דפי תוכן סטודנט – דף שבוע, דף נושאים, סינכרון Firestore, TheoryItemCard |
