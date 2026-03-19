@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
-import { LogOut, Users, BookOpen, BarChart2 } from 'lucide-react';
+import { LogOut, Users, BookOpen, BarChart2, LayoutDashboard } from 'lucide-react';
 
 const courses = [
   {
@@ -44,8 +44,15 @@ export default function AdminIndexPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-400">פורטל מרצים</p>
             <h1 className="text-lg font-bold text-white">בחר קורס לניהול</h1>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <span className="text-sm text-slate-400">{user?.email}</span>
+            <Link
+              href="/admin/overview"
+              className="flex items-center gap-2 rounded-xl border border-indigo-500/30 bg-indigo-500/10 px-3 py-2 text-sm text-indigo-300 transition hover:border-indigo-400/50 hover:text-indigo-200"
+            >
+              <LayoutDashboard className="h-4 w-4" />
+              סקירה כללית
+            </Link>
             <button
               onClick={handleSignOut}
               className="flex items-center gap-2 rounded-xl border border-white/10 px-3 py-2 text-sm text-slate-400 transition hover:border-white/20 hover:text-red-400"
