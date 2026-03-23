@@ -7,6 +7,11 @@ import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { useAuth } from '@/contexts/AuthContext';
 import type { CourseId } from '@/lib/math-platform/types';
 import {
+  getCourseWeeks,
+  getTheoryItemsForWeek,
+  getQuestionsForWeek,
+} from '@/lib/math-platform/data';
+import {
   Star, Eye, EyeOff, Save, ChevronDown, ChevronUp,
   CheckCircle, Loader2, MessageSquarePlus, Trash2,
   BookOpen, ClipboardList, FileText, GraduationCap, RefreshCw,
@@ -358,7 +363,7 @@ export default function ContentReviewPage() {
   const [selectedWeek, setSelectedWeek] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  /* load all weeks */
+  /* load all weeks — try Firestore first, fall back to static data */
   useEffect(() => {
     if (!courseId) return;
     setLoading(true);
@@ -377,6 +382,35 @@ export default function ContentReviewPage() {
           };
           result[d.id] = { data, dirty: false, saving: false, saved: false };
         });
+
+        // Fall back to static data for weeks not in Firestore
+        const staticWeeks = getCourseWeeks(courseId);
+        for (const sw of staticWeeks) {
+          if (result[sw.id]) continue;
+          const items = getTheoryItemsForWeek(sw.id);
+          const questions = getQuestionsForWeek(sw.id);
+          if (items.length === 0 && questions.length === 0) continue;
+          const data: WeekContent = {
+            theoryItems: addIds(
+              items.map(i => ({ kind: i.kind, title: i.title, content: i.content, sourcePage: i.sourcePage })),
+              'theory',
+            ),
+            tutorialQuestions: addIds(
+              questions.filter(q => q.sourceType === 'tutorial').map((q, idx) => ({ number: idx + 1, content: q.content, difficulty: q.difficulty, hint: q.hint })),
+              'tut',
+            ),
+            homeworkQuestions: addIds(
+              questions.filter(q => q.sourceType === 'homework').map((q, idx) => ({ number: idx + 1, content: q.content, difficulty: q.difficulty, hint: q.hint })),
+              'hw',
+            ),
+            examQuestions: addIds(
+              questions.filter(q => q.sourceType === 'exam').map((q, idx) => ({ number: idx + 1, content: q.content, difficulty: q.difficulty, hint: q.hint })),
+              'exam',
+            ),
+          };
+          result[sw.id] = { data, dirty: false, saving: false, saved: false };
+        }
+
         setWeeks(result);
         const sorted = Object.keys(result).sort();
         if (sorted.length) setSelectedWeek(sorted[0]);
