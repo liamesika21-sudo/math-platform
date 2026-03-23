@@ -490,6 +490,7 @@ weeks.push(
       '|A|≤|B| אמ"מ יש פונ׳ מלאה וחח"ע מ-A ל-B',
       'קבוצה אינסופית ⟺ שקולה לתת-קבוצה ממש שלה',
     ],
+    lectureSummaryUrl: '/lecture-summaries/logic-w2.html',
   },
 );
 

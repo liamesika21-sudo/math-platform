@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרצאה 2 - השוואת קבוצות | לוגיקה ותורת הקבוצות</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --card-bg: #ffffff;
+            --primary: #1a3a5c;
+            --accent: #c0392b;
+            --green: #2e7d32;
+            --purple: #6a1b9a;
+            --blue: #1565c0;
+            --text: #2c2c2c;
+            --text-light: #555;
+            --border: #e0d6c8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans Hebrew', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary), #2c5f8a);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+        .header .lecture-num {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border-right: 4px solid var(--accent);
+        }
+        .toc h2 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+        .toc ol {
+            padding-right: 20px;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .toc a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Section */
+        .section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.5em;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section h3 {
+            color: var(--green);
+            font-size: 1.15em;
+            margin: 18px 0 10px;
+        }
+
+        /* Definition box */
+        .def-box {
+            background: #fef9f0;
+            border-right: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .def-box .label {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Theorem box */
+        .thm-box {
+            background: #f0f4fe;
+            border-right: 4px solid var(--blue);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .thm-box .label {
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Example box */
+        .example-box {
+            background: #f2f9f2;
+            border-right: 4px solid var(--green);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .example-box .label {
+            color: var(--green);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Note box */
+        .note-box {
+            background: #faf0fa;
+            border-right: 4px solid var(--purple);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .note-box .label {
+            color: var(--purple);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        ul, ol {
+            padding-right: 22px;
+            margin: 8px 0;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+
+        .math-block {
+            text-align: center;
+            margin: 16px 0;
+            font-size: 1.15em;
+            direction: ltr;
+        }
+
+        .diagram {
+            display: flex;
+            justify-content: center;
+            margin: 18px 0;
+        }
+        .diagram svg {
+            max-width: 100%;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        @media (max-width: 600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .header { padding: 24px 16px; }
+            .header h1 { font-size: 1.6em; }
+            .section { padding: 20px 16px; }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            text-align: center;
+        }
+        th {
+            background: #f0ebe3;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .arrow-chain {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 16px 0;
+            direction: ltr;
+            flex-wrap: wrap;
+        }
+        .arrow-chain .box {
+            background: #e8f0fe;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            text-align: center;
+        }
+        .arrow-chain .arrow {
+            font-size: 1.4em;
+            color: var(--green);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .katex { font-size: 1.1em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="lecture-num">לוגיקה ותורת הקבוצות - אוניברסיטת רייכמן</div>
+        <h1>הרצאה 2 - השוואת קבוצות</h1>
+        <div class="subtitle">Set Comparison</div>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h2>תוכן עניינים</h2>
+        <ol>
+            <li><a href="#cardinality">עוצמה (Cardinality)</a></li>
+            <li><a href="#equivalent">קבוצות שקולות - \(|A|=|B|\)</a></li>
+            <li><a href="#functions">תזכורת: פונקציות</a></li>
+            <li><a href="#inverse">פונקציה הופכית והרכבת פונקציות</a></li>
+            <li><a href="#galileo">הפרדוקס של גלילאו גלילי</a></li>
+            <li><a href="#examples">דוגמאות להשוואת קבוצות</a></li>
+            <li><a href="#equivalence-relation">יחס שקילות</a></li>
+            <li><a href="#order">סדר עוצמות - \(|A| \leq |B|\)</a></li>
+            <li><a href="#strict">עוצמה ממש קטנה - \(|A| < |B|\)</a></li>
+            <li><a href="#finite-infinite">קבוצות סופיות ואינסופיות</a></li>
+            <li><a href="#summary">סיכום</a></li>
+        </ol>
+    </div>
+
+    <!-- 1. Cardinality -->
+    <div class="section" id="cardinality">
+        <h2>1. עוצמה - Cardinality</h2>
+        <p>כיצד ניתן להשוות את הגודל של שתי קבוצות?</p>
+        <ul>
+            <li><strong>ספירת איברים</strong> - עובד רק לקבוצות סופיות.</li>
+            <li><strong>יש דרך יותר בסיסית</strong> שמתאימה גם לקבוצות סופיות וגם לאינסופיות.</li>
+        </ul>
+
+        <div class="def-box">
+            <div class="label">הגדרה: עוצמה</div>
+            ה-"גודל" של קבוצה \(A\) מסומן \(|A|\) ונקרא <strong>עוצמה</strong> (cardinality).
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <ul>
+                <li>\(|\{8,9,4\}| = 3\)</li>
+                <li>\(|\{10^{100}, 999\}| = 2\)</li>
+                <li>\(|\{a,b,c,d,e,f\}| = 6\)</li>
+                <li>\(|\mathbb{N}| = ?\) &nbsp; \(|\mathbb{R}| = ?\)</li>
+                <li>\(|\mathbb{N}| \stackrel{?}{=} |\mathbb{Z}|\) &nbsp; \(|\mathbb{N}| \stackrel{?}{=} |\mathbb{R}|\)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. Equivalent Sets -->
+    <div class="section" id="equivalent">
+        <h2>2. קבוצות שקולות - \(|A|=|B|\), \(A \sim B\)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: שקילות קבוצות</div>
+            קבוצות \(A\) ו-\(B\) הינן <strong>שוות עוצמה</strong> (או <strong>שקולות</strong>, equivalent), ונסמן זאת ע"י \(|A|=|B|\) או \(A \sim B\), אם קיימת <strong>פונקציית שקילות (bijection)</strong> ביניהן.
+            <br><br>
+            כלומר, פונקציה <strong>מלאה</strong>, <strong>חד-חד ערכית</strong> ו<strong>על</strong> מ-\(A\) ל-\(B\).
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <ul>
+                <li>\(\{2^{100}, 4\} \sim \{a, b\}\) &nbsp;&nbsp; \(\Rightarrow\) &nbsp; \(|\{2^{100}, 4\}| = |\{a,b\}|\)</li>
+                <li>\(|\{2, 3, 4\}| \neq |\{a, b\}|\)</li>
+                <li>\(A = \{1,2,3,4,...\}\), \(B = \{2,3,4,5,...\}\) &nbsp; \(\Rightarrow\) &nbsp; \(|A| = |B|\) (באמצעות \(f(n)=n+1\))</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3. Functions Review -->
+    <div class="section" id="functions">
+        <h2>3. תזכורת: פונקציות</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: פונקציה</div>
+            פונקציה הינה <strong>מיפוי</strong> מקבוצה \(A\) (התחום) לקבוצה \(B\) (הקו-תחום).<br>
+            התחום והקו-תחום יכולים להיות זהים או שונים.<br>
+            פונקציה חייבת להיות <strong>מוגדרת היטב</strong> (Well defined): כל איבר בתחום ממופה <strong>לעד איבר אחד</strong> בקו-תחום.
+        </div>
+
+        <h3>סוגי פונקציות</h3>
+
+        <table>
+            <tr>
+                <th>סוג</th>
+                <th>שם באנגלית</th>
+                <th>תנאי</th>
+            </tr>
+            <tr>
+                <td><strong>מלאה</strong></td>
+                <td>Total</td>
+                <td>כל איברי \(A\) ממופים</td>
+            </tr>
+            <tr>
+                <td><strong>חח"ע (1-1)</strong></td>
+                <td>Injective</td>
+                <td>אין איבר ב-\(B\) שממופים אליו יותר מאיבר אחד מ-\(A\)</td>
+            </tr>
+            <tr>
+                <td><strong>על</strong></td>
+                <td>Onto / Surjective</td>
+                <td>יש מיפוי אל כל איברי \(B\)</td>
+            </tr>
+            <tr>
+                <td><strong>פונקציית שקילות</strong></td>
+                <td>Bijection</td>
+                <td>מלאה + חח"ע + על</td>
+            </tr>
+        </table>
+
+        <div class="note-box">
+            <div class="label">פונקציה חלקית ומלאה</div>
+            <ul>
+                <li>כל פונקציה (מוגדרת היטב) הינה <strong>פונקציה חלקית</strong> (partial function).</li>
+                <li>חלק מהפונקציות החלקיות הינן גם <strong>מלאות</strong> (total function).</li>
+                <li>בקורס מתמטיקה בדידה עסקתם רק בפונקציות מלאות. בקורס זה אנו עוסקים גם בפונקציות שאינן מלאות.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 4. Inverse & Composition -->
+    <div class="section" id="inverse">
+        <h2>4. פונקציה הופכית והרכבת פונקציות</h2>
+
+        <h3>פונקציה הופכית (Inverse Function)</h3>
+
+        <div class="def-box">
+            <div class="label">פונקציה הופכית שמאלית</div>
+            לפונקציה מלאה ו-חח"ע \(f: A \to B\) יש פונקציה הופכית (שמאלית), \(f^{-1}: B \to A\), שהינה חח"ע ועל, אולי לא מלאה. נקראת <strong>left inverse function</strong>.
+        </div>
+
+        <div class="def-box">
+            <div class="label">פונקציה הופכית מלאה</div>
+            לפונקציית שקילות (מלאה, חח"ע ועל) \(f: A \leftrightarrow B\) יש פונקציה הופכית \(f^{-1}: B \leftrightarrow A\) שהיא גם מלאה, חח"ע ועל.
+        </div>
+
+        <h3>הרכבת פונקציות (Composition)</h3>
+
+        <div class="def-box">
+            <div class="label">הגדרה</div>
+            עבור פונקציות \(f: A \to B\) ו-\(g: B \to C\), ההרכבה מוגדרת להיות:
+            <div class="math-block">
+                \(g \circ f(x) := g(f(x))\)
+            </div>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">תכונה חשובה</div>
+            הרכבה של פונקציות שקילות הינה גם כן פונקציית שקילות.
+        </div>
+    </div>
+
+    <!-- 5. Galileo's Paradox -->
+    <div class="section" id="galileo">
+        <h2>5. הפרדוקס של גלילאו גלילי (1638)</h2>
+
+        <p>נתבונן על קבוצת המספרים הטבעיים:</p>
+        <div class="math-block">
+            \(0, \; 1, \; 2, \; 3, \; 4, \; 5, \; 6, \; 7, \; 8, \; 9, \; \ldots\)
+        </div>
+
+        <p>נוסיף סימון "ריבוע" ליד כל מספר:</p>
+        <div class="math-block">
+            \(0^2, \; 1^2, \; 2^2, \; 3^2, \; 4^2, \; 5^2, \; 6^2, \; 7^2, \; 8^2, \; 9^2, \; \ldots\)
+        </div>
+
+        <p>נפרש את הסימן כהעלאה בריבוע:</p>
+        <div class="math-block">
+            \(0, \; 1, \; 4, \; 9, \; 16, \; 25, \; 36, \; 49, \; 64, \; 81, \; \ldots\)
+        </div>
+
+        <div class="note-box">
+            <div class="label">הפרדוקס</div>
+            הקבוצה של ריבועי המספרים הטבעיים \(\{0^2, 1^2, 2^2, 3^2, \ldots\}\) <strong>מוכלת ממש</strong> בקבוצת כל הטבעיים \(\mathbb{N}\) — אך ישנה <strong>התאמה מלאה</strong> (bijection) ביניהן!
+            <br><br>
+            הפונקציה \(f(n) = n^2\) היא חח"ע ועל מ-\(\mathbb{N}\) אל קבוצת הריבועים.
+        </div>
+    </div>
+
+    <!-- 6. More Examples -->
+    <div class="section" id="examples">
+        <h2>6. דוגמאות נוספות להשוואת קבוצות</h2>
+
+        <h3>\(|\mathbb{N}| \stackrel{?}{=} |\mathbb{Z}|\)</h3>
+        <p>כן! ניתן לבנות bijection מ-\(\mathbb{N}\) ל-\(\mathbb{Z}\) למשל:</p>
+        <div class="math-block">
+            \(0 \mapsto 0, \quad 1 \mapsto 1, \quad 2 \mapsto -1, \quad 3 \mapsto 2, \quad 4 \mapsto -2, \quad \ldots\)
+        </div>
+
+        <h3>\(|(0,1)| \stackrel{?}{=} |(1,\infty)|\)</h3>
+        <p>כן! הפונקציה \(f(x) = \frac{1}{x}\) היא bijection מ-\((0,1)\) ל-\((1,\infty)\).</p>
+
+        <h3>\(|(0,1)| \stackrel{?}{=} |[0,1)|\)</h3>
+        <p>כן! למרות ש-\((0,1) \subset [0,1)\), ניתן לבנות bijection ביניהן.</p>
+    </div>
+
+    <!-- 7. Equivalence Relation -->
+    <div class="section" id="equivalence-relation">
+        <h2>7. יחס שקילות</h2>
+
+        <p>האם היחס של שקילות קבוצות (אותה העוצמה) אכן <strong>יחס שקילות</strong>?</p>
+
+        <div class="def-box">
+            <div class="label">תזכורת: יחס שקילות</div>
+            יחס \(R\) הינו יחס שקילות אם הוא:
+            <ul>
+                <li><strong>רפלקסיבי</strong> (Reflexive): לכל \(x\), מתקיים \(xRx\).</li>
+                <li><strong>סימטרי</strong> (Symmetric): לכל \(x\) ו-\(y\), \(xRy\) אמ"מ \(yRx\).</li>
+                <li><strong>טרנזיטיבי</strong> (Transitive): לכל \(x, y, z\), אם \(xRy\) ו-\(yRz\) אז \(xRz\).</li>
+            </ul>
+        </div>
+
+        <h3>דוגמאות ליחסי שקילות</h3>
+        <table>
+            <tr>
+                <th>יחס</th>
+                <th>רפלקסיבי</th>
+                <th>סימטרי</th>
+                <th>טרנזיטיבי</th>
+                <th>יחס שקילות?</th>
+            </tr>
+            <tr><td>יחס השוויון "="</td><td>כן</td><td>כן</td><td>כן</td><td>כן</td></tr>
+            <tr><td>"אח של"</td><td>לא</td><td>כן</td><td>כן</td><td>לא</td></tr>
+            <tr><td>"אח/אחות של"</td><td>לא</td><td>כן</td><td>כן</td><td>לא</td></tr>
+            <tr><td>"אותה אזרחות"</td><td>כן</td><td>כן</td><td>כן</td><td>כן</td></tr>
+            <tr><td>"משולשים דומים"</td><td>כן</td><td>כן</td><td>כן</td><td>כן</td></tr>
+        </table>
+
+        <h3>שקילות קבוצות הוא יחס שקילות</h3>
+        <div class="thm-box">
+            <div class="label">הוכחה</div>
+            <ul>
+                <li><strong>רפלקסיבי:</strong> לכל קבוצה \(A\), \(A \sim A\) (פונקציית הזהות היא bijection).</li>
+                <li><strong>סימטרי:</strong> אם \(A \sim B\) אז גם \(B \sim A\) (הפונקציה ההופכית של bijection היא bijection).</li>
+                <li><strong>טרנזיטיבי:</strong> אם \(A \sim B\) ו-\(B \sim C\) אז \(A \sim C\) (הרכבת bijections היא bijection).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 8. Order of Cardinalities -->
+    <div class="section" id="order">
+        <h2>8. סדר עוצמות - \(|A| \leq |B|\)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: קטנה או שווה עוצמה</div>
+            קבוצה \(A\) קטנה או שוות-עוצמה לקבוצה \(B\), בסימון \(|A| \leq |B|\), אם יש <strong>פונקציה מלאה ו-חח"ע</strong> מ-\(A\) ל-\(B\).
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה חלופית</div>
+            \(|A| \leq |B|\) אם יש פונקציה (חלקית או מלאה) מ-\(B\) <strong>על</strong> \(A\).
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <ul>
+                <li>\(|\{a,b\}| \leq |\{2,5,8\}|\)</li>
+                <li>\(|\{a,b\}| \leq |\mathbb{N}|\)</li>
+                <li>\(|\mathbb{N}| \leq |\mathbb{R}|\)</li>
+                <li>\(|(0,\infty)| \leq |(0,1)|\)</li>
+            </ul>
+        </div>
+
+        <h3>משפט: שקילות בין הגדרות</h3>
+        <div class="thm-box">
+            <div class="label">משפט</div>
+            לכל שתי קבוצות לא ריקות \(A\) ו-\(B\), מתקיים ש- \(|A| \leq |B|\) <strong>אם ורק אם</strong> יש פונקציה מ-\(B\) על \(A\).
+            <br><br>
+            <strong>מתחבאים כאן שני משפטים:</strong>
+            <ol>
+                <li><strong>משפט 1:</strong> \(|A| \leq |B|\) אמ"מ יש פונקציה מ-\(B\) על \(A\).</li>
+                <li><strong>משפט 2:</strong> יש פונקציה מ-\(B\) על \(A\) אמ"מ יש פונקציה מלאה מ-\(B\) על \(A\).</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <div class="label">רעיון ההוכחה (סכמטית)</div>
+            <p><strong>כיוון א':</strong> אם \(|A| \leq |B|\) אז יש פונקציה מלאה ו-חח"ע \(f: A \to B\). ניתן "להפוך" אותה כדי לקבל פונקציה מ-\(B\) על \(A\).</p>
+            <p><strong>כיוון ב':</strong> אם יש פונקציה מ-\(B\) על \(A\), ניתן לבחור לכל איבר ב-\(A\) מקור אחד ב-\(B\), ולקבל פונקציה חח"ע מ-\(A\) ל-\(B\).</p>
+        </div>
+    </div>
+
+    <!-- 9. |A|≤|B| is a weak total order -->
+    <div class="section" id="order-relation">
+        <h2>8.1 \(|A| \leq |B|\) הינו יחס סדר מלא חלש</h2>
+
+        <div class="def-box">
+            <div class="label">תזכורת: יחס סדר מלא חלש (Weak Total Order)</div>
+            יחס סדר מלא חלש \(R\) הוא יחס שהוא:
+            <ul>
+                <li><strong>רפלקסיבי:</strong> \(xRx\)</li>
+                <li><strong>אנטי-סימטרי:</strong> אם \(xRy\) ו-\(yRx\) אז \(x = y\)</li>
+                <li><strong>טרנזיטיבי:</strong> אם \(xRy\) ו-\(yRz\) אז \(xRz\)</li>
+                <li><strong>מלא (Total):</strong> \(xRy\) או \(yRx\) (לכל שני איברים)</li>
+            </ul>
+        </div>
+
+        <h3>דוגמאות ליחסי סדר</h3>
+        <table>
+            <tr>
+                <th>יחס</th>
+                <th>יחס סדר מלא חלש?</th>
+            </tr>
+            <tr><td>\(\subseteq\) בין קבוצות</td><td>לא (לא מלא)</td></tr>
+            <tr><td>\(\leq\) בין מספרים</td><td>כן</td></tr>
+            <tr><td>\(<\) בין מספרים</td><td>לא (לא רפלקסיבי)</td></tr>
+        </table>
+
+        <div class="thm-box">
+            <div class="label">טענה</div>
+            \(|A| \leq |B|\) אכן מקיים את כל התנאים של יחס סדר מלא חלש:
+            <ul>
+                <li><strong>מלא:</strong> \(|A| \leq |B|\) או \(|B| \leq |A|\) (לכל קבוצות \(A, B\)).</li>
+                <li><strong>רפלקסיבי:</strong> \(|A| \leq |A|\).</li>
+                <li><strong>אנטי-סימטרי:</strong> אם \(|A| \leq |B|\) ו-\(|B| \leq |A|\) אז \(|A| = |B|\).</li>
+                <li><strong>טרנזיטיבי:</strong> אם \(|A| \leq |B|\) ו-\(|B| \leq |C|\) אז \(|A| \leq |C|\).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 9. Strictly Smaller -->
+    <div class="section" id="strict">
+        <h2>9. עוצמה ממש קטנה - \(|A| < |B|\)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: קטנה ממש (Strictly Smaller)</div>
+            עבור קבוצות \(A\) ו-\(B\), נגדיר ש-\(A\) <strong>קטנה ממש</strong> מ-\(B\), ונסמן \(|A| < |B|\), אם:
+            <div class="math-block">
+                \(|A| \leq |B| \quad \text{ו-} \quad |A| \neq |B|\)
+            </div>
+            כלומר, קיימת פונקציה מלאה וחח"ע מ-\(A\) ל-\(B\), <strong>ולא קיימת</strong> פונקציה מלאה ו-חח"ע מ-\(B\) ל-\(A\).
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <ul>
+                <li>\(|\{4,1,2\}| < |\{2,8\}|\) &nbsp; (3 < 2? לא!) — תיקון: \(|\{2,8\}| < |\{4,1,2\}|\)</li>
+                <li>\(|\{7,8,9\}| < |\mathbb{N}|\)</li>
+                <li>\(|\mathbb{Z}| \not< |\mathbb{N}|\) &nbsp; (כי \(|\mathbb{N}| = |\mathbb{Z}|\))</li>
+                <li>\(|\mathbb{N}| \stackrel{?}{<} |\mathbb{R}|\) &nbsp; (נראה בהמשך הקורס...)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 10. Finite & Infinite -->
+    <div class="section" id="finite-infinite">
+        <h2>10. קבוצות סופיות ואינסופיות</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: קבוצה אינסופית</div>
+            קבוצה הינה <strong>אינסופית</strong> אם היא שקולה לתת-קבוצה ממש שלה.
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה: קבוצה סופית</div>
+            קבוצה הינה <strong>סופית</strong> אם היא לא אינסופית.
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <ul>
+                <li>\(\emptyset\) סופית.</li>
+                <li>\(\{1,5\}\) סופית.</li>
+                <li>לכל \(n \in \mathbb{N}\), הקבוצה \(\{0, 1, \ldots, n-1\}\) סופית.</li>
+                <li>\(\mathbb{N}\) אינסופית.</li>
+                <li>\(\mathbb{R}\) אינסופית.</li>
+            </ul>
+        </div>
+
+        <h3>משפטים על קבוצות אינסופיות</h3>
+
+        <div class="thm-box">
+            <div class="label">משפט 1</div>
+            אם \(A\) אינסופית ו-\(A \subseteq B\) אז \(B\) אינסופית.
+            <br><br>
+            <strong>רעיון:</strong> מהיות \(A\) אינסופית, קיימות \(S \subset A\) ו-\(f: A \to S\) הפיכה. ניתן להרחיב את \(f\) ל-\(B\) כולה.
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 2</div>
+            אם \(A\) אינסופית ו-\(A \sim B\) אז \(B\) אינסופית.
+            <br><br>
+            <em>(תוכיחו זאת בתירגול.)</em>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">מסקנה</div>
+            אם \(A\) סופית ו-\(A \sim B\) אז \(B\) סופית.
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section" id="summary">
+        <h2>11. סיכום ההרצאה</h2>
+
+        <div class="arrow-chain">
+            <div class="box">עוצמה<br>\(|A|\)</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">שקילות<br>\(A \sim B\)</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">סדר עוצמות<br>\(|A| \leq |B|\)</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">קטנה ממש<br>\(|A| < |B|\)</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">סופי / אינסופי</div>
+        </div>
+
+        <h3>נקודות עיקריות</h3>
+        <ul>
+            <li>הגדרות כיצד להשוות בין העוצמה (גודל) של קבוצות:
+                <strong>\(|A|=|B|\)</strong> (bijection),
+                <strong>\(|A| \leq |B|\)</strong> (injection),
+                <strong>\(|A| < |B|\)</strong> (injection ללא bijection).
+            </li>
+            <li>יחס השקילות (שיוויון עוצמה) בין קבוצות הינו אכן <strong>יחס שקילות</strong>.</li>
+            <li>יחס ההשוואה \(\leq\) בין עוצמות קבוצות הינו אכן <strong>יחס סדר מלא חלש</strong>.</li>
+            <li>קבוצה <strong>אינסופית</strong> = שקולה לתת-קבוצה ממש שלה.</li>
+            <li>על-קבוצה של קבוצה אינסופית היא אינסופית.</li>
+            <li>שקילות משמרת סופיות ואינסופיות.</li>
+        </ul>
+
+        <div class="note-box">
+            <div class="label">ספרות</div>
+            תורת הקבוצות של שמואל ברגר, כרך א', פרק 4.
+        </div>
+    </div>
+
+    <div class="footer">
+        הרצאה 2 - השוואת קבוצות | לוגיקה ותורת הקבוצות | אוניברסיטת רייכמן
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$$", right: "$$", display: true}
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+</body>
+</html>

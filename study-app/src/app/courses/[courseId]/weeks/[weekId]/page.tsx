@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { useParams } from 'next/navigation';
-import { BookOpen, ClipboardList, GraduationCap, FileCheck2 } from 'lucide-react';
+import { BookOpen, ClipboardList, GraduationCap, FileCheck2, FileText } from 'lucide-react';
 import QuestionPreviewCard from '@/components/platform/QuestionPreviewCard';
 import TheoryItemCard from '@/components/platform/TheoryItemCard';
 import {
@@ -91,6 +91,20 @@ export default function WeekPage() {
             ) : null;
           })}
         </div>
+
+        {/* Lecture summary link */}
+        {week.lectureSummaryUrl && (
+          <a
+            href={week.lectureSummaryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-2.5 rounded-xl border border-indigo-200 bg-gradient-to-l from-indigo-50 to-white px-5 py-3 text-sm font-semibold text-indigo-700 shadow-sm transition hover:border-indigo-300 hover:shadow-md"
+          >
+            <FileText className="h-4.5 w-4.5" />
+            סיכום הרצאה מלא
+            <span className="mr-1 text-xs font-normal text-indigo-400">&larr;</span>
+          </a>
+        )}
 
         {/* Key highlights */}
         {week.reviewHighlights.length > 0 && (

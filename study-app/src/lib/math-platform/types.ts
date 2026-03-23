@@ -76,6 +76,7 @@ export interface CourseWeek {
   homeworkQuestionIds: string[];
   examQuestionIds: string[];
   reviewHighlights: string[];
+  lectureSummaryUrl?: string;
 }
 
 export interface Course {
