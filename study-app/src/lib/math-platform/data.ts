@@ -399,6 +399,362 @@ export const theoryItems: TheoryItem[] = [
   },
 ];
 
+// ─── Logic — Week 2 ──────────────────────────────────────────────────────────
+
+topics.push(
+  {
+    id: 'logic-w2-cardinality',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    title: 'עוצמה והשוואת קבוצות',
+    summary: 'הגדרת עוצמה (cardinality), קבוצות שקולות באמצעות פונקציית שקילות (bijection), סדר עוצמות ≤ ו-<.',
+    patterns: ['עוצמה |A|', 'שקילות A~B', 'סדר עוצמות |A|≤|B|'],
+  },
+  {
+    id: 'logic-w2-functions',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    title: 'פונקציות — סוגים ותכונות',
+    summary: 'פונקציה חלקית ומלאה, חח"ע (injective), על (onto), שקילות (bijection), פונקציה הופכית והרכבה.',
+    patterns: ['פונקציה מלאה/חלקית', 'חח"ע ועל', 'הרכבת פונקציות'],
+  },
+  {
+    id: 'logic-w2-equivalence-order',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    title: 'יחסי שקילות וסדר',
+    summary: 'יחס שקילות (רפלקסיבי, סימטרי, טרנזיטיבי), יחס סדר מלא חלש, שקילות קבוצות כיחס שקילות וסדר עוצמות כיחס סדר.',
+    patterns: ['יחס שקילות', 'יחס סדר מלא חלש', 'רפלקסיבי/סימטרי/טרנזיטיבי'],
+  },
+  {
+    id: 'logic-w2-finite-infinite',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    title: 'קבוצות סופיות ואינסופיות',
+    summary: 'הגדרת קבוצה אינסופית כשקולה לתת-קבוצה ממש שלה, קבוצה סופית, ומשפטים נלווים.',
+    patterns: ['קבוצה אינסופית', 'קבוצה סופית', 'תת-קבוצה של אינסופית'],
+  },
+);
+
+sourceDocuments.push(
+  {
+    id: 'logic-w2-lecture',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    type: 'lecture',
+    name: 'הרצאה 2 — השוואת קבוצות',
+    topicIds: ['logic-w2-cardinality', 'logic-w2-functions', 'logic-w2-equivalence-order', 'logic-w2-finite-infinite'],
+    processed: true,
+  },
+);
+
+weeks.push(
+  {
+    id: 'logic-w2',
+    courseId: 'logic',
+    number: 2,
+    title: 'השוואת קבוצות',
+    summary:
+      'כיצד משווים גודל של קבוצות? עוצמה (cardinality), קבוצות שקולות ופונקציית שקילות (bijection). סוגי פונקציות: מלאה, חלקית, חח"ע, על. פונקציה הופכית והרכבה. יחסי שקילות וסדר. סדר עוצמות ≤ ו-<. קבוצות סופיות ואינסופיות.',
+    topicIds: ['logic-w2-cardinality', 'logic-w2-functions', 'logic-w2-equivalence-order', 'logic-w2-finite-infinite'],
+    lectureItemIds: [
+      'logic-w2-def-cardinality',
+      'logic-w2-def-equivalent-sets',
+      'logic-w2-concept-galileo',
+      'logic-w2-def-function',
+      'logic-w2-def-total',
+      'logic-w2-def-injective',
+      'logic-w2-def-surjective',
+      'logic-w2-def-bijection',
+      'logic-w2-def-partial-total',
+      'logic-w2-def-inverse',
+      'logic-w2-def-composition',
+      'logic-w2-def-equivalence-relation',
+      'logic-w2-thm-set-equivalence-is-equiv',
+      'logic-w2-def-cardinality-order',
+      'logic-w2-thm-onto-iff-leq',
+      'logic-w2-thm-leq-weak-total-order',
+      'logic-w2-def-strictly-smaller',
+      'logic-w2-def-infinite-set',
+      'logic-w2-def-finite-set',
+      'logic-w2-thm-superset-infinite',
+      'logic-w2-thm-equiv-infinite',
+    ],
+    tutorialQuestionIds: [],
+    homeworkQuestionIds: [],
+    examQuestionIds: [],
+    reviewHighlights: [
+      'עוצמה: |A|=|B| אמ"מ קיימת bijection בין A ל-B',
+      'פרדוקס גלילאו — ריבועי הטבעיים שקולים לטבעיים',
+      'יחס שקילות: רפלקסיבי + סימטרי + טרנזיטיבי',
+      '|A|≤|B| אמ"מ יש פונ׳ מלאה וחח"ע מ-A ל-B',
+      'קבוצה אינסופית ⟺ שקולה לתת-קבוצה ממש שלה',
+    ],
+  },
+);
+
+theoryItems.push(
+  // ── Cardinality & Equivalent Sets ─────────────────────────────────────────
+  {
+    id: 'logic-w2-def-cardinality',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-cardinality',
+    title: 'עוצמה (Cardinality)',
+    kind: 'definition',
+    content:
+      'ה-"גודל" של קבוצה A יסומן |A| ויכונה עוצמה (cardinality).\n\nדוגמאות:\n• |{8,9,4}| = 3\n• |{10¹⁰⁰, 999}| = 2\n• |{a,b,c,d,e,f}| = 6\n• |ℕ| = ?\n• |ℝ| = ?',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-equivalent-sets',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-cardinality',
+    title: 'קבוצות שקולות — |A|=|B|, A∼B',
+    kind: 'definition',
+    content:
+      'קבוצות A ו-B הינן שוות עוצמה, או שקולות (equivalent), ונסמן זאת ע"י |A|=|B| או A∼B, אם קיימת פונקציית שקילות (bijection) ביניהן.\n\nכלומר, פונקציה מלאה, חד-חד ערכית ועל מ-A ל-B.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-concept-galileo',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-cardinality',
+    title: 'הפרדוקס של גלילאו גלילי (1638)',
+    kind: 'concept',
+    content:
+      'הקבוצה של ריבועי המספרים הטבעיים (0², 1², 2², 3², …) מוכלת ממש בקבוצת כל הטבעיים ℕ, אך ישנה התאמה מלאה ביניהן באמצעות הפונקציה f(n)=n².\n\nמשמעות: קבוצה אינסופית יכולה להיות שקולה לתת-קבוצה ממש שלה — תכונה ייחודית לקבוצות אינסופיות.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+
+  // ── Functions ─────────────────────────────────────────────────────────────
+  {
+    id: 'logic-w2-def-function',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-functions',
+    title: 'פונקציה',
+    kind: 'definition',
+    content:
+      'פונקציה הינה מיפוי מקבוצה A (התחום) לקבוצה B (הקו-תחום). התחום והקו-תחום יכולים להיות זהים או שונים.\n\nפונקציה חייבת להיות מוגדרת היטב (Well defined): כל איבר בתחום ממופה לעד איבר אחד בקו-תחום.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-total',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-functions',
+    title: 'פונקציה מלאה (Total)',
+    kind: 'definition',
+    content:
+      'פונקציה מלאה (total) — כל איברי A ממופים. כלומר, לכל a∈A קיים b∈B כך ש-f(a)=b.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-injective',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-functions',
+    title: 'חד-חד ערכית (Injective, 1-1)',
+    kind: 'definition',
+    content:
+      'פונקציה חח"ע (Injective, 1-1) — אין אף איבר ב-B אשר ממופים אליו יותר מאיבר אחד מ-A.\n\nפורמלית: לכל a₁,a₂∈A, אם f(a₁)=f(a₂) אז a₁=a₂.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-surjective',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-functions',
+    title: 'על (Onto / Surjective)',
+    kind: 'definition',
+    content:
+      'פונקציה על (Onto / Surjective) — אם יש מיפוי אל כל איברי B. כלומר, לכל b∈B קיים a∈A כך ש-f(a)=b.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-bijection',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-functions',
+    title: 'פונקציית שקילות (Bijection)',
+    kind: 'definition',
+    content:
+      'פונקציית שקילות (bijection) היא פונקציה שהיא מלאה, חד-חד ערכית ועל. מסומנת f:A↔B.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-partial-total',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-functions',
+    title: 'פונקציה חלקית ומלאה',
+    kind: 'definition',
+    content:
+      'כל פונקציה (שכמובן מוגדרת היטב) הינה פונקציה חלקית (partial function). חלק מהפונקציות החלקיות הינן גם מלאות (total function).\n\nהערה: בקורס מתמטיקה בדידה עסקתם רק בפונקציות מלאות. בקורס זה אנו עוסקים גם בפונקציות שאינן מלאות.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-inverse',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-functions',
+    title: 'פונקציה הופכית (Inverse)',
+    kind: 'definition',
+    content:
+      'לפונקציה מלאה ו-חח"ע f:A→B יש פונקציה הופכית (שמאלית) f⁻¹:B→A, שהינה חח"ע ועל (אולי לא מלאה).\n\nלפונקציית שקילות (מלאה, חח"ע ועל) f:A↔B יש פונקציה הופכית f⁻¹:B↔A שהיא גם מלאה, חח"ע ועל.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-composition',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-functions',
+    title: 'הרכבת פונקציות (Composition)',
+    kind: 'definition',
+    content:
+      'ההרכבה (composition) של פונקציות f:A→B ו-g:B→C מוגדרת להיות הפונקציה g∘f(x) := g(f(x)).\n\nהרכבה של פונקציות שקילות הינה גם כן פונקציית שקילות.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+
+  // ── Equivalence & Order Relations ─────────────────────────────────────────
+  {
+    id: 'logic-w2-def-equivalence-relation',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-equivalence-order',
+    title: 'יחס שקילות (Equivalence Relation)',
+    kind: 'definition',
+    content:
+      'יחס R הינו יחס שקילות אם הוא:\n• רפלקסיבי (Reflexive): לכל x, xRx.\n• סימטרי (Symmetric): לכל x ו-y, xRy אמ"מ yRx.\n• טרנזיטיבי (Transitive): לכל x, y ו-z, אם xRy ו-yRz אז xRz.\n\nדוגמאות: יחס השוויון "=", אח/אחות של, אותה אזרחות, משולשים דומים.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-thm-set-equivalence-is-equiv',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-equivalence-order',
+    title: 'שקילות קבוצות הוא יחס שקילות',
+    kind: 'theorem',
+    content:
+      'היחס של שקילות קבוצות (אותה העוצמה) הוא אכן יחס שקילות:\n\n• רפלקסיבי: לכל קבוצה A, A∼A (פונקציית הזהות).\n• סימטרי: לכל A ו-B, מתקיים ש- A∼B אמ"מ B∼A (הפונקציה ההופכית).\n• טרנזיטיבי: לכל A, B ו-C, אם A∼B ו-B∼C אז A∼C (הרכבת פונקציות שקילות).',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-cardinality-order',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-equivalence-order',
+    title: 'סדר עוצמות — |A|≤|B|',
+    kind: 'definition',
+    content:
+      'קבוצה A קטנה או שוות-עוצמה לקבוצה B, בסימון |A|≤|B|, אם יש פונקציה מלאה ו-חח"ע מ-A ל-B.\n\nהגדרה חלופית: |A|≤|B| אמ"מ יש פונקציה (חלקית או מלאה) מ-B על A.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-thm-onto-iff-leq',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-equivalence-order',
+    title: 'משפט: |A|≤|B| אמ"מ יש פונ׳ מ-B על A',
+    kind: 'theorem',
+    content:
+      'לכל שתי קבוצות לא ריקות A ו-B, מתקיים ש- |A|≤|B| אמ"מ יש פונ׳ מלאה מ-B על A.\n\nהוכחה:\n(א) אם |A|≤|B| אז יש פונ׳ מלאה מ-B על A — בונים פונקציה מ-B שמכסה את כל A.\n(ב) אם יש פונ׳ מ-B על A אז |A|≤|B| — בונים פונ׳ חח"ע מ-A ל-B ע"י בחירת מקור לכל איבר.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-thm-leq-weak-total-order',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-equivalence-order',
+    title: '|A|≤|B| הינו יחס סדר מלא חלש',
+    kind: 'theorem',
+    content:
+      'אכן ניתן להשתמש ביחס השוואת העוצמות כמצופה מיחס סדר. לכל קבוצות A, B ו-C:\n\n• מלא: |A|≤|B| או |B|≤|A|.\n• רפלקסיבי: |A|≤|A|.\n• אנטי-סימטרי: אם |A|≤|B| ו-|B|≤|A| אז |A|=|B|.\n• טרנזיטיבי: אם |A|≤|B| ו-|B|≤|C| אז |A|≤|C|.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-strictly-smaller',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-equivalence-order',
+    title: 'קטנה ממש — |A|<|B|',
+    kind: 'definition',
+    content:
+      'עבור קבוצות A ו-B, נגדיר ש-A קטנה ממש מ-B (strictly smaller), ונסמן |A|<|B|, אם |A|≤|B| ו-|A|≠|B|.\n\nכלומר, כאשר קיימת פונ׳ מלאה וחח"ע מ-A ל-B ולא קיימת פונקציית שקילות מ-B ל-A.\n\nדוגמאות:\n• |{4,1,2}| < |{2,8}| ✗\n• |{7,8,9}| < |ℕ| ✓\n• |ℤ| ≮ |ℕ| (כי ℤ∼ℕ)\n• |ℕ| <? |ℝ| (בהמשך...)',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+
+  // ── Finite & Infinite Sets ────────────────────────────────────────────────
+  {
+    id: 'logic-w2-def-infinite-set',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-finite-infinite',
+    title: 'קבוצה אינסופית',
+    kind: 'definition',
+    content:
+      'קבוצה הינה אינסופית אם היא שקולה לתת-קבוצה ממש שלה.\n\nדוגמאות: ℕ אינסופית (f(n)=n+1 היא שקילות מ-ℕ ל-ℕ\\{0}), ℝ אינסופית.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-def-finite-set',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-finite-infinite',
+    title: 'קבוצה סופית',
+    kind: 'definition',
+    content:
+      'קבוצה הינה סופית אם היא לא אינסופית.\n\nדוגמאות: ∅ סופית, {1,5} סופית, לכל n∈ℕ הקבוצה {0,1,…,n−1} סופית.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-thm-superset-infinite',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-finite-infinite',
+    title: 'משפט: על-קבוצה של אינסופית היא אינסופית',
+    kind: 'theorem',
+    content:
+      'אם A אינסופית ו-A ⊆ B אז B אינסופית.\n\nהוכחה: מהיות A אינסופית, קיימות S ⊂ A ו-f:A→S הפיכה. מרחיבים את f ל-B ומקבלים שקילות לתת-קבוצה ממש של B.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+  {
+    id: 'logic-w2-thm-equiv-infinite',
+    courseId: 'logic',
+    weekId: 'logic-w2',
+    topicId: 'logic-w2-finite-infinite',
+    title: 'משפט: שקולה לאינסופית — אינסופית',
+    kind: 'theorem',
+    content:
+      'אם A אינסופית ו-A∼B אז B אינסופית.\n\nמסקנה: אם A סופית ו-A∼B אז B סופית.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'logic-w2-lecture',
+  },
+);
+
 // ─── Data Structures — Week 1 ─────────────────────────────────────────────────
 
 topics.push(
