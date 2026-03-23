@@ -11,6 +11,7 @@
 **דרך ממשק האדמין:** `/admin/[courseId]/curriculum`
 הקובץ מועלה דרך drag-and-drop או בחירת קבצים.
 
+לךמ
 ### מה קורה ב-backend:
 **API:** `POST /api/admin/curriculum/upload`
 
