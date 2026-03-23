@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הרצאות 20-22 - מפת קשרים וסיכום</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    page-break-after: always;
+  }
+  h1 { text-align: center; font-size: 2em; color: #f7d794; margin-bottom: 8px; }
+  h2 { text-align: center; font-size: 1.3em; color: #82ccdd; margin-bottom: 20px; }
+  h3 { font-size: 1.2em; color: #f7d794; margin: 22px 0 12px 0; border-bottom: 2px solid #f7d794; padding-bottom: 4px; }
+
+  /* ====== DIAGRAM ====== */
+  .diagram-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .diagram-wrap svg { max-width: 100%; height: auto; }
+
+  /* ====== SUMMARY ====== */
+  .theorem-card {
+    background: rgba(255,255,255,0.05);
+    border-right: 4px solid;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 8px 0;
+  }
+  .theorem-card.lec20 { border-color: #e55039; }
+  .theorem-card.lec21 { border-color: #4a69bd; }
+  .theorem-card.lec22 { border-color: #38ada9; }
+  .theorem-card .name { font-weight: 700; font-size: 1.05em; margin-bottom: 4px; }
+  .theorem-card .name .tag { font-size: 0.68em; padding: 2px 7px; border-radius: 10px; margin-right: 6px; font-weight: 400; }
+  .lec20 .tag { background: #e55039; color: #fff; }
+  .lec21 .tag { background: #4a69bd; color: #fff; }
+  .lec22 .tag { background: #38ada9; color: #fff; }
+  .theorem-card .formula {
+    direction: ltr; text-align: center; font-size: 1.1em; margin: 6px 0;
+    color: #f7d794; background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px;
+    font-family: 'Times New Roman', serif;
+  }
+  .theorem-card .intuition { color: #b8e994; font-size: 0.92em; padding-right: 8px; }
+  .theorem-card .intuition::before { content: ">> "; color: #6ab04c; font-weight: bold; }
+  .sep { text-align: center; margin: 35px 0 15px 0; font-size: 1.6em; color: #f7d794; }
+  .big-picture {
+    margin-top: 25px; padding: 14px; background: rgba(247,215,148,0.1);
+    border-radius: 10px; border: 1px solid #f7d794; line-height: 1.8;
+  }
+  .big-picture h3 { border: none; margin-top: 0; }
+</style>
+</head>
+<body>
+
+<!-- ====================== PAGE 1: DIAGRAM ====================== -->
+<div class="page">
+  <h1>הרצאות 20-22 - מפת קשרים</h1>
+  <h2>נגזרות, כלל שרשרת, פרמה, רול, לגרנז' ומסקנות</h2>
+
+  <div class="diagram-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 920" width="960" height="920" style="font-family:'Segoe UI',Arial,sans-serif;">
+
+      <!-- Grid background -->
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        </pattern>
+        <marker id="ah" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#ccc"/>
+        </marker>
+        <marker id="ahd" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+      </defs>
+      <rect width="960" height="920" fill="#1a1a2e"/>
+      <rect width="960" height="920" fill="url(#grid)"/>
+
+      <!-- ============ ARROWS ============ -->
+
+      <!-- אנשלג היפוך ← הגזרת f' -->
+      <line x1="360" y1="60" x2="195" y2="60" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- הגזרת f' → גזירה←רציפה -->
+      <line x1="540" y1="50" x2="690" y2="40" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- הגזרת f' → אנשלג ±,·,÷ -->
+      <line x1="540" y1="70" x2="690" y2="110" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- הגזרת f' → מונוטוניות הגבולות (down-left) -->
+      <line x1="380" y1="90" x2="150" y2="190" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- הגזרת f' ↔ כלל השרשרת (bidirectional) -->
+      <line x1="540" y1="85" x2="700" y2="205" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- הגזרת f' → פרמה -->
+      <line x1="460" y1="90" x2="460" y2="265" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- מונוטוניות הגבולות → פרמה -->
+      <line x1="170" y1="240" x2="370" y2="275" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- וויר שטראוס → רול -->
+      <line x1="170" y1="410" x2="380" y2="430" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- פרמה → רול -->
+      <line x1="460" y1="310" x2="460" y2="415" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- רול → לגרנז' -->
+      <line x1="460" y1="470" x2="460" y2="555" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- לגרנז' → מסקנות חשובות -->
+      <line x1="555" y1="580" x2="680" y2="660" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- מסקנות חשובות → אינפי 2 -->
+      <line x1="770" y1="710" x2="770" y2="770" stroke="#ccc" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- לגרנז' → קושי (dashed) -->
+      <line x1="370" y1="600" x2="120" y2="700" stroke="#666" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ahd)"/>
+
+      <!-- לגרנז' → דרבו (dashed) -->
+      <line x1="460" y1="600" x2="430" y2="780" stroke="#666" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ahd)"/>
+
+      <!-- קושי → פופיטל (dashed) -->
+      <line x1="100" y1="740" x2="80" y2="800" stroke="#666" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ahd)"/>
+
+      <!-- קושי → טיילור (dashed) -->
+      <line x1="80" y1="740" x2="55" y2="860" stroke="#666" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ahd)"/>
+
+
+      <!-- ============ NODES ============ -->
+
+      <!-- אנשלג היפוך -->
+      <rect x="30" y="30" width="165" height="50" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="112" y="62" text-anchor="middle" fill="#fff" font-size="17" font-weight="bold">אנשלג היפוך</text>
+
+      <!-- הגזרת f' -->
+      <rect x="360" y="30" width="180" height="60" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="450" y="68" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">הגזרת f'</text>
+
+      <!-- גזירה ← רציפה -->
+      <rect x="690" y="10" width="160" height="55" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="770" y="32" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">גזירה</text>
+      <text x="770" y="55" text-anchor="middle" fill="#fff" font-size="15">← רציפה</text>
+
+      <!-- אנשלג ±,·,÷ -->
+      <rect x="690" y="85" width="190" height="50" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="785" y="117" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">אנשלג  ± , · , ÷</text>
+
+      <!-- כלל השרשרת -->
+      <rect x="690" y="185" width="180" height="50" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="780" y="217" text-anchor="middle" fill="#fff" font-size="17" font-weight="bold">כלל השרשרת</text>
+
+      <!-- מונוטוניות הגבולות -->
+      <rect x="20" y="185" width="190" height="55" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="115" y="207" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">מונוטוניות</text>
+      <text x="115" y="230" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">הגבולות</text>
+
+      <!-- פרמה -->
+      <rect x="350" y="270" width="220" height="50" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="460" y="302" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">פרמה</text>
+
+      <!-- וויר שטראוס -->
+      <rect x="20" y="375" width="190" height="50" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="115" y="407" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">וויר שטראוס</text>
+
+      <!-- רול -->
+      <rect x="350" y="420" width="220" height="50" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="460" y="452" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">רול</text>
+
+      <!-- לגרנז' -->
+      <rect x="325" y="560" width="270" height="50" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="460" y="592" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">לגרנז'</text>
+
+      <!-- מסקנות חשובות -->
+      <rect x="660" y="660" width="200" height="55" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="760" y="682" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">מסקנות</text>
+      <text x="760" y="705" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">חשובות</text>
+
+      <!-- אינפי 2 -->
+      <rect x="700" y="775" width="140" height="45" rx="5" fill="none" stroke="#ddd" stroke-width="2.5"/>
+      <text x="770" y="804" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">אינפי 2</text>
+
+      <!-- קושי (dashed) -->
+      <rect x="40" y="700" width="120" height="45" rx="5" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="100" y="729" text-anchor="middle" fill="#999" font-size="16" font-weight="bold">קושי</text>
+
+      <!-- פופיטל (dashed) -->
+      <rect x="15" y="800" width="130" height="45" rx="5" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="80" y="829" text-anchor="middle" fill="#999" font-size="15" font-weight="bold">לופיטל</text>
+
+      <!-- טיילור (dashed) -->
+      <rect x="10" y="865" width="120" height="45" rx="5" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="70" y="894" text-anchor="middle" fill="#999" font-size="15" font-weight="bold">טיילור</text>
+
+      <!-- דרבו (dashed) -->
+      <rect x="350" y="790" width="140" height="45" rx="5" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="420" y="819" text-anchor="middle" fill="#999" font-size="16" font-weight="bold">דרבו</text>
+
+    </svg>
+  </div>
+</div>
+
+<!-- ====================== PAGE 2: SUMMARY ====================== -->
+<div class="page">
+  <div class="sep">--- דף 2 ---</div>
+  <h1>סיכום אינטואיטיבי - הרצאות 20-22</h1>
+  <h2>מה כל משפט אומר, בקצרה ובפשטות</h2>
+
+  <h3>הרצאה 20 - נגזרת פונקציה הפוכה וכלל השרשרת</h3>
+
+  <div class="theorem-card lec20">
+    <div class="name"><span class="tag">20</span> משפט 1: נגזרת פונקציה הפוכה</div>
+    <div class="formula">(f⁻¹)'(y₀) = 1 / f'(x₀)</div>
+    <div class="intuition">אם f הופכת x ל-y בקצב מסוים, אז f⁻¹ הופכת y חזרה ל-x בקצב ההפוך (1 חלקי). כמו: אם נוסע 60 קמ"ש, אז הזמן לקילומטר הוא 1/60 שעה.</div>
+  </div>
+
+  <div class="theorem-card lec20">
+    <div class="name"><span class="tag">20</span> משפט 2: (eˣ)' = eˣ — הפונקציה המושלמת</div>
+    <div class="formula">(eˣ)' = eˣ &nbsp; לכל x∈ℝ</div>
+    <div class="intuition">eˣ היא הפונקציה היחידה שקצב הגדילה שלה שווה בדיוק לגודל שלה. מוכח דרך: ln היא ההפוכה של eˣ, ומשפט 1.</div>
+  </div>
+
+  <div class="theorem-card lec20">
+    <div class="name"><span class="tag">20</span> משפט 3: (arctg x)' = 1/(1+x²)</div>
+    <div class="formula">(arctg x)' = 1/(1+x²)</div>
+    <div class="intuition">arctg ההפוכה של tg. משפט 1 על tg (נגזרתה 1/cos²x), ואז זהות 1+tg²x = 1/cos²x נותנת ביטוי נקי ב-y.</div>
+  </div>
+
+  <div class="theorem-card lec20">
+    <div class="name"><span class="tag">20</span> משפט 4: (arcsin x)' = 1/√(1-x²)</div>
+    <div class="formula">(arcsin x)' = 1/√(1-x²) &nbsp; לכל -1 &lt; x &lt; 1</div>
+    <div class="intuition">ההפוכה של sin. לפי משפט 1 מקבלים 1/cos, ואז cos = √(1-sin²x) = √(1-y²).</div>
+  </div>
+
+  <div class="theorem-card lec20">
+    <div class="name"><span class="tag">20</span> משפט 5: (arccos x)' = -1/√(1-x²)</div>
+    <div class="formula">(arccos x)' = -1/√(1-x²) &nbsp; לכל -1 &lt; x &lt; 1</div>
+    <div class="intuition">כמו arcsin רק עם מינוס - כי cos יורד, אז ההפוכה שלו "הפוכה בכיוון".</div>
+  </div>
+
+  <div class="theorem-card lec20">
+    <div class="name"><span class="tag">20</span> משפט 6: כלל השרשרת (Chain Rule)</div>
+    <div class="formula">(g∘f)'(x₀) = g'(f(x₀)) · f'(x₀)</div>
+    <div class="intuition">פונקציה בתוך פונקציה - גוזרים "מבחוץ פנימה" וכופלים. [sin(x²)]' = cos(x²)·2x. שינוי קטן ב-x עובר דרך f ואז דרך g - הקצבים מוכפלים.</div>
+  </div>
+
+  <div class="theorem-card lec20">
+    <div class="name"><span class="tag">20</span> הגדרה: גזירה בקטע [a,b]</div>
+    <div class="formula">גזירה ב-(a,b) + נגזרות חד-צדדיות בקצוות</div>
+    <div class="intuition">בקצוות אי אפשר לגשת משני הצדדים, אז מסתפקים בגבול חד-צדדי: f'₊(a) מימין ו-f'₋(b) משמאל.</div>
+  </div>
+
+  <h3>הרצאה 21 - נגזרות חזקות, פרמה, רול, לגרנז'</h3>
+
+  <div class="theorem-card lec21">
+    <div class="name"><span class="tag">21</span> משפט 1: (xᵅ)' = α·xᵅ⁻¹</div>
+    <div class="formula">(xᵅ)' = α · xᵅ⁻¹ &nbsp; לכל x&gt;0, α∈ℝ</div>
+    <div class="intuition">"מורידים חזקה וגורעים 1" עובד לכל α ממשי! מוכח ע"י xᵅ = eᵅˡⁿˣ + כלל שרשרת.</div>
+  </div>
+
+  <div class="theorem-card lec21">
+    <div class="name"><span class="tag">21</span> משפט 2: (aˣ)' = ln(a)·aˣ</div>
+    <div class="formula">(aˣ)' = ln(a) · aˣ</div>
+    <div class="intuition">כמו eˣ עם "תיקון" ln(a). מוכח דרך aˣ = eˣˡⁿᵃ + כלל שרשרת.</div>
+  </div>
+
+  <div class="theorem-card lec21">
+    <div class="name"><span class="tag">21</span> משפט 3: (logₐx)' = 1/(ln(a)·x)</div>
+    <div class="formula">(logₐx)' = 1 / (ln(a) · x)</div>
+    <div class="intuition">כמו ln(x)' = 1/x, רק חלקי ln(a). כי logₐx = lnx/lna.</div>
+  </div>
+
+  <div class="theorem-card lec21">
+    <div class="name"><span class="tag">21</span> משפט 4: פרמה (Fermat)</div>
+    <div class="formula">נק' קיצון פנימית + f גזירה → f'(x₀) = 0</div>
+    <div class="intuition">במקס/מין מקומי המשיק אופקי. משמאל עלתה (≥0), מימין ירדה (≤0), אז ב-x₀ חייב 0. זהירות: ההפך לא נכון! (x³ ב-0).</div>
+  </div>
+
+  <div class="theorem-card lec21">
+    <div class="name"><span class="tag">21</span> משפט 5: רול (Rolle)</div>
+    <div class="formula">רציפה [a,b], גזירה (a,b), f(a)=f(b) → ∃c: f'(c)=0</div>
+    <div class="intuition">יצאת מגובה וחזרת לאותו גובה - חייב מקום עם משיק אופקי. פרמה + ויירשטראוס ביחד.</div>
+  </div>
+
+  <div class="theorem-card lec21">
+    <div class="name"><span class="tag">21</span> מסקנה מרול: f'≠0 → חח"ע</div>
+    <div class="formula">f גזירה ב-[a,b], f'(x)≠0 לכל x → f חד-חד-ערכית</div>
+    <div class="intuition">אם הנגזרת לא מתאפסת, הפונקציה לא חוזרת לערך קודם (אחרת רול היה נותן f'(c)=0).</div>
+  </div>
+
+  <div class="theorem-card lec21">
+    <div class="name"><span class="tag">21</span> משפט 6: לגרנז' (Lagrange / MVT)</div>
+    <div class="formula">רציפה [a,b], גזירה (a,b) → ∃c: f'(c) = [f(b)-f(a)]/(b-a)</div>
+    <div class="intuition">בין שתי נקודות יש מקום שהמשיק מקביל לקו שמחבר אותן (שיפוע רגעי = שיפוע ממוצע). הוכחה: מחסרים קו ישר ומפעילים רול.</div>
+  </div>
+
+  <div class="theorem-card lec21">
+    <div class="name"><span class="tag">21</span> מסקנה 1+2: סימן הנגזרת → מונוטוניות</div>
+    <div class="formula">f'≥0 → עולה | f'≤0 → יורדת | f'=0 → קבועה | f'&gt;0 → עולה ממש</div>
+    <div class="intuition">הכלי המרכזי לחקירת פונקציה. מוכח ישירות מלגרנז': f(x₂)-f(x₁) = f'(c)·(x₂-x₁), הסימן נקבע ע"י f'(c).</div>
+  </div>
+
+  <h3>הרצאה 22 - יישומים ואי-שוויונות</h3>
+
+  <div class="theorem-card lec22">
+    <div class="name"><span class="tag">22</span> תרגיל 1: eˣ ≥ 1+x</div>
+    <div class="formula">eˣ ≥ 1 + x &nbsp; לכל x ≥ 0</div>
+    <div class="intuition">האקספוננט תמיד מעל המשיק שלו ב-0. מוכח: f(x)=eˣ-1-x, נגזרתה eˣ-1≥0 ל-x≥0, אז f עולה מ-f(0)=0.</div>
+  </div>
+
+  <div class="theorem-card lec22">
+    <div class="name"><span class="tag">22</span> מסקנה 3: |sinx-siny| ≤ |x-y| וגם |cosx-cosy| ≤ |x-y|</div>
+    <div class="formula">|sin x - sin y| ≤ |x-y| &nbsp; , &nbsp; |cos x - cos y| ≤ |x-y|</div>
+    <div class="intuition">sin/cos לא משתנים מהר יותר מ-x (כי |נגזרת| ≤ 1). מלגרנז': ההפרש = cos(c)·(x-y), ו-|cos c|≤1.</div>
+  </div>
+
+  <div class="theorem-card lec22">
+    <div class="name"><span class="tag">22</span> מסקנה 4: x/(1+x) ≤ ln(1+x) ≤ x</div>
+    <div class="formula">x/(1+x) ≤ ln(1+x) ≤ x &nbsp; לכל x &gt; -1</div>
+    <div class="intuition">ln(1+x) כלוא בין שני קירובים. מלגרנז' על [0,x]: ln(1+x)/x = 1/(1+c), וחוסמים את c בין 0 ל-x.</div>
+  </div>
+
+  <div class="big-picture">
+    <h3>תמונה גדולה - הזרימה הלוגית</h3>
+    <p>
+      <strong style="color:#e55039;">הגדרת הנגזרת</strong> →
+      <strong style="color:#feb3b1;">נגזרת הפוכה</strong> → מאפשרת לגזור
+      <strong style="color:#d6a2e8;">eˣ, arctg, arcsin, arccos</strong>
+      <br/>
+      <strong style="color:#60a3bc;">כלל השרשרת</strong> + הנ"ל → מאפשרים לגזור
+      <strong style="color:#f6b93b;">xᵅ, aˣ, logₐx</strong> ופונקציות מורכבות
+      <br/><br/>
+      <strong style="color:#f8a5c2;">פרמה</strong> (נגזרת=0 בקיצון) + <strong style="color:#f0c27f;">ויירשטראוס</strong> (קיום מקס/מין) →
+      <strong style="color:#7efad1;">רול</strong> (f(a)=f(b) → f'(c)=0)
+      <br/>
+      <strong style="color:#7efad1;">רול</strong> →
+      <strong style="color:#fed8b1;">לגרנז'</strong> (שיפוע ממוצע = שיפוע רגעי) →
+      <strong style="color:#d1cfe2;">מסקנות מונוטוניות</strong> →
+      <strong style="color:#badc58;">אי-שוויונות שימושיים</strong>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
