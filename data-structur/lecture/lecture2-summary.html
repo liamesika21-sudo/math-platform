@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרצאה 2 - Priority Queue, עצים וערמות | מבני נתונים</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --card-bg: #ffffff;
+            --primary: #1a3a5c;
+            --accent: #c0392b;
+            --green: #2e7d32;
+            --purple: #6a1b9a;
+            --blue: #1565c0;
+            --text: #2c2c2c;
+            --text-light: #555;
+            --border: #e0d6c8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans Hebrew', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary), #2c5f8a);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+        .header .lecture-num {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border-right: 4px solid var(--accent);
+        }
+        .toc h2 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+        .toc ol {
+            padding-right: 20px;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .toc a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Section */
+        .section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.5em;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section h3 {
+            color: var(--green);
+            font-size: 1.15em;
+            margin: 18px 0 10px;
+        }
+
+        /* Definition box */
+        .def-box {
+            background: #fef9f0;
+            border-right: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .def-box .label {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Theorem box */
+        .thm-box {
+            background: #f0f4fe;
+            border-right: 4px solid var(--blue);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .thm-box .label {
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Example box */
+        .example-box {
+            background: #f2f9f2;
+            border-right: 4px solid var(--green);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .example-box .label {
+            color: var(--green);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Note box */
+        .note-box {
+            background: #faf0fa;
+            border-right: 4px solid var(--purple);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .note-box .label {
+            color: var(--purple);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Code box */
+        .code-box {
+            background: #f8f8f0;
+            border-right: 4px solid #555;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.92em;
+            line-height: 1.7;
+        }
+        .code-box .label {
+            color: #555;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: 'Noto Sans Hebrew', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        ul, ol {
+            padding-right: 22px;
+            margin: 8px 0;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+
+        .math-block {
+            text-align: center;
+            margin: 16px 0;
+            font-size: 1.15em;
+            direction: ltr;
+        }
+
+        .diagram {
+            display: flex;
+            justify-content: center;
+            margin: 18px 0;
+        }
+        .diagram svg {
+            max-width: 100%;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        @media (max-width: 600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .header { padding: 24px 16px; }
+            .header h1 { font-size: 1.6em; }
+            .section { padding: 20px 16px; }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            text-align: center;
+        }
+        th {
+            background: #f0ebe3;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .arrow-chain {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 16px 0;
+            direction: ltr;
+            flex-wrap: wrap;
+        }
+        .arrow-chain .box {
+            background: #e8f0fe;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            text-align: center;
+        }
+        .arrow-chain .arrow {
+            font-size: 1.4em;
+            color: var(--green);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .katex { font-size: 1.1em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="lecture-num">מבני נתונים - אוניברסיטת רייכמן</div>
+        <h1>הרצאה 2 - Priority Queue, עצים וערמות</h1>
+        <div class="subtitle">Priority Queues, Trees &amp; Heaps</div>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h2>תוכן עניינים</h2>
+        <ol>
+            <li><a href="#dll-review">חזרה: רשימה מקושרת כפולה (DLL)</a></li>
+            <li><a href="#comparison">השוואת סיבוכיות: מערך מעגלי מול DLL</a></li>
+            <li><a href="#dynamic-array">מערכים דינמיים עם Resizing</a></li>
+            <li><a href="#doubling">אסטרטגיית הכפלה (Doubling)</a></li>
+            <li><a href="#amortized">ניתוח Amortized</a></li>
+            <li><a href="#amortized-vs-average">Amortized מול Average Case</a></li>
+            <li><a href="#priority-queue">Priority Queue ADT</a></li>
+            <li><a href="#trees">עצים — הגדרות</a></li>
+            <li><a href="#tree-terminology">טרמינולוגיית עצים</a></li>
+            <li><a href="#binary-trees">עצים בינאריים</a></li>
+            <li><a href="#summary">סיכום</a></li>
+        </ol>
+    </div>
+
+    <!-- 1. DLL Review -->
+    <div class="section" id="dll-review">
+        <h2>1. חזרה: רשימה מקושרת כפולה (Doubly Linked List)</h2>
+
+        <p>ברשימה מקושרת כפולה, לכל צומת יש שדה <strong>prev</strong> (מצביע לקודם) ושדה <strong>next</strong> (מצביע לבא). פעולות Insert/Delete-Last וכן Concatenation מתבצעות ב-\(O(1)\).</p>
+
+        <h3>מחיקת צומת — Delete(A)</h3>
+
+        <div class="code-box">
+            <div class="label">פסאודו-קוד: Delete(A)</div>
+            A.prev.next &larr; A.next<br>
+            A.next.prev &larr; A.prev
+        </div>
+
+        <div class="note-box">
+            <div class="label">שימו לב</div>
+            <ul>
+                <li>הצומת \(A\) עצמו <strong>לא משתנה</strong> — רק הפוינטרים של השכנים מתעדכנים.</li>
+                <li>צריך לטפל בנפרד ב-<code>L.length</code> ובמקרי קצה (ראשון/אחרון).</li>
+            </ul>
+        </div>
+
+        <h3>הכנסת צומת — Insert-After(A, B)</h3>
+
+        <div class="code-box">
+            <div class="label">פסאודו-קוד: Insert-After(A, B)</div>
+            B.prev &larr; A<br>
+            B.next &larr; A.next<br>
+            A.next &larr; B<br>
+            B.next.prev &larr; B
+        </div>
+
+        <p>שתי הפעולות ב-\(O(1)\) — לא תלויות בגודל הרשימה.</p>
+    </div>
+
+    <!-- 2. Comparison -->
+    <div class="section" id="comparison">
+        <h2>2. השוואת סיבוכיות: מערך מעגלי מול רשימה מקושרת כפולה</h2>
+
+        <table>
+            <tr>
+                <th>פעולה</th>
+                <th>Circular Array</th>
+                <th>Doubly Linked List</th>
+            </tr>
+            <tr>
+                <td>Insert/Delete-First</td>
+                <td>\(O(1)\)</td>
+                <td>\(O(1)\)</td>
+            </tr>
+            <tr>
+                <td>Insert/Delete-Last</td>
+                <td>\(O(1)\)</td>
+                <td>\(O(1)\)</td>
+            </tr>
+            <tr>
+                <td>Insert/Delete(i)</td>
+                <td>\(O(\min\{i+1,\; n-i+1\})\)</td>
+                <td>\(O(\min\{i+1,\; n-i+1\})\)</td>
+            </tr>
+            <tr>
+                <td>Retrieve(i)</td>
+                <td>\(O(1)\)</td>
+                <td>\(O(\min\{i+1,\; n-i+1\})\)</td>
+            </tr>
+            <tr>
+                <td>Concatenation</td>
+                <td>\(O(\min\{n_1, n_2\} + 1)\)</td>
+                <td>\(O(1)\)</td>
+            </tr>
+        </table>
+
+        <div class="note-box">
+            <div class="label">מסקנה</div>
+            <ul>
+                <li><strong>יתרון DLL:</strong> שרשור (Concatenation) ב-\(O(1)\).</li>
+                <li><strong>יתרון מערך מעגלי:</strong> גישה אקראית (Retrieve) ב-\(O(1)\).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3. Dynamic Arrays -->
+    <div class="section" id="dynamic-array">
+        <h2>3. מערכים דינמיים עם Resizing</h2>
+
+        <p>כשהמערך מלא (<code>length = maxlen</code>), לא ניתן להרחיב אותו — יש להקצות מערך חדש גדול יותר ולהעתיק.</p>
+
+        <h3>הבעיה: הגדלה ב-1</h3>
+        <p>אם מגדילים את המערך ב-1 בכל פעם שהוא מתמלא:</p>
+
+        <div class="math-block">
+            \(\text{עלות } n \text{ פעולות Insert-Last} = 1 + 2 + \ldots + n = \frac{n(n+1)}{2} = O(n^2)\)
+        </div>
+
+        <div class="thm-box">
+            <div class="label">בעיה</div>
+            \(O(n^2)\) עבור \(n\) הכנסות — זה <strong>מאוד יקר</strong>. צריך אסטרטגיית הגדלה חכמה יותר.
+        </div>
+    </div>
+
+    <!-- 4. Doubling -->
+    <div class="section" id="doubling">
+        <h2>4. אסטרטגיית הכפלה (Doubling)</h2>
+
+        <div class="def-box">
+            <div class="label">הרעיון</div>
+            כשהמערך מלא — <strong>מכפילים את גודלו</strong> ומעתיקים את כל האיברים.
+        </div>
+
+        <h3>ניתוח עלות — המקרה \(n = 2^k\)</h3>
+        <div class="math-block">
+            \(\underbrace{(1+1+\ldots+1)}_{n \text{ insertions}} + \underbrace{(1+2+4+\ldots+\tfrac{n}{2})}_{\text{copying}} = n + (n-1) = O(n)\)
+        </div>
+
+        <h3>המקרה הכללי — \(n = 2^k + r\), \(0 \leq r < 2^k\)</h3>
+        <div class="math-block">
+            \(\underbrace{(1+1+\ldots+1)}_{n} + \underbrace{(1+2+4+\ldots+2^k)}_{\text{copying}} = n + (2^{k+1}-1) \leq n + 2n - 1 = 3n - 1 = O(n)\)
+        </div>
+
+        <div class="thm-box">
+            <div class="label">תוצאה</div>
+            <ul>
+                <li>העלות <strong>הכוללת</strong> של \(n\) פעולות Insert-Last עם doubling: \(O(n)\).</li>
+                <li>העלות ה-<strong>amortized</strong> (ממוצעת לפעולה): \(O(n)/n = O(1)\).</li>
+                <li>העלות ה-<strong>worst-case</strong> של פעולה בודדת: \(O(n)\) (כשיש העתקה).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 5. Amortized Analysis -->
+    <div class="section" id="amortized">
+        <h2>5. ניתוח Amortized — הגדרה פורמלית</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: Worst-case bound</div>
+            \(\text{worst}(op)\) = הזמן <strong>המקסימלי</strong> לביצוע פעולה \(op\).
+            <br><br>
+            חסם על סדרה של \(n\) פעולות:
+            <div class="math-block">
+                \(\text{Time}(n \times op) \leq n \times \text{worst}(op)\)
+            </div>
+            לפעמים החסם הזה <strong>מאוד רופף</strong>. למשל: \(\text{worst}(\text{Insert-Last}) = O(n)\), אבל \(\text{Time}(n \times \text{Insert-Last}) = O(n)\), לא \(O(n^2)\).
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה: Amortized bound</div>
+            \(\text{amort}(op)\) הוא חסם amortized על עלות פעולה \(op\) אם <strong>לכל \(n\)</strong> ולכל סדרה של \(n\) פעולות \(op\):
+            <div class="math-block">
+                \(\text{amort}(op) \geq \frac{\text{Time}(n \times op)}{n}\)
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה: Insert-Last עם Doubling</div>
+            <ul>
+                <li>\(\text{worst}(\text{Insert-Last}) = O(n)\)</li>
+                <li>\(\text{amort}(\text{Insert-Last}) = O(1)\)</li>
+                <li>\(\text{Time}(n \times \text{Insert-Last}) \leq n \cdot \text{amort}(\text{Insert-Last}) = O(n)\)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. Amortized vs Average -->
+    <div class="section" id="amortized-vs-average">
+        <h2>6. Amortized Analysis &ne; Average Case Analysis</h2>
+
+        <div class="two-col">
+            <div class="def-box">
+                <div class="label">Amortized Analysis</div>
+                חוסם את הזמן <strong>הממוצע לפעולה</strong> על פני <strong>סדרת הפעולות הגרועה ביותר</strong> (worst-case sequence).
+                <br><br>
+                <strong>אין הסתברות.</strong>
+            </div>
+            <div class="def-box">
+                <div class="label">Average Case Analysis</div>
+                חוסם את הזמן הממוצע של <strong>פעולה בודדת</strong> על פני <strong>כל הקלטים האפשריים</strong> (בהינתן התפלגות).
+                <br><br>
+                <strong>מבוסס הסתברות.</strong>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <div class="label">מתי להשתמש במה?</div>
+            <ul>
+                <li><strong>Amortized:</strong> כשהעלות <strong>הכוללת</strong> של סדרת פעולות חשובה יותר מעלות כל פעולה בודדת.</li>
+                <li><strong>Worst-case:</strong> למערכות <strong>real-time</strong> שצריכות כל פעולה בודדת להיות מהירה.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 7. Priority Queue -->
+    <div class="section" id="priority-queue">
+        <h2>7. Priority Queue ADT</h2>
+
+        <p>בתור רגיל (Queue) — סדר השירות נקבע לפי זמן הגעה (FIFO). אבל מה אם צריך סדר לפי <strong>עדיפות</strong>?</p>
+
+        <div class="example-box">
+            <div class="label">מוטיבציה</div>
+            <ul>
+                <li>שידור השיר הבא בפופולריות.</li>
+                <li>שירות הלקוח הבכיר/הצעיר ביותר.</li>
+                <li>ניהול תהליכים במערכת הפעלה לפי עדיפות.</li>
+            </ul>
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה: Priority Queue</div>
+            ADT לניהול קבוצת איברים כאשר <strong>לכל איבר יש עדיפות (מפתח, key)</strong>.
+            <br><br>
+            <strong>פעולות:</strong>
+            <ul>
+                <li><strong>Insert(x, k)</strong> — הכנסת איבר \(x\) עם מפתח \(k\).</li>
+                <li><strong>FindMin()</strong> — החזרת handle לאיבר עם מפתח <strong>מינימלי</strong>.</li>
+                <li><strong>DeleteMin()</strong> — מחיקת האיבר עם מפתח מינימלי והחזרת handle אליו.</li>
+                <li><strong>DecreaseKey(h, k)</strong> — הקטנת המפתח של איבר קיים (לפי handle \(h\)) ל-\(k\).</li>
+            </ul>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">פתרון נאיבי</div>
+            שמירת סדרה <strong>ממוינת</strong> לפי עדיפות — אבל Insert יעלה \(O(n)\).
+            <br><br>
+            <strong>יש פתרון יעיל יותר — מבוסס על עצים (Heap)!</strong>
+        </div>
+    </div>
+
+    <!-- 8. Trees -->
+    <div class="section" id="trees">
+        <h2>8. עצים — הגדרות</h2>
+
+        <p>רשימות, מחסניות ותורים הם מבנים <strong>לינאריים</strong>. הרבה מידע מאורגן בצורה <strong>היררכית</strong>: תיקיות, מהלכים במשחק, היררכיות ארגוניות, ביטויים אריתמטיים.</p>
+
+        <h3>הגדרה רקורסיבית</h3>
+        <div class="def-box">
+            <div class="label">הגדרה: עץ (רקורסיבית)</div>
+            עץ הוא קבוצת צמתים (nodes) שהיא:
+            <ul>
+                <li><strong>ריקה</strong>, או</li>
+                <li>מכילה צומת אחד הנקרא <strong>שורש</strong> (root) שמצביע לשורשים של אפס או יותר <strong>עצים זרים</strong> (disjoint) הנקראים <strong>תתי-עצים</strong> (subtrees).</li>
+            </ul>
+            <strong>disjoint</strong> = אין צמתים משותפים בין תתי-העצים.
+        </div>
+
+        <h3>הגדרה לא-רקורסיבית</h3>
+        <div class="def-box">
+            <div class="label">הגדרה: עץ (לא-רקורסיבית)</div>
+            מבנה בעל רמות (levels):
+            <ul>
+                <li>איבר <strong>יחיד</strong> ברמה העליונה (שורש).</li>
+                <li>כל איבר ברמה \(i\) מצביע ל-<strong>אפס או יותר</strong> איברים ברמה \(i+1\).</li>
+                <li>כל איבר ברמה \(i+1\) מוצבע ע"י <strong>איבר יחיד</strong> ברמה \(i\).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 9. Tree Terminology -->
+    <div class="section" id="tree-terminology">
+        <h2>9. טרמינולוגיית עצים</h2>
+
+        <h3>מונחים בסיסיים</h3>
+        <table>
+            <tr>
+                <th>מושג</th>
+                <th>אנגלית</th>
+                <th>הגדרה</th>
+            </tr>
+            <tr>
+                <td><strong>שורש</strong></td>
+                <td>Root</td>
+                <td>הצומת היחיד ללא הורה</td>
+            </tr>
+            <tr>
+                <td><strong>ילד</strong></td>
+                <td>Child</td>
+                <td>\(B\) הוא ילד של \(A\) אם \(A\) מצביע ל-\(B\)</td>
+            </tr>
+            <tr>
+                <td><strong>הורה</strong></td>
+                <td>Parent</td>
+                <td>\(A\) הוא הורה של \(B\) אם \(A\) מצביע ל-\(B\)</td>
+            </tr>
+            <tr>
+                <td><strong>עלה</strong></td>
+                <td>Leaf</td>
+                <td>צומת ללא ילדים</td>
+            </tr>
+            <tr>
+                <td><strong>צומת פנימי</strong></td>
+                <td>Internal node</td>
+                <td>צומת שאינו עלה</td>
+            </tr>
+            <tr>
+                <td><strong>אח</strong></td>
+                <td>Sibling</td>
+                <td>\(A\) ו-\(B\) אחים אם יש להם אותו הורה</td>
+            </tr>
+        </table>
+
+        <h3>מסלולים, עומק וגובה</h3>
+        <table>
+            <tr>
+                <th>מושג</th>
+                <th>אנגלית</th>
+                <th>הגדרה</th>
+            </tr>
+            <tr>
+                <td><strong>מסלול מכוון</strong></td>
+                <td>Path (directed)</td>
+                <td>סדרה של צמתים שכל צומת הוא הורה של הבא</td>
+            </tr>
+            <tr>
+                <td><strong>אורך מסלול</strong></td>
+                <td>Length of path</td>
+                <td>מספר ה-<strong>קשתות</strong> (edges) במסלול</td>
+            </tr>
+            <tr>
+                <td><strong>אב קדמון</strong></td>
+                <td>Ancestor</td>
+                <td>\(A\) הוא ancestor של \(B\) אם קיים מסלול מ-\(A\) ל-\(B\)</td>
+            </tr>
+            <tr>
+                <td><strong>עומק צומת</strong></td>
+                <td>Depth</td>
+                <td>אורך המסלול מהשורש לצומת</td>
+            </tr>
+            <tr>
+                <td><strong>עומק עץ</strong></td>
+                <td>Depth of tree</td>
+                <td>העומק של הצומת העמוק ביותר</td>
+            </tr>
+            <tr>
+                <td><strong>גובה צומת</strong></td>
+                <td>Height</td>
+                <td>אורך המסלול הארוך ביותר מהצומת לעלה</td>
+            </tr>
+            <tr>
+                <td><strong>גובה עץ</strong></td>
+                <td>Height of tree</td>
+                <td>גובה השורש (= עומק העץ)</td>
+            </tr>
+        </table>
+
+        <h3>מושגים נוספים</h3>
+        <table>
+            <tr>
+                <th>מושג</th>
+                <th>אנגלית</th>
+                <th>הגדרה</th>
+            </tr>
+            <tr>
+                <td><strong>תת-עץ</strong></td>
+                <td>Subtree</td>
+                <td>תת-העץ שבשורשו צומת \(B\)</td>
+            </tr>
+            <tr>
+                <td><strong>דרגה</strong></td>
+                <td>Degree</td>
+                <td>מספר הילדים של צומת</td>
+            </tr>
+            <tr>
+                <td><strong>עץ סדור</strong></td>
+                <td>Ordered tree</td>
+                <td>מוגדר סדר על ילדי כל צומת</td>
+            </tr>
+            <tr>
+                <td><strong>עץ לא-סדור</strong></td>
+                <td>Unordered tree</td>
+                <td>אין סדר על הילדים</td>
+            </tr>
+        </table>
+
+        <div class="note-box">
+            <div class="label">Ancestor — strict ולא-strict</div>
+            <ul>
+                <li><strong>Strict ancestor:</strong> המסלול באורך <strong>לפחות 1</strong> (צומת אינו strict ancestor של עצמו).</li>
+                <li><strong>Non-strict ancestor:</strong> המסלול יכול להיות באורך 0 (צומת <strong>כן</strong> נחשב ancestor של עצמו).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 10. Binary Trees -->
+    <div class="section" id="binary-trees">
+        <h2>10. עצים בינאריים (Binary Trees)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: עץ בינארי</div>
+            עץ בינארי הוא <strong>עץ סדור</strong> שבו לכל צומת יש <strong>לכל היותר שני ילדים</strong> — ילד שמאלי וילד ימני.
+            <br><br>
+            העץ הנפוץ ביותר במדעי המחשב.
+        </div>
+
+        <h3>סוגים מיוחדים</h3>
+        <table>
+            <tr>
+                <th>סוג</th>
+                <th>אנגלית</th>
+                <th>תנאי</th>
+            </tr>
+            <tr>
+                <td><strong>עץ מלא</strong></td>
+                <td>Full binary tree</td>
+                <td>כל צומת הוא בדרגה 2 או 0 (כל צומת פנימי עם בדיוק 2 ילדים)</td>
+            </tr>
+            <tr>
+                <td><strong>עץ שלם</strong></td>
+                <td>Complete binary tree</td>
+                <td>עץ מלא (full) שבו <strong>כל העלים באותו עומק</strong></td>
+            </tr>
+            <tr>
+                <td><strong>עץ כמעט-שלם</strong></td>
+                <td>Almost-complete BT</td>
+                <td>ייתכנו צמתים חסרים רק ב<strong>סוף הרמה העמוקה ביותר</strong> (מימין)</td>
+            </tr>
+        </table>
+
+        <div class="thm-box">
+            <div class="label">חשוב</div>
+            עץ בינארי <strong>כמעט-שלם</strong> (almost-complete) הוא הבסיס למבנה <strong>Heap</strong> — שילמד בהרצאה הבאה.
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section" id="summary">
+        <h2>11. סיכום ההרצאה</h2>
+
+        <div class="arrow-chain">
+            <div class="box">DLL<br>Review</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Dynamic<br>Array</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Amortized<br>Analysis</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Priority<br>Queue</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Trees &amp;<br>Binary Trees</div>
+        </div>
+
+        <h3>נקודות עיקריות</h3>
+        <ul>
+            <li>ברשימה מקושרת כפולה — Delete ו-Insert-After ב-\(O(1)\). שרשור ב-\(O(1)\) (יתרון על מערך).</li>
+            <li>מערך דינמי עם הגדלה ב-1: \(O(n^2)\) עבור \(n\) הכנסות. עם <strong>הכפלה (doubling)</strong>: \(O(n)\).</li>
+            <li><strong>Amortized analysis</strong> חוסם את העלות הממוצעת לפעולה על פני סדרת ה-worst-case. שונה מ-average case!</li>
+            <li>\(\text{amort}(\text{Insert-Last}) = O(1)\) אף ש-\(\text{worst}(\text{Insert-Last}) = O(n)\).</li>
+            <li><strong>Priority Queue ADT:</strong> Insert, FindMin, DeleteMin, DecreaseKey. מימוש יעיל ע"י Heap.</li>
+            <li><strong>עץ:</strong> מבנה היררכי. מונחי מפתח: שורש, עלה, הורה, ילד, עומק, גובה, דרגה.</li>
+            <li><strong>עץ בינארי:</strong> כל צומת עם עד 2 ילדים. סוגים: full, complete, almost-complete.</li>
+        </ul>
+
+        <div class="note-box">
+            <div class="label">בהרצאה הבאה</div>
+            מימוש Priority Queue באמצעות <strong>Heap</strong> (ערמה) — עץ בינארי כמעט-שלם עם תכונת הערמה.
+        </div>
+    </div>
+
+    <div class="footer">
+        הרצאה 2 - Priority Queue, עצים וערמות | מבני נתונים | אוניברסיטת רייכמן
+        <br>by Lia Mesika
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$$", right: "$$", display: true}
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+</body>
+</html>

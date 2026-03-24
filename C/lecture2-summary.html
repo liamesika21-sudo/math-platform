@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרצאה 2 - Text Processing, Redirection and Pipes | תכנות מערכות</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --card-bg: #ffffff;
+            --primary: #1a3a5c;
+            --accent: #c0392b;
+            --green: #2e7d32;
+            --purple: #6a1b9a;
+            --blue: #1565c0;
+            --text: #2c2c2c;
+            --text-light: #555;
+            --border: #e0d6c8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans Hebrew', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), #2c5f8a);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.85; font-weight: 300; }
+        .header .lecture-num {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border-right: 4px solid var(--accent);
+        }
+        .toc h2 { color: var(--accent); margin-bottom: 12px; font-size: 1.3em; }
+        .toc ol { padding-right: 20px; }
+        .toc li { margin-bottom: 6px; }
+        .toc a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+        .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 1.5em;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section h3 { color: var(--green); font-size: 1.15em; margin: 18px 0 10px; }
+
+        .def-box {
+            background: #fef9f0;
+            border-right: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .def-box .label { color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+
+        .thm-box {
+            background: #f0f4fe;
+            border-right: 4px solid var(--blue);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .thm-box .label { color: var(--blue); font-weight: 700; margin-bottom: 4px; }
+
+        .example-box {
+            background: #f2f9f2;
+            border-right: 4px solid var(--green);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .example-box .label { color: var(--green); font-weight: 700; margin-bottom: 4px; }
+
+        .note-box {
+            background: #faf0fa;
+            border-right: 4px solid var(--purple);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+        .note-box .label { color: var(--purple); font-weight: 700; margin-bottom: 4px; }
+
+        .code-box {
+            background: #1e1e2e;
+            color: #cdd6f4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 14px 0;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.92em;
+            line-height: 1.7;
+            overflow-x: auto;
+        }
+        .code-box .label {
+            color: #a6adc8;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: 'Noto Sans Hebrew', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+        .code-box .cmd { color: #89b4fa; }
+        .code-box .flag { color: #f9e2af; }
+        .code-box .file { color: #a6e3a1; }
+        .code-box .op { color: #f38ba8; }
+        .code-box .comment { color: #6c7086; font-style: italic; }
+        .code-box .output {
+            color: #9399b2;
+            border-top: 1px solid #313244;
+            margin-top: 8px;
+            padding-top: 8px;
+        }
+
+        ul, ol { padding-right: 22px; margin: 8px 0; }
+        li { margin-bottom: 6px; }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        @media (max-width: 600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .header { padding: 24px 16px; }
+            .header h1 { font-size: 1.6em; }
+            .section { padding: 20px 16px; }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            text-align: center;
+        }
+        th { background: #f0ebe3; font-weight: 700; color: var(--primary); }
+        td code {
+            background: #f0ebe3;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .arrow-chain {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 16px 0;
+            direction: ltr;
+            flex-wrap: wrap;
+        }
+        .arrow-chain .box {
+            background: #e8f0fe;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            text-align: center;
+        }
+        .arrow-chain .arrow { font-size: 1.4em; color: var(--green); }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 4px; }
+
+        code {
+            background: #f0ebe3;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            direction: ltr;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="lecture-num">תכנות מערכות (System Programming) - אוניברסיטת רייכמן</div>
+        <h1>הרצאה 2 - עיבוד טקסט, הפניות וצינורות</h1>
+        <div class="subtitle">Text Processing, Redirection and Pipes</div>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h2>תוכן עניינים</h2>
+        <ol>
+            <li><a href="#display">הצגת קבצים — cat, more, less</a></li>
+            <li><a href="#head-tail">צפייה בחלקי קובץ — head ו-tail</a></li>
+            <li><a href="#wc">ספירה — wc</a></li>
+            <li><a href="#redirection">הפנית קלט/פלט — Redirection</a></li>
+            <li><a href="#append">הוספה לקובץ — Append</a></li>
+            <li><a href="#pipes">צינורות — Pipes</a></li>
+            <li><a href="#cut">חיתוך שדות — cut</a></li>
+            <li><a href="#paste">הדבקת קבצים — paste</a></li>
+            <li><a href="#sort">מיון — sort</a></li>
+            <li><a href="#uniq">הסרת כפילויות — uniq</a></li>
+            <li><a href="#tr">החלפת תווים — tr</a></li>
+            <li><a href="#combined">דוגמאות משולבות</a></li>
+            <li><a href="#summary">סיכום</a></li>
+        </ol>
+    </div>
+
+    <!-- 1. Displaying files -->
+    <div class="section" id="display">
+        <h2>1. הצגת קבצים — cat, more, less</h2>
+
+        <p>טקסט הוא הממשק העיקרי של מערכות UNIX/Linux. הפקודות הבאות מציגות תוכן של קבצי טקסט:</p>
+
+        <table>
+            <tr>
+                <th>פקודה</th>
+                <th>תיאור</th>
+            </tr>
+            <tr>
+                <td><code>cat file</code></td>
+                <td>מציגה את כל תוכן הקובץ</td>
+            </tr>
+            <tr>
+                <td><code>more file</code></td>
+                <td>מציגה מסך אחד בכל פעם — גלילה למטה בלבד</td>
+            </tr>
+            <tr>
+                <td><code>less file</code></td>
+                <td>כמו <code>more</code> אבל ניתן לגלול למעלה ולמטה ולחפש</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 2. head and tail -->
+    <div class="section" id="head-tail">
+        <h2>2. צפייה בחלקי קובץ — head ו-tail</h2>
+
+        <div class="two-col">
+            <div class="def-box">
+                <div class="label">head — תחילת הקובץ</div>
+                <code>head [options] [files]</code><br><br>
+                ברירת מחדל: 10 שורות ראשונות.
+                <ul>
+                    <li><code>-nX</code> — X שורות ראשונות</li>
+                    <li><code>-n-X</code> — הכל <strong>חוץ מ-</strong>X האחרונות</li>
+                    <li><code>-cX</code> — X בתים ראשונים</li>
+                    <li><code>-c-X</code> — הכל חוץ מ-X בתים אחרונים</li>
+                </ul>
+            </div>
+            <div class="def-box">
+                <div class="label">tail — סוף הקובץ</div>
+                <code>tail [options] [files]</code><br><br>
+                ברירת מחדל: 10 שורות אחרונות.
+                <ul>
+                    <li><code>-nX</code> — X שורות אחרונות</li>
+                    <li><code>-n+X</code> — <strong>מ</strong>שורה X ואילך</li>
+                    <li><code>-cX</code> — X בתים אחרונים</li>
+                    <li><code>-c+X</code> — מבית X ואילך</li>
+                    <li><code>-f</code> — מעקב חי אחרי קובץ (log)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות (על הקובץ phone_dir.txt)</div>
+            <div class="code-box">
+<span class="cmd">head</span> <span class="flag">-n3</span> <span class="file">phone_dir.txt</span>
+<div class="output">ADAMS, Andrew 7583
+BARRETT, Bruce 6466
+BAYES, Ryan 6585</div>
+            </div>
+            <div class="code-box">
+<span class="cmd">tail</span> <span class="flag">-n3</span> <span class="file">phone_dir.txt</span>
+<div class="output">NAKAMURA, Satoshi 6453
+REEVE, Shirley 7391
+ROSNER, David 6830</div>
+            </div>
+            <div class="code-box">
+<span class="cmd">tail</span> <span class="flag">-n+12</span> <span class="file">phone_dir.txt</span>    <span class="comment"># from line 12 onwards</span>
+<div class="output">MEASDAY, David 6494
+NAKAMURA, Satoshi 6453
+REEVE, Shirley 7391
+ROSNER, David 6830</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. wc -->
+    <div class="section" id="wc">
+        <h2>3. ספירה — wc (Word Count)</h2>
+
+        <div class="def-box">
+            <div class="label">הפקודה wc</div>
+            <code>wc [options] [files]</code> — סופרת שורות, מילים ובתים בקובץ.
+            <ul>
+                <li><code>-l</code> — מספר <strong>שורות</strong></li>
+                <li><code>-w</code> — מספר <strong>מילים</strong></li>
+                <li><code>-c</code> — מספר <strong>בתים</strong></li>
+            </ul>
+            ללא דגלים — מציגה את שלושתם.
+        </div>
+    </div>
+
+    <!-- 4. Redirection -->
+    <div class="section" id="redirection">
+        <h2>4. הפנית קלט/פלט — Redirection</h2>
+
+        <p>כל פקודה ב-Linux מקבלת קלט מ-<code>stdin</code> (מקלדת) ושולחת פלט ל-<code>stdout</code> ול-<code>stderr</code> (מסך).</p>
+
+        <table>
+            <tr>
+                <th>אופרטור</th>
+                <th>תפקיד</th>
+                <th>דוגמה</th>
+            </tr>
+            <tr>
+                <td><code>&gt;</code> או <code>1&gt;</code></td>
+                <td>הפניית stdout לקובץ (דריסה)</td>
+                <td><code>ls &gt; files</code></td>
+            </tr>
+            <tr>
+                <td><code>2&gt;</code></td>
+                <td>הפניית stderr לקובץ</td>
+                <td><code>ls *.c 2&gt; err</code></td>
+            </tr>
+            <tr>
+                <td><code>&amp;&gt;</code></td>
+                <td>הפניית stdout + stderr לקובץ</td>
+                <td><code>ls *.c &amp;&gt; all</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;</code></td>
+                <td>הפניית קובץ כ-stdin לפקודה</td>
+                <td><code>wc &lt; file.txt</code></td>
+            </tr>
+        </table>
+
+        <div class="example-box">
+            <div class="label">דוגמה: הפרדת stdout ו-stderr</div>
+            <div class="code-box">
+<span class="cmd">ls</span> <span class="flag">-l</span> <span class="file">*.txt *.tmp</span> <span class="op">1&gt;</span><span class="file">out</span> <span class="op">2&gt;</span><span class="file">err</span>     <span class="comment"># stdout to 'out', stderr to 'err'</span>
+<span class="cmd">ls</span> <span class="flag">-l</span> <span class="file">*.txt *.tmp</span> <span class="op">1&gt;</span><span class="file">out</span> <span class="op">2&gt;&gt;</span><span class="file">err</span>    <span class="comment"># stderr appended to 'err'</span>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <div class="label">הערה</div>
+            הפניית קלט עם <code>&lt;</code> אינה נפוצה — רוב הפקודות מקבלות קובץ כארגומנט, ולשאר ניתן להשתמש ב-pipes.
+        </div>
+    </div>
+
+    <!-- 5. Append -->
+    <div class="section" id="append">
+        <h2>5. הוספה לקובץ — Append</h2>
+
+        <div class="def-box">
+            <div class="label">ההבדל בין <code>&gt;</code> ל-<code>&gt;&gt;</code></div>
+            <ul>
+                <li><code>&gt;</code> — <strong>דורס</strong> את הקובץ (יוצר חדש אם לא קיים)</li>
+                <li><code>&gt;&gt;</code> — <strong>מוסיף</strong> לסוף הקובץ (append) ללא דריסה</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה</div>
+            <div class="code-box">
+<span class="cmd">echo</span> first line <span class="op">&gt;</span> <span class="file">lines.txt</span>
+<span class="cmd">echo</span> second line <span class="op">&gt;&gt;</span> <span class="file">lines.txt</span>
+<span class="cmd">echo</span> third line <span class="op">&gt;&gt;</span> <span class="file">lines.txt</span>
+<span class="cmd">cat</span> <span class="file">lines.txt</span>
+<div class="output">first line
+second line
+third line</div>
+            </div>
+            <div class="code-box">
+<span class="cmd">echo</span> fourth line <span class="op">&gt;</span> <span class="file">lines.txt</span>     <span class="comment"># overwrites!</span>
+<span class="cmd">cat</span> <span class="file">lines.txt</span>
+<div class="output">fourth line</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Pipes -->
+    <div class="section" id="pipes">
+        <h2>6. צינורות — Pipes</h2>
+
+        <div class="def-box">
+            <div class="label">מהו Pipe?</div>
+            <strong>Pipe</strong> (<code>|</code>) לוקח את ה-stdout של פקודה אחת ומעביר אותו כ-stdin של פקודה אחרת.
+            <br><br>
+            <code>command1 [args] | command2 [args]</code>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">למה זה חשוב?</div>
+            <ul>
+                <li>ניתן <strong>לשרשר</strong> (chain) מספר פקודות — ליצור כלים מורכבים מאבני בניין פשוטות.</li>
+                <li>אין צורך בקבצים זמניים — הנתונים זורמים ישירות.</li>
+                <li>סדרת pipes נקראת לפעמים <strong>filters</strong>.</li>
+                <li>Pipes הם סוג פשוט של <strong>inter-process communication (IPC)</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <div class="code-box">
+<span class="comment"># Count .txt files in current directory</span>
+<span class="cmd">ls</span> <span class="file">*.txt</span> <span class="op">|</span> <span class="cmd">wc</span> <span class="flag">-w</span>
+            </div>
+            <div class="code-box">
+<span class="comment"># Print lines 3-4 of phone_dir.txt</span>
+<span class="cmd">head</span> <span class="flag">-n4</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">tail</span> <span class="flag">-n2</span>
+<div class="output">BAYES, Ryan 6585
+BECK, Bill 6346</div>
+            </div>
+            <div class="code-box">
+<span class="comment"># Same result, different approach</span>
+<span class="cmd">tail</span> <span class="flag">-n+3</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">head</span> <span class="flag">-n2</span>
+            </div>
+            <div class="code-box">
+<span class="comment"># Most recently changed file</span>
+<span class="cmd">ls</span> <span class="flag">-t</span> <span class="op">|</span> <span class="cmd">head</span> <span class="flag">-n1</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. cut -->
+    <div class="section" id="cut">
+        <h2>7. חיתוך שדות — cut</h2>
+
+        <div class="def-box">
+            <div class="label">הפקודה cut</div>
+            <code>cut [options] [files]</code> — מדפיסה תת-קבוצה של תווים/שדות מכל שורה.
+            <ul>
+                <li><code>-c&lt;RANGE&gt;</code> — חיתוך לפי <strong>תווים</strong> (לדוגמה: <code>-c3-4,6,9-</code>)</li>
+                <li><code>-f&lt;RANGE&gt;</code> — חיתוך לפי <strong>שדות</strong> (לדוגמה: <code>-f3-4,6,9-</code>)</li>
+                <li><code>-d&lt;C&gt;</code> — הגדרת תו <strong>מפריד</strong> (delimiter). ברירת מחדל: tab</li>
+            </ul>
+            RANGE מוגדר עם מקפים (<code>-</code>) ופסיקים (<code>,</code>).
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <div class="code-box">
+<span class="comment"># First 2 first names (space as delimiter, field 2)</span>
+<span class="cmd">cut</span> <span class="flag">-f2 -d" "</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">head</span> <span class="flag">-n2</span>
+<div class="output">Andrew
+Bruce</div>
+            </div>
+            <div class="code-box">
+<span class="comment"># Last 3 last names (comma as delimiter, field 1)</span>
+<span class="cmd">cut</span> <span class="flag">-f1 -d","</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">tail</span> <span class="flag">-n3</span>
+<div class="output">NAKAMURA
+REEVE
+ROSNER</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. paste -->
+    <div class="section" id="paste">
+        <h2>8. הדבקת קבצים — paste</h2>
+
+        <div class="def-box">
+            <div class="label">הפקודה paste</div>
+            <code>paste [options] [files]</code> — שמה קבצים <strong>זה לצד זה</strong> (side by side), שורה מול שורה.
+            <ul>
+                <li><code>-d&lt;C&gt;</code> — תו מפריד בין הקבצים. ברירת מחדל: tab</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <div class="code-box">
+<span class="comment"># Paste phone_dir.txt alongside zipcodes, separated by tab</span>
+<span class="cmd">paste</span> <span class="flag">-d"\t"</span> <span class="file">phone_dir.txt zipcodes</span> <span class="op">|</span> <span class="cmd">head</span> <span class="flag">-n3</span>
+<div class="output">ADAMS, Andrew 7583    34980
+BARRETT, Bruce 6466   12567
+BAYES, Ryan 6585      87492</div>
+            </div>
+            <div class="code-box">
+<span class="comment"># Repeat each line 3 times, separated by colons</span>
+<span class="cmd">paste</span> <span class="flag">-d"::"</span> <span class="file">zipcodes zipcodes zipcodes</span>
+<div class="output">34980:34980:34980
+12567:12567:12567
+...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. sort -->
+    <div class="section" id="sort">
+        <h2>9. מיון — sort</h2>
+
+        <div class="def-box">
+            <div class="label">הפקודה sort</div>
+            <code>sort [options] [files]</code> — ממיינת שורות לפי סדר לקסיקוגרפי (אלפביתי) כברירת מחדל.
+            <ul>
+                <li><code>-r</code> — סדר <strong>הפוך</strong></li>
+                <li><code>-n</code> — מיון <strong>מספרי</strong> (9 לפני 21, במקום 21 לפני 9)</li>
+                <li><code>-k&lt;N&gt;,&lt;M&gt;</code> — מיון לפי <strong>מפתח</strong> מהמילה ה-N עד סוף המילה ה-M</li>
+            </ul>
+            ברירת מחדל: מפריד = whitespace (רווח, tab).
+        </div>
+
+        <div class="note-box">
+            <div class="label">הבדל חשוב: -k2,2 מול -k2</div>
+            <ul>
+                <li><code>-k2,2</code> — ממיין לפי שדה 2 <strong>בלבד</strong>. שוויונות נשמרות בסדר המקורי.</li>
+                <li><code>-k2</code> — ממיין לפי שדה 2 <strong>ועד סוף השורה</strong> (שדות 2, 3, ... מאוחדים למחרוזת אחת).</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <div class="label">מפתחות מיון ראשיים ומשניים</div>
+            <div class="code-box">
+<span class="comment"># Primary: field 2 numerically, Secondary: field 3 numerically</span>
+<span class="cmd">sort</span> <span class="flag">-k2,2n -k3,3n</span> <span class="file">fruits.txt</span>
+<div class="output">date    1 10
+banana  1 20
+apple   2 10
+cherry  2 5
+fig     3 7</div>
+            </div>
+            <div class="code-box">
+<span class="comment"># Get first names + phone numbers, sort by name then by number</span>
+<span class="cmd">cut</span> <span class="flag">-f2-3 -d" "</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">sort</span> <span class="flag">-k1,1 -k2,2n</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. uniq -->
+    <div class="section" id="uniq">
+        <h2>10. הסרת כפילויות — uniq</h2>
+
+        <div class="def-box">
+            <div class="label">הפקודה uniq</div>
+            <code>uniq [options] [file]</code> — מאחדת שורות <strong>עוקבות</strong> זהות לשורה אחת.
+            <ul>
+                <li><code>-c</code> — מוסיפה <strong>ספירה</strong> (count) לפני כל שורה</li>
+            </ul>
+            <strong>שימו לב:</strong> uniq מסירה רק כפילויות <strong>רצופות</strong>! לכן כמעט תמיד משלבים עם <code>sort</code> קודם.
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <div class="code-box">
+<span class="cmd">cat</span> <span class="file">repeat.txt</span>          <span class="cmd">uniq</span> <span class="file">repeat.txt</span>         <span class="cmd">sort</span> <span class="file">repeat.txt</span> <span class="op">|</span> <span class="cmd">uniq</span>
+<div class="output">first line             first line             first line
+first line             second line            second line
+second line            first line             third line
+first line             third line
+third line</div>
+            </div>
+            <div class="code-box">
+<span class="cmd">sort</span> <span class="file">repeat.txt</span> <span class="op">|</span> <span class="cmd">uniq</span> <span class="flag">-c</span>
+<div class="output">   3 first line
+   1 second line
+   1 third line</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. tr -->
+    <div class="section" id="tr">
+        <h2>11. החלפת תווים — tr (Translate)</h2>
+
+        <div class="def-box">
+            <div class="label">הפקודה tr</div>
+            <code>tr [options] set1 [set2]</code> — מחליפה כל תו מ-set1 בתו המתאים מ-set2.
+            <br><br>
+            <strong>חשוב:</strong> קוראת מ-stdin בלבד (אין ארגומנט קובץ). יש להשתמש עם pipe או <code>&lt;</code>.
+        </div>
+
+        <h3>טווחים ומחלקות תווים</h3>
+        <table>
+            <tr>
+                <th>תחביר</th>
+                <th>משמעות</th>
+            </tr>
+            <tr><td><code>"a-z"</code></td><td>כל האותיות הקטנות</td></tr>
+            <tr><td><code>"A-Z"</code></td><td>כל האותיות הגדולות</td></tr>
+            <tr><td><code>"DEFa-z"</code></td><td>D, E, F וכל אותיות a עד z</td></tr>
+            <tr><td><code>[:alpha:]</code></td><td>כל האותיות</td></tr>
+            <tr><td><code>[:upper:]</code></td><td>אותיות גדולות בלבד</td></tr>
+            <tr><td><code>[:lower:]</code></td><td>אותיות קטנות בלבד</td></tr>
+            <tr><td><code>[:digit:]</code></td><td>כל הספרות</td></tr>
+            <tr><td><code>[:space:]</code></td><td>רווח, tab, newline</td></tr>
+            <tr><td><code>[:punct:]</code></td><td>סימני פיסוק</td></tr>
+        </table>
+
+        <h3>דגלים</h3>
+        <div class="two-col">
+            <div class="def-box">
+                <div class="label">-s (squeeze)</div>
+                מאחד חזרות <strong>רצופות</strong> של תו לתו אחד.
+                <div class="code-box">
+<span class="cmd">echo</span> 'AB*****CD' <span class="op">|</span> <span class="cmd">tr</span> <span class="flag">-s</span> "*"
+<div class="output">AB*CD</div>
+                </div>
+            </div>
+            <div class="def-box">
+                <div class="label">-d (delete)</div>
+                <strong>מוחק</strong> את התווים שב-set1 (בלי set2).
+                <div class="code-box">
+<span class="cmd">echo</span> 'AABabCD' <span class="op">|</span> <span class="cmd">tr</span> <span class="flag">-d</span> "Ab"
+<div class="output">BaCD</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <div class="code-box">
+<span class="comment"># Convert all uppercase to lowercase</span>
+<span class="cmd">cat</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">tr</span> [:upper:] [:lower:]
+<div class="output">adams, andrew 7583
+barrett, bruce 6466
+...</div>
+            </div>
+            <div class="code-box">
+<span class="comment"># Swap case (upper↔lower)</span>
+<span class="cmd">cat</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">tr</span> "[:upper:][:lower:]" "[:lower:][:upper:]"
+<div class="output">adams, aNDREW 7583
+barrett, bRUCE 6466
+...</div>
+            </div>
+            <div class="code-box">
+<span class="comment"># Delete all uppercase letters</span>
+<span class="cmd">echo</span> 'AABabCD' <span class="op">|</span> <span class="cmd">tr</span> <span class="flag">-d</span> [:upper:]
+<div class="output">ab</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. Combined Examples -->
+    <div class="section" id="combined">
+        <h2>12. דוגמאות משולבות — File Processing with Pipes</h2>
+
+        <h3>Task I — רשימת שמות פרטיים ייחודיים</h3>
+        <div class="code-box">
+<span class="comment"># Step 1: cut second column</span>
+<span class="cmd">cut</span> <span class="flag">-f2 -d" "</span> <span class="file">phone_dir.txt</span>
+
+<span class="comment"># Step 2: sort</span>
+<span class="cmd">cut</span> <span class="flag">-f2 -d" "</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">sort</span>
+
+<span class="comment"># Step 3: remove duplicates</span>
+<span class="cmd">cut</span> <span class="flag">-f2 -d" "</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">sort</span> <span class="op">|</span> <span class="cmd">uniq</span>
+<div class="output">Abe
+Andrew
+Bill
+...</div>
+        </div>
+
+        <h3>Task II — כמה שמות מתחילים בכל אות?</h3>
+        <div class="code-box">
+<span class="comment"># Steps 1-2: cut first char of first name</span>
+<span class="cmd">cut</span> <span class="flag">-f2 -d" "</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">cut</span> <span class="flag">-c1</span>
+
+<span class="comment"># Steps 3-4: sort and count unique</span>
+<span class="cmd">cut</span> <span class="flag">-f2 -d" "</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">cut</span> <span class="flag">-c1</span> <span class="op">|</span> <span class="cmd">sort</span> <span class="op">|</span> <span class="cmd">uniq</span> <span class="flag">-c</span>
+<div class="output">   2 A
+   2 B
+   2 D
+   1 J
+   ...</div>
+        </div>
+
+        <h3>Task III — ספר טלפונים "שגוי" עם מספרים מעורבבים</h3>
+        <div class="code-box">
+<span class="comment"># Step 1: cut 3rd column, sort numerically descending, save to file</span>
+<span class="cmd">cut</span> <span class="flag">-f3 -d" "</span> <span class="file">phone_dir.txt</span> <span class="op">|</span> <span class="cmd">sort</span> <span class="flag">-rn</span> <span class="op">&gt;</span> <span class="file">nums.txt</span>
+
+<span class="comment"># Step 2: paste alongside original, separated by dash</span>
+<span class="cmd">paste</span> <span class="flag">-d"-"</span> <span class="file">phone_dir.txt nums.txt</span>
+<div class="output">ADAMS, Andrew 7583-9749
+BARRETT, Bruce 6466-7583
+BAYES, Ryan 6585-7484
+...</div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section" id="summary">
+        <h2>13. סיכום ההרצאה</h2>
+
+        <div class="arrow-chain">
+            <div class="box">cat / more<br>/ less</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">head<br>tail</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">wc</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">&gt; &gt;&gt;<br>&lt; 2&gt;</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">|<br>pipes</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">cut<br>paste</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">sort<br>uniq</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">tr</div>
+        </div>
+
+        <h3>נקודות עיקריות</h3>
+        <ul>
+            <li><strong>הצגת קבצים:</strong> <code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, <code>tail</code>.</li>
+            <li><strong>ספירה:</strong> <code>wc -l</code> (שורות), <code>wc -w</code> (מילים), <code>wc -c</code> (בתים).</li>
+            <li><strong>Redirection:</strong> <code>&gt;</code> (stdout), <code>2&gt;</code> (stderr), <code>&amp;&gt;</code> (שניהם), <code>&lt;</code> (stdin). <code>&gt;&gt;</code> = append.</li>
+            <li><strong>Pipes</strong> (<code>|</code>): מעבירים stdout של פקודה אחת ל-stdin של הבאה. ניתן לשרשר.</li>
+            <li><strong>Text delimited tables:</strong> <code>cut</code> (חיתוך שדות/תווים), <code>paste</code> (הדבקה side-by-side), <code>sort</code> (מיון).</li>
+            <li><strong>uniq:</strong> הסרת שורות עוקבות זהות. <code>-c</code> לספירה. <strong>חייב sort לפני!</strong></li>
+            <li><strong>tr:</strong> החלפת/מחיקת/איחוד תווים. קורא מ-stdin בלבד. דגלים: <code>-s</code> (squeeze), <code>-d</code> (delete).</li>
+        </ul>
+
+        <div class="note-box">
+            <div class="label">טיפ לשיעורי בית</div>
+            <ul>
+                <li>השתמשו <strong>בנתיבים יחסיים</strong> (relative paths).</li>
+                <li>השתמשו <strong>רק</strong> בפקודות/דגלים שנלמדו בהרצאות ובתרגולים.</li>
+                <li>ודאו שהפתרון עובד <strong>על השרת</strong> (בעיות hidden characters ממערכות הפעלה שונות).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        הרצאה 2 - Text Processing, Redirection and Pipes | תכנות מערכות | אוניברסיטת רייכמן
+        <br>by Lia Mesika
+    </div>
+
+</div>
+
+</body>
+</html>

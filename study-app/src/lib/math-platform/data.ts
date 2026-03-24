@@ -1212,6 +1212,7 @@ weeks.push({
     'Priority Queue: Insert, FindMin, DeleteMin, DecreaseKey',
     'עץ בינארי כמעט-שלם: בסיס ל-Heap',
   ],
+  lectureSummaryUrl: '/lecture-summaries/ds-w2.html',
 });
 
 theoryItems.push(
