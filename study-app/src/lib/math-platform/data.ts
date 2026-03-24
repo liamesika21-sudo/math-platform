@@ -1137,6 +1137,286 @@ theoryItems.push(
   },
 );
 
+// ─── Data Structures — Week 2 ─────────────────────────────────────────────────
+
+topics.push(
+  {
+    id: 'ds-w2-amortized',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    title: 'ניתוח Amortized ומערכים דינמיים',
+    summary: 'חזרה על מערכים דינמיים עם הכפלה, ניתוח amortized לעומת worst-case ו-average case, עלות Insert-Last עם doubling.',
+    patterns: ['amortized O(1)', 'worst-case vs amortized', 'doubling strategy'],
+  },
+  {
+    id: 'ds-w2-priority-queue',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    title: 'Priority Queue ADT',
+    summary: 'הגדרת Priority Queue, פעולות Insert, FindMin, DeleteMin, DecreaseKey. מוטיבציה: סדר לפי עדיפות ולא לפי סדר הגעה.',
+    patterns: ['Priority Queue', 'Insert/FindMin/DeleteMin', 'DecreaseKey'],
+  },
+  {
+    id: 'ds-w2-trees',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    title: 'עצים — הגדרות וטרמינולוגיה',
+    summary: 'הגדרת עץ רקורסיבית ולא-רקורסיבית, טרמינולוגיה: שורש, עלה, הורה, ילד, אח, עומק, גובה, דרגה. עצים בינאריים: מלא, שלם, כמעט-שלם.',
+    patterns: ['root/leaf/parent/child', 'depth/height', 'full/complete/almost-complete BT'],
+  },
+);
+
+sourceDocuments.push(
+  {
+    id: 'ds-w2-lecture',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    type: 'lecture',
+    name: 'הרצאה 2 — Priority Queue, עצים וערמות',
+    topicIds: ['ds-w2-amortized', 'ds-w2-priority-queue', 'ds-w2-trees'],
+    processed: true,
+  },
+);
+
+weeks.push({
+  id: 'ds-w2',
+  courseId: 'data-structures',
+  number: 2,
+  title: 'Priority Queue, עצים וערמות',
+  summary:
+    'חזרה על מערכים דינמיים וניתוח amortized. הגדרת Priority Queue ADT ופעולותיו (Insert, FindMin, DeleteMin, DecreaseKey). הגדרת עץ — רקורסיבית ולא-רקורסיבית. טרמינולוגיית עצים: שורש, עלה, הורה, ילד, אח, מסלול, עומק, גובה, דרגה, תת-עץ. עצים בינאריים: מלא (full), שלם (complete), כמעט-שלם (almost-complete).',
+  topicIds: ['ds-w2-amortized', 'ds-w2-priority-queue', 'ds-w2-trees'],
+  lectureItemIds: [
+    'ds-w2-concept-dll-review',
+    'ds-w2-concept-circular-vs-dll',
+    'ds-w2-concept-dynamic-array-review',
+    'ds-w2-concept-doubling-cost',
+    'ds-w2-def-worst-case-bound',
+    'ds-w2-def-amortized',
+    'ds-w2-concept-amortized-vs-average',
+    'ds-w2-def-priority-queue',
+    'ds-w2-def-tree-recursive',
+    'ds-w2-def-tree-nonrecursive',
+    'ds-w2-concept-tree-terminology',
+    'ds-w2-concept-tree-terminology-2',
+    'ds-w2-concept-tree-terminology-3',
+    'ds-w2-def-binary-tree',
+    'ds-w2-def-full-complete-bt',
+  ],
+  tutorialQuestionIds: [],
+  homeworkQuestionIds: [],
+  examQuestionIds: [],
+  reviewHighlights: [
+    'amortized(Insert-Last) = O(1) עם doubling, אף ש-worst = O(n)',
+    'Amortized != Average case — amortized על סדרה, average על התפלגות',
+    'Priority Queue: Insert, FindMin, DeleteMin, DecreaseKey',
+    'עץ בינארי כמעט-שלם: בסיס ל-Heap',
+  ],
+});
+
+theoryItems.push(
+  // ── Amortized & Dynamic Arrays (review + formal) ─────────────────────────
+  {
+    id: 'ds-w2-concept-dll-review',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-amortized',
+    title: 'חזרה: רשימה מקושרת כפולה — פעולות Delete ו-Insert-After',
+    kind: 'concept',
+    content:
+      'Delete(A) ברשימה מקושרת כפולה:\nA.prev.next <- A.next\nA.next.prev <- A.prev\nסיבוכיות: O(1). הערה: A עצמו לא משתנה, וגם L.length לא מתעדכן אוטומטית.\n\nInsert-After(A,B) — הכנסת צומת B אחרי צומת A:\nB.prev <- A\nB.next <- A.next\nA.next <- B\nB.next.prev <- B\nסיבוכיות: O(1).',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 7,
+  },
+  {
+    id: 'ds-w2-concept-circular-vs-dll',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-amortized',
+    title: 'השוואת סיבוכיות: מערך מעגלי לעומת רשימה מקושרת כפולה',
+    kind: 'concept',
+    content:
+      'טבלת סיבוכיות:\n\n| פעולה | Circular Array | Doubly Linked List |\n|---|---|---|\n| Insert/Delete-First | O(1) | O(1) |\n| Insert/Delete-Last | O(1) | O(1) |\n| Insert/Delete(i) | O(min{i+1, n-i+1}) | O(min{i+1, n-i+1}) |\n| Retrieve(i) | O(1) | O(min{i+1, n-i+1}) |\n| Concatenation | O(min{n1, n2}+1) | O(1) |\n\nיתרון DLL: שרשור ב-O(1). יתרון מערך: גישה אקראית ב-O(1).',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 10,
+  },
+  {
+    id: 'ds-w2-concept-dynamic-array-review',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-amortized',
+    title: 'מערך דינמי עם resizing — הבעיה',
+    kind: 'concept',
+    content:
+      'כשהמערך מלא (length = maxlen), לא ניתן להרחיב אותו — יש להקצות מערך חדש גדול יותר ולהעתיק.\n\nאם מגדילים ב-1 בכל פעם: n פעולות Insert-Last עולות 1+2+...+n = n(n+1)/2 = O(n²).\n\nשאלה: מה הגודל הנכון למערך החדש?',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 11,
+  },
+  {
+    id: 'ds-w2-concept-doubling-cost',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-amortized',
+    title: 'אסטרטגיית הכפלה (Doubling) — ניתוח עלות',
+    kind: 'concept',
+    content:
+      'כשהמערך מלא — מכפילים את גודלו.\n\nעלות n פעולות Insert-Last (עבור n=2^k):\n(1+1+...+1) + (1+2+4+...+n/2) = n + (n-1) = O(n)\n\nעבור n כללי (n=2^k+r, 0 <= r < 2^k):\n= n + (2^(k+1) - 1) <= n + 2n - 1 = 3n - 1 = O(n)\n\nהעלות ה-amortized של כל פעולה: O(n)/n = O(1).\nהעלות ה-worst-case של פעולה בודדת: O(n) (כשיש העתקה).',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 13,
+  },
+  {
+    id: 'ds-w2-def-worst-case-bound',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-amortized',
+    title: 'חסם Worst-case',
+    kind: 'definition',
+    content:
+      'worst(op) = הזמן המקסימלי לביצוע הפעולה op.\n\nהזמן לביצוע סדרה של n פעולות: Time(n * op) <= n * worst(op).\n\nלפעמים החסם הזה מאוד רופף. למשל:\nworst(Insert-Last) = O(n)\nאבל Time(n * Insert-Last) = O(n), לא O(n²).',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 16,
+  },
+  {
+    id: 'ds-w2-def-amortized',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-amortized',
+    title: 'ניתוח Amortized — הגדרה פורמלית',
+    kind: 'definition',
+    content:
+      'amort(op) הוא חסם amortized על עלות הפעולה op אם לכל n ולכל סדרה של n פעולות op:\n\namort(op) >= Time(n * op) / n\n\nדוגמה: worst(Insert-Last) = O(n), אבל amort(Insert-Last) = O(1).\nלכן: Time(n * Insert-Last) <= n * amort(Insert-Last) = O(n).\n\nAmortized analysis חוסם את הזמן הממוצע לפעולה על פני סדרת ה-worst-case של פעולות.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 17,
+  },
+  {
+    id: 'ds-w2-concept-amortized-vs-average',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-amortized',
+    title: 'Amortized Analysis != Average Case Analysis',
+    kind: 'concept',
+    content:
+      'הבדל חשוב:\n\n• Amortized Analysis: חוסם את הזמן הממוצע לפעולה על פני סדרת הפעולות הגרועה ביותר (worst-case sequence). אין הסתברות.\n\n• Average Case Analysis: חוסם את הזמן הממוצע של פעולה בודדת על פני כל הקלטים האפשריים (בהינתן התפלגות).\n\nAmortized שימושי כשהעלות הכוללת של סדרה חשובה יותר מעלות כל פעולה בודדת. למערכות real-time שצריכות כל פעולה מהירה — יש להשתמש ב-worst-case.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 21,
+  },
+
+  // ── Priority Queue ADT ────────────────────────────────────────────────────
+  {
+    id: 'ds-w2-def-priority-queue',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-priority-queue',
+    title: 'Priority Queue ADT',
+    kind: 'definition',
+    content:
+      'Priority Queue — ADT לניהול קבוצת איברים כאשר לכל איבר עדיפות (מפתח, key).\n\nפעולות:\n• Insert(x, k) — הכנסת איבר x עם מפתח k.\n• FindMin() — החזרת handle לאיבר עם מפתח מינימלי.\n• DeleteMin() — מחיקת האיבר עם מפתח מינימלי והחזרת handle אליו.\n• DecreaseKey(h, k) — הקטנת המפתח של איבר קיים (לפי handle h) ל-k.\n\nפתרון נאיבי: שמירת סדרה ממוינת לפי עדיפות.\nפתרון יעיל יותר: מבוסס עצים (Heap).',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 26,
+  },
+
+  // ── Trees ─────────────────────────────────────────────────────────────────
+  {
+    id: 'ds-w2-def-tree-recursive',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-trees',
+    title: 'עץ — הגדרה רקורסיבית',
+    kind: 'definition',
+    content:
+      'עץ הוא קבוצת צמתים (nodes) שהיא:\n• ריקה, או\n• מכילה צומת אחד הנקרא שורש (root) שמצביע לשורשים של אפס או יותר עצים זרים (disjoint) הנקראים תתי-עצים (subtrees).\n\ndisjoint = אין צמתים משותפים בין תתי-העצים.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 28,
+  },
+  {
+    id: 'ds-w2-def-tree-nonrecursive',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-trees',
+    title: 'עץ — הגדרה לא-רקורסיבית',
+    kind: 'definition',
+    content:
+      'מבנה בעל רמות (levels):\n• איבר יחיד ברמה העליונה (שורש).\n• כל איבר ברמה i מצביע לאפס או יותר איברים ברמה i+1.\n• כל איבר ברמה i+1 מוצבע ע"י איבר יחיד ברמה i.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 29,
+  },
+  {
+    id: 'ds-w2-concept-tree-terminology',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-trees',
+    title: 'טרמינולוגיית עצים — מונחים בסיסיים',
+    kind: 'concept',
+    content:
+      '• Root (שורש): הצומת היחיד ללא הורה.\n• Child (ילד): B הוא ילד של A אם A מצביע ל-B.\n• Parent (הורה): A הוא הורה של B אם A מצביע ל-B.\n• Leaf (עלה): צומת ללא ילדים.\n• Internal node (צומת פנימי): צומת שאינו עלה.\n• Sibling (אח): A ו-B הם אחים אם יש להם אותו הורה.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 31,
+  },
+  {
+    id: 'ds-w2-concept-tree-terminology-2',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-trees',
+    title: 'טרמינולוגיית עצים — מסלול, עומק וגובה',
+    kind: 'concept',
+    content:
+      '• Path (מסלול מכוון): סדרה של צמתים שכל צומת הוא הורה של הבא.\n• Length of path (אורך מסלול): מספר הקשתות (edges) במסלול.\n• Ancestor (אב קדמון): A הוא ancestor של B אם קיים מסלול מ-A ל-B. Strict: אורך >= 1. Non-strict: אורך >= 0.\n• Depth (עומק) של צומת N: אורך המסלול מהשורש ל-N.\n• Depth of tree: העומק של הצומת העמוק ביותר.\n• Height (גובה) של צומת N: אורך המסלול הארוך ביותר מ-N לעלה.\n• Height of tree: גובה השורש (= עומק העץ).',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 33,
+  },
+  {
+    id: 'ds-w2-concept-tree-terminology-3',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-trees',
+    title: 'טרמינולוגיית עצים — תת-עץ, דרגה, סדר',
+    kind: 'concept',
+    content:
+      '• Subtree rooted at B: תת-העץ שבשורשו B.\n• Path (undirected): מסלול לא-מכוון בין שני צמתים.\n• Degree (דרגה) של צומת A: מספר הילדים של A.\n• Ordered tree: עץ בו מוגדר סדר על ילדי כל צומת.\n• Unordered tree: אין סדר על הילדים.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 34,
+  },
+  {
+    id: 'ds-w2-def-binary-tree',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-trees',
+    title: 'עץ בינארי (Binary Tree)',
+    kind: 'definition',
+    content:
+      'עץ בינארי הוא עץ סדור שבו לכל צומת יש לכל היותר שני ילדים (ילד שמאלי וילד ימני).\n\nהעץ הנפוץ ביותר במדעי המחשב.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 35,
+  },
+  {
+    id: 'ds-w2-def-full-complete-bt',
+    courseId: 'data-structures',
+    weekId: 'ds-w2',
+    topicId: 'ds-w2-trees',
+    title: 'עצים בינאריים: Full, Complete, Almost-Complete',
+    kind: 'definition',
+    content:
+      '• Full binary tree: כל צומת הוא בדרגה 2 או 0 (כל צומת פנימי עם בדיוק 2 ילדים).\n• Complete binary tree: עץ מלא (full) שבו כל העלים באותו עומק.\n• Almost-complete binary tree: עץ בינארי שבו ייתכנו צמתים חסרים רק בסוף הרמה העמוקה ביותר (מימין).\n\nעץ almost-complete הוא הבסיס למבנה Heap.',
+    sourceName: 'הרצאה 2',
+    sourceDocumentId: 'ds-w2-lecture',
+    sourcePage: 36,
+  },
+);
+
 export const questions: PlatformQuestion[] = [
   // ─── Logic Week 1 — Tutorial 1 ─────────────────────────────────────────────
   {
