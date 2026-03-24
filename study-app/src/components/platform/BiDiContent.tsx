@@ -96,10 +96,11 @@ export function BiDiContent({ text, className, lineClamp }: BiDiContentProps) {
           );
         }
 
-        // Mixed / Hebrew line — dir="auto" lets the browser pick RTL when
-        // the first strong character is Hebrew, LTR when it's Latin/digit.
+        // Mixed / Hebrew line — force RTL if line contains any Hebrew,
+        // otherwise let the browser pick via dir="auto".
+        const hasHebrew = HAS_HEBREW.test(line);
         return (
-          <span key={i} dir="auto" className="block leading-7">
+          <span key={i} dir={hasHebrew ? 'rtl' : 'auto'} className="block leading-7" style={hasHebrew ? { textAlign: 'right' } : undefined}>
             {renderWithMathMarkers(line)}
           </span>
         );
