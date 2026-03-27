@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { ArrowLeft, ChevronDown, ChevronUp, Lightbulb, NotebookPen, Sigma, Sparkles } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Lightbulb, NotebookPen, Sigma, Sparkles } from 'lucide-react';
 import QuestionStateControls from '@/components/platform/QuestionStateControls';
 import { getCourseQuestions, getQuestionById, getTopicById, getWeekById } from '@/lib/math-platform/data';
 import { useCourseQuestionSession } from '@/lib/math-platform/session';
@@ -78,6 +78,14 @@ export default function QuestionPage() {
   const state = getState(question.id);
   const topic = getTopicById(question.topicId);
   const week = getWeekById(courseId, question.weekId);
+
+  // Prev/next navigation for same sourceType + same week
+  const siblings = allQuestions.filter(
+    (q) => q.sourceType === question.sourceType && q.weekId === question.weekId
+  );
+  const currentIdx = siblings.findIndex((q) => q.id === question.id);
+  const prevQuestion = currentIdx > 0 ? siblings[currentIdx - 1] : null;
+  const nextQuestion = currentIdx < siblings.length - 1 ? siblings[currentIdx + 1] : null;
 
   return (
     <div className="space-y-8">
@@ -221,7 +229,7 @@ export default function QuestionPage() {
         </aside>
       </section>
 
-      <section>
+      <section className="flex items-center justify-between gap-4">
         <Link
           href={`/courses/${courseId}/weeks/${question.weekId}`}
           className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-950 hover:text-slate-950"
@@ -229,6 +237,40 @@ export default function QuestionPage() {
           <ArrowLeft className="h-4 w-4" />
           חזרה לשבוע
         </Link>
+
+        {siblings.length > 1 && (
+          <div className="flex items-center gap-2">
+            {prevQuestion ? (
+              <Link
+                href={`/courses/${courseId}/questions/${prevQuestion.id}`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-950 hover:text-slate-950"
+              >
+                <ChevronRight className="h-4 w-4" />
+                שאלה קודמת
+              </Link>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-100 px-4 py-2 text-sm font-medium text-slate-300">
+                <ChevronRight className="h-4 w-4" />
+                שאלה קודמת
+              </span>
+            )}
+            <span className="text-xs text-slate-400">{currentIdx + 1}/{siblings.length}</span>
+            {nextQuestion ? (
+              <Link
+                href={`/courses/${courseId}/questions/${nextQuestion.id}`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-950 hover:text-slate-950"
+              >
+                שאלה הבאה
+                <ChevronLeft className="h-4 w-4" />
+              </Link>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-100 px-4 py-2 text-sm font-medium text-slate-300">
+                שאלה הבאה
+                <ChevronLeft className="h-4 w-4" />
+              </span>
+            )}
+          </div>
+        )}
       </section>
     </div>
   );
