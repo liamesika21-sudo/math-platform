@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תרגול 2 - Amortized Analysis & Binary Heaps | מבני נתונים</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --card-bg: #ffffff;
+            --primary: #1a3a5c;
+            --accent: #c0392b;
+            --green: #2e7d32;
+            --purple: #6a1b9a;
+            --blue: #1565c0;
+            --text: #2c2c2c;
+            --text-light: #555;
+            --border: #e0d6c8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans Hebrew', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), #2c5f8a);
+            color: white; padding: 40px; border-radius: var(--radius);
+            margin-bottom: 30px; text-align: center; box-shadow: var(--shadow);
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.85; font-weight: 300; }
+        .header .lecture-num {
+            display: inline-block; background: rgba(255,255,255,0.2);
+            padding: 4px 18px; border-radius: 20px; font-size: 0.9em; margin-bottom: 12px;
+        }
+
+        .toc {
+            background: var(--card-bg); border-radius: var(--radius);
+            padding: 24px 30px; margin-bottom: 30px; box-shadow: var(--shadow);
+            border-right: 4px solid var(--accent);
+        }
+        .toc h2 { color: var(--accent); margin-bottom: 12px; font-size: 1.3em; }
+        .toc ol { padding-right: 20px; }
+        .toc li { margin-bottom: 6px; }
+        .toc a { color: var(--primary); text-decoration: none; }
+        .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+        .section {
+            background: var(--card-bg); border-radius: var(--radius);
+            padding: 30px; margin-bottom: 24px; box-shadow: var(--shadow);
+        }
+        .section h2 {
+            color: var(--primary); font-size: 1.5em; margin-bottom: 16px;
+            padding-bottom: 10px; border-bottom: 2px solid var(--border);
+        }
+        .section h3 { color: var(--green); font-size: 1.15em; margin: 18px 0 10px; }
+
+        .def-box { background: #fef9f0; border-right: 4px solid var(--accent); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .def-box .label { color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+        .thm-box { background: #f0f4fe; border-right: 4px solid var(--blue); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .thm-box .label { color: var(--blue); font-weight: 700; margin-bottom: 4px; }
+        .example-box { background: #f2f9f2; border-right: 4px solid var(--green); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .example-box .label { color: var(--green); font-weight: 700; margin-bottom: 4px; }
+        .note-box { background: #faf0fa; border-right: 4px solid var(--purple); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .note-box .label { color: var(--purple); font-weight: 700; margin-bottom: 4px; }
+        .question-box { background: #fff8e1; border-right: 4px solid #f57f17; padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .question-box .label { color: #f57f17; font-weight: 700; margin-bottom: 4px; }
+        .solution-box { background: #e8f5e9; border-right: 4px solid var(--green); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .solution-box .label { color: var(--green); font-weight: 700; margin-bottom: 4px; }
+
+        .code-box {
+            background: #f8f8f0; border-right: 4px solid #555;
+            padding: 16px 20px; border-radius: 8px; margin: 14px 0;
+            direction: ltr; text-align: left;
+            font-family: 'Courier New', monospace; font-size: 0.92em; line-height: 1.7;
+        }
+        .code-box .label {
+            color: #555; font-weight: 700; margin-bottom: 8px;
+            font-family: 'Noto Sans Hebrew', sans-serif; direction: rtl; text-align: right;
+        }
+
+        ul, ol { padding-right: 22px; margin: 8px 0; }
+        li { margin-bottom: 6px; }
+        .math-block { text-align: center; margin: 16px 0; font-size: 1.15em; direction: ltr; }
+
+        .tree-diagram {
+            display: flex; justify-content: center; margin: 18px 0;
+            direction: ltr;
+        }
+        .tree-diagram svg { max-width: 100%; }
+
+        .step-flow {
+            display: flex; align-items: center; gap: 6px;
+            direction: ltr; flex-wrap: wrap; margin: 12px 0;
+            justify-content: center;
+        }
+        .step-flow .step {
+            background: #e8f0fe; padding: 6px 12px; border-radius: 8px;
+            font-size: 0.85em; text-align: center; font-weight: 600;
+        }
+        .step-flow .arrow { font-size: 1.2em; color: var(--green); }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th, td { border: 1px solid var(--border); padding: 10px 14px; text-align: center; }
+        th { background: #f0ebe3; font-weight: 700; color: var(--primary); }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+        @media (max-width: 600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .header { padding: 24px 16px; }
+            .header h1 { font-size: 1.6em; }
+            .section { padding: 20px 16px; }
+        }
+
+        .arrow-chain {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; margin: 16px 0; direction: ltr; flex-wrap: wrap;
+        }
+        .arrow-chain .box { background: #e8f0fe; padding: 8px 14px; border-radius: 8px; font-size: 0.95em; text-align: center; }
+        .arrow-chain .arrow { font-size: 1.4em; color: var(--green); }
+
+        .footer { text-align: center; padding: 20px; color: var(--text-light); font-size: 0.9em; }
+        .katex { font-size: 1.1em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="lecture-num">מבני נתונים - תרגול 2 - אוניברסיטת רייכמן</div>
+        <h1>תרגול 2 - ניתוח Amortized וערמות בינאריות</h1>
+        <div class="subtitle">Amortized Analysis &amp; Binary Heaps</div>
+    </div>
+
+    <div class="toc">
+        <h2>תוכן עניינים</h2>
+        <ol>
+            <li><a href="#amortized">חזרה: ניתוח Amortized</a></li>
+            <li><a href="#binary-counter">מונה בינארי — ניתוח Amortized</a></li>
+            <li><a href="#heap-intro">Binary Heap — הגדרה ותכונות</a></li>
+            <li><a href="#heap-array">מימוש Heap במערך</a></li>
+            <li><a href="#percolate">Percolate Up / Down</a></li>
+            <li><a href="#heap-ops">פעולות על Heap — Insert, FindMax, DeleteMax</a></li>
+            <li><a href="#build-heap">BuildHeap</a></li>
+            <li><a href="#q1">שאלה 1 — מספר העלים בעץ almost-complete</a></li>
+            <li><a href="#q2">שאלה 2 — מציאת k האיברים הגדולים ביותר</a></li>
+            <li><a href="#q3">שאלה 3 — מימוש Queue עם שני Stacks</a></li>
+        </ol>
+    </div>
+
+    <!-- 1. Amortized Review -->
+    <div class="section" id="amortized">
+        <h2>1. חזרה: ניתוח Amortized</h2>
+
+        <div class="def-box">
+            <div class="label">תזכורת</div>
+            <strong>Amortized analysis</strong> ממצע את עלות הפעולות על פני סדרה שלמה, ו"מחליק" פעולות יקרות נדירות.
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה: Array Doubling</div>
+            <ul>
+                <li><strong>Best case:</strong> \(O(1)\) — הכנסה רגילה ללא resizing</li>
+                <li><strong>Worst case:</strong> \(O(n)\) — resizing והעתקת כל המערך</li>
+                <li>אבל resizing קורה <strong>רק</strong> כשמספר האיברים הוא חזקה של 2</li>
+                <li><strong>Amortized Cost = \(O(1)\)</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. Binary Counter -->
+    <div class="section" id="binary-counter">
+        <h2>2. מונה בינארי — ניתוח Amortized</h2>
+
+        <div class="def-box">
+            <div class="label">מונה בינארי</div>
+            מונה בינארי סופר מ-\(0\) עד \(n-1\) בייצוג בסיס 2, באמצעות מערך של \(k = \lceil\log n\rceil\) ביטים.
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה: ספירה מ-0 עד 7 (מערך בגודל 3)</div>
+            <table>
+                <tr><th>מספר</th><th>ייצוג בינארי</th></tr>
+                <tr><td>0</td><td>[0,0,0]</td></tr>
+                <tr><td>1</td><td>[0,0,1]</td></tr>
+                <tr><td>2</td><td>[0,1,0]</td></tr>
+                <tr><td>3</td><td>[0,1,1]</td></tr>
+                <tr><td>4</td><td>[1,0,0]</td></tr>
+                <tr><td>5</td><td>[1,0,1]</td></tr>
+                <tr><td>6</td><td>[1,1,0]</td></tr>
+                <tr><td>7</td><td>[1,1,1]</td></tr>
+            </table>
+        </div>
+
+        <h3>כמה flips סה"כ?</h3>
+        <ul>
+            <li>ה-bit הכי פחות משמעותי (LSB) מתהפך <strong>כל צעד</strong> — \(n\) פעמים.</li>
+            <li>ה-bit השני מתהפך כל 2 צעדים — \(\lfloor n/2 \rfloor\) פעמים.</li>
+            <li>ה-bit ה-\(i\) מתהפך כל \(2^{i-1}\) צעדים — \(\lfloor n/2^i \rfloor\) פעמים.</li>
+        </ul>
+
+        <div class="math-block">
+            \(\text{Total flips} = n + \lfloor n/2 \rfloor + \lfloor n/4 \rfloor + \ldots + \lfloor n/2^k \rfloor\)
+        </div>
+
+        <div class="thm-box">
+            <div class="label">חישוב</div>
+            <div class="math-block">
+                \(n + \lfloor n/2 \rfloor + \lfloor n/4 \rfloor + \ldots \leq n + \frac{n}{2} + \frac{n}{4} + \ldots + 1 = n\left(1 + \frac{1}{2} + \frac{1}{4} + \ldots\right) \leq n \cdot 2 = 2n\)
+            </div>
+            <p>לכן ה-amortized cost של צעד בודד = \(\frac{2n}{n} = 2 = O(1)\).</p>
+        </div>
+    </div>
+
+    <!-- 3. Binary Heap -->
+    <div class="section" id="heap-intro">
+        <h2>3. Binary Heap — הגדרה ותכונות</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: Binary Heap</div>
+            Heap הוא מבנה נתונים שתומך בפעולות Priority Queue.
+            <br><br>
+            <strong>Binary Heap</strong> הוא <strong>עץ בינארי כמעט-שלם</strong> (almost-complete) עם <strong>תכונת הערמה</strong> (heap property).
+        </div>
+
+        <div class="two-col">
+            <div class="def-box">
+                <div class="label">Almost-Complete Binary Tree</div>
+                <ul>
+                    <li>כל הרמות <strong>חוץ מהאחרונה</strong> מלאות לגמרי</li>
+                    <li>ברמה האחרונה — העלים ממלאים <strong>משמאל לימין</strong></li>
+                </ul>
+            </div>
+            <div class="def-box">
+                <div class="label">תכונת הערמה</div>
+                <ul>
+                    <li><strong>Max-Heap:</strong> כל צומת \(\geq\) כל צאצאיו</li>
+                    <li><strong>Min-Heap:</strong> כל צומת \(\leq\) כל צאצאיו</li>
+                </ul>
+                (בתרגול עובדים עם max-heap)
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Heap Array Implementation -->
+    <div class="section" id="heap-array">
+        <h2>4. מימוש Heap במערך</h2>
+
+        <p>כיוון ש-heap הוא עץ <strong>כמעט-שלם</strong>, ניתן לאחסן אותו <strong>במערך בלי פוינטרים</strong>:</p>
+
+        <div class="def-box">
+            <div class="label">ניווט במערך (אינדקס מתחיל מ-1)</div>
+            <table>
+                <tr><th>פעולה</th><th>נוסחה</th></tr>
+                <tr><td>הורה של צומת \(i\)</td><td>\(\text{Parent}(i) = \lfloor i/2 \rfloor\)</td></tr>
+                <tr><td>ילד שמאלי של \(i\)</td><td>\(\text{Left}(i) = 2i\)</td></tr>
+                <tr><td>ילד ימני של \(i\)</td><td>\(\text{Right}(i) = 2i + 1\)</td></tr>
+            </table>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה: Max-Heap במערך</div>
+            <p>העץ:</p>
+            <div class="math-block" style="font-size: 0.95em;">
+                16 &rarr; [14, 10] &rarr; [8, 7, 9, 3] &rarr; [2, 4, 1]
+            </div>
+            <p>המערך:</p>
+            <div class="math-block">
+                \([16, 14, 10, 8, 7, 9, 3, 2, 4, 1]\)
+            </div>
+            <p>לדוגמה: צומת 2 (ערך 14), ילדיו: \(2 \times 2 = 4\) (ערך 8) ו-\(2 \times 2 + 1 = 5\) (ערך 7).</p>
+        </div>
+    </div>
+
+    <!-- 5. Percolate -->
+    <div class="section" id="percolate">
+        <h2>5. Percolate Up / Down</h2>
+
+        <p>שתי פעולות היסוד לתיקון תכונת הערמה:</p>
+
+        <div class="two-col">
+            <div class="def-box">
+                <div class="label">PercolateUp(i) — "בועה למעלה"</div>
+                מזיז צומת <strong>למעלה</strong> בעץ כל עוד הוא <strong>גדול מהוריו</strong>.
+                <br><br>
+                <strong>שימוש:</strong> אחרי Insert (הוספה בסוף).
+            </div>
+            <div class="def-box">
+                <div class="label">PercolateDown(i) — "שקיעה למטה"</div>
+                מזיז צומת <strong>למטה</strong> בעץ כל עוד הוא <strong>קטן מאחד הילדים</strong>.
+                <br><br>
+                <strong>שימוש:</strong> אחרי DeleteMax (הצבת האחרון בשורש).
+            </div>
+        </div>
+
+        <div class="code-box">
+            <div class="label">פסאודו-קוד</div>
+PercolateDown(i):  [max-heap]
+    while A[i] is smaller than one of its children:
+        j &larr; index of <b>maximal</b> child
+        swap A[i] and A[j]
+        i &larr; j
+
+PercolateUp(i):  [max-heap]
+    while A[i] is bigger than its parent:
+        j &larr; index of parent
+        swap A[i] and A[j]
+        i &larr; j
+        </div>
+
+        <div class="thm-box">
+            <div class="label">סיבוכיות</div>
+            שתי הפעולות מבקרות <strong>לכל היותר צומת אחד בכל רמה</strong> — לכן \(O(\log n)\).
+        </div>
+
+        <div class="question-box">
+            <div class="label">דוגמה: PercolateDown מהשורש</div>
+            <p>עץ עם שורש 8, ילדיו 25 ו-13:</p>
+            <div class="step-flow">
+                <span class="step">8 בשורש</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">8 &lt; 25 &rarr; swap</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">8 &lt; 20 &rarr; swap</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">8 &lt; 17 &rarr; swap</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">8 הגיע לעלה</span>
+            </div>
+            <p>בכל שלב — מחליפים עם <strong>הילד הגדול ביותר</strong>.</p>
+        </div>
+    </div>
+
+    <!-- 6. Heap Operations -->
+    <div class="section" id="heap-ops">
+        <h2>6. פעולות על Max-Heap</h2>
+
+        <table>
+            <tr><th>פעולה</th><th>תיאור</th><th>סיבוכיות</th></tr>
+            <tr>
+                <td><strong>find-max()</strong></td>
+                <td>מחזירים את השורש (המקסימום תמיד בשורש)</td>
+                <td>\(O(1)\)</td>
+            </tr>
+            <tr>
+                <td><strong>insert(x, k)</strong></td>
+                <td>מוסיפים כאיבר אחרון &rarr; PercolateUp</td>
+                <td>\(O(\log n)\)</td>
+            </tr>
+            <tr>
+                <td><strong>delete-max()</strong></td>
+                <td>שומרים שורש, מציבים איבר אחרון בשורש, מוחקים אחרון &rarr; PercolateDown</td>
+                <td>\(O(\log n)\)</td>
+            </tr>
+        </table>
+
+        <h3>דוגמה: Insert(43) ל-Max-Heap</h3>
+        <div class="example-box">
+            <div class="label">העץ לפני: שורש=44, ילדים 42, 35</div>
+            <div class="step-flow">
+                <span class="step">43 נכנס כעלה אחרון</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">43 &gt; 31 (הורה) &rarr; swap</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">43 &gt; 42 (הורה) &rarr; swap</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">43 &lt; 44 (שורש) &rarr; עצור</span>
+            </div>
+            <p>תוצאה: 44 בשורש, 43 כילד שמאלי, 42 ירד להיות ילד של 43.</p>
+        </div>
+
+        <h3>דוגמה: ExtractMax פעמיים</h3>
+        <div class="example-box">
+            <div class="label">ExtractMax ראשון (מוציא 44)</div>
+            <div class="step-flow">
+                <span class="step">שומרים 44</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">14 (אחרון) &rarr; שורש</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">14 &lt; 42 &rarr; swap עם max ילד</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">14 &lt; 33 &rarr; swap</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">14 &lt; 26 &rarr; swap</span>
+            </div>
+            <p>תוצאה: [42, 33, 35, 26, 31, 19, 27, 10, 14]</p>
+        </div>
+    </div>
+
+    <!-- 7. BuildHeap -->
+    <div class="section" id="build-heap">
+        <h2>7. BuildHeap</h2>
+
+        <div class="def-box">
+            <div class="label">בניית Heap ממערך</div>
+            ניתן לבנות heap ממערך לא ממוין ע"י PercolateDown <strong>מלמטה למעלה</strong> — מתחילים מהצמתים הפנימיים האחרונים (הורי העלים) ועולים לשורש.
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה: BuildHeap על [35, 31, 19, 10, 26, 44]</div>
+            <div class="step-flow">
+                <span class="step">[35,31,19,10,26,44]</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">PercolateDown(3): 19&lt;44 &rarr; swap</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">PercolateDown(2): 31 OK</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">PercolateDown(1): 35&lt;44 &rarr; swap</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">[44,31,35,10,26,19]</span>
+            </div>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">סיבוכיות BuildHeap</div>
+            <p>נראה כאילו \(O(n \log n)\) (כי \(n/2\) פעמים PercolateDown), אבל בפועל:</p>
+            <div class="math-block">
+                \(\sum_{h=0}^{\log n} \frac{n}{2^{h+1}} \cdot O(h) = O(n)\)
+            </div>
+            <p>כי רוב הצמתים נמצאים <strong>קרוב לתחתית</strong> ועושים מעט עבודה. <strong>BuildHeap = \(O(n)\).</strong></p>
+        </div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="section" id="q1">
+        <h2>שאלה 1 — מספר העלים בעץ Almost-Complete</h2>
+
+        <div class="question-box">
+            <div class="label">שאלה</div>
+            <strong>הוכיחו:</strong> בכל עץ בינארי כמעט-שלם עם \(n\) צמתים, בדיוק \(\lceil n/2 \rceil\) מהצמתים הם עלים.
+        </div>
+
+        <div class="solution-box">
+            <div class="label">פתרון</div>
+            <p>נניח שעומק העץ הוא \(k\), ומספר העלים ברמה \(k\) הוא \(l\) (לא ידוע).</p>
+            <ul>
+                <li>מספר הצמתים ברמה \(k-1\): \(2^{k-1}\)</li>
+                <li>מתוך צמתי רמה \(k-1\), \(\lceil l/2 \rceil\) הם <strong>הורים</strong> של עלי רמה \(k\), והשאר (\(2^{k-1} - \lceil l/2 \rceil\)) הם גם עלים</li>
+                <li>סה"כ עלים = \(l + (2^{k-1} - \lceil l/2 \rceil)\)</li>
+                <li>סה"כ צמתים: \(n = 2^k - 1 + l\) (עץ שלם עד רמה \(k-1\) ועוד \(l\) עלים)</li>
+            </ul>
+
+            <h3>המקרה \(l\) זוגי (\(n\) אי-זוגי):</h3>
+            <div class="math-block">
+                \(\text{עלים} = l + 2^{k-1} - \frac{l}{2} = 2^{k-1} + \frac{l}{2}\)
+            </div>
+            <div class="math-block">
+                \(\left\lceil\frac{n}{2}\right\rceil = \left\lceil\frac{2^k - 1 + l}{2}\right\rceil = \left\lceil 2^{k-1} + \frac{l-1}{2}\right\rceil = 2^{k-1} + \frac{l}{2} \quad \checkmark\)
+            </div>
+
+            <h3>המקרה \(l\) אי-זוגי (\(n\) זוגי):</h3>
+            <div class="math-block">
+                \(\text{עלים} = l + 2^{k-1} - \lceil l/2 \rceil = l + 2^{k-1} - \frac{l+1}{2} = 2^{k-1} + \frac{l-1}{2}\)
+            </div>
+            <div class="math-block">
+                \(\left\lceil\frac{n}{2}\right\rceil = \frac{n}{2} = \frac{2^k - 1 + l}{2} = 2^{k-1} + \frac{l-1}{2} \quad \checkmark\)
+            </div>
+        </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="section" id="q2">
+        <h2>שאלה 2 — מציאת k האיברים הגדולים ביותר ב-Heap</h2>
+
+        <div class="question-box">
+            <div class="label">שאלה 2.1 — האיבר השני בגודלו</div>
+            מציאת המקסימום ב-heap טריוויאלית (השורש). <strong>איך מוצאים את השני בגודלו?</strong>
+        </div>
+
+        <div class="solution-box">
+            <div class="label">פתרון 2.1</div>
+            השני בגודלו <strong>חייב להיות ילד ישיר של השורש</strong> (כי הוא הפסיד רק לשורש).
+            <br>
+            השוו בין שני ילדי השורש — <strong>\(O(1)\)</strong>.
+        </div>
+
+        <div class="question-box">
+            <div class="label">שאלה 2.2 — האיבר השלישי בגודלו</div>
+            איך מוצאים את השלישי בגודלו?
+        </div>
+
+        <div class="solution-box">
+            <div class="label">פתרון 2.2</div>
+            השלישי בגודלו יכול להיות:
+            <ul>
+                <li>ילד של השורש (שאינו השני בגודלו), <strong>או</strong></li>
+                <li>ילד של <strong>האיבר השני בגודלו</strong></li>
+            </ul>
+            סה"כ 3 מועמדים — השוו ביניהם. <strong>\(O(1)\)</strong>.
+        </div>
+
+        <div class="question-box">
+            <div class="label">שאלה 2.3 — k האיברים הגדולים ביותר</div>
+            בהינתן max-heap עם \(n\) איברים, מצאו את \(k\) האיברים הגדולים ביותר בסיבוכיות <strong>\(O(k \log k)\)</strong>.
+        </div>
+
+        <div class="solution-box">
+            <div class="label">פתרון 2.3 — אלגוריתם "Child Collection"</div>
+            <p>הרעיון: מנהלים <strong>אוסף מועמדים</strong> (child collection) — בכל שלב, המועמד הגדול ביותר הוא הבא ב-top-k, וילדיו נכנסים לאוסף.</p>
+
+            <h3>האלגוריתם:</h3>
+            <ol>
+                <li>אתחל את האוסף עם מצביע לשורש</li>
+                <li>חזור \(k-1\) פעמים:
+                    <ul>
+                        <li>מצא את האיבר עם המפתח <strong>הגדול ביותר</strong> באוסף</li>
+                        <li>הסר אותו מהאוסף</li>
+                        <li>הוסף את <strong>שני ילדיו</strong> לאוסף</li>
+                    </ul>
+                </li>
+                <li>החזר את המקסימום באוסף הנוכחי</li>
+            </ol>
+
+            <div class="example-box">
+                <div class="label">דוגמה: Heap = [44, 42, 35, 33, 31, 19, 27, 10, 26, 14]</div>
+                <table>
+                    <tr><th>שלב</th><th>אוסף (אינדקסים)</th><th>נבחר (ערך)</th></tr>
+                    <tr><td>התחלה</td><td>{0}</td><td>44</td></tr>
+                    <tr><td>1</td><td>{1, 2}</td><td>42</td></tr>
+                    <tr><td>2</td><td>{2, 3, 4}</td><td>35</td></tr>
+                    <tr><td>3</td><td>{3, 4, 5, 6}</td><td>33</td></tr>
+                </table>
+            </div>
+
+            <h3>סיבוכיות</h3>
+            <ul>
+                <li>גודל האוסף: מתחיל ב-1, גדל ב-1 בכל איטרציה (מוציאים 1, מכניסים 2) &rarr; בסוף \(k\) איטרציות: לכל היותר \(k\) איברים</li>
+                <li>אם מממשים את האוסף כ-<strong>max-heap עזר</strong>: כל פעולת Insert/DeleteMax = \(O(\log k)\)</li>
+                <li>סה"כ: \(k\) איטרציות \(\times\) \(O(\log k)\) = <strong>\(O(k \log k)\)</strong></li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <div class="label">נקודה חשובה</div>
+            האלגוריתם <strong>לא משנה את ה-heap המקורי</strong> — הוא רק קורא ממנו. ה-heap העזר הוא מבנה נפרד שמנהל את המועמדים.
+        </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="section" id="q3">
+        <h2>שאלה 3 — מימוש Queue עם שני Stacks</h2>
+
+        <div class="question-box">
+            <div class="label">שאלה</div>
+            הציעו דרך לממש <strong>Queue</strong> (FIFO) באמצעות <strong>שני Stacks</strong> בלבד (LIFO).
+            <br>מותר להשתמש רק בפעולות Push, Pop, Top, IsEmpty.
+        </div>
+
+        <div class="def-box">
+            <div class="label">תזכורת</div>
+            <ul>
+                <li><strong>Queue (FIFO):</strong> Enqueue (הכנסה לסוף), Dequeue (הוצאה מההתחלה)</li>
+                <li><strong>Stack (LIFO):</strong> Push (הכנסה), Pop (הוצאת האחרון)</li>
+            </ul>
+        </div>
+
+        <div class="solution-box">
+            <div class="label">פתרון</div>
+            <p>משתמשים בשני stacks: <strong>S1</strong> (להכנסות) ו-<strong>S2</strong> (להוצאות).</p>
+
+            <h3>Enqueue(x):</h3>
+            <div class="code-box">Push(S1, x)</div>
+            <p>פשוט דוחפים ל-S1. <strong>\(O(1)\)</strong>.</p>
+
+            <h3>Dequeue():</h3>
+            <div class="code-box">
+if S2 is empty:
+    while S1 is not empty:
+        Push(S2, Pop(S1))
+return Pop(S2)
+            </div>
+            <p>אם S2 ריק — מעבירים <strong>הכל</strong> מ-S1 ל-S2 (ההיפוך הופך LIFO ל-FIFO). אחר כך Pop מ-S2.</p>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה מלאה צעד-אחר-צעד</div>
+            <table>
+                <tr><th>פעולה</th><th>S1 (top בימין)</th><th>S2 (top בימין)</th><th>תוצאה</th></tr>
+                <tr><td>Enqueue(5)</td><td>[5]</td><td>[]</td><td>—</td></tr>
+                <tr><td>Enqueue(2)</td><td>[5, 2]</td><td>[]</td><td>—</td></tr>
+                <tr><td>Enqueue(3)</td><td>[5, 2, 3]</td><td>[]</td><td>—</td></tr>
+                <tr><td>Dequeue()</td><td>[]</td><td>[3, 2]</td><td>5 (העברה + Pop)</td></tr>
+                <tr><td>Enqueue(6)</td><td>[6]</td><td>[3, 2]</td><td>—</td></tr>
+                <tr><td>Enqueue(4)</td><td>[6, 4]</td><td>[3, 2]</td><td>—</td></tr>
+                <tr><td>Dequeue()</td><td>[6, 4]</td><td>[3]</td><td>2 (S2 לא ריק, Pop)</td></tr>
+                <tr><td>Dequeue()</td><td>[6, 4]</td><td>[]</td><td>3 (Pop)</td></tr>
+                <tr><td>Dequeue()</td><td>[]</td><td>[4]</td><td>6 (העברה + Pop)</td></tr>
+            </table>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">ניתוח סיבוכיות</div>
+            <ul>
+                <li><strong>Enqueue:</strong> \(O(1)\) — תמיד</li>
+                <li><strong>Dequeue worst-case:</strong> \(O(n)\) — כשצריך להעביר את כל S1 ל-S2</li>
+                <li><strong>Dequeue amortized:</strong> \(O(1)\) — כל איבר מועבר מ-S1 ל-S2 <strong>לכל היותר פעם אחת</strong> לאורך כל חיי המבנה</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section" id="summary">
+        <h2>סיכום התרגול</h2>
+
+        <div class="arrow-chain">
+            <div class="box">Amortized<br>Analysis</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Binary<br>Counter</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Heap<br>Definition</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Percolate<br>Up/Down</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Top-k<br>Algorithm</div>
+            <div class="arrow">&rarr;</div>
+            <div class="box">Queue from<br>2 Stacks</div>
+        </div>
+
+        <h3>נקודות עיקריות</h3>
+        <ul>
+            <li><strong>מונה בינארי:</strong> amortized cost של increment = \(O(1)\) (סה"כ \(2n\) flips ל-\(n\) צעדים).</li>
+            <li><strong>Binary Heap:</strong> עץ almost-complete + heap property. מימוש במערך: Parent=\(\lfloor i/2\rfloor\), Left=\(2i\), Right=\(2i+1\).</li>
+            <li><strong>Percolate Up/Down:</strong> שתיהן \(O(\log n)\). Up להכנסה, Down למחיקת מקסימום.</li>
+            <li><strong>עלים בעץ almost-complete:</strong> בדיוק \(\lceil n/2 \rceil\).</li>
+            <li><strong>Top-k:</strong> אלגוריתם Child Collection עם heap עזר — \(O(k \log k)\) בלי לשנות את ה-heap המקורי.</li>
+            <li><strong>Queue מ-2 Stacks:</strong> Enqueue = \(O(1)\), Dequeue = \(O(1)\) amortized. כל איבר עובר מ-S1 ל-S2 לכל היותר פעם אחת.</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        תרגול 2 - Amortized Analysis & Binary Heaps | מבני נתונים | אוניברסיטת רייכמן
+        <br>by Lia Mesika
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$$", right: "$$", display: true}
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,14 +1,68 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { ArrowLeft, Lightbulb, NotebookPen, Sigma, Sparkles } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Lightbulb, NotebookPen, Sigma, Sparkles } from 'lucide-react';
 import QuestionStateControls from '@/components/platform/QuestionStateControls';
 import { getCourseQuestions, getQuestionById, getTopicById, getWeekById } from '@/lib/math-platform/data';
 import { useCourseQuestionSession } from '@/lib/math-platform/session';
 import { getDifficultyLabel, getSourceTypeLabel } from '@/lib/math-platform/utils';
 import type { CourseId } from '@/lib/math-platform/types';
+
+const colorMap = {
+  amber: {
+    border: 'border-amber-200',
+    bg: 'bg-amber-50',
+    text: 'text-amber-700',
+    content: 'text-amber-900',
+    hoverBg: 'hover:bg-amber-100',
+  },
+  emerald: {
+    border: 'border-emerald-200',
+    bg: 'bg-emerald-50',
+    text: 'text-emerald-700',
+    content: 'text-emerald-950',
+    hoverBg: 'hover:bg-emerald-100',
+  },
+} as const;
+
+function RevealBlock({ icon, label, labelClosed, colorScheme, content }: {
+  icon: React.ReactNode;
+  label: string;
+  labelClosed: string;
+  colorScheme: keyof typeof colorMap;
+  content: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const c = colorMap[colorScheme];
+
+  return (
+    <div className={`mt-6 rounded-[1.5rem] border ${c.border} ${c.bg} overflow-hidden`}>
+      <button
+        type="button"
+        onClick={() => setOpen(v => !v)}
+        className={`flex w-full items-center justify-between p-5 ${c.hoverBg} transition-colors cursor-pointer`}
+      >
+        <div className={`flex items-center gap-2 ${c.text}`}>
+          {icon}
+          <p className="text-sm font-semibold uppercase tracking-[0.18em]">
+            {open ? label : labelClosed}
+          </p>
+        </div>
+        <div className={c.text}>
+          {open ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+        </div>
+      </button>
+      {open && (
+        <div className="px-5 pb-5">
+          <p className={`text-sm leading-7 ${c.content}`}>{content}</p>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function QuestionPage() {
   const params = useParams<{ courseId: string; questionId: string }>();
@@ -113,25 +167,21 @@ export default function QuestionPage() {
             )}
           </div>
 
-          {question.hint ? (
-            <div className="mt-6 rounded-[1.5rem] border border-amber-200 bg-amber-50 p-5">
-              <div className="flex items-center gap-2 text-amber-700">
-                <Lightbulb className="h-4 w-4" />
-                <p className="text-sm font-semibold uppercase tracking-[0.18em]">רמז אופציונלי</p>
-              </div>
-              <p className="mt-3 text-sm leading-7 text-amber-900">{question.hint}</p>
-            </div>
-          ) : null}
+          {question.hint ? <RevealBlock
+            icon={<Lightbulb className="h-4 w-4" />}
+            label="רמז"
+            labelClosed="לחץ לחשוף רמז"
+            colorScheme="amber"
+            content={question.hint}
+          /> : null}
 
-          {question.solution ? (
-            <div className="mt-6 rounded-[1.5rem] border border-emerald-200 bg-emerald-50 p-5">
-              <div className="flex items-center gap-2 text-emerald-700">
-                <Sigma className="h-4 w-4" />
-                <p className="text-sm font-semibold uppercase tracking-[0.18em]">פתרון מלא</p>
-              </div>
-              <p className="mt-3 text-sm leading-7 text-emerald-950">{question.solution}</p>
-            </div>
-          ) : null}
+          {question.solution ? <RevealBlock
+            icon={<Sigma className="h-4 w-4" />}
+            label="פתרון מלא"
+            labelClosed="לחץ לחשוף פתרון"
+            colorScheme="emerald"
+            content={question.solution}
+          /> : null}
         </article>
 
         <aside className="space-y-5">

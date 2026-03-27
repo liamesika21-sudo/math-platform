@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרצאה 2 - משפט הקיום והיחידות, משפט המימדים | אלגברה לינארית 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --card-bg: #ffffff;
+            --primary: #1a3a5c;
+            --accent: #c0392b;
+            --green: #2e7d32;
+            --purple: #6a1b9a;
+            --blue: #1565c0;
+            --teal: #00838f;
+            --text: #2c2c2c;
+            --text-light: #555;
+            --border: #e0d6c8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans Hebrew', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header { background: linear-gradient(135deg, #4a6274, #6b8a9e); color: white; padding: 40px; border-radius: var(--radius); margin-bottom: 30px; text-align: center; box-shadow: var(--shadow); }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.85; font-weight: 300; }
+        .header .lecture-num { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 18px; border-radius: 20px; font-size: 0.9em; margin-bottom: 12px; }
+
+        .toc { background: var(--card-bg); border-radius: var(--radius); padding: 24px 30px; margin-bottom: 30px; box-shadow: var(--shadow); border-right: 4px solid var(--teal); }
+        .toc h2 { color: var(--teal); margin-bottom: 12px; font-size: 1.3em; }
+        .toc ol { padding-right: 20px; }
+        .toc li { margin-bottom: 6px; }
+        .toc a { color: var(--primary); text-decoration: none; }
+        .toc a:hover { color: var(--teal); text-decoration: underline; }
+
+        .section { background: var(--card-bg); border-radius: var(--radius); padding: 30px; margin-bottom: 24px; box-shadow: var(--shadow); }
+        .section h2 { color: var(--primary); font-size: 1.5em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+        .section h3 { color: var(--green); font-size: 1.15em; margin: 18px 0 10px; }
+
+        .def-box { background: #fef9f0; border-right: 4px solid var(--teal); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .def-box .label { color: var(--teal); font-weight: 700; margin-bottom: 6px; font-size: 1.05em; }
+
+        .thm-box { background: #f3e8ff; border-right: 4px solid var(--purple); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .thm-box .label { color: var(--purple); font-weight: 700; margin-bottom: 6px; font-size: 1.05em; }
+
+        .proof-box { background: #f0f4fe; border-right: 4px solid var(--blue); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .proof-box .label { color: var(--blue); font-weight: 700; margin-bottom: 6px; }
+
+        .example-box { background: #f2f9f2; border-right: 4px solid var(--green); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .example-box .label { color: var(--green); font-weight: 700; margin-bottom: 6px; }
+
+        .note-box { background: #fff8e1; border-right: 4px solid #f57f17; padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .note-box .label { color: #f57f17; font-weight: 700; margin-bottom: 6px; }
+
+        .corollary-box { background: #e8f5e9; border-right: 4px solid #388e3c; padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .corollary-box .label { color: #388e3c; font-weight: 700; margin-bottom: 6px; font-size: 1.05em; }
+
+        ul, ol { padding-right: 22px; margin: 8px 0; }
+        li { margin-bottom: 6px; }
+        .math-block { text-align: center; margin: 16px 0; font-size: 1.15em; direction: ltr; }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th, td { border: 1px solid var(--border); padding: 10px 14px; text-align: center; }
+        th { background: #f0ebe3; font-weight: 700; color: var(--primary); }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+        @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } .header { padding: 24px 16px; } .header h1 { font-size: 1.6em; } .section { padding: 20px 16px; } }
+
+        .footer { text-align: center; padding: 20px; color: var(--text-light); font-size: 0.9em; }
+        .katex { font-size: 1.1em; }
+        .qed { float: left; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="lecture-num">אלגברה לינארית 2 - שרון גל - אוניברסיטת רייכמן</div>
+        <h1>הרצאה 2 - משפט הקיום והיחידות, משפט המימדים</h1>
+        <div class="subtitle">Existence &amp; Uniqueness, Rank-Nullity Theorem, Isomorphisms</div>
+    </div>
+
+    <div class="toc">
+        <h2>תוכן עניינים</h2>
+        <ol>
+            <li><a href="#existence">משפט 1 — קיום ויחידות של ה"ל</a></li>
+            <li><a href="#exercise1">תרגיל 1 — מציאת ה"ל לפי ערכים על בסיס</a></li>
+            <li><a href="#dim-thm">משפט 2 — משפט המימדים השני (Rank-Nullity)</a></li>
+            <li><a href="#dim-corollaries">מסקנות ממשפט המימדים</a></li>
+            <li><a href="#exercise2">תרגיל 2 — הפרכה עם משפט המימדים (\(\mathbb{R}^3\))</a></li>
+            <li><a href="#exercise3">תרגיל 3 — הוכחה עם משפט המימדים (\(\mathbb{R}^4\))</a></li>
+            <li><a href="#exercise4">תרגיל 4 — נגזרת כהעתקה לינארית</a></li>
+            <li><a href="#matrix-spaces">מרחב השורות, העמודות והאפס של מטריצה</a></li>
+            <li><a href="#rank-nullity-matrix">מסקנה 4 — Rank-Nullity למטריצות</a></li>
+            <li><a href="#isomorphism">איזומורפיזם</a></li>
+        </ol>
+    </div>
+
+    <!-- 1. Existence & Uniqueness -->
+    <div class="section" id="existence">
+        <h2>1. משפט 1 — קיום ויחידות של העתקה לינארית</h2>
+
+        <div class="thm-box">
+            <div class="label">משפט 1 (קיום ויחידות)</div>
+            יהי \(\mathbb{F}\) שדה ויהיו \(V,W\) מרחבים וקטוריים מעל \(\mathbb{F}\).
+            <br>נניח ש-\(V\) נוצר סופית ויהיו \(v_1, \ldots, v_n\) <strong>בסיס</strong> של \(V\).
+            <br>יהיו \(w_1, \ldots, w_n \in W\) (<strong>סתם</strong> וקטורים, לאו דווקא בסיס).
+            <br><br>
+            אזי <strong>קיימת ה"ל יחידה</strong> \(T: V \to W\) כך ש-\(T(v_i) = w_i\) לכל \(1 \leq i \leq n\).
+        </div>
+
+        <div class="note-box">
+            <div class="label">המשמעות</div>
+            <ul>
+                <li>\(w_1, \ldots, w_n\) <strong>לא בהכרח</strong> בסיס של \(W\).</li>
+                <li>המימד של \(W\) <strong>אינו בהכרח</strong> \(n\).</li>
+                <li>מספיק להגדיר ה"ל על <strong>הבסיס</strong> — היא נקבעת באופן <strong>יחיד</strong> על כל המרחב.</li>
+            </ul>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחת קיום</div>
+            יהי \(v \in V\). מהיות \(v_1, \ldots, v_n\) בסיס, קיימים \(\alpha_1, \ldots, \alpha_n \in \mathbb{F}\) <strong>יחידים</strong> כך ש-\(v = \alpha_1 v_1 + \cdots + \alpha_n v_n\).
+            <br>נגדיר \(T: V \to W\) באופן הבא:
+            <div class="math-block">
+                \(\boxed{T(v) = \alpha_1 w_1 + \cdots + \alpha_n w_n}\)
+            </div>
+            <strong>\(T\) מוגדרת היטב</strong> מכיוון ש-\(\alpha_1, \ldots, \alpha_n\) יחידים.
+            <br>בנוסף, מהיות \(W\) תמ"ו (סגור לצ"ל) נקבל ש-\(\alpha_1 w_1 + \cdots + \alpha_n w_n \in W\).
+            <br><br>
+            <strong>צריך להוכיח שני דברים:</strong>
+            <br><br>
+            <strong>1. \(T(v_i) = w_i\):</strong> יהי \(1 \leq i \leq n\). אזי:
+            <div class="math-block">
+                \(T(v_i) = T(0_\mathbb{F} v_1 + \cdots + 1_\mathbb{F} v_i + \cdots + 0_\mathbb{F} v_n) = 0_\mathbb{F} w_1 + \cdots + 1_\mathbb{F} w_i + \cdots + 0_\mathbb{F} w_n = w_i \;\; \checkmark\)
+            </div>
+            <strong>2. \(T\) ה"ל:</strong> יהיו \(u, v \in V\) ויהיו \(\alpha, \beta \in \mathbb{F}\).
+            <br>נכתוב \(u = \alpha_1 v_1 + \cdots + \alpha_n v_n\) ו-\(v = \beta_1 v_1 + \cdots + \beta_n v_n\). אזי:
+            <div class="math-block">
+                \(T(\alpha u + \beta v) = T\bigl((\alpha\alpha_1 + \beta\beta_1)v_1 + \cdots + (\alpha\alpha_n + \beta\beta_n)v_n\bigr)\)
+            </div>
+            <div class="math-block">
+                \(= (\alpha\alpha_1 + \beta\beta_1)w_1 + \cdots + (\alpha\alpha_n + \beta\beta_n)w_n\)
+            </div>
+            <div class="math-block">
+                \(= \alpha(\alpha_1 w_1 + \cdots + \alpha_n w_n) + \beta(\beta_1 w_1 + \cdots + \beta_n w_n) = \alpha T(u) + \beta T(v) \;\; \checkmark\)
+            </div>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחת יחידות</div>
+            תהי \(S: V \to W\) ה"ל המקיימת \(S(v_i) = w_i\) לכל \(1 \leq i \leq n\). <strong>נוכיח \(S = T\).</strong>
+            <br><br>
+            יהי \(v \in V\). לכן קיימים \(\alpha_1, \ldots, \alpha_n\) כך ש-\(v = \alpha_1 v_1 + \cdots + \alpha_n v_n\).
+            <div class="math-block">
+                \(S(v) = S(\alpha_1 v_1 + \cdots + \alpha_n v_n) = \alpha_1 S(v_1) + \cdots + \alpha_n S(v_n) = \alpha_1 w_1 + \cdots + \alpha_n w_n = T(v)\)
+            </div>
+            לכל \(v \in V\) מתקיים \(S(v) = T(v)\), לכן \(S = T\).
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- Exercise 1 -->
+    <div class="section" id="exercise1">
+        <h2>2. תרגיל 1 — מציאת ה"ל לפי ערכים על בסיס</h2>
+
+        <div class="example-box">
+            <div class="label">תרגיל 1</div>
+            תהי \(T: \mathbb{R}^2 \to \mathbb{R}^2\) ה"ל המקיימת:
+            \(T\binom{1}{1} = \binom{2}{1}\), \(\;T\binom{1}{-1} = \binom{1}{-1}\).
+            <br><strong>א.</strong> מצאו את \(T\binom{x}{y}\) לכל \(\binom{x}{y} \in \mathbb{R}^2\).
+            <br><strong>ב.</strong> הוכיחו ש-\(T\) הפיכה וחשבו את \(T^{-1}\binom{1}{0}\).
+        </div>
+
+        <div class="proof-box">
+            <div class="label">פתרון א</div>
+            יהי \(\binom{x}{y} \in \mathbb{R}^2\). נסמן: \(T\binom{x}{y} = \binom{ax+by}{cx+dy}\).
+            <br>מהנתון השמאלי (\(x=1, y=1\)):
+            <div class="math-block">
+                \(a + b = 2, \quad c + d = 1\)
+            </div>
+            מהנתון הימני (\(x=1, y=-1\)):
+            <div class="math-block">
+                \(a - b = 1, \quad c - d = -1\)
+            </div>
+            נפתור: \(a = 1.5,\; b = 0.5,\; c = 0,\; d = 1\). לכן:
+            <div class="math-block">
+                \(\boxed{T\binom{x}{y} = \binom{1.5x + 0.5y}{y}}\)
+            </div>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">פתרון ב</div>
+            נשים לב ש-\(\left\{\binom{2}{1}, \binom{1}{-1}\right\}\) וגם \(\left\{\binom{1}{1}, \binom{1}{-1}\right\}\) הם בסיסים ל-\(\mathbb{R}^2\).
+            <br>לכן \(T\) <strong>מעתיקה בסיס לבסיס</strong> — ולפי משפט 13 מהרצאה 1, היא <strong>הפיכה</strong>.
+            <br><br>
+            חישוב \(T^{-1}\binom{1}{0}\): נבטא \(\binom{1}{0}\) כצ"ל של איברי הבסיס:
+            <div class="math-block">
+                \(\binom{1}{0} = \frac{1}{3}\binom{2}{1} + \frac{1}{3}\binom{1}{-1}\)
+            </div>
+            לכן:
+            <div class="math-block">
+                \(T^{-1}\binom{1}{0} = \frac{1}{3} T^{-1}\binom{2}{1} + \frac{1}{3} T^{-1}\binom{1}{-1} = \frac{1}{3}\binom{1}{1} + \frac{1}{3}\binom{1}{-1} = \binom{2/3}{0}\)
+            </div>
+        </div>
+    </div>
+
+    <!-- Dimension Theorem -->
+    <div class="section" id="dim-thm">
+        <h2>3. משפט 2 — משפט המימדים השני (Rank-Nullity Theorem)</h2>
+
+        <div class="thm-box">
+            <div class="label">משפט 2 — משפט המימדים השני</div>
+            יהי \(\mathbb{F}\) שדה ויהיו \(V,W\) מ"ו מעל \(\mathbb{F}\). נניח ש-\(V\) נוצר סופית.
+            <br>תהי \(T: V \to W\) ה"ל. אזי:
+            <div class="math-block">
+                \(\boxed{\dim V = \dim Ker\,T + \dim Im\,T}\)
+            </div>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה (מלאה)</div>
+            <ul>
+                <li>מהיות \(V\) נוצר סופית, קיים \(0 \leq n \in \mathbb{N}\) כך ש-\(\dim V = n\).</li>
+                <li>מכיוון ש-\(Ker\,T \subseteq V\) תמ"ו, הרי שקיים \(0 \leq k \leq n\) כך ש-\(\dim Ker\,T = k\).</li>
+                <li><strong>נוכיח ש-\(\dim Im\,T = n - k\)</strong> ובזאת נסיים.</li>
+            </ul>
+
+            <p>מכיוון שמימד \(Ker(T)\) הוא \(k\), קיימים \(v_1, \ldots, v_k \in Ker\,T\) אשר מהווים <strong>בסיס לגרעין</strong>.</p>
+            <p>מכיוון שהם בת"ל, לפי משפט (מלינארית 1), הם ניתנים להשלמה לבסיס של \(V\).
+            <br>כלומר קיימים \(v_{k+1}, \ldots, v_n \in V\) כך ש-\(v_1, \ldots, v_n\) מהווים <strong>בסיס ל-\(V\)</strong>.</p>
+
+            <p>נתבונן בתמונות \(w_{k+1} = T(v_{k+1}), \ldots, w_n = T(v_n) \in W\).</p>
+            <p><strong>נוכיח ש-\(w_{k+1}, \ldots, w_n\) בסיס של \(Im\,T\)</strong> ונסיק ש-\(\dim Im\,T = n - k\).</p>
+
+            <h3>פורשים:</h3>
+            <p>מהמשפט "פורשת לפורשת" (הרצ' 1 משפט 11) נובע ש:</p>
+            <div class="math-block">
+                \(Im\,T = span\{T(v_1), \ldots, T(v_k), T(v_{k+1}), \ldots, T(v_n)\}\)
+            </div>
+            <p>אבל \(T(v_i) = 0_W\) לכל \(1 \leq i \leq k\) (כי \(v_i \in Ker\,T\)). לכן:</p>
+            <div class="math-block">
+                \(Im\,T = span\{0_W, w_{k+1}, \ldots, w_n\} = span\{w_{k+1}, \ldots, w_n\} \;\; \checkmark\)
+            </div>
+
+            <h3>בת"ל:</h3>
+            <p>יהיו \(\alpha_{k+1}, \ldots, \alpha_n \in \mathbb{F}\) המקיימים:</p>
+            <div class="math-block">
+                \(\alpha_{k+1} w_{k+1} + \cdots + \alpha_n w_n = 0_W\)
+            </div>
+            <div class="math-block">
+                \(\alpha_{k+1} T(v_{k+1}) + \cdots + \alpha_n T(v_n) = 0_W\)
+            </div>
+            <p>\(T\) ה"ל, לכן:</p>
+            <div class="math-block">
+                \(T(\alpha_{k+1} v_{k+1} + \cdots + \alpha_n v_n) = 0_W\)
+            </div>
+            <p>לכן \(\alpha_{k+1} v_{k+1} + \cdots + \alpha_n v_n \in Ker\,T\).</p>
+            <p>מהיות \(Ker\,T = span\{v_1, \ldots, v_k\}\), קיימים \(\beta_1, \ldots, \beta_k \in \mathbb{F}\) כך ש:</p>
+            <div class="math-block">
+                \(\alpha_{k+1} v_{k+1} + \cdots + \alpha_n v_n = \beta_1 v_1 + \cdots + \beta_k v_k\)
+            </div>
+            <div class="math-block">
+                \(-\beta_1 v_1 - \cdots - \beta_k v_k + \alpha_{k+1} v_{k+1} + \cdots + \alpha_n v_n = 0_V\)
+            </div>
+            <p>אבל \(v_1, \ldots, v_n\) <strong>בסיס ל-\(V\)</strong> ובפרט בת"ל, לכן:</p>
+            <div class="math-block">
+                \(\beta_1 = \cdots = \beta_k = \alpha_{k+1} = \cdots = \alpha_n = 0_\mathbb{F} \;\; \checkmark\)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- Corollaries -->
+    <div class="section" id="dim-corollaries">
+        <h2>4. מסקנות ממשפט המימדים</h2>
+
+        <div class="note-box">
+            <div class="label">תזכורת</div>
+            <div class="math-block">
+                \(\dim V = \dim Ker\,T + \dim Im\,T\)
+            </div>
+        </div>
+
+        <div class="corollary-box">
+            <div class="label">מסקנה — קשר בין ממדים לחח"ע ועל</div>
+            יהי \(\mathbb{F}\) שדה, \(V,W\) נוצרים סופית, \(T \in Hom(V,W)\). אזי:
+            <table>
+                <tr><th>תנאי</th><th>מסקנה</th></tr>
+                <tr><td>\(\dim V = \dim W\)</td><td>\(T\) <strong>חח"ע אם"ם \(T\) על</strong></td></tr>
+                <tr><td>\(\dim V < \dim W\)</td><td>\(T\) <strong>אינה על</strong> (בוודאות)</td></tr>
+                <tr><td>\(\dim V > \dim W\)</td><td>\(T\) <strong>אינה חח"ע</strong> (בוודאות)</td></tr>
+            </table>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה (מסקנה 1: \(\dim V = \dim W\))</div>
+            <div class="math-block">
+                \(T \text{ חח"ע} \iff Ker\,T = \{0_V\} \iff \dim Ker\,T = 0\)
+            </div>
+            <div class="math-block">
+                \(\iff \dim Im\,T = \dim V = \dim W \iff Im\,T = W \iff T \text{ על}\)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה (מסקנה 2: \(\dim V < \dim W \Rightarrow T\) אינה על)</div>
+            נניח בשלילה ש-\(T\) על. לכן \(Im\,T = W\) ו-\(\dim Im\,T = \dim W\).
+            <br>לפי משפט המימדים: \(\dim V = \dim Ker\,T + \dim W\).
+            <br>נציב: \(\dim V = \dim Ker\,T + \dim W \geq \dim W > \dim V\). סתירה!
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה (מסקנה 3: \(\dim V > \dim W \Rightarrow T\) אינה חח"ע)</div>
+            נניח בשלילה ש-\(T\) חח"ע. לכן \(Ker\,T = \{0_V\}\) ו-\(\dim Ker\,T = 0\).
+            <br>לפי משפט המימדים: \(\dim V = 0 + \dim Im\,T\).
+            <br>לכן \(\dim V = \dim Im\,T \leq \dim W\). בסתירה לכך ש-\(\dim V > \dim W\).
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- Exercise 2 -->
+    <div class="section" id="exercise2">
+        <h2>5. תרגיל 2 — הפרכה עם משפט המימדים</h2>
+
+        <div class="example-box">
+            <div class="label">תרגיל 2</div>
+            הוכיחו או הפריכו: קיימת \(T \in Hom(\mathbb{R}^3, \mathbb{R}^3)\) שעבורה \(Ker\,T = Im\,T\).
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הפרכה</div>
+            נניח בשלילה שקיימת העתקה כנ"ל.
+            <br>לפי משפט המימדים:
+            <div class="math-block">
+                \(3 = \dim \mathbb{R}^3 = \dim Ker\,T + \dim Im\,T = 2 \cdot \dim Im\,T\)
+            </div>
+            נקבל \(\dim Im\,T = 1.5\) — <strong>סתירה!</strong> (מימד חייב להיות מספר שלם)
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- Exercise 3 -->
+    <div class="section" id="exercise3">
+        <h2>6. תרגיל 3 — הוכחה עם משפט המימדים (\(\mathbb{R}^4\))</h2>
+
+        <div class="example-box">
+            <div class="label">תרגיל 3</div>
+            הוכיחו או הפריכו: קיימת \(T \in Hom(\mathbb{R}^4, \mathbb{R}^4)\) שעבורה \(Ker\,T = Im\,T\).
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה (בנייה!)</div>
+            ממשפט הקיום והיחידות, קיימת ה"ל יחידה \(T: \mathbb{R}^4 \to \mathbb{R}^4\) כך ש:
+            <div class="math-block">
+                \(T(\vec{e}_1) = \vec{0}, \quad T(\vec{e}_2) = \vec{0}, \quad T(\vec{e}_3) = \vec{e}_1, \quad T(\vec{e}_4) = \vec{e}_2\)
+            </div>
+            נחשב את התמונה:
+            <div class="math-block">
+                \(Im(T) = span\{T(\vec{e}_1), T(\vec{e}_2), T(\vec{e}_3), T(\vec{e}_4)\} = span\{\vec{0}, \vec{0}, \vec{e}_1, \vec{e}_2\} = span\{\vec{e}_1, \vec{e}_2\}\)
+            </div>
+            מכיוון ש-\(T(\vec{e}_1) = \vec{0}\) ו-\(T(\vec{e}_2) = \vec{0}\), הרי ש-\(\vec{e}_1, \vec{e}_2 \in Ker(T)\).
+            <br>ולכן \(span\{\vec{e}_1, \vec{e}_2\} \subseteq Ker(T)\).
+            <br><br>
+            לפי משפט המימדים: \(4 = \dim Ker(T) + \dim Im(T)\).
+            <br>ידוע ש-\(\dim Im(T) = 2\), לכן \(\dim Ker(T) = 2\).
+            <br>מכיוון ש-\(span\{\vec{e}_1, \vec{e}_2\} \subseteq Ker(T)\) והמימדים שווים:
+            <div class="math-block">
+                \(Ker(T) = span\{\vec{e}_1, \vec{e}_2\} = Im(T) \;\; \checkmark\)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- Exercise 4 -->
+    <div class="section" id="exercise4">
+        <h2>7. תרגיל 4 — נגזרת כהעתקה לינארית</h2>
+
+        <div class="example-box">
+            <div class="label">תרגיל 4</div>
+            תהי \(T: \mathbb{R}_3[x] \to \mathbb{R}_2[x]\) ההעתקה המוגדרת כך: \(T(p(x)) = p'(x)\) (נגזרת).
+            <br>מצאו בסיס ל-\(Ker(T)\) ול-\(Im(T)\).
+        </div>
+
+        <div class="proof-box">
+            <div class="label">פתרון</div>
+            <strong>הגרעין:</strong>
+            <div class="math-block">
+                \(Ker(T) = \{p(x) \in \mathbb{R}_3[x] \;|\; p'(x) = 0\} = \{p(x) \;|\; p(x) = c\} = \mathbb{R}_0[x] = span\{1\}\)
+            </div>
+            כלומר בסיס ל-\(Ker(T)\) הוא \(\{p_0(x) = 1\}\), ומימד 1.
+            <br><br>
+            <strong>לפי משפט המימדים:</strong>
+            <div class="math-block">
+                \(\dim \mathbb{R}_3[x] = \dim Ker(T) + \dim Im(T)\)
+            </div>
+            <div class="math-block">
+                \(4 = 1 + \dim Im(T) \;\Rightarrow\; \dim Im(T) = 3\)
+            </div>
+            נשים לב שגם \(\dim \mathbb{R}_2[x] = 3\). כמו כן \(Im(T) \subseteq \mathbb{R}_2[x]\).
+            <br>לכן לפי משפט (מימדים שווים): \(Im(T) = \mathbb{R}_2[x]\).
+            <br>כלומר בסיס ל-\(Im(T)\) הוא \(\{1, x, x^2\}\).
+        </div>
+    </div>
+
+    <!-- Matrix Spaces -->
+    <div class="section" id="matrix-spaces">
+        <h2>8. מרחב השורות, העמודות והאפס של מטריצה</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרות (תזכורת מלינארית 1)</div>
+            יהי \(\mathbb{F}\) שדה ותהי \(A \in M_{m \times n}(\mathbb{F})\). תהיינה \(\vec{C}_1, \ldots, \vec{C}_n \in \mathbb{F}^m\) עמודות \(A\) ותהיינה \(\vec{R}_1, \ldots, \vec{R}_m \in \mathbb{F}^n\) שורות \(A\). נגדיר:
+            <br><br>
+            <strong>1. מרחב השורות:</strong> \(\;row(A) = span\{\vec{R}_1, \ldots, \vec{R}_m\}\)
+            <br><strong>2. מרחב העמודות:</strong> \(\;col(A) = span\{\vec{C}_1, \ldots, \vec{C}_n\}\)
+            <br><strong>3. מרחב האפס:</strong> \(\;null(A) = \{\vec{x} \in \mathbb{F}^n \;|\; A\vec{x} = \vec{0}\}\)
+        </div>
+
+        <div class="def-box">
+            <div class="label">דרגת שורות ודרגת עמודות</div>
+            <strong>4. דרגת השורות:</strong> \(\;row\text{-}rank(A) = \dim row(A)\)
+            <br><strong>5. דרגת העמודות:</strong> \(\;col\text{-}rank(A) = \dim col(A)\)
+            <br><br>
+            ידוע (הוכח בלינארית 1): \(row\text{-}rank(A) = rank\,A\). דרגת השורות = דרגת המטריצה.
+        </div>
+
+        <div class="note-box">
+            <div class="label">הערה 1 — \(col(A) = Im(T_A)\)</div>
+            ידוע שלכל \(\vec{x} \in \mathbb{F}^n\):
+            <div class="math-block">
+                \(A\vec{x} = x_1\vec{C}_1 + x_2\vec{C}_2 + \cdots + x_n\vec{C}_n\)
+            </div>
+            לכן:
+            <div class="math-block">
+                \(col(A) = span\{\vec{C}_1, \ldots, \vec{C}_n\} = \{A\vec{x} \;|\; \vec{x} \in \mathbb{F}^n\} = \{T_A(\vec{x}) \;|\; \vec{x} \in \mathbb{F}^n\} = \boxed{Im(T_A)}\)
+            </div>
+        </div>
+
+        <div class="note-box">
+            <div class="label">הערה 2 — \(null(A) = Ker(T_A)\)</div>
+            <div class="math-block">
+                \(null(A) = \{\vec{x} \in \mathbb{F}^n \;|\; A\vec{x} = \vec{0}\} = \boxed{Ker(T_A)}\)
+            </div>
+            לכן:
+            <div class="math-block">
+                \(\dim null(A) = \dim Ker(T_A), \qquad \dim col(A) = \dim Im(T_A)\)
+            </div>
+        </div>
+    </div>
+
+    <!-- Rank-Nullity for Matrices -->
+    <div class="section" id="rank-nullity-matrix">
+        <h2>9. מסקנה 4 — Rank-Nullity למטריצות</h2>
+
+        <div class="corollary-box">
+            <div class="label">מסקנה 4 — Rank-Nullity Theorem</div>
+            תהי \(A \in M_{m \times n}(\mathbb{F})\). אזי:
+            <div class="math-block">
+                \(\boxed{\dim null(A) + rank(A) = n}\)
+            </div>
+            כלומר: <strong>מספר המשתנים החופשיים + מספר המובילים = מספר המשתנים</strong>.
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            נתבונן בה"ל \(T_A: \mathbb{F}^n \to \mathbb{F}^m\) המוגדרת \(T_A(\vec{x}) = A\vec{x}\).
+            <br>ממשפט המימדים השני:
+            <div class="math-block">
+                \(\dim \mathbb{F}^n = \dim Ker(T_A) + \dim Im(T_A)\)
+            </div>
+            <div class="math-block">
+                \(n = \dim null(A) + \dim col(A)\)
+            </div>
+            נותר להראות ש-\(\dim col(A) = rank(A)\).
+            <br>ידוע ש-\(rank(A) = row\text{-}rank(A)\). תהי \(C\) הצורה הקנונית של \(A\). ידוע ש-\(row\text{-}rank(A) = row - rank(C)\) (שהינו מספר האיברים המובילים ב-\(C\)).
+            <br>מכיוון שכל איבר מוביל נמצא גם בעמודה אחרת: \(\dim col(A) = rank(A)\).
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="note-box">
+            <div class="label">שימו לב</div>
+            הדירוג <strong>שומר על מרחב השורות</strong> ולא בהכרח על מרחב העמודות, אבל הוא <strong>כן שומר על המימד</strong> של מרחב העמודות!
+        </div>
+    </div>
+
+    <!-- Isomorphism -->
+    <div class="section" id="isomorphism">
+        <h2>10. איזומורפיזם</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: איזומורפיזם</div>
+            יהי \(\mathbb{F}\) שדה ויהיו \(V,W\) מרחבים וקטוריים מעל \(\mathbb{F}\). תהי \(T: V \to W\).
+            <br>נאמר ש-\(T\) היא <strong>איזומורפיזם</strong> אם:
+            <ol>
+                <li>\(T\) היא <strong>העתקה לינארית</strong>.</li>
+                <li>\(T\) <strong>הפיכה</strong> (חח"ע ועל).</li>
+            </ol>
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה: אוטומורפיזם</div>
+            אם \(V = W\) נאמר ש-\(T\) היא <strong>אוטומורפיזם</strong>.
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה: מרחבים איזומורפיים</div>
+            נאמר ש-\(V,W\) הם <strong>איזומורפיים</strong> ונסמן \(V \cong W\) אם קיימת \(T: V \to W\) שהיא איזומורפיזם.
+            <br><br>
+            <strong>iso</strong> = שווה, <strong>morph</strong> = צורה. מרחבים איזומורפיים הם למעשה <strong>אותו מרחב בשינוי שמות</strong>.
+        </div>
+
+        <div class="note-box">
+            <div class="label">הערה 3 — איזומורפיזם הוא יחס שקילות</div>
+            <table>
+                <tr><th>תכונה</th><th>טענה</th><th>נימוק</th></tr>
+                <tr><td><strong>רפלקסיבי</strong></td><td>\(V \cong V\)</td><td>\(id_V\) היא איזומורפיזם</td></tr>
+                <tr><td><strong>סימטרי</strong></td><td>אם \(V \cong W\) אז \(W \cong V\)</td><td>\(T^{-1}\) ה"ל הפיכה (הרצ' 1 משפט 9)</td></tr>
+                <tr><td><strong>טרנזיטיבי</strong></td><td>אם \(V \cong W\) ו-\(W \cong U\) אז \(V \cong U\)</td><td>\(S \circ T\) ה"ל (הרצ' 1 משפט 8) והרכבת הפיכות הפיכה</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Summary Table -->
+    <div class="section">
+        <h2>סיכום — כל המשפטים בהרצאה</h2>
+        <table>
+            <tr><th>#</th><th>משפט</th><th>תוכן</th></tr>
+            <tr><td>1</td><td>קיום ויחידות</td><td>מספיק להגדיר ה"ל על בסיס — היא נקבעת יחידית על כל \(V\)</td></tr>
+            <tr><td>2</td><td>משפט המימדים השני</td><td>\(\dim V = \dim Ker\,T + \dim Im\,T\)</td></tr>
+            <tr><td>מסק' 1-3</td><td>קשר ממדים &harr; חח"ע/על</td><td>\(\dim V = \dim W \Rightarrow\) חח"ע אמ"מ על; \(\dim V < \dim W \Rightarrow\) לא על; \(\dim V > \dim W \Rightarrow\) לא חח"ע</td></tr>
+            <tr><td>מסק' 4</td><td>Rank-Nullity</td><td>\(\dim null(A) + rank(A) = n\) (מספר העמודות)</td></tr>
+        </table>
+
+        <h3>קישורים חשובים</h3>
+        <table>
+            <tr><th>מושג מטריצה</th><th>מושג ה"ל</th></tr>
+            <tr><td>\(col(A)\)</td><td>\(Im(T_A)\)</td></tr>
+            <tr><td>\(null(A)\)</td><td>\(Ker(T_A)\)</td></tr>
+            <tr><td>\(rank(A)\)</td><td>\(\dim Im(T_A)\)</td></tr>
+            <tr><td>\(\dim null(A)\)</td><td>\(\dim Ker(T_A)\)</td></tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        הרצאה 2 - משפט הקיום והיחידות, משפט המימדים | אלגברה לינארית 2 | אוניברסיטת רייכמן
+        <br>by Lia Mesika
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$$", right: "$$", display: true}
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+</body>
+</html>

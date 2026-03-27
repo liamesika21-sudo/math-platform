@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרצאה 1 - העתקות לינאריות | אלגברה לינארית 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --card-bg: #ffffff;
+            --primary: #1a3a5c;
+            --accent: #c0392b;
+            --green: #2e7d32;
+            --purple: #6a1b9a;
+            --blue: #1565c0;
+            --teal: #00838f;
+            --text: #2c2c2c;
+            --text-light: #555;
+            --border: #e0d6c8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans Hebrew', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header { background: linear-gradient(135deg, #4a6274, #6b8a9e); color: white; padding: 40px; border-radius: var(--radius); margin-bottom: 30px; text-align: center; box-shadow: var(--shadow); }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.85; font-weight: 300; }
+        .header .lecture-num { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 18px; border-radius: 20px; font-size: 0.9em; margin-bottom: 12px; }
+
+        .toc { background: var(--card-bg); border-radius: var(--radius); padding: 24px 30px; margin-bottom: 30px; box-shadow: var(--shadow); border-right: 4px solid var(--teal); }
+        .toc h2 { color: var(--teal); margin-bottom: 12px; font-size: 1.3em; }
+        .toc ol { padding-right: 20px; }
+        .toc li { margin-bottom: 6px; }
+        .toc a { color: var(--primary); text-decoration: none; }
+        .toc a:hover { color: var(--teal); text-decoration: underline; }
+
+        .section { background: var(--card-bg); border-radius: var(--radius); padding: 30px; margin-bottom: 24px; box-shadow: var(--shadow); }
+        .section h2 { color: var(--primary); font-size: 1.5em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+        .section h3 { color: var(--green); font-size: 1.15em; margin: 18px 0 10px; }
+
+        .def-box { background: #fef9f0; border-right: 4px solid var(--teal); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .def-box .label { color: var(--teal); font-weight: 700; margin-bottom: 6px; font-size: 1.05em; }
+
+        .thm-box { background: #f3e8ff; border-right: 4px solid var(--purple); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .thm-box .label { color: var(--purple); font-weight: 700; margin-bottom: 6px; font-size: 1.05em; }
+
+        .proof-box { background: #f0f4fe; border-right: 4px solid var(--blue); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .proof-box .label { color: var(--blue); font-weight: 700; margin-bottom: 6px; }
+
+        .example-box { background: #f2f9f2; border-right: 4px solid var(--green); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .example-box .label { color: var(--green); font-weight: 700; margin-bottom: 6px; }
+
+        .note-box { background: #fff8e1; border-right: 4px solid #f57f17; padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .note-box .label { color: #f57f17; font-weight: 700; margin-bottom: 6px; }
+
+        .counter-box { background: #fce4ec; border-right: 4px solid var(--accent); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .counter-box .label { color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+
+        ul, ol { padding-right: 22px; margin: 8px 0; }
+        li { margin-bottom: 6px; }
+        .math-block { text-align: center; margin: 16px 0; font-size: 1.15em; direction: ltr; }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th, td { border: 1px solid var(--border); padding: 10px 14px; text-align: center; }
+        th { background: #f0ebe3; font-weight: 700; color: var(--primary); }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+        @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } .header { padding: 24px 16px; } .header h1 { font-size: 1.6em; } .section { padding: 20px 16px; } }
+
+        .arrow-chain { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 16px 0; direction: ltr; flex-wrap: wrap; }
+        .arrow-chain .box { background: #e8f0fe; padding: 8px 14px; border-radius: 8px; font-size: 0.95em; text-align: center; }
+        .arrow-chain .arrow { font-size: 1.4em; color: var(--green); }
+
+        .footer { text-align: center; padding: 20px; color: var(--text-light); font-size: 0.9em; }
+        .katex { font-size: 1.1em; }
+        .qed { float: left; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="lecture-num">אלגברה לינארית 2 - שרון גל - אוניברסיטת רייכמן</div>
+        <h1>הרצאה 1 - העתקות לינאריות</h1>
+        <div class="subtitle">Linear Transformations</div>
+    </div>
+
+    <div class="toc">
+        <h2>תוכן עניינים</h2>
+        <ol>
+            <li><a href="#def-lt">הגדרה: העתקה לינארית</a></li>
+            <li><a href="#properties">תכונות יסוד של העתקות לינאריות</a></li>
+            <li><a href="#matrix-lt">העתקה מטריצית \(T_A\)</a></li>
+            <li><a href="#examples-lt">דוגמאות — לינארית ולא לינארית</a></li>
+            <li><a href="#ker-im">גרעין ותמונה — Ker ו-Im</a></li>
+            <li><a href="#subspaces">Ker תמ"ו ו-Im תמ"ו (משפטים 3-4)</a></li>
+            <li><a href="#special">העתקות מיוחדות: אפס וזהות</a></li>
+            <li><a href="#thm5-6">העתקת האפס לינארית, העתקת הזהות לינארית (משפטים 5-6)</a></li>
+            <li><a href="#arithmetic">אריתמטיקה של ה"ל (משפט 7) ו-Hom</a></li>
+            <li><a href="#composition">הרכבת העתקות לינאריות (משפט 8)</a></li>
+            <li><a href="#invertible">הפיכות, חח"ע ועל (משפטים 9-10)</a></li>
+            <li><a href="#spanning">פורשת לפורשת, בת"ל לבת"ל, בסיס לבסיס (משפטים 11-13)</a></li>
+            <li><a href="#exercises">תרגילים</a></li>
+        </ol>
+    </div>
+
+    <!-- 1 -->
+    <div class="section" id="def-lt">
+        <h2>1. הגדרה: העתקה לינארית (Linear Transformation)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: העתקה לינארית</div>
+            יהי \(\mathbb{F}\) שדה ויהיו \(V,W\) מרחבים וקטוריים מעל \(\mathbb{F}\).
+            <br>תהי \(T: V \to W\) פונקציה.
+            <br><br>
+            נאמר ש-\(T\) היא <strong>העתקה לינארית</strong> אם לכל \(v_1, v_2 \in V\) ולכל \(\alpha_1, \alpha_2 \in \mathbb{F}\) מתקיים:
+            <div class="math-block">
+                \(\boxed{T(\alpha_1 v_1 + \alpha_2 v_2) = \alpha_1 T(v_1) + \alpha_2 T(v_2)}\)
+            </div>
+            לתכונה זו קוראים <strong>לינאריות</strong>.
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה: אופרטור לינארי</div>
+            העתקה לינארית \(T: V \to V\) (מ-\(V\) <strong>לעצמו</strong>) נקראת גם <strong>אופרטור לינארי</strong>.
+        </div>
+
+        <div class="note-box">
+            <div class="label">הערה 1 — תכונות שקולות</div>
+            אם \(T: V \to W\) ה"ל, אזי:
+            <ol>
+                <li>לכל \(v_1, v_2 \in V\): \(T(v_1 + v_2) = T(v_1) + T(v_2)\)</li>
+                <li>לכל \(v \in V\), \(\alpha \in \mathbb{F}\): \(T(\alpha v) = \alpha T(v)\)</li>
+                <li><strong>הכללה:</strong> לכל \(v_1, \ldots, v_k \in V\), \(\alpha_1, \ldots, \alpha_k \in \mathbb{F}\):
+                    \(T(\alpha_1 v_1 + \cdots + \alpha_k v_k) = \alpha_1 T(v_1) + \cdots + \alpha_k T(v_k)\)
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="section" id="properties">
+        <h2>2. משפט 1 — \(T(0_V) = 0_W\)</h2>
+
+        <div class="thm-box">
+            <div class="label">משפט 1</div>
+            יהי \(\mathbb{F}\) שדה ויהיו \(V,W\) מרחבים מעל \(\mathbb{F}\). תהי \(T: V \to W\) ה"ל.
+            <br>אזי: \(\;T(0_V) = 0_W\).
+            <br><br><strong>"0 תמיד עובר ל-0!"</strong>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            <div class="math-block">
+                \(T(0_V) = T(0_\mathbb{F} \cdot 0_V) = 0_\mathbb{F} \cdot T(0_V) = 0_W\)
+            </div>
+            שימוש ב: תכונת \(0_\mathbb{F}\) בשדה, לינאריות (סעיף 2), ושוב תכונת \(0_\mathbb{F}\).
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="section" id="matrix-lt">
+        <h2>3. העתקה מטריצית — \(T_A\)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: העתקה מטריצית \(T_A\)</div>
+            יהי \(\mathbb{F}\) שדה. תהי \(A \in M_{m \times n}(\mathbb{F})\).
+            <br>נגדיר את ההעתקה \(T_A: \mathbb{F}^n \to \mathbb{F}^m\) באופן הבא:
+            <div class="math-block">
+                \(\boxed{T_A(\vec{x}) = A\vec{x}}\)
+            </div>
+            כלומר: \(T_A\) פשוט <strong>מכפילה במטריצה</strong> \(A\).
+            <br>ממדים: \((m \times 1) = (m \times n) \cdot (n \times 1)\).
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 2</div>
+            יהי \(\mathbb{F}\) שדה. תהי \(A \in M_{m \times n}(\mathbb{F})\).
+            <br>אזי ההעתקה \(T_A\) <strong>היא העתקה לינארית</strong>.
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            יהיו \(\vec{x}, \vec{y} \in \mathbb{F}^n\) ויהיו \(\alpha, \beta \in \mathbb{F}\). אזי:
+            <div class="math-block">
+                \(T_A(\alpha\vec{x} + \beta\vec{y}) = A \cdot (\alpha\vec{x} + \beta\vec{y}) = A \cdot (\alpha\vec{x}) + A \cdot (\beta\vec{y}) = \alpha \cdot (A\vec{x}) + \beta \cdot (A\vec{y}) = \alpha T_A(\vec{x}) + \beta T_A(\vec{y})\)
+            </div>
+            שימוש ב: הגדרת \(T_A\), פילוג כפל מטריצות, תכונות כפל מטריצות.
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="section" id="examples-lt">
+        <h2>4. דוגמאות — לינארית ולא לינארית</h2>
+
+        <div class="example-box">
+            <div class="label">דוגמה 1 (לינארית) — מעל \(\mathbb{Z}_5\)</div>
+            \(T: (\mathbb{Z}_5)^3 \to (\mathbb{Z}_5)^2\) כך ש-\(T\begin{pmatrix}x\\y\\z\end{pmatrix} = \begin{pmatrix}x+3y\\z-x+4y\end{pmatrix}\).
+            <br>נתבונן במטריצה \(A = \begin{pmatrix}1&3&0\\-1&4&1\end{pmatrix}\). אז \(T = T_A\) ולפי משפט 2 היא ה"ל.
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה 2 (לינארית) — מעל \(\mathbb{C}\)</div>
+            \(T: \mathbb{C}^2 \to \mathbb{C}^2\) כך ש-\(T\begin{pmatrix}z_1\\z_2\end{pmatrix} = \begin{pmatrix}z_1+iz_2\\iz_1-z_2\end{pmatrix}\).
+            <br>המטריצה: \(A = \begin{pmatrix}1&i\\i&-1\end{pmatrix}\). לכן \(T = T_A\) וה"ל.
+        </div>
+
+        <div class="counter-box">
+            <div class="label">דוגמה 3 (לא לינארית!) — איבר חופשי</div>
+            \(T: \mathbb{C}^2 \to \mathbb{C}^2\) כך ש-\(T\begin{pmatrix}z_1\\z_2\end{pmatrix} = \begin{pmatrix}z_1+iz_2\\iz_1-z_2+\mathbf{1}\end{pmatrix}\).
+            <br><strong>הפרכה:</strong> לפי משפט 1, אם \(T\) ה"ל אז \(T(0) = 0\). אבל \(T\begin{pmatrix}0\\0\end{pmatrix} = \begin{pmatrix}0\\1\end{pmatrix} \neq \begin{pmatrix}0\\0\end{pmatrix}\). סתירה!
+        </div>
+
+        <div class="counter-box">
+            <div class="label">דוגמה 4 (לא לינארית!) — צמוד מרוכב</div>
+            \(T: \mathbb{C} \to \mathbb{C}\) כך ש-\(T(z) = \bar{z}\).
+            <br><strong>הפרכה:</strong> נניח ש-\(T\) ה"ל. אזי:
+            <br>מצד אחד: \(T(i \cdot i) = T(-1) = \overline{-1} = -1\)
+            <br>מצד שני: \(T(i \cdot i) = iT(i) = i\bar{i} = i \cdot (-i) = 1\)
+            <br>סתירה.
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה 5 — צמוד מרוכב מעל \(\mathbb{R}\) כן לינארי!</div>
+            אותה \(T(z) = \bar{z}\), אבל כשהשדה הוא \(\mathbb{R}\) (לא \(\mathbb{C}\)):
+            <br>יהיו \(z_1, z_2 \in \mathbb{C}\) ויהיו \(\alpha_1, \alpha_2 \in \mathbb{R}\). אזי:
+            <div class="math-block">
+                \(T(\alpha_1 z_1 + \alpha_2 z_2) = \overline{\alpha_1 z_1 + \alpha_2 z_2} = \bar{\alpha}_1\bar{z}_1 + \bar{\alpha}_2\bar{z}_2 = \alpha_1\bar{z}_1 + \alpha_2\bar{z}_2 = \alpha_1 T(z_1) + \alpha_2 T(z_2)\)
+            </div>
+            המעבר \(\bar{\alpha}_i = \alpha_i\) עובד כי \(\alpha_i \in \mathbb{R}\)!
+        </div>
+
+        <div class="note-box">
+            <div class="label">מסקנה חשובה</div>
+            <strong>השדה משנה!</strong> אותה פונקציה יכולה להיות ה"ל מעל שדה אחד ולא מעל שדה אחר.
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="section" id="ker-im">
+        <h2>5. גרעין ותמונה — Kernel &amp; Image</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: גרעין (Kernel)</div>
+            תהי \(T: V \to W\) ה"ל. <strong>הגרעין</strong> של \(T\):
+            <div class="math-block">
+                \(\boxed{Ker(T) = \{v \in V \;|\; T(v) = 0_W\}}\)
+            </div>
+            הגרעין = קבוצת כל הווקטורים בתחום <strong>שעוברים ל-0</strong> בטווח.
+            <br>\(Ker\,T \subseteq V\).
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה: תמונה (Image)</div>
+            <div class="math-block">
+                \(\boxed{Im(T) = \{T(v) \;|\; v \in V\} = \{w \in W \;|\; \exists v \in V,\; T(v) = w\}}\)
+            </div>
+            התמונה = קבוצת כל הווקטורים בטווח <strong>שיש להם מקור</strong> בתחום.
+            <br>\(Im\,T \subseteq W\).
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="section" id="subspaces">
+        <h2>6. Ker תת-מרחב ו-Im תת-מרחב</h2>
+
+        <div class="thm-box">
+            <div class="label">משפט 3 — \(Ker\,T\) תת-מרחב של \(V\)</div>
+            יהי \(\mathbb{F}\) שדה, \(V,W\) מ"ו מעל \(\mathbb{F}\). תהי \(T: V \to W\) ה"ל.
+            <br>אזי: \(Ker(T)\) הוא <strong>תת-מרחב וקטורי של \(V\)</strong>.
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            <strong>(1) \(0_V \in Ker\,T\):</strong> ממשפט 1, \(T(0_V) = 0_W\), לכן \(0_V \in Ker\,T\). &#10003;
+            <br><br>
+            <strong>(2) סגירות לצ"ל:</strong> יהיו \(v_1, v_2 \in Ker\,T\) ויהיו \(\alpha, \beta \in \mathbb{F}\).
+            <div class="math-block">
+                \(T(\alpha v_1 + \beta v_2) = \alpha T(v_1) + \beta T(v_2) = \alpha \cdot 0_W + \beta \cdot 0_W = 0_W\)
+            </div>
+            שימוש ב: לינאריות \(T\), ואז \(T(v_1) = T(v_2) = 0_W\) (הגדרת \(Ker\,T\)).
+            <br>לכן \(\alpha v_1 + \beta v_2 \in Ker\,T\). &#10003;
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 4 — \(Im\,T\) תת-מרחב של \(W\)</div>
+            תהי \(T: V \to W\) ה"ל. אזי: \(Im(T)\) הוא <strong>תת-מרחב וקטורי של \(W\)</strong>.
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            <strong>(1) \(0_W \in Im\,T\):</strong> ממשפט 1, \(0_W = T(0_V) \in Im\,T\). &#10003;
+            <br><br>
+            <strong>(2) סגירות לצ"ל:</strong> יהיו \(w_1, w_2 \in Im\,T\) ויהיו \(\alpha, \beta \in \mathbb{F}\).
+            <br>מכיוון ש-\(w_1 \in Im(T)\), קיים \(v_1 \in V\) כך ש-\(T(v_1) = w_1\).
+            <br>מכיוון ש-\(w_2 \in Im(T)\), קיים \(v_2 \in V\) כך ש-\(T(v_2) = w_2\).
+            <div class="math-block">
+                \(\alpha w_1 + \beta w_2 = \alpha T(v_1) + \beta T(v_2) = T(\underbrace{\alpha v_1 + \beta v_2}_{\in V}) \in Im\,T\)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="section" id="special">
+        <h2>7. העתקות מיוחדות: אפס וזהות</h2>
+
+        <div class="two-col">
+            <div class="def-box">
+                <div class="label">העתקת האפס (Zero Transformation)</div>
+                \(T: V \to W\) כך שלכל \(v \in V\): \(T(v) = 0_W\).
+                <br><br>
+                \(Ker\,T = V\), \(\;Im\,T = \{0_W\}\).
+            </div>
+            <div class="def-box">
+                <div class="label">העתקת הזהות (Identity Transformation)</div>
+                \(id_V: V \to V\) כך שלכל \(v \in V\): \(id_V(v) = v\).
+                <br><br>
+                \(Ker(id_V) = \{0_V\}\), \(\;Im(id_V) = V\).
+            </div>
+        </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="section" id="thm5-6">
+        <h2>8. משפטים 5-6 — לינאריות של העתקות אפס וזהות</h2>
+
+        <div class="thm-box">
+            <div class="label">משפט 5 — העתקת האפס היא ה"ל</div>
+        </div>
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            יהיו \(v_1, v_2 \in V\) ו-\(\alpha_1, \alpha_2 \in \mathbb{F}\).
+            <div class="math-block">
+                \(T(\alpha_1 v_1 + \alpha_2 v_2) = 0_W = \alpha_1 0_W + \alpha_2 0_W = \alpha_1 T(v_1) + \alpha_2 T(v_2)\)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 6 — העתקת הזהות היא ה"ל</div>
+        </div>
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            יהיו \(v_1, v_2 \in V\) ו-\(\alpha_1, \alpha_2 \in \mathbb{F}\).
+            <div class="math-block">
+                \(id_V(\alpha_1 v_1 + \alpha_2 v_2) = \alpha_1 v_1 + \alpha_2 v_2 = \alpha_1 \cdot id_V(v_1) + \alpha_2 \cdot id_V(v_2)\)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="section" id="arithmetic">
+        <h2>9. אריתמטיקה של ה"ל — Hom(V,W)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה: חיבור וכפל בסקלר של העתקות</div>
+            יהיו \(T, S: V \to W\) ה"ל. נגדיר:
+            <div class="math-block">
+                \((S \pm T)(v) = S(v) \pm T(v) \qquad (\alpha T)(v) = \alpha T(v)\)
+            </div>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 7 — אריתמטיקה של ה"ל (AOLT)</div>
+            יהיו \(T, S: V \to W\) ה"ל ויהיו \(\alpha, \beta \in \mathbb{F}\).
+            <br>אזי: <strong>\(\alpha T + \beta S\) העתקה לינארית</strong>.
+            <br><br><em>צירוף לינארי של העתקות לינאריות הוא העתקה לינארית.</em>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            יהיו \(v_1, v_2 \in V\), \(\alpha_1, \alpha_2 \in \mathbb{F}\). נוכיח:
+            <div class="math-block">
+                \((\alpha T + \beta S)(\alpha_1 v_1 + \alpha_2 v_2)\)
+            </div>
+            <div class="math-block">
+                \(= (\alpha T)(\alpha_1 v_1 + \alpha_2 v_2) + (\beta S)(\alpha_1 v_1 + \alpha_2 v_2)\) &nbsp;&nbsp;&nbsp; (הגדרה 1)
+            </div>
+            <div class="math-block">
+                \(= \alpha \cdot T(\alpha_1 v_1 + \alpha_2 v_2) + \beta \cdot S(\alpha_1 v_1 + \alpha_2 v_2)\) &nbsp;&nbsp;&nbsp; (הגדרה 2)
+            </div>
+            <div class="math-block">
+                \(= \alpha(\alpha_1 T(v_1) + \alpha_2 T(v_2)) + \beta(\alpha_1 S(v_1) + \alpha_2 S(v_2))\) &nbsp;&nbsp;&nbsp; (S,T ה"ל)
+            </div>
+            <div class="math-block">
+                \(= \alpha_1(\alpha T(v_1) + \beta S(v_1)) + \alpha_2(\alpha T(v_2) + \beta S(v_2))\) &nbsp;&nbsp;&nbsp; (הוצאת גורמים)
+            </div>
+            <div class="math-block">
+                \(= \alpha_1(\alpha T + \beta S)(v_1) + \alpha_2(\alpha T + \beta S)(v_2)\) &nbsp;&nbsp;&nbsp; (הגדרות 1,2)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="def-box">
+            <div class="label">הגדרה: \(Hom(V,W)\) — מרחב ההומומורפיזמים</div>
+            <div class="math-block">
+                \(Hom(V,W) = \{T: V \to W \;|\; T \text{ is a linear trans.}\}\)
+            </div>
+            <em>Hom</em> זה קיצור של Homomorphism — העתקה בין מבנים אלגבריים המשמרת את תכונות המבנה.
+        </div>
+
+        <div class="thm-box">
+            <div class="label">מסקנה 1 — \(Hom(V,W)\) תמ"ו של \(W^V\)</div>
+            \(Hom(V,W)\) הוא <strong>תת-מרחב וקטורי</strong> של \(W^V\) (מרחב כל הפונקציות מ-\(V\) ל-\(W\)).
+            <br><strong>הוכחה:</strong> ממשפט 7 סגור לצ"ל, וממשפט 5 העתקת האפס שייכת ל-\(Hom(V,W)\).
+        </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="composition">
+        <h2>10. הרכבת העתקות לינאריות — משפט 8</h2>
+
+        <div class="thm-box">
+            <div class="label">משפט 8 — הרכבת ה"ל היא ה"ל</div>
+            יהיו \(V, W, U\) מ"ו מעל \(\mathbb{F}\). תהיינה \(T: V \to W\), \(S: W \to U\) ה"ל.
+            <br>אזי: <strong>\(S \circ T\) היא העתקה לינארית</strong> (\(S \circ T: V \to U\)).
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            יהיו \(v_1, v_2 \in V\) ו-\(\alpha_1, \alpha_2 \in \mathbb{F}\). אזי:
+            <div class="math-block">
+                \((S \circ T)(\alpha_1 v_1 + \alpha_2 v_2) = S(T(\alpha_1 v_1 + \alpha_2 v_2))\) &nbsp;&nbsp;&nbsp; (הגדרת הרכבה)
+            </div>
+            <div class="math-block">
+                \(= S(\alpha_1 T(v_1) + \alpha_2 T(v_2))\) &nbsp;&nbsp;&nbsp; (T ה"ל)
+            </div>
+            <div class="math-block">
+                \(= \alpha_1 S(T(v_1)) + \alpha_2 S(T(v_2))\) &nbsp;&nbsp;&nbsp; (S ה"ל)
+            </div>
+            <div class="math-block">
+                \(= \alpha_1 (S \circ T)(v_1) + \alpha_2 (S \circ T)(v_2)\) &nbsp;&nbsp;&nbsp; (הגדרת הרכבה)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="invertible">
+        <h2>11. הפיכות, חח"ע ועל — משפטים 9-10</h2>
+
+        <div class="def-box">
+            <div class="label">תזכורת: הפיכה (Invertible)</div>
+            \(T: V \to W\) <strong>הפיכה</strong> אם:
+            <ol>
+                <li><strong>T חח"ע (Injective):</strong> לכל \(v_1, v_2 \in V\) המקיימים \(T(v_1) = T(v_2)\) מתקיים \(v_1 = v_2\).</li>
+                <li><strong>T על (Surjective):</strong> \(Im\,T = W\) (לכל \(w \in W\) קיים \(v \in V\) כך ש-\(T(v) = w\)).</li>
+            </ol>
+            אם \(T\) הפיכה אז יש לה הופכית \(T^{-1}: W \to V\) כך ש-\(T(v) = w \Leftrightarrow T^{-1}(w) = v\).
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 9 — הופכית של ה"ל הפיכה היא ה"ל</div>
+            תהי \(T: V \to W\) ה"ל. נניח ש-\(T\) הפיכה.
+            <br>אזי: <strong>\(T^{-1}\) היא העתקה לינארית</strong>.
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            שימו לב ש-\(T^{-1}: W \to V\). יהיו \(w_1, w_2 \in W\) ו-\(\alpha_1, \alpha_2 \in \mathbb{F}\).
+            <br>נסמן \(v_1 = T^{-1}(w_1)\), \(v_2 = T^{-1}(w_2)\).
+            <br><br>מהיות \(T\) ה"ל מתקיים:
+            <div class="math-block">
+                \(T(\alpha_1 v_1 + \alpha_2 v_2) = \alpha_1 T(v_1) + \alpha_2 T(v_2) = \alpha_1 w_1 + \alpha_2 w_2\)
+            </div>
+            נפעיל \(T^{-1}\) על שני הצדדים:
+            <div class="math-block">
+                \(T^{-1}(\alpha_1 w_1 + \alpha_2 w_2) = \alpha_1 v_1 + \alpha_2 v_2 = \alpha_1 T^{-1}(w_1) + \alpha_2 T^{-1}(w_2)\)
+            </div>
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 10 — T חח"ע אם"ם \(Ker\,T = \{0_V\}\)</div>
+            תהי \(T: V \to W\) ה"ל. אזי:
+            <div class="math-block">
+                \(\boxed{T \text{ חח"ע} \iff Ker\,T = \{0_V\}}\)
+            </div>
+            <strong>"בהעתקה חח"ע, רק 0 עובר ל-0!"</strong>
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה (שני כיוונים)</div>
+            <strong>\(\Leftarrow\) נניח: \(T\) חח"ע. נוכיח: \(Ker\,T = \{0_V\}\).</strong>
+            <br>יהי \(v \in Ker\,T\). מכאן ש-\(T(v) = 0_W\).
+            <br>ידוע ש-\(T(0_V) = 0_W\) (משפט 1).
+            <br>לכן \(T(v) = T(0_V)\). מהיות \(T\) חח"ע: \(v = 0_V\). לכן \(Ker\,T = \{0_V\}\).
+            <br><br>
+            <strong>\(\Rightarrow\) נניח: \(Ker\,T = \{0_V\}\). נוכיח: \(T\) חח"ע.</strong>
+            <br>יהיו \(v_1, v_2 \in V\) המקיימים \(T(v_1) = T(v_2)\).
+            <br>לכן \(T(v_1) - T(v_2) = 0_W\).
+            <br>\(T\) ה"ל, לכן: \(T(v_1 - v_2) = 0_W\).
+            <br>מכאן ש-\(v_1 - v_2 \in Ker\,T\). מההנחה: \(v_1 - v_2 = 0_V\). לכן \(v_1 = v_2\).
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="section" id="spanning">
+        <h2>12. פורשת לפורשת, בת"ל לבת"ל, בסיס לבסיס</h2>
+
+        <div class="thm-box">
+            <div class="label">משפט 11 — פורשת לפורשת</div>
+            תהי \(T: V \to W\) ה"ל. יהיו \(v_1, \ldots, v_m \in V\) וקטורים <strong>שפורשים</strong> את \(V\).
+            <br>אזי: \(T(v_1), \ldots, T(v_m)\) <strong>פורשים</strong> את \(Im\,T\).
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            יהי \(w \in Im\,T\). לכן קיים \(v \in V\) כך ש-\(T(v) = w\).
+            <br>מכך ש-\(v_1, \ldots, v_m\) פורשים את \(V\), קיימים \(\alpha_1, \ldots, \alpha_m\) כך ש-\(v = \alpha_1 v_1 + \cdots + \alpha_m v_m\).
+            <div class="math-block">
+                \(w = T(v) = T(\alpha_1 v_1 + \cdots + \alpha_m v_m) = \alpha_1 T(v_1) + \cdots + \alpha_m T(v_m)\)
+            </div>
+            לכן \(w\) הוא צ"ל של \(T(v_1), \ldots, T(v_m)\).
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="note-box">
+            <div class="label">שימו לב</div>
+            \(T(v_1), \ldots, T(v_m)\) פורשים את \(Im(T)\) — <strong>לא בהכרח את \(W\)</strong>!
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 12 — בת"ל לבת"ל (כש-T חח"ע)</div>
+            תהי \(T: V \to W\) ה"ל <strong>חח"ע</strong>. יהיו \(v_1, \ldots, v_k \in V\) <strong>בת"ל</strong>.
+            <br>אזי: \(T(v_1), \ldots, T(v_k)\) <strong>בת"ל</strong>.
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            יהיו \(\alpha_1, \ldots, \alpha_k\) כך שמתקיים: \(\alpha_1 T(v_1) + \cdots + \alpha_k T(v_k) = 0_W\).
+            <br>נרצה להוכיח ש-\(\alpha_1 = \cdots = \alpha_k = 0_\mathbb{F}\).
+            <br><br>
+            \(T\) ה"ל, לכן: \(T(\alpha_1 v_1 + \cdots + \alpha_k v_k) = 0_W\).
+            <br>לכן: \(\alpha_1 v_1 + \cdots + \alpha_k v_k \in Ker\,T\).
+            <br>מהיות \(T\) <strong>חח"ע</strong> (משפט 10): \(Ker\,T = \{0_V\}\).
+            <br>לכן: \(\alpha_1 v_1 + \cdots + \alpha_k v_k = 0_V\).
+            <br>אבל \(v_1, \ldots, v_k\) בת"ל, לכן: \(\alpha_1 = \cdots = \alpha_k = 0_\mathbb{F}\).
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">משפט 13 — בסיס לבסיס (T הפיכה אם"ם מעתיקה בסיס לבסיס)</div>
+            תהי \(T: V \to W\) ה"ל. יהיו \(v_1, \ldots, v_n\) <strong>בסיס</strong> ל-\(V\).
+            <br>אזי: <strong>\(T\) הפיכה אם"ם \(T(v_1), \ldots, T(v_n)\) בסיס של \(W\)</strong>.
+        </div>
+
+        <div class="proof-box">
+            <div class="label">הוכחה</div>
+            <strong>\(\Leftarrow\) נניח: \(T\) הפיכה. נוכיח: \(T(v_1), \ldots, T(v_n)\) בסיס של \(W\).</strong>
+            <br><em>בת"ל:</em> מהיות \(v_1, \ldots, v_n\) בסיס, הם בפרט בת"ל. מכיוון ש-\(T\) חח"ע, לפי משפט 12 גם \(T(v_1), \ldots, T(v_n)\) בת"ל.
+            <br><em>פורשת:</em> מהיות \(v_1, \ldots, v_n\) בסיס, הם פורשים את \(V\). ממשפט 11: \(T(v_1), \ldots, T(v_n)\) פורשים את \(Im\,T\). אבל \(T\) על, כלומר \(Im\,T = W\). לכן פורשים את \(W\).
+            <br>לכן \(T(v_1), \ldots, T(v_n)\) קבוצה פורשת ובת"ל, כלומר בסיס ל-\(W\).
+            <br><br>
+            <strong>\(\Rightarrow\) נניח: \(T(v_1), \ldots, T(v_n)\) בסיס של \(W\). נוכיח: \(T\) הפיכה.</strong>
+            <br><em>T על:</em> מכיוון ש-\(v_1, \ldots, v_n\) פורשים את \(V\), לפי משפט 11: \(Im\,T = span\{T(v_1), \ldots, T(v_n)\}\). מהנחה: \(span = W\). לכן \(T\) על.
+            <br><em>T חח"ע:</em> יהי \(v \in Ker\,T\). מכיוון ש-\(v_1, \ldots, v_n\) בסיס: \(v = \alpha_1 v_1 + \cdots + \alpha_n v_n\).
+            <br>\(0_W = T(v) = \alpha_1 T(v_1) + \cdots + \alpha_n T(v_n)\). מכיוון ש-\(T(v_1), \ldots, T(v_n)\) בת"ל: \(\alpha_1 = \cdots = \alpha_n = 0\). לכן \(v = 0_V\). לכן \(Ker\,T = \{0_V\}\).
+            <span class="qed">\(\blacksquare\)</span>
+        </div>
+
+        <div class="note-box">
+            <div class="label">משמעות אינטואיטיבית</div>
+            <strong>"T הפיכה אם"ם היא מעתיקה בסיס לבסיס."</strong>
+        </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="section" id="exercises">
+        <h2>13. תרגילים מההרצאה</h2>
+
+        <div class="example-box">
+            <div class="label">תרגיל 1 — הוכיחו או הפריכו</div>
+            קיימת ה"ל \(T: \mathbb{R}^2 \to \mathbb{R}^2\) כך ש-\(T\binom{1}{1} = \binom{1}{2}\) וגם \(T\binom{2}{2} = \binom{2}{1}\).
+            <br><br>
+            <strong>הפרכה:</strong> נניח שקיימת ה"ל כנ"ל. אזי:
+            <div class="math-block">
+                \(T\binom{2}{2} = T\left(2 \cdot \binom{1}{1}\right) = 2 \cdot T\binom{1}{1} = 2 \cdot \binom{1}{2} = \binom{2}{4}\)
+            </div>
+            בסתירה לכך ש-\(T\binom{2}{2} = \binom{2}{1}\).
+        </div>
+
+        <div class="example-box">
+            <div class="label">תרגיל 2 — חישוב Im ו-Ker</div>
+            תהי \(T: \mathbb{R}^3 \to \mathbb{R}^3\) ה"ל המקיימת:
+            \(T\begin{pmatrix}1\\0\\0\end{pmatrix} = \begin{pmatrix}1\\1\\0\end{pmatrix}\), \(T\begin{pmatrix}0\\1\\0\end{pmatrix} = \begin{pmatrix}1\\-1\\0\end{pmatrix}\), \(T\begin{pmatrix}0\\0\\1\end{pmatrix} = \begin{pmatrix}1\\0\\1\end{pmatrix}\).
+
+            <br><br><strong>א. חשבו \(T\begin{pmatrix}1\\1\\1\end{pmatrix}\)</strong>:
+            <div class="math-block">
+                \(T\begin{pmatrix}1\\1\\1\end{pmatrix} = T\begin{pmatrix}1\\0\\0\end{pmatrix} + T\begin{pmatrix}0\\1\\0\end{pmatrix} + T\begin{pmatrix}0\\0\\1\end{pmatrix} = \begin{pmatrix}1\\1\\0\end{pmatrix} + \begin{pmatrix}1\\-1\\0\end{pmatrix} + \begin{pmatrix}1\\0\\1\end{pmatrix} = \begin{pmatrix}3\\0\\1\end{pmatrix}\)
+            </div>
+
+            <strong>ב. בסיס ומימד ל-\(Im(T)\)</strong>:
+            <br>לפי משפט "פורשת לפורשת", התמונות של הבסיס הסטנדרטי פורשות את \(Im(T)\). הדטרמיננט של המטריצה שעמודותיה הן התמונות = \(-1 \neq 0\), לכן הן בת"ל. לכן \(Im(T) = \mathbb{R}^3\), מימד 3.
+
+            <br><br><strong>ג. \(T\) חח"ע?</strong>
+            <br>לפי משפט "בסיס לבסיס": הבסיס הסטנדרטי מועתק לבסיס של \(\mathbb{R}^3\), לכן \(T\) הפיכה ובפרט חח"ע.
+            <br>לחלופין: לפי משפט 10, \(Ker(T) = \{0\}\) (כי \(T\) חח"ע).
+        </div>
+
+        <div class="example-box">
+            <div class="label">תרגיל 3 (לקריאה עצמית) — \(T: \mathbb{R}^2 \to \mathbb{R}^2\), \(T\binom{x}{y} = \begin{pmatrix}1&1\\0&3\end{pmatrix}\binom{x}{y}\)</div>
+            <strong>פתרון:</strong>
+            <br>\(T = T_A\), לכן ה"ל.
+            <br>\(Im\,T = span\left\{T\binom{1}{0}, T\binom{0}{1}\right\} = span\left\{\binom{1}{0}, \binom{1}{3}\right\} = \mathbb{R}^2\) (בת"ל, מימד 2).
+            <br>\(Ker\,T = \left\{\binom{x}{y} \in \mathbb{R}^2 \;\middle|\; \begin{pmatrix}1&1\\0&3\end{pmatrix}\binom{x}{y} = \binom{0}{0}\right\}\). המטריצה \(A\) הפיכה, לכן פתרון יחיד \(\binom{0}{0}\). כלומר \(Ker\,T = \left\{\binom{0}{0}\right\}\), בסיס \(\emptyset\).
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+        <h2>סיכום — כל המשפטים בהרצאה</h2>
+
+        <table>
+            <tr><th>#</th><th>משפט</th><th>תוכן</th></tr>
+            <tr><td>1</td><td>\(T(0_V) = 0_W\)</td><td>0 תמיד עובר ל-0</td></tr>
+            <tr><td>2</td><td>\(T_A\) ה"ל</td><td>כל העתקה מטריצית היא לינארית</td></tr>
+            <tr><td>3</td><td>\(Ker\,T\) תמ"ו</td><td>הגרעין הוא תמ"ו של \(V\)</td></tr>
+            <tr><td>4</td><td>\(Im\,T\) תמ"ו</td><td>התמונה היא תמ"ו של \(W\)</td></tr>
+            <tr><td>5</td><td>העתקת אפס ה"ל</td><td>\(T(v)=0_W\) היא ה"ל</td></tr>
+            <tr><td>6</td><td>העתקת זהות ה"ל</td><td>\(id_V(v)=v\) היא ה"ל</td></tr>
+            <tr><td>7</td><td>AOLT</td><td>\(\alpha T + \beta S\) ה"ל</td></tr>
+            <tr><td>8</td><td>הרכבה</td><td>\(S \circ T\) ה"ל</td></tr>
+            <tr><td>9</td><td>הופכית</td><td>\(T^{-1}\) ה"ל (כש-\(T\) הפיכה)</td></tr>
+            <tr><td>10</td><td>חח"ע \(\iff\) Ker</td><td>\(T\) חח"ע אם"ם \(Ker\,T = \{0\}\)</td></tr>
+            <tr><td>11</td><td>פורשת &rarr; פורשת</td><td>תמונות של פורשת פורשות את \(Im\,T\)</td></tr>
+            <tr><td>12</td><td>בת"ל &rarr; בת"ל</td><td>תמונות של בת"ל הן בת"ל (כש-\(T\) חח"ע)</td></tr>
+            <tr><td>13</td><td>בסיס &harr; בסיס</td><td>\(T\) הפיכה אם"ם מעתיקה בסיס לבסיס</td></tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        הרצאה 1 - העתקות לינאריות | אלגברה לינארית 2 | אוניברסיטת רייכמן
+        <br>by Lia Mesika
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$$", right: "$$", display: true}
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+</body>
+</html>
