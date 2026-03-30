@@ -2,15 +2,21 @@
 
 import { useMemo, useState } from 'react';
 import Layout from '@/components/Layout';
-import { drillQuestionItems, DrillDifficulty } from '@/data/battle-plan-system';
+import { DrillDifficulty, drillQuestionItems } from '@/data/battle-plan-system';
 import { useBattlePlanTracker } from '@/hooks/useBattlePlanTracker';
 import { FileQuestion, Search, Target } from 'lucide-react';
 
 const difficultyOptions: Array<{ value: DrillDifficulty; label: string; className: string }> = [
-  { value: 'easy', label: 'Easy', className: 'border-emerald-300 bg-emerald-50 text-emerald-700' },
-  { value: 'medium', label: 'Medium', className: 'border-amber-300 bg-amber-50 text-amber-700' },
-  { value: 'hard', label: 'Hard', className: 'border-red-300 bg-red-50 text-red-700' },
+  { value: 'easy', label: 'קל', className: 'border-emerald-300 bg-emerald-50 text-emerald-700' },
+  { value: 'medium', label: 'בינוני', className: 'border-amber-300 bg-amber-50 text-amber-700' },
+  { value: 'hard', label: 'קשה', className: 'border-red-300 bg-red-50 text-red-700' },
 ];
+
+const sourceTypeLabels = {
+  exam: 'מבחן',
+  homework: 'שיעורי בית',
+  recitation: 'תרגול',
+} as const;
 
 export default function BattlePlanDrillPage() {
   const { state, snapshot, isHydrated, setDrillDifficulty, setDrillSolved } = useBattlePlanTracker();
@@ -38,26 +44,28 @@ export default function BattlePlanDrillPage() {
           <div className="mb-3 flex items-center gap-3">
             <FileQuestion className="h-8 w-8" />
             <div>
-              <h1 className="text-2xl font-extrabold">Full Question Drill</h1>
-              <p className="mt-1 text-sm text-white/85">All relevant questions, no solutions, live solved tracking and difficulty tagging.</p>
+              <h1 className="text-2xl font-extrabold">חזרת שאלות מלאה</h1>
+              <p className="mt-1 text-sm text-white/85">
+                כל השאלות הרלוונטיות בלי פתרונות, עם מעקב חי על מה שכבר פתרת ורמת הקושי שלך לכל שאלה.
+              </p>
             </div>
           </div>
           <div className="grid gap-3 sm:grid-cols-4">
             <div className="rounded-xl bg-white/15 p-4 backdrop-blur">
               <div className="text-2xl font-bold">{isHydrated ? snapshot.drill.completionPct : 0}%</div>
-              <div className="text-xs text-white/80">Solved</div>
+              <div className="text-xs text-white/80">פתרתי</div>
             </div>
             <div className="rounded-xl bg-white/15 p-4 backdrop-blur">
               <div className="text-2xl font-bold">{isHydrated ? snapshot.drill.easy : 0}</div>
-              <div className="text-xs text-white/80">Easy-tagged</div>
+              <div className="text-xs text-white/80">מסומנות קל</div>
             </div>
             <div className="rounded-xl bg-white/15 p-4 backdrop-blur">
               <div className="text-2xl font-bold">{isHydrated ? snapshot.drill.medium : 0}</div>
-              <div className="text-xs text-white/80">Medium-tagged</div>
+              <div className="text-xs text-white/80">מסומנות בינוני</div>
             </div>
             <div className="rounded-xl bg-white/15 p-4 backdrop-blur">
               <div className="text-2xl font-bold">{isHydrated ? snapshot.drill.hard : 0}</div>
-              <div className="text-xs text-white/80">Hard-tagged</div>
+              <div className="text-xs text-white/80">מסומנות קשה</div>
             </div>
           </div>
         </div>
@@ -69,7 +77,7 @@ export default function BattlePlanDrillPage() {
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search by prompt, source, topic, or keyword"
+                placeholder="חפשי לפי מקור, נושא, ניסוח או מילת מפתח"
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-10 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-300 focus:bg-white"
               />
             </label>
@@ -78,10 +86,10 @@ export default function BattlePlanDrillPage() {
               onChange={(event) => setSourceFilter(event.target.value as 'all' | 'homework' | 'exam' | 'recitation')}
               className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-300 focus:bg-white"
             >
-              <option value="all">All sources</option>
-              <option value="homework">Homework</option>
-              <option value="exam">Exams</option>
-              <option value="recitation">Recitations</option>
+              <option value="all">כל המקורות</option>
+              <option value="homework">שיעורי בית</option>
+              <option value="exam">מבחנים</option>
+              <option value="recitation">תרגולים</option>
             </select>
           </div>
         </section>
@@ -93,15 +101,15 @@ export default function BattlePlanDrillPage() {
               item.sourceType === 'exam'
                 ? 'bg-red-50 text-red-700'
                 : item.sourceType === 'homework'
-                ? 'bg-amber-50 text-amber-700'
-                : 'bg-sky-50 text-sky-700';
+                  ? 'bg-amber-50 text-amber-700'
+                  : 'bg-sky-50 text-sky-700';
 
             return (
               <article key={item.id} className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="mb-3 flex items-start justify-between gap-3">
                   <div className="space-y-2">
                     <div className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${sourceStyle}`}>
-                      {item.sourceType}
+                      {sourceTypeLabels[item.sourceType]}
                     </div>
                     <h2 className="text-base font-bold text-slate-900">{item.title}</h2>
                   </div>
@@ -112,13 +120,13 @@ export default function BattlePlanDrillPage() {
                       onChange={(event) => setDrillSolved(item.id, event.target.checked)}
                       className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                     />
-                    Solved
+                    פתרתי
                   </label>
                 </div>
 
                 <div className="rounded-xl bg-slate-50 p-3 text-sm leading-7 text-slate-700">{item.prompt}</div>
                 <div className="mt-3 text-xs text-slate-500">
-                  {item.source} • {item.topicHe}
+                  {item.source} · {item.topicHe}
                 </div>
 
                 <div className="mt-4 grid gap-2 sm:grid-cols-3">
@@ -144,7 +152,7 @@ export default function BattlePlanDrillPage() {
         {filteredItems.length === 0 && (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-slate-500">
             <Target className="mx-auto mb-3 h-6 w-6 text-slate-400" />
-            No questions match the current filter.
+            אין כרגע שאלות שמתאימות לסינון שבחרת.
           </div>
         )}
       </div>

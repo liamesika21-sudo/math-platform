@@ -2,6 +2,7 @@ import { examTopics } from '@/data/infi-practice-by-topic';
 import { getExamRelevantQuestions } from '@/data/infi-homework-practice';
 import { moedA2026 } from '@/data/infi-exam-2026';
 import { getAllWeeks } from '@/data/infi-weeks';
+import { battlePlanDefinitions } from '@/data/battle-plan-hebrew';
 
 export type DefinitionStatus = 'know' | 'review' | 'weak';
 export type HomeworkStatus = 'solved' | 'not-solved';
@@ -79,15 +80,6 @@ export interface BattlePlanTrackerState {
 
 const weeks = getAllWeeks();
 
-function extractDefinitionTitle(content: string, fallback: string) {
-  const [head] = content.split(':');
-  const cleanHead = head?.trim();
-  if (cleanHead && cleanHead.length > 0 && cleanHead.length < 40) {
-    return cleanHead;
-  }
-  return fallback;
-}
-
 function uniqueNumbers(values: number[]) {
   return Array.from(new Set(values)).sort((a, b) => a - b);
 }
@@ -102,51 +94,23 @@ function inferLecturesForTopicIds(topicIds: string[]) {
   return Array.from(lectureSet).sort((a, b) => a - b);
 }
 
-const definitionMap = new Map<string, DefinitionTrackerItem>();
+function getLecturesForBattlePlanTopic(topicId: string) {
+  if (topicId === 'sets') return [1, 2, 3, 4, 5];
+  if (topicId === 'functions') return [5, 6, 7];
+  if (topicId === 'limits') return [8, 9, 10, 11, 12, 13, 14, 15];
+  if (topicId === 'continuity') return [15, 16, 17, 18];
+  return [18, 19, 20, 21, 22, 23];
+}
 
-weeks.forEach((week) => {
-  week.keyDefinitions.forEach((content, index) => {
-    const title = extractDefinitionTitle(content, `הגדרה ${index + 1}`);
-    const key = `${title}::${content}`;
-    if (!definitionMap.has(key)) {
-      definitionMap.set(key, {
-        id: `week-def-${week.weekNumber}-${index + 1}`,
-        title,
-        content,
-        topicHe: week.titleHe,
-        topicId: week.topics[0] ?? `week-${week.weekNumber}`,
-        lectures: week.lectures,
-        source: `שבוע ${week.weekNumber} · הרצאות ${week.lectures.join(', ')}`,
-      });
-    }
-  });
-});
-
-examTopics.forEach((topic) => {
-  topic.keyItems
-    .filter((item) => item.label === 'הגדרה')
-    .forEach((item, index) => {
-      const key = `${item.title}::${item.content}`;
-      const lectures = inferLecturesForTopicIds([topic.id]);
-      if (!definitionMap.has(key)) {
-        definitionMap.set(key, {
-          id: `topic-def-${topic.id}-${index + 1}`,
-          title: item.title,
-          content: item.content,
-          topicHe: topic.nameHe,
-          topicId: topic.id,
-          lectures,
-          source: `נושא ${topic.nameHe}${lectures.length ? ` · הרצאות ${lectures.join(', ')}` : ''}`,
-        });
-      }
-    });
-});
-
-export const definitionTrackerItems = Array.from(definitionMap.values()).sort((a, b) => {
-  const lectureDiff = (a.lectures[0] ?? 999) - (b.lectures[0] ?? 999);
-  if (lectureDiff !== 0) return lectureDiff;
-  return a.title.localeCompare(b.title, 'he');
-});
+export const definitionTrackerItems: DefinitionTrackerItem[] = battlePlanDefinitions.map((item) => ({
+  id: item.id,
+  title: item.title,
+  content: item.body,
+  topicHe: item.topicLabel,
+  topicId: item.topicId,
+  lectures: getLecturesForBattlePlanTopic(item.topicId),
+  source: item.source,
+}));
 
 export const homeworkTrackerItems: HomeworkTrackerItem[] = [
   {
@@ -329,11 +293,11 @@ export const drillQuestionItems = Array.from(drillMap.values()).sort((a, b) =>
 );
 
 export const battlePlanTopicAxes: BattlePlanTopicAxis[] = [
-  { id: 'bounds', label: 'Lectures 1–5 — Bounds / Rational / Irrational', shortLabel: 'Bounds / Rational / Irrational', lectureStart: 1, lectureEnd: 5 },
-  { id: 'functions', label: 'Lectures 5–7 — Functions', shortLabel: 'Functions', lectureStart: 5, lectureEnd: 7 },
-  { id: 'limits', label: 'Lectures 8–15 — Limits', shortLabel: 'Limits', lectureStart: 8, lectureEnd: 15 },
-  { id: 'continuity', label: 'Lectures 15–18 — Continuity', shortLabel: 'Continuity', lectureStart: 15, lectureEnd: 18 },
-  { id: 'derivatives', label: 'Lectures 18–23 — Derivatives', shortLabel: 'Derivatives', lectureStart: 18, lectureEnd: 23 },
+  { id: 'bounds', label: 'הרצאות 1-5 · חסמים קבוצות רציונליים אי־רציונליים', shortLabel: 'חסמים וקבוצות', lectureStart: 1, lectureEnd: 5 },
+  { id: 'functions', label: 'הרצאות 5-7 · פונקציות', shortLabel: 'פונקציות', lectureStart: 5, lectureEnd: 7 },
+  { id: 'limits', label: 'הרצאות 8-15 · גבולות', shortLabel: 'גבולות', lectureStart: 8, lectureEnd: 15 },
+  { id: 'continuity', label: 'הרצאות 15-18 · רציפות', shortLabel: 'רציפות', lectureStart: 15, lectureEnd: 18 },
+  { id: 'derivatives', label: 'הרצאות 18-23 · נגזרות', shortLabel: 'נגזרות', lectureStart: 18, lectureEnd: 23 },
 ];
 
 export const patternObservations: PatternObservation[] = [

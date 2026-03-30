@@ -1,14 +1,11 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Layout from '@/components/Layout';
 import ProgressAxisDashboard from '@/components/battle-plan/ProgressAxisDashboard';
 import TrackerLinkButton from '@/components/battle-plan/TrackerLinkButton';
-import {
-  getBlockResources,
-  getResourceLinkMeta,
-  getTrackerResourceSummary,
-} from '@/data/battle-plan-system';
+import { getTrackerResourceSummary } from '@/data/battle-plan-system';
 import { useBattlePlanTracker } from '@/hooks/useBattlePlanTracker';
 import {
   Target,
@@ -516,6 +513,51 @@ function getProbBg(prob: number) {
   return 'bg-yellow-50 border-yellow-200';
 }
 
+function buildTaskHref(day: number, blockIndex: number, task: string, dayTitle: string) {
+  if (task.includes('שינון כל ההגדרות')) {
+    return '/battle-plan/definitions';
+  }
+
+  const params = new URLSearchParams({
+    day: String(day),
+    block: String(blockIndex + 1),
+    dayTitle,
+    task,
+  });
+
+  return `/battle-plan/task?${params.toString()}`;
+}
+
+function getPrimaryTaskSummaryResource(task: string, dayNumber: number): 'definitions' | 'homework' | 'drill' | null {
+  if (task.includes('שינון כל ההגדרות') || task.includes('כתיבת הגדרות') || task.includes('הגדרות הכי סבירות')) {
+    return 'definitions';
+  }
+
+  if (task.includes('מטלה') || task.includes('שאלות בית') || dayNumber === 3 || dayNumber === 4) {
+    return 'homework';
+  }
+
+  if (
+    task.includes('שאלה') ||
+    task.includes('פתרון') ||
+    task.includes('פתרון מחדש') ||
+    task.includes('מבחן') ||
+    task.includes('סימולציה') ||
+    task.includes('תרגול')
+  ) {
+    return 'drill';
+  }
+
+  return null;
+}
+
+function getTaskLinkLabel(task: string) {
+  if (task.includes('שינון כל ההגדרות')) return 'לכל ההגדרות';
+  if (task.includes('משפטים')) return 'למשפטים של המשימה';
+  if (task.includes('מטלה') || task.includes('שאלות בית')) return 'לשאלות של המשימה';
+  return 'למשימה הייעודית';
+}
+
 export default function BattlePlanPage() {
   const [activeTab, setActiveTab] = useState<'autopsy' | 'predictions' | 'theorems' | 'homework' | 'plan' | 'exam'>('autopsy');
   const [expandedDays, setExpandedDays] = useState<Record<number, boolean>>({ 1: true });
@@ -845,8 +887,6 @@ export default function BattlePlanPage() {
             </div>
 
             {studyPlan.map(day => {
-              const dayResources = Array.from(new Set(day.blocks.flatMap((block) => getBlockResources(block.task, day.day))));
-
               return (
                 <div key={day.day} className={`bg-white rounded-xl border overflow-hidden ${
                   day.day <= 4 ? 'border-red-200' : day.day <= 7 ? 'border-amber-200' : day.day <= 13 ? 'border-blue-200' : 'border-emerald-200'
@@ -872,51 +912,30 @@ export default function BattlePlanPage() {
                     <div className="px-4 pb-4 space-y-3 border-t border-slate-100 pt-3">
                       <p className="text-sm text-slate-600 italic">{day.focus}</p>
 
-                      {dayResources.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
-                          {dayResources.map((resource) => {
-                            const linkMeta = getResourceLinkMeta(resource);
-                            const summary = resource === 'tips' ? null : resourceSummaries[resource];
-                            return (
-                              <TrackerLinkButton
-                                key={`${day.day}-${resource}`}
-                                href={linkMeta.href}
-                                label={linkMeta.label}
-                                completionPct={summary ? (isHydrated ? summary.completionPct : 0) : undefined}
-                                meta={summary?.meta}
-                                resource={resource}
-                              />
-                            );
-                          })}
-                        </div>
-                      )}
-
                       <div className="space-y-2">
                         {day.blocks.map((block, i) => {
-                          const blockResources = getBlockResources(block.task, day.day);
+                          const taskHref = buildTaskHref(day.day, i, block.task, day.title);
+                          const summaryResource = getPrimaryTaskSummaryResource(block.task, day.day);
+                          const summary = summaryResource ? resourceSummaries[summaryResource] : null;
+
                           return (
                             <div key={i} className="flex gap-3 text-sm">
                               <span className="font-mono text-xs text-slate-400 w-24 flex-shrink-0 pt-0.5" dir="ltr">{block.time}</span>
                               <div className="flex-1">
                                 <div className="text-slate-700">{block.task}</div>
-                                {blockResources.length > 0 && (
-                                  <div className="mt-2 flex flex-wrap gap-2">
-                                    {blockResources.map((resource) => {
-                                      const linkMeta = getResourceLinkMeta(resource);
-                                      const summary = resource === 'tips' ? null : resourceSummaries[resource];
-                                      return (
-                                        <TrackerLinkButton
-                                          key={`${day.day}-${i}-${resource}`}
-                                          href={linkMeta.href}
-                                          label={linkMeta.label}
-                                          completionPct={summary ? (isHydrated ? summary.completionPct : 0) : undefined}
-                                          meta={summary?.meta}
-                                          resource={resource}
-                                        />
-                                      );
-                                    })}
-                                  </div>
-                                )}
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  <Link
+                                    href={taskHref}
+                                    className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm transition-colors hover:border-slate-300 hover:bg-slate-50"
+                                  >
+                                    <span>{getTaskLinkLabel(block.task)}</span>
+                                    {summary && (
+                                      <span className="text-slate-400">
+                                        {isHydrated ? summary.completionPct : 0}% · {summary.meta}
+                                      </span>
+                                    )}
+                                  </Link>
+                                </div>
                               </div>
                             </div>
                           );

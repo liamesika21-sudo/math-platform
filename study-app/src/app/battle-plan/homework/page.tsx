@@ -2,19 +2,19 @@
 
 import { useMemo, useState } from 'react';
 import Layout from '@/components/Layout';
-import { homeworkTrackerItems, HomeworkConfidence, HomeworkStatus } from '@/data/battle-plan-system';
+import { HomeworkConfidence, HomeworkStatus, homeworkTrackerItems } from '@/data/battle-plan-system';
 import { useBattlePlanTracker } from '@/hooks/useBattlePlanTracker';
 import { ClipboardList, Search, Target } from 'lucide-react';
 
 const statusOptions: Array<{ value: HomeworkStatus; label: string; className: string }> = [
-  { value: 'solved', label: 'Solved', className: 'border-emerald-300 bg-emerald-50 text-emerald-700' },
-  { value: 'not-solved', label: 'Not solved', className: 'border-red-300 bg-red-50 text-red-700' },
+  { value: 'solved', label: 'פתרתי', className: 'border-emerald-300 bg-emerald-50 text-emerald-700' },
+  { value: 'not-solved', label: 'עוד לא', className: 'border-red-300 bg-red-50 text-red-700' },
 ];
 
 const confidenceOptions: Array<{ value: HomeworkConfidence; label: string; className: string }> = [
-  { value: 'high', label: 'High', className: 'border-emerald-300 bg-emerald-50 text-emerald-700' },
-  { value: 'medium', label: 'Medium', className: 'border-amber-300 bg-amber-50 text-amber-700' },
-  { value: 'low', label: 'Low', className: 'border-red-300 bg-red-50 text-red-700' },
+  { value: 'high', label: 'גבוה', className: 'border-emerald-300 bg-emerald-50 text-emerald-700' },
+  { value: 'medium', label: 'בינוני', className: 'border-amber-300 bg-amber-50 text-amber-700' },
+  { value: 'low', label: 'נמוך', className: 'border-red-300 bg-red-50 text-red-700' },
 ];
 
 export default function BattlePlanHomeworkPage() {
@@ -36,7 +36,8 @@ export default function BattlePlanHomeworkPage() {
         item.title.toLowerCase().includes(normalized) ||
         item.source.toLowerCase().includes(normalized) ||
         item.variation.toLowerCase().includes(normalized) ||
-        item.whyLikely.toLowerCase().includes(normalized);
+        item.whyLikely.toLowerCase().includes(normalized) ||
+        item.topicHe.toLowerCase().includes(normalized);
       return matchesTopic && matchesQuery;
     });
   }, [query, topicFilter]);
@@ -48,26 +49,28 @@ export default function BattlePlanHomeworkPage() {
           <div className="mb-3 flex items-center gap-3">
             <ClipboardList className="h-8 w-8" />
             <div>
-              <h1 className="text-2xl font-extrabold">Homework Tracker</h1>
-              <p className="mt-1 text-sm text-white/85">Selected high-probability homework questions with live status and confidence tracking.</p>
+              <h1 className="text-2xl font-extrabold">מעקב שאלות בית</h1>
+              <p className="mt-1 text-sm text-white/85">
+                כל שאלות הבית הקריטיות, עם מקור מדויק, סיבה לבחירה, ומעקב אישי על פתרון וביטחון.
+              </p>
             </div>
           </div>
           <div className="grid gap-3 sm:grid-cols-4">
             <div className="rounded-xl bg-white/15 p-4 backdrop-blur">
               <div className="text-2xl font-bold">{isHydrated ? snapshot.homework.completionPct : 0}%</div>
-              <div className="text-xs text-white/80">Solved</div>
+              <div className="text-xs text-white/80">פתרתי</div>
             </div>
             <div className="rounded-xl bg-white/15 p-4 backdrop-blur">
               <div className="text-2xl font-bold">{isHydrated ? snapshot.homework.high : 0}</div>
-              <div className="text-xs text-white/80">High confidence</div>
+              <div className="text-xs text-white/80">ביטחון גבוה</div>
             </div>
             <div className="rounded-xl bg-white/15 p-4 backdrop-blur">
               <div className="text-2xl font-bold">{isHydrated ? snapshot.homework.medium : 0}</div>
-              <div className="text-xs text-white/80">Medium confidence</div>
+              <div className="text-xs text-white/80">ביטחון בינוני</div>
             </div>
             <div className="rounded-xl bg-white/15 p-4 backdrop-blur">
               <div className="text-2xl font-bold">{isHydrated ? snapshot.homework.low : 0}</div>
-              <div className="text-xs text-white/80">Low confidence</div>
+              <div className="text-xs text-white/80">ביטחון נמוך</div>
             </div>
           </div>
         </div>
@@ -79,7 +82,7 @@ export default function BattlePlanHomeworkPage() {
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search homework by source, pattern, or variation"
+                placeholder="חפשי לפי מטלה, שאלה, דפוס או וריאציה"
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-10 py-3 text-sm text-slate-700 outline-none transition focus:border-orange-300 focus:bg-white"
               />
             </label>
@@ -88,7 +91,7 @@ export default function BattlePlanHomeworkPage() {
               onChange={(event) => setTopicFilter(event.target.value)}
               className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-orange-300 focus:bg-white"
             >
-              <option value="all">All homework clusters</option>
+              <option value="all">כל האשכולות</option>
               {topics.map((topic) => (
                 <option key={topic} value={topic}>
                   {topic}
@@ -100,7 +103,11 @@ export default function BattlePlanHomeworkPage() {
 
         <section className="grid gap-4 md:grid-cols-2">
           {filteredItems.map((item) => {
-            const entry = state.homework[item.id] ?? { status: 'not-solved' as HomeworkStatus, confidence: 'medium' as HomeworkConfidence };
+            const entry = state.homework[item.id] ?? {
+              status: 'not-solved' as HomeworkStatus,
+              confidence: 'medium' as HomeworkConfidence,
+            };
+
             return (
               <article key={item.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="mb-3 flex items-start justify-between gap-3">
@@ -115,9 +122,10 @@ export default function BattlePlanHomeworkPage() {
                 </div>
 
                 <div className="space-y-2 rounded-xl bg-slate-50 p-3 text-sm text-slate-700">
-                  <p><span className="font-semibold text-slate-900">Method:</span> {item.method}</p>
-                  <p><span className="font-semibold text-slate-900">Why likely:</span> {item.whyLikely}</p>
-                  <p><span className="font-semibold text-slate-900">Exam variation:</span> {item.variation}</p>
+                  <p><span className="font-semibold text-slate-900">מקור:</span> {item.source}</p>
+                  <p><span className="font-semibold text-slate-900">למה היא כאן:</span> {item.whyLikely}</p>
+                  <p><span className="font-semibold text-slate-900">וריאציה סבירה:</span> {item.variation}</p>
+                  <p><span className="font-semibold text-slate-900">מנגנון פתרון:</span> {item.method}</p>
                 </div>
 
                 <div className="mt-4 space-y-3">
@@ -148,7 +156,7 @@ export default function BattlePlanHomeworkPage() {
                             : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:bg-slate-50'
                         }`}
                       >
-                        {option.label}
+                        ביטחון {option.label}
                       </button>
                     ))}
                   </div>
@@ -161,7 +169,7 @@ export default function BattlePlanHomeworkPage() {
         {filteredItems.length === 0 && (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-slate-500">
             <Target className="mx-auto mb-3 h-6 w-6 text-slate-400" />
-            No homework items match the current filter.
+            אין כרגע שאלות בית שמתאימות לסינון שבחרת.
           </div>
         )}
       </div>

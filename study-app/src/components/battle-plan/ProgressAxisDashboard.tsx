@@ -1,7 +1,7 @@
 'use client';
 
 import type { BattlePlanTopicProgress } from '@/data/battle-plan-system';
-import { battlePlanTopicAxes, getTrackerCompletionLabel } from '@/data/battle-plan-system';
+import { battlePlanTopicAxes } from '@/data/battle-plan-system';
 import { useBattlePlanTracker } from '@/hooks/useBattlePlanTracker';
 import { BarChart3 } from 'lucide-react';
 
@@ -63,11 +63,7 @@ export default function ProgressAxisDashboard() {
                   </p>
                 </div>
                 <span className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-semibold ${style.badge}`}>
-                  {getTrackerCompletionLabel(topic.progress) === 'Strong'
-                    ? 'חזקה'
-                    : getTrackerCompletionLabel(topic.progress) === 'Medium'
-                    ? 'בינוני'
-                    : 'לחזור'}
+                  {topic.strength === 'strong' ? 'חזקה' : topic.strength === 'medium' ? 'בינוני' : 'לחזור'}
                 </span>
               </div>
 
