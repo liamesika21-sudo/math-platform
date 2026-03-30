@@ -665,27 +665,27 @@ export function getTrackerResourceSummary(state: BattlePlanTrackerState, resourc
   if (resource === 'definitions') {
     const summary = buildDefinitionSummary(state);
     return {
-      label: 'Definitions Tracker',
+      label: 'מעקב הגדרות',
       href: '/battle-plan/definitions',
       completionPct: summary.knowPct,
-      meta: `${summary.know}/${summary.total} known`,
+      meta: `${summary.know}/${summary.total}`,
     };
   }
   if (resource === 'homework') {
     const summary = buildHomeworkSummary(state);
     return {
-      label: 'Homework Tracker',
+      label: 'מעקב בית',
       href: '/battle-plan/homework',
       completionPct: summary.completionPct,
-      meta: `${summary.solved}/${summary.total} solved`,
+      meta: `${summary.solved}/${summary.total}`,
     };
   }
   const summary = buildDrillSummary(state);
   return {
-    label: 'Full Question Drill',
+    label: 'חזרת שאלות',
     href: '/battle-plan/drill',
     completionPct: summary.completionPct,
-    meta: `${summary.solved}/${summary.total} solved`,
+    meta: `${summary.solved}/${summary.total}`,
   };
 }
 
@@ -735,15 +735,15 @@ export function getBlockResources(task: string, dayNumber: number): Array<'defin
 
 export function getResourceLinkMeta(resource: 'definitions' | 'homework' | 'drill' | 'tips') {
   if (resource === 'definitions') {
-    return { label: 'Open Definitions Tracker', href: '/battle-plan/definitions' };
+    return { label: 'מעקב הגדרות', href: '/battle-plan/definitions' };
   }
   if (resource === 'homework') {
-    return { label: 'Open Homework Tracker', href: '/battle-plan/homework' };
+    return { label: 'מעקב שאלות בית', href: '/battle-plan/homework' };
   }
   if (resource === 'drill') {
-    return { label: 'Open Full Question Drill', href: '/battle-plan/drill' };
+    return { label: 'חזרת שאלות מלאה', href: '/battle-plan/drill' };
   }
-  return { label: 'Open Golden Tips', href: '/battle-plan/tips' };
+  return { label: 'טיפים זהב', href: '/battle-plan/tips' };
 }
 
 export function buildTrackerSnapshot(state: BattlePlanTrackerState) {

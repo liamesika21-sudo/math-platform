@@ -516,35 +516,6 @@ function getProbBg(prob: number) {
   return 'bg-yellow-50 border-yellow-200';
 }
 
-function getDayAccent(day: number) {
-  if (day <= 4) {
-    return {
-      border: 'border-red-200',
-      badge: 'bg-red-500',
-      pill: 'bg-red-50 text-red-700',
-    };
-  }
-  if (day <= 7) {
-    return {
-      border: 'border-amber-200',
-      badge: 'bg-amber-500',
-      pill: 'bg-amber-50 text-amber-700',
-    };
-  }
-  if (day <= 13) {
-    return {
-      border: 'border-blue-200',
-      badge: 'bg-blue-500',
-      pill: 'bg-blue-50 text-blue-700',
-    };
-  }
-  return {
-    border: 'border-emerald-200',
-    badge: 'bg-emerald-500',
-    pill: 'bg-emerald-50 text-emerald-700',
-  };
-}
-
 export default function BattlePlanPage() {
   const [activeTab, setActiveTab] = useState<'autopsy' | 'predictions' | 'theorems' | 'homework' | 'plan' | 'exam'>('autopsy');
   const [expandedDays, setExpandedDays] = useState<Record<number, boolean>>({ 1: true });
@@ -601,38 +572,6 @@ export default function BattlePlanPage() {
               <div className="text-xs text-white/80">נקודות לשיפור</div>
             </div>
           </div>
-        </div>
-
-        <ProgressAxisDashboard />
-
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-          <TrackerLinkButton
-            href={resourceSummaries.definitions.href}
-            label={resourceSummaries.definitions.label}
-            completionPct={isHydrated ? resourceSummaries.definitions.completionPct : 0}
-            meta={resourceSummaries.definitions.meta}
-            resource="definitions"
-          />
-          <TrackerLinkButton
-            href={resourceSummaries.homework.href}
-            label={resourceSummaries.homework.label}
-            completionPct={isHydrated ? resourceSummaries.homework.completionPct : 0}
-            meta={resourceSummaries.homework.meta}
-            resource="homework"
-          />
-          <TrackerLinkButton
-            href={resourceSummaries.drill.href}
-            label={resourceSummaries.drill.label}
-            completionPct={isHydrated ? resourceSummaries.drill.completionPct : 0}
-            meta={resourceSummaries.drill.meta}
-            resource="drill"
-          />
-          <TrackerLinkButton
-            href="/battle-plan/tips"
-            label="Golden Tips"
-            meta="Patterns, shortcuts, decision rules"
-            resource="tips"
-          />
         </div>
 
         {/* ─── Tab Navigation ─── */}
@@ -874,18 +813,52 @@ export default function BattlePlanPage() {
               </div>
             </div>
 
+            <ProgressAxisDashboard />
+
+            <div className="flex flex-wrap gap-2">
+              <TrackerLinkButton
+                href={resourceSummaries.definitions.href}
+                label={resourceSummaries.definitions.label}
+                completionPct={isHydrated ? resourceSummaries.definitions.completionPct : 0}
+                meta={resourceSummaries.definitions.meta}
+                resource="definitions"
+              />
+              <TrackerLinkButton
+                href={resourceSummaries.homework.href}
+                label={resourceSummaries.homework.label}
+                completionPct={isHydrated ? resourceSummaries.homework.completionPct : 0}
+                meta={resourceSummaries.homework.meta}
+                resource="homework"
+              />
+              <TrackerLinkButton
+                href={resourceSummaries.drill.href}
+                label={resourceSummaries.drill.label}
+                completionPct={isHydrated ? resourceSummaries.drill.completionPct : 0}
+                meta={resourceSummaries.drill.meta}
+                resource="drill"
+              />
+              <TrackerLinkButton
+                href="/battle-plan/tips"
+                label="טיפים זהב"
+                resource="tips"
+              />
+            </div>
+
             {studyPlan.map(day => {
-              const accent = getDayAccent(day.day);
               const dayResources = Array.from(new Set(day.blocks.flatMap((block) => getBlockResources(block.task, day.day))));
 
               return (
-                <div key={day.day} className={`bg-white rounded-xl border overflow-hidden ${accent.border}`}>
+                <div key={day.day} className={`bg-white rounded-xl border overflow-hidden ${
+                  day.day <= 4 ? 'border-red-200' : day.day <= 7 ? 'border-amber-200' : day.day <= 13 ? 'border-blue-200' : 'border-emerald-200'
+                }`}>
                   <button
                     onClick={() => setExpandedDays(prev => ({ ...prev, [day.day]: !prev[day.day] }))}
                     className="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors"
                   >
                     <div className="flex items-center gap-3 text-right">
-                      <span className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold ${accent.badge}`}>
+                      <span className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold ${
+                        day.day <= 4 ? 'bg-red-500' : day.day <= 7 ? 'bg-amber-500' : day.day <= 13 ? 'bg-blue-500' : 'bg-emerald-500'
+                      }`}>
                         {day.day}
                       </span>
                       <div>
@@ -900,67 +873,51 @@ export default function BattlePlanPage() {
                       <p className="text-sm text-slate-600 italic">{day.focus}</p>
 
                       {dayResources.length > 0 && (
-                        <div className="space-y-2">
-                          <div className="text-xs font-semibold text-slate-500">Live sync</div>
-                          <div className="flex flex-wrap gap-2">
-                            {dayResources.map((resource) => {
-                              const linkMeta = getResourceLinkMeta(resource);
-                              const summary = resource === 'tips' ? null : resourceSummaries[resource];
-                              return (
-                                <TrackerLinkButton
-                                  key={`${day.day}-${resource}`}
-                                  href={linkMeta.href}
-                                  label={linkMeta.label}
-                                  completionPct={summary ? (isHydrated ? summary.completionPct : 0) : undefined}
-                                  meta={summary?.meta}
-                                  resource={resource}
-                                />
-                              );
-                            })}
-                          </div>
+                        <div className="flex flex-wrap gap-2">
+                          {dayResources.map((resource) => {
+                            const linkMeta = getResourceLinkMeta(resource);
+                            const summary = resource === 'tips' ? null : resourceSummaries[resource];
+                            return (
+                              <TrackerLinkButton
+                                key={`${day.day}-${resource}`}
+                                href={linkMeta.href}
+                                label={linkMeta.label}
+                                completionPct={summary ? (isHydrated ? summary.completionPct : 0) : undefined}
+                                meta={summary?.meta}
+                                resource={resource}
+                              />
+                            );
+                          })}
                         </div>
                       )}
 
-                      <div className="space-y-3">
+                      <div className="space-y-2">
                         {day.blocks.map((block, i) => {
                           const blockResources = getBlockResources(block.task, day.day);
                           return (
-                            <div key={i} className="rounded-xl border border-slate-100 bg-slate-50/70 p-3">
-                              <div className="flex gap-3 text-sm">
-                                <span className="font-mono text-xs text-slate-400 w-24 flex-shrink-0 pt-0.5" dir="ltr">{block.time}</span>
-                                <div className="flex-1 space-y-3">
-                                  <div className="text-slate-700">{block.task}</div>
-                                  {blockResources.length > 0 && (
-                                    <div className="flex flex-wrap gap-2">
-                                      {blockResources.map((resource) => {
-                                        const linkMeta = getResourceLinkMeta(resource);
-                                        const summary = resource === 'tips' ? null : resourceSummaries[resource];
-                                        return (
-                                          <TrackerLinkButton
-                                            key={`${day.day}-${i}-${resource}`}
-                                            href={linkMeta.href}
-                                            label={linkMeta.label}
-                                            completionPct={summary ? (isHydrated ? summary.completionPct : 0) : undefined}
-                                            meta={summary?.meta}
-                                            resource={resource}
-                                          />
-                                        );
-                                      })}
-                                    </div>
-                                  )}
-                                </div>
+                            <div key={i} className="flex gap-3 text-sm">
+                              <span className="font-mono text-xs text-slate-400 w-24 flex-shrink-0 pt-0.5" dir="ltr">{block.time}</span>
+                              <div className="flex-1">
+                                <div className="text-slate-700">{block.task}</div>
+                                {blockResources.length > 0 && (
+                                  <div className="mt-2 flex flex-wrap gap-2">
+                                    {blockResources.map((resource) => {
+                                      const linkMeta = getResourceLinkMeta(resource);
+                                      const summary = resource === 'tips' ? null : resourceSummaries[resource];
+                                      return (
+                                        <TrackerLinkButton
+                                          key={`${day.day}-${i}-${resource}`}
+                                          href={linkMeta.href}
+                                          label={linkMeta.label}
+                                          completionPct={summary ? (isHydrated ? summary.completionPct : 0) : undefined}
+                                          meta={summary?.meta}
+                                          resource={resource}
+                                        />
+                                      );
+                                    })}
+                                  </div>
+                                )}
                               </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        {dayResources.map((resource) => {
-                          const summary = resource === 'tips' ? null : resourceSummaries[resource];
-                          return (
-                            <div key={`pill-${day.day}-${resource}`} className={`rounded-full px-3 py-1 text-xs font-semibold ${accent.pill}`}>
-                              {resource === 'tips' ? 'Golden Tips linked' : `${summary?.label}: ${isHydrated ? summary?.completionPct : 0}%`}
                             </div>
                           );
                         })}

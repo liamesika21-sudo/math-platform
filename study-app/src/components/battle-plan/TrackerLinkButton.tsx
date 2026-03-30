@@ -37,24 +37,18 @@ export default function TrackerLinkButton({
   return (
     <Link
       href={href}
-      className="group inline-flex min-w-[180px] items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right shadow-sm transition-all hover:border-slate-300 hover:bg-slate-50"
+      className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm transition-colors hover:border-slate-300 hover:bg-slate-50"
     >
-      <div className="flex items-center gap-2">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-700">
-          {getResourceIcon(resource)}
-        </div>
-        <div>
-          <div className="text-sm font-semibold text-slate-800">{label}</div>
-          {(meta || completionPct !== undefined) && (
-            <div className="text-xs text-slate-500">
-              {completionPct !== undefined ? `${completionPct}% complete` : null}
-              {completionPct !== undefined && meta ? ' · ' : null}
-              {meta}
-            </div>
-          )}
-        </div>
-      </div>
-      <ArrowUpLeft className="h-4 w-4 text-slate-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      <span className="text-slate-500">{getResourceIcon(resource)}</span>
+      <span>{label}</span>
+      {(meta || completionPct !== undefined) && (
+        <span className="text-slate-400">
+          {completionPct !== undefined ? `${completionPct}%` : null}
+          {completionPct !== undefined && meta ? ' · ' : null}
+          {meta}
+        </span>
+      )}
+      <ArrowUpLeft className="h-3.5 w-3.5 text-slate-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
     </Link>
   );
 }
