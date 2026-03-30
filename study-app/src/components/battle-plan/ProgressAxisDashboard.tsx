@@ -1,5 +1,6 @@
 'use client';
 
+import type { BattlePlanTopicProgress } from '@/data/battle-plan-system';
 import { battlePlanTopicAxes, getTrackerCompletionLabel } from '@/data/battle-plan-system';
 import { useBattlePlanTracker } from '@/hooks/useBattlePlanTracker';
 import { BarChart3, BookCheck, Dumbbell, ShieldAlert } from 'lucide-react';
@@ -31,14 +32,16 @@ function getStrengthClasses(strength: 'strong' | 'medium' | 'weak') {
 export default function ProgressAxisDashboard() {
   const { snapshot, isHydrated } = useBattlePlanTracker();
 
-  const topics = isHydrated ? snapshot.topics : battlePlanTopicAxes.map((axis) => ({
-    ...axis,
-    progress: 0,
-    strength: 'weak' as const,
-    definitionsCount: 0,
-    homeworkCount: 0,
-    drillCount: 0,
-  }));
+  const topics: BattlePlanTopicProgress[] = isHydrated
+    ? snapshot.topics
+    : battlePlanTopicAxes.map((axis) => ({
+        ...axis,
+        progress: 0,
+        strength: 'weak',
+        definitionsCount: 0,
+        homeworkCount: 0,
+        drillCount: 0,
+      }));
 
   return (
     <section className="space-y-4">
@@ -108,4 +111,3 @@ export default function ProgressAxisDashboard() {
     </section>
   );
 }
-

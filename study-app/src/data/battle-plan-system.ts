@@ -63,6 +63,14 @@ export interface BattlePlanTopicAxis {
   lectureEnd: number;
 }
 
+export interface BattlePlanTopicProgress extends BattlePlanTopicAxis {
+  progress: number;
+  strength: 'strong' | 'medium' | 'weak';
+  definitionsCount: number;
+  homeworkCount: number;
+  drillCount: number;
+}
+
 export interface BattlePlanTrackerState {
   definitions: Record<string, DefinitionStatus>;
   homework: Record<string, { status: HomeworkStatus; confidence: HomeworkConfidence }>;
@@ -538,7 +546,7 @@ export function isLectureInAxis(lectures: number[], axis: BattlePlanTopicAxis) {
   return lectures.some((lecture) => lecture >= axis.lectureStart && lecture <= axis.lectureEnd);
 }
 
-export function buildTopicProgress(state: BattlePlanTrackerState) {
+export function buildTopicProgress(state: BattlePlanTrackerState): BattlePlanTopicProgress[] {
   return battlePlanTopicAxes.map((axis) => {
     const definitions = definitionTrackerItems.filter((item) => isLectureInAxis(item.lectures, axis));
     const homework = homeworkTrackerItems.filter((item) => isLectureInAxis(item.lectures, axis));
@@ -555,7 +563,8 @@ export function buildTopicProgress(state: BattlePlanTrackerState) {
       : 0;
 
     const progress = Math.round(((defProgress * 0.35) + (homeworkProgress * 0.3) + (drillProgress * 0.35)) * 100);
-    const strength = progress >= 75 ? 'strong' : progress >= 45 ? 'medium' : 'weak';
+    const strength: BattlePlanTopicProgress['strength'] =
+      progress >= 75 ? 'strong' : progress >= 45 ? 'medium' : 'weak';
 
     return {
       ...axis,
