@@ -1,7 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Layout from '@/components/Layout';
+import ProgressAxisDashboard from '@/components/battle-plan/ProgressAxisDashboard';
+import TrackerLinkButton from '@/components/battle-plan/TrackerLinkButton';
+import {
+  getBlockResources,
+  getResourceLinkMeta,
+  getTrackerResourceSummary,
+} from '@/data/battle-plan-system';
+import { useBattlePlanTracker } from '@/hooks/useBattlePlanTracker';
 import {
   Target,
   AlertTriangle,
@@ -508,12 +516,50 @@ function getProbBg(prob: number) {
   return 'bg-yellow-50 border-yellow-200';
 }
 
+function getDayAccent(day: number) {
+  if (day <= 4) {
+    return {
+      border: 'border-red-200',
+      badge: 'bg-red-500',
+      pill: 'bg-red-50 text-red-700',
+    };
+  }
+  if (day <= 7) {
+    return {
+      border: 'border-amber-200',
+      badge: 'bg-amber-500',
+      pill: 'bg-amber-50 text-amber-700',
+    };
+  }
+  if (day <= 13) {
+    return {
+      border: 'border-blue-200',
+      badge: 'bg-blue-500',
+      pill: 'bg-blue-50 text-blue-700',
+    };
+  }
+  return {
+    border: 'border-emerald-200',
+    badge: 'bg-emerald-500',
+    pill: 'bg-emerald-50 text-emerald-700',
+  };
+}
+
 export default function BattlePlanPage() {
   const [activeTab, setActiveTab] = useState<'autopsy' | 'predictions' | 'theorems' | 'homework' | 'plan' | 'exam'>('autopsy');
   const [expandedDays, setExpandedDays] = useState<Record<number, boolean>>({ 1: true });
   const [expandedTheorems, setExpandedTheorems] = useState<Record<number, boolean>>({});
+  const { state, isHydrated } = useBattlePlanTracker();
 
   const totalLost = moedAResults.reduce((s, q) => s + (q.max - q.score), 0);
+  const resourceSummaries = useMemo(
+    () => ({
+      definitions: getTrackerResourceSummary(state, 'definitions'),
+      homework: getTrackerResourceSummary(state, 'homework'),
+      drill: getTrackerResourceSummary(state, 'drill'),
+    }),
+    [state]
+  );
 
   const tabs = [
     { id: 'autopsy' as const, label: 'ניתוח מועד א\'', icon: <Target className="w-4 h-4" /> },
@@ -551,10 +597,42 @@ export default function BattlePlanPage() {
               <div className="text-xs text-white/80">יעד מועד ב׳</div>
             </div>
             <div className="bg-white/10 backdrop-blur rounded-xl px-4 py-2 text-center mr-auto">
-              <div className="text-2xl font-bold">+54</div>
+              <div className="text-2xl font-bold">+{totalLost}</div>
               <div className="text-xs text-white/80">נקודות לשיפור</div>
             </div>
           </div>
+        </div>
+
+        <ProgressAxisDashboard />
+
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          <TrackerLinkButton
+            href={resourceSummaries.definitions.href}
+            label={resourceSummaries.definitions.label}
+            completionPct={isHydrated ? resourceSummaries.definitions.completionPct : 0}
+            meta={resourceSummaries.definitions.meta}
+            resource="definitions"
+          />
+          <TrackerLinkButton
+            href={resourceSummaries.homework.href}
+            label={resourceSummaries.homework.label}
+            completionPct={isHydrated ? resourceSummaries.homework.completionPct : 0}
+            meta={resourceSummaries.homework.meta}
+            resource="homework"
+          />
+          <TrackerLinkButton
+            href={resourceSummaries.drill.href}
+            label={resourceSummaries.drill.label}
+            completionPct={isHydrated ? resourceSummaries.drill.completionPct : 0}
+            meta={resourceSummaries.drill.meta}
+            resource="drill"
+          />
+          <TrackerLinkButton
+            href="/battle-plan/tips"
+            label="Golden Tips"
+            meta="Patterns, shortcuts, decision rules"
+            resource="tips"
+          />
         </div>
 
         {/* ─── Tab Navigation ─── */}
@@ -796,46 +874,107 @@ export default function BattlePlanPage() {
               </div>
             </div>
 
-            {studyPlan.map(day => (
-              <div key={day.day} className={`bg-white rounded-xl border overflow-hidden ${
-                day.day <= 4 ? 'border-red-200' : day.day <= 7 ? 'border-amber-200' : day.day <= 13 ? 'border-blue-200' : 'border-emerald-200'
-              }`}>
-                <button
-                  onClick={() => setExpandedDays(prev => ({ ...prev, [day.day]: !prev[day.day] }))}
-                  className="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors"
-                >
-                  <div className="flex items-center gap-3 text-right">
-                    <span className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold ${
-                      day.day <= 4 ? 'bg-red-500' : day.day <= 7 ? 'bg-amber-500' : day.day <= 13 ? 'bg-blue-500' : 'bg-emerald-500'
-                    }`}>
-                      {day.day}
-                    </span>
-                    <div>
-                      <div className="font-bold text-slate-900">{day.title}</div>
-                      <div className="text-xs text-slate-500">{day.weekday} {day.date} | {day.blocks.reduce((s, b) => s + b.hours, 0)} שעות</div>
+            {studyPlan.map(day => {
+              const accent = getDayAccent(day.day);
+              const dayResources = Array.from(new Set(day.blocks.flatMap((block) => getBlockResources(block.task, day.day))));
+
+              return (
+                <div key={day.day} className={`bg-white rounded-xl border overflow-hidden ${accent.border}`}>
+                  <button
+                    onClick={() => setExpandedDays(prev => ({ ...prev, [day.day]: !prev[day.day] }))}
+                    className="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3 text-right">
+                      <span className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold ${accent.badge}`}>
+                        {day.day}
+                      </span>
+                      <div>
+                        <div className="font-bold text-slate-900">{day.title}</div>
+                        <div className="text-xs text-slate-500">{day.weekday} {day.date} | {day.blocks.reduce((s, b) => s + b.hours, 0)} שעות</div>
+                      </div>
                     </div>
-                  </div>
-                  {expandedDays[day.day] ? <ChevronUp className="w-5 h-5 text-slate-400" /> : <ChevronDown className="w-5 h-5 text-slate-400" />}
-                </button>
-                {expandedDays[day.day] && (
-                  <div className="px-4 pb-4 space-y-3 border-t border-slate-100 pt-3">
-                    <p className="text-sm text-slate-600 italic">{day.focus}</p>
-                    <div className="space-y-2">
-                      {day.blocks.map((block, i) => (
-                        <div key={i} className="flex gap-3 text-sm">
-                          <span className="font-mono text-xs text-slate-400 w-24 flex-shrink-0 pt-0.5" dir="ltr">{block.time}</span>
-                          <span className="text-slate-700">{block.task}</span>
+                    {expandedDays[day.day] ? <ChevronUp className="w-5 h-5 text-slate-400" /> : <ChevronDown className="w-5 h-5 text-slate-400" />}
+                  </button>
+                  {expandedDays[day.day] && (
+                    <div className="px-4 pb-4 space-y-3 border-t border-slate-100 pt-3">
+                      <p className="text-sm text-slate-600 italic">{day.focus}</p>
+
+                      {dayResources.length > 0 && (
+                        <div className="space-y-2">
+                          <div className="text-xs font-semibold text-slate-500">Live sync</div>
+                          <div className="flex flex-wrap gap-2">
+                            {dayResources.map((resource) => {
+                              const linkMeta = getResourceLinkMeta(resource);
+                              const summary = resource === 'tips' ? null : resourceSummaries[resource];
+                              return (
+                                <TrackerLinkButton
+                                  key={`${day.day}-${resource}`}
+                                  href={linkMeta.href}
+                                  label={linkMeta.label}
+                                  completionPct={summary ? (isHydrated ? summary.completionPct : 0) : undefined}
+                                  meta={summary?.meta}
+                                  resource={resource}
+                                />
+                              );
+                            })}
+                          </div>
                         </div>
-                      ))}
+                      )}
+
+                      <div className="space-y-3">
+                        {day.blocks.map((block, i) => {
+                          const blockResources = getBlockResources(block.task, day.day);
+                          return (
+                            <div key={i} className="rounded-xl border border-slate-100 bg-slate-50/70 p-3">
+                              <div className="flex gap-3 text-sm">
+                                <span className="font-mono text-xs text-slate-400 w-24 flex-shrink-0 pt-0.5" dir="ltr">{block.time}</span>
+                                <div className="flex-1 space-y-3">
+                                  <div className="text-slate-700">{block.task}</div>
+                                  {blockResources.length > 0 && (
+                                    <div className="flex flex-wrap gap-2">
+                                      {blockResources.map((resource) => {
+                                        const linkMeta = getResourceLinkMeta(resource);
+                                        const summary = resource === 'tips' ? null : resourceSummaries[resource];
+                                        return (
+                                          <TrackerLinkButton
+                                            key={`${day.day}-${i}-${resource}`}
+                                            href={linkMeta.href}
+                                            label={linkMeta.label}
+                                            completionPct={summary ? (isHydrated ? summary.completionPct : 0) : undefined}
+                                            meta={summary?.meta}
+                                            resource={resource}
+                                          />
+                                        );
+                                      })}
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {dayResources.map((resource) => {
+                          const summary = resource === 'tips' ? null : resourceSummaries[resource];
+                          return (
+                            <div key={`pill-${day.day}-${resource}`} className={`rounded-full px-3 py-1 text-xs font-semibold ${accent.pill}`}>
+                              {resource === 'tips' ? 'Golden Tips linked' : `${summary?.label}: ${isHydrated ? summary?.completionPct : 0}%`}
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <div className="bg-emerald-50 rounded-lg p-3 text-sm text-emerald-800 flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                        <span className="font-medium">תוצר: </span>{day.deliverable}
+                      </div>
                     </div>
-                    <div className="bg-emerald-50 rounded-lg p-3 text-sm text-emerald-800 flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 flex-shrink-0" />
-                      <span className="font-medium">תוצר: </span>{day.deliverable}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              );
+            })}
           </div>
         )}
 
@@ -895,12 +1034,12 @@ export default function BattlePlanPage() {
                 טעויות קריטיות להימנע (מהמועד א׳ שלך)
               </h3>
               <ul className="space-y-2 text-sm text-red-700">
-                <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>אל תכתוב "ברור ש-" — הבודק הוריד נקודות על זה ב-Q4.2</span></li>
-                <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>תמיד ציין תנאי משפט לפני שימוש: "מכיוון ש-f רציפה על [a,b] וגזירה על (a,b), לפי MVT..."</span></li>
+                <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>אל תכתוב &quot;ברור ש-&quot; — הבודק הוריד נקודות על זה ב-Q4.2</span></li>
+                <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>תמיד ציין תנאי משפט לפני שימוש: &quot;מכיוון ש-f רציפה על [a,b] וגזירה על (a,b), לפי MVT...&quot;</span></li>
                 <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>לפני חילוק — הוכח שהמכנה לא אפס (Cauchy MVT: g(b)≠g(a))</span></li>
                 <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>בפונקציית עזר — בדוק את שני הקצוות: h(a)=?, h(b)=?</span></li>
-                <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>אל תבלבל "לא חסומה מלמעלה" עם "לא חסומה מלמטה" (עלה לך 2 נק׳ ב-Q3.1)</span></li>
-                <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>ב-"הוכח או הפרך": נסה דוגמה נגדית קודם! f=const, sign(x), x², |x|, 1/x, sin(1/x)</span></li>
+                <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>אל תבלבל &quot;לא חסומה מלמעלה&quot; עם &quot;לא חסומה מלמטה&quot; (עלה לך 2 נק׳ ב-Q3.1)</span></li>
+                <li className="flex items-start gap-2"><XCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> <span>ב-&quot;הוכח או הפרך&quot;: נסה דוגמה נגדית קודם! f=const, sign(x), x², |x|, 1/x, sin(1/x)</span></li>
               </ul>
             </div>
 
