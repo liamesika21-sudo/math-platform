@@ -23,6 +23,7 @@ import {
   ExternalLink,
   CalendarDays,
   Brain,
+  Swords,
 } from 'lucide-react';
 
 interface NavItem {
@@ -38,6 +39,12 @@ const navItems: NavItem[] = [
     label: 'Dashboard',
     labelHe: 'לוח בקרה',
     icon: <LayoutDashboard className="w-5 h-5" />,
+  },
+  {
+    href: '/battle-plan',
+    label: 'Battle Plan',
+    labelHe: 'תוכנית קרב — מועד ב׳',
+    icon: <Swords className="w-5 h-5" />,
   },
   {
     href: '/study-plan',
