@@ -1,0 +1,526 @@
+export interface BattlePlanTopicLabel {
+  id: string;
+  label: string;
+}
+
+export const battlePlanTopicLabels: BattlePlanTopicLabel[] = [
+  { id: 'sets', label: 'הרצאות 1-5 · חסמים קבוצות רציונליים אי־רציונליים' },
+  { id: 'functions', label: 'הרצאות 5-7 · פונקציות' },
+  { id: 'limits', label: 'הרצאות 8-15 · גבולות' },
+  { id: 'continuity', label: 'הרצאות 15-18 · רציפות' },
+  { id: 'derivatives', label: 'הרצאות 18-23 · נגזרות' },
+];
+
+export interface BattlePlanDefinitionEntry {
+  id: string;
+  title: string;
+  body: string;
+  topicId: BattlePlanTopicLabel['id'];
+  topicLabel: string;
+  source: string;
+}
+
+export const battlePlanDefinitions: BattlePlanDefinitionEntry[] = [
+  {
+    id: 'def-set',
+    title: 'קבוצה',
+    body: 'תהיינה $A,B$ שתי קבוצות. על מנת שנוכל לומר כי $A=B$ צריך להראות גם $A\\subseteq B$ וגם $B\\subseteq A$.',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 1 · קבוצות',
+  },
+  {
+    id: 'def-intersection',
+    title: 'חיתוך של קבוצות',
+    body: '$A\\cap B = \\{x : x\\in A,\\ x\\in B\\}$',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 1 · קבוצות',
+  },
+  {
+    id: 'def-union',
+    title: 'איחוד של קבוצות',
+    body: '$A\\cup B = \\{x : x\\in A\\ \\text{או}\\ x\\in B\\}$',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 1 · קבוצות',
+  },
+  {
+    id: 'def-difference',
+    title: 'הפרש של קבוצות',
+    body: '$A\\setminus B = \\{x : x\\in A,\\ x\\notin B\\}$',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 1 · קבוצות',
+  },
+  {
+    id: 'def-natural',
+    title: 'המספרים הטבעיים',
+    body: '$\\mathbb{N}=\\{1,2,3,\\dots\\}$',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 1 · מערכות מספרים',
+  },
+  {
+    id: 'def-integers',
+    title: 'המספרים השלמים',
+    body: '$\\mathbb{Z}=\\{0,1,-1,2,-2,3,-3,\\dots\\}$',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 1 · מערכות מספרים',
+  },
+  {
+    id: 'def-rationals',
+    title: 'המספרים הרציונליים',
+    body: '$\\mathbb{Q}=\\left\\{\\frac{m}{n}: m\\in\\mathbb{Z},\\ n\\in\\mathbb{Z}\\setminus\\{0\\}\\right\\}$',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 1 · מערכות מספרים',
+  },
+  {
+    id: 'def-irrationals',
+    title: 'המספרים האי־רציונליים',
+    body: '$\\mathbb{R}\\setminus\\mathbb{Q}=\\{x\\in\\mathbb{R}: x\\notin\\mathbb{Q}\\}$',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 1 · מערכות מספרים',
+  },
+  {
+    id: 'def-upper-bound',
+    title: 'חסם מלעיל',
+    body: 'יהי $A\\subseteq\\mathbb{R}$. מספר $M\\in\\mathbb{R}$ נקרא חסם מלעיל של $A$ אם לכל $a\\in A$ מתקיים $a\\le M$.',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 3 · מטלה 2 שאלה 1 · חסמים',
+  },
+  {
+    id: 'def-lower-bound',
+    title: 'חסם מלרע',
+    body: 'יהי $A\\subseteq\\mathbb{R}$. מספר $m\\in\\mathbb{R}$ נקרא חסם מלרע של $A$ אם לכל $a\\in A$ מתקיים $m\\le a$.',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 3 · מטלה 2 שאלה 1 · חסמים',
+  },
+  {
+    id: 'def-sup',
+    title: 'סופרמום',
+    body: '$\\overline{s}=\\sup(A)$ אם ורק אם $\\overline{s}$ הוא חסם מלעיל של $A$, ולכל חסם מלעיל $M$ של $A$ מתקיים $\\overline{s}\\le M$.',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 3 · מטלה 2 · סופרמום',
+  },
+  {
+    id: 'def-inf',
+    title: 'אינפימום',
+    body: '$\\underline{s}=\\inf(A)$ אם ורק אם $\\underline{s}$ הוא חסם מלרע של $A$, ולכל חסם מלרע $m$ של $A$ מתקיים $m\\le \\underline{s}$.',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 3 · מטלה 2 שאלה 1 · אינפימום',
+  },
+  {
+    id: 'def-dense',
+    title: 'קבוצה צפופה ב־$\\mathbb{R}$',
+    body: 'נאמר כי $A\\subseteq\\mathbb{R}$ צפופה ב־$\\mathbb{R}$ אם לכל $x,y\\in\\mathbb{R}$ כך ש־$x<y$ קיים $a\\in A$ כך ש־$x<a<y$.',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאה 5 · מטלה 3 · צפיפות',
+  },
+  {
+    id: 'def-function',
+    title: 'פונקציה',
+    body: 'פונקציה $f:A\\to B$ היא התאמה אשר לכל $x\\in A$ מתאימה ערך יחיד $f(x)\\in B$.',
+    topicId: 'functions',
+    topicLabel: battlePlanTopicLabels[1].label,
+    source: 'הרצאות 5–7 · פונקציות',
+  },
+  {
+    id: 'def-injective',
+    title: 'חד־חד־ערכית',
+    body: 'הפונקציה $f:A\\to B$ נקראת חד־חד־ערכית אם לכל $x_1,x_2\\in A$, מהשוויון $f(x_1)=f(x_2)$ נובע $x_1=x_2$.',
+    topicId: 'functions',
+    topicLabel: battlePlanTopicLabels[1].label,
+    source: 'הרצאות 5–7 · פונקציות',
+  },
+  {
+    id: 'def-surjective',
+    title: 'על',
+    body: 'הפונקציה $f:A\\to B$ נקראת על אם לכל $y\\in B$ קיים $x\\in A$ כך ש־$f(x)=y$.',
+    topicId: 'functions',
+    topicLabel: battlePlanTopicLabels[1].label,
+    source: 'הרצאות 5–7 · פונקציות',
+  },
+  {
+    id: 'def-invertible',
+    title: 'הפיכה',
+    body: 'פונקציה $f:A\\to B$ נקראת הפיכה אם קיימת פונקציה $f^{-1}:B\\to A$ כך ש־$f^{-1}(f(x))=x$ לכל $x\\in A$ ו־$f(f^{-1}(y))=y$ לכל $y\\in B$.',
+    topicId: 'functions',
+    topicLabel: battlePlanTopicLabels[1].label,
+    source: 'הרצאות 5–7 · פונקציות',
+  },
+  {
+    id: 'def-limit-point',
+    title: 'גבול של פונקציה בנקודה',
+    body: '$\\lim_{x\\to x_0}f(x)=L$ אם לכל $\\varepsilon>0$ קיים $\\delta>0$ כך שלכל $x$, אם $0<|x-x_0|<\\delta$ אז $|f(x)-L|<\\varepsilon$.',
+    topicId: 'limits',
+    topicLabel: battlePlanTopicLabels[2].label,
+    source: 'הרצאה 5 · תרגול 4 · גבולות',
+  },
+  {
+    id: 'def-right-limit',
+    title: 'גבול מימין',
+    body: '$\\lim_{x\\to x_0^+}f(x)=L$ אם לכל $\\varepsilon>0$ קיים $\\delta>0$ כך שאם $0<x-x_0<\\delta$ אז $|f(x)-L|<\\varepsilon$.',
+    topicId: 'limits',
+    topicLabel: battlePlanTopicLabels[2].label,
+    source: 'הרצאות 8–15 · גבולות',
+  },
+  {
+    id: 'def-left-limit',
+    title: 'גבול משמאל',
+    body: '$\\lim_{x\\to x_0^-}f(x)=L$ אם לכל $\\varepsilon>0$ קיים $\\delta>0$ כך שאם $0<x_0-x<\\delta$ אז $|f(x)-L|<\\varepsilon$.',
+    topicId: 'limits',
+    topicLabel: battlePlanTopicLabels[2].label,
+    source: 'הרצאות 8–15 · גבולות',
+  },
+  {
+    id: 'def-limit-infinity',
+    title: 'גבול באינסוף',
+    body: '$\\lim_{x\\to\\infty}f(x)=L$ אם לכל $\\varepsilon>0$ קיים $M$ כך שאם $x>M$ אז $|f(x)-L|<\\varepsilon$.',
+    topicId: 'limits',
+    topicLabel: battlePlanTopicLabels[2].label,
+    source: 'הרצאה 9 · תרגול 4 · גבולות באינסוף',
+  },
+  {
+    id: 'def-infinite-limit',
+    title: 'גבול אינסופי',
+    body: '$\\lim_{x\\to x_0}f(x)=\\infty$ אם לכל $K>0$ קיים $\\delta>0$ כך שאם $0<|x-x_0|<\\delta$ אז $f(x)>K$.',
+    topicId: 'limits',
+    topicLabel: battlePlanTopicLabels[2].label,
+    source: 'הרצאה 9 · גבול אינסופי',
+  },
+  {
+    id: 'def-neighborhood',
+    title: 'שכונה מחוקה של נקודה',
+    body: 'שכונה מחוקה של $x_0$ היא קבוצה מהצורה $\\{x\\in\\mathbb{R}:0<|x-x_0|<\\delta\\}$ עבור $\\delta>0$.',
+    topicId: 'limits',
+    topicLabel: battlePlanTopicLabels[2].label,
+    source: 'הרצאות 8–15 · גבולות',
+  },
+  {
+    id: 'def-continuity',
+    title: 'רציפות בנקודה',
+    body: 'הפונקציה $f$ רציפה ב־$x_0$ אם ורק אם $\\lim_{x\\to x_0}f(x)=f(x_0)$.',
+    topicId: 'continuity',
+    topicLabel: battlePlanTopicLabels[3].label,
+    source: 'הרצאה 5 · הרצאה 6 · רציפות',
+  },
+  {
+    id: 'def-right-continuity',
+    title: 'רציפות מימין',
+    body: 'הפונקציה $f$ רציפה מימין ב־$x_0$ אם $\\lim_{x\\to x_0^+}f(x)=f(x_0)$.',
+    topicId: 'continuity',
+    topicLabel: battlePlanTopicLabels[3].label,
+    source: 'הרצאות 15–18 · רציפות',
+  },
+  {
+    id: 'def-left-continuity',
+    title: 'רציפות משמאל',
+    body: 'הפונקציה $f$ רציפה משמאל ב־$x_0$ אם $\\lim_{x\\to x_0^-}f(x)=f(x_0)$.',
+    topicId: 'continuity',
+    topicLabel: battlePlanTopicLabels[3].label,
+    source: 'הרצאות 15–18 · רציפות',
+  },
+  {
+    id: 'def-derivative',
+    title: 'נגזרת בנקודה',
+    body: '$f\'(x_0)=\\lim_{x\\to x_0}\\frac{f(x)-f(x_0)}{x-x_0}=\\lim_{h\\to 0}\\frac{f(x_0+h)-f(x_0)}{h}$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאה 11 · נגזרות',
+  },
+  {
+    id: 'def-differentiable',
+    title: 'גזירה בנקודה',
+    body: 'הפונקציה $f$ גזירה ב־$x_0$ אם הנגזרת $f\'(x_0)$ קיימת, כלומר הגבול שבהגדרת הנגזרת קיים וסופי.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאות 18–23 · נגזרות',
+  },
+  {
+    id: 'def-differentiable-interval',
+    title: 'גזירה על קטע',
+    body: 'הפונקציה $f$ גזירה על $(a,b)$ אם $f\'(x)$ קיימת לכל $x\\in(a,b)$. כאשר מדובר ב־$[a,b]$, דורשים גם נגזרות חד־צדדיות בקצוות.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאה 11 · מועד א׳ 2026 Q1.1 · גזירה על קטע',
+  },
+  {
+    id: 'def-increasing',
+    title: 'פונקציה עולה',
+    body: 'הפונקציה $f$ עולה בקטע $I$ אם לכל $x_1,x_2\\in I$ כך ש־$x_1<x_2$ מתקיים $f(x_1)\\le f(x_2)$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאות 18–23 · מונוטוניות',
+  },
+  {
+    id: 'def-decreasing',
+    title: 'פונקציה יורדת',
+    body: 'הפונקציה $f$ יורדת בקטע $I$ אם לכל $x_1,x_2\\in I$ כך ש־$x_1<x_2$ מתקיים $f(x_1)\\ge f(x_2)$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאות 18–23 · מונוטוניות',
+  },
+  {
+    id: 'def-local-extremum',
+    title: 'קיצון מקומי',
+    body: 'ל־$f$ יש מקסימום מקומי ב־$c$ אם קיימת סביבה של $c$ כך שלכל $x$ בסביבה מתקיים $f(x)\\le f(c)$. מינימום מקומי מוגדר באופן דומה.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאות 18–23 · קיצון מקומי',
+  },
+  {
+    id: 'def-critical-point',
+    title: 'נקודה קריטית',
+    body: 'נקודה $c$ נקראת נקודה קריטית של $f$ אם $f\'(c)=0$ או שהנגזרת $f\'(c)$ אינה קיימת.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאות 18–23 · נקודות קריטיות',
+  },
+];
+
+export interface BattlePlanTheoremEntry {
+  id: number;
+  shortName: string;
+  title: string;
+  statement: string;
+  topicId: BattlePlanTopicLabel['id'];
+  topicLabel: string;
+  source: string;
+}
+
+export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
+  {
+    id: 1,
+    shortName: 'גזירות⟹רציפות',
+    title: 'גזירות גוררת רציפות',
+    statement: 'אם $f$ גזירה ב־$x_0$ אז $f$ רציפה ב־$x_0$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאה 11 · סימולציה 2026',
+  },
+  {
+    id: 2,
+    shortName: 'Rolle',
+    title: 'משפט רול',
+    statement: 'אם $f$ רציפה על $[a,b]$, גזירה על $(a,b)$, ו־$f(a)=f(b)$, אז קיים $c\\in(a,b)$ כך ש־$f\'(c)=0$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאה 17',
+  },
+  {
+    id: 3,
+    shortName: 'MVT',
+    title: 'משפט הערך הממוצע',
+    statement: 'אם $f$ רציפה על $[a,b]$ וגזירה על $(a,b)$, אז קיים $c\\in(a,b)$ כך ש־$f\'(c)=\\frac{f(b)-f(a)}{b-a}$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאה 17',
+  },
+  {
+    id: 4,
+    shortName: 'Cauchy',
+    title: 'משפט קושי לערך הממוצע',
+    statement: 'אם $f,g$ רציפות על $[a,b]$, גזירות על $(a,b)$, ו־$g\'(x)\\ne 0$ לכל $x\\in(a,b)$, אז קיים $c\\in(a,b)$ כך ש־$\\frac{f(b)-f(a)}{g(b)-g(a)}=\\frac{f\'(c)}{g\'(c)}$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאת ערך ממוצע · מועד א׳ 2026',
+  },
+  {
+    id: 5,
+    shortName: 'צפיפות Q',
+    title: 'הרציונליים צפופים ב־$\\mathbb{R}$',
+    statement: 'בין כל שני מספרים ממשיים שונים קיים מספר רציונלי.',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאות 1–5 · צפיפות',
+  },
+  {
+    id: 6,
+    shortName: 'ε-sup',
+    title: 'תכונת $\\varepsilon$ של סופרמום',
+    statement: '$\\overline{s}=\\sup(A)$ אם ורק אם $\\overline{s}$ חסם מלעיל של $A$ ולכל $\\varepsilon>0$ קיים $a\\in A$ כך ש־$a>\\overline{s}-\\varepsilon$.',
+    topicId: 'sets',
+    topicLabel: battlePlanTopicLabels[0].label,
+    source: 'הרצאות 1–5 · חסמים',
+  },
+  {
+    id: 7,
+    shortName: 'פונקציה הפוכה',
+    title: 'נגזרת של פונקציה הפוכה',
+    statement: 'אם $f$ הפיכה וגזירה ב־$x_0$ ו־$f\'(x_0)\\ne 0$, אז $(f^{-1})\'(y_0)=\\frac{1}{f\'(x_0)}$ כאשר $y_0=f(x_0)$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאה 13',
+  },
+  {
+    id: 8,
+    shortName: 'IVT',
+    title: 'משפט ערך הביניים',
+    statement: 'אם $f$ רציפה על $[a,b]$ ו־$k$ בין $f(a)$ ל־$f(b)$, אז קיים $c\\in(a,b)$ כך ש־$f(c)=k$.',
+    topicId: 'continuity',
+    topicLabel: battlePlanTopicLabels[3].label,
+    source: 'הרצאות 15–18 · רציפות',
+  },
+  {
+    id: 9,
+    shortName: 'פרמה',
+    title: 'משפט פרמה',
+    statement: 'אם ל־$f$ יש קיצון מקומי ב־$c$ ו־$f$ גזירה ב־$c$, אז $f\'(c)=0$.',
+    topicId: 'derivatives',
+    topicLabel: battlePlanTopicLabels[4].label,
+    source: 'הרצאות 18–23 · קיצון',
+  },
+  {
+    id: 10,
+    shortName: 'ויירשטראס',
+    title: 'משפט ויירשטראס',
+    statement: 'אם $f$ רציפה על $[a,b]$, אז $f$ מקבלת מקסימום ומינימום על $[a,b]$.',
+    topicId: 'continuity',
+    topicLabel: battlePlanTopicLabels[3].label,
+    source: 'הרצאות 15–18 · רציפות',
+  },
+];
+
+export interface BattlePlanTipEntry {
+  id: string;
+  title: string;
+  body: string;
+  rule: string;
+  source: string;
+  topicLabel: string;
+}
+
+export const battlePlanTips: BattlePlanTipEntry[] = [
+  // ── M vs δ ──
+  {
+    id: 'tip-m-delta',
+    title: 'משפט זיכרון קצר: $M$ מול $\\delta$',
+    body: 'בתרגולי גבולות חוזר שוב ושוב אותו מנגנון: באינסוף צריך ש־$x$ יהיה גדול מספיק; ליד נקודה צריך ש־$x$ יהיה קרוב מספיק.',
+    rule: '$x\\to\\infty$: צריך **גדול מספיק** ⇒ $M=\\max\\{\\dots\\}$, $\\varepsilon$ **במכנה**.\n$x\\to a$: צריך **קרוב מספיק** ⇒ $\\delta=\\min\\{\\dots\\}$, $\\varepsilon$ **במונה**.',
+    source: 'תרגול 4 · גבולות',
+    topicLabel: battlePlanTopicLabels[2].label,
+  },
+  // ── 6 M/δ classic templates ──
+  {
+    id: 'tip-template-1',
+    title: 'תבנית 1: $\\lim_{x\\to\\infty}\\frac{c}{x+a}=0$',
+    body: 'הפונקציה הכי נפוצה בתרגול 4. המכנה גדל, אז צריך $x$ גדול מספיק.',
+    rule: 'בוחרים $M=\\frac{c}{\\varepsilon}$. אז $x>M$ נותן $\\left|\\frac{c}{x+a}\\right|\\le\\frac{c}{x}<\\frac{c}{M}=\\varepsilon$.',
+    source: 'תרגול 4 שאלה 1 · הרצאות 8–10',
+    topicLabel: battlePlanTopicLabels[2].label,
+  },
+  {
+    id: 'tip-template-2',
+    title: 'תבנית 2: $\\lim_{x\\to\\infty}\\frac{c}{x-a}=0$ (מכנה עם חיסור)',
+    body: 'צריך להבטיח שהמכנה חיובי. טריק: אם $x>2a$ אז $x-a>\\frac{x}{2}$.',
+    rule: 'בוחרים $M=\\max\\left\\{2a,\\,\\frac{2c}{\\varepsilon}\\right\\}$. אז $\\left|\\frac{c}{x-a}\\right|\\le\\frac{c}{x/2}=\\frac{2c}{x}<\\frac{2c}{M}\\le\\varepsilon$.',
+    source: 'תרגול 4 שאלה 2 · הרצאות 8–10',
+    topicLabel: battlePlanTopicLabels[2].label,
+  },
+  {
+    id: 'tip-template-3',
+    title: 'תבנית 3: $\\lim_{x\\to-\\infty}\\frac{c}{x+a}=0$',
+    body: 'כמו תבנית 1 אבל עם $x\\to-\\infty$. צריך $x$ שלילי מספיק, אז הכל הופך ל-min ולערך מוחלט.',
+    rule: 'בוחרים $M=\\min\\left\\{-2|a|,\\,-\\frac{2c}{\\varepsilon}\\right\\}$. אז $x<M$ נותן $|x+a|\\ge|x|/2$ ו-$\\frac{c}{|x+a|}\\le\\frac{2c}{|x|}\\le\\varepsilon$.',
+    source: 'תרגול 4 שאלה 3 · הרצאות 8–10',
+    topicLabel: battlePlanTopicLabels[2].label,
+  },
+  {
+    id: 'tip-template-4',
+    title: 'תבנית 4: $\\lim_{x\\to a}(mx+b)=ma+b$ (גבול ליניארי)',
+    body: 'הפשוטה ביותר ליד נקודה. הקירבה לנקודה עם $\\delta$.',
+    rule: 'בוחרים $\\delta=\\frac{\\varepsilon}{|m|}$. אז $|mx+b-(ma+b)|=|m||x-a|<|m|\\delta=\\varepsilon$.',
+    source: 'תרגול 4 · הרצאות 8–10',
+    topicLabel: battlePlanTopicLabels[2].label,
+  },
+  {
+    id: 'tip-template-5',
+    title: 'תבנית 5: $\\lim_{x\\to a}x^2=a^2$ (צריך לחסום גורם)',
+    body: 'כשיש מכפלה, צריך לחסום גורם אחד ולהקטין את השני. זה המקום שבו $\\delta=\\min$ נולד.',
+    rule: '$|x^2-a^2|=|x-a||x+a|$. בוחרים $\\delta_1=1$ כך ש-$|x+a|<2|a|+1$. אז $\\delta=\\min\\left\\{1,\\,\\frac{\\varepsilon}{2|a|+1}\\right\\}$.',
+    source: 'תרגול 4 · הרצאות 8–10',
+    topicLabel: battlePlanTopicLabels[2].label,
+  },
+  {
+    id: 'tip-template-6',
+    title: 'תבנית 6: $\\lim_{x\\to a}\\frac{1}{x}=\\frac{1}{a}$ (צריך לחסום מכנה מלמטה)',
+    body: 'הטריק: קודם מבטיחים ש-$|x|$ לא קרוב מדי ל-$0$ (או ל-$a$), ואז חוסמים.',
+    rule: '$\\left|\\frac{1}{x}-\\frac{1}{a}\\right|=\\frac{|x-a|}{|x||a|}$. בוחרים $\\delta_1=\\frac{|a|}{2}$ כך ש-$|x|>\\frac{|a|}{2}$. אז $\\delta=\\min\\left\\{\\frac{|a|}{2},\\,\\frac{a^2\\varepsilon}{2}\\right\\}$.',
+    source: 'תרגול 4 · הרצאות 8–10',
+    topicLabel: battlePlanTopicLabels[2].label,
+  },
+  // ── general exam tips ──
+  {
+    id: 'tip-helper',
+    title: 'אם כתוב “קיים $c$” — חפשי קודם משפט, לא חישוב',
+    body: 'ברוב המכריע של השאלות האלה, המהלך הראשון הוא לבנות פונקציית עזר אחת ואז להפעיל IVT / Rolle / MVT.',
+    rule: 'לפני חישוב: כתבי בצד “IVT / Rolle / MVT?” ורק אחר כך הגדירי $h(x)$.',
+    source: 'מבחנים B2023 Q2(b), B2022 Q8 · מועד א׳ 2026 Q3.2',
+    topicLabel: battlePlanTopicLabels[4].label,
+  },
+  {
+    id: 'tip-epsilon',
+    title: 'בשאלות $\\sup/\\inf$ כמעט אף פעם לא מספיק “לנחש תשובה”',
+    body: 'הבודק מחפש את תכונת $\\varepsilon$ ולא רק מועמד טוב לחסם.',
+    rule: 'סדר כתיבה קבוע: 1. הראי שזה חסם. 2. הראי את תכונת $\\varepsilon$.',
+    source: 'הרצאות 1–5 · מטלה 2 שאלה 1(ב) · מועד א׳ 2026 Q2.1',
+    topicLabel: battlePlanTopicLabels[0].label,
+  },
+  {
+    id: 'tip-density',
+    title: 'אם יש נתון על $\\mathbb{Q}$, כמעט תמיד הסיום הוא בצפיפות',
+    body: 'הרבה שאלות נראות כאילו הן על גבולות, אבל הסגירה שלהן היא “נבחר רציונלי בתוך הקטע”.',
+    rule: 'כשרואים טענה על כל $q\\in\\mathbb{Q}$ או “בין כל שני ממשיים” — חשבי מיד על צפיפות $\\mathbb{Q}$.',
+    source: 'מועד א׳ 2026 Q4.2 · B2024 Q2(a) · מטלה 3',
+    topicLabel: battlePlanTopicLabels[0].label,
+  },
+  {
+    id: 'tip-second-derivative',
+    title: 'חסם על נגזרת שנייה = בדרך כלל MVT פעמיים',
+    body: 'אם נתנו שלושה ערכי פונקציה ומבקשים משהו על $f\'\'$, אל תחפשי טריק אקזוטי.',
+    rule: 'מייצרים שני שיפועים בעזרת MVT, ואז מפעילים MVT על $f\'$.',
+    source: 'מטלה 12 שאלה 4 · מועד א׳ 2026 Q4.1 · B2025 Q4.2',
+    topicLabel: battlePlanTopicLabels[4].label,
+  },
+  {
+    id: 'tip-irrationality',
+    title: 'הוכחת אי-רציונליות: תמיד בשלילה, תמיד בודדים את $x$',
+    body: 'ב-8 מתוך 10 בחינות יש שאלת אי-רציונליות. התבנית זהה: מניחים שזה שווה $p/q$ ומגיעים ל-$x$ רציונלי.',
+    rule: 'מניחים $\\frac{r_1x+r_2}{r_3x+r_4}=\\frac{p}{q}\\in\\mathbb{Q}$. פותרים: $x=\\frac{pr_4-qr_2}{qr_1-pr_3}\\in\\mathbb{Q}$. סתירה!',
+    source: 'מטלה 1 שאלה 6 · מועד א׳ 2026 Q2.2 · תרגול 1–2',
+    topicLabel: battlePlanTopicLabels[0].label,
+  },
+  {
+    id: 'tip-inequality-aux',
+    title: 'אי-שוויון דרך פונקציית עזר: $h(0)=0$ ו-$h\' \\ge 0$',
+    body: 'להוכיח $f(x)\\ge g(x)$ לכל $x\\ge 0$: הגדירי $h(x)=f(x)-g(x)$. הראי $h(0)\\ge 0$ ו-$h\'(x)\\ge 0$. זהו.',
+    rule: 'דוגמאות: $\\sin x\\le x$, $e^x\\ge 1+x$, $\\cos x\\ge 1-\\frac{x^2}{2}$, $\\arctan x < x$.',
+    source: 'מטלה 12 שאלה 2 · מועד א׳ 2026 Q5.1 · סימולציה 2026 Q4.1',
+    topicLabel: battlePlanTopicLabels[4].label,
+  },
+  {
+    id: 'tip-conditions',
+    title: 'תמיד ציין תנאים לפני שימוש במשפט',
+    body: 'במועד א׳ הבודק הוריד נקודות על “ברור ש-”. כל משפט דורש ציון תנאיו.',
+    rule: 'כתבי: “מכיוון ש-$f$ רציפה על $[a,b]$ וגזירה על $(a,b)$, לפי MVT, קיים $c\\in(a,b)$...”',
+    source: 'מועד א׳ 2026 — הערות בודק על Q4.2',
+    topicLabel: battlePlanTopicLabels[4].label,
+  },
+  {
+    id: 'tip-counterexample',
+    title: '”הוכח או הפרך” — נסי דוגמה נגדית קודם',
+    body: 'לפני שמתחילים הוכחה ארוכה, בדקי 30 שניות אם הטענה בכלל נכונה. פונקציות בדיקה מהירות:',
+    rule: '$f=\\text{const}$,\\quad $\\text{sign}(x)$,\\quad $x^2$,\\quad $|x|$,\\quad $1/x$,\\quad $x^2\\sin(1/x)$',
+    source: 'B2022 Q8–Q13 · B2024 Q4(b) · סימולציה 2026 Q3',
+    topicLabel: battlePlanTopicLabels[3].label,
+  },
+];
