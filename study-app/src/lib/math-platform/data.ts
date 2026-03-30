@@ -904,6 +904,7 @@ weeks.push({
     'רשימה מקושרת כפולה: Delete(A) ב-O(1) כי יש מצביע prev',
     'מערך דינמי (הכפלה): עלות amortized O(1) לInsert-Last; worst-case O(n)',
   ],
+  lectureSummaryUrl: '/lecture-summaries/ds-w1.html',
 });
 
 theoryItems.push(

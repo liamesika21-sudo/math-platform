@@ -105,6 +105,8 @@ export default function ChatPage() {
           lastMessageAt: new Date().toISOString(),
           courseId,
           userId: user.uid,
+          userName: user.displayName ?? null,
+          userEmail: user.email ?? null,
         });
       } catch (e) {
         console.error('[chat] failed to save to Firestore:', e);

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תרגול 1 - ADT, מימוש, יסודות מתמטיים ופסאודו-קוד | מבני נתונים</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --card-bg: #ffffff;
+            --primary: #1a3a5c;
+            --accent: #c0392b;
+            --green: #2e7d32;
+            --purple: #6a1b9a;
+            --blue: #1565c0;
+            --text: #2c2c2c;
+            --text-light: #555;
+            --border: #e0d6c8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans Hebrew', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), #2c5f8a);
+            color: white; padding: 40px; border-radius: var(--radius);
+            margin-bottom: 30px; text-align: center; box-shadow: var(--shadow);
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.85; font-weight: 300; }
+        .header .lecture-num {
+            display: inline-block; background: rgba(255,255,255,0.2);
+            padding: 4px 18px; border-radius: 20px; font-size: 0.9em; margin-bottom: 12px;
+        }
+
+        .toc {
+            background: var(--card-bg); border-radius: var(--radius);
+            padding: 24px 30px; margin-bottom: 30px; box-shadow: var(--shadow);
+            border-right: 4px solid var(--accent);
+        }
+        .toc h2 { color: var(--accent); margin-bottom: 12px; font-size: 1.3em; }
+        .toc ol { padding-right: 20px; }
+        .toc li { margin-bottom: 6px; }
+        .toc a { color: var(--primary); text-decoration: none; }
+        .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+        .section {
+            background: var(--card-bg); border-radius: var(--radius);
+            padding: 30px; margin-bottom: 24px; box-shadow: var(--shadow);
+        }
+        .section h2 {
+            color: var(--primary); font-size: 1.5em; margin-bottom: 16px;
+            padding-bottom: 10px; border-bottom: 2px solid var(--border);
+        }
+        .section h3 { color: var(--green); font-size: 1.15em; margin: 18px 0 10px; }
+
+        .def-box { background: #fef9f0; border-right: 4px solid var(--accent); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .def-box .label { color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+        .thm-box { background: #f0f4fe; border-right: 4px solid var(--blue); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .thm-box .label { color: var(--blue); font-weight: 700; margin-bottom: 4px; }
+        .example-box { background: #f2f9f2; border-right: 4px solid var(--green); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .example-box .label { color: var(--green); font-weight: 700; margin-bottom: 4px; }
+        .note-box { background: #faf0fa; border-right: 4px solid var(--purple); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .note-box .label { color: var(--purple); font-weight: 700; margin-bottom: 4px; }
+        .question-box { background: #fff8e1; border-right: 4px solid #f57f17; padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .question-box .label { color: #f57f17; font-weight: 700; margin-bottom: 4px; }
+        .solution-box { background: #e8f5e9; border-right: 4px solid var(--green); padding: 16px 20px; border-radius: 8px; margin: 14px 0; }
+        .solution-box .label { color: var(--green); font-weight: 700; margin-bottom: 4px; }
+
+        .code-box {
+            background: #f8f8f0; border-right: 4px solid #555;
+            padding: 16px 20px; border-radius: 8px; margin: 14px 0;
+            direction: ltr; text-align: left;
+            font-family: 'Courier New', monospace; font-size: 0.92em; line-height: 1.7;
+        }
+        .code-box .label {
+            color: #555; font-weight: 700; margin-bottom: 8px;
+            font-family: 'Noto Sans Hebrew', sans-serif; direction: rtl; text-align: right;
+        }
+
+        ul, ol { padding-right: 22px; margin: 8px 0; }
+        li { margin-bottom: 6px; }
+        .math-block { text-align: center; margin: 16px 0; font-size: 1.15em; direction: ltr; }
+
+        .tree-diagram {
+            display: flex; justify-content: center; margin: 18px 0;
+            direction: ltr;
+        }
+        .tree-diagram svg { max-width: 100%; }
+
+        .step-flow {
+            display: flex; align-items: center; gap: 6px;
+            direction: ltr; flex-wrap: wrap; margin: 12px 0;
+            justify-content: center;
+        }
+        .step-flow .step {
+            background: #e8f0fe; padding: 6px 12px; border-radius: 8px;
+            font-size: 0.85em; text-align: center; font-weight: 600;
+        }
+        .step-flow .arrow { font-size: 1.2em; color: var(--green); }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th, td { border: 1px solid var(--border); padding: 10px 14px; text-align: center; }
+        th { background: #f0ebe3; font-weight: 700; color: var(--primary); }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+        @media (max-width: 600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .header { padding: 24px 16px; }
+            .header h1 { font-size: 1.6em; }
+            .section { padding: 20px 16px; }
+        }
+
+        .arrow-chain {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; margin: 16px 0; direction: ltr; flex-wrap: wrap;
+        }
+        .arrow-chain .box { background: #e8f0fe; padding: 8px 14px; border-radius: 8px; font-size: 0.95em; text-align: center; }
+        .arrow-chain .arrow { font-size: 1.4em; color: var(--green); }
+
+        .footer { text-align: center; padding: 20px; color: var(--text-light); font-size: 0.9em; }
+        .katex { font-size: 1.1em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="lecture-num">מבני נתונים - תרגול 1 - אוניברסיטת רייכמן</div>
+        <h1>תרגול 1 - ADT, מימוש, יסודות מתמטיים ופסאודו-קוד</h1>
+        <div class="subtitle">ADT vs Implementation, Math Essentials &amp; Pseudocode</div>
+    </div>
+
+    <div class="toc">
+        <h2>תוכן עניינים</h2>
+        <ol>
+            <li><a href="#adt">ADT vs Implementation &mdash; Linked List</a></li>
+            <li><a href="#impl-nodes">מימוש Linked List &mdash; Node Objects</a></li>
+            <li><a href="#impl-arrays">מימוש Linked List &mdash; מערכים (Data + Handles)</a></li>
+            <li><a href="#insert-delete">פסאודו-קוד: InsertFront ו-DeleteFront</a></li>
+            <li><a href="#induction">הוכחה באינדוקציה &mdash; מבנה ודוגמאות</a></li>
+            <li><a href="#horses">&#34;כל הסוסים באותו צבע&#34; &mdash; למה ההוכחה נכשלת</a></li>
+            <li><a href="#arithmetic">סדרה חשבונית (Arithmetic Sequence)</a></li>
+            <li><a href="#geometric">סדרה הנדסית (Geometric Sequence)</a></li>
+            <li><a href="#exponents">חזקות &mdash; זהויות שימושיות</a></li>
+            <li><a href="#logarithms">לוגריתמים &mdash; זהויות והמרת בסיס</a></li>
+            <li><a href="#floor-ceil">Floor ו-Ceiling</a></li>
+            <li><a href="#induction-recursion">דוגמת אינדוקציה עם רקורסיה ולוגריתמים</a></li>
+            <li><a href="#find-max">תרגיל פסאודו-קוד &mdash; Find-Max</a></li>
+            <li><a href="#summary">סיכום</a></li>
+        </ol>
+    </div>
+
+    <!-- 1. ADT: Linked List -->
+    <div class="section" id="adt">
+        <h2>1. ADT vs Implementation &mdash; Linked List</h2>
+
+        <div class="def-box">
+            <div class="label">ADT: Linked List</div>
+            <strong>Objects:</strong> סדרה סופית של List Elements.
+            <br><br>
+            <strong>Operations on the list:</strong>
+            <ul>
+                <li>Create list &mdash; יצירת רשימה חדשה</li>
+                <li>Get first element &mdash; קבלת האיבר הראשון</li>
+                <li>Insert new element as first &mdash; הכנסת איבר חדש כראשון</li>
+                <li>Delete first element &mdash; מחיקת האיבר הראשון</li>
+            </ul>
+            <br>
+            <strong>Operations given a list element:</strong>
+            <ul>
+                <li>Get/Set data</li>
+                <li>Get/Set next element</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <div class="label">List Element</div>
+            A <strong>List Element</strong> is an object containing both data and a handle (pointer/reference) to another List Element.
+            <br><br>
+            <strong>Fields:</strong>
+            <ul>
+                <li><strong>data</strong> &mdash; name, image, etc.</li>
+                <li><strong>next</strong> &mdash; handle to the next element</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. Implementation #1: Node Objects -->
+    <div class="section" id="impl-nodes">
+        <h2>2. מימוש Linked List &mdash; Node Objects</h2>
+
+        <div class="def-box">
+            <div class="label">מימוש באמצעות Node Objects</div>
+            כל node object מכיל:
+            <ul>
+                <li><strong>Value (data)</strong> &mdash; הנתון עצמו (זיכרון מוקצה)</li>
+                <li><strong>Next (handle/pointer)</strong> &mdash; מצביע ל-node הבא</li>
+            </ul>
+            <br>
+            <div class="math-block">
+                \(L \rightarrow \text{head node} \rightarrow \text{node} \rightarrow \ldots \rightarrow \text{NULL}\)
+            </div>
+        </div>
+
+        <div class="note-box">
+            <div class="label">סימונים בפסאודו-קוד</div>
+            <ul>
+                <li>\(\text{head}[L]\) = האיבר הראשון ברשימה</li>
+                <li>\(\text{data}[x]\) = הנתון של איבר \(x\)</li>
+                <li>\(\text{next}[x]\) = האיבר הבא אחרי \(x\)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3. Implementation #3: Arrays -->
+    <div class="section" id="impl-arrays">
+        <h2>3. מימוש Linked List &mdash; מערכים (Data + Handles)</h2>
+
+        <div class="def-box">
+            <div class="label">למה מערכים?</div>
+            <ul>
+                <li>שימוש בפוינטרים אמיתיים קשה או לא נתמך בשפות מסוימות (Fortran, Basic)</li>
+                <li>לפעמים יעיל יותר כאשר מספר האיברים ידוע מראש</li>
+            </ul>
+        </div>
+
+        <div class="def-box">
+            <div class="label">מבנה L</div>
+            <ul>
+                <li><strong>L.D[]</strong> &mdash; מערך נתונים (data array)</li>
+                <li><strong>L.N[]</strong> &mdash; מערך אינדקסים (integer/index array for next pointers)</li>
+                <li><strong>L.n</strong> &mdash; גודל המערך</li>
+                <li><strong>L.head</strong> &mdash; אינדקס האיבר הראשון ברשימת הנתונים</li>
+                <li><strong>L.free</strong> &mdash; אינדקס האיבר הראשון ברשימת המקומות הפנויים (free list)</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <div class="label">מיפוי פוינטרים</div>
+            Pointer הוא אינדקס שלם. <strong>null = -1</strong>.
+            <br>
+            <code>p.data = L.D[p]</code>, &nbsp; <code>p.next = L.N[p]</code>
+        </div>
+
+        <div class="example-box">
+            <div class="label">אתחול (Initialization)</div>
+            <ul>
+                <li>\(\text{L.head} = \text{null} = -1\)</li>
+                <li>\(\text{L.free} = n-1\)</li>
+                <li>מערך N מאותחל כ-free list מקושרת הפוכה:</li>
+            </ul>
+            <div class="math-block">
+                \(N[0]=-1, \quad N[1]=0, \quad N[2]=1, \quad \ldots, \quad N[n-1]=n-2\)
+            </div>
+            <p>כלומר: שרשרת הפוכה &mdash; \(n{-}1 \rightarrow n{-}2 \rightarrow \ldots \rightarrow 1 \rightarrow 0 \rightarrow \text{null}\)</p>
+        </div>
+    </div>
+
+    <!-- 4. InsertFront and DeleteFront -->
+    <div class="section" id="insert-delete">
+        <h2>4. פסאודו-קוד: InsertFront ו-DeleteFront</h2>
+
+        <div class="code-box">
+            <div class="label">InsertFront(L, x)</div>
+if L.free &ne; -1 then
+    q &larr; L.free
+    L.free &larr; L.N[L.free]
+    L.D[q] &larr; x
+    L.N[q] &larr; L.head
+    L.head &larr; q
+else
+    return "overflow"
+        </div>
+
+        <div class="code-box">
+            <div class="label">DeleteFront(L)</div>
+if L.head = -1 then
+    return "underflow"
+else
+    q &larr; L.head
+    L.head &larr; L.N[q]
+    L.N[q] &larr; L.free
+    L.free &larr; q
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה מעשית: L.n=8, L.head=3 (data: a&rarr;b&rarr;c), L.free=6</div>
+            <h3>InsertFront(L, x):</h3>
+            <div class="step-flow">
+                <span class="step">q = 6</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">L.free = 4</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">L.D[6] = x</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">L.N[6] = 3</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">L.head = 6</span>
+            </div>
+            <h3>DeleteFront(L):</h3>
+            <div class="step-flow">
+                <span class="step">q = 3 (was 'a')</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">L.head = 5</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">L.N[3] = 6</span>
+                <span class="arrow">&rarr;</span>
+                <span class="step">L.free = 3</span>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <div class="label">סיבוכיות</div>
+            שתי הפעולות InsertFront ו-DeleteFront הן \(O(1)\).
+            <br>
+            כאשר \(\text{L.free} = -1\) (אין תאים פנויים), יש להכפיל את גודל המערך.
+        </div>
+
+        <div class="def-box">
+            <div class="label">סיבוכיות מימוש מערכים</div>
+            <table>
+                <tr><th>פעולה</th><th>Best Case</th><th>Worst Case</th></tr>
+                <tr><td>Insertion</td><td>\(O(1)\)</td><td>\(O(n)\)</td></tr>
+                <tr><td>Deletion</td><td>\(O(1)\)</td><td>\(O(n)\)</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 5. Proof by Induction -->
+    <div class="section" id="induction">
+        <h2>5. הוכחה באינדוקציה &mdash; מבנה ודוגמאות</h2>
+
+        <div class="def-box">
+            <div class="label">מבנה הוכחה באינדוקציה</div>
+            <strong>טענה:</strong> \(S(n)\) נכונה לכל \(n \geq c\).
+            <br><br>
+            <ol>
+                <li><strong>Base case (בסיס):</strong> הוכח ש-\(S(c)\) נכונה.</li>
+                <li><strong>Inductive Hypothesis (הנחת אינדוקציה):</strong> נניח ש-\(S(k)\) נכונה לכל \(k < n\).</li>
+                <li><strong>Inductive Step (צעד אינדוקציה):</strong> הוכח ש-\(S(n)\) נכונה.</li>
+            </ol>
+            <br>
+            <strong>הערה:</strong> לעיתים קרובות מניחים רק \(k = n - 1\).
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה: הוכח כי \(\displaystyle\sum_{i=1}^{n} i = \frac{n(n+1)}{2}\) לכל \(n \geq 1\)</div>
+
+            <h3>Base: \(n = 1\)</h3>
+            <div class="math-block">
+                \(\sum_{i=1}^{1} i = 1 = \frac{1 \cdot 2}{2} \checkmark\)
+            </div>
+
+            <h3>IH: נניח</h3>
+            <div class="math-block">
+                \(\sum_{i=1}^{k} i = \frac{k(k+1)}{2}\)
+            </div>
+
+            <h3>IS: נוכיח עבור \(k+1\)</h3>
+            <div class="math-block">
+                \(\sum_{i=1}^{k+1} i = \sum_{i=1}^{k} i + (k+1) = \frac{k(k+1)}{2} + (k+1) = \frac{k(k+1) + 2(k+1)}{2} = \frac{(k+1)(k+2)}{2} \checkmark\)
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. All Horses Same Color -->
+    <div class="section" id="horses">
+        <h2>6. "כל הסוסים באותו צבע" &mdash; למה ההוכחה נכשלת</h2>
+
+        <div class="note-box">
+            <div class="label">ה"הוכחה" (שגויה)</div>
+            <strong>Base case \(n=1\):</strong> סוס אחד = צבע אחד &mdash; טריוויאלי.
+            <br><br>
+            <strong>IH:</strong> כל קבוצה של \(n\) סוסים היא באותו צבע.
+            <br><br>
+            <strong>IS:</strong> בקבוצה של \(n+1\) סוסים:
+            <ul>
+                <li>הורד את האחרון &rarr; \(n\) סוסים באותו צבע (לפי IH)</li>
+                <li>הורד את הראשון &rarr; \(n\) סוסים באותו צבע (לפי IH)</li>
+                <li>החפיפה (overlap) בין שתי הקבוצות מקשרת את הצבעים &rarr; כל \(n+1\) באותו צבע</li>
+            </ul>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">למה ההוכחה נכשלת?</div>
+            הטיעון דורש <strong>חפיפה</strong> (overlap) בין שתי הקבוצות של \(n\) סוסים.
+            <br><br>
+            במעבר מ-\(n=1\) ל-\(n=2\): הורדת הראשון והאחרון מקבוצה של 2 סוסים נותנת שתי קבוצות יחידניות (singletons):
+            <div class="math-block">
+                \(\{h_1\} \quad \text{and} \quad \{h_2\}\)
+            </div>
+            <strong>אין חפיפה!</strong> הקבוצות זרות (disjoint), אז אין קשר בין הצבעים.
+            <br><br>
+            <strong>האינדוקציה נכשלת ספציפית במעבר מ-\(n=1\) ל-\(n=2\).</strong>
+        </div>
+    </div>
+
+    <!-- 7. Arithmetic Sequence -->
+    <div class="section" id="arithmetic">
+        <h2>7. סדרה חשבונית (Arithmetic Sequence)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה</div>
+            סדרה חשבונית: ההפרש בין איברים עוקבים קבוע \(d\).
+            <div class="math-block">
+                \(a_n = a_1 + (n-1)d\)
+            </div>
+            <div class="math-block">
+                \(a_n = a_m + (n-m)d\)
+            </div>
+        </div>
+
+        <div class="def-box">
+            <div class="label">סכום סדרה חשבונית</div>
+            <div class="math-block">
+                \(S_n = \frac{n}{2}(a_1 + a_n) = \frac{n}{2}[2a_1 + (n-1)d]\)
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה</div>
+            <div class="math-block">
+                \(2 + 5 + 8 + 11 + 14 = \frac{5(2 + 14)}{2} = \frac{5 \cdot 16}{2} = 40\)
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Geometric Sequence -->
+    <div class="section" id="geometric">
+        <h2>8. סדרה הנדסית (Geometric Sequence)</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה</div>
+            סדרה הנדסית: כל איבר = הקודם כפול יחס קבוע \(r\).
+            <div class="math-block">
+                \(a_n = a \cdot r^{n-1}, \qquad a_n = a_{n-1} \cdot r\)
+            </div>
+        </div>
+
+        <div class="def-box">
+            <div class="label">סכום סופי</div>
+            <div class="math-block">
+                \(S_n = \frac{a(1 - r^n)}{1 - r} \quad \text{or} \quad \frac{a(r^n - 1)}{r - 1} \quad \text{when } r > 1\)
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמה</div>
+            <div class="math-block">
+                \(2 + 10 + 50 + 250 = \frac{2(1 - 5^4)}{1 - 5} = \frac{2(1 - 625)}{-4} = \frac{2 \cdot (-624)}{-4} = 312\)
+            </div>
+        </div>
+
+        <div class="def-box">
+            <div class="label">סכום אינסופי (\(0 &lt; r &lt; 1\))</div>
+            <div class="math-block">
+                \(S_\infty = \frac{a}{1 - r}\)
+            </div>
+            <strong>דוגמה:</strong>
+            <div class="math-block">
+                \(\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \ldots = \frac{1/2}{1 - 1/2} = 1\)
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. Exponents -->
+    <div class="section" id="exponents">
+        <h2>9. חזקות &mdash; זהויות שימושיות</h2>
+
+        <div class="def-box">
+            <div class="label">זהויות חזקות</div>
+            <div class="math-block">
+                \(a^0 = 1\)
+            </div>
+            <div class="math-block">
+                \(a^1 = a\)
+            </div>
+            <div class="math-block">
+                \(a^{-1} = \frac{1}{a}\)
+            </div>
+            <div class="math-block">
+                \(a^{m+n} = a^m \cdot a^n\)
+            </div>
+            <div class="math-block">
+                \((a^m)^n = a^{mn} = (a^n)^m\)
+            </div>
+            <div class="math-block">
+                \((b \cdot c)^n = b^n \cdot c^n\)
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. Logarithms -->
+    <div class="section" id="logarithms">
+        <h2>10. לוגריתמים &mdash; זהויות והמרת בסיס</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרה</div>
+            <div class="math-block">
+                \(\log_b(x) = y \quad \Longleftrightarrow \quad b^y = x\)
+            </div>
+            <strong>דוגמה:</strong> \(\log_2(64) = 6\) כי \(64 = 2^6\).
+        </div>
+
+        <div class="def-box">
+            <div class="label">זהויות מרכזיות</div>
+            <ul>
+                <li>\(a = b^{\log_b a}\)</li>
+                <li>\(\log_c(ab) = \log_c a + \log_c b\)</li>
+                <li>\(\log_b(a^n) = n \cdot \log_b a\)</li>
+                <li>\(\log_b a = \dfrac{\log_c a}{\log_c b}\)</li>
+                <li>\(\log_b\!\left(\dfrac{1}{a}\right) = -\log_b a\)</li>
+                <li>\(\log_b a = \dfrac{1}{\log_a b}\)</li>
+                <li>\(a^{\log_b c} = c^{\log_b a}\)</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <div class="label">הוכחה: \(\log_a(bc) = \log_a b + \log_a c\)</div>
+            לפי הגדרה:
+            <div class="math-block">
+                \(b = a^{\log_a b}, \qquad c = a^{\log_a c}\)
+            </div>
+            לכן:
+            <div class="math-block">
+                \(bc = a^{\log_a b} \cdot a^{\log_a c} = a^{\log_a b + \log_a c}\)
+            </div>
+            אבל גם:
+            <div class="math-block">
+                \(bc = a^{\log_a(bc)}\)
+            </div>
+            מהשוואת המעריכים:
+            <div class="math-block">
+                \(\log_a(bc) = \log_a b + \log_a c \quad \checkmark\)
+            </div>
+        </div>
+
+        <div class="thm-box">
+            <div class="label">המרת בסיס (Base Change)</div>
+            <div class="math-block">
+                \(\log_b x = \frac{\log_k x}{\log_k b}\)
+            </div>
+            שינוי הבסיס משנה את הערך בגורם קבוע בלבד.
+        </div>
+    </div>
+
+    <!-- 11. Floor and Ceiling -->
+    <div class="section" id="floor-ceil">
+        <h2>11. Floor ו-Ceiling</h2>
+
+        <div class="def-box">
+            <div class="label">הגדרות</div>
+            <ul>
+                <li><strong>Floor</strong> \(\lfloor x \rfloor\) = המספר השלם הגדול ביותר ש-\(\leq x\)</li>
+                <li><strong>Ceiling</strong> \(\lceil x \rceil\) = המספר השלם הקטן ביותר ש-\(\geq x\)</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <div class="label">דוגמאות</div>
+            <table>
+                <tr><th>ביטוי</th><th>תוצאה</th></tr>
+                <tr><td>\(\lfloor -2.7 \rfloor\)</td><td>\(-3\)</td></tr>
+                <tr><td>\(\lfloor 2.7 \rfloor\)</td><td>\(2\)</td></tr>
+                <tr><td>\(\lfloor 2 \rfloor\)</td><td>\(2\)</td></tr>
+                <tr><td>\(\lceil -2.3 \rceil\)</td><td>\(-2\)</td></tr>
+                <tr><td>\(\lceil 2.3 \rceil\)</td><td>\(3\)</td></tr>
+                <tr><td>\(\lceil 2 \rceil\)</td><td>\(2\)</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 12. Induction with Recursion -->
+    <div class="section" id="induction-recursion">
+        <h2>12. דוגמת אינדוקציה עם רקורסיה ולוגריתמים</h2>
+
+        <div class="question-box">
+            <div class="label">שאלה</div>
+            נגדיר: \(a_1 = 0\), ולכל \(n \geq 2\): \(a_n = a_{\lfloor n/2 \rfloor} + 1\).
+            <br><br>
+            <strong>הוכח:</strong> אם \(n = 2^k\) אז \(a_n = \log_2(n) = k\).
+        </div>
+
+        <div class="solution-box">
+            <div class="label">פתרון &mdash; אינדוקציה על \(k\)</div>
+
+            <h3>Base: \(k = 1\)</h3>
+            <div class="math-block">
+                \(n = 2, \quad a_2 = a_{\lfloor 2/2 \rfloor} + 1 = a_1 + 1 = 0 + 1 = 1 = \log_2(2) \checkmark\)
+            </div>
+
+            <h3>IH: נניח עבור \(k \geq 1\)</h3>
+            <div class="math-block">
+                \(a_{2^k} = k\)
+            </div>
+
+            <h3>IS: נוכיח עבור \(k+1\)</h3>
+            <div class="math-block">
+                \(a_{2^{k+1}} = a_{\lfloor 2^{k+1}/2 \rfloor} + 1 = a_{2^k} + 1 = k + 1 = \log_2(2^{k+1}) \checkmark\)
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. Find-Max -->
+    <div class="section" id="find-max">
+        <h2>13. תרגיל פסאודו-קוד &mdash; Find-Max</h2>
+
+        <div class="question-box">
+            <div class="label">שאלה</div>
+            כתוב פסאודו-קוד עבור <strong>Find-Max</strong> על רשימה מקושרת: מקבל רשימה מקושרת של מספרים, מחזיר את המקסימום.
+        </div>
+
+        <div class="solution-box">
+            <div class="label">פתרון</div>
+            <div class="code-box">
+                <div class="label">Find-Max(list)</div>
+curr = list.head
+curr_max = -&infin;
+while curr &ne; null
+    curr_max = Maximum(curr_max, curr.data)
+    curr = curr.next
+return curr_max
+            </div>
+        </div>
+
+        <div class="note-box">
+            <div class="label">מהו פסאודו-קוד טוב?</div>
+            רשימת בדיקה:
+            <ul>
+                <li>האם הוא <strong>חד-משמעי</strong> (unambiguous)?</li>
+                <li>האם אדם יכול להבין אותו <strong>ללא תלות בשפת תכנות</strong>?</li>
+                <li>האם מישהו יכול <strong>להפוך אותו לתוכנית</strong>?</li>
+            </ul>
+            <br>
+            אם "כן" לכולם &rarr; פסאודו-קוד טוב.
+            <br>
+            <strong>אל תלחצו בגלל תחביר &mdash; כל עוד זה ברור, זה נכון.</strong>
+        </div>
+    </div>
+
+    <!-- 14. Summary -->
+    <div class="section" id="summary">
+        <h2>14. סיכום</h2>
+
+        <div class="arrow-chain">
+            <span class="box">ADT</span>
+            <span class="arrow">&rarr;</span>
+            <span class="box">Implementation</span>
+            <span class="arrow">&rarr;</span>
+            <span class="box">Induction</span>
+            <span class="arrow">&rarr;</span>
+            <span class="box">Series</span>
+            <span class="arrow">&rarr;</span>
+            <span class="box">Logarithms</span>
+            <span class="arrow">&rarr;</span>
+            <span class="box">Pseudocode</span>
+        </div>
+
+        <ul>
+            <li><strong>ADT (Linked List):</strong> הפרדה בין הגדרת הממשק למימוש. Objects + Operations.</li>
+            <li><strong>מימוש ב-Node Objects:</strong> כל node מכיל data ו-next pointer. סימון: \(\text{head}[L]\), \(\text{data}[x]\), \(\text{next}[x]\).</li>
+            <li><strong>מימוש במערכים:</strong> שני מערכים D[] ו-N[] + ניהול free list. Pointers הם אינדקסים, null = -1.</li>
+            <li><strong>InsertFront / DeleteFront:</strong> שתיהן \(O(1)\). כשאין מקום &mdash; מכפילים מערך \(O(n)\).</li>
+            <li><strong>אינדוקציה:</strong> Base case + הנחה + צעד. זהירות מחפיפה (overlap) &mdash; דוגמת הסוסים.</li>
+            <li><strong>סדרה חשבונית:</strong> \(S_n = \frac{n}{2}(a_1 + a_n)\). סדרה הנדסית: \(S_n = \frac{a(1-r^n)}{1-r}\).</li>
+            <li><strong>חזקות ולוגריתמים:</strong> זהויות מרכזיות. המרת בסיס משנה בגורם קבוע.</li>
+            <li><strong>Floor/Ceiling:</strong> \(\lfloor x \rfloor\) = שלם גדול ביותר \(\leq x\), \(\lceil x \rceil\) = שלם קטן ביותר \(\geq x\).</li>
+            <li><strong>פסאודו-קוד:</strong> חד-משמעי, עצמאי משפה, ניתן למימוש. תחביר לא קריטי &mdash; בהירות כן.</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        תרגול 1 - ADT, מימוש, יסודות מתמטיים ופסאודו-קוד | מבני נתונים | אוניברסיטת רייכמן
+        <br>by Lia Mesika
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$$", right: "$$", display: true}
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+</body>
+</html>
