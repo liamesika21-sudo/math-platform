@@ -14,25 +14,40 @@ import {
 const STORAGE_KEY = 'battle-plan-tracker-v1';
 const EVENT_NAME = 'battle-plan-tracker-updated';
 
+// ── Cached snapshot to preserve referential equality ──
+let cachedRaw: string | null = null;
+let cachedState: BattlePlanTrackerState = emptyBattlePlanState;
+
 function readState(): BattlePlanTrackerState {
   if (typeof window === 'undefined') return emptyBattlePlanState;
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return emptyBattlePlanState;
+    // Return cached object if the raw string hasn't changed
+    if (raw === cachedRaw) return cachedState;
+    cachedRaw = raw;
+    if (!raw) {
+      cachedState = emptyBattlePlanState;
+      return cachedState;
+    }
     const parsed = JSON.parse(raw) as Partial<BattlePlanTrackerState>;
-    return {
+    cachedState = {
       definitions: parsed.definitions ?? {},
       homework: parsed.homework ?? {},
       drill: parsed.drill ?? {},
     };
+    return cachedState;
   } catch {
-    return emptyBattlePlanState;
+    cachedState = emptyBattlePlanState;
+    return cachedState;
   }
 }
 
 function writeState(nextState: BattlePlanTrackerState) {
   if (typeof window === 'undefined') return;
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
+  const raw = JSON.stringify(nextState);
+  cachedRaw = raw;
+  cachedState = nextState;
+  window.localStorage.setItem(STORAGE_KEY, raw);
   window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail: nextState }));
 }
 
