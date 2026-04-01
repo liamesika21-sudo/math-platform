@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בדיקת הבנה — משפטים אינפי 1</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rubik, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    padding: 24px 16px 80px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .hero h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+  .hero p { font-size: 0.85rem; opacity: 0.85; line-height: 1.7; }
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+  .card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .card-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: white;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+  .cat-bounds .card-number { background: #6366f1; }
+  .cat-limits .card-number { background: #f59e0b; }
+  .cat-continuity .card-number { background: #10b981; }
+  .cat-derivatives .card-number { background: #ef4444; }
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .card-title { font-size: 1.05rem; font-weight: 700; }
+  .card-subtitle { font-size: 0.78rem; color: #64748b; margin-top: 2px; }
+  .card-prompt {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    border-right: 3px solid #cbd5e1;
+  }
+  .field { margin-bottom: 12px; }
+  .field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 6px;
+  }
+  .field textarea {
+    width: 100%;
+    min-height: 70px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    font-family: inherit;
+    line-height: 1.7;
+    resize: vertical;
+    transition: border-color 0.2s;
+    direction: rtl;
+  }
+  .field textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+  }
+  .confidence {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .confidence button {
+    flex: 1;
+    padding: 7px;
+    border-radius: 8px;
+    border: 1.5px solid #e2e8f0;
+    background: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .confidence button:hover { background: #f1f5f9; }
+  .confidence button.active-strong { border-color: #10b981; background: #ecfdf5; color: #047857; }
+  .confidence button.active-ok { border-color: #f59e0b; background: #fffbeb; color: #b45309; }
+  .confidence button.active-weak { border-color: #ef4444; background: #fef2f2; color: #b91c1c; }
+
+  .actions {
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    z-index: 50;
+  }
+  .actions button {
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .btn-download { background: #0f172a; color: white; }
+  .btn-download:hover { background: #1e293b; }
+  .btn-clear { background: #f1f5f9; color: #64748b; }
+  .btn-clear:hover { background: #e2e8f0; }
+
+  .progress-bar {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    margin-top: 16px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #10b981);
+    border-radius: 999px;
+    transition: width 0.4s;
+  }
+  .progress-text {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 6px;
+    text-align: center;
+  }
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+    margin: 20px 0 8px;
+    padding-right: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>בדיקת הבנה — 15 משפטים</h1>
+  <p>לכל משפט כתבי <strong>במילים שלך</strong>: מה הוא אומר, מתי משתמשים בו, ומה התנאים.<br>
+  בסוף תורידי קובץ ותשלחי לי לבדיקה.</p>
+  <div class="badge">⏱ לקחת כמה זמן שצריך — אין ציון, רק הבנה</div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <div class="progress-text" id="progressText">0 / 15 הושלמו</div>
+</div>
+
+<div id="quiz"></div>
+
+<div class="actions">
+  <button class="btn-download" onclick="downloadAnswers()">📥 הורדת תשובות</button>
+  <button class="btn-clear" onclick="clearAll()">🗑 נקה הכל</button>
+</div>
+
+<script>
+const questions = [
+  // ── חסמים וקבוצות ──
+  {
+    id: 1,
+    category: 'bounds',
+    name: 'תכונת ε של סופרמום',
+    prompt: 'מה אומרת תכונת ε? מתי את צריכה אותה? למה לא מספיק רק "למצוא חסם עליון"?',
+  },
+  {
+    id: 2,
+    category: 'bounds',
+    name: 'צפיפות Q ב-R',
+    prompt: 'מה המשפט אומר? תני דוגמה לאיך את משתמשת בו בהוכחה (נגיד כשנתון משהו על כל q∈Q).',
+  },
+  {
+    id: 3,
+    category: 'bounds',
+    name: 'תכונת ארכימדס',
+    prompt: 'מה התכונה אומרת? למה היא חשובה בהוכחת צפיפות?',
+  },
+  // ── גבולות ──
+  {
+    id: 4,
+    category: 'limits',
+    name: 'הגדרת גבול של פונקציה (ε-δ)',
+    prompt: 'כתבי את ההגדרה של lim f(x) = L כש-x→x₀. מה ההבדל בין "שכונה מחוקה" ל"שכונה רגילה"?',
+  },
+  {
+    id: 5,
+    category: 'limits',
+    name: 'הגדרת גבול באינסוף',
+    prompt: 'כתבי את ההגדרה של lim f(x) = L כש-x→∞. מה התפקיד של M כאן (לעומת δ)?',
+  },
+  {
+    id: 6,
+    category: 'limits',
+    name: 'משפט הסנדוויץ׳ (Squeeze)',
+    prompt: 'מה התנאים? מתי זה הכלי הנכון? תני דוגמה קלאסית שבה הוא שימושי.',
+  },
+  // ── רציפות ──
+  {
+    id: 7,
+    category: 'continuity',
+    name: 'רציפות בנקודה',
+    prompt: 'מה ההגדרה? מה ההבדל בין הגדרת גבול להגדרת רציפות (רמז: 0<)?',
+  },
+  {
+    id: 8,
+    category: 'continuity',
+    name: 'משפט ערך הביניים (IVT)',
+    prompt: 'מה התנאים? מה המסקנה? איך משתמשים בו כדי להוכיח "קיים שורש"?',
+  },
+  {
+    id: 9,
+    category: 'continuity',
+    name: 'משפט ויירשטראס',
+    prompt: 'מה התנאים? מה הוא נותן לנו? למה חשוב שהקטע סגור (תני דוגמה נגדית לקטע פתוח)?',
+  },
+  // ── נגזרות ──
+  {
+    id: 10,
+    category: 'derivatives',
+    name: 'גזירות גוררת רציפות',
+    prompt: 'מה המשפט אומר? מה הכיוון ההפוך — האם רציפות גוררת גזירות? דוגמה נגדית?',
+  },
+  {
+    id: 11,
+    category: 'derivatives',
+    name: 'משפט פרמה',
+    prompt: 'מה התנאים? מה המסקנה? למה צריך גם גזירות וגם קיצון? (מה קורה בלי גזירות?)',
+  },
+  {
+    id: 12,
+    category: 'derivatives',
+    name: 'משפט רול',
+    prompt: 'מה 3 התנאים? מה המסקנה? למה בלי f(a)=f(b) זה לא עובד? (דוגמה?)',
+  },
+  {
+    id: 13,
+    category: 'derivatives',
+    name: 'משפט הערך הממוצע (MVT / לגרנז׳)',
+    prompt: 'מה התנאים? מה ההבדל מרול? מתי משתמשים — Lipschitz? אי-שוויונות?',
+  },
+  {
+    id: 14,
+    category: 'derivatives',
+    name: 'משפט קושי לערך הממוצע',
+    prompt: 'מה ההבדל מ-MVT רגיל? למה צריך g\'(x)≠0? איך בונים את פונקציית העזר?',
+  },
+  {
+    id: 15,
+    category: 'derivatives',
+    name: 'נגזרת של פונקציה הפוכה',
+    prompt: 'מה הנוסחה? מה התנאים? למה צריך f\'(x₀)≠0?',
+  },
+];
+
+const sectionLabels = {
+  bounds: '📐 חסמים וקבוצות (הרצאות 1-5)',
+  limits: '📈 גבולות (הרצאות 8-15)',
+  continuity: '🔗 רציפות (הרצאות 15-18)',
+  derivatives: '📉 נגזרות (הרצאות 18-23)',
+};
+
+const catClass = {
+  bounds: 'cat-bounds',
+  limits: 'cat-limits',
+  continuity: 'cat-continuity',
+  derivatives: 'cat-derivatives',
+};
+
+function render() {
+  const container = document.getElementById('quiz');
+  let html = '';
+  let currentCategory = '';
+
+  questions.forEach(q => {
+    if (q.category !== currentCategory) {
+      currentCategory = q.category;
+      html += `<div class="section-label">${sectionLabels[q.category]}</div>`;
+    }
+
+    const saved = JSON.parse(localStorage.getItem('quiz-' + q.id) || '{}');
+
+    html += `
+      <div class="card ${catClass[q.category]}" id="card-${q.id}">
+        <div class="card-header">
+          <span class="card-number">${q.id}</span>
+          <div>
+            <div class="card-title">${q.name}</div>
+          </div>
+        </div>
+        <div class="card-prompt">${q.prompt}</div>
+        <div class="field">
+          <label>התשובה שלך (במילים שלך):</label>
+          <textarea
+            id="answer-${q.id}"
+            placeholder="כתבי כאן..."
+            oninput="save(${q.id})"
+          >${saved.answer || ''}</textarea>
+        </div>
+        <div class="field">
+          <label>כמה את בטוחה?</label>
+          <div class="confidence">
+            <button onclick="setConf(${q.id},'strong')" id="conf-${q.id}-strong"
+              class="${saved.confidence === 'strong' ? 'active-strong' : ''}">💪 חזקה</button>
+            <button onclick="setConf(${q.id},'ok')" id="conf-${q.id}-ok"
+              class="${saved.confidence === 'ok' ? 'active-ok' : ''}">🤔 ככה ככה</button>
+            <button onclick="setConf(${q.id},'weak')" id="conf-${q.id}-weak"
+              class="${saved.confidence === 'weak' ? 'active-weak' : ''}">😰 חלש</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+  updateProgress();
+}
+
+function save(id) {
+  const answer = document.getElementById('answer-' + id).value;
+  const saved = JSON.parse(localStorage.getItem('quiz-' + id) || '{}');
+  saved.answer = answer;
+  localStorage.setItem('quiz-' + id, JSON.stringify(saved));
+  updateProgress();
+}
+
+function setConf(id, level) {
+  const saved = JSON.parse(localStorage.getItem('quiz-' + id) || '{}');
+  saved.confidence = level;
+  localStorage.setItem('quiz-' + id, JSON.stringify(saved));
+
+  ['strong', 'ok', 'weak'].forEach(l => {
+    const btn = document.getElementById(`conf-${id}-${l}`);
+    btn.className = l === level ? `active-${l}` : '';
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  let filled = 0;
+  questions.forEach(q => {
+    const saved = JSON.parse(localStorage.getItem('quiz-' + q.id) || '{}');
+    if (saved.answer && saved.answer.trim().length > 5) filled++;
+  });
+  const pct = Math.round((filled / questions.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `${filled} / ${questions.length} הושלמו`;
+}
+
+function downloadAnswers() {
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('he-IL') + ' ' + now.toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+
+  let text = `# בדיקת הבנה — משפטים אינפי 1\n`;
+  text += `# תאריך: ${dateStr}\n\n`;
+
+  let strongCount = 0, okCount = 0, weakCount = 0, emptyCount = 0;
+
+  questions.forEach(q => {
+    const saved = JSON.parse(localStorage.getItem('quiz-' + q.id) || '{}');
+    const answer = (saved.answer || '').trim();
+    const conf = saved.confidence || 'לא סומן';
+
+    if (conf === 'strong') strongCount++;
+    else if (conf === 'ok') okCount++;
+    else if (conf === 'weak') weakCount++;
+    if (!answer) emptyCount++;
+
+    text += `---\n`;
+    text += `## ${q.id}. ${q.name}\n`;
+    text += `שאלה: ${q.prompt}\n\n`;
+    text += `תשובה: ${answer || '(ריק)'}\n\n`;
+    text += `ביטחון: ${conf === 'strong' ? '💪 חזקה' : conf === 'ok' ? '🤔 ככה ככה' : conf === 'weak' ? '😰 חלש' : '❓ לא סומן'}\n\n`;
+  });
+
+  text += `---\n\n`;
+  text += `# סיכום\n`;
+  text += `- 💪 חזקה: ${strongCount}\n`;
+  text += `- 🤔 ככה ככה: ${okCount}\n`;
+  text += `- 😰 חלש: ${weakCount}\n`;
+  text += `- ריקים: ${emptyCount}\n`;
+
+  const blob = new Blob([text], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `quiz-theorems-${now.toISOString().slice(0,10)}.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function clearAll() {
+  if (!confirm('בטוחה שאת רוצה למחוק את כל התשובות?')) return;
+  questions.forEach(q => localStorage.removeItem('quiz-' + q.id));
+  render();
+}
+
+render();
+</script>
+
+</body>
+</html>
