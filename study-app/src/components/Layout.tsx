@@ -43,7 +43,13 @@ const navItems: NavItem[] = [
   {
     href: '/battle-plan',
     label: 'Battle Plan',
-    labelHe: 'תוכנית קרב — מועד ב׳',
+    labelHe: 'תוכנית קרב — אינפי',
+    icon: <Swords className="w-5 h-5" />,
+  },
+  {
+    href: '/liner-battle-plan',
+    label: 'Liner Battle Plan',
+    labelHe: 'תוכנית קרב — לינארית',
     icon: <Swords className="w-5 h-5" />,
   },
   {
