@@ -229,6 +229,24 @@ function BattlePlanTaskContent() {
                     <MathText text={item.statement} />
                   </div>
 
+                  {/* ── Conditions ── */}
+                  {item.conditions && item.conditions.length > 0 && (
+                    <div className="mt-3">
+                      <div className="mb-1.5 text-xs font-bold text-sky-700 uppercase tracking-wide flex items-center gap-1.5">
+                        <span className="inline-block w-3 h-3 rounded-sm bg-sky-400" />
+                        תנאים לשימוש במשפט
+                      </div>
+                      <ul className="space-y-1 pr-1">
+                        {item.conditions.map((cond, idx) => (
+                          <li key={idx} className="flex items-start gap-2 rounded-lg bg-sky-50 border border-sky-200 px-3 py-1.5 text-sm leading-7 text-slate-800">
+                            <span className="mt-1.5 text-sky-500 font-bold text-xs flex-shrink-0">✓</span>
+                            <MathText text={cond} />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {/* ── Proof Flow ── */}
                   {item.proofFlow && item.proofFlow.length > 0 && (
                     <div className="mt-4">

@@ -295,6 +295,8 @@ export interface BattlePlanTheoremEntry {
   topicId: BattlePlanTopicLabel['id'];
   topicLabel: string;
   source: string;
+  /** Conditions required to use this theorem */
+  conditions: string[];
   /** Step-by-step proof flow for memorization */
   proofFlow: string[];
 }
@@ -308,6 +310,9 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאה 11 · סימולציה 2026',
+    conditions: [
+      '$f$ גזירה ב־$x_0$',
+    ],
     proofFlow: [
       'כתוב: $f(x)-f(x_0) = \\frac{f(x)-f(x_0)}{x-x_0}\\cdot(x-x_0)$',
       '$x\\to x_0$: הגורם הראשון → $f\'(x_0)$ (קיים כי $f$ גזירה)',
@@ -324,6 +329,11 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאה 17',
+    conditions: [
+      '$f$ רציפה על $[a,b]$',
+      '$f$ גזירה על $(a,b)$',
+      '$f(a) = f(b)$',
+    ],
     proofFlow: [
       'ויירשטראס: $f$ רציפה על $[a,b]$ → מקבלת $\\max$ (M) ו־$\\min$ (m)',
       'מקרה 1: $M=m$ → $f$ קבועה → $f\'(c)=0$ לכל $c$ ∎',
@@ -341,6 +351,10 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאה 17',
+    conditions: [
+      '$f$ רציפה על $[a,b]$',
+      '$f$ גזירה על $(a,b)$',
+    ],
     proofFlow: [
       'בנה פונקציית עזר: $g(x) = f(x) - f(a) - \\frac{f(b)-f(a)}{b-a}(x-a)$',
       'בדוק: $g(a)=0$, $g(b)=0$ ✓',
@@ -359,6 +373,11 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאת ערך ממוצע · מועד א׳ 2026',
+    conditions: [
+      '$f,g$ רציפות על $[a,b]$',
+      '$f,g$ גזירות על $(a,b)$',
+      '$g\'(x) \\ne 0$ לכל $x \\in (a,b)$',
+    ],
     proofFlow: [
       'שלב 1 — הוכח $g(b)\\ne g(a)$: נניח בשלילה $g(b)=g(a)$',
       'אז לפי רול: $\\exists c$ עם $g\'(c)=0$ — סתירה לנתון!',
@@ -377,6 +396,10 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'sets',
     topicLabel: battlePlanTopicLabels[0].label,
     source: 'הרצאות 1–5 · צפיפות',
+    conditions: [
+      '$a, b \\in \\mathbb{R}$ עם $a < b$',
+      '(אין תנאים נוספים — תמיד עובד)',
+    ],
     proofFlow: [
       'יהיו $a<b$ ממשיים. נגדיר $\\varepsilon = b-a > 0$',
       'ארכימדס: $\\exists n\\in\\mathbb{N}$ כך ש-$n > \\frac{1}{b-a}$, כלומר $\\frac{1}{n} < b-a$',
@@ -394,6 +417,11 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'sets',
     topicLabel: battlePlanTopicLabels[0].label,
     source: 'הרצאות 1–5 · חסמים',
+    conditions: [
+      '$A \\ne \\emptyset$',
+      '$A$ חסומה מלמעלה',
+      '$\\overline{s}$ חסם מלעיל של $A$',
+    ],
     proofFlow: [
       '(⟹) נתון $\\overline{s}=\\sup(A)$. יהי $\\varepsilon>0$.',
       '$\\overline{s}-\\varepsilon < \\overline{s}$ → $\\overline{s}-\\varepsilon$ אינו חסם מלעיל',
@@ -413,6 +441,12 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאה 13',
+    conditions: [
+      '$f$ הפיכה',
+      '$f$ גזירה ב־$x_0$',
+      '$f\'(x_0) \\ne 0$',
+      '$f^{-1}$ מוגדרת בסביבת $y_0 = f(x_0)$',
+    ],
     proofFlow: [
       'הגדר $y_0 = f(x_0)$. נחשב את הנגזרת מההגדרה:',
       '$(f^{-1})\'(y_0) = \\lim_{y\\to y_0} \\frac{f^{-1}(y)-f^{-1}(y_0)}{y-y_0}$',
@@ -430,6 +464,10 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'continuity',
     topicLabel: battlePlanTopicLabels[3].label,
     source: 'הרצאות 15–18 · רציפות',
+    conditions: [
+      '$f$ רציפה על $[a,b]$',
+      '$k$ בין $f(a)$ ל-$f(b)$',
+    ],
     proofFlow: [
       'נניח $f(a) < k < f(b)$ (המקרה ההפוך סימטרי)',
       'הגדר $A = \\{x\\in[a,b] : f(x) < k\\}$',
@@ -448,6 +486,10 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאות 18–23 · קיצון',
+    conditions: [
+      '$f$ גזירה ב־$c$',
+      'ל-$f$ יש קיצון מקומי (מקסימום או מינימום) ב־$c$',
+    ],
     proofFlow: [
       'מהיות $f$ גזירה: $f\'(c) = \\lim_{x\\to c}\\frac{f(x)-f(c)}{x-c}$ קיים',
       'לכן הגבולות החד-צדדיים קיימים ושווים',
@@ -466,6 +508,9 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'continuity',
     topicLabel: battlePlanTopicLabels[3].label,
     source: 'הרצאות 15–18 · רציפות',
+    conditions: [
+      '$f$ רציפה על $[a,b]$ (קטע סגור וחסום!)',
+    ],
     proofFlow: [
       'שלב 1 — $f$ חסומה: נניח בשלילה לא חסומה מלמעלה',
       '→ $\\forall n\\ \\exists x_n\\in[a,b]$: $f(x_n) > n$',
