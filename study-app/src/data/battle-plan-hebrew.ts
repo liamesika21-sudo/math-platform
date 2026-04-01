@@ -295,6 +295,8 @@ export interface BattlePlanTheoremEntry {
   topicId: BattlePlanTopicLabel['id'];
   topicLabel: string;
   source: string;
+  /** Step-by-step proof flow for memorization */
+  proofFlow: string[];
 }
 
 export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
@@ -306,6 +308,13 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאה 11 · סימולציה 2026',
+    proofFlow: [
+      'כתוב: $f(x)-f(x_0) = \\frac{f(x)-f(x_0)}{x-x_0}\\cdot(x-x_0)$',
+      '$x\\to x_0$: הגורם הראשון → $f\'(x_0)$ (קיים כי $f$ גזירה)',
+      'הגורם השני → $0$',
+      'אלגברת גבולות: $f(x)-f(x_0) \\to f\'(x_0)\\cdot 0 = 0$',
+      'לכן $f(x)\\to f(x_0)$, כלומר $f$ רציפה ב־$x_0$ ∎',
+    ],
   },
   {
     id: 2,
@@ -315,6 +324,14 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאה 17',
+    proofFlow: [
+      'ויירשטראס: $f$ רציפה על $[a,b]$ → מקבלת $\\max$ (M) ו־$\\min$ (m)',
+      'מקרה 1: $M=m$ → $f$ קבועה → $f\'(c)=0$ לכל $c$ ∎',
+      'מקרה 2: $M\\ne m$ → לפחות אחד מהם לא בקצוות',
+      'כי $f(a)=f(b)$, אז אם שניהם בקצוות → $M=m$, סתירה',
+      'יהי $c\\in(a,b)$ נקודת הקיצון הפנימית',
+      'פרמה: $f$ גזירה ב-$c$ + קיצון מקומי → $f\'(c)=0$ ∎',
+    ],
   },
   {
     id: 3,
@@ -324,6 +341,15 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאה 17',
+    proofFlow: [
+      'בנה פונקציית עזר: $g(x) = f(x) - f(a) - \\frac{f(b)-f(a)}{b-a}(x-a)$',
+      'בדוק: $g(a)=0$, $g(b)=0$ ✓',
+      'בדוק: $g$ רציפה על $[a,b]$ ✓ (צירוף רציפות)',
+      'בדוק: $g$ גזירה על $(a,b)$ ✓',
+      'הפעל רול: $\\exists c\\in(a,b)$ כך ש-$g\'(c)=0$',
+      '$g\'(c) = f\'(c) - \\frac{f(b)-f(a)}{b-a} = 0$',
+      'לכן $f\'(c) = \\frac{f(b)-f(a)}{b-a}$ ∎',
+    ],
   },
   {
     id: 4,
@@ -333,6 +359,15 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאת ערך ממוצע · מועד א׳ 2026',
+    proofFlow: [
+      'שלב 1 — הוכח $g(b)\\ne g(a)$: נניח בשלילה $g(b)=g(a)$',
+      'אז לפי רול: $\\exists c$ עם $g\'(c)=0$ — סתירה לנתון!',
+      'שלב 2 — בנה עזר: $h(x) = f(x) - f(a) - \\frac{f(b)-f(a)}{g(b)-g(a)}\\bigl(g(x)-g(a)\\bigr)$',
+      'בדוק: $h(a) = 0$, $h(b) = 0$ ✓',
+      'הפעל רול: $\\exists c$ עם $h\'(c)=0$',
+      '$h\'(c) = f\'(c) - \\frac{f(b)-f(a)}{g(b)-g(a)}\\cdot g\'(c) = 0$',
+      'חלק ב-$g\'(c)\\ne 0$: $\\frac{f\'(c)}{g\'(c)} = \\frac{f(b)-f(a)}{g(b)-g(a)}$ ∎',
+    ],
   },
   {
     id: 5,
@@ -342,6 +377,14 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'sets',
     topicLabel: battlePlanTopicLabels[0].label,
     source: 'הרצאות 1–5 · צפיפות',
+    proofFlow: [
+      'יהיו $a<b$ ממשיים. נגדיר $\\varepsilon = b-a > 0$',
+      'ארכימדס: $\\exists n\\in\\mathbb{N}$ כך ש-$n > \\frac{1}{b-a}$, כלומר $\\frac{1}{n} < b-a$',
+      'נגדיר $m = \\lfloor na \\rfloor + 1$ (השלם הקטן ביותר מעל $na$)',
+      'אז $na < m \\le na + 1$, ולכן $a < \\frac{m}{n}$',
+      'גם $\\frac{m}{n} \\le a + \\frac{1}{n} < a + (b-a) = b$',
+      'לכן $a < \\frac{m}{n} < b$ ו-$\\frac{m}{n}\\in\\mathbb{Q}$ ∎',
+    ],
   },
   {
     id: 6,
@@ -351,6 +394,16 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'sets',
     topicLabel: battlePlanTopicLabels[0].label,
     source: 'הרצאות 1–5 · חסמים',
+    proofFlow: [
+      '(⟹) נתון $\\overline{s}=\\sup(A)$. יהי $\\varepsilon>0$.',
+      '$\\overline{s}-\\varepsilon < \\overline{s}$ → $\\overline{s}-\\varepsilon$ אינו חסם מלעיל',
+      'לכן $\\exists a\\in A$ כך ש-$a > \\overline{s}-\\varepsilon$ ✓',
+      '(⟸) נתון: $\\overline{s}$ חסם + תכונת $\\varepsilon$. נראה שהוא הקטן ביותר.',
+      'נניח בשלילה: $\\exists M < \\overline{s}$ חסם מלעיל',
+      'בחר $\\varepsilon = \\overline{s} - M > 0$',
+      'מתכונת $\\varepsilon$: $\\exists a\\in A$ עם $a > \\overline{s}-\\varepsilon = M$',
+      'אבל $M$ חסם מלעיל → $a\\le M$ — סתירה! ∎',
+    ],
   },
   {
     id: 7,
@@ -360,6 +413,14 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאה 13',
+    proofFlow: [
+      'הגדר $y_0 = f(x_0)$. נחשב את הנגזרת מההגדרה:',
+      '$(f^{-1})\'(y_0) = \\lim_{y\\to y_0} \\frac{f^{-1}(y)-f^{-1}(y_0)}{y-y_0}$',
+      'הצב $x = f^{-1}(y)$, אז $y = f(x)$ ו-$y_0 = f(x_0)$',
+      '$ = \\lim_{x\\to x_0} \\frac{x - x_0}{f(x) - f(x_0)}$',
+      'הפוך את השבר: $ = \\frac{1}{\\lim_{x\\to x_0} \\frac{f(x)-f(x_0)}{x-x_0}}$',
+      '$ = \\frac{1}{f\'(x_0)}$ ∎',
+    ],
   },
   {
     id: 8,
@@ -369,6 +430,15 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'continuity',
     topicLabel: battlePlanTopicLabels[3].label,
     source: 'הרצאות 15–18 · רציפות',
+    proofFlow: [
+      'נניח $f(a) < k < f(b)$ (המקרה ההפוך סימטרי)',
+      'הגדר $A = \\{x\\in[a,b] : f(x) < k\\}$',
+      '$A \\ne \\emptyset$ (כי $a\\in A$) ו-$A$ חסומה (ב-$b$)',
+      'יהי $c = \\sup(A)$',
+      'הוכח $f(c) \\ge k$: אם $f(c)<k$, אז מרציפות $f<k$ בסביבה → ∃$x>c$ ב-$A$, סתירה ל-$\\sup$',
+      'הוכח $f(c) \\le k$: אם $f(c)>k$, אז מרציפות $f>k$ בסביבה → $c$ לא חסם עליון הדוק',
+      'לכן $f(c) = k$ ∎',
+    ],
   },
   {
     id: 9,
@@ -378,6 +448,15 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'derivatives',
     topicLabel: battlePlanTopicLabels[4].label,
     source: 'הרצאות 18–23 · קיצון',
+    proofFlow: [
+      'מהיות $f$ גזירה: $f\'(c) = \\lim_{x\\to c}\\frac{f(x)-f(c)}{x-c}$ קיים',
+      'לכן הגבולות החד-צדדיים קיימים ושווים',
+      'הנח מקסימום: $f(x) \\le f(c)$ בסביבה',
+      '$x > c$: $\\frac{f(x)-f(c)}{x-c} \\le 0$ → $f\'(c) = \\lim_{x\\to c^+} \\le 0$',
+      '$x < c$: $\\frac{f(x)-f(c)}{x-c} \\ge 0$ → $f\'(c) = \\lim_{x\\to c^-} \\ge 0$',
+      '$f\'(c) \\le 0$ וגם $f\'(c) \\ge 0$ → $f\'(c) = 0$ ∎',
+      '(מינימום: אותו דבר עם $g=-f$)',
+    ],
   },
   {
     id: 10,
@@ -387,6 +466,15 @@ export const battlePlanTheorems: BattlePlanTheoremEntry[] = [
     topicId: 'continuity',
     topicLabel: battlePlanTopicLabels[3].label,
     source: 'הרצאות 15–18 · רציפות',
+    proofFlow: [
+      'שלב 1 — $f$ חסומה: נניח בשלילה לא חסומה מלמעלה',
+      '→ $\\forall n\\ \\exists x_n\\in[a,b]$: $f(x_n) > n$',
+      'בולצנו-ויירשטראס: $\\exists$ תת-סדרה $x_{n_k} \\to c \\in [a,b]$',
+      'רציפות: $f(x_{n_k}) \\to f(c)$, אבל $f(x_{n_k}) > n_k \\to \\infty$ — סתירה!',
+      'שלב 2 — $f$ מקבלת $\\sup$: יהי $M = \\sup\\{f(x): x\\in[a,b]\\}$',
+      '$\\forall n\\ \\exists x_n$: $f(x_n) > M - \\frac{1}{n}$',
+      'בולצנו-ויירשטראס: $x_{n_k} \\to c$, רציפות: $f(c) = M$ ∎',
+    ],
   },
 ];
 
