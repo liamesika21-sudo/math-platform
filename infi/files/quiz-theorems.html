@@ -3,379 +3,426 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>חזרה על הגדרות — אינפי 1</title>
+<title>סיכום פונקציות + דוגמאות נגדיות — אינפי 1</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rubik, sans-serif;
-    background: #f8fafc; color: #1e293b;
-    padding: 20px 16px 90px; max-width: 860px; margin: 0 auto;
-  }
-  .hero {
-    background: linear-gradient(135deg, #0f172a, #334155);
-    color: white; border-radius: 16px; padding: 24px; margin-bottom: 20px;
-  }
-  .hero h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; }
-  .hero p { font-size: 0.82rem; opacity: 0.85; line-height: 1.6; }
-  .progress-wrap { margin-top: 14px; }
-  .progress-bar { height: 6px; background: rgba(255,255,255,0.15); border-radius: 99px; overflow: hidden; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg,#6366f1,#10b981); border-radius: 99px; transition: width .4s; }
-  .progress-txt { font-size: .72rem; opacity: .7; margin-top: 4px; text-align: center; }
-
-  .section-label {
-    font-size: .78rem; font-weight: 700; color: #94a3b8; margin: 22px 0 6px;
-    text-transform: uppercase; letter-spacing: .5px;
-  }
-
-  .card {
-    background: white; border: 1px solid #e2e8f0; border-radius: 14px;
-    padding: 18px; margin-bottom: 14px;
-  }
-  .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .card-num {
-    width: 26px; height: 26px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-weight: 700; font-size: .78rem; flex-shrink: 0;
-  }
-  .cat-sets .card-num { background: #6366f1; }
-  .cat-limits .card-num { background: #f59e0b; }
-  .cat-continuity .card-num { background: #10b981; }
-  .cat-derivatives .card-num { background: #ef4444; }
-
-  .card-title { font-weight: 700; font-size: .98rem; }
-  .card-prompt {
-    background: #f1f5f9; border-radius: 10px; padding: 10px 14px;
-    font-size: .82rem; color: #475569; line-height: 1.7;
-    margin-bottom: 10px; border-right: 3px solid #cbd5e1;
-  }
-
-  .field { margin-bottom: 10px; }
-  .field label { display: block; font-size: .75rem; font-weight: 700; color: #64748b; margin-bottom: 4px; }
-  .field textarea {
-    width: 100%; min-height: 68px; border: 1.5px solid #e2e8f0; border-radius: 10px;
-    padding: 10px 12px; font-size: .86rem; font-family: inherit; line-height: 1.7;
-    resize: vertical; direction: rtl;
-  }
-  .field textarea:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.12); }
-
-  /* LaTeX toolbar */
-  .latex-bar {
-    display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px;
-  }
-  .latex-bar button {
-    padding: 4px 8px; border-radius: 6px; border: 1px solid #e2e8f0;
-    background: white; font-size: .74rem; cursor: pointer; font-family: inherit;
-    transition: all .12s; color: #475569;
-  }
-  .latex-bar button:hover { background: #eef2ff; border-color: #6366f1; color: #4338ca; }
-  .latex-bar .sep { width: 1px; background: #e2e8f0; margin: 0 2px; }
-
-  /* Preview */
-  .preview-box {
-    min-height: 30px; padding: 8px 12px; background: #fefce8; border: 1px dashed #fbbf24;
-    border-radius: 8px; font-size: .85rem; line-height: 1.8; margin-bottom: 10px;
-    display: none;
-  }
-  .preview-box.visible { display: block; }
-  .preview-box .katex { font-size: 1em; }
-
-  /* Confidence */
-  .confidence { display: flex; gap: 5px; }
-  .confidence button {
-    flex: 1; padding: 6px; border-radius: 8px; border: 1.5px solid #e2e8f0;
-    background: white; font-size: .76rem; font-weight: 600; cursor: pointer;
-    font-family: inherit; transition: all .15s;
-  }
-  .confidence button:hover { background: #f1f5f9; }
-  .confidence button.active-strong { border-color: #10b981; background: #ecfdf5; color: #047857; }
-  .confidence button.active-ok { border-color: #f59e0b; background: #fffbeb; color: #b45309; }
-  .confidence button.active-weak { border-color: #ef4444; background: #fef2f2; color: #b91c1c; }
-
-  /* Bottom bar */
-  .actions {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    background: white; border-top: 1px solid #e2e8f0;
-    padding: 10px 16px; display: flex; gap: 8px; justify-content: center; z-index: 50;
-  }
-  .actions button {
-    padding: 9px 20px; border-radius: 10px; font-size: .85rem;
-    font-weight: 700; cursor: pointer; border: none; font-family: inherit;
-  }
-  .btn-dl { background: #0f172a; color: white; }
-  .btn-dl:hover { background: #1e293b; }
-  .btn-clr { background: #f1f5f9; color: #64748b; }
-  .btn-clr:hover { background: #e2e8f0; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Rubik,sans-serif;background:#f8fafc;color:#1e293b;padding:20px 16px 40px;max-width:900px;margin:0 auto;line-height:1.7}
+h1{font-size:1.5rem;font-weight:800}
+h2{font-size:1.15rem;font-weight:700;margin:28px 0 10px;color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:6px}
+h3{font-size:.95rem;font-weight:700;margin:16px 0 6px;color:#334155}
+.hero{background:linear-gradient(135deg,#0f172a,#334155);color:#fff;border-radius:16px;padding:24px;margin-bottom:24px}
+.hero p{font-size:.84rem;opacity:.85;margin-top:6px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}
+.card-title{font-weight:700;font-size:.95rem;color:#0f172a;margin-bottom:6px}
+.math-row{background:#f8fafc;border-radius:8px;padding:10px 14px;margin:6px 0;font-size:.9rem;direction:ltr;text-align:center}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:4px}
+.tag-cont{background:#ecfdf5;color:#047857}
+.tag-diff{background:#eef2ff;color:#4338ca}
+.tag-mono{background:#fef3c7;color:#92400e}
+.tag-bound{background:#fce7f3;color:#9d174d}
+.tag-no{background:#fef2f2;color:#b91c1c}
+.tag-jump{background:#fff7ed;color:#c2410c}
+table{width:100%;border-collapse:collapse;font-size:.82rem;margin:8px 0}
+th{background:#f1f5f9;padding:8px 10px;text-align:right;font-weight:700;color:#475569;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9}
+.yes{color:#047857;font-weight:700}
+.no{color:#b91c1c;font-weight:700}
+.at{color:#92400e;font-weight:600;font-size:.78rem}
+.section-label{font-size:.78rem;font-weight:700;color:#94a3b8;margin:24px 0 6px;text-transform:uppercase;letter-spacing:.5px}
+.identity-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:14px;margin:8px 0}
+.identity-box h4{font-size:.82rem;font-weight:700;color:#4338ca;margin-bottom:8px}
+.tip{background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;margin:8px 0;font-size:.84rem}
+.tip strong{color:#92400e}
+.katex{font-size:.95em}
+.counter-card{border-right:3px solid #ef4444}
+.golden-card{border-right:3px solid #f59e0b}
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <h1>חזרה על הגדרות — אינפי 1</h1>
-  <p>לכל הגדרה כתבי את הניסוח <strong>במילים שלך</strong>. אפשר להשתמש בכפתורי LaTeX למטה.<br>בסוף — הורידי קובץ ושלחי לבדיקה.</p>
-  <div class="progress-wrap">
-    <div class="progress-bar"><div class="progress-fill" id="pFill" style="width:0%"></div></div>
-    <div class="progress-txt" id="pTxt">0 / 0</div>
-  </div>
+  <h1>סיכום פונקציות (הרצאות 5-7) + דוגמאות נגדיות + זהויות</h1>
+  <p>מבוסס על הסיכום שלך + הרצאות + תרגולים. כולל טבלת פונקציות חשובות, זהויות טריגונומטריות, ודוגמאות נגדיות קלאסיות למבחן.</p>
 </div>
 
-<div id="quiz"></div>
+<!-- ══════════════════════════════════════ -->
+<h2>📊 טבלת פונקציות חשובות — מי רציפה? גזירה? מונוטונית?</h2>
+<!-- ══════════════════════════════════════ -->
 
-<div class="actions">
-  <button class="btn-dl" onclick="download()">📥 הורדת תשובות</button>
-  <button class="btn-clr" onclick="clearAll()">🗑 נקה</button>
+<table>
+<tr>
+  <th>פונקציה</th>
+  <th>תחום</th>
+  <th>טווח</th>
+  <th>רציפה</th>
+  <th>גזירה</th>
+  <th>מונוטונית</th>
+  <th>חסומה</th>
+  <th>הערות</th>
+</tr>
+<tr>
+  <td><strong>id(x) = x</strong></td>
+  <td>ℝ</td><td>ℝ</td>
+  <td class="yes">כן, בכל ℝ</td>
+  <td class="yes">כן, f'=1</td>
+  <td class="yes">עולה ממש</td>
+  <td class="no">לא</td>
+  <td>הפונקציה הכי פשוטה</td>
+</tr>
+<tr>
+  <td><strong>x²</strong></td>
+  <td>ℝ</td><td>[0,∞)</td>
+  <td class="yes">כן</td>
+  <td class="yes">כן, f'=2x</td>
+  <td class="at">לא (יורדת ב-(-∞,0], עולה ב-[0,∞))</td>
+  <td class="no">לא חסומה מלמעלה</td>
+  <td>זוגית, מינימום ב-0</td>
+</tr>
+<tr>
+  <td><strong>x³</strong></td>
+  <td>ℝ</td><td>ℝ</td>
+  <td class="yes">כן</td>
+  <td class="yes">כן, f'=3x²</td>
+  <td class="yes">עולה ממש</td>
+  <td class="no">לא</td>
+  <td>אי-זוגית, הפיכה</td>
+</tr>
+<tr>
+  <td><strong>|x|</strong></td>
+  <td>ℝ</td><td>[0,∞)</td>
+  <td class="yes">כן, בכל ℝ</td>
+  <td class="no">❌ לא ב-0!</td>
+  <td class="at">לא (יורדת ב-(-∞,0], עולה ב-[0,∞))</td>
+  <td class="no">לא חסומה מלמעלה</td>
+  <td>⚠️ דוגמה נגדית קלאסית: רציפה אבל לא גזירה</td>
+</tr>
+<tr>
+  <td><strong>√x</strong></td>
+  <td>[0,∞)</td><td>[0,∞)</td>
+  <td class="yes">כן</td>
+  <td class="no">❌ לא ב-0 (f'→∞)</td>
+  <td class="yes">עולה ממש</td>
+  <td class="no">לא</td>
+  <td>הפוכה של x² על [0,∞)</td>
+</tr>
+<tr>
+  <td><strong>1/x</strong></td>
+  <td>ℝ\{0}</td><td>ℝ\{0}</td>
+  <td class="yes">כן (בתחום)</td>
+  <td class="yes">כן, f'=-1/x²</td>
+  <td class="at">יורדת ב-(-∞,0) וב-(0,∞) בנפרד</td>
+  <td class="no">לא</td>
+  <td>⚠️ לא רציפה ב-0 (לא מוגדרת שם)</td>
+</tr>
+<tr>
+  <td><strong>eˣ</strong></td>
+  <td>ℝ</td><td>(0,∞)</td>
+  <td class="yes">כן</td>
+  <td class="yes">כן, f'=eˣ</td>
+  <td class="yes">עולה ממש</td>
+  <td class="no">לא חסומה מלמעלה</td>
+  <td>f(x)>0 תמיד. הפוכה: ln(x)</td>
+</tr>
+<tr style="background:#fefce8">
+  <td><strong>aˣ (0&lt;a&lt;1)</strong></td>
+  <td>ℝ</td><td>(0,∞)</td>
+  <td class="yes">כן</td>
+  <td class="yes">כן</td>
+  <td class="yes">יורדת ממש</td>
+  <td class="no">לא</td>
+  <td>⚠️ שים לב: a>1 עולה, 0&lt;a&lt;1 יורדת!</td>
+</tr>
+<tr>
+  <td><strong>ln(x)</strong></td>
+  <td>(0,∞)</td><td>ℝ</td>
+  <td class="yes">כן</td>
+  <td class="yes">כן, f'=1/x</td>
+  <td class="yes">עולה ממש</td>
+  <td class="no">לא</td>
+  <td>הפוכה של eˣ</td>
+</tr>
+<tr>
+  <td><strong>sin(x)</strong></td>
+  <td>ℝ</td><td>[-1,1]</td>
+  <td class="yes">כן</td>
+  <td class="yes">כן, f'=cos(x)</td>
+  <td class="no">לא (מחזורית)</td>
+  <td class="yes">כן, |sin(x)|≤1</td>
+  <td>אי-זוגית: sin(-x)=-sin(x)</td>
+</tr>
+<tr>
+  <td><strong>cos(x)</strong></td>
+  <td>ℝ</td><td>[-1,1]</td>
+  <td class="yes">כן</td>
+  <td class="yes">כן, f'=-sin(x)</td>
+  <td class="no">לא</td>
+  <td class="yes">כן, |cos(x)|≤1</td>
+  <td>זוגית: cos(-x)=cos(x)</td>
+</tr>
+<tr>
+  <td><strong>tan(x)</strong></td>
+  <td>x≠π/2+nπ</td><td>ℝ</td>
+  <td class="yes">כן (בתחום)</td>
+  <td class="yes">כן, f'=1/cos²(x)</td>
+  <td class="at">עולה ממש בכל קטע</td>
+  <td class="no">לא</td>
+  <td>אי-זוגית. אסימפטוטות אנכיות</td>
+</tr>
+<tr>
+  <td><strong>arcsin(x)</strong></td>
+  <td>[-1,1]</td><td>[-π/2, π/2]</td>
+  <td class="yes">כן</td>
+  <td class="no">❌ לא ב-±1</td>
+  <td class="yes">עולה ממש</td>
+  <td class="yes">כן</td>
+  <td>הפוכה של sin על [-π/2,π/2]</td>
+</tr>
+<tr>
+  <td><strong>arccos(x)</strong></td>
+  <td>[-1,1]</td><td>[0,π]</td>
+  <td class="yes">כן</td>
+  <td class="no">❌ לא ב-±1</td>
+  <td class="yes">יורדת ממש</td>
+  <td class="yes">כן</td>
+  <td>הפוכה של cos על [0,π]</td>
+</tr>
+<tr>
+  <td><strong>arctan(x)</strong></td>
+  <td>ℝ</td><td>(-π/2, π/2)</td>
+  <td class="yes">כן</td>
+  <td class="yes">כן, f'=1/(1+x²)</td>
+  <td class="yes">עולה ממש</td>
+  <td class="yes">כן</td>
+  <td>הפוכה של tan על (-π/2,π/2)</td>
+</tr>
+</table>
+
+<!-- ══════════════════════════════════════ -->
+<h2>💀 דוגמאות נגדיות קלאסיות למבחן</h2>
+<!-- ══════════════════════════════════════ -->
+
+<div class="section-label">רציפה אבל לא גזירה</div>
+
+<div class="card counter-card">
+  <div class="card-title">1. f(x) = |x| — רציפה בכל ℝ, לא גזירה ב-0</div>
+  <span class="tag tag-cont">רציפה ✓</span><span class="tag tag-no">לא גזירה ב-0 ✗</span>
+  <p>הגבולות החד-צדדיים של מנת ההפרשים: מימין → 1, משמאל → -1. שונים → הנגזרת לא קיימת.</p>
+  <div class="tip"><strong>שימוש:</strong> דוגמה נגדית ל"רציפות גוררת גזירות". גם: מינימום מקומי ב-0 אבל f'(0) לא קיימת → פרמה לא חל.</div>
 </div>
 
-<script>
-// ════════════════════════════════════════
-// QUESTIONS DATA
-// ════════════════════════════════════════
-const Q = [
-  // ── חסמים וקבוצות (1-5) ──
-  { id:1, cat:'sets', name:'חסם מלעיל', prompt:'הגדירי מהו חסם מלעיל של קבוצה A ⊆ ℝ.' },
-  { id:2, cat:'sets', name:'חסם מלרע', prompt:'הגדירי מהו חסם מלרע של קבוצה A ⊆ ℝ.' },
-  { id:3, cat:'sets', name:'סופרמום (sup)', prompt:'הגדירי מהו sup(A). למה הוא לא בהכרח שייך ל-A?' },
-  { id:4, cat:'sets', name:'אינפימום (inf)', prompt:'הגדירי מהו inf(A).' },
-  { id:5, cat:'sets', name:'מקסימום (max)', prompt:'הגדירי מהו max(A). מה ההבדל מ-sup?' },
-  { id:6, cat:'sets', name:'מינימום (min)', prompt:'הגדירי מהו min(A).' },
-  { id:7, cat:'sets', name:'חסומה מלמעלה', prompt:'מתי קבוצה A חסומה מלמעלה?' },
-  { id:8, cat:'sets', name:'חסומה מלמטה', prompt:'מתי קבוצה A חסומה מלמטה?' },
-  { id:9, cat:'sets', name:'תכונת ארכימדס', prompt:'נסחי את תכונת ארכימדס. על מה היא מדברת — טבעיים או ממשיים?' },
-  { id:10, cat:'sets', name:'קבוצה צפופה', prompt:'מתי אומרים ש-A צפופה ב-ℝ? תני דוגמה לקבוצה צפופה.' },
-  { id:11, cat:'sets', name:'תכונת ε של sup', prompt:'נסחי את תכונת ε של sup(A). מה ה"כיוון" של האי-שוויון?' },
-  { id:12, cat:'sets', name:'תכונת ε של inf', prompt:'נסחי את תכונת ε של inf(A).' },
+<div class="card counter-card">
+  <div class="card-title">2. f(x) = x^(1/3) — רציפה ב-0, לא גזירה ב-0</div>
+  <span class="tag tag-cont">רציפה ✓</span><span class="tag tag-no">f'(0) = ∞ ✗</span>
+  <p>f'(0) = lim h^(1/3)/h = lim 1/h^(2/3) = ∞. הנגזרת אינסופית = משיק אנכי = לא גזירה.</p>
+</div>
 
-  // ── גבולות (8-15) ──
-  { id:13, cat:'limits', name:'גבול של פונקציה בנקודה (ε-δ)', prompt:'הגדירי: lim(x→x₀) f(x) = L. שימי לב לסימני < ו->!' },
-  { id:14, cat:'limits', name:'גבול חד-צדדי מימין', prompt:'הגדירי: lim(x→x₀⁺) f(x) = L.' },
-  { id:15, cat:'limits', name:'גבול חד-צדדי משמאל', prompt:'הגדירי: lim(x→x₀⁻) f(x) = L.' },
-  { id:16, cat:'limits', name:'גבול באינסוף', prompt:'הגדירי: lim(x→∞) f(x) = L. מה התפקיד של M לעומת δ?' },
-  { id:17, cat:'limits', name:'גבול במינוס אינסוף', prompt:'הגדירי: lim(x→−∞) f(x) = L.' },
-  { id:18, cat:'limits', name:'גבול אינסופי בנקודה', prompt:'הגדירי: lim(x→x₀) f(x) = ∞.' },
-  { id:19, cat:'limits', name:'גבול אינסופי שלילי בנקודה', prompt:'הגדירי: lim(x→x₀) f(x) = −∞.' },
-  { id:20, cat:'limits', name:'שכונה מחוקה', prompt:'מהי שכונה מחוקה של x₀? מה ההבדל משכונה רגילה?' },
-  { id:21, cat:'limits', name:'פונקציה חסומה בסביבה', prompt:'מתי f חסומה בשכונה (מחוקה) של x₀?' },
+<div class="card counter-card">
+  <div class="card-title">3. f(x) = x·sin(1/x), f(0)=0 — רציפה ב-0, לא גזירה ב-0</div>
+  <span class="tag tag-cont">רציפה ✓ (סנדוויץ')</span><span class="tag tag-no">f'(0) לא קיימת ✗</span>
+  <p>רציפה: -|x| ≤ x·sin(1/x) ≤ |x| → 0. אבל f'(0) = lim sin(1/h) מתנדנד ולא מתכנס.</p>
+</div>
 
-  // ── רציפות (15-18) ──
-  { id:22, cat:'continuity', name:'רציפות בנקודה', prompt:'הגדירי: f רציפה ב-x₀. מה ההבדל מהגדרת גבול (רמז: 0<)?' },
-  { id:23, cat:'continuity', name:'רציפות מימין', prompt:'הגדירי: f רציפה מימין ב-x₀.' },
-  { id:24, cat:'continuity', name:'רציפות משמאל', prompt:'הגדירי: f רציפה משמאל ב-x₀.' },
-  { id:25, cat:'continuity', name:'רציפות על קטע סגור', prompt:'מתי f רציפה על [a,b]? מה קורה בקצוות?' },
-  { id:26, cat:'continuity', name:'אי-רציפות סליקה', prompt:'מהי אי-רציפות סליקה (removable)? איך "מתקנים" אותה?' },
+<div class="section-label">גזירה אבל הנגזרת לא רציפה</div>
 
-  // ── נגזרות (18-23) ──
-  { id:27, cat:'derivatives', name:'נגזרת בנקודה', prompt:'הגדירי: f\'(x₀). כתבי את שתי הצורות (עם h ועם x).' },
-  { id:28, cat:'derivatives', name:'גזירה בנקודה', prompt:'מתי f גזירה ב-x₀?' },
-  { id:29, cat:'derivatives', name:'גזירה על קטע', prompt:'מתי f גזירה על (a,b)? ועל [a,b]?' },
-  { id:30, cat:'derivatives', name:'פונקציה עולה', prompt:'הגדירי: f עולה בקטע I. מה ההבדל בין עולה לעולה ממש?' },
-  { id:31, cat:'derivatives', name:'פונקציה יורדת', prompt:'הגדירי: f יורדת בקטע I.' },
-  { id:32, cat:'derivatives', name:'קיצון מקומי', prompt:'הגדירי מקסימום מקומי ומינימום מקומי.' },
-  { id:33, cat:'derivatives', name:'נקודה קריטית', prompt:'מהי נקודה קריטית של f? (שני מקרים!)' },
-  { id:34, cat:'derivatives', name:'נקודת פיתול', prompt:'מהי נקודת פיתול? מה צריך להשתנות?' },
-  { id:35, cat:'derivatives', name:'פונקציה קעורה/קמורה', prompt:'מתי f קמורה (concave up)? מתי קעורה (concave down)? מה הקשר ל-f\'\'?' },
-];
+<div class="card counter-card">
+  <div class="card-title">4. f(x) = x²·sin(1/x), f(0)=0 — גזירה בכל ℝ, f' לא רציפה ב-0</div>
+  <span class="tag tag-diff">גזירה ✓</span><span class="tag tag-no">f' לא רציפה ב-0 ✗</span>
+  <p>f'(0) = lim h·sin(1/h) = 0 (סנדוויץ'). אבל f'(x) = 2x·sin(1/x) - cos(1/x) עבור x≠0, ו-lim f'(x) כש-x→0 לא קיים.</p>
+  <div class="tip"><strong>שימוש:</strong> דוגמה נגדית ל"f גזירה ⟹ f' רציפה".</div>
+</div>
 
-const SECTIONS = {
-  sets: '📐 חסמים וקבוצות (הרצאות 1-5)',
-  limits: '📈 גבולות (הרצאות 8-15)',
-  continuity: '🔗 רציפות (הרצאות 15-18)',
-  derivatives: '📉 נגזרות (הרצאות 18-23)',
-};
+<div class="section-label">רציפה על קטע פתוח אבל לא חסומה</div>
 
-// LaTeX snippets for the toolbar
-const LATEX_BTNS = [
-  { label:'∀ε>0', insert:'\\forall \\varepsilon > 0' },
-  { label:'∃δ>0', insert:'\\exists \\delta > 0' },
-  { label:'∃M>0', insert:'\\exists M > 0' },
-  { label:'|x−x₀|<δ', insert:'|x - x_0| < \\delta' },
-  { label:'|f(x)−L|<ε', insert:'|f(x) - L| < \\varepsilon' },
-  { label:'0<|·|', insert:'0 < |x - x_0|' },
-  { sep:true },
-  { label:'x→x₀', insert:'x \\to x_0' },
-  { label:'x→∞', insert:'x \\to \\infty' },
-  { label:'x→−∞', insert:'x \\to -\\infty' },
-  { label:'lim', insert:'\\lim_{x \\to x_0}' },
-  { sep:true },
-  { label:'≤', insert:'\\le' },
-  { label:'≥', insert:'\\ge' },
-  { label:'≠', insert:'\\ne' },
-  { label:'∈', insert:'\\in' },
-  { label:'⊆', insert:'\\subseteq' },
-  { sep:true },
-  { label:'ℝ', insert:'\\mathbb{R}' },
-  { label:'ℚ', insert:'\\mathbb{Q}' },
-  { label:'ℕ', insert:'\\mathbb{N}' },
-  { label:'sup', insert:'\\sup(A)' },
-  { label:'inf', insert:'\\inf(A)' },
-  { sep:true },
-  { label:'f\'(x₀)', insert:"f'(x_0)" },
-  { label:'frac', insert:'\\frac{a}{b}' },
-  { label:'[a,b]', insert:'[a,b]' },
-  { label:'(a,b)', insert:'(a,b)' },
-];
+<div class="card counter-card">
+  <div class="card-title">5. f(x) = 1/x על (0,1] — רציפה, לא חסומה, אין מקסימום</div>
+  <span class="tag tag-cont">רציפה ✓</span><span class="tag tag-no">לא חסומה ✗</span>
+  <p>כש-x→0⁺, f(x)→∞. ויירשטראס לא חל כי הקטע לא סגור!</p>
+  <div class="tip"><strong>שימוש:</strong> דוגמה נגדית לויירשטראס על קטע פתוח.</div>
+</div>
 
-// ════════════════════════════════════════
-// RENDER
-// ════════════════════════════════════════
-function render() {
-  const c = document.getElementById('quiz');
-  let html = '';
-  let curCat = '';
+<div class="card counter-card">
+  <div class="card-title">6. f(x) = x על (0,1) — רציפה, אין min ואין max</div>
+  <span class="tag tag-cont">רציפה ✓</span><span class="tag tag-no">אין קיצון ✗</span>
+  <p>sup = 1 אבל f(x) < 1 לכל x. inf = 0 אבל f(x) > 0. הקטע פתוח → אין min/max.</p>
+</div>
 
-  Q.forEach(q => {
-    if (q.cat !== curCat) {
-      curCat = q.cat;
-      html += `<div class="section-label">${SECTIONS[q.cat]}</div>`;
-    }
-    const saved = load(q.id);
-    html += `
-      <div class="card cat-${q.cat}" id="card-${q.id}">
-        <div class="card-head">
-          <span class="card-num">${q.id}</span>
-          <span class="card-title">${q.name}</span>
-        </div>
-        <div class="card-prompt">${q.prompt}</div>
+<div class="section-label">אי-רציפויות</div>
 
-        <div class="latex-bar" id="bar-${q.id}">
-          ${LATEX_BTNS.map(b => b.sep
-            ? '<span class="sep"></span>'
-            : `<button type="button" onclick="insertLatex(${q.id},'${b.insert.replace(/'/g,"\\'")}')">${b.label}</button>`
-          ).join('')}
-        </div>
+<div class="card counter-card">
+  <div class="card-title">7. D(x) = פונקציית דיריכלה — לא רציפה בשום נקודה</div>
+  <span class="tag tag-no">לא רציפה בכלל ✗</span>
+  <p>D(x) = 1 אם x∈ℚ, D(x) = 0 אם x∉ℚ. בכל סביבה יש רציונליים ואי-רציונליים → הגבול לא קיים.</p>
+  <div class="tip"><strong>שימוש:</strong> דוגמה קלאסית לשימוש בצפיפות Q ו-R\Q.</div>
+</div>
 
-        <div class="field">
-          <label>התשובה שלך (טקסט חופשי + LaTeX בתוך $...$):</label>
-          <textarea id="ans-${q.id}" placeholder="כתבי כאן..." oninput="onType(${q.id})">${saved.answer||''}</textarea>
-        </div>
+<div class="card counter-card">
+  <div class="card-title">8. Sgn(x) = פונקציית הסימן — אי-רציפות קפיצה ב-0</div>
+  <span class="tag tag-jump">קפיצה ב-0</span>
+  <p>Sgn(x) = 1 (x>0), 0 (x=0), -1 (x<0). גבולות חד-צדדיים: lim⁺=1, lim⁻=-1. שונים → אי-רציפות קפיצה.</p>
+  <div class="tip"><strong>שימוש:</strong> דוגמה נגדית ל"|f| רציפה ⟹ f רציפה" (כי |Sgn(x)|=1 בכל מקום חוץ מ-0).</div>
+</div>
 
-        <div class="preview-box ${saved.answer ? 'visible' : ''}" id="preview-${q.id}"></div>
+<div class="card counter-card">
+  <div class="card-title">9. f(x) = sin(1/x) — הגבול ב-0 לא קיים</div>
+  <span class="tag tag-no">אי-רציפות מהותית ב-0</span>
+  <p>מתנדנדת בין -1 ל-1 ללא התכנסות. אין גבול = אי-רציפות מהותית (לא סליקה ולא קפיצה).</p>
+</div>
 
-        <div class="field">
-          <label>כמה את בטוחה?</label>
-          <div class="confidence">
-            <button onclick="setConf(${q.id},'strong')" id="c-${q.id}-strong" class="${saved.confidence==='strong'?'active-strong':''}">💪 חזקה</button>
-            <button onclick="setConf(${q.id},'ok')" id="c-${q.id}-ok" class="${saved.confidence==='ok'?'active-ok':''}">🤔 ככה ככה</button>
-            <button onclick="setConf(${q.id},'weak')" id="c-${q.id}-weak" class="${saved.confidence==='weak'?'active-weak':''}">😰 חלש</button>
-          </div>
-        </div>
-      </div>
-    `;
-  });
+<div class="card counter-card">
+  <div class="card-title">10. f(x) = (sin x)/x, f(0)=1 — אי-רציפות סליקה "מתוקנת"</div>
+  <span class="tag tag-cont">רציפה אחרי תיקון ✓</span>
+  <p>lim(x→0) sin(x)/x = 1. אם מגדירים f(0)=1 → f רציפה בכל ℝ. זו "הסרת אי-רציפות סליקה".</p>
+</div>
 
-  c.innerHTML = html;
-  // render existing previews
-  Q.forEach(q => { const s = load(q.id); if (s.answer) renderPreview(q.id, s.answer); });
-  updateProgress();
-}
+<!-- ══════════════════════════════════════ -->
+<h2>🔑 זהויות חשובות</h2>
+<!-- ══════════════════════════════════════ -->
 
-// ════════════════════════════════════════
-// LATEX TOOLBAR
-// ════════════════════════════════════════
-function insertLatex(id, tex) {
-  const ta = document.getElementById('ans-' + id);
-  const start = ta.selectionStart;
-  const end = ta.selectionEnd;
-  const before = ta.value.substring(0, start);
-  const after = ta.value.substring(end);
-  const wrapped = '$' + tex + '$';
-  ta.value = before + wrapped + after;
-  ta.focus();
-  ta.selectionStart = ta.selectionEnd = start + wrapped.length;
-  onType(id);
-}
+<div class="section-label">ערך מוחלט (מהסיכום שלך)</div>
+<div class="identity-box">
+  <h4>תכונות ערך מוחלט</h4>
+  <table>
+  <tr><td>|x| ≥ 0</td><td>תמיד אי-שלילי</td></tr>
+  <tr><td>|-x| = |x|</td><td>סימטריה</td></tr>
+  <tr><td>|x-y| = |y-x|</td><td>מרחק סימטרי</td></tr>
+  <tr><td>-|x| ≤ x ≤ |x|</td><td>כליאה</td></tr>
+  <tr><td>|x| = √(x²)</td><td>הגדרה שקולה</td></tr>
+  <tr><td><strong>|x+y| ≤ |x| + |y|</strong></td><td>⭐ אי-שוויון המשולש (הכי חשוב!)</td></tr>
+  <tr><td><strong>||x| - |y|| ≤ |x-y|</strong></td><td>⭐ אי-שוויון המשולש ההפוך</td></tr>
+  <tr><td>|x·y| = |x|·|y|</td><td>כפליות</td></tr>
+  <tr><td>|x/y| = |x|/|y| &nbsp; (y≠0)</td><td>מנה</td></tr>
+  </table>
+  <div class="tip"><strong>טיפ למבחן:</strong> אי-שוויון המשולש משמש כמעט בכל הוכחת ε-δ. כשצריך לחסום |f(x)-L| — פרק עם משולש!</div>
+</div>
 
-// ════════════════════════════════════════
-// PREVIEW RENDERING
-// ════════════════════════════════════════
-function renderPreview(id, text) {
-  const box = document.getElementById('preview-' + id);
-  if (!text || !text.trim()) { box.classList.remove('visible'); return; }
-  box.classList.add('visible');
+<div class="section-label">טריגונומטריה (מהסיכום שלך)</div>
+<div class="identity-box">
+  <h4>תכונות sin, cos</h4>
+  <table>
+  <tr><td>sin²x + cos²x = 1</td><td>⭐ הזהות הבסיסית</td></tr>
+  <tr><td>|sin x| ≤ 1, &nbsp; |cos x| ≤ 1</td><td>חסימות</td></tr>
+  <tr><td>cos(-x) = cos(x)</td><td>cos זוגית</td></tr>
+  <tr><td>sin(-x) = -sin(x)</td><td>sin אי-זוגית</td></tr>
+  <tr><td>sin(x+y) = sin x·cos y + cos x·sin y</td><td>סכום</td></tr>
+  <tr><td>cos(x+y) = cos x·cos y - sin x·sin y</td><td>סכום</td></tr>
+  <tr><td>cos x = sin(x + π/2)</td><td>הזזה</td></tr>
+  </table>
+</div>
 
-  // Split on $...$ and render
-  const parts = text.split(/(\$[^$]+\$)/g);
-  let html = '';
-  parts.forEach(part => {
-    if (part.startsWith('$') && part.endsWith('$')) {
-      const tex = part.slice(1, -1);
-      try {
-        html += katex.renderToString(tex, { throwOnError: false, displayMode: false });
-      } catch { html += part; }
-    } else {
-      html += part.replace(/\n/g, '<br>');
-    }
-  });
-  box.innerHTML = html;
-}
+<div class="identity-box">
+  <h4>תכונות tan (tg)</h4>
+  <table>
+  <tr><td>tan x = sin x / cos x</td><td>הגדרה (x ≠ π/2 + nπ)</td></tr>
+  <tr><td>tan(-x) = -tan(x)</td><td>אי-זוגית</td></tr>
+  <tr><td>tan(x + πn) = tan(x)</td><td>מחזוריות π</td></tr>
+  <tr><td>1 + tan²x = 1/cos²x</td><td>מהזהות sin²+cos²=1</td></tr>
+  </table>
+</div>
 
-// ════════════════════════════════════════
-// STORAGE
-// ════════════════════════════════════════
-const KEY = 'quiz-defs-v1-';
-function load(id) { try { return JSON.parse(localStorage.getItem(KEY+id)||'{}'); } catch { return {}; } }
-function save(id, data) { localStorage.setItem(KEY+id, JSON.stringify(data)); }
+<div class="section-label">פונקציות הפוכות טריגונומטריות (מהסיכום שלך)</div>
+<div class="identity-box">
+  <h4>arcsin, arccos, arctan</h4>
+  <table>
+  <tr><th>פונקציה</th><th>תחום</th><th>טווח</th><th>הגדרה</th></tr>
+  <tr><td>arcsin</td><td>[-1,1]</td><td>[-π/2, π/2]</td><td>arcsin(y)=x כאשר sin(x)=y</td></tr>
+  <tr><td>arccos</td><td>[-1,1]</td><td>[0, π]</td><td>arccos(y)=x כאשר cos(x)=y</td></tr>
+  <tr><td>arctan</td><td>ℝ</td><td>(-π/2, π/2)</td><td>arctan(y)=x כאשר tan(x)=y</td></tr>
+  </table>
+  <p style="margin-top:8px"><strong>ערכים חשובים:</strong> arcsin(1) = π/2, &nbsp; arcsin(-1) = -π/2, &nbsp; arccos(1) = 0, &nbsp; arccos(-1) = π</p>
+</div>
 
-function onType(id) {
-  const ans = document.getElementById('ans-'+id).value;
-  const s = load(id); s.answer = ans; save(id, s);
-  renderPreview(id, ans);
-  updateProgress();
-}
+<div class="section-label">אקספוננט ולוגריתם (מהסיכום שלך)</div>
+<div class="identity-box">
+  <h4>aˣ ו-logₐ(x)</h4>
+  <table>
+  <tr><td>aˣ > 0 לכל x∈ℝ</td><td>תמיד חיובית</td></tr>
+  <tr><td>a>1: עולה ממש. 0&lt;a&lt;1: יורדת ממש</td><td>מונוטוניות</td></tr>
+  <tr><td>Im(aˣ) = (0,∞)</td><td>טווח</td></tr>
+  <tr><td>logₐ(x) הפוכה של aˣ</td><td>y>0 → logₐ(y)=x ⟺ aˣ=y</td></tr>
+  <tr><td>ln(x) = logₑ(x)</td><td>לוגריתם טבעי</td></tr>
+  <tr><td>ln(e) = 1, &nbsp; e⁰ = 1</td><td>ערכים בסיסיים</td></tr>
+  </table>
+</div>
 
-function setConf(id, level) {
-  const s = load(id); s.confidence = level; save(id, s);
-  ['strong','ok','weak'].forEach(l => {
-    document.getElementById(`c-${id}-${l}`).className = l===level ? `active-${l}` : '';
-  });
-  updateProgress();
-}
+<div class="section-label">max / min</div>
+<div class="identity-box">
+  <h4>נוסחאות max ו-min (מהסיכום שלך)</h4>
+  <table>
+  <tr><td>max{x,y} = ½(x+y + |x-y|)</td><td></td></tr>
+  <tr><td>min{x,y} = ½(x+y - |x-y|)</td><td></td></tr>
+  </table>
+</div>
 
-function updateProgress() {
-  let filled = 0;
-  Q.forEach(q => { const s = load(q.id); if (s.answer && s.answer.trim().length > 3) filled++; });
-  const pct = Math.round((filled/Q.length)*100);
-  document.getElementById('pFill').style.width = pct + '%';
-  document.getElementById('pTxt').textContent = `${filled} / ${Q.length} הושלמו`;
-}
+<!-- ══════════════════════════════════════ -->
+<h2>⚡ גבולות חשובים לשינון</h2>
+<!-- ══════════════════════════════════════ -->
 
-// ════════════════════════════════════════
-// DOWNLOAD
-// ════════════════════════════════════════
-function download() {
-  const now = new Date();
-  const d = now.toLocaleDateString('he-IL') + ' ' + now.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'});
-  let txt = `# חזרה על הגדרות — אינפי 1\n# תאריך: ${d}\n\n`;
-  let strong=0, ok=0, weak=0, empty=0;
+<div class="identity-box">
+  <table>
+  <tr><td>lim(x→0) sin(x)/x = 1</td><td>⭐ הגבול הטריגונומטרי המרכזי</td></tr>
+  <tr><td>lim(x→0) (1-cos x)/x² = 1/2</td><td>נגזר מהקודם</td></tr>
+  <tr><td>lim(x→0) (eˣ-1)/x = 1</td><td>⭐ הגבול האקספוננציאלי</td></tr>
+  <tr><td>lim(x→0) ln(1+x)/x = 1</td><td>⭐</td></tr>
+  <tr><td>lim(x→∞) (1+1/x)ˣ = e</td><td>⭐ הגדרת e</td></tr>
+  <tr><td>lim(x→0) (1+x)^(1/x) = e</td><td>צורה שקולה</td></tr>
+  <tr><td>lim(x→∞) xⁿ/eˣ = 0</td><td>⭐ אקספוננט מנצח פולינום</td></tr>
+  <tr><td>lim(x→∞) ln(x)/xᵅ = 0 &nbsp;(α>0)</td><td>⭐ פולינום מנצח לוגריתם</td></tr>
+  </table>
+</div>
 
-  Q.forEach(q => {
-    const s = load(q.id);
-    const ans = (s.answer||'').trim();
-    const conf = s.confidence || 'לא סומן';
-    if (conf==='strong') strong++; else if (conf==='ok') ok++; else if (conf==='weak') weak++;
-    if (!ans) empty++;
-    txt += `---\n## ${q.id}. ${q.name}\n`;
-    txt += `שאלה: ${q.prompt}\n\n`;
-    txt += `תשובה: ${ans || '(ריק)'}\n\n`;
-    txt += `ביטחון: ${conf==='strong'?'💪 חזקה':conf==='ok'?'🤔 ככה ככה':conf==='weak'?'😰 חלש':'❓ לא סומן'}\n\n`;
-  });
+<!-- ══════════════════════════════════════ -->
+<h2>📋 טבלת סיכום: מי רציפה? גזירה? איפה הבעיה?</h2>
+<!-- ══════════════════════════════════════ -->
 
-  txt += `---\n\n# סיכום\n- 💪 חזקה: ${strong}\n- 🤔 ככה ככה: ${ok}\n- 😰 חלש: ${weak}\n- ריקים: ${empty}\n`;
+<table>
+<tr>
+  <th>טענה</th>
+  <th>נכון?</th>
+  <th>דוגמה נגדית / הסבר</th>
+</tr>
+<tr><td>גזירה ⟹ רציפה</td><td class="yes">✓ נכון</td><td>משפט! (הוכחה בסיכום)</td></tr>
+<tr><td>רציפה ⟹ גזירה</td><td class="no">✗ לא!</td><td>|x| רציפה ב-0, לא גזירה</td></tr>
+<tr><td>רציפה על [a,b] ⟹ חסומה</td><td class="yes">✓ נכון</td><td>ויירשטראס (קטע סגור!)</td></tr>
+<tr><td>רציפה על (a,b) ⟹ חסומה</td><td class="no">✗ לא!</td><td>1/x על (0,1)</td></tr>
+<tr><td>רציפה על [a,b] ⟹ מקבלת max/min</td><td class="yes">✓ נכון</td><td>ויירשטראס</td></tr>
+<tr><td>רציפה על (a,b) ⟹ מקבלת max/min</td><td class="no">✗ לא!</td><td>x על (0,1) — אין max ואין min</td></tr>
+<tr><td>f גזירה + f'(c)=0 ⟹ c נק' קיצון</td><td class="no">✗ לא!</td><td>f(x)=x³, f'(0)=0 אבל 0 לא קיצון (נק' פיתול)</td></tr>
+<tr><td>f גזירה + c קיצון ⟹ f'(c)=0</td><td class="yes">✓ נכון</td><td>פרמה!</td></tr>
+<tr><td>|f| רציפה ⟹ f רציפה</td><td class="no">✗ לא!</td><td>Sgn(x): |Sgn|=1 (חוץ מ-0) רציפה, Sgn לא</td></tr>
+<tr><td>f רציפה ⟹ |f| רציפה</td><td class="yes">✓ נכון</td><td>הרכבת פונקציות רציפות</td></tr>
+<tr><td>f גזירה, f'(x₀)=0 ⟹ |f| גזירה ב-x₀</td><td class="yes">✓ נכון</td><td>סנדוויץ': ||f(x)|-|f(x₀)||/|x-x₀| ≤ |f(x)-f(x₀)|/|x-x₀| → 0</td></tr>
+<tr><td>f,g רציפות ⟹ f∘g רציפה</td><td class="yes">✓ נכון</td><td>הרכבת רציפות</td></tr>
+<tr><td>f+g רציפות ⟹ f,g רציפות</td><td class="no">✗ לא!</td><td>f=D (דיריכלה), g=1-D. f+g=1 רציפה, אבל f,g לא</td></tr>
+</table>
 
-  const blob = new Blob([txt], { type: 'text/markdown;charset=utf-8' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `quiz-definitions-${now.toISOString().slice(0,10)}.md`;
-  a.click();
-}
+<!-- ══════════════════════════════════════ -->
+<h2>🎯 נגזרות חשובות לשינון</h2>
+<!-- ══════════════════════════════════════ -->
 
-function clearAll() {
-  if (!confirm('בטוחה שאת רוצה למחוק את כל התשובות?')) return;
-  Q.forEach(q => localStorage.removeItem(KEY+q.id));
-  render();
-}
+<div class="identity-box">
+  <table>
+  <tr><th>f(x)</th><th>f'(x)</th><th></th></tr>
+  <tr><td>xⁿ</td><td>n·xⁿ⁻¹</td><td></td></tr>
+  <tr><td>eˣ</td><td>eˣ</td><td>⭐ יחידה: f'=f</td></tr>
+  <tr><td>aˣ</td><td>aˣ·ln(a)</td><td></td></tr>
+  <tr><td>ln(x)</td><td>1/x</td><td></td></tr>
+  <tr><td>logₐ(x)</td><td>1/(x·ln a)</td><td></td></tr>
+  <tr><td>sin(x)</td><td>cos(x)</td><td></td></tr>
+  <tr><td>cos(x)</td><td>-sin(x)</td><td></td></tr>
+  <tr><td>tan(x)</td><td>1/cos²(x)</td><td></td></tr>
+  <tr><td>arcsin(x)</td><td>1/√(1-x²)</td><td>|x|<1</td></tr>
+  <tr><td>arccos(x)</td><td>-1/√(1-x²)</td><td>|x|<1</td></tr>
+  <tr><td>arctan(x)</td><td>1/(1+x²)</td><td>⭐ חשוב מאוד למבחן</td></tr>
+  </table>
+</div>
 
-render();
-</script>
+<div class="tip" style="margin-top:20px">
+  <strong>🧠 כלל זיכרון לדוגמאות נגדיות:</strong><br>
+  כשנתקעים ב"הוכח או הפרך" — נסי קודם את הפונקציות האלה:<br>
+  <strong>|x|</strong> (רציפה לא גזירה) · <strong>Sgn(x)</strong> (קפיצה) · <strong>D(x)</strong> דיריכלה (לא רציפה בכלל) · <strong>1/x</strong> (לא חסומה) · <strong>x³</strong> (f'=0 בלי קיצון) · <strong>x²sin(1/x)</strong> (f' לא רציפה)
+</div>
+
 </body>
 </html>
