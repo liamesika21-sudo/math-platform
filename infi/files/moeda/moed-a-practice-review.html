@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בדיקת פתירה חוזרת — מועד א' אינפי 1, 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Rubik,sans-serif;background:#f8fafc;color:#1e293b;padding:20px 16px 60px;max-width:960px;margin:0 auto;line-height:1.7}
+h1{font-size:1.5rem;font-weight:800}
+h2{font-size:1.15rem;font-weight:700;margin:28px 0 10px;color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:6px}
+h3{font-size:.95rem;font-weight:700;margin:16px 0 6px;color:#334155}
+.hero{background:linear-gradient(135deg,#0f172a,#334155);color:#fff;border-radius:16px;padding:24px;margin-bottom:24px}
+.hero p{font-size:.84rem;opacity:.85;margin-top:6px}
+.hero .grade-big{font-size:3rem;font-weight:900;margin:12px 0 4px;color:#fbbf24}
+.hero .grade-sub{font-size:1rem;opacity:.7}
+
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.card-correct{border-right:4px solid #10b981}
+.card-partial{border-right:4px solid #f59e0b}
+.card-wrong{border-right:4px solid #ef4444}
+.card-empty{border-right:4px solid #94a3b8}
+
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px}
+.card-title{font-weight:700;font-size:.95rem;color:#0f172a}
+.score-badge{font-size:.82rem;font-weight:800;padding:3px 12px;border-radius:99px;white-space:nowrap}
+.score-full{background:#ecfdf5;color:#047857}
+.score-partial{background:#fffbeb;color:#92400e}
+.score-zero{background:#fef2f2;color:#b91c1c}
+.score-na{background:#f1f5f9;color:#64748b}
+
+.detail{font-size:.84rem;color:#475569;margin:6px 0}
+.detail strong{color:#1e293b}
+
+.official{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 12px;margin:8px 0;font-size:.84rem}
+.official-title{font-weight:700;color:#047857;font-size:.78rem;margin-bottom:4px}
+
+.mistake{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 12px;margin:8px 0;font-size:.84rem}
+.mistake-title{font-weight:700;color:#b91c1c;font-size:.78rem;margin-bottom:4px}
+
+.tip{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 12px;margin:8px 0;font-size:.84rem}
+.tip-title{font-weight:700;color:#1d4ed8;font-size:.78rem;margin-bottom:4px}
+
+.improve{background:#fefce8;border:1px solid #fde68a;border-radius:8px;padding:10px 12px;margin:8px 0;font-size:.84rem}
+.improve-title{font-weight:700;color:#92400e;font-size:.78rem;margin-bottom:4px}
+
+.comparison{background:#faf5ff;border:1px solid #e9d5ff;border-radius:8px;padding:10px 12px;margin:8px 0;font-size:.84rem}
+.comparison-title{font-weight:700;color:#7c3aed;font-size:.78rem;margin-bottom:4px}
+
+table{width:100%;border-collapse:collapse;font-size:.84rem;margin:12px 0}
+th{background:#f1f5f9;padding:9px 10px;text-align:right;font-weight:700;color:#475569;border-bottom:2px solid #e2e8f0;font-size:.78rem}
+td{padding:8px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+.yes{color:#047857;font-weight:700}
+.no{color:#b91c1c;font-weight:700}
+.partial-c{color:#d97706;font-weight:700}
+
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:16px 0}
+.summary-box{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;text-align:center}
+.summary-box .q-label{font-size:.75rem;font-weight:700;color:#64748b;text-transform:uppercase}
+.summary-box .q-score{font-size:1.5rem;font-weight:900;margin:4px 0}
+.summary-box .q-max{font-size:.72rem;color:#94a3b8}
+.q-green .q-score{color:#047857}
+.q-yellow .q-score{color:#d97706}
+.q-red .q-score{color:#b91c1c}
+.q-gray .q-score{color:#94a3b8}
+
+.progress-bar{height:8px;background:#e2e8f0;border-radius:99px;margin:4px 0;overflow:hidden}
+.progress-fill{height:100%;border-radius:99px;transition:width .3s}
+.fill-green{background:#10b981}
+.fill-yellow{background:#f59e0b}
+.fill-red{background:#ef4444}
+.fill-gray{background:#94a3b8}
+
+.katex{font-size:.95em}
+.section-divider{height:2px;background:linear-gradient(to left,#e2e8f0,#cbd5e1,#e2e8f0);margin:24px 0;border-radius:2px}
+.moed-comparison-table td:first-child{font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+  <h1>בדיקת פתירה חוזרת — מועד א' אינפי 1</h1>
+  <p>תאריך: 3 באפריל 2026 &bull; מרצה: ד"ר יוסי שמאי &bull; אוניברסיטת רייכמן</p>
+  <div class="grade-big">62</div>
+  <div class="grade-sub">ציון משוער (מתוך 100) &bull; שאלות 1-3 + שאלה ריקה</div>
+  <p style="margin-top:12px;font-size:.82rem;opacity:.9">
+    <strong>לשם השוואה:</strong> מועד א' המקורי — 46/100.
+    <strong>שיפור של +16 נקודות.</strong><br>
+    שאלות 1-2 כמעט מושלמות! שאלה 3 חלקית. חסרה שאלה רביעית.
+  </p>
+</div>
+
+<!-- ========== SUMMARY TABLE ========== -->
+<h2>סיכום ניקוד לפי שאלה</h2>
+
+<div class="summary-grid">
+  <div class="summary-box q-green">
+    <div class="q-label">שאלה 1</div>
+    <div class="q-score">25/25</div>
+    <div class="q-max">מושלם</div>
+    <div class="progress-bar"><div class="progress-fill fill-green" style="width:100%"></div></div>
+  </div>
+  <div class="summary-box q-green">
+    <div class="q-label">שאלה 2</div>
+    <div class="q-score">24/25</div>
+    <div class="q-max">כמעט מושלם</div>
+    <div class="progress-bar"><div class="progress-fill fill-green" style="width:96%"></div></div>
+  </div>
+  <div class="summary-box q-yellow">
+    <div class="q-label">שאלה 3</div>
+    <div class="q-score">13/25</div>
+    <div class="q-max">חלקי</div>
+    <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:52%"></div></div>
+  </div>
+  <div class="summary-box q-gray">
+    <div class="q-label">שאלה 4</div>
+    <div class="q-score">0/25</div>
+    <div class="q-max">לא נפתרה</div>
+    <div class="progress-bar"><div class="progress-fill fill-gray" style="width:0%"></div></div>
+  </div>
+  <div class="summary-box q-gray">
+    <div class="q-label">שאלה 5</div>
+    <div class="q-score">0/25</div>
+    <div class="q-max">לא נפתרה</div>
+    <div class="progress-bar"><div class="progress-fill fill-gray" style="width:0%"></div></div>
+  </div>
+</div>
+
+<table class="moed-comparison-table">
+<tr><th>סעיף</th><th>ניקוד מקסימלי</th><th>מועד א' (מקורי)</th><th>פתירה חוזרת (עכשיו)</th><th>שינוי</th></tr>
+<tr><td>1.1</td><td>2</td><td class="no">0</td><td class="yes">2</td><td class="yes">+2</td></tr>
+<tr><td>1.2.1</td><td>8</td><td class="no">0</td><td class="yes">8</td><td class="yes">+8</td></tr>
+<tr><td>1.2.2</td><td>15</td><td class="no">0</td><td class="yes">15</td><td class="yes">+15</td></tr>
+<tr style="background:#f8fafc;font-weight:700"><td>שאלה 1 סה"כ</td><td>25</td><td class="no">0</td><td class="yes">25</td><td class="yes">+25</td></tr>
+<tr><td>2.1.1</td><td>2</td><td class="no">—</td><td class="yes">2</td><td>—</td></tr>
+<tr><td>2.1.2</td><td>11</td><td class="no">—</td><td class="yes">11</td><td>—</td></tr>
+<tr><td>2.2.1</td><td>3</td><td class="yes">3</td><td class="yes">3</td><td>0</td></tr>
+<tr><td>2.2.2</td><td>9</td><td class="partial-c">7</td><td class="partial-c">8</td><td class="yes">+1</td></tr>
+<tr style="background:#f8fafc;font-weight:700"><td>שאלה 2 סה"כ</td><td>25</td><td class="partial-c">16</td><td class="yes">24</td><td class="yes">+8</td></tr>
+<tr><td>3.1</td><td>12</td><td class="partial-c">10</td><td class="partial-c">10</td><td>0</td></tr>
+<tr><td>3.2</td><td>13</td><td class="no">0</td><td class="no">3</td><td class="yes">+3</td></tr>
+<tr style="background:#f8fafc;font-weight:700"><td>שאלה 3 סה"כ</td><td>25</td><td class="partial-c">10</td><td class="partial-c">13</td><td class="yes">+3</td></tr>
+<tr><td>4.1</td><td>12</td><td class="yes">12</td><td class="no">0</td><td class="no">-12</td></tr>
+<tr><td>4.2</td><td>13</td><td class="partial-c">8</td><td class="no">0</td><td class="no">-8</td></tr>
+<tr style="background:#f8fafc;font-weight:700"><td>שאלה 4 סה"כ</td><td>25</td><td class="partial-c">20</td><td class="no">0</td><td class="no">(לא נפתרה)</td></tr>
+<tr style="background:#e2e8f0;font-weight:800"><td>סה"כ (4 הטובות)</td><td>100</td><td>46</td><td>62</td><td class="yes">+16</td></tr>
+</table>
+
+<div class="tip">
+  <div class="tip-title">שים לב</div>
+  במועד א' המקורי בחרת שאלות 1-5 (חוץ מ-5 שלא נענתה) וקיבלת 46.
+  בפתירה החוזרת פתרת רק שאלות 1-3. בלי שאלה רביעית, הציון מוגבל ל-62 מקסימום מהשאלות שפתרת.
+  <strong>אם היית פותר גם שאלה 4 באותה רמה כמו מועד א' (20 נק'), הציון היה 82!</strong>
+</div>
+
+<!-- ========== QUESTION 1 ========== -->
+<div class="section-divider"></div>
+<h2>שאלה 1 — גזירות ומשפט קושי (25 נק')</h2>
+
+<!-- 1.1 -->
+<div class="card card-correct">
+  <div class="card-header">
+    <span class="card-title">1.1 — הגדרה: \(f\) גזירה ב-\((a,b)\) (2 נק')</span>
+    <span class="score-badge score-full">2/2</span>
+  </div>
+  <div class="detail">
+    <strong>מה כתבת:</strong> נאמר כי \(f\) גזירה ב-\((a,b)\) אם לכל \(x_0 \in (a,b)\) קיים \(L \in \mathbb{R}\) כך שלכל \(\varepsilon > 0\) קיים \(\delta > 0\) כך שלכל \(0 < |x - x_0| < \delta\) מתקיים
+    \(\left|\frac{f(x) - f(x_0)}{x - x_0} - L\right| < \varepsilon\).
+  </div>
+  <div class="official">
+    <div class="official-title">מושלם!</div>
+    ההגדרה מדויקת ומלאה. כוללת את קיום \(L\), שימוש נכון ב-\(\varepsilon, \delta\), ואת כל הכמתים הנדרשים.
+  </div>
+  <div class="comparison">
+    <div class="comparison-title">השוואה למועד א'</div>
+    במועד א' קיבלת <strong>0/2</strong> — ההגדרה הייתה חסרה את קיום \(L \in \mathbb{R}\) ואת המבנה המלא. <strong>תיקון מצוין!</strong>
+  </div>
+</div>
+
+<!-- 1.2.1 -->
+<div class="card card-correct">
+  <div class="card-header">
+    <span class="card-title">1.2.1 — הוכיחו ש-\(g\) חח"ע (8 נק')</span>
+    <span class="score-badge score-full">8/8</span>
+  </div>
+  <div class="detail">
+    <strong>מה כתבת:</strong> הנחת \(g(x_1) = g(x_2)\) עבור \(x_1, x_2 \in [a,b]\), בלי הגבלת כלליות \(x_1 < x_2\).<br>
+    &bull; \(g\) רציפה ב-\([x_1, x_2]\) (מהנתון)<br>
+    &bull; \(g\) גזירה ב-\((x_1, x_2)\) (מהנתון)<br>
+    &bull; \(g(x_1) = g(x_2)\) (מההנחה)<br>
+    &bull; לפי משפט רול: קיים \(c \in (x_1, x_2)\) כך ש-\(g'(c) = 0\)<br>
+    &bull; סתירה! כי \(g'(x) \neq 0\) לכל \(x \in (a,b)\), ובפרט \(g'(c) \neq 0\).
+  </div>
+  <div class="official">
+    <div class="official-title">מושלם!</div>
+    הוכחה קלאסית מההרצאה. כל השלבים נכונים: הנחת שוויון, בניית תנאי רול, הפעלת המשפט, וסתירה.
+  </div>
+  <div class="comparison">
+    <div class="comparison-title">השוואה למועד א'</div>
+    במועד א' הסעיף הזה היה חלק מ-1.2 שקיבל <strong>0/23</strong> כי ההוכחה כולה הייתה שגויה. <strong>שיפור דרמטי!</strong>
+  </div>
+</div>
+
+<!-- 1.2.2 -->
+<div class="card card-correct">
+  <div class="card-header">
+    <span class="card-title">1.2.2 — הוכחת משפט קושי של ערך הביניים (15 נק')</span>
+    <span class="score-badge score-full">15/15</span>
+  </div>
+  <div class="detail">
+    <strong>מה כתבת:</strong><br>
+    &bull; הגדרת \(\alpha = \frac{f(b)-f(a)}{g(b)-g(a)}\) (מוגדר היטב כי \(g\) חח"ע ו-\(a \neq b\) אז \(g(a) \neq g(b)\))<br>
+    &bull; הגדרת \(h(x) = f(x) - \alpha g(x)\) לכל \(x \in [a,b]\)<br>
+    &bull; הראית ש-\(h\) רציפה ב-\([a,b]\) וגזירה ב-\((a,b)\) (מאריתמטיקה של פונקציות)<br>
+    &bull; חישבת \(h(b) - h(a) = f(b) - f(a) - \alpha(g(b) - g(a)) = 0\)<br>
+    &bull; לפי רול: קיים \(c \in (a,b)\) כך ש-\(h'(c) = 0\)<br>
+    &bull; \(h'(c) = f'(c) - \alpha g'(c) = 0\), ומכיוון ש-\(g'(c) \neq 0\):<br>
+    &bull; \(\frac{f'(c)}{g'(c)} = \alpha = \frac{f(b)-f(a)}{g(b)-g(a)}\) &check;
+  </div>
+  <div class="official">
+    <div class="official-title">מושלם!</div>
+    הוכחה מלאה ומדויקת של משפט קושי (Cauchy's MVT). הבנייה של פונקציית העזר \(h\) נכונה, השימוש ברול נכון, וההגעה לתוצאה הסופית שלמה.
+  </div>
+  <div class="comparison">
+    <div class="comparison-title">השוואה למועד א'</div>
+    במועד א' ניסית לחלק ישירות \(\frac{f'(x)}{g'(x)}\) וקיבלת <strong>0 נקודות</strong>. המרצה כתב: "חזרה על ההוכחה השגויה שהדגמתי בכיתה".
+    <strong>הפעם ההוכחה מושלמת — עם בניית \(h\) נכונה ושימוש ברול. כל הכבוד!</strong>
+  </div>
+</div>
+
+<!-- ========== QUESTION 2 ========== -->
+<div class="section-divider"></div>
+<h2>שאלה 2 — אינפימום ורציונליים (25 נק')</h2>
+
+<!-- 2.1.1 -->
+<div class="card card-correct">
+  <div class="card-header">
+    <span class="card-title">2.1.1 — הגדרה: \(A\) חסומה מלרע (2 נק')</span>
+    <span class="score-badge score-full">2/2</span>
+  </div>
+  <div class="detail">
+    <strong>מה כתבת:</strong> נאמר כי \(A\) חסומה מלרע אם קיים \(M \in \mathbb{R}\) כך שלכל \(a \in A\) מתקיים \(M \leq a\).
+  </div>
+  <div class="official">
+    <div class="official-title">נכון</div>
+    תואם לפתרון הרשמי. הפורמט נכון: קיום חסם \(M\) ואי-שוויון בכיוון הנכון.
+  </div>
+  <div class="comparison">
+    <div class="comparison-title">השוואה למועד א'</div>
+    במועד א' המרצה הוריד <strong>-2</strong> על כיוון האי-שוויון (כתבת \(M \geq a\) במקום \(a \geq M\)).
+    <strong>הפעם הכיוון נכון!</strong>
+  </div>
+  <div class="improve">
+    <div class="improve-title">שים לב למועד ב'</div>
+    תמיד בדוק כיוון: "חסומה מלרע" = יש חסם שהוא <strong>קטן מ/שווה לכל</strong> איבר. \(m \leq a\) לכל \(a \in A\).
+  </div>
+</div>
+
+<!-- 2.1.2 -->
+<div class="card card-correct">
+  <div class="card-header">
+    <span class="card-title">2.1.2 — הוכחה: \(s = \inf(A)\) אמ"מ תכונת ה-\(\varepsilon\) (11 נק')</span>
+    <span class="score-badge score-full">11/11</span>
+  </div>
+  <div class="detail">
+    <strong>כיוון \(\Rightarrow\) (4-5 נק'):</strong><br>
+    &bull; נתון \(s = \inf(A)\), יהי \(\varepsilon > 0\)<br>
+    &bull; הגדרת \(m = s + \varepsilon\). כיוון ש-\(\varepsilon > 0\) אז \(m > s\)<br>
+    &bull; ממקסימליות \(\inf(A)\): כל מספר גדול מ-\(s\) אינו חסם מלרע<br>
+    &bull; לכן \(m\) אינו חסם מלרע, ולכן קיים \(a \in A\) כך ש-\(a < m = s + \varepsilon\) &check;
+  </div>
+  <div class="detail" style="margin-top:10px">
+    <strong>כיוון \(\Leftarrow\) (6-7 נק'):</strong><br>
+    &bull; \(s\) חסם מלרע (נתון). צריך להראות שהוא הגדול ביותר.<br>
+    &bull; יהי \(m \in \mathbb{R}\) חסם מלרע כך ש-\(m > s\) (בשלילה)<br>
+    &bull; בחרת \(\varepsilon = m - s > 0\)<br>
+    &bull; מתכונת ה-\(\varepsilon\): קיים \(a_1 \in A\) כך ש-\(a_1 < s + \varepsilon = s + (m-s) = m\)<br>
+    &bull; סתירה! \(a_1 < m\) אבל \(m\) חסם מלרע אז \(a_1 \geq m\) &check;
+  </div>
+  <div class="official">
+    <div class="official-title">מושלם!</div>
+    שני הכיוונים נכונים ומלאים. תואם לחלוטין לפתרון הרשמי. שימוש נכון במקסימליות של inf ובתכונת ה-ε.
+  </div>
+  <div class="comparison">
+    <div class="comparison-title">השוואה למועד א'</div>
+    במועד א' קיבלת <strong>6/13</strong> על כל 2.1 (כולל ההגדרה). המרצה כתב "לא רלוונטי" על חלקים מההוכחה וסימן "זה מה שצריך להוכיח" כי היית מעגלי.
+    <strong>הפעם ההוכחה ישירה ומדויקת. שיפור משמעותי!</strong>
+  </div>
+</div>
+
+<!-- 2.2.1 -->
+<div class="card card-correct">
+  <div class="card-header">
+    <span class="card-title">2.2.1 — הוכיחו ש-\(\frac{2x+3}{3x+2} \neq \frac{2}{3}\) (3 נק')</span>
+    <span class="score-badge score-full">3/3</span>
+  </div>
+  <div class="detail">
+    <strong>מה כתבת:</strong> נניח בשלילה ש-\(\frac{2x+3}{3x+2} = \frac{2}{3}\).<br>
+    אזי \(3(2x+3) = 2(3x+2)\), כלומר \(6x + 9 = 6x + 4\), ומכאן \(0 \cdot x = -5\). סתירה!
+  </div>
+  <div class="official">
+    <div class="official-title">מושלם!</div>
+    הוכחה פשוטה וקצרה בשלילה. תואם בדיוק לפתרון הרשמי.
+  </div>
+</div>
+
+<!-- 2.2.2 -->
+<div class="card card-partial">
+  <div class="card-header">
+    <span class="card-title">2.2.2 — הוכיחו ש-\(\frac{2x+3}{3x+2} \in \mathbb{R} \setminus \mathbb{Q}\) (9 נק')</span>
+    <span class="score-badge score-partial">8/9</span>
+  </div>
+  <div class="detail">
+    <strong>מה כתבת:</strong><br>
+    &bull; הנחת בשלילה ש-\(\frac{2x+3}{3x+2} \in \mathbb{Q}\) וסימנת \(q = \frac{2x+3}{3x+2}\) עם \(q \in \mathbb{Q}\)<br>
+    &bull; כפלת: \(q(3x+2) = 2x+3\)<br>
+    &bull; \(3qx + 2q = 2x + 3 \Rightarrow 3qx - 2x = 3 - 2q \Rightarrow x(3q-2) = 3-2q\)<br>
+    &bull; מ-2.2.1: \(q \neq \frac{2}{3}\) ולכן \(3q - 2 \neq 0\) — ניתן לחלק! &check;<br>
+    &bull; \(x = \frac{3-2q}{3q-2}\), ומסגירות \(\mathbb{Q}\): \(x \in \mathbb{Q}\). סתירה! &check;
+  </div>
+  <div class="mistake">
+    <div class="mistake-title">חסר: הצדקה שהביטוי מוגדר (-1)</div>
+    לא ציינת במפורש ש-\(q\) עצמו מוגדר היטב. צריך להגיד: כיוון ש-\(x \in \mathbb{R}\setminus\mathbb{Q}\) אז \(x \neq -\frac{2}{3}\) (כי \(-\frac{2}{3} \in \mathbb{Q}\)), ולכן \(3x + 2 \neq 0\), כך שהביטוי \(\frac{2x+3}{3x+2}\) מוגדר.
+  </div>
+  <div class="comparison">
+    <div class="comparison-title">השוואה למועד א'</div>
+    במועד א' קיבלת <strong>7/9</strong>. המרצה שאל שתי שאלות: "למה הביטוי מוגדר?" ו"למה המכנה שונה מאפס?". הפעם תיקנת את הנושא של \(3q-2 \neq 0\) (אזכרת את 2.2.1), אבל עדיין חסרה ההצדקה ש-\(3x+2 \neq 0\).
+    <strong>שיפור מ-7 ל-8, אבל עדיין חסרה שורה אחת.</strong>
+  </div>
+  <div class="improve">
+    <div class="improve-title">תיקון למועד ב'</div>
+    תמיד כשמגדירים ביטוי עם מכנה, הוסף שורה: "הביטוי מוגדר כי \(3x+2 \neq 0\) שכן \(x \neq -\frac{2}{3}\) (בגלל ש-\(x\) אי-רציונלי ו-\(-\frac{2}{3}\) רציונלי)."
+  </div>
+</div>
+
+<!-- ========== QUESTION 3 ========== -->
+<div class="section-divider"></div>
+<h2>שאלה 3 — גבולות וערך ביניים (25 נק')</h2>
+
+<!-- 3.1 -->
+<div class="card card-partial">
+  <div class="card-header">
+    <span class="card-title">3.1 — \(f\) לא חסומה מלרע (12 נק')</span>
+    <span class="score-badge score-partial">10/12</span>
+  </div>
+  <div class="detail">
+    <strong>מה כתבת:</strong><br>
+    &bull; ציינת: \(f\) עולה, לא חסומה מלעיל, \(f: \mathbb{R} \to \mathbb{R}\setminus\{0\}\)<br>
+    &bull; נתון \(\displaystyle\lim_{x \to \infty}\frac{f(x)}{f(-x)} = -1\)<br>
+    &bull; הצבת \(t = -x\):<br>
+    \(\displaystyle\lim_{x \to -\infty} f(x) = \lim_{t \to \infty} f(-t) = \lim_{t \to \infty} \frac{f(-t)}{f(t)} \cdot f(t) = (-1) \cdot \infty = -\infty\)<br>
+    &bull; מכאן \(f\) לא חסומה מלרע &check;
+  </div>
+  <div class="mistake">
+    <div class="mistake-title">חסר: הצדקה ש-\(\lim_{x\to\infty}f(x) = \infty\) (-2)</div>
+    הנחת ש-\(\lim_{t\to\infty} f(t) = \infty\) בלי להצדיק. צריך לכתוב במפורש:<br>
+    "כיוון ש-\(f\) <strong>עולה</strong> ו<strong>לא חסומה מלעיל</strong>, אז \(\displaystyle\lim_{x \to \infty} f(x) = \infty\)."<br>
+    בלי "עולה" הטענה לא נכונה — פונקציה יכולה להיות לא חסומה מלעיל בלי שהגבול הוא אינסוף (למשל אם היא מתנדנדת).
+  </div>
+  <div class="official">
+    <div class="official-title">הפתרון הרשמי</div>
+    הגישה דומה לשלך אבל רושמים:
+    \(\displaystyle\lim_{x\to-\infty}f(x) = \lim_{t\to\infty}f(-t) = \lim_{t\to\infty}\frac{f(t)}{f(t)/f(-t)} \stackrel{AOL}{=} \frac{\infty}{-1} = -\infty\)
+  </div>
+  <div class="comparison">
+    <div class="comparison-title">השוואה למועד א'</div>
+    במועד א' גם קיבלת <strong>10/12</strong>. המרצה כתב "בלבול בין לא חסומה ללא חסומה מלעיל" (-2). הבעיה דומה — עדיין חסרה הנמקה מלאה לשלב הזה.
+  </div>
+  <div class="improve">
+    <div class="improve-title">טיפ למועד ב'</div>
+    <strong>תמיד כשטוענים \(\lim f = \infty\), הצדיקו:</strong><br>
+    "\(f\) עולה + לא חסומה מלעיל \(\Rightarrow \lim_{x\to\infty}f(x) = \infty\)" (זה משפט מההרצאה).<br>
+    בנוסף, \(\lim \frac{f(-t)}{f(t)} = \frac{1}{\lim \frac{f(t)}{f(-t)}} = \frac{1}{-1} = -1\) — צריך להצדיק את המעבר הזה (חילוק גבולות, כי הגבול קיים וסופי ושונה מ-0).
+  </div>
+</div>
+
+<!-- 3.2 -->
+<div class="card card-wrong">
+  <div class="card-header">
+    <span class="card-title">3.2 — קיום \(c\) כך ש-\(f(c+h)=f(c)\) (13 נק')</span>
+    <span class="score-badge score-zero">3/13</span>
+  </div>
+  <div class="detail">
+    <strong>מה כתבת:</strong><br>
+    &bull; ציינת: \(f\) רציפה, \(0 < h \in \mathbb{R}\), \(f\) מקבלת מקסימום<br>
+    &bull; הגדרת \(h(x) = f(x+h) - f(x)\) &check; (פונקציית עזר נכונה!)<br>
+    &bull; ציינת ש-\(h\) רציפה כי \(f\) רציפה &check;<br>
+    &bull; כתבת \(\lim_{x \to x_0} h(x) = h(x_0)\) — זה פשוט רציפות, לא מוביל לשום מקום<br>
+    &bull; <strong>לא הגעת לשלב המפתח — שימוש במשפט ערך הביניים (IVT)</strong>
+  </div>
+  <div class="detail">
+    <strong>פירוט הנקודות:</strong><br>
+    &bull; +2: הגדרת פונקציית עזר נכונה \(g(x) = f(x+h) - f(x)\)<br>
+    &bull; +1: ציון שהיא רציפה<br>
+    &bull; +0: לא הערכת את \(g\) בנקודות הנכונות<br>
+    &bull; +0: לא השתמשת ב-IVT<br>
+    &bull; +0: לא הגעת למסקנה
+  </div>
+  <div class="official">
+    <div class="official-title">הפתרון הרשמי המלא</div>
+    מגדירים \(g(x) = f(x+h) - f(x)\). \(g\) רציפה (AOC).<br><br>
+    כיוון ש-\(f\) מקבלת מקסימום, קיימת \(x_0 \in \mathbb{R}\) כך ש-\(f(x) \leq f(x_0)\) לכל \(x \in \mathbb{R}\).<br><br>
+    <strong>שלב מפתח — בודקים סימנים:</strong><br>
+    &bull; \(g(x_0) = f(x_0 + h) - f(x_0) \leq 0\) &nbsp;&nbsp; (כי \(f(x_0)\) הוא המקסימום, אז \(f(x_0+h) \leq f(x_0)\))<br>
+    &bull; \(g(x_0 - h) = f(x_0) - f(x_0 - h) \geq 0\) &nbsp;&nbsp; (כי \(f(x_0)\) הוא המקסימום, אז \(f(x_0-h) \leq f(x_0)\))<br><br>
+    <strong>סיום:</strong><br>
+    \(g(x_0-h) \geq 0\) וגם \(g(x_0) \leq 0\). לפי <strong>משפט ערך הביניים המוכלל</strong>, קיימת \(c\) עם \(x_0 - h \leq c \leq x_0\) כך ש-\(g(c) = 0\), כלומר \(f(c+h) = f(c)\). &check;
+  </div>
+  <div class="improve">
+    <div class="improve-title">איך ללמוד את זה למועד ב'</div>
+    <strong>הטריק הקלאסי:</strong> כשצריך להוכיח קיום נקודה עם תכונה מסוימת:<br>
+    1. <strong>בנה פונקציית עזר</strong> שהאפס שלה נותן את מה שצריך (עשית! \(g(x) = f(x+h) - f(x)\))<br>
+    2. <strong>בדוק סימנים</strong> — מצא שתי נקודות שבהן \(g\) חיובית/שלילית (או אפס)<br>
+    3. <strong>הפעל IVT</strong> — אם \(g\) רציפה ומחליפה סימן, יש אפס ביניהם<br><br>
+    השלב שחסר לך הוא <strong>שלב 2</strong>: להבין שנקודת המקסימום \(x_0\) היא המפתח — תבדוק את \(g(x_0)\) ואת \(g(x_0 - h)\).
+  </div>
+</div>
+
+<!-- ========== QUESTIONS 4-5 ========== -->
+<div class="section-divider"></div>
+<h2>שאלות 4-5 — לא נפתרו</h2>
+
+<div class="card card-empty">
+  <div class="card-header">
+    <span class="card-title">שאלה 4 — לגראנז' ופונקציות עם גבולות (25 נק')</span>
+    <span class="score-badge score-na">0/25</span>
+  </div>
+  <div class="detail">לא נפתרה בפתירה החוזרת.</div>
+  <div class="tip">
+    <div class="tip-title">תזכורת</div>
+    במועד א' קיבלת <strong>20/25</strong> על שאלה 4 (12/12 על 4.1 + 8/13 על 4.2). זו הייתה השאלה הכי חזקה שלך! מומלץ מאוד לתרגל גם אותה.
+  </div>
+</div>
+
+<div class="card card-empty">
+  <div class="card-header">
+    <span class="card-title">שאלה 5 — קוסינוס, ln, ודוגמה נגדית (25 נק')</span>
+    <span class="score-badge score-na">0/25</span>
+  </div>
+  <div class="detail">לא נפתרה בפתירה החוזרת (גם במועד א' לא נפתרה).</div>
+</div>
+
+<!-- ========== FINAL ANALYSIS ========== -->
+<div class="section-divider"></div>
+<h2>ניתוח כולל והמלצות למועד ב'</h2>
+
+<div class="card" style="border:2px solid #7c3aed;background:#faf5ff">
+  <h3 style="color:#7c3aed;margin-bottom:10px">מה השתפר מאז מועד א'?</h3>
+  <div class="detail">
+    <strong style="color:#047857">שאלה 1: 0 → 25 (+25 נק')</strong><br>
+    &bull; הגדרת הגזירות — מ-0 ל-2 מלאות. הוספת את \(L \in \mathbb{R}\).<br>
+    &bull; הוכחת חח"ע של \(g\) — מ-0 ל-8 מלאות. שימוש נכון ברול.<br>
+    &bull; משפט קושי — מ-0 ל-15 מלאות. בניית \(h(x) = f(x) - \alpha g(x)\) מושלמת. <strong>זה השיפור הכי משמעותי!</strong>
+  </div>
+  <div class="detail" style="margin-top:8px">
+    <strong style="color:#047857">שאלה 2: 16 → 24 (+8 נק')</strong><br>
+    &bull; הגדרת חסום מלרע — תוקנה (כיוון נכון)<br>
+    &bull; הוכחת inf — משופרת משמעותית. שני הכיוונים מלאים ומדויקים<br>
+    &bull; \(\frac{2x+3}{3x+2} \in \mathbb{R}\setminus\mathbb{Q}\) — שיפור קטן (הוספת הצדקה ל-\(3q-2 \neq 0\))
+  </div>
+  <div class="detail" style="margin-top:8px">
+    <strong style="color:#d97706">שאלה 3: 10 → 13 (+3 נק')</strong><br>
+    &bull; 3.1 — אותו ציון. עדיין חסרה הנמקה לגבול.<br>
+    &bull; 3.2 — 3 נקודות חלקיות (במקום 0 במועד א'). הבנת שצריך פונקציית עזר אבל לא הגעת ל-IVT.
+  </div>
+</div>
+
+<div class="card" style="border:2px solid #ef4444;background:#fef2f2">
+  <h3 style="color:#b91c1c;margin-bottom:10px">מה עדיין צריך לעבוד עליו?</h3>
+  <div class="detail">
+    <strong>1. שאלות IVT (3.2 וכדומה):</strong><br>
+    &bull; התבנית: בנה פונקציית עזר → בדוק סימנים בשתי נקודות → IVT<br>
+    &bull; הנקודה החלשה: לא ידעת <strong>באיזה נקודות לבדוק</strong>. הטריק: נקודת הקיצון (מקסימום/מינימום) היא תמיד נקודה טובה לבדיקה!
+  </div>
+  <div class="detail" style="margin-top:8px">
+    <strong>2. הנמקות "קטנות" שמפסידות 1-2 נקודות:</strong><br>
+    &bull; "למה הביטוי מוגדר?" — תמיד בדוק מכנים<br>
+    &bull; "למה הגבול הוא אינסוף?" — תמיד נמק (עולה + לא חסומה → ∞)<br>
+    &bull; אלו נקודות "חינם" שאפשר לקבל עם שורה אחת נוספת
+  </div>
+  <div class="detail" style="margin-top:8px">
+    <strong>3. צריך שאלה רביעית!</strong><br>
+    &bull; פתרת רק 3 שאלות — חסרה שאלה שלמה (25 נק')<br>
+    &bull; <strong>שאלה 4</strong> היא שאלה חזקה שלך (קיבלת 20/25 במועד א'). תרגל אותה!<br>
+    &bull; <strong>שאלה 5</strong> — דוגמאות נגדיות וצפיפות הרציונליים. שווה להתאמן גם עליה.
+  </div>
+</div>
+
+<div class="card" style="border:2px solid #047857;background:#f0fdf4">
+  <h3 style="color:#047857;margin-bottom:10px">תוכנית פעולה למועד ב'</h3>
+  <div class="detail">
+    <strong>מוכן טוב (המשך לתחזק):</strong><br>
+    ✓ הגדרות (גזירות, חסום מלרע, inf) — כולן מדויקות<br>
+    ✓ משפט קושי (CMV) — הוכחה מושלמת<br>
+    ✓ חח"עות עם רול — מושלם<br>
+    ✓ הוכחות ברציונליים/אי-רציונליים — חזק<br>
+    ✓ הוכחת אפיון inf — מושלמת<br>
+  </div>
+  <div class="detail" style="margin-top:10px">
+    <strong>צריך עבודה:</strong><br>
+    ✗ שאלות IVT עם פונקציות עזר — תרגל 3-4 תרגילים מהסוג הזה<br>
+    ✗ הנמקות טכניות (מוגדרות ביטויים, הצדקת גבולות)<br>
+    ✗ שאלות לגראנז' (\(f''\)) — חזור על 4.1<br>
+    ✗ דוגמאות נגדיות — תרגל שאלה 5<br>
+    ✗ ניהול זמן — וודא שאתה פותר <strong>4 שאלות מלאות</strong>
+  </div>
+</div>
+
+<!-- ========== FINAL GRADE BOX ========== -->
+<div style="background:linear-gradient(135deg,#1e293b,#334155);color:#fff;border-radius:16px;padding:24px;margin-top:24px;text-align:center">
+  <div style="font-size:.85rem;opacity:.7;margin-bottom:4px">ציון סופי משוער — פתירה חוזרת</div>
+  <div style="font-size:3.5rem;font-weight:900;color:#fbbf24">62</div>
+  <div style="font-size:.9rem;opacity:.8;margin-top:4px">מועד א' מקורי: 46 &bull; <strong>שיפור: +16 נקודות</strong></div>
+  <div style="font-size:.78rem;opacity:.6;margin-top:12px">
+    שאלה 1: 25 &bull; שאלה 2: 24 &bull; שאלה 3: 13 &bull; שאלה 4: 0 (לא נפתרה)
+  </div>
+  <div style="margin-top:16px;font-size:.85rem;opacity:.9;background:rgba(255,255,255,.1);border-radius:10px;padding:12px">
+    <strong>פוטנציאל ריאלי למועד ב':</strong> אם תפתור 4 שאלות מלאות ברמה דומה → <strong>80-85+</strong>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\(", right: "\\)", display: false},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$$", right: "$$", display: true}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+
+</body>
+</html>

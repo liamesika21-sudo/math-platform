@@ -8,7 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Rubik,sans-serif;background:#f8fafc;color:#1e293b;padding:20px 16px 40px;max-width:900px;margin:0 auto;line-height:1.7}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Rubik,sans-serif;background:#f8fafc;color:#1e293b;padding:20px 16px 40px;max-width:960px;margin:0 auto;line-height:1.7}
 h1{font-size:1.5rem;font-weight:800}
 h2{font-size:1.15rem;font-weight:700;margin:28px 0 10px;color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:6px}
 h3{font-size:.95rem;font-weight:700;margin:16px 0 6px;color:#334155}
@@ -16,20 +16,19 @@ h3{font-size:.95rem;font-weight:700;margin:16px 0 6px;color:#334155}
 .hero p{font-size:.84rem;opacity:.85;margin-top:6px}
 .card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}
 .card-title{font-weight:700;font-size:.95rem;color:#0f172a;margin-bottom:6px}
-.math-row{background:#f8fafc;border-radius:8px;padding:10px 14px;margin:6px 0;font-size:.9rem;direction:ltr;text-align:center}
-.tag{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:4px}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:4px;margin-bottom:4px}
 .tag-cont{background:#ecfdf5;color:#047857}
 .tag-diff{background:#eef2ff;color:#4338ca}
-.tag-mono{background:#fef3c7;color:#92400e}
-.tag-bound{background:#fce7f3;color:#9d174d}
 .tag-no{background:#fef2f2;color:#b91c1c}
 .tag-jump{background:#fff7ed;color:#c2410c}
-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:8px 0}
-th{background:#f1f5f9;padding:8px 10px;text-align:right;font-weight:700;color:#475569;border-bottom:2px solid #e2e8f0}
-td{padding:7px 10px;border-bottom:1px solid #f1f5f9}
+table{width:100%;border-collapse:collapse;font-size:.84rem;margin:8px 0}
+th{background:#f1f5f9;padding:9px 10px;text-align:right;font-weight:700;color:#475569;border-bottom:2px solid #e2e8f0;font-size:.78rem}
+td{padding:8px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+td .katex{font-size:1.05em}
+.fn-name{font-weight:700;font-size:.95rem;white-space:nowrap}
 .yes{color:#047857;font-weight:700}
 .no{color:#b91c1c;font-weight:700}
-.at{color:#92400e;font-weight:600;font-size:.78rem}
+.at{color:#92400e;font-weight:600;font-size:.8rem}
 .section-label{font-size:.78rem;font-weight:700;color:#94a3b8;margin:24px 0 6px;text-transform:uppercase;letter-spacing:.5px}
 .identity-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:14px;margin:8px 0}
 .identity-box h4{font-size:.82rem;font-weight:700;color:#4338ca;margin-bottom:8px}
@@ -37,7 +36,7 @@ td{padding:7px 10px;border-bottom:1px solid #f1f5f9}
 .tip strong{color:#92400e}
 .katex{font-size:.95em}
 .counter-card{border-right:3px solid #ef4444}
-.golden-card{border-right:3px solid #f59e0b}
+.note{font-size:.78rem;color:#64748b;margin-top:4px}
 </style>
 </head>
 <body>
@@ -51,153 +50,51 @@ td{padding:7px 10px;border-bottom:1px solid #f1f5f9}
 <h2>📊 טבלת פונקציות חשובות — מי רציפה? גזירה? מונוטונית?</h2>
 <!-- ══════════════════════════════════════ -->
 
-<table>
-<tr>
-  <th>פונקציה</th>
-  <th>תחום</th>
-  <th>טווח</th>
-  <th>רציפה</th>
-  <th>גזירה</th>
-  <th>מונוטונית</th>
-  <th>חסומה</th>
-  <th>הערות</th>
-</tr>
-<tr>
-  <td><strong>id(x) = x</strong></td>
-  <td>ℝ</td><td>ℝ</td>
-  <td class="yes">כן, בכל ℝ</td>
-  <td class="yes">כן, f'=1</td>
-  <td class="yes">עולה ממש</td>
-  <td class="no">לא</td>
-  <td>הפונקציה הכי פשוטה</td>
-</tr>
-<tr>
-  <td><strong>x²</strong></td>
-  <td>ℝ</td><td>[0,∞)</td>
-  <td class="yes">כן</td>
-  <td class="yes">כן, f'=2x</td>
-  <td class="at">לא (יורדת ב-(-∞,0], עולה ב-[0,∞))</td>
-  <td class="no">לא חסומה מלמעלה</td>
-  <td>זוגית, מינימום ב-0</td>
-</tr>
-<tr>
-  <td><strong>x³</strong></td>
-  <td>ℝ</td><td>ℝ</td>
-  <td class="yes">כן</td>
-  <td class="yes">כן, f'=3x²</td>
-  <td class="yes">עולה ממש</td>
-  <td class="no">לא</td>
-  <td>אי-זוגית, הפיכה</td>
-</tr>
-<tr>
-  <td><strong>|x|</strong></td>
-  <td>ℝ</td><td>[0,∞)</td>
-  <td class="yes">כן, בכל ℝ</td>
-  <td class="no">❌ לא ב-0!</td>
-  <td class="at">לא (יורדת ב-(-∞,0], עולה ב-[0,∞))</td>
-  <td class="no">לא חסומה מלמעלה</td>
-  <td>⚠️ דוגמה נגדית קלאסית: רציפה אבל לא גזירה</td>
-</tr>
-<tr>
-  <td><strong>√x</strong></td>
-  <td>[0,∞)</td><td>[0,∞)</td>
-  <td class="yes">כן</td>
-  <td class="no">❌ לא ב-0 (f'→∞)</td>
-  <td class="yes">עולה ממש</td>
-  <td class="no">לא</td>
-  <td>הפוכה של x² על [0,∞)</td>
-</tr>
-<tr>
-  <td><strong>1/x</strong></td>
-  <td>ℝ\{0}</td><td>ℝ\{0}</td>
-  <td class="yes">כן (בתחום)</td>
-  <td class="yes">כן, f'=-1/x²</td>
-  <td class="at">יורדת ב-(-∞,0) וב-(0,∞) בנפרד</td>
-  <td class="no">לא</td>
-  <td>⚠️ לא רציפה ב-0 (לא מוגדרת שם)</td>
-</tr>
-<tr>
-  <td><strong>eˣ</strong></td>
-  <td>ℝ</td><td>(0,∞)</td>
-  <td class="yes">כן</td>
-  <td class="yes">כן, f'=eˣ</td>
-  <td class="yes">עולה ממש</td>
-  <td class="no">לא חסומה מלמעלה</td>
-  <td>f(x)>0 תמיד. הפוכה: ln(x)</td>
-</tr>
-<tr style="background:#fefce8">
-  <td><strong>aˣ (0&lt;a&lt;1)</strong></td>
-  <td>ℝ</td><td>(0,∞)</td>
-  <td class="yes">כן</td>
-  <td class="yes">כן</td>
-  <td class="yes">יורדת ממש</td>
-  <td class="no">לא</td>
-  <td>⚠️ שים לב: a>1 עולה, 0&lt;a&lt;1 יורדת!</td>
-</tr>
-<tr>
-  <td><strong>ln(x)</strong></td>
-  <td>(0,∞)</td><td>ℝ</td>
-  <td class="yes">כן</td>
-  <td class="yes">כן, f'=1/x</td>
-  <td class="yes">עולה ממש</td>
-  <td class="no">לא</td>
-  <td>הפוכה של eˣ</td>
-</tr>
-<tr>
-  <td><strong>sin(x)</strong></td>
-  <td>ℝ</td><td>[-1,1]</td>
-  <td class="yes">כן</td>
-  <td class="yes">כן, f'=cos(x)</td>
-  <td class="no">לא (מחזורית)</td>
-  <td class="yes">כן, |sin(x)|≤1</td>
-  <td>אי-זוגית: sin(-x)=-sin(x)</td>
-</tr>
-<tr>
-  <td><strong>cos(x)</strong></td>
-  <td>ℝ</td><td>[-1,1]</td>
-  <td class="yes">כן</td>
-  <td class="yes">כן, f'=-sin(x)</td>
-  <td class="no">לא</td>
-  <td class="yes">כן, |cos(x)|≤1</td>
-  <td>זוגית: cos(-x)=cos(x)</td>
-</tr>
-<tr>
-  <td><strong>tan(x)</strong></td>
-  <td>x≠π/2+nπ</td><td>ℝ</td>
-  <td class="yes">כן (בתחום)</td>
-  <td class="yes">כן, f'=1/cos²(x)</td>
-  <td class="at">עולה ממש בכל קטע</td>
-  <td class="no">לא</td>
-  <td>אי-זוגית. אסימפטוטות אנכיות</td>
-</tr>
-<tr>
-  <td><strong>arcsin(x)</strong></td>
-  <td>[-1,1]</td><td>[-π/2, π/2]</td>
-  <td class="yes">כן</td>
-  <td class="no">❌ לא ב-±1</td>
-  <td class="yes">עולה ממש</td>
-  <td class="yes">כן</td>
-  <td>הפוכה של sin על [-π/2,π/2]</td>
-</tr>
-<tr>
-  <td><strong>arccos(x)</strong></td>
-  <td>[-1,1]</td><td>[0,π]</td>
-  <td class="yes">כן</td>
-  <td class="no">❌ לא ב-±1</td>
-  <td class="yes">יורדת ממש</td>
-  <td class="yes">כן</td>
-  <td>הפוכה של cos על [0,π]</td>
-</tr>
-<tr>
-  <td><strong>arctan(x)</strong></td>
-  <td>ℝ</td><td>(-π/2, π/2)</td>
-  <td class="yes">כן</td>
-  <td class="yes">כן, f'=1/(1+x²)</td>
-  <td class="yes">עולה ממש</td>
-  <td class="yes">כן</td>
-  <td>הפוכה של tan על (-π/2,π/2)</td>
-</tr>
-</table>
+<div id="fn-table"></div>
+
+<script>
+const FN = [
+  { f:'\\mathrm{id}(x)=x', d:'\\mathbb{R}', r:'\\mathbb{R}', cont:'כן', diff:"כן, $f'=1$", mono:'עולה ממש ↗', bnd:'לא', note:'' },
+  { f:'x^2', d:'\\mathbb{R}', r:'[0,\\infty)', cont:'כן', diff:"כן, $f'=2x$", mono:'לא — יורדת ↘ ב-$(-\\infty,0]$, עולה ↗ ב-$[0,\\infty)$', bnd:'לא', note:'זוגית, min ב-0' },
+  { f:'x^3', d:'\\mathbb{R}', r:'\\mathbb{R}', cont:'כן', diff:"כן, $f'=3x^2$", mono:'עולה ממש ↗', bnd:'לא', note:'אי-זוגית, הפיכה' },
+  { f:'|x|', d:'\\mathbb{R}', r:'[0,\\infty)', cont:'כן', diff:'❌ לא ב-$x=0$!', mono:'לא — יורדת ↘ ב-$(-\\infty,0]$, עולה ↗ ב-$[0,\\infty)$', bnd:'לא', note:'⚠️ רציפה לא גזירה ב-0' },
+  { f:'\\sqrt{x}', d:'[0,\\infty)', r:'[0,\\infty)', cont:'כן', diff:"❌ לא ב-0 ($f'\\to\\infty$)", mono:'עולה ממש ↗', bnd:'לא', note:'הפוכה של $x^2$' },
+  { f:'\\dfrac{1}{x}', d:'\\mathbb{R}\\setminus\\{0\\}', r:'\\mathbb{R}\\setminus\\{0\\}', cont:'כן (בתחום)', diff:"כן, $f'=-\\frac{1}{x^2}$", mono:'יורדת ↘ בכל קטע', bnd:'לא', note:'לא מוגדרת ב-0!' },
+  { f:'e^x', d:'\\mathbb{R}', r:'(0,\\infty)', cont:'כן', diff:"כן, $f'=e^x$", mono:'עולה ממש ↗', bnd:'לא (מלמעלה)', note:'$f(x)>0$ תמיד. הפוכה: $\\ln x$' },
+  { f:'a^x\\ (a>1)', d:'\\mathbb{R}', r:'(0,\\infty)', cont:'כן', diff:'כן', mono:'עולה ממש ↗', bnd:'לא', note:'$0<a<1$ → יורדת ↘' },
+  { f:'\\ln(x)', d:'(0,\\infty)', r:'\\mathbb{R}', cont:'כן', diff:"כן, $f'=\\frac{1}{x}$", mono:'עולה ממש ↗', bnd:'לא', note:'הפוכה של $e^x$' },
+  { f:'\\sin(x)', d:'\\mathbb{R}', r:'[-1,1]', cont:'כן', diff:"כן, $f'=\\cos x$", mono:'לא (מחזורית)', bnd:'כן, $|\\sin x|\\le 1$', note:'אי-זוגית' },
+  { f:'\\cos(x)', d:'\\mathbb{R}', r:'[-1,1]', cont:'כן', diff:"כן, $f'=-\\sin x$", mono:'לא (מחזורית)', bnd:'כן, $|\\cos x|\\le 1$', note:'זוגית' },
+  { f:'\\tan(x)', d:'x\\ne\\frac{\\pi}{2}+n\\pi', r:'\\mathbb{R}', cont:'כן (בתחום)', diff:"כן, $f'=\\frac{1}{\\cos^2 x}$", mono:'עולה ממש בכל קטע ↗', bnd:'לא', note:'אסימפטוטות אנכיות' },
+  { f:'\\arcsin(x)', d:'[-1,1]', r:'[-\\frac{\\pi}{2},\\frac{\\pi}{2}]', cont:'כן', diff:"❌ לא ב-$\\pm 1$", mono:'עולה ממש ↗', bnd:'כן', note:'הפוכה של sin' },
+  { f:'\\arccos(x)', d:'[-1,1]', r:'[0,\\pi]', cont:'כן', diff:"❌ לא ב-$\\pm 1$", mono:'יורדת ממש ↘', bnd:'כן', note:'הפוכה של cos' },
+  { f:'\\arctan(x)', d:'\\mathbb{R}', r:'(-\\frac{\\pi}{2},\\frac{\\pi}{2})', cont:'כן', diff:"כן, $f'=\\frac{1}{1+x^2}$", mono:'עולה ממש ↗', bnd:'כן', note:'הפוכה של tan' },
+];
+
+function K(tex){try{return katex.renderToString(tex,{throwOnError:false,displayMode:false})}catch{return tex}}
+function renderCell(txt){return txt.replace(/\$([^$]+)\$/g,(_,t)=>K(t))}
+
+(function(){
+  let h='<table><tr><th>פונקציה</th><th>תחום</th><th>טווח</th><th>רציפה</th><th>גזירה</th><th>מונוטונית</th><th>חסומה</th><th>הערות</th></tr>';
+  FN.forEach(fn=>{
+    const isNo = s => s.startsWith('❌') || s === 'לא';
+    const isYes = s => s.startsWith('כן');
+    const cls = s => isNo(s)?'no':isYes(s)?'yes':'at';
+    h+=`<tr>
+      <td class="fn-name">${K(fn.f)}</td>
+      <td>${K(fn.d)}</td>
+      <td>${K(fn.r)}</td>
+      <td class="${cls(fn.cont)}">${renderCell(fn.cont)}</td>
+      <td class="${cls(fn.diff)}">${renderCell(fn.diff)}</td>
+      <td class="${cls(fn.mono)}">${renderCell(fn.mono)}</td>
+      <td class="${cls(fn.bnd)}">${renderCell(fn.bnd)}</td>
+      <td>${renderCell(fn.note)}</td>
+    </tr>`;
+  });
+  h+='</table>';
+  document.getElementById('fn-table').innerHTML=h;
+})();
+</script>
 
 <!-- ══════════════════════════════════════ -->
 <h2>💀 דוגמאות נגדיות קלאסיות למבחן</h2>
@@ -281,148 +178,186 @@ td{padding:7px 10px;border-bottom:1px solid #f1f5f9}
 <!-- ══════════════════════════════════════ -->
 
 <div class="section-label">ערך מוחלט (מהסיכום שלך)</div>
-<div class="identity-box">
-  <h4>תכונות ערך מוחלט</h4>
-  <table>
-  <tr><td>|x| ≥ 0</td><td>תמיד אי-שלילי</td></tr>
-  <tr><td>|-x| = |x|</td><td>סימטריה</td></tr>
-  <tr><td>|x-y| = |y-x|</td><td>מרחק סימטרי</td></tr>
-  <tr><td>-|x| ≤ x ≤ |x|</td><td>כליאה</td></tr>
-  <tr><td>|x| = √(x²)</td><td>הגדרה שקולה</td></tr>
-  <tr><td><strong>|x+y| ≤ |x| + |y|</strong></td><td>⭐ אי-שוויון המשולש (הכי חשוב!)</td></tr>
-  <tr><td><strong>||x| - |y|| ≤ |x-y|</strong></td><td>⭐ אי-שוויון המשולש ההפוך</td></tr>
-  <tr><td>|x·y| = |x|·|y|</td><td>כפליות</td></tr>
-  <tr><td>|x/y| = |x|/|y| &nbsp; (y≠0)</td><td>מנה</td></tr>
-  </table>
-  <div class="tip"><strong>טיפ למבחן:</strong> אי-שוויון המשולש משמש כמעט בכל הוכחת ε-δ. כשצריך לחסום |f(x)-L| — פרק עם משולש!</div>
-</div>
+<div class="identity-box" id="abs-table"></div>
+<script>
+(function(){
+  const rows = [
+    ['|x| \\ge 0','תמיד אי-שלילי'],
+    ['|-x| = |x|','סימטריה'],
+    ['|x-y| = |y-x|','מרחק סימטרי'],
+    ['-|x| \\le x \\le |x|','כליאה'],
+    ['|x| = \\sqrt{x^2}','הגדרה שקולה'],
+    ['\\boxed{|x+y| \\le |x| + |y|}','⭐ אי-שוויון המשולש'],
+    ['\\boxed{\\big||x| - |y|\\big| \\le |x-y|}','⭐ אי-שוויון המשולש ההפוך'],
+    ['|x \\cdot y| = |x|\\cdot|y|','כפליות'],
+    ['\\left|\\frac{x}{y}\\right| = \\frac{|x|}{|y|},\\quad y\\ne 0','מנה'],
+    ['\\max\\{x,y\\} = \\tfrac{1}{2}(x+y+|x-y|)','נוסחת max'],
+    ['\\min\\{x,y\\} = \\tfrac{1}{2}(x+y-|x-y|)','נוסחת min'],
+  ];
+  let h='<h4>תכונות ערך מוחלט + max/min</h4><table>';
+  rows.forEach(r=>{ h+=`<td style="text-align:center">${K(r[0])}</td><td>${r[1]}</td></tr>`; });
+  h+='</table>';
+  h+='<div class="tip"><strong>טיפ למבחן:</strong> אי-שוויון המשולש משמש כמעט בכל הוכחת ε-δ. כשצריך לחסום $|f(x)-L|$ — פרקי עם משולש!</div>'.replace(/\$([^$]+)\$/g,(_,t)=>K(t));
+  document.getElementById('abs-table').innerHTML=h;
+})();
+</script>
 
 <div class="section-label">טריגונומטריה (מהסיכום שלך)</div>
-<div class="identity-box">
-  <h4>תכונות sin, cos</h4>
-  <table>
-  <tr><td>sin²x + cos²x = 1</td><td>⭐ הזהות הבסיסית</td></tr>
-  <tr><td>|sin x| ≤ 1, &nbsp; |cos x| ≤ 1</td><td>חסימות</td></tr>
-  <tr><td>cos(-x) = cos(x)</td><td>cos זוגית</td></tr>
-  <tr><td>sin(-x) = -sin(x)</td><td>sin אי-זוגית</td></tr>
-  <tr><td>sin(x+y) = sin x·cos y + cos x·sin y</td><td>סכום</td></tr>
-  <tr><td>cos(x+y) = cos x·cos y - sin x·sin y</td><td>סכום</td></tr>
-  <tr><td>cos x = sin(x + π/2)</td><td>הזזה</td></tr>
-  </table>
-</div>
-
-<div class="identity-box">
-  <h4>תכונות tan (tg)</h4>
-  <table>
-  <tr><td>tan x = sin x / cos x</td><td>הגדרה (x ≠ π/2 + nπ)</td></tr>
-  <tr><td>tan(-x) = -tan(x)</td><td>אי-זוגית</td></tr>
-  <tr><td>tan(x + πn) = tan(x)</td><td>מחזוריות π</td></tr>
-  <tr><td>1 + tan²x = 1/cos²x</td><td>מהזהות sin²+cos²=1</td></tr>
-  </table>
-</div>
+<div class="identity-box" id="trig-table"></div>
+<script>
+(function(){
+  const sin_cos = [
+    ['\\sin^2 x + \\cos^2 x = 1','⭐ הזהות הבסיסית'],
+    ['|\\sin x| \\le 1,\\quad |\\cos x| \\le 1','חסימות'],
+    ['\\cos(-x) = \\cos x','cos זוגית'],
+    ['\\sin(-x) = -\\sin x','sin אי-זוגית'],
+    ['\\sin(x+y) = \\sin x\\cos y + \\cos x\\sin y','⭐ סכום'],
+    ['\\cos(x+y) = \\cos x\\cos y - \\sin x\\sin y','⭐ סכום'],
+    ['\\cos x = \\sin\\!\\left(x + \\tfrac{\\pi}{2}\\right)','הזזה'],
+  ];
+  const tan_rows = [
+    ['\\tan x = \\frac{\\sin x}{\\cos x}','הגדרה, $x \\ne \\frac{\\pi}{2}+n\\pi$'],
+    ['\\tan(-x) = -\\tan x','אי-זוגית'],
+    ['\\tan(x + \\pi n) = \\tan x','מחזוריות $\\pi$'],
+    ['1 + \\tan^2 x = \\frac{1}{\\cos^2 x}','מהזהות הבסיסית'],
+  ];
+  let h='<h4>תכונות sin, cos</h4><table>';
+  sin_cos.forEach(r=>{ h+=`<tr><td style="text-align:center">${K(r[0])}</td><td>${r[1]}</td></tr>`; });
+  h+='</table><h4 style="margin-top:14px">תכונות tan</h4><table>';
+  tan_rows.forEach(r=>{ h+=`<tr><td style="text-align:center">${K(r[0])}</td><td>${renderCell(r[1])}</td></tr>`; });
+  h+='</table>';
+  document.getElementById('trig-table').innerHTML=h;
+})();
+</script>
 
 <div class="section-label">פונקציות הפוכות טריגונומטריות (מהסיכום שלך)</div>
-<div class="identity-box">
-  <h4>arcsin, arccos, arctan</h4>
-  <table>
-  <tr><th>פונקציה</th><th>תחום</th><th>טווח</th><th>הגדרה</th></tr>
-  <tr><td>arcsin</td><td>[-1,1]</td><td>[-π/2, π/2]</td><td>arcsin(y)=x כאשר sin(x)=y</td></tr>
-  <tr><td>arccos</td><td>[-1,1]</td><td>[0, π]</td><td>arccos(y)=x כאשר cos(x)=y</td></tr>
-  <tr><td>arctan</td><td>ℝ</td><td>(-π/2, π/2)</td><td>arctan(y)=x כאשר tan(x)=y</td></tr>
-  </table>
-  <p style="margin-top:8px"><strong>ערכים חשובים:</strong> arcsin(1) = π/2, &nbsp; arcsin(-1) = -π/2, &nbsp; arccos(1) = 0, &nbsp; arccos(-1) = π</p>
-</div>
+<div class="identity-box" id="inv-trig-table"></div>
+<script>
+(function(){
+  let h='<h4>פונקציות הפוכות טריגונומטריות</h4><table><tr><th>פונקציה</th><th>תחום</th><th>טווח</th><th>הגדרה</th></tr>';
+  const rows = [
+    ['\\arcsin','[-1,1]','\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]','\\arcsin(y)=x \\iff \\sin(x)=y'],
+    ['\\arccos','[-1,1]','[0,\\pi]','\\arccos(y)=x \\iff \\cos(x)=y'],
+    ['\\arctan','\\mathbb{R}','\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)','\\arctan(y)=x \\iff \\tan(x)=y'],
+  ];
+  rows.forEach(r=>{ h+=`<tr><td>${K(r[0])}</td><td>${K(r[1])}</td><td>${K(r[2])}</td><td>${K(r[3])}</td></tr>`; });
+  h+='</table>';
+  h+=`<p style="margin-top:10px"><strong>ערכים חשובים: </strong>${K('\\arcsin(1)=\\frac{\\pi}{2}')} &nbsp;&nbsp; ${K('\\arcsin(-1)=-\\frac{\\pi}{2}')} &nbsp;&nbsp; ${K('\\arccos(1)=0')} &nbsp;&nbsp; ${K('\\arccos(-1)=\\pi')}</p>`;
+  document.getElementById('inv-trig-table').innerHTML=h;
+})();
+</script>
 
-<div class="section-label">אקספוננט ולוגריתם (מהסיכום שלך)</div>
-<div class="identity-box">
-  <h4>aˣ ו-logₐ(x)</h4>
-  <table>
-  <tr><td>aˣ > 0 לכל x∈ℝ</td><td>תמיד חיובית</td></tr>
-  <tr><td>a>1: עולה ממש. 0&lt;a&lt;1: יורדת ממש</td><td>מונוטוניות</td></tr>
-  <tr><td>Im(aˣ) = (0,∞)</td><td>טווח</td></tr>
-  <tr><td>logₐ(x) הפוכה של aˣ</td><td>y>0 → logₐ(y)=x ⟺ aˣ=y</td></tr>
-  <tr><td>ln(x) = logₑ(x)</td><td>לוגריתם טבעי</td></tr>
-  <tr><td>ln(e) = 1, &nbsp; e⁰ = 1</td><td>ערכים בסיסיים</td></tr>
-  </table>
-</div>
-
-<div class="section-label">max / min</div>
-<div class="identity-box">
-  <h4>נוסחאות max ו-min (מהסיכום שלך)</h4>
-  <table>
-  <tr><td>max{x,y} = ½(x+y + |x-y|)</td><td></td></tr>
-  <tr><td>min{x,y} = ½(x+y - |x-y|)</td><td></td></tr>
-  </table>
-</div>
+<div class="section-label">אקספוננט ולוגריתם</div>
+<div class="identity-box" id="exp-table"></div>
+<script>
+(function(){
+  const rows = [
+    ['a^x > 0 \\quad \\forall x\\in\\mathbb{R}','תמיד חיובית'],
+    ['a>1 \\Rightarrow a^x \\text{ עולה ממש},\\quad 0<a<1 \\Rightarrow a^x \\text{ יורדת ממש}','מונוטוניות'],
+    ['\\mathrm{Im}(a^x) = (0,\\infty)','טווח'],
+    ['\\log_a(x) \\text{ הפוכה של } a^x: \\quad y>0 \\Rightarrow \\log_a(y)=x \\iff a^x=y','הגדרה'],
+    ['\\ln(x) = \\log_e(x)','לוגריתם טבעי'],
+    ['\\ln(e)=1,\\quad e^0=1','ערכים בסיסיים'],
+  ];
+  let h='<h4>אקספוננט ולוגריתם</h4><table>';
+  rows.forEach(r=>{ h+=`<tr><td style="text-align:center">${K(r[0])}</td><td>${r[1]}</td></tr>`; });
+  h+='</table>';
+  document.getElementById('exp-table').innerHTML=h;
+})();
+</script>
 
 <!-- ══════════════════════════════════════ -->
 <h2>⚡ גבולות חשובים לשינון</h2>
 <!-- ══════════════════════════════════════ -->
 
-<div class="identity-box">
-  <table>
-  <tr><td>lim(x→0) sin(x)/x = 1</td><td>⭐ הגבול הטריגונומטרי המרכזי</td></tr>
-  <tr><td>lim(x→0) (1-cos x)/x² = 1/2</td><td>נגזר מהקודם</td></tr>
-  <tr><td>lim(x→0) (eˣ-1)/x = 1</td><td>⭐ הגבול האקספוננציאלי</td></tr>
-  <tr><td>lim(x→0) ln(1+x)/x = 1</td><td>⭐</td></tr>
-  <tr><td>lim(x→∞) (1+1/x)ˣ = e</td><td>⭐ הגדרת e</td></tr>
-  <tr><td>lim(x→0) (1+x)^(1/x) = e</td><td>צורה שקולה</td></tr>
-  <tr><td>lim(x→∞) xⁿ/eˣ = 0</td><td>⭐ אקספוננט מנצח פולינום</td></tr>
-  <tr><td>lim(x→∞) ln(x)/xᵅ = 0 &nbsp;(α>0)</td><td>⭐ פולינום מנצח לוגריתם</td></tr>
-  </table>
-</div>
+<div class="identity-box" id="limits-table"></div>
+<script>
+(function(){
+  const rows = [
+    ['\\lim_{x\\to 0}\\frac{\\sin x}{x} = 1','⭐ הגבול הטריגונומטרי המרכזי'],
+    ['\\lim_{x\\to 0}\\frac{1-\\cos x}{x^2} = \\frac{1}{2}','נגזר מהקודם'],
+    ['\\lim_{x\\to 0}\\frac{e^x-1}{x} = 1','⭐ הגבול האקספוננציאלי'],
+    ['\\lim_{x\\to 0}\\frac{\\ln(1+x)}{x} = 1','⭐'],
+    ['\\lim_{x\\to\\infty}\\left(1+\\frac{1}{x}\\right)^{\\!x} = e','⭐ הגדרת e'],
+    ['\\lim_{x\\to 0}(1+x)^{1/x} = e','צורה שקולה'],
+    ['\\lim_{x\\to\\infty}\\frac{x^n}{e^x} = 0','⭐ אקספוננט מנצח פולינום'],
+    ['\\lim_{x\\to\\infty}\\frac{\\ln x}{x^\\alpha} = 0,\\quad \\alpha>0','⭐ פולינום מנצח לוגריתם'],
+  ];
+  let h='<table>';
+  rows.forEach(r=>{ h+=`<tr><td style="text-align:center">${K(r[0])}</td><td>${r[1]}</td></tr>`; });
+  h+='</table>';
+  document.getElementById('limits-table').innerHTML=h;
+})();
+</script>
 
 <!-- ══════════════════════════════════════ -->
 <h2>📋 טבלת סיכום: מי רציפה? גזירה? איפה הבעיה?</h2>
 <!-- ══════════════════════════════════════ -->
 
-<table>
-<tr>
-  <th>טענה</th>
-  <th>נכון?</th>
-  <th>דוגמה נגדית / הסבר</th>
-</tr>
-<tr><td>גזירה ⟹ רציפה</td><td class="yes">✓ נכון</td><td>משפט! (הוכחה בסיכום)</td></tr>
-<tr><td>רציפה ⟹ גזירה</td><td class="no">✗ לא!</td><td>|x| רציפה ב-0, לא גזירה</td></tr>
-<tr><td>רציפה על [a,b] ⟹ חסומה</td><td class="yes">✓ נכון</td><td>ויירשטראס (קטע סגור!)</td></tr>
-<tr><td>רציפה על (a,b) ⟹ חסומה</td><td class="no">✗ לא!</td><td>1/x על (0,1)</td></tr>
-<tr><td>רציפה על [a,b] ⟹ מקבלת max/min</td><td class="yes">✓ נכון</td><td>ויירשטראס</td></tr>
-<tr><td>רציפה על (a,b) ⟹ מקבלת max/min</td><td class="no">✗ לא!</td><td>x על (0,1) — אין max ואין min</td></tr>
-<tr><td>f גזירה + f'(c)=0 ⟹ c נק' קיצון</td><td class="no">✗ לא!</td><td>f(x)=x³, f'(0)=0 אבל 0 לא קיצון (נק' פיתול)</td></tr>
-<tr><td>f גזירה + c קיצון ⟹ f'(c)=0</td><td class="yes">✓ נכון</td><td>פרמה!</td></tr>
-<tr><td>|f| רציפה ⟹ f רציפה</td><td class="no">✗ לא!</td><td>Sgn(x): |Sgn|=1 (חוץ מ-0) רציפה, Sgn לא</td></tr>
-<tr><td>f רציפה ⟹ |f| רציפה</td><td class="yes">✓ נכון</td><td>הרכבת פונקציות רציפות</td></tr>
-<tr><td>f גזירה, f'(x₀)=0 ⟹ |f| גזירה ב-x₀</td><td class="yes">✓ נכון</td><td>סנדוויץ': ||f(x)|-|f(x₀)||/|x-x₀| ≤ |f(x)-f(x₀)|/|x-x₀| → 0</td></tr>
-<tr><td>f,g רציפות ⟹ f∘g רציפה</td><td class="yes">✓ נכון</td><td>הרכבת רציפות</td></tr>
-<tr><td>f+g רציפות ⟹ f,g רציפות</td><td class="no">✗ לא!</td><td>f=D (דיריכלה), g=1-D. f+g=1 רציפה, אבל f,g לא</td></tr>
-</table>
+<div id="tf-table"></div>
+<script>
+(function(){
+  const rows = [
+    ['$f$ גזירה $\\Rightarrow$ $f$ רציפה',true,'משפט! (הוכחה בסיכום)'],
+    ['$f$ רציפה $\\Rightarrow$ $f$ גזירה',false,'$|x|$ רציפה ב-0, לא גזירה'],
+    ['$f$ רציפה על $[a,b]$ $\\Rightarrow$ $f$ חסומה',true,'ויירשטראס (קטע סגור!)'],
+    ['$f$ רציפה על $(a,b)$ $\\Rightarrow$ $f$ חסומה',false,'$\\frac{1}{x}$ על $(0,1)$'],
+    ['$f$ רציפה על $[a,b]$ $\\Rightarrow$ $f$ מקבלת max/min',true,'ויירשטראס'],
+    ['$f$ רציפה על $(a,b)$ $\\Rightarrow$ $f$ מקבלת max/min',false,'$f(x)=x$ על $(0,1)$ — אין max ואין min'],
+    ["$f$ גזירה + $f'(c)=0$ $\\Rightarrow$ $c$ נקודת קיצון",false,"$f(x)=x^3$, $f'(0)=0$ אבל 0 נקודת פיתול, לא קיצון"],
+    ["$f$ גזירה + $c$ קיצון $\\Rightarrow$ $f'(c)=0$",true,'פרמה!'],
+    ['$|f|$ רציפה $\\Rightarrow$ $f$ רציפה',false,'$\\mathrm{Sgn}(x)$: $|\\mathrm{Sgn}|=1$ רציפה, $\\mathrm{Sgn}$ לא'],
+    ['$f$ רציפה $\\Rightarrow$ $|f|$ רציפה',true,'הרכבת פונקציות רציפות'],
+    ["$f$ גזירה, $f'(x_0)=0$ $\\Rightarrow$ $|f|$ גזירה ב-$x_0$",true,'סנדוויץ\''],
+    ['$f,g$ רציפות $\\Rightarrow$ $f\\circ g$ רציפה',true,'הרכבת רציפות'],
+    ['$f+g$ רציפה $\\Rightarrow$ $f,g$ רציפות',false,'$f=D$ (דיריכלה), $g=1-D$. $f+g=1$ רציפה, אבל $f,g$ לא'],
+  ];
+  let h='<table><tr><th>טענה</th><th>נכון?</th><th>דוגמה נגדית / הסבר</th></tr>';
+  rows.forEach(r=>{
+    h+=`<tr><td>${renderCell(r[0])}</td><td class="${r[1]?'yes':'no'}">${r[1]?'✓ נכון':'✗ לא!'}</td><td>${renderCell(r[2])}</td></tr>`;
+  });
+  h+='</table>';
+  document.getElementById('tf-table').innerHTML=h;
+})();
+</script>
 
 <!-- ══════════════════════════════════════ -->
 <h2>🎯 נגזרות חשובות לשינון</h2>
 <!-- ══════════════════════════════════════ -->
 
-<div class="identity-box">
-  <table>
-  <tr><th>f(x)</th><th>f'(x)</th><th></th></tr>
-  <tr><td>xⁿ</td><td>n·xⁿ⁻¹</td><td></td></tr>
-  <tr><td>eˣ</td><td>eˣ</td><td>⭐ יחידה: f'=f</td></tr>
-  <tr><td>aˣ</td><td>aˣ·ln(a)</td><td></td></tr>
-  <tr><td>ln(x)</td><td>1/x</td><td></td></tr>
-  <tr><td>logₐ(x)</td><td>1/(x·ln a)</td><td></td></tr>
-  <tr><td>sin(x)</td><td>cos(x)</td><td></td></tr>
-  <tr><td>cos(x)</td><td>-sin(x)</td><td></td></tr>
-  <tr><td>tan(x)</td><td>1/cos²(x)</td><td></td></tr>
-  <tr><td>arcsin(x)</td><td>1/√(1-x²)</td><td>|x|<1</td></tr>
-  <tr><td>arccos(x)</td><td>-1/√(1-x²)</td><td>|x|<1</td></tr>
-  <tr><td>arctan(x)</td><td>1/(1+x²)</td><td>⭐ חשוב מאוד למבחן</td></tr>
-  </table>
-</div>
+<div class="identity-box" id="deriv-table"></div>
+<script>
+(function(){
+  const rows = [
+    ['x^n','n\\cdot x^{n-1}',''],
+    ['e^x','e^x','⭐ יחידה: $f\'=f$'],
+    ['a^x','a^x \\cdot \\ln a',''],
+    ['\\ln x','\\dfrac{1}{x}',''],
+    ['\\log_a x','\\dfrac{1}{x\\ln a}',''],
+    ['\\sin x','\\cos x',''],
+    ['\\cos x','-\\sin x',''],
+    ['\\tan x','\\dfrac{1}{\\cos^2 x}',''],
+    ['\\arcsin x','\\dfrac{1}{\\sqrt{1-x^2}}','$|x|<1$'],
+    ['\\arccos x','\\dfrac{-1}{\\sqrt{1-x^2}}','$|x|<1$'],
+    ['\\arctan x','\\dfrac{1}{1+x^2}','⭐ חשוב למבחן'],
+  ];
+  let h='<table><tr><th style="text-align:center">$f(x)$</th><th style="text-align:center">$f\'(x)$</th><th></th></tr>'.replace(/\$([^$]+)\$/g,(_,t)=>K(t));
+  rows.forEach(r=>{
+    h+=`<tr><td style="text-align:center">${K(r[0])}</td><td style="text-align:center">${K(r[1])}</td><td>${renderCell(r[2])}</td></tr>`;
+  });
+  h+='</table>';
+  document.getElementById('deriv-table').innerHTML=h;
+})();
+</script>
 
-<div class="tip" style="margin-top:20px">
+<div class="tip" style="margin-top:20px" id="final-tip"></div>
+<script>
+document.getElementById('final-tip').innerHTML = `
   <strong>🧠 כלל זיכרון לדוגמאות נגדיות:</strong><br>
   כשנתקעים ב"הוכח או הפרך" — נסי קודם את הפונקציות האלה:<br>
-  <strong>|x|</strong> (רציפה לא גזירה) · <strong>Sgn(x)</strong> (קפיצה) · <strong>D(x)</strong> דיריכלה (לא רציפה בכלל) · <strong>1/x</strong> (לא חסומה) · <strong>x³</strong> (f'=0 בלי קיצון) · <strong>x²sin(1/x)</strong> (f' לא רציפה)
-</div>
+  ${K('|x|')} (רציפה לא גזירה) · ${K('\\mathrm{Sgn}(x)')} (קפיצה) · ${K('D(x)')} דיריכלה (לא רציפה) · ${K('\\frac{1}{x}')} (לא חסומה) · ${K('x^3')} ($f'=0$ בלי קיצון) · ${K('x^2\\sin\\frac{1}{x}')} ($f'$ לא רציפה)
+`.replace(/\$([^$]+)\$/g,(_,t)=>K(t));
+</script>
 
 </body>
 </html>

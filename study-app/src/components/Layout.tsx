@@ -53,6 +53,12 @@ const navItems: NavItem[] = [
     icon: <Swords className="w-5 h-5" />,
   },
   {
+    href: '/triple-battle-plan',
+    label: 'Triple Battle Plan',
+    labelHe: 'תוכנית קרב משולשת',
+    icon: <Flame className="w-5 h-5" />,
+  },
+  {
     href: '/study-plan',
     label: 'Study Plan',
     labelHe: 'תוכנית לימודים',

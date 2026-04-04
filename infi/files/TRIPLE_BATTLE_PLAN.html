@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תוכנית קרב משולשת — אינפי + בדידה + לינארית | מועד ב' 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Rubik,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px 16px 60px;max-width:1000px;margin:0 auto;line-height:1.7;font-size:15px}
+h1{font-size:1.6rem;font-weight:900}
+h2{font-size:1.2rem;font-weight:800;margin:32px 0 12px;padding-bottom:8px;border-bottom:2px solid #334155}
+h3{font-size:1rem;font-weight:700;margin:18px 0 8px}
+h4{font-size:.88rem;font-weight:700;margin:12px 0 4px}
+
+.hero{background:linear-gradient(135deg,#7c3aed,#2563eb);border-radius:16px;padding:28px;margin-bottom:28px;text-align:center}
+.hero h1{font-size:1.8rem;color:#fff}
+.hero p{color:rgba(255,255,255,.85);font-size:.88rem;margin-top:8px}
+
+.dates-bar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 24px}
+.date-chip{flex:1;min-width:200px;background:#1e293b;border:1px solid #334155;border-radius:12px;padding:14px;text-align:center}
+.date-chip .label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;opacity:.6}
+.date-chip .subject{font-size:1.1rem;font-weight:800;margin:4px 0}
+.date-chip .date{font-size:.85rem;color:#94a3b8}
+.date-chip .days{font-size:1.4rem;font-weight:900;margin-top:4px}
+.chip-infi{border-color:#10b981}.chip-infi .subject{color:#10b981}.chip-infi .days{color:#34d399}
+.chip-bdida{border-color:#f59e0b}.chip-bdida .subject{color:#f59e0b}.chip-bdida .days{color:#fbbf24}
+.chip-liner{border-color:#8b5cf6}.chip-liner .subject{color:#8b5cf6}.chip-liner .days{color:#a78bfa}
+
+.card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:16px 18px;margin-bottom:14px}
+
+.phase{background:#1e293b;border:2px solid #334155;border-radius:16px;padding:20px;margin-bottom:20px}
+.phase-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.phase-num{background:#7c3aed;color:#fff;font-size:.75rem;font-weight:800;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.phase-title{font-size:1.05rem;font-weight:800;color:#fff}
+.phase-dates{font-size:.78rem;color:#94a3b8;margin-right:auto}
+
+.week{background:#0f172a;border:1px solid #334155;border-radius:10px;padding:14px;margin:10px 0}
+.week-title{font-size:.85rem;font-weight:700;color:#94a3b8;margin-bottom:8px}
+
+.day-row{display:grid;grid-template-columns:80px 1fr 1fr 1fr;gap:8px;padding:6px 0;border-bottom:1px solid #1e293b;font-size:.82rem;align-items:start}
+.day-row:last-child{border-bottom:none}
+.day-label{font-weight:700;color:#cbd5e1;font-size:.78rem}
+.day-cell{padding:4px 8px;border-radius:6px;font-size:.78rem;line-height:1.4}
+.cell-infi{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:#6ee7b7}
+.cell-bdida{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);color:#fcd34d}
+.cell-liner{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);color:#c4b5fd}
+.cell-rest{background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.15);color:#94a3b8;text-align:center}
+.cell-exam{background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.4);color:#fca5a5;font-weight:700;text-align:center}
+
+.subject-section{border-radius:14px;padding:20px;margin:16px 0}
+.sec-infi{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(16,185,129,.03));border:1px solid rgba(16,185,129,.3)}
+.sec-bdida{background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(245,158,11,.03));border:1px solid rgba(245,158,11,.3)}
+.sec-liner{background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(139,92,246,.03));border:1px solid rgba(139,92,246,.3)}
+
+.tag{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:4px;margin-bottom:4px}
+.tag-must{background:rgba(239,68,68,.2);color:#fca5a5}
+.tag-high{background:rgba(245,158,11,.2);color:#fcd34d}
+.tag-med{background:rgba(59,130,246,.2);color:#93c5fd}
+.tag-low{background:rgba(148,163,184,.15);color:#94a3b8}
+
+.checklist{list-style:none;padding:0}
+.checklist li{padding:4px 0;font-size:.84rem;position:relative;padding-right:20px}
+.checklist li::before{content:"";position:absolute;right:0;top:8px;width:12px;height:12px;border:2px solid #475569;border-radius:3px}
+
+.tip-box{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);border-radius:10px;padding:12px;margin:10px 0;font-size:.84rem}
+.tip-box strong{color:#fbbf24}
+
+.hours-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:12px 0}
+.hours-table th{background:#0f172a;padding:8px;text-align:right;color:#94a3b8;font-size:.72rem;text-transform:uppercase;border-bottom:1px solid #334155}
+.hours-table td{padding:8px;border-bottom:1px solid #1e293b}
+
+.progress-pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.72rem;font-weight:700}
+.pill-strong{background:rgba(16,185,129,.2);color:#6ee7b7}
+.pill-medium{background:rgba(245,158,11,.2);color:#fcd34d}
+.pill-weak{background:rgba(239,68,68,.2);color:#fca5a5}
+
+.divider{height:1px;background:linear-gradient(to left,transparent,#475569,transparent);margin:28px 0}
+
+.final-box{background:linear-gradient(135deg,#1e1b4b,#312e81);border:2px solid #6366f1;border-radius:16px;padding:24px;margin-top:28px;text-align:center}
+.final-box h2{color:#a5b4fc;border:none;margin:0 0 12px}
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+  <h1>תוכנית קרב משולשת — מועד ב' 2026</h1>
+  <p>אינפי 1 + מתמטיקה בדידה + אלגברה לינארית 1 | יעד: 90+ בכל מקצוע</p>
+  <p style="margin-top:12px;font-size:.8rem;opacity:.7">עודכן: 3 באפריל 2026 | 43 ימים עד המבחן האחרון</p>
+</div>
+
+<!-- ========== DATES ========== -->
+<div class="dates-bar">
+  <div class="date-chip chip-infi">
+    <div class="label">מבחן ראשון</div>
+    <div class="subject">אינפי 1</div>
+    <div class="date">29 באפריל (יום רביעי)</div>
+    <div class="days">26 ימים</div>
+  </div>
+  <div class="date-chip chip-bdida">
+    <div class="label">מבחן שני</div>
+    <div class="subject">בדידה</div>
+    <div class="date">7 במאי (יום רביעי)</div>
+    <div class="days">34 ימים</div>
+  </div>
+  <div class="date-chip chip-liner">
+    <div class="label">מבחן שלישי</div>
+    <div class="subject">לינארית 1</div>
+    <div class="date">15 במאי (יום חמישי)</div>
+    <div class="days">43 ימים</div>
+  </div>
+</div>
+
+<!-- ========== STRATEGY OVERVIEW ========== -->
+<h2>אסטרטגיה כללית</h2>
+
+<div class="card">
+  <h3>חלוקת הזמן — 3 פאזות</h3>
+  <table class="hours-table">
+    <tr><th>פאזה</th><th>תאריכים</th><th>אינפי</th><th>בדידה</th><th>לינארית</th><th>סה"כ/יום</th></tr>
+    <tr><td><strong>1: מיקוד אינפי</strong></td><td>3-28 אפריל</td><td><strong>3-4 שעות</strong></td><td>1.5 שעות</td><td>1 שעה</td><td>~6 שעות</td></tr>
+    <tr><td><strong>2: מיקוד בדידה</strong></td><td>30 אפריל - 6 מאי</td><td>—</td><td><strong>5-6 שעות</strong></td><td>1 שעה</td><td>~6.5 שעות</td></tr>
+    <tr><td><strong>3: מיקוד לינארית</strong></td><td>8-14 מאי</td><td>—</td><td>—</td><td><strong>6-7 שעות</strong></td><td>~6.5 שעות</td></tr>
+  </table>
+</div>
+
+<div class="tip-box">
+  <strong>הכלל:</strong> תמיד לומדים את המקצוע הקרוב ביותר רוב הזמן, אבל <strong>אף פעם לא מפסיקים לגמרי</strong> עם השאר. שעה ביום של בדידה/לינארית ברקע שומרת על הזיכרון חי.
+</div>
+
+<!-- ========== PHASE 1 ========== -->
+<div class="divider"></div>
+<h2>פאזה 1: מיקוד אינפי (3-28 באפריל)</h2>
+
+<!-- Week 1 -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num">1</div>
+    <div class="phase-title">שבוע 1 (3-9 אפריל) — השלמת חורים + שאלה 4</div>
+  </div>
+
+  <div class="week">
+    <div class="day-row" style="font-weight:700;color:#64748b;font-size:.72rem">
+      <div>יום</div><div style="color:#10b981">אינפי (3-4 שעות)</div><div style="color:#f59e0b">בדידה (1.5 שעה)</div><div style="color:#8b5cf6">לינארית (1 שעה)</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">חמישי 3/4</div>
+      <div class="cell-infi">הגדרות: inf, sup, חסום, צפיפות. כתבי כל הגדרה 3 פעמים</div>
+      <div class="cell-bdida">קראי סיכום נושאים: תחשיבי פסוקים + פרדיקטים</div>
+      <div class="cell-liner">קראי סיכום 6 משפטים מועד ב'</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שישי 4/4</div>
+      <div class="cell-infi">IVT: תרגלי 3 שאלות מסוג 3.2 (פונקציית עזר + בדיקת סימנים)</div>
+      <div class="cell-bdida">תרגלי: שאלות שקילות פסוקים + דה-מורגן</div>
+      <div class="cell-liner">Rank-Nullity: קראי הוכחה + כתבי פעם אחת</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שבת 5/4</div>
+      <div class="cell-infi">שאלה 4.1 מסוג לגראנז': תרגלי 3 שאלות דומות ממבחני עבר</div>
+      <div class="cell-bdida">קומבינטוריקה: כללי מכפלה, בינום, כלילה-הדחה</div>
+      <div class="cell-liner">3 המשפטים (dim=n): קראי הוכחה</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">ראשון 6/4</div>
+      <div class="cell-infi">שאלה 4.2: צפיפות Q + גבולות. תרגלי מועד א' 2022 שאלה 5(b)</div>
+      <div class="cell-bdida">פונקציות: חח"ע, על, הרכבה. תרגלי שאלות מ-2024B</div>
+      <div class="cell-liner">טבלת הפיכות: למדי את כל התנאים השקולים</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שני 7/4</div>
+      <div class="cell-infi">דוגמאות נגדיות: תרגלי שאלות מסוג 5.3 + T/F ממבחני 2022-2025</div>
+      <div class="cell-bdida">יחסים: רפלקסיבי, סימטרי, טרנזיטיבי, אנטי-סימטרי</div>
+      <div class="cell-liner">det(AB)=det(A)det(B): קראי הוכחה</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שלישי 8/4</div>
+      <div class="cell-infi">חזרה על הגדרות (כתיבה מהזיכרון) + הוכחת הרכבת גבולות</div>
+      <div class="cell-bdida">יחסי שקילות: מחלקות + קבוצה מנה. תרגלי מ-2022A, 2025B</div>
+      <div class="cell-liner">Row rank = Col rank: קראי הוכחה</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">רביעי 9/4</div>
+      <div class="cell-infi"><strong>סימולציה #1:</strong> פתרי מבחן שלם מ-2024 תחת לחץ זמן (3 שעות)</div>
+      <div class="cell-bdida">אינדוקציה: רגילה + חזקה. תרגלי 2024A, 2024B</div>
+      <div class="cell-liner">חזרה על הוכחות 1-3 מהזיכרון</div>
+    </div>
+  </div>
+</div>
+
+<!-- Week 2 -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num">2</div>
+    <div class="phase-title">שבוע 2 (10-16 אפריל) — מבחני עבר + חיזוק חולשות</div>
+  </div>
+
+  <div class="week">
+    <div class="day-row" style="font-weight:700;color:#64748b;font-size:.72rem">
+      <div>יום</div><div style="color:#10b981">אינפי (3-4 שעות)</div><div style="color:#f59e0b">בדידה (1.5 שעה)</div><div style="color:#8b5cf6">לינארית (1 שעה)</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">חמישי 10/4</div>
+      <div class="cell-infi">ניתוח סימולציה #1: תקני טעויות, חזרי על נקודות חלשות</div>
+      <div class="cell-bdida">סדר חלקי: דיאגרמת האסה, מינימלי/מקסימלי</div>
+      <div class="cell-liner">תרגלי שאלת הוכחה מ-2024 מועד ב'</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שישי 11/4</div>
+      <div class="cell-infi">הוכחות: רול + לגראנז' + קושי — כתבי מהזיכרון בלי להסתכל</div>
+      <div class="cell-bdida">Hall's Marriage: למדי את המשפט + תרגלי matching יציב</div>
+      <div class="cell-liner">קראי מבחן 2024 מועד ב' — ראי מה שואלים</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שבת 12/4</div>
+      <div class="cell-infi"><strong>סימולציה #2:</strong> מבחן 2025A (3 שעות)</div>
+      <div class="cell-bdida">שובך היונים + דוגמאות. תרגלי 2025B</div>
+      <div class="cell-liner">פתרי 2 שאלות חישוב (דטרמיננטות, מרחבי עמודות)</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">ראשון 13/4</div>
+      <div class="cell-infi">ניתוח סימולציה #2 + חזרה על IVT ושאלות פונקציות עזר</div>
+      <div class="cell-bdida">חזרה כללית: שאלות פתוחות מ-2023B</div>
+      <div class="cell-liner">הוכחות 4-6 מהזיכרון</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שני 14/4</div>
+      <div class="cell-infi">תרגול: שאלות ε-δ + הגדרות. כתבי כל הגדרה 5 פעמים</div>
+      <div class="cell-bdida">תרגול מעורב: 10 שאלות אמריקאיות מנושאים שונים</div>
+      <div class="cell-liner">Steinitz + basis completion: קראי</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שלישי 15/4</div>
+      <div class="cell-infi">שאלות "הוכח/הפרך" (T/F) ממבחני 2022-2025</div>
+      <div class="cell-bdida">חזרה: כל ההגדרות של יחסים + קומבינטוריקה</div>
+      <div class="cell-liner">שאלות T/F מלינארית 2024</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">רביעי 16/4</div>
+      <div class="cell-infi"><strong>סימולציה #3:</strong> מבחן 2025B (3 שעות)</div>
+      <div class="cell-bdida">תרגול: שאלה פתוחה אינדוקציה + יחסי שקילות</div>
+      <div class="cell-liner">פתרי שאלות בסיס + dim ממבחן 2023</div>
+    </div>
+  </div>
+</div>
+
+<!-- Week 3 -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num">3</div>
+    <div class="phase-title">שבוע 3 (17-23 אפריל) — ליטוש + מבחני עבר נוספים</div>
+  </div>
+
+  <div class="week">
+    <div class="day-row" style="font-weight:700;color:#64748b;font-size:.72rem">
+      <div>יום</div><div style="color:#10b981">אינפי (3 שעות)</div><div style="color:#f59e0b">בדידה (1.5 שעה)</div><div style="color:#8b5cf6">לינארית (1.5 שעה)</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">חמישי 17/4</div>
+      <div class="cell-infi">ניתוח סימולציה #3 + תיקון טעויות חוזרות</div>
+      <div class="cell-bdida">פתרי שאלות פתוחות מ-2022B</div>
+      <div class="cell-liner">תרגלי: מציאת בסיס, dim, rank ממבחנים</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שישי 18/4</div>
+      <div class="cell-infi"><strong>סימולציה #4:</strong> מבחן 2023A (3 שעות)</div>
+      <div class="cell-bdida">שאלות פתוחות מ-2021A + 2021B</div>
+      <div class="cell-liner">הוכחות Rank-Nullity + Invertibility מהזיכרון</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שבת 19/4</div>
+      <div class="cell-infi">ניתוח + חזרה ממוקדת על הנושא הכי חלש</div>
+      <div class="cell-bdida">תרגלי מבחן שלם (חלק אמריקאי)</div>
+      <div class="cell-liner">פתרי מבחן 2025 מועד ב' (שאלות 1-2)</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">ראשון 20/4</div>
+      <div class="cell-infi"><strong>סימולציה #5:</strong> מבחן 2023B (3 שעות)</div>
+      <div class="cell-bdida">Hall's Marriage + סדר חלקי — פתרי שאלות נוספות</div>
+      <div class="cell-liner">דטרמיננטות: חישוב + תכונות</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שני 21/4</div>
+      <div class="cell-infi">כל ההוכחות מהזיכרון (רול, לגראנז', קושי, הרכבה, inf)</div>
+      <div class="cell-bdida">חזרה: שאלות CNF/DNF + שקילויות</div>
+      <div class="cell-liner">תרגלי: פונקציות T (העתקות ליניאריות)</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שלישי 22/4</div>
+      <div class="cell-infi"><strong>סימולציה #6:</strong> מבחן 2022B (3 שעות)</div>
+      <div class="cell-bdida">תרגול כללי: נושאים חלשים</div>
+      <div class="cell-liner">חזרה כללית</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">רביעי 23/4</div>
+      <div class="cell-infi">ניתוח + חזרה על כל מה שטעית בסימולציות</div>
+      <div class="cell-bdida">פתרי מבחן שלם (שאלות פתוחות)</div>
+      <div class="cell-liner">הוכחות מהזיכרון — כל 6</div>
+    </div>
+  </div>
+</div>
+
+<!-- Week 4 - pre exam -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num">4</div>
+    <div class="phase-title">ימים אחרונים לפני אינפי (24-28 אפריל)</div>
+  </div>
+
+  <div class="week">
+    <div class="day-row" style="font-weight:700;color:#64748b;font-size:.72rem">
+      <div>יום</div><div style="color:#10b981">אינפי בלבד (4-5 שעות)</div><div style="color:#f59e0b">בדידה</div><div style="color:#8b5cf6">לינארית</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">חמישי 24/4</div>
+      <div class="cell-infi">סימולציה אחרונה (#7) — בתנאי מבחן אמיתיים</div>
+      <div class="cell-bdida">30 דק' חזרה קלה</div>
+      <div class="cell-liner">—</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שישי 25/4</div>
+      <div class="cell-infi">חזרה ממוקדת: הגדרות + הוכחות מהזיכרון</div>
+      <div class="cell-bdida">30 דק' חזרה קלה</div>
+      <div class="cell-liner">—</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שבת 26/4</div>
+      <div class="cell-infi">חזרה על כל הטעויות מהסימולציות. רשימת "דברים לזכור"</div>
+      <div class="cell-rest">מנוחה</div>
+      <div class="cell-rest">מנוחה</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">ראשון 27/4</div>
+      <div class="cell-infi">חזרה קלה: הגדרות + 2-3 שאלות מפתח</div>
+      <div class="cell-rest">מנוחה</div>
+      <div class="cell-rest">מנוחה</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שני 28/4</div>
+      <div class="cell-infi">חזרה אחרונה: רק הגדרות + הוכחות קצרות. <strong>לישון מוקדם!</strong></div>
+      <div class="cell-rest">—</div>
+      <div class="cell-rest">—</div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שלישי 29/4</div>
+      <div class="cell-exam">מבחן אינפי!</div>
+      <div class="cell-rest">—</div>
+      <div class="cell-rest">—</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PHASE 2 ========== -->
+<div class="divider"></div>
+<h2>פאזה 2: מיקוד בדידה (30 אפריל — 6 מאי)</h2>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num">5</div>
+    <div class="phase-title">שבוע בדידה אינטנסיבי (8 ימים)</div>
+  </div>
+  <div class="week">
+    <div class="day-row" style="font-weight:700;color:#64748b;font-size:.72rem">
+      <div>יום</div><div style="color:#f59e0b">בדידה (5-6 שעות)</div><div style="color:#8b5cf6">לינארית (1 שעה)</div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">רביעי 30/4</div>
+      <div class="cell-bdida">חזרה מרוכזת: כל ההגדרות + שקילויות לוגיות + CNF/DNF</div>
+      <div class="cell-liner">הוכחה אחת מהזיכרון</div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">חמישי 1/5</div>
+      <div class="cell-bdida">קומבינטוריקה אינטנסיבית: בינום, כלילה-הדחה, שובך היונים</div>
+      <div class="cell-liner">תרגלי שאלת חישוב</div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שישי 2/5</div>
+      <div class="cell-bdida">יחסי שקילות + סדר חלקי — מחלקות, האסה, מינ/מקס</div>
+      <div class="cell-liner">הוכחה אחת מהזיכרון</div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שבת 3/5</div>
+      <div class="cell-bdida"><strong>סימולציה מלאה:</strong> מבחן 2024B בדידה (3 שעות) + ניתוח</div>
+      <div class="cell-liner">קראי סיכום נושאים</div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">ראשון 4/5</div>
+      <div class="cell-bdida">אינדוקציה + פונקציות (חח"ע/על) — תרגלי שאלות פתוחות</div>
+      <div class="cell-liner">תרגלי שאלת הוכחה</div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שני 5/5</div>
+      <div class="cell-bdida"><strong>סימולציה:</strong> מבחן 2025B + ניתוח</div>
+      <div class="cell-liner">—</div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שלישי 6/5</div>
+      <div class="cell-bdida">חזרה אחרונה: הגדרות + נוסחאות + טעויות מסימולציות. <strong>לישון!</strong></div>
+      <div class="cell-rest">מנוחה</div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">רביעי 7/5</div>
+      <div class="cell-exam">מבחן בדידה!</div>
+      <div class="cell-rest">—</div><div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PHASE 3 ========== -->
+<div class="divider"></div>
+<h2>פאזה 3: מיקוד לינארית (8-14 מאי)</h2>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num">6</div>
+    <div class="phase-title">שבוע לינארית אינטנסיבי (7 ימים)</div>
+  </div>
+  <div class="week">
+    <div class="day-row" style="font-weight:700;color:#64748b;font-size:.72rem">
+      <div>יום</div><div style="color:#8b5cf6">לינארית (6-7 שעות)</div><div></div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">חמישי 8/5</div>
+      <div class="cell-liner">כל 6 ההוכחות מהזיכרון + חזרה על חישובי בסיס, dim, rank</div><div></div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שישי 9/5</div>
+      <div class="cell-liner">דטרמיננטות + הפיכות + מרחבי שורות/עמודות</div><div></div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שבת 10/5</div>
+      <div class="cell-liner"><strong>סימולציה מלאה:</strong> מבחן 2025 מועד ב' (3 שעות) + ניתוח</div><div></div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">ראשון 11/5</div>
+      <div class="cell-liner">העתקות ליניאריות + קואורדינטות + מטריצה מייצגת</div><div></div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שני 12/5</div>
+      <div class="cell-liner"><strong>סימולציה:</strong> מבחן 2024 מועד ב' + ניתוח</div><div></div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">שלישי 13/5</div>
+      <div class="cell-liner">חזרה על הוכחות + חזרה על טעויות מסימולציות</div><div></div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">רביעי 14/5</div>
+      <div class="cell-liner">חזרה אחרונה: הגדרות + הוכחות + נוסחאות. <strong>לישון!</strong></div><div></div><div></div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">חמישי 15/5</div>
+      <div class="cell-exam">מבחן לינארית!</div><div></div><div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== INFI DETAILS ========== -->
+<div class="divider"></div>
+<h2>מה ללמוד בכל מקצוע</h2>
+
+<div class="subject-section sec-infi">
+  <h3 style="color:#10b981">אינפי 1 — מועד ב' 29/4</h3>
+  <p style="font-size:.82rem;color:#94a3b8;margin-bottom:12px">
+    <span class="progress-pill pill-strong">חזק: גזירות + גבולות</span>
+    <span class="progress-pill pill-medium">בינוני: inf/sup הגדרות</span>
+    <span class="progress-pill pill-weak">חלש: IVT + פונקציות עזר</span>
+  </p>
+
+  <h4>הוכחות לשינון בעל פה <span class="tag tag-must">חובה</span></h4>
+  <ul class="checklist">
+    <li>משפט רול (Rolle's Theorem)</li>
+    <li>משפט לגראנז' (Mean Value Theorem)</li>
+    <li>משפט קושי (Cauchy's MVT) — כולל בניית \(h(x) = f(x) - \alpha g(x)\)</li>
+    <li>הרכבת גבולות — הופיע ב-2023 מועד ב'!</li>
+    <li>צפיפות Q ב-R — הופיע כמעט כל שנה</li>
+    <li>אפיון inf: \(s = \inf(A) \iff \forall\varepsilon>0\;\exists a\in A: a < s+\varepsilon\)</li>
+    <li>גזירות פונקציה הופכית — הופיע 2022 מועד ב', 2025 מועד ב'</li>
+  </ul>
+
+  <h4>הגדרות לשינון <span class="tag tag-must">חובה</span></h4>
+  <ul class="checklist">
+    <li>גבול של פונקציה (\(\varepsilon\)-\(\delta\))</li>
+    <li>\(f\) גזירה ב-\(x_0\) (עם \(\varepsilon, \delta\))</li>
+    <li>\(A\) חסומה מלעיל / מלרע</li>
+    <li>\(\inf(A) = s\)</li>
+    <li>\(f\) רציפה ב-\(x_0\)</li>
+    <li>\(f\) עולה / יורדת ממש</li>
+    <li>לא חסומה (בלי שלילה!)</li>
+    <li>גבול אינסוף / מינוס אינסוף</li>
+  </ul>
+
+  <h4>תבניות שאלות לתרגל <span class="tag tag-high">עדיפות גבוהה</span></h4>
+  <ul class="checklist">
+    <li>IVT עם פונקציית עזר (כמו 3.2) — בנה g, בדוק סימנים, הפעל IVT</li>
+    <li>לגראנז' על f'' (כמו 4.1) — הפעל לגראנז' פעמיים</li>
+    <li>הוכח/הפרך (T/F) — דוגמאות נגדיות + שימוש במשפטים</li>
+    <li>הוכחות עם צפיפות Q</li>
+    <li>אי-שוויונות עם פונקציות עזר (כמו \(\cos x \geq 1-\frac{x^2}{2}\))</li>
+  </ul>
+
+  <div class="tip-box">
+    <strong>מבחני עבר לסימולציה (7 סה"כ):</strong><br>
+    2024A, 2025A, 2025B, 2023A, 2023B, 2022A, 2022B — בדיוק אחד לכל שבוע + שלושה נוספים.
+  </div>
+</div>
+
+<!-- ========== BDIDA DETAILS ========== -->
+<div class="subject-section sec-bdida">
+  <h3 style="color:#f59e0b">בדידה — מועד ב' 7/5</h3>
+
+  <h4>TOP 5 נושאים שחוזרים בשאלות פתוחות <span class="tag tag-must">חובה</span></h4>
+  <ul class="checklist">
+    <li><strong>1. יחסי שקילות + מחלקות (70% מהמבחנים!)</strong> — למצוא מחלקות, לחשב |A/R|</li>
+    <li><strong>2. אינדוקציה (40%)</strong> — רגילה + חזקה, פירוק למקרים</li>
+    <li><strong>3. Hall's Marriage / Stable Matching (30%)</strong> — הופיע 2023B, 2022B, 2019B</li>
+    <li><strong>4. סדר חלקי + האסה (30%)</strong> — מינימלי, מקסימלי, שרשראות, אנטי-שרשראות</li>
+    <li><strong>5. פונקציות חח"ע/על עם הרכבה</strong> — הוכח שמרכיב חח"ע/על</li>
+  </ul>
+
+  <h4>משפטים לזכור <span class="tag tag-high">עדיפות גבוהה</span></h4>
+  <ul class="checklist">
+    <li>Hall's Marriage Theorem: matching שלם קיים אמ"מ \(\forall S: |N(S)| \geq |S|\)</li>
+    <li>שובך היונים: \(n+1\) יונים ב-\(n\) שובכים → לפחות 2 באותו שובך</li>
+    <li>עקרון הכלילה-הדחה: \(|A \cup B| = |A| + |B| - |A \cap B|\)</li>
+    <li>Binomial Theorem + זהויות בינום (ונדרמונד, בינום שלילי)</li>
+    <li>כל יחס שקילות מגדיר חלוקה (ולהפך)</li>
+  </ul>
+
+  <h4>שאלות אמריקאיות — נושאים חמים <span class="tag tag-med">בינוני</span></h4>
+  <ul class="checklist">
+    <li>\(p \to q \equiv \neg p \lor q\) — שקילויות לוגיות</li>
+    <li>CNF / DNF — המרה + זיהוי</li>
+    <li>קומבינטוריקה עם אילוצים (ישיבה בשורה, חלוקה לקבוצות)</li>
+    <li>ספירה: סדר חשוב / סדר לא חשוב, עם/בלי חזרות</li>
+    <li>פרדיקטים: שלילת כמתים מקוננים</li>
+  </ul>
+
+  <div class="tip-box">
+    <strong>מבחני עבר:</strong> פתרי את השאלות הפתוחות מ: 2024B, 2025B, 2023B, 2022A, 2022B.<br>
+    <strong>מסמך מפתח:</strong> שאלות_פתוחות_בדידה.pdf (19 שאלות עם פתרונות!) — תרגלי הכל.
+  </div>
+</div>
+
+<!-- ========== LINER DETAILS ========== -->
+<div class="subject-section sec-liner">
+  <h3 style="color:#8b5cf6">לינארית 1 — מועד ב' 15/5</h3>
+
+  <h4>6 הוכחות עם הסיכוי הגבוה ביותר <span class="tag tag-must">חובה — שינון בעל פה</span></h4>
+  <ul class="checklist">
+    <li><strong>1. Rank-Nullity:</strong> \(\text{rank}(A) + \dim(\text{Nul}\,A) = n\) — הופיע כמעט כל שנה</li>
+    <li><strong>2. טבלת הפיכות:</strong> A הפיכה ⟺ rank=n ⟺ det≠0 ⟺ עמודות בת"ל ⟺ ...</li>
+    <li><strong>3. שלושת המשפטים:</strong> dim(V)=n → n וקטורים: בסיס ⟺ בת"ל ⟺ פורשים</li>
+    <li><strong>4. det(AB) = det(A)·det(B)</strong> — הוכחה עם 2 מקרים (הפיכה / לא הפיכה)</li>
+    <li><strong>5. Row rank = Column rank</strong></li>
+    <li><strong>6. Steinitz + השלמה לבסיס</strong></li>
+  </ul>
+
+  <h4>נושאים לחישוב <span class="tag tag-high">עדיפות גבוהה</span></h4>
+  <ul class="checklist">
+    <li>דירוג מטריצות + מציאת rank</li>
+    <li>מציאת בסיס ל-Col(A), Row(A), Nul(A)</li>
+    <li>חישוב דטרמיננטות (פיתוח לפי שורה/עמודה, תכונות)</li>
+    <li>מציאת מטריצה הפוכה</li>
+    <li>בדיקת תלות/אי-תלות ליניארית</li>
+    <li>מציאת בסיס לחיתוך/סכום מרחבים</li>
+    <li>מטריצה מייצגת של העתקה ליניארית</li>
+    <li>שינוי בסיס + מטריצת מעבר</li>
+  </ul>
+
+  <h4>הגדרות קריטיות <span class="tag tag-med">חשוב</span></h4>
+  <ul class="checklist">
+    <li>מרחב וקטורי, תת-מרחב</li>
+    <li>תלות/אי-תלות ליניארית</li>
+    <li>בסיס, ממד</li>
+    <li>rank של מטריצה</li>
+    <li>העתקה ליניארית, גרעין, תמונה</li>
+    <li>דטרמיננטה (הגדרה רקורסיבית)</li>
+  </ul>
+
+  <div class="tip-box">
+    <strong>מבחני עבר:</strong> 2025B, 2024B, 2023B — פתרי לפחות 2 מבחנים שלמים.<br>
+    <strong>מסמכים מפתח:</strong> QUICK_REFERENCE_6_PROOFS.md + מיקוד_6_משפטים_מועד_ב.pdf
+  </div>
+</div>
+
+<!-- ========== RULES ========== -->
+<div class="divider"></div>
+<h2>כללים מנחים</h2>
+
+<div class="card">
+  <h4>כללי ברזל</h4>
+  <ul style="font-size:.84rem;padding-right:20px;line-height:2">
+    <li><strong>לפחות סימולציה אחת בשבוע</strong> — למקצוע הקרוב</li>
+    <li><strong>כל סימולציה = 3 שעות בתנאי מבחן</strong> — בלי טלפון, בלי הפסקות</li>
+    <li><strong>אחרי כל סימולציה — ניתוח של שעה</strong> — מה טעיתי? למה? מה אני רושמת לזכור?</li>
+    <li><strong>בערב לפני מבחן — חזרה קלה בלבד</strong>. לישון מוקדם.</li>
+    <li><strong>לא ללמוד מקצוע אחד כל היום</strong> — שעה של מקצוע שני שומרת על הזיכרון</li>
+    <li><strong>הגדרות — לכתוב ביד כל יום</strong> עד שזה אוטומטי</li>
+    <li><strong>הוכחות — להגיד בקול</strong> (כאילו את מלמדת מישהו)</li>
+  </ul>
+</div>
+
+<!-- ========== FINAL ========== -->
+<div class="final-box">
+  <h2 style="font-size:1.3rem">יעד: 90+ בכל מקצוע</h2>
+  <p style="font-size:.88rem;color:#c7d2fe">
+    את כבר חזקה באינפי (שיפור של +25 בשאלה 1 לבד!).<br>
+    26 ימים לאינפי, 34 לבדידה, 43 ללינארית — מספיק זמן.<br>
+    <strong>המפתח: עקביות, סימולציות, וניתוח טעויות.</strong>
+  </p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\(", right: "\\)", display: false},
+      {left: "\\[", right: "\\]", display: true}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+
+</body>
+</html>
