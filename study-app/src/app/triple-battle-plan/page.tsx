@@ -105,32 +105,274 @@ function probBadge(p: number) {
 }
 
 const STORAGE_KEY = 'triple-battle-plan-v1';
+const TASKS_KEY = 'triple-battle-tasks-v1';
 
 function loadState(): Record<string, Status> {
   if (typeof window === 'undefined') return {};
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return {}; }
 }
-
 function saveState(s: Record<string, Status>) {
   if (typeof window !== 'undefined') localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
 }
+function loadTasks(): Record<string, boolean> {
+  if (typeof window === 'undefined') return {};
+  try { return JSON.parse(localStorage.getItem(TASKS_KEY) || '{}'); } catch { return {}; }
+}
+function saveTasks(s: Record<string, boolean>) {
+  if (typeof window !== 'undefined') localStorage.setItem(TASKS_KEY, JSON.stringify(s));
+}
+
+/* ─── DAILY PLAN ─── */
+interface DayTask { id: string; subject: Subject; task: string; hours: number; }
+interface DayPlan { date: string; weekday: string; phase: number; tasks: DayTask[]; isExam?: Subject; }
+
+const dailyPlan: DayPlan[] = [
+  // ── Phase 1: Infi focus (Apr 3-28) ──
+  { date:'3/4', weekday:'חמישי', phase:1, tasks:[
+    { id:'d3a1', subject:'infi', task:'הגדרות: inf, sup, חסום, צפיפות — כתבי כל אחת 3 פעמים', hours:2 },
+    { id:'d3a2', subject:'infi', task:'חזרה על הוכחות רול + לגראנז\' + קושי', hours:1.5 },
+    { id:'d3a3', subject:'bdida', task:'קראי סיכום: תחשיבי פסוקים + פרדיקטים', hours:1.5 },
+    { id:'d3a4', subject:'liner', task:'קראי סיכום 6 משפטים מועד ב\'', hours:1 },
+  ]},
+  { date:'4/4', weekday:'שישי', phase:1, tasks:[
+    { id:'d4a1', subject:'infi', task:'IVT: תרגלי 3 שאלות — פונקציית עזר + בדיקת סימנים + IVT', hours:2 },
+    { id:'d4a2', subject:'infi', task:'הגדרות מהזיכרון: גזירות, רציפות, חסום מלרע/מלעיל', hours:1 },
+    { id:'d4a3', subject:'bdida', task:'תרגלי שאלות שקילות פסוקים + דה-מורגן', hours:1 },
+    { id:'d4a4', subject:'liner', task:'Rank-Nullity: קראי הוכחה + כתבי פעם אחת', hours:1 },
+  ]},
+  { date:'5/4', weekday:'שבת', phase:1, tasks:[
+    { id:'d5a1', subject:'infi', task:'שאלות לגראנז\' על f\'\': תרגלי 3 שאלות דומות ל-4.1', hours:2 },
+    { id:'d5a2', subject:'infi', task:'דוגמאות נגדיות: תרגלי T/F ממבחני 2022-2025', hours:1.5 },
+    { id:'d5a3', subject:'bdida', task:'קומבינטוריקה: כללי מכפלה, בינום, כלילה-הדחה', hours:1 },
+    { id:'d5a4', subject:'liner', task:'3 המשפטים (dim=n → בסיס⟺בת"ל⟺פורשים): קראי', hours:1 },
+  ]},
+  { date:'6/4', weekday:'ראשון', phase:1, tasks:[
+    { id:'d6a1', subject:'infi', task:'צפיפות Q + גבולות: תרגלי מועד א\' 2022 שאלה 5(b)', hours:2 },
+    { id:'d6a2', subject:'infi', task:'אפיון inf: כתבי הוכחה מהזיכרון (שני הכיוונים)', hours:1 },
+    { id:'d6a3', subject:'bdida', task:'פונקציות: חח"ע, על, הרכבה — שאלות מ-2024B', hours:1.5 },
+    { id:'d6a4', subject:'liner', task:'טבלת הפיכות: למדי את כל התנאים השקולים', hours:1 },
+  ]},
+  { date:'7/4', weekday:'שני', phase:1, tasks:[
+    { id:'d7a1', subject:'infi', task:'חזרה על הגדרות (כתיבה מהזיכרון) + הוכחת הרכבת גבולות', hours:2 },
+    { id:'d7a2', subject:'infi', task:'תרגול: שאלות אי-שוויונות עם פונקציות עזר', hours:1.5 },
+    { id:'d7a3', subject:'bdida', task:'יחסים: רפלקסיבי, סימטרי, טרנזיטיבי, אנטי-סימטרי', hours:1.5 },
+    { id:'d7a4', subject:'liner', task:'det(AB)=det(A)det(B): קראי הוכחה', hours:1 },
+  ]},
+  { date:'8/4', weekday:'שלישי', phase:1, tasks:[
+    { id:'d8a1', subject:'infi', task:'כל ההגדרות מהזיכרון — כתבי בלי להסתכל', hours:1 },
+    { id:'d8a2', subject:'infi', task:'הוכחות: רול + לגראנז\' + קושי — מהזיכרון בלי להסתכל', hours:2 },
+    { id:'d8a3', subject:'bdida', task:'יחסי שקילות: מחלקות + קבוצה מנה (2022A, 2025B)', hours:1.5 },
+    { id:'d8a4', subject:'liner', task:'Row rank = Col rank: קראי הוכחה', hours:1 },
+  ]},
+  { date:'9/4', weekday:'רביעי', phase:1, tasks:[
+    { id:'d9a1', subject:'infi', task:'סימולציה #1: מבחן 2024A — 3 שעות בתנאי מבחן!', hours:3 },
+    { id:'d9a2', subject:'infi', task:'ניתוח סימולציה: מה טעיתי? למה?', hours:1 },
+    { id:'d9a3', subject:'bdida', task:'אינדוקציה: רגילה + חזקה (2024A, 2024B)', hours:1 },
+    { id:'d9a4', subject:'liner', task:'חזרה על הוכחות 1-3 מהזיכרון', hours:0.5 },
+  ]},
+  { date:'10/4', weekday:'חמישי', phase:1, tasks:[
+    { id:'d10a1', subject:'infi', task:'תיקון טעויות מסימולציה #1 — חזרה ממוקדת', hours:2 },
+    { id:'d10a2', subject:'infi', task:'תרגול IVT + פונקציות עזר (עוד 2-3 שאלות)', hours:1.5 },
+    { id:'d10a3', subject:'bdida', task:'סדר חלקי: דיאגרמת האסה, מינימלי/מקסימלי', hours:1.5 },
+    { id:'d10a4', subject:'liner', task:'תרגלי שאלת הוכחה מ-2024 מועד ב\'', hours:1 },
+  ]},
+  { date:'11/4', weekday:'שישי', phase:1, tasks:[
+    { id:'d11a1', subject:'infi', task:'כל ההוכחות מהזיכרון — רול, לגראנז\', קושי, הרכבה, inf', hours:2 },
+    { id:'d11a2', subject:'infi', task:'צפיפות Q: כתבי הוכחה מהזיכרון', hours:1 },
+    { id:'d11a3', subject:'bdida', task:'Hall\'s Marriage: למדי המשפט + תרגלי matching יציב', hours:1.5 },
+    { id:'d11a4', subject:'liner', task:'קראי מבחן 2024 מועד ב\' — ראי מה שואלים', hours:1 },
+  ]},
+  { date:'12/4', weekday:'שבת', phase:1, tasks:[
+    { id:'d12a1', subject:'infi', task:'סימולציה #2: מבחן 2025A — 3 שעות', hours:3 },
+    { id:'d12a2', subject:'infi', task:'ניתוח סימולציה #2', hours:1 },
+    { id:'d12a3', subject:'bdida', task:'שובך היונים + דוגמאות (2025B)', hours:1 },
+    { id:'d12a4', subject:'liner', task:'פתרי 2 שאלות חישוב (det, מרחבי עמודות)', hours:1 },
+  ]},
+  { date:'13/4', weekday:'ראשון', phase:1, tasks:[
+    { id:'d13a1', subject:'infi', task:'תיקון טעויות סימולציה #2 + חזרה IVT', hours:2 },
+    { id:'d13a2', subject:'infi', task:'תרגול: שאלות ε-δ + הגדרות', hours:1.5 },
+    { id:'d13a3', subject:'bdida', task:'חזרה כללית: שאלות פתוחות מ-2023B', hours:1.5 },
+    { id:'d13a4', subject:'liner', task:'הוכחות 4-6 מהזיכרון', hours:1 },
+  ]},
+  { date:'14/4', weekday:'שני', phase:1, tasks:[
+    { id:'d14a1', subject:'infi', task:'הגדרות — כתבי 5 פעמים כל אחת', hours:1.5 },
+    { id:'d14a2', subject:'infi', task:'שאלות T/F (הוכח/הפרך) ממבחני 2022-2025', hours:2 },
+    { id:'d14a3', subject:'bdida', task:'10 שאלות אמריקאיות מנושאים שונים', hours:1 },
+    { id:'d14a4', subject:'liner', task:'Steinitz + השלמה לבסיס: קראי', hours:1 },
+  ]},
+  { date:'15/4', weekday:'שלישי', phase:1, tasks:[
+    { id:'d15a1', subject:'infi', task:'תרגול מעורב: 2-3 שאלות מסוגים שונים', hours:2 },
+    { id:'d15a2', subject:'infi', task:'הוכחת גזירות פונקציה הופכית', hours:1 },
+    { id:'d15a3', subject:'bdida', task:'חזרה: הגדרות יחסים + קומבינטוריקה', hours:1.5 },
+    { id:'d15a4', subject:'liner', task:'T/F מלינארית 2024', hours:1 },
+  ]},
+  { date:'16/4', weekday:'רביעי', phase:1, tasks:[
+    { id:'d16a1', subject:'infi', task:'סימולציה #3: מבחן 2025B — 3 שעות', hours:3 },
+    { id:'d16a2', subject:'infi', task:'ניתוח סימולציה #3', hours:1 },
+    { id:'d16a3', subject:'bdida', task:'שאלה פתוחה: אינדוקציה + יחסי שקילות', hours:1 },
+    { id:'d16a4', subject:'liner', task:'שאלות בסיס + dim ממבחן 2023', hours:1 },
+  ]},
+  { date:'17/4', weekday:'חמישי', phase:1, tasks:[
+    { id:'d17a1', subject:'infi', task:'תיקון טעויות חוזרות מסימולציות 1-3', hours:2 },
+    { id:'d17a2', subject:'infi', task:'תרגול הנושא הכי חלש שלך', hours:1.5 },
+    { id:'d17a3', subject:'bdida', task:'פתרי שאלות פתוחות מ-2022B', hours:1.5 },
+    { id:'d17a4', subject:'liner', task:'תרגלי: בסיס, dim, rank ממבחנים', hours:1 },
+  ]},
+  { date:'18/4', weekday:'שישי', phase:1, tasks:[
+    { id:'d18a1', subject:'infi', task:'סימולציה #4: מבחן 2023A — 3 שעות', hours:3 },
+    { id:'d18a2', subject:'infi', task:'ניתוח סימולציה #4', hours:1 },
+    { id:'d18a3', subject:'bdida', task:'שאלות פתוחות מ-2021A + 2021B', hours:1 },
+    { id:'d18a4', subject:'liner', task:'Rank-Nullity + Invertibility מהזיכרון', hours:1 },
+  ]},
+  { date:'19/4', weekday:'שבת', phase:1, tasks:[
+    { id:'d19a1', subject:'infi', task:'חזרה ממוקדת על הנושא הכי חלש', hours:2 },
+    { id:'d19a2', subject:'infi', task:'הגדרות + הוכחות מהזיכרון — כל מה שלמדת', hours:1.5 },
+    { id:'d19a3', subject:'bdida', task:'מבחן שלם — חלק אמריקאי', hours:1.5 },
+    { id:'d19a4', subject:'liner', task:'מבחן 2025 מועד ב\' (שאלות 1-2)', hours:1 },
+  ]},
+  { date:'20/4', weekday:'ראשון', phase:1, tasks:[
+    { id:'d20a1', subject:'infi', task:'סימולציה #5: מבחן 2023B — 3 שעות', hours:3 },
+    { id:'d20a2', subject:'infi', task:'ניתוח סימולציה #5', hours:1 },
+    { id:'d20a3', subject:'bdida', task:'Hall\'s Marriage + סדר חלקי — שאלות נוספות', hours:1 },
+    { id:'d20a4', subject:'liner', task:'דטרמיננטות: חישוב + תכונות', hours:1 },
+  ]},
+  { date:'21/4', weekday:'שני', phase:1, tasks:[
+    { id:'d21a1', subject:'infi', task:'כל ההוכחות מהזיכרון ברצף — בלי לעצור', hours:2 },
+    { id:'d21a2', subject:'infi', task:'תרגול אחרון: 2-3 שאלות מסוגים שונים', hours:1.5 },
+    { id:'d21a3', subject:'bdida', task:'CNF/DNF + שקילויות — חזרה', hours:1 },
+    { id:'d21a4', subject:'liner', task:'העתקות ליניאריות — חזרה', hours:1 },
+  ]},
+  { date:'22/4', weekday:'שלישי', phase:1, tasks:[
+    { id:'d22a1', subject:'infi', task:'סימולציה #6: מבחן 2022B — 3 שעות', hours:3 },
+    { id:'d22a2', subject:'infi', task:'ניתוח סימולציה #6', hours:1 },
+    { id:'d22a3', subject:'bdida', task:'נושאים חלשים — תרגול', hours:1 },
+    { id:'d22a4', subject:'liner', task:'חזרה כללית', hours:0.5 },
+  ]},
+  { date:'23/4', weekday:'רביעי', phase:1, tasks:[
+    { id:'d23a1', subject:'infi', task:'חזרה על כל מה שטעית בסימולציות 1-6', hours:2 },
+    { id:'d23a2', subject:'infi', task:'רשימת "דברים לזכור" — כתבי על דף', hours:1 },
+    { id:'d23a3', subject:'bdida', task:'מבחן שלם — שאלות פתוחות', hours:1.5 },
+    { id:'d23a4', subject:'liner', task:'הוכחות מהזיכרון — כל 6', hours:1 },
+  ]},
+  { date:'24/4', weekday:'חמישי', phase:1, tasks:[
+    { id:'d24a1', subject:'infi', task:'סימולציה אחרונה #7 — בתנאי מבחן אמיתיים', hours:3 },
+    { id:'d24a2', subject:'infi', task:'ניתוח אחרון', hours:1 },
+    { id:'d24a3', subject:'bdida', task:'30 דק\' חזרה קלה', hours:0.5 },
+  ]},
+  { date:'25/4', weekday:'שישי', phase:1, tasks:[
+    { id:'d25a1', subject:'infi', task:'חזרה ממוקדת: הגדרות + הוכחות מהזיכרון בלבד', hours:2.5 },
+    { id:'d25a2', subject:'bdida', task:'30 דק\' חזרה קלה', hours:0.5 },
+  ]},
+  { date:'26/4', weekday:'שבת', phase:1, tasks:[
+    { id:'d26a1', subject:'infi', task:'חזרה על כל הטעויות מהסימולציות — רשימה סופית', hours:2 },
+  ]},
+  { date:'27/4', weekday:'ראשון', phase:1, tasks:[
+    { id:'d27a1', subject:'infi', task:'חזרה קלה: הגדרות + 2-3 שאלות מפתח בלבד', hours:1.5 },
+  ]},
+  { date:'28/4', weekday:'שני', phase:1, tasks:[
+    { id:'d28a1', subject:'infi', task:'חזרה אחרונה: רק הגדרות + הוכחות קצרות. לישון מוקדם!', hours:1 },
+  ]},
+  { date:'29/4', weekday:'שלישי', phase:1, isExam:'infi', tasks:[] },
+
+  // ── Phase 2: Bdida focus (Apr 30 - May 6) ──
+  { date:'30/4', weekday:'רביעי', phase:2, tasks:[
+    { id:'d30a1', subject:'bdida', task:'חזרה מרוכזת: כל ההגדרות + שקילויות + CNF/DNF', hours:3 },
+    { id:'d30a2', subject:'bdida', task:'תרגול: 15 שאלות אמריקאיות מנושאים שונים', hours:2 },
+    { id:'d30a3', subject:'liner', task:'הוכחה אחת מהזיכרון + שאלת חישוב', hours:1 },
+  ]},
+  { date:'1/5', weekday:'חמישי', phase:2, tasks:[
+    { id:'d31a1', subject:'bdida', task:'קומבינטוריקה אינטנסיבית: בינום, כלילה-הדחה, שובך', hours:3 },
+    { id:'d31a2', subject:'bdida', task:'תרגול: שאלות פתוחות אינדוקציה (2024A, 2024B, 2020B)', hours:2 },
+    { id:'d31a3', subject:'liner', task:'תרגלי שאלת חישוב (det / בסיס)', hours:1 },
+  ]},
+  { date:'2/5', weekday:'שישי', phase:2, tasks:[
+    { id:'d32a1', subject:'bdida', task:'יחסי שקילות + סדר חלקי — מחלקות, האסה', hours:3 },
+    { id:'d32a2', subject:'bdida', task:'פונקציות: הוכחות חח"ע/על עם הרכבה', hours:2 },
+    { id:'d32a3', subject:'liner', task:'הוכחה אחת מהזיכרון', hours:1 },
+  ]},
+  { date:'3/5', weekday:'שבת', phase:2, tasks:[
+    { id:'d33a1', subject:'bdida', task:'סימולציה: מבחן 2024B בדידה — 3 שעות', hours:3 },
+    { id:'d33a2', subject:'bdida', task:'ניתוח סימולציה: מה טעיתי?', hours:1 },
+    { id:'d33a3', subject:'bdida', task:'חזרה על נושאים חלשים שעלו', hours:1.5 },
+    { id:'d33a4', subject:'liner', task:'קראי סיכום נושאים', hours:1 },
+  ]},
+  { date:'4/5', weekday:'ראשון', phase:2, tasks:[
+    { id:'d34a1', subject:'bdida', task:'אינדוקציה + פונקציות — שאלות פתוחות', hours:2.5 },
+    { id:'d34a2', subject:'bdida', task:'Hall\'s Marriage: תרגלי matching יציב', hours:2 },
+    { id:'d34a3', subject:'liner', task:'תרגלי שאלת הוכחה', hours:1 },
+  ]},
+  { date:'5/5', weekday:'שני', phase:2, tasks:[
+    { id:'d35a1', subject:'bdida', task:'סימולציה: מבחן 2025B — 3 שעות', hours:3 },
+    { id:'d35a2', subject:'bdida', task:'ניתוח + חזרה על חולשות', hours:1.5 },
+    { id:'d35a3', subject:'bdida', task:'חזרה: כל ההגדרות + נוסחאות', hours:1 },
+  ]},
+  { date:'6/5', weekday:'שלישי', phase:2, tasks:[
+    { id:'d36a1', subject:'bdida', task:'חזרה אחרונה: הגדרות + נוסחאות + טעויות מסימולציות', hours:2 },
+    { id:'d36a2', subject:'bdida', task:'מעבר על רשימת "דברים לזכור". לישון מוקדם!', hours:1 },
+  ]},
+  { date:'7/5', weekday:'רביעי', phase:2, isExam:'bdida', tasks:[] },
+
+  // ── Phase 3: Liner focus (May 8-14) ──
+  { date:'8/5', weekday:'חמישי', phase:3, tasks:[
+    { id:'d38a1', subject:'liner', task:'כל 6 ההוכחות מהזיכרון — כתבי ברצף על דף ריק', hours:2.5 },
+    { id:'d38a2', subject:'liner', task:'חישובי בסיס, dim, rank — 5 תרגילים', hours:2 },
+    { id:'d38a3', subject:'liner', task:'חזרה על הגדרות: ת"ל, בסיס, rank, העתקה ליניארית', hours:1.5 },
+  ]},
+  { date:'9/5', weekday:'שישי', phase:3, tasks:[
+    { id:'d39a1', subject:'liner', task:'דטרמיננטות: 5 שאלות חישוב (אנטי-אלכסונית, פרמטר, בלוקים)', hours:2.5 },
+    { id:'d39a2', subject:'liner', task:'הפיכות: אלגוריתם [A|I], בדיקת הפיכות', hours:2 },
+    { id:'d39a3', subject:'liner', task:'מערכת עם פרמטר: דירוג → סיווג מקרים', hours:1.5 },
+  ]},
+  { date:'10/5', weekday:'שבת', phase:3, tasks:[
+    { id:'d40a1', subject:'liner', task:'סימולציה: מבחן 2025 מועד ב\' — 3 שעות', hours:3 },
+    { id:'d40a2', subject:'liner', task:'ניתוח סימולציה', hours:1 },
+    { id:'d40a3', subject:'liner', task:'חזרה על נושאים חלשים', hours:2 },
+  ]},
+  { date:'11/5', weekday:'ראשון', phase:3, tasks:[
+    { id:'d41a1', subject:'liner', task:'העתקות ליניאריות + גרעין + תמונה', hours:2 },
+    { id:'d41a2', subject:'liner', task:'מטריצה מייצגת + שינוי בסיס + מטריצת מעבר', hours:2 },
+    { id:'d41a3', subject:'liner', task:'תת-מרחבים: Span, סכום, חיתוך, סכום ישר', hours:2 },
+  ]},
+  { date:'12/5', weekday:'שני', phase:3, tasks:[
+    { id:'d42a1', subject:'liner', task:'סימולציה: מבחן 2024 מועד ב\' — 3 שעות', hours:3 },
+    { id:'d42a2', subject:'liner', task:'ניתוח + תיקון', hours:1 },
+    { id:'d42a3', subject:'liner', task:'הוכחות מהזיכרון — כל 6', hours:1.5 },
+  ]},
+  { date:'13/5', weekday:'שלישי', phase:3, tasks:[
+    { id:'d43a1', subject:'liner', task:'חזרה על כל הטעויות מ-2 הסימולציות', hours:2 },
+    { id:'d43a2', subject:'liner', task:'הוכחות + הגדרות — כתיבה מהזיכרון', hours:2 },
+    { id:'d43a3', subject:'liner', task:'תרגול: 3 שאלות מסוגים שונים', hours:2 },
+  ]},
+  { date:'14/5', weekday:'רביעי', phase:3, tasks:[
+    { id:'d44a1', subject:'liner', task:'חזרה אחרונה: הגדרות + הוכחות + נוסחאות. לישון מוקדם!', hours:2 },
+  ]},
+  { date:'15/5', weekday:'חמישי', phase:3, isExam:'liner', tasks:[] },
+];
 
 /* ════════════════════════════════════════════════════
    COMPONENT
    ════════════════════════════════════════════════════ */
 
 export default function TripleBattlePlanPage() {
-  const [tab, setTab] = useState<'overview' | 'theorems' | 'definitions'>('overview');
+  const [tab, setTab] = useState<'overview' | 'schedule' | 'theorems' | 'definitions'>('overview');
   const [filter, setFilter] = useState<Subject | 'all'>('all');
   const [statusMap, setStatusMap] = useState<Record<string, Status>>({});
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [tasksDone, setTasksDone] = useState<Record<string, boolean>>({});
+  const [activePhase, setActivePhase] = useState<number>(1);
 
-  useEffect(() => { setStatusMap(loadState()); }, []);
+  useEffect(() => { setStatusMap(loadState()); setTasksDone(loadTasks()); }, []);
 
   function setStatus(id: string, s: Status) {
     const next = { ...statusMap, [id]: s };
     setStatusMap(next);
     saveState(next);
+  }
+
+  function toggleTask(id: string) {
+    const next = { ...tasksDone, [id]: !tasksDone[id] };
+    setTasksDone(next);
+    saveTasks(next);
   }
 
   function toggleExpand(id: string) {
@@ -161,8 +403,15 @@ export default function TripleBattlePlanPage() {
     </button>
   );
 
+  // Schedule stats
+  const allTasks = dailyPlan.flatMap(d => d.tasks);
+  const phaseTasks = (p: number) => dailyPlan.filter(d => d.phase === p).flatMap(d => d.tasks);
+  const doneTasks = allTasks.filter(t => tasksDone[t.id]).length;
+  const phaseDone = (p: number) => phaseTasks(p).filter(t => tasksDone[t.id]).length;
+
   const tabs = [
     { id: 'overview' as const, label: 'סקירה כללית', icon: <Target className="w-4 h-4" /> },
+    { id: 'schedule' as const, label: `לוח משימות (${doneTasks}/${allTasks.length})`, icon: <Calendar className="w-4 h-4" /> },
     { id: 'theorems' as const, label: `משפטים (${thmStats.know}/${theorems.length})`, icon: <Brain className="w-4 h-4" /> },
     { id: 'definitions' as const, label: `הגדרות (${defStats.know}/${definitions.length})`, icon: <BookOpen className="w-4 h-4" /> },
   ];
@@ -323,6 +572,108 @@ export default function TripleBattlePlanPage() {
                 <li className="flex items-start gap-2"><Star className="w-4 h-4 mt-0.5 flex-shrink-0" />הוכחות — תגידי בקול (כאילו את מלמדת)</li>
                 <li className="flex items-start gap-2"><Star className="w-4 h-4 mt-0.5 flex-shrink-0" />אף פעם לא מפסיקים מקצוע לגמרי — שעה ברקע שומרת על הזיכרון</li>
               </ul>
+            </div>
+          </div>
+        )}
+
+        {/* ═══════════════ SCHEDULE TAB ═══════════════ */}
+        {tab === 'schedule' && (
+          <div className="space-y-4">
+            {/* Phase selector */}
+            <div className="flex gap-2">
+              {[1, 2, 3].map(p => {
+                const labels = ['מיקוד אינפי', 'מיקוד בדידה', 'מיקוד לינארית'];
+                const colors = ['bg-emerald-500', 'bg-amber-500', 'bg-violet-500'];
+                const pt = phaseTasks(p);
+                const pd = phaseDone(p);
+                return (
+                  <button key={p} onClick={() => setActivePhase(p)}
+                    className={`flex-1 rounded-xl border-2 p-3 transition-all ${activePhase === p ? 'border-slate-800 bg-white shadow-md' : 'border-slate-200 bg-slate-50 hover:bg-white'}`}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`${colors[p - 1]} text-white text-[10px] font-bold px-1.5 py-0.5 rounded`}>פאזה {p}</span>
+                      <span className="text-xs font-bold text-slate-600">{labels[p - 1]}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="text-lg font-black text-slate-800">{pd}/{pt.length}</div>
+                      <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div className={`h-full rounded-full transition-all ${colors[p - 1]}`} style={{ width: `${pt.length ? (pd / pt.length) * 100 : 0}%` }} />
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Days in active phase */}
+            {dailyPlan.filter(d => d.phase === activePhase).map(day => {
+              const dayTasks = day.tasks;
+              const dayDone = dayTasks.filter(t => tasksDone[t.id]).length;
+              const allDayDone = dayTasks.length > 0 && dayDone === dayTasks.length;
+
+              return (
+                <div key={day.date} className={`bg-white rounded-xl border ${allDayDone ? 'border-emerald-300 bg-emerald-50/30' : 'border-slate-200'} overflow-hidden`}>
+                  {/* Day header */}
+                  <div className={`px-4 py-3 border-b ${day.isExam ? 'bg-red-50 border-red-200' : allDayDone ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-100'} flex items-center gap-3`}>
+                    <div className="text-center min-w-[50px]">
+                      <div className="text-lg font-black text-slate-800">{day.date}</div>
+                      <div className="text-[10px] font-bold text-slate-400">{day.weekday}</div>
+                    </div>
+                    {day.isExam ? (
+                      <div className="flex items-center gap-2 flex-1">
+                        <Flame className="w-5 h-5 text-red-500" />
+                        <span className="font-bold text-red-700 text-sm">מבחן {SUBJECT_META[day.isExam].label}!</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2 flex-1">
+                        {allDayDone && <CheckCircle className="w-5 h-5 text-emerald-500" />}
+                        <span className={`text-sm font-bold ${allDayDone ? 'text-emerald-700' : 'text-slate-600'}`}>
+                          {dayDone}/{dayTasks.length} משימות
+                        </span>
+                        <div className="flex-1 max-w-[120px] h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-emerald-500 rounded-full transition-all" style={{ width: `${dayTasks.length ? (dayDone / dayTasks.length) * 100 : 0}%` }} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Tasks */}
+                  {dayTasks.length > 0 && (
+                    <div className="divide-y divide-slate-50">
+                      {dayTasks.map(task => {
+                        const m = SUBJECT_META[task.subject];
+                        const done = tasksDone[task.id];
+                        return (
+                          <div key={task.id}
+                            onClick={() => toggleTask(task.id)}
+                            className={`flex items-start gap-3 px-4 py-3 cursor-pointer transition-colors hover:bg-slate-50 ${done ? 'opacity-60' : ''}`}>
+                            <div className={`mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors ${done ? 'bg-emerald-500 border-emerald-500' : 'border-slate-300'}`}>
+                              {done && <CheckCircle className="w-3.5 h-3.5 text-white" />}
+                            </div>
+                            <span className={`${m.bg} text-white text-[10px] font-bold px-1.5 py-0.5 rounded mt-0.5 flex-shrink-0`}>{m.label}</span>
+                            <div className="flex-1 min-w-0">
+                              <div className={`text-sm ${done ? 'line-through text-slate-400' : 'text-slate-700'}`}>{task.task}</div>
+                            </div>
+                            <div className="flex items-center gap-1 text-xs text-slate-400 flex-shrink-0">
+                              <Clock className="w-3 h-3" />
+                              {task.hours}h
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* Overall progress */}
+            <div className="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <div className="text-xs text-slate-400 mb-1">התקדמות כוללת</div>
+              <div className="text-3xl font-black">{doneTasks}/{allTasks.length}</div>
+              <div className="h-3 bg-slate-700 rounded-full mt-2 overflow-hidden max-w-md mx-auto">
+                <div className="h-full bg-gradient-to-l from-emerald-400 to-emerald-500 rounded-full transition-all" style={{ width: `${allTasks.length ? (doneTasks / allTasks.length) * 100 : 0}%` }} />
+              </div>
+              <div className="text-xs text-slate-400 mt-1">{Math.round(allTasks.length ? (doneTasks / allTasks.length) * 100 : 0)}% הושלם</div>
             </div>
           </div>
         )}
